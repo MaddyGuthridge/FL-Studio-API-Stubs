@@ -1,4 +1,4 @@
-"""Utils Module (included in FL Studio Python lib folder)
+"""Utilities Module (included in FL Studio Python lib folder)
 
 Contains useful functions and classes for use when working with FL Studio's
 Python API
@@ -6,10 +6,15 @@ Python API
 NOTE: This code is taken from FL Studio's Python lib folder and included in this
 package in the hope that it will be useful for script developers. It is not the
 creation of the repository authors, and no credit is claimed for the code
-content. 
+content.
 
 However, the documentation for the provided code is created by the
 authors of this repository.
+
+WARNING: Some of the provided functions in the FL Studio installation have bugs
+that may result in unexpected behaviour. These bugs have been left as-is in this
+file for your inspection and warnings have been added to the doc strings. Use
+these functions with caution.
 """
 
 import math
@@ -21,10 +26,10 @@ class TRect:
         """Create a `TRect` object representing a rectangle
 
         Args:
-            left (int): left position
-            top (int): top position
-            right (int): right position
-            bottom (int): bottom position
+         * left (int): left position
+         * top (int): top position
+         * right (int): right position
+         * bottom (int): bottom position
         """
         self.Top = top
         self.Left = left
@@ -35,7 +40,7 @@ class TRect:
         """Returns width of a rectangle
 
         Returns:
-            int: width
+         * int: width
         """
         return self.Right - self.Left
 
@@ -43,7 +48,7 @@ class TRect:
         """Returns the height of a rectangle
 
         Returns:
-            int: height
+         * int: height
         """
         return self.Bottom - self.Top
 
@@ -57,11 +62,11 @@ def RectOverlapEqual(R1: TRect, R2: TRect) -> bool:
     """Returns whether two rectangles are overlapping or touching
 
     Args:
-        R1 (TRect): rectangle 1
-        R2 (TRect): rectangle 2
+     * R1 (TRect): rectangle 1
+     * R2 (TRect): rectangle 2
 
     Returns:
-        bool: whether rectangles overlap or touch
+     * bool: whether rectangles overlap or touch
     """
     return (R1.Left <= R2.Right) & (R1.Right >= R2.Left) & (R1.Top <= R2.Bottom) & (R1.Bottom >= R2.Top)
 
@@ -69,11 +74,11 @@ def RectOverlap(R1: TRect, R2: TRect) -> bool:
     """Returns whether two rectangles are overlapping
 
     Args:
-        R1 (TRect): rectangle 1
-        R2 (TRect): rectangle 2
+     * R1 (TRect): rectangle 1
+     * R2 (TRect): rectangle 2
 
     Returns:
-        bool: whether rectangles overlap
+     * bool: whether rectangles overlap
     """
     return  (R1.Left < R2.Right) & (R1.Right > R2.Left) & (R1.Top < R2.Bottom) & (R1.Bottom > R2.Top)
 
@@ -81,12 +86,12 @@ def Limited(Value: float, Min: float, Max: float) -> float:
     """Limit a value to within the range `Min` - `Max`
 
     Args:
-        Value (float): Current value
-        Min (float): Min value
-        Max (float): Max value
+     * Value (float): Current value
+     * Min (float): Min value
+     * Max (float): Max value
 
     Returns:
-        float: limited value
+     * float: limited value
     """
     if Value <= Min:
         res = Min
@@ -100,12 +105,12 @@ def InterNoSwap(X, A, B) -> bool:
     """Returns whether A <= X <= B, ie. whether X lies between A and B
 
     Args:
-        X (number): x
-        A (number): a
-        B (number): b
+     * X (number): x
+     * A (number): a
+     * B (number): b
 
     Returns:
-        bool
+     * bool
     """
     return (X >= A) & (X <= B)
 
@@ -113,12 +118,12 @@ def DivModU(A: int, B: int) -> 'tuple[int, int]':
     """Return integer division and modulus
 
     Args:
-        A (int): int 1
-        B (int): int 2
+     * A (int): int 1
+     * B (int): int 2
 
     Returns:
-        int: integer division
-        int: modulus
+     * int: integer division
+     * int: modulus
     """
     C = A % B
     return (A // B), C
@@ -133,11 +138,11 @@ def SwapInt(A, B):
     in your code to begin with.
 
     Args:
-        A (any): thing 1
-        B (any): thing 2
+     * A (any): thing 1
+     * B (any): thing 2
 
     Returns:
-        tuple: B, A
+     * tuple: B, A
     """
     return B, A
 
@@ -145,12 +150,12 @@ def Zeros(value, nChars, c = '0'):
     """TODO
 
     Args:
-        value ([type]): [description]
-        nChars ([type]): [description]
-        c (str, optional): [description]. Defaults to '0'.
+     * value ([type]): [description]
+     * nChars ([type]): [description]
+     * c (str, optional): [description]. Defaults to '0'.
 
     Returns:
-        [type]: [description]
+     * [type]: [description]
     """
     if value < 0:
         Result = str(-value)
@@ -164,12 +169,12 @@ def Zeros_Strict(value, nChars, c ='0'):
     """TODO
 
     Args:
-        value ([type]): [description]
-        nChars ([type]): [description]
-        c (str, optional): [description]. Defaults to '0'.
+     * value ([type]): [description]
+     * nChars ([type]): [description]
+     * c (str, optional): [description]. Defaults to '0'.
 
     Returns:
-        [type]: [description]
+     * [type]: [description]
     
     WARNING:
      * Strict trimming looks incorrect
@@ -188,10 +193,10 @@ def Sign(value: 'float | int') -> int:
     """Equivalent to `SignOf()`
 
     Args:
-        value (float | int): number
+     * value (float | int): number
 
     Returns:
-        int: sign
+     * int: sign
     """
     if value < 0: 
         return -1
@@ -227,10 +232,10 @@ def KnobAccelToRes2(Value):
     """TODO
 
     Args:
-        Value ([type]): [description]
+     * Value ([type]): [description]
 
     Returns:
-        [type]: [description]
+     * [type]: [description]
     """
     n = abs(Value)
     if n > 1:
@@ -243,9 +248,9 @@ def OffsetRect(R: TRect, dx: int, dy: int) -> None:
     """Offset a rectangle by `dx` and `dy`
 
     Args:
-        R (TRect): rectangle
-        dx (int): x offset
-        dy (int): y offset
+     * R (TRect): rectangle
+     * dx (int): x offset
+     * dy (int): y offset
     
     NOTE: Rectangle is adjusted in-place
     """
@@ -257,15 +262,17 @@ def OffsetRect(R: TRect, dx: int, dy: int) -> None:
 def RGBToHSV(R: float, G: float, B: float) -> 'tuple[float, float, float]':
     """Convert an RGB colour to a HSV colour
 
+    TODO: What scale is being used? 0.0-1.0 or 0-255?
+
     Args:
-        R (float): red
-        G (float): green
-        B (float): blue
+     * R (float): red
+     * G (float): green
+     * B (float): blue
 
     Returns:
-        H: hue
-        S: saturation
-        V: value (brightness)
+     * H: hue
+     * S: saturation
+     * V: value (brightness)
     """
     Min = min(min(R, G), B)
     V = max(max(R, G), B)
@@ -296,12 +303,12 @@ def RGBToHSVColor(Color: int) -> 'tuple[float, float, float]':
     """Convert an RGB colour to a HSV colour
 
     Args:
-        Color (int): colour as integer (`0x--RRGGBB`)
+     * Color (int): colour as integer (`0x--RRGGBB`)
 
     Returns:
-        H: hue
-        S: saturation
-        V: value (brightness)
+     * H: hue
+     * S: saturation
+     * V: value (brightness)
     """
     r = ((Color & 0xFF0000) >> 16) / 255
     g = ((Color & 0x00FF00) >> 8) / 255
@@ -313,14 +320,14 @@ def HSVtoRGB(H: float, S: float, V: float) -> 'tuple[float, float, float]':
     """Convert an HSV colour to an RGB colour
 
     Args:
-        H (float): hue
-        S (float): saturation
-        V (float): value (brightness)
+     * H (float): hue
+     * S (float): saturation
+     * V (float): value (brightness)
 
     Returns:
-        float: red
-        float: green
-        float: blue
+     * float: red
+     * float: green
+     * float: blue
     """
     hTemp = 0
     if S == 0.0:
@@ -373,10 +380,10 @@ def GetNoteName(NoteNum: int) -> str:
     """Return the note name given a note number
 
     Args:
-        NoteNum (int): note number
+     * NoteNum (int): note number
 
     Returns:
-        str: note name
+     * str: note name
     """
     NoteNum += 1200
     return NoteNameT[NoteNum % 12] + str((NoteNum // 12) - 100)
@@ -384,10 +391,13 @@ def GetNoteName(NoteNum: int) -> str:
 def ColorToRGB(Color: int) -> 'tuple[int, int, int]':
     """Convert an integer colour to an RGB tuple that uses range 0-255.
 
+    Args:
+     * Color (int): colour as integer
+
     Returns:
-        int: red
-        int: green
-        int: blue
+     * int: red
+     * int: green
+     * int: blue
     """
     return (Color >> 16) & 0xFF, (Color >> 8) & 0xFF, Color & 0xFF
 
@@ -395,12 +405,12 @@ def RGBToColor(R: int, G: int, B: int) -> int:
     """convert an RGB set to an integer colour. values must be 0-255
 
     Args:
-        R (int): red
-        G (int): green
-        B (int): blue
+     * R (int): red
+     * G (int): green
+     * B (int): blue
 
     Returns:
-        int: colour
+     * int: colour
     """
     return (R << 16) | (G << 8) | B
 
@@ -408,12 +418,12 @@ def FadeColor(StartColor: int, EndColor: int, Value: float) -> int:
     """Fade between two colour values
 
     Args:
-        StartColor (int): colour integer
-        EndColor (int): colour integer
-        Value (float): fade position (0-255)
+     * StartColor (int): colour integer
+     * EndColor (int): colour integer
+     * Value (float): fade position (0-255)
 
     Returns:
-        int: faded colour
+     * int: faded colour
     
     WARNING:
      * Blue value is incorrect, using green start value
@@ -430,11 +440,11 @@ def LightenColor(Color: int, Value: float) -> int:
     """Lighten a colour by a certain amount
 
     Args:
-        Color (int): colour integer
-        Value (float): amount to lighten by (0-255)
+     * Color (int): colour integer
+     * Value (float): amount to lighten by (0-255)
 
     Returns:
-        int: lightened colour
+     * int: lightened colour
     """
     r, g, b = ColorToRGB(Color)
     ratio = Value / 255
@@ -444,10 +454,10 @@ def VolTodB(Value: float) -> float:
     """Convert volume as a decimal (0.0 - 1.0) to a decibel value
 
     Args:
-        Value (float): volume
+     * Value (float): volume
 
     Returns:
-        float: volume in decibels
+     * float: volume in decibels
     """
     Value = (math.exp(Value * math.log(11)) - 1) * 0.1
     if Value == 0:
