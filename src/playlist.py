@@ -12,6 +12,8 @@ HELP WANTED:
  * Explanations for live performance related functions
 """
 
+import midi
+
 def trackCount() -> int:
     """Returns the number of tracks on the playlist.
     Includes empty tracks.
@@ -439,7 +441,7 @@ def getLiveTrigSnap(index: int) -> int:
     Included since API version 1
     """
 
-def getLiveStatus(index: int, mode:int=LB_Status_Default) -> int:
+def getLiveStatus(index: int, mode:int=midi.LB_Status_Default) -> int:
     """Returns the live status for track at `index`
     
     HELP WANTED: Explanation.
@@ -455,7 +457,7 @@ def getLiveStatus(index: int, mode:int=LB_Status_Default) -> int:
     Included since API version 1
     """
 
-def getLiveBlockStatus(index: int, blockNum:int, mode:int=LB_Status_Default) -> int:
+def getLiveBlockStatus(index: int, blockNum:int, mode:int=midi.LB_Status_Default) -> int:
     """Returns the live block status for track at `index` and for block 
     `blockNum`
     
