@@ -65,4 +65,130 @@ def setChannelName(index: int, name: str) -> None:
     Args:
      * `index` (`int`): index of channel
      * `name` (`str`): new name for channel
+    
+    Included since API version 1
+    """
+
+def getChannelColor(index: int) -> int:
+    """Returns the colour of the channel at `index` (respecting groups)
+
+    Note that colours can be split into or built from components using the
+    functions provided in the module `utils`
+    * `ColorToRGB()`
+    * `RGBToColor()`
+
+    Args:
+     * `index` (`int`): index of channel
+
+    Returns:
+     * `int`: channel colour (0x--RRGGBB)
+    
+    Included since API version 1
+    """
+
+def setChannelColor(index: int, color: int) -> None:
+    """Sets the colour of the channel at `index` (respecting groups)
+
+    Note that colours can be split into or built from components using the
+    functions provided in the module `utils`
+    * `ColorToRGB()`
+    * `RGBToColor()`
+
+    Args:
+     * `index` (`int`): index of channel
+     * `colour` (`int`): new colour for channel (0x--RRGGBB)
+    
+    Included since API version 1
+    """
+
+def isChannelMuted(index: int) -> int:
+    """Returns whether channel is muted (`1`) or not (`0`)
+
+    Args:
+     * `index` (`int`): index of channel
+
+    Returns:
+     * `int`: mute status
+    
+    Included since API version 1
+    """
+
+def muteChannel(index: int) -> None:
+    """Toggles the mute state of the channel at `index`
+
+    Args:
+        `index` (`int`): index of channel
+    """
+
+def isChannelSolo(index: int) -> int:
+    """Returns whether channel is solo (`1`) or not (`0`)
+
+    Args:
+     * `index` (`int`): index of channel
+
+    Returns:
+     * `int`: solo status
+    
+    Included since API version 1
+    """
+
+def soloChannel(index: int) -> None:
+    """Toggles the solo state of the channel at `index`
+
+    Args:
+     * `index` (`int`): index of channel
+    
+    Included since API version 1
+    """
+
+def getChannelVolume(index: int) -> float:
+    """Returns the normalised volume of the channel at `index`, where `0.0` is
+    the minimum value, and `1.0` is the maximum value. Note that the default
+    volume for channels is `0.78125`.
+
+    Args:
+     * `index` (`int`): index of channel
+
+    Returns:
+     * `float`: channel volume
+    
+    Included since API version 1
+    """
+
+def setChannelVolume(index: int, volume: float) -> None:
+    """Sets the normalised volume of the channel at `index`, where `0.0` is
+    the minimum value, and `1.0` is the maximum value. Note that the default
+    volume for channels is `0.78125`.
+
+    Args:
+     * `index` (`int`): index of channel
+     * `volume` (`float`): channel volume
+    
+    Included since API version 1
+    """
+
+def getChannelPan(index: int) -> float:
+    """Returns the normalised pan of the channel at `index`, where `-1.0` is 
+    100% left, and `1.0` is 100% right. Note that the default pan for channels 
+    is `0.0` (centre).
+
+    Args:
+     * `index` (`int`): index of channel
+
+    Returns:
+     * `float`: channel pan
+    
+    Included since API version 1
+    """
+
+def setChannelPan(index: int, pan: float) -> None:
+    """Sets the normalised pan of the channel at `index`, where `-1.0` is
+    100% left, and `1.0` is 100% right. Note that the default
+    pan for channels is `0.0` (centre).
+
+    Args:
+     * `index` (`int`): index of channel
+     * `pan` (`float`): channel pan
+    
+    Included since API version 1
     """
