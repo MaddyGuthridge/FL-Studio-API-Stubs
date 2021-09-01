@@ -13,7 +13,7 @@ authors of this repository.
 
 WARNING: Some of the provided functions in the FL Studio installation have bugs
 that may result in unexpected behaviour. These bugs have been left as-is in this
-file for your inspection and warnings have been added to the doc strings. Use
+file for your inspection and warnings have been added to the docstrings. Use
 these functions with caution.
 """
 
