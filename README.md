@@ -8,6 +8,11 @@ functions don't do anything. It is NOT a complete testing framework, and it
 cannot guarantee your script will work correctly. However, it may help you to
 resolve issues with incorrect function calls when interacting with the API.
 
+# Important Note
+
+Currently, these stubs are incomplete. Contributions are encouraged, although
+I'd prefer for people to stick to the style of the existing documentation.
+
 # Installation
 
 To avoid module conflicts with other Python projects, it is recommended that you
@@ -17,3 +22,5 @@ official Python documentation.
 
 After activating the environment in your editor, you can install the stub 
 modules by running the command `pip3 install [MODULE-NAME]`.
+
+NOTE: Not yet published
