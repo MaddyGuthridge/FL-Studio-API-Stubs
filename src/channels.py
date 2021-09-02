@@ -351,5 +351,82 @@ def isHighlighted() -> int:
     script is mapping to.
 
     Returns:
-        `int`: whether highlight rectangle is visible.
+     * `int`: whether highlight rectangle is visible.
+    
+    Included since API version 1
+    """
+
+def processRECEvent(eventId: int, value: int, flags: int) -> int:
+    """Processes a recording event.
+    
+    WARNING: This function is depreciated here, and moved to the `general`
+    module as of API version 7.
+    
+    HELP WANTED: What does this do?
+
+    Args:
+     * `eventId` (`int`): Refer to the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#RecEventParams)
+     * `value` (`int`): value of even within range (0 - midi.FromMIDI_Max)
+     * `flags` (`int`): Refer to the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#RecEventFlags)
+
+    Returns:
+     * `int`: Unknown
+    
+    Included since API version 1
+    Depreciated since API version 7
+    """
+
+def incEventValue(eventId: int, step: int, res: float) -> int:
+    """Increase recording event value
+    
+    HELP WANTED: I have no idea what any of this does
+
+    Args:
+     * `eventId` (`int`): event ID, see the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#RecEventParams)
+     * `step` (`int`): unknown
+     * `res` (`float` (double precision)): unknown
+
+    Returns:
+     * `int`: unknown
+    
+    Included since API version 1
+    """
+
+def getRecEventId(index: int) -> int:
+    """Returns recording event ID for channel at `index`.
+    
+    HELP WANTED: Honestly REC events are sooooo confusing, and I avoid using 
+    them entirely. Can someone else explain them?
+
+    Args:
+     * `index` (`int`): channel index
+
+    Returns:
+     * `int`: Recording event ID???
+    
+    Included since API version 1
+    """
+
+def getGridBit(index: int, position: int) -> int:
+    """Returns whether the grid bit on channel at `index` in `position` is set.
+
+    Args:
+     * `index` (`int`): channel index
+     * `position` (`int`): index of grid bit (horizontal axis)
+
+    Returns:
+     * `int`: whether grid bit is set
+    
+    Included since API version 1
+    """
+
+def setGridBit(index: int, position: int, value: int) -> None:
+    """Sets the value of the grid bit on channel at `index` in `position`.
+
+    Args:
+     * `index` (`int`): channel index
+     * `position` (`int`): index of grid bit (horizontal axis)
+     * `value` (`int`): whether grid bit is set (`1`) or not (`0`)
+    
+    Included since API version 1
     """
