@@ -430,3 +430,118 @@ def setGridBit(index: int, position: int, value: int) -> None:
     
     Included since API version 1
     """
+
+def getStepParam(step: int, param: int, ofset: int, startPos: int,
+                 padsStride:int=16) -> int:
+    """Get step parameter for `step`.
+    
+    HELP WANTED: What does this do?
+
+    Args:
+     * `step` (`int`): ?
+     * `param` (`int`): ?? at least there's the [offical documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#stepParams)
+       (actually, tbh the docs on this looks kinda dodgy for some values)
+     * `ofset` (`int`): ??? (this typo is in the official docs too)
+     * `startPos` (`int`): ????
+     * `padsStride` (`int`, optional): ?????. Defaults to 16.
+
+    Returns:
+     * `int`: ??????
+    
+    Included since API version 1
+    """
+
+def getCurrentStepParam(index: int, step: int, param: int) -> None:
+    """Get current step parameter for channel at `index` and for step at `step`.
+    
+    HELP WANTED: What does this do?
+
+    TODO: Official documentation says this returns None, but it shouldn't.
+    Check this.
+
+    Args:
+     * `index` (`int`): channel index
+     * `step` (`int`): ???
+     * `param` (`int`): step parameter (refer to [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#stepParams)
+       although it looks kinda dodgy for some values)
+    
+    Included since API version 1
+    """
+
+def getGridBitWithLoop(index: int, position: int) -> None:
+    """Get value of grid bit on channel `index` in `position` accounting for 
+    loops.
+    
+    TODO: Official documentations say this returns None, but it theoretically
+    shouldn't. Check this.
+
+    Args:
+     * `index` (`int`): channel index`
+     * `position` (`int`): position on grid (x axis)
+    
+    Included since API version 1
+    """
+
+def showEditor(index: int, value:int=-1) -> None:
+    """Toggle whether the plugin window for the channel at `index` is shown.
+    The value parameter chan be used to set to a specific value.
+
+    Args:
+     * `index` (`int`): channel index
+     * `value` (`int`): whether to hide (`0`) or show (`1`) the plugin window.
+       Defaults to `-1` (toggle).
+    
+    Included since API version 1, with optional parameter added in version 3.
+    """
+
+def focusEditor(index: int) -> None:
+    """Focus the plugin window for the channel at `index`.
+
+    Args:
+     * `index` (`int`): channel index.
+    
+    Included since API version 1
+    """
+
+def showCSForm(index: int, state:int=1) -> None:
+    """Show the channel settings window (or plugin window for plugins) for 
+    channel at `index`.
+    
+    TODO: Difference to `showEditor()`??? Check this.
+
+    Args:
+     * `index` (int): channel index
+     * `state` (`int`, optional): * `value` (`int`): whether to hide (`0`), show 
+        (`1`) or toggle (`-1`) the plugin window. Defaults to `1`.
+    
+    Included since API version 1, with optional parameter added in version 9
+    """
+
+def midiNoteOn(indexGlobal: int, note: int, velocity: int, channel:int=-1
+               ) -> None:
+    """Set a MIDI Note for the channel at `indexGlobal` (not respecting groups)
+    
+    This can be used to create extra notes (eg mapping one note to a chord).
+
+    Args:
+     * `indexGlobal` (`int`): channel index (not respecting groups)
+     * `note` (`int`): note number (0-127)
+     * `velocity` (`int`): note velocity (1-127, 0 is note off)
+     * `channel` (`int`, optional): MIDI channel to use. Defaults to -1.
+    
+    Included since API version 1
+    """
+
+def getActivityLevel(index: int) -> float:
+    """Return the note activity level for channel at `index`. Activity level
+    refers to how recently a note was played, as well as whether any notes are
+    currently playing.
+
+    Args:
+     * `index` (`int`): channel index
+
+    Returns:
+     * `float`: activity level
+    
+    Included since API version 9
+    """
