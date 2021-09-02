@@ -192,3 +192,164 @@ def setChannelPan(index: int, pan: float) -> None:
     
     Included since API version 1
     """
+
+def getChannelPitch(index: int, mode:int=0) -> 'float | int':
+    """Returns the pitch of the channel at `index`. The `mode` parameter is used
+    to determine the type of pitch returned.
+    
+    HELP WANTED: What do the `mode` parameter options mean?
+    
+    Args:
+     * `index` (`int`): index of channel
+     * `mode` (`int`, optional):
+            * `1`: return value in semitones
+            * `2`: return value pitch range???
+    
+    Returns:
+     * `float`: channel pitch (when `mode` is `1`)
+     * `int`: channel pitch range (when `mode` is `2`) ???
+    
+    Included since API version 8
+    """
+
+def setChannelPitch(index: int, value: float, mode:int=0) -> 'float | int':
+    """Sets the pitch of the channel at `index` to value. The `mode` parameter is used
+    to determine the type of pitch set.
+    
+    HELP WANTED: What do the `mode` parameter options mean?
+    
+    Args:
+     * `index` (`int`): index of channel
+     * `value` (`float`): value to set
+     * `mode` (`int`, optional):
+            * `1`: set value in semitones
+            * `2`: set value pitch range???
+    
+    Included since API version 8
+    """
+
+def isChannelSelected(index: int) -> int:
+    """Returns whether the channel at `index` is selected (not respecting 
+    channel groups).
+
+    Args:
+     * `index` (`int`): channel index
+
+    Returns:
+     * `int`: whether the channel is selected
+    
+    Included since API version 1
+    """
+
+def selectChannel(index: int, value:int=-1) -> None:
+    """Select the channel at `index` (respecting groups).
+
+    Args:
+     * `index` (`int`): channel index
+     * `value` (`int`, optional): Whether to select or deselect the channel. 
+            * `-1` (default): Toggle
+            * `0` : Deselect
+            * `1`: Select
+    
+    Included since API version 1
+    """
+
+def selectOneChannel(index: int) -> None:
+    """Exclusively select the channel at `index` (deselecting any other selected
+    channels).
+
+    Args:
+        `index` (`int`): channel index
+    
+    Included since API version 8
+    """
+
+def selectedChannel(canBeNone:int=0, offset:int=0, indexGlobal:int=0) -> int:
+    """Returns the index of the first selected channel, otherwise the nth
+    selected channel where n is `offset` + 1. If n is greater than the number of
+    selected channels, the global index of the last selected channel will be
+    returned. If `indexGlobal` is set to `1`, this will replicate the behaviour
+    of `channelNumber()` by returning global indexes.
+    
+    NOTE: This function replaces the functionality of `channelNumber()` 
+    entirely, with the added functionality of providing indexes respecting 
+    groups (when `indexGlobal` is not set).
+    
+    If `canBeNone` is `1`, no selection will return `-1`. Otherwise, no selection
+    will return `0` (representing the first channel).
+
+    Args:
+     * `canBeNone` (`int`, optional): Whether the function will return `-1` or 
+       `0` when there is no selection. Defaults to `0` (returning `0`).
+     * `offset` (`int`, optional): return other selected channels after offset. 
+       Defaults to 0.
+     * `indexGlobal` (`int`, optional): Whether to return the group index (`0`)
+       or the global index (`1`).
+
+    Returns:
+     * `int`: index of first selected channel
+    
+    Included since API version 5
+    """
+
+def selectAll() -> None:
+    """Selects all channels in the current channel group
+    
+    Included since API version 1
+    """
+
+def deselectAll() -> None:
+    """Deselects all channels in the current channel group
+    
+    Included since API version 1
+    """
+
+def getChannelMidiInPort(index: int) -> int:
+    """Returns the MIDI port associated with the channel at `index`.
+
+    TODO: Write use cases
+
+    Args:
+     * `index` (`int`): channel index
+
+    Returns:
+     * `int`: MIDI port associated with channel
+    
+    Included since API version 1
+    """
+
+def getChannelIndex(index: int) -> int:
+    """Returns the global index of a channel given the group `index`.
+
+    Args:
+     * `index` (`int`): index of channel (respecting groups)
+
+    Returns:
+     * `int`: global index of channel
+    
+    Included since API version 1
+    """
+
+def getTargetFxTrack(index: int) -> int:
+    """Returns the mixer track that the channel at `index` is linked to.
+
+    Args:
+     * index (`int`): index of channel
+
+    Returns:
+     * `int`: index of targeted mixer track
+    
+    Included since API version 1
+    """
+
+def isHighlighted() -> int:
+    """Returns True when a red highlight rectangle is displayed on the channel
+    rack. This rectangle can be displayed using `ui.crDisplayRect()` in the UI
+    module. 
+    
+    These hints can be used to visually indicate on the channel rack where your 
+    script is mapping to.
+
+    Returns:
+        `int`: whether highlight rectangle is visible.
+    """
