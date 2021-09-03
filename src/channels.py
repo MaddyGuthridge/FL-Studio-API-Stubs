@@ -101,14 +101,14 @@ def setChannelColor(index: int, color: int) -> None:
     Included since API version 1
     """
 
-def isChannelMuted(index: int) -> int:
+def isChannelMuted(index: int) -> bool:
     """Returns whether channel is muted (`1`) or not (`0`)
 
     Args:
      * `index` (`int`): index of channel
 
     Returns:
-     * `int`: mute status
+     * `bool`: mute status
     
     Included since API version 1
     """
@@ -120,14 +120,14 @@ def muteChannel(index: int) -> None:
         `index` (`int`): index of channel
     """
 
-def isChannelSolo(index: int) -> int:
+def isChannelSolo(index: int) -> bool:
     """Returns whether channel is solo (`1`) or not (`0`)
 
     Args:
      * `index` (`int`): index of channel
 
     Returns:
-     * `int`: solo status
+     * `bool`: solo status
     
     Included since API version 1
     """
@@ -228,7 +228,7 @@ def setChannelPitch(index: int, value: float, mode:int=0) -> 'float | int':
     Included since API version 8
     """
 
-def isChannelSelected(index: int) -> int:
+def isChannelSelected(index: int) -> bool:
     """Returns whether the channel at `index` is selected (not respecting 
     channel groups).
 
@@ -236,7 +236,7 @@ def isChannelSelected(index: int) -> int:
      * `index` (`int`): channel index
 
     Returns:
-     * `int`: whether the channel is selected
+     * `bool`: whether the channel is selected
     
     Included since API version 1
     """
@@ -342,7 +342,7 @@ def getTargetFxTrack(index: int) -> int:
     Included since API version 1
     """
 
-def isHighlighted() -> int:
+def isHighlighted() -> bool:
     """Returns True when a red highlight rectangle is displayed on the channel
     rack. This rectangle can be displayed using `ui.crDisplayRect()` in the UI
     module. 
@@ -351,7 +351,7 @@ def isHighlighted() -> int:
     script is mapping to.
 
     Returns:
-     * `int`: whether highlight rectangle is visible.
+     * `bool`: whether highlight rectangle is visible.
     
     Included since API version 1
     """
@@ -407,7 +407,7 @@ def getRecEventId(index: int) -> int:
     Included since API version 1
     """
 
-def getGridBit(index: int, position: int) -> int:
+def getGridBit(index: int, position: int) -> bool:
     """Returns whether the grid bit on channel at `index` in `position` is set.
 
     Args:
@@ -415,7 +415,7 @@ def getGridBit(index: int, position: int) -> int:
      * `position` (`int`): index of grid bit (horizontal axis)
 
     Returns:
-     * `int`: whether grid bit is set
+     * `bool`: whether grid bit is set
     
     Included since API version 1
     """
@@ -468,16 +468,19 @@ def getCurrentStepParam(index: int, step: int, param: int) -> None:
     Included since API version 1
     """
 
-def getGridBitWithLoop(index: int, position: int) -> None:
+def getGridBitWithLoop(index: int, position: int) -> bool:
     """Get value of grid bit on channel `index` in `position` accounting for 
     loops.
     
-    TODO: Official documentations say this returns None, but it theoretically
-    shouldn't. Check this.
+    NOTE: Official documentations say this returns None, but it doesn't. This
+    documentation reflects the actual behaviour.
 
     Args:
      * `index` (`int`): channel index`
      * `position` (`int`): position on grid (x axis)
+    
+    Returns:
+     * `bool`: whether grid bit is set
     
     Included since API version 1
     """

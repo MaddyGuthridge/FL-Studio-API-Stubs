@@ -114,16 +114,14 @@ def setTrackColor(index: int, color: int) -> None:
     Included since API version 1
     """
 
-def isTrackMuted(index: int) -> int:
+def isTrackMuted(index: int) -> bool:
     """Returns whether the track at `index` is muted
 
     Args:
      * `index` (`int`): track index
 
     Returns:
-     * `int`: whether track is muted
-            * `1`: True
-            * `0`: False
+     * `bool`: whether track is muted
     
     Raises:
      * `TypeError`: Index out of range
@@ -150,7 +148,7 @@ def muteTrack(index: int) -> None:
     Included since API version 1
     """
 
-def isTrackMuteLock(index: int) -> int:
+def isTrackMuteLock(index: int) -> bool:
     """Returns whether the mute status of the track at `index` is locked (meaning
     that solo/unsolo commands won't affect its mute status).
 
@@ -158,9 +156,7 @@ def isTrackMuteLock(index: int) -> int:
      * `index` (`int`): track index
 
     Returns:
-     * `int`: whether track's mute status is locked
-            * `1`: True
-            * `0`: False
+     * `bool`: whether track's mute status is locked
     
     Raises:
      * `TypeError`: Index out of range
@@ -187,14 +183,14 @@ def muteTrackLock(index: int) -> None:
     Included since API version 2
     """
 
-def isTrackSolo(index: int) -> int:
+def isTrackSolo(index: int) -> bool:
     """Returns whether the track at `index` is solo
 
     Args:
      * `index` (`int`): track index
 
     Returns:
-     * `int`: whether track is muted
+     * `bool`: whether track is muted
             * `1`: True
             * `0`: False
     
@@ -225,16 +221,14 @@ def soloTrack(index: int, value:int = -1) -> None:
     Included since API version 1
     """
 
-def isTrackSelected(index: int) -> int:
+def isTrackSelected(index: int) -> bool:
     """Returns whether the track at `index` is selected
 
     Args:
      * `index` (`int`): track index
 
     Returns:
-     * `int`: whether track is selected
-            * `1`: True
-            * `0`: False
+     * `bool`: whether track is selected
     
     Raises:
      * `TypeError`: Index out of range
@@ -332,7 +326,7 @@ def getDisplayZone() -> int:
     Included since API version 1
     """
 
-def getDisplayZone(index: int, value: int) -> None:
+def lockDisplayZone(index: int, value: int) -> None:
     """Lock display zone at `index`.
 
     HELP WANTED: Explanation for what a display zone is.

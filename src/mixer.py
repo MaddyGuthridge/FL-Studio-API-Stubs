@@ -114,14 +114,14 @@ def setTrackColor(index: int, color: int) -> None:
     Included since API version 1
     """
 
-def isTrackArmed(index: int) -> int:
+def isTrackArmed(index: int) -> bool:
     """Returns whether the track at `index` is armed for recording
 
     Args:
      * `index` (`int`): track index
 
     Returns:
-     * `int`: whether track is armed
+     * `bool`: whether track is armed
         
     Included since API version 1
     """
