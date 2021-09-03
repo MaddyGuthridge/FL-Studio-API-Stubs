@@ -37,7 +37,7 @@ def getTrackInfo(mode: int) -> int:
     """
 
 def setTrackNumber(trackNumber: int, flags:int=[]) -> None:
-    """Select the mixer track at `trackNumber`.
+    """Selects the mixer track at `trackNumber`.
     
     NOTE: All functionality except for scrolling flag can be replicated more
     easily using `mixer.selectTrack()`.
@@ -75,4 +75,64 @@ def getTrackName(index: int) -> str:
 
     Returns:
      * `str`: name of track.
+        
+    Included since API version 1
     """
+
+def setTrackName(index: int, name: str) -> None:
+    """Sets the name of track at `index`
+    
+    Setting the name to an empty string will reset the name of the track to
+    its default.
+
+    Args:
+     * index (`int`): index of mixer track
+     * name (`str`): new name
+        
+    Included since API version 1
+    """
+
+def getTrackColor(index: int) -> int:
+    """Returns the colour of the track at `index`.
+
+    Args:
+     * `index` (`int`): track index
+
+    Returns:
+     * `int`: colour of track (0x--RRGGBB)
+        
+    Included since API version 1
+    """
+
+def setTrackColor(index: int, color: int) -> None:
+    """Sets the colour of the track at `index`.
+
+    Args:
+     * `index` (`int`): track index
+     * `color` (`int`): colour of track (0x--RRGGBB)
+        
+    Included since API version 1
+    """
+
+def isTrackArmed(index: int) -> int:
+    """Returns whether the track at `index` is armed for recording
+
+    Args:
+     * `index` (`int`): track index
+
+    Returns:
+     * `int`: whether track is armed
+        
+    Included since API version 1
+    """
+
+def armTrack(index: int) -> None:
+    """Toggle whether the track at index is armed for recording
+
+    Args:
+     * index (`int`): track index
+        
+    Included since API version 1
+    """
+
+
