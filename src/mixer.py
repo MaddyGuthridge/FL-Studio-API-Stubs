@@ -127,7 +127,67 @@ def isTrackArmed(index: int) -> bool:
     """
 
 def armTrack(index: int) -> None:
-    """Toggle whether the track at index is armed for recording
+    """Toggles whether the track at index is armed for recording
+
+    Args:
+     * `index` (`int`): track index
+        
+    Included since API version 1
+    """
+
+def isTrackSolo(index: int) -> bool:
+    """Returns whether the track at `index` is solo
+
+    Args:
+     * `index` (`int`): track index
+
+    Returns:
+     * `bool`: whether track is solo
+        
+    Included since API version 1
+    """
+
+def soloTrack(index: int) -> None:
+    """Toggles whether the track at index is solo
+
+    Args:
+     * `index` (`int`): track index
+        
+    Included since API version 1
+    """
+
+def isTrackEnabled(index: int) -> bool:
+    """Returns whether the track at `index` is enabled
+
+    NOTE: This seems to be functionally identical to `not isTrackMuted()`.
+
+    Args:
+     * `index` (`int`): track index
+
+    Returns:
+     * `bool`: whether track is enabled
+        
+    Included since API version 1
+    """
+
+def isTrackAutomationEnabled(index: int, plugIndex: int) -> bool:
+    """Returns whether the plugin at `plugIndex` on track at `index` has 
+    automation enabled.
+
+    Args:
+     * `index` (`int`): track index
+     * `plugIndex` (`int`): index of plugin
+
+    Returns:
+     * `bool`: whether automation is enabled for the track
+        
+    Included since API version 1
+    """
+
+def enableTrack(index: int) -> None:
+    """Toggles whether the track at `index` is enabled.
+    
+    NOTE: This seems to be functionally identical to `muteTrack()`.
 
     Args:
      * index (`int`): track index
@@ -135,4 +195,67 @@ def armTrack(index: int) -> None:
     Included since API version 1
     """
 
+def isTrackMuted(index: int) -> bool:
+    """Returns whether the track at `index` is muted
 
+    Args:
+     * `index` (`int`): track index
+
+    Returns:
+     * `bool`: whether track is solo
+        
+    Included since API version 2
+    """
+
+def muteTrack(index: int) -> None:
+    """Toggles whether the track at index is muted
+
+    Args:
+     * `index` (`int`): track index
+        
+    Included since API version 2
+    """
+
+def isTrackMuteLock(index: int) -> bool:
+    """Returns whether the mute state of the track at `index` is locked.
+    
+    If this is true, the mute status of this track won't change when other 
+    tracks are solo'd or unsolo'd.
+
+    Args:
+     * `index` (`int`): track index
+
+    Returns:
+     * `bool`: whether track is mute locked
+        
+    Included since API version 13
+    """
+
+def getTrackPluginId(index: int, plugIndex: int) -> int:
+    """Returns the plugin ID of the plugin on track `index` in slot `plugIndex`
+
+    HELP WANTED: what is a plugin ID?
+
+    Args:
+     * index (`int`): track index
+     * plugIndex (`int`): plugin index
+
+    Returns:
+     * `int`: plugin ID
+        
+    Included since API version 1
+    """
+
+def isTrackPluginValid(index: int, plugIndex: int) -> bool:
+    """Returns whether a plugin on track `index` in slot `plugIndex` is valid
+    (has been loaded, so the slot isn't empty)
+
+    Args:
+     * `index` (`int`): track index
+     * `plugIndex` (`int`): plugin index
+
+    Returns:
+     * `bool`: whether track is mute locked
+        
+    Included since API version 1
+    """
