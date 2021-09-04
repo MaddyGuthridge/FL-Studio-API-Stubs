@@ -259,3 +259,145 @@ def isTrackPluginValid(index: int, plugIndex: int) -> bool:
         
     Included since API version 1
     """
+
+def getTrackVolume(index: int) -> float:
+    """Returns the volume of the track at `index`. Volume lies within the range
+    `0.0` - `1.0`. Note that the default value is `0.8`.
+
+    Args:
+     * `index` (`int`): track index
+
+    Returns:
+     * `float`: volume of track
+    
+    Included since API verson 1
+    """
+
+def setTrackVolume(index: int, volume: float) -> None:
+    """Sets the volume of the track at `index`. Volume lies within the range
+    `0.0` - `1.0`. Note that the default value is `0.8`.
+
+    Args:
+     * `index` (`int`): track index
+     * `volume` (`float`): volume of track
+    
+    Included since API verson 1
+    """
+
+def getTrackPan(index: int) -> float:
+    """Returns the pan of the track at `index`. Pan lies within the range
+    100% left (`-1.0`) - 100% right (`1.0`). Note that the default value is 
+    `0.0`.
+
+    Args:
+     * `index` (`int`): track index
+
+    Returns:
+     * `float`: pan of track
+    
+    Included since API verson 1
+    """
+
+def setTrackPan(index: int, pan: float) -> None:
+    """Sets the pan of the track at `index`. Pan lies within the range
+    100% left (`-1.0`) - 100% right (`1.0`). Note that the default value is 
+    `0.0`.
+
+    Args:
+     * `index` (`int`): track index
+     * `pan` (`float`): pan of track
+    
+    Included since API verson 1
+    """
+
+def getTrackStereoSep(index: int) -> float:
+    """Returns the stereo separation of the track at `index`. Stereo separation 
+    lies within the range 100% centred (`-1.0`) - 100% separated (`1.0`). Note 
+    that the default value is `0.0`.
+
+    Args:
+     * `index` (`int`): track index
+
+    Returns:
+     * `float`: stereo separation of track
+    
+    Included since API verson 12
+    """
+
+def setTrackStereoSep(index: int, pan: float) -> None:
+    """Sets the stereo separation of the track at `index`. Stereo separation 
+    lies within the range 100% centred (`-1.0`) - 100% separated (`1.0`). Note 
+    that the default value is `0.0`.
+
+    Args:
+     * `index` (`int`): track index
+     * `sep` (`float`): stereo separation of track
+    
+    Included since API verson 12
+    """
+
+def isTrackSelected(index: int) -> bool:
+    """Returns whether the track at `index` is selected
+
+    Args:
+     * `index` (`int`): track index
+
+    Returns:
+     * `bool`: whether the track is selected
+    
+    Included since API version 1
+    """
+
+def selectTrack(index: int) -> None:
+    """Toggles whether the track at `index` is selected.
+
+    Args:
+     * `index` (`int`): track index
+    
+    Included since API version 1
+    """
+
+def selectAll() -> None:
+    """Selects all tracks
+    
+    Included since API version 1
+    """
+
+def deselectAll() -> None:
+    """Deselects all tracks
+    
+    Included since API version 1
+    """
+
+def setRouteTo(index: int, destIndex: int, value: int) -> None:
+    """Route the track at `index` to the track at `destIndex`.
+    
+    Ensure that after all routing changes are made, the `afterRoutingChanged()`
+    function is called to allow the UI to update correctly.
+
+    Args:
+     * `index` (`int`): source track index
+     * `destIndex` (`int`): destination track index
+     * `value` (`int`): whether to enable the route (`1`) or disable it (`0`)
+    
+    Included since API version 1
+    """
+
+def getRouteSendActive(index: int, destIndex: int) -> bool:
+    """Return whether the track at `index` is routed to the track at `destIndex`
+
+    Args:
+     * `index` (`int`): source track
+     * `destIndex` (`int`): destination track
+
+    Returns:
+     * `bool`: whether the tracks are routed
+    
+    Included since API version 1
+    """
+
+def afterRoutingChanged() -> None:
+    """Notify FL Studio that channel routings have changed.
+    
+    Included since API version 1
+    """
