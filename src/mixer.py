@@ -7,6 +7,8 @@ NOTES:
  * Mixer tracks are zero-indexed
 """
 
+import midi
+
 def trackNumber() -> int:
     """Returns the index of the first currently selected mixer track.
 
@@ -400,4 +402,219 @@ def afterRoutingChanged() -> None:
     """Notify FL Studio that channel routings have changed.
     
     Included since API version 1
+    """
+
+def getEventValue(index: int, value:int=midi.MaxInt, smoothTarget:int=1) -> int:
+    """Returns event value from MIDI
+    
+    HELP WANTED: What does this do?
+
+    Args:
+     * `index` (`int`): ???
+     * `value` (`int`, optional): ???. Defaults to 'MaxInt'.
+     * `smoothTarget` (`int`, optional): ???. Defaults to 1.
+
+    Returns:
+     * `int`: ???
+    
+    Included since API version 1
+    """
+
+def remoteFindEventValue(index: int, flags:int=0) -> float:
+    """Returns event value
+    
+    HELP WANTED: What does this do?
+
+    Args:
+     * `index` (`int`): ???
+     * `flags` (`int`, optional): ???. Defaults to 0.
+
+    Returns:
+     * `float`: ???
+    
+    Included since API version 1
+    """
+
+def getEventIDName(index: int, shortname:int=0) -> str:
+    """Returns event name for event at `index`
+    
+    HELP WANTED: What does this do?
+
+    NOTE: The official documentation states that this function returns `None`,
+    but it actually returns a `str`. These stubs document the actual behaviour.
+
+    Args:
+     * `index` (`int`): ???
+     * `shortname` (`int`, optional): ???. Defaults to 0.
+
+    Returns:
+     * `str`: name of event?
+    
+    Included since API version 1
+    """
+
+def getEventIDValueString(index: int, value: int) -> str:
+    """Returns event value as a string
+    
+    HELP WANTED: What does this do?
+
+    Args:
+     * `index` (`int`): ???
+     * `value` (`int`): ???.
+
+    Returns:
+     * `str`: ???
+    
+    Included since API version 1
+    """
+
+def getAutoSmoothEventValue(index: int, locked:int=1) -> int:
+    """Returns auto smooth event value
+    
+    HELP WANTED: What does this do?
+
+    Args:
+     * `index` (`int`): ???
+     * `locked` (`int`, optional): ???. Defaults to 1.
+
+    Returns:
+     * `int`: ???
+    
+    Included since API version 1
+    """
+
+def automateEvent(index: int, value: int, flags: int, speed:int=0, 
+                  isIncrement:int=0, res:float=midi.EKRes) -> long:
+    """Automate event
+    
+    HELP WANTED: What does this do?
+
+    Args:
+     * `index` (`int`): ???
+     * `value` (`int`): ???
+     * `flags` (`int`): refer to the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#RecEventFlags).
+     * `speed` (`int`, optional): ???. Defaults to 0.
+     * `isIncrement` (`int`, optional): ???. Defaults to 0.
+     * `res` (`float`, optional): ???. Defaults to midi.EKRes.
+
+    Returns:
+     * `long`: ???
+    
+    Included since API version 1
+    """
+
+def getTrackPeaks(index: int, mode: int) -> float:
+    """Returns the current audio peak value for the track at `index`.
+
+    Args:
+     * `index` (`int`): track index
+     * `mode` (`int`): track peaks mode (see the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#TrackPeakMode))
+
+    Returns:
+     * `float`: track peak values:
+            * `0.0`: silence
+            * `1.0`: 0 dB
+            * `>1.0`: clipping
+    
+    Included since API version 1
+    """
+
+def getTrackRecordingFileName(index: int) -> str:
+    """Returns the file name for audio being recorded on the track at `index`.
+
+    NOTE: Files can't be opened in FL Studio's Python interpreter due to disk 
+    access being disabled for security reasons.
+
+    Args:
+     * `index` (`int`): track index
+
+    Returns:
+     * `str`: filename
+    
+    Included since API version 1
+    """
+    
+def linkTrackToChannel(mode: int) -> None:
+    """Link a mixer track to a channel.
+    
+    HELP WANTED: How does this function call work?
+
+    Args:
+     * `mode` (`int`): link mode
+            * `ROUTE_ToThis` (`0`)
+            * `ROUTE_StartingFromThis` (`1`)
+    
+    Included since API version 1
+    """
+
+def getSongStepPos() -> int:
+    """Returns the current position in the song, measured in steps.
+
+    Returns:
+     * `int`: song position
+    
+    Included since API version 1
+    """
+
+def getCurrentTempo(asInt:int=0) -> 'int | float':
+    """Returns the current tempo of the song
+    
+    Args:
+     * `asInt` (`int`, optional): whether to return the tempo as an `int` (`1`)
+       or not (`0`). Defaults to `0`.
+    
+    Returns:
+     * `int` or `float`: Current tempo
+    
+    Included since API version 1
+    """
+
+def getRecPPS() -> int:
+    """Returns the recording PPS
+    
+    HELP WANTED: What is PPS?
+
+    Returns:
+     * `int`: recording PPS
+    
+    Included since API version 1
+    """
+
+def getSongTickPos(mode:int=midi.ST_Int) -> 'int | float':
+    """Returns the current position in the song, measured in ticks.
+
+    Returns:
+     * `int` or `float`: song position in ticks
+    
+    Included since API version 1
+    """
+
+def getLastPeakVol(section: int) -> float:
+    """Returns last peak volume.
+
+    Args:
+     * `section` (`int`): audio channel
+            * `0`: left channel
+            * `1`: right channel
+
+    Returns:
+     * `float`: last peak volume (`0.0` for silence, `1.0` for 0 dB, `>1.0` for 
+       clipping)
+    
+    Inlcuded since API version 9
+    """
+
+def getTrackDockSide(index: int) -> int:
+    """Returns the dock side of the mixer for track at `index`
+
+    Args:
+     * `index` (`int`): track index
+
+    Returns:
+     * `int`: docking side:
+            * `0`: Left
+            * `1`: Centre (default)
+            * `2`: Right 
+    
+    Included since API version 13
     """
