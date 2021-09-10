@@ -16,6 +16,8 @@ def jog(value: int) -> int:
         
     Returns:
      * `int`: ?
+    
+    Included since API version 1
     """
 
 def jog2(value: int) -> int:
@@ -28,6 +30,8 @@ def jog2(value: int) -> int:
         
     Returns:
      * `int`: ?
+    
+    Included since API version 1
     """
 
 def strip(value: int) -> int:
@@ -40,6 +44,8 @@ def strip(value: int) -> int:
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1
     """
 
 def stripJog(value: int) -> int:
@@ -50,6 +56,8 @@ def stripJog(value: int) -> int:
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1
     """
 
 def stripHold(value: int) -> int:
@@ -65,6 +73,8 @@ def stripHold(value: int) -> int:
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1
     """
 
 def previous() -> int:
@@ -72,10 +82,12 @@ def previous() -> int:
      * in mixer: select previous track
      * in channel rack: select previous channel
      * in browser: scroll to previous item
-     * in plugin: switch to previous preset
+     * in plugin: switch to previous preset (since API version 9)
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1
     """
 
 def previous() -> int:
@@ -83,10 +95,12 @@ def previous() -> int:
      * in mixer: select previous track
      * in channel rack: select previous channel
      * in browser: scroll to previous item
-     * in plugin: switch to previous preset
+     * in plugin: switch to previous preset (since API version 9)
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1
     """
 
 def next() -> int:
@@ -98,6 +112,8 @@ def next() -> int:
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1
     """
 
 def moveJog(value: int) -> int:
@@ -110,6 +126,8 @@ def moveJog(value: int) -> int:
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1
     """
 
 def up(value:int=1) -> int:
@@ -117,12 +135,16 @@ def up(value:int=1) -> int:
 
     WARNING: This function echos the up arrow key, and thus will affect
     programs outside of FL Studio. Use with caution.
+    
+    HELP WANTED: What does the `value` variable do?
 
     Args:
      * `value` (`int`, optional): ???. Defaults to 1.
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1, with option parameter since API version 4
     """
 
 def down(value:int=1) -> int:
@@ -130,12 +152,16 @@ def down(value:int=1) -> int:
 
     WARNING: This function echos the down arrow key, and thus will affect
     programs outside of FL Studio. Use with caution.
+    
+    HELP WANTED: What does the `value` variable do?
 
     Args:
      * `value` (`int`, optional): ???. Defaults to 1.
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1, with option parameter since API version 4
     """
 
 def left(value:int=1) -> int:
@@ -143,12 +169,16 @@ def left(value:int=1) -> int:
 
     WARNING: This function echos the left arrow key, and thus will affect
     programs outside of FL Studio. Use with caution.
+    
+    HELP WANTED: What does the `value` variable do?
 
     Args:
      * `value` (`int`, optional): ???. Defaults to 1.
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1, with option parameter since API version 4
     """
 
 def right(value:int=1) -> int:
@@ -156,12 +186,16 @@ def right(value:int=1) -> int:
 
     WARNING: This function echos the right arrow key, and thus will affect
     programs outside of FL Studio. Use with caution.
+    
+    HELP WANTED: What does the `value` variable do?
 
     Args:
      * `value` (`int`, optional): ???. Defaults to 1.
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1, with option parameter since API version 4
     """
 
 def horZoom(value: int) -> int:
@@ -173,6 +207,8 @@ def horZoom(value: int) -> int:
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1
     """
 
 def verZoom(value: int) -> int:
@@ -184,6 +220,8 @@ def verZoom(value: int) -> int:
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1
     """
 
 def snapOnOff() -> int:
@@ -191,6 +229,8 @@ def snapOnOff() -> int:
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1
     """
 
 def cut() -> int:
@@ -201,6 +241,8 @@ def cut() -> int:
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1
     """
 
 def copy() -> int:
@@ -211,6 +253,8 @@ def copy() -> int:
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1
     """
 
 def paste() -> int:
@@ -221,6 +265,8 @@ def paste() -> int:
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1
     """
 
 def insert() -> int:
@@ -231,6 +277,8 @@ def insert() -> int:
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1
     """
 
 def delete() -> int:
@@ -241,6 +289,8 @@ def delete() -> int:
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1
     """
 
 def enter() -> int:
@@ -251,6 +301,8 @@ def enter() -> int:
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1
     """
 
 def escape() -> int:
@@ -261,6 +313,8 @@ def escape() -> int:
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1
     """
 
 def yes() -> int:
@@ -271,6 +325,8 @@ def yes() -> int:
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1
     """
 
 def no() -> int:
@@ -286,6 +342,8 @@ def no() -> int:
 
     Returns:
      * `int`: ?
+    
+    Included since API version 1
     """
 
 def getHintMsg() -> str:
@@ -300,6 +358,8 @@ def setHintMessage(msg: str) -> None:
 
     Args:
      * `msg` (`str`): new message
+    
+    Included since API version 1
     """
 
 def getHintValue(value: int, max: int) -> str:
@@ -313,6 +373,8 @@ def getHintValue(value: int, max: int) -> str:
 
     Returns:
      * `str`: hint for `value`
+    
+    Included since API version 1
     """
 
 def getTimeDispMin() -> bool:
@@ -321,11 +383,15 @@ def getTimeDispMin() -> bool:
 
     Returns:
      * `bool`: whether song position is displaying time.
+    
+    Included since API version 1
     """
 
 def setTimeDispMin() -> None:
     """Toggles whether the song position panel is displaying time or bar and 
     beat.
+    
+    Included since API version 1
     """
 
 def getVisible(index: int) -> bool:
@@ -341,6 +407,8 @@ def getVisible(index: int) -> bool:
 
     Returns:
      * `bool`: whether it is visible
+    
+    Included since API version 1
     """
 
 def showWindow(index: int) -> None:
@@ -353,6 +421,8 @@ def showWindow(index: int) -> None:
             * `widPlaylist` (`2`): Playlist
             * `widPianoRoll` (`3`): Piano Roll
             * `widBrowser` (`4`): Browser
+    
+    Included since API version 1
     """
 
 def hideWindow(index: int) -> None:
@@ -365,6 +435,8 @@ def hideWindow(index: int) -> None:
             * `widPlaylist` (`2`): Playlist
             * `widPianoRoll` (`3`): Piano Roll
             * `widBrowser` (`4`): Browser
+    
+    Included since API version 5
     """
 
 def getFocused(index: int) -> bool:
@@ -387,6 +459,8 @@ def getFocused(index: int) -> bool:
 
     Returns:
      * `bool`: whether it is visible
+    
+    Included since API version 1
     """
 
 def setFocused(index: int) -> None:
@@ -405,6 +479,8 @@ def setFocused(index: int) -> None:
             * `widPlaylist` (`2`): Playlist
             * `widPianoRoll` (`3`): Piano Roll
             * `widBrowser` (`4`): Browser
+    
+    Included since API version 2
     """
 
 def getFocusedFormCaption() -> str:
@@ -412,7 +488,9 @@ def getFocusedFormCaption() -> str:
     necessarily the same as the plugin's name.
 
     Returns:
-        `str`: window title
+     * `str`: window title
+    
+    Included since API version 1
     """
 
 def getFocusedPluginName() -> str:
@@ -420,7 +498,9 @@ def getFocusedPluginName() -> str:
     otherwise an empty string.
 
     Returns:
-        `str`: plugin name
+     * `str`: plugin name
+    
+    Included since API version 5
     """
 
 def scrollWindow(index: int, value: int) -> None:
@@ -429,23 +509,27 @@ def scrollWindow(index: int, value: int) -> None:
     the Mixer).
 
     Args:
-        `index` (`int`): window index:
+     * `index` (`int`): window index:
             * `widMixer` (`0`): Mixer
             * `widChannelRack` (`1`): Channel Rack
             * `widPlaylist` (`2`): Playlist
             * `widPianoRoll` (`3`): Piano Roll
             * `widBrowser` (`4`): Browser
-        `value` (`int`): index to scroll to:
+     * `value` (`int`): index to scroll to:
             * on mixer: track number
             * on channel rack: channel number
             * on playlist: playlist track number
+    
+    Included since API version 13
     """
 
 def nextWindow() -> int:
     """Switch to the next window
 
     Returns:
-        `int`: ???
+     * `int`: ???
+    
+    Included since API version 1
     """
     
 def selectWindow(shift: int) -> int:
@@ -456,10 +540,12 @@ def selectWindow(shift: int) -> int:
     programs outside of FL Studio. Use with caution.
 
     Args:
-        `shift` (`int`): whether the shift key is pressed.
+     * `shift` (`int`): whether the shift key is pressed.
 
     Returns:
-        `int`: ???
+     * `int`: ???
+    
+    Included since API version 1
     """
 
 def launchAudioEditor(reuse: int, filename: str, index: int, preset: str,
@@ -472,14 +558,16 @@ def launchAudioEditor(reuse: int, filename: str, index: int, preset: str,
     window.
 
     Args:
-        `reuse` (`int`): whether to reuse an already open audio editor
-        `filename` (`str`): filename to open?
-        `index` (`int`): mixer track index to open on
-        `preset` (`str`): ???
-        `presetGUID` (`str`): ???
+     * `reuse` (`int`): whether to reuse an already open audio editor
+     * `filename` (`str`): filename to open?
+     * `index` (`int`): mixer track index to open on
+     * `preset` (`str`): ???
+     * `presetGUID` (`str`): ???
 
     Returns:
-        `int`: ???
+     * `int`: ???
+    
+    Included since API version 1
     """
 
 def openEventEditor(eventId: int, mode: int, newWindow:int=0) -> int:
@@ -488,13 +576,15 @@ def openEventEditor(eventId: int, mode: int, newWindow:int=0) -> int:
     HELP WANTED: Yuck REC events please help me.
 
     Args:
-        `eventId` (`int`): ???
-        `mode` (`int`): Refer to [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#openEventEditorMode)
-        `newWindow` (`int`, optional): whether to open in a new window. Defaults 
-        to 0.
+     * `eventId` (`int`): ???
+     * `mode` (`int`): Refer to [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#openEventEditorMode)
+     * `newWindow` (`int`, optional): whether to open in a new window. Defaults 
+       to 0.
 
     Returns:
-        `int`: ???
+     * `int`: ???
+    
+    Included since API version 9
     """
 
 def isInPopupMenu() -> bool:
@@ -502,46 +592,61 @@ def isInPopupMenu() -> bool:
     drop-down menu).
 
     Returns:
-        `bool`: whether a popup menu is open
+      * `bool`: whether a popup menu is open
+    
+    Included since API version 1
     """
 
 def closeActivePopupMenu() -> None:
-    """Closes a currently-open popup menu
+    """Closes a currently-open popup menu (for example a rick-click or
+    drop-down menu).
+    
+    Included since API version 1
     """
 
 def isClosing() -> bool:
     """Returns `True` when FL Studio is closing
 
     Returns:
-        `bool`: is closing
+     * `bool`: is closing
+    
+    Included since API version 1
     """
 
 def isMetronomeEnabled() -> bool:
     """Returns whether the metronome is enabled
 
     Returns:
-        `bool`: whether metronome is enabled
+     * `bool`: whether metronome is enabled
+    
+    Included since API version 1
     """
 
 def isStartOnInputEnabled() -> bool:
     """Returns whether start on input is enabled
 
     Returns:
-        `bool`: whether start on input is enabled
+     * `bool`: whether start on input is enabled
+    
+    Included since API version 1
     """
 
 def isPrecountEnabled() -> bool:
     """Returns whether precount is enabled
 
     Returns:
-        `bool`: whether precount is enabled
+     * `bool`: whether precount is enabled
+    
+    Included since API version 1
     """
 
 def isLoopRecEnabled() -> bool:
     """Returns whether loop recording is enabled
 
     Returns:
-        `bool`: whether loop recording is enabled
+     * `bool`: whether loop recording is enabled
+    
+    Included since API version 1
     """
 
 def getSnapMode() -> int:
@@ -551,7 +656,7 @@ def getSnapMode() -> int:
     argument `value`, it does not. This stub reflects the actual behaviour.
 
     Returns:
-        int: index in the snap mode list:
+     * `int`: index in the snap mode list:
             * `0`: Line
             * `1`: Cell
             * `2`: Unused (separator)
@@ -567,6 +672,8 @@ def getSnapMode() -> int:
             * `12`: 1/2 beat
             * `13`: Beat
             * `14`: bar
+    
+    Included since API version 1
     """
 
 def snapMode(value: int) -> int:
@@ -579,8 +686,66 @@ def snapMode(value: int) -> int:
     documentation, so people can copy it into their code.
 
     Args:
-        value (`int`): increment (`1` for next, `-1` for previous)
+     * `value` (`int`): increment (`1` for next, `-1` for previous)
 
     Returns:
-        `int`: ???
+     * `int`: ???
+    
+    Included since API version 1
+    """
+
+def getProgTitle() -> str:
+    """Returns the title of the FL Studio window
+
+    Returns:
+     * `str`: program title
+    
+    Included since API version 1
+    """
+
+def getVersion(mode:int=4) -> 'str | int':
+    """Returns the version number of FL Studio
+    
+    Args:
+     * `mode` (`int`, optional):
+            * `VER_Major` (`0`): Major version number (as `int`)
+              Eg: `20`
+            * `VER_Minor` (`1`): Minor version number (as `int`)
+              Eg: `8`
+            * `VER_Release` (`2`): Release version number (as `int`)
+              Eg: `4`
+            * `VER_Build` (`3`): Program build number (as `int`)
+              Eg: `2553`
+            * `VER_VersionAndEdition` (`4`): Program version and edition (as `str`).
+              Eg: `"Producer Edition v20.8.4 [build 2553]"`
+            * `VER_FillVersionAndEdition` (`5`): Full version and edition (as `str`).
+              Eg: `"Producer Edition v20.8.4 [build 2553] - Signature Bundle - 64Bit"`
+    
+    Included since API version 1, with mode parameter since API version 7
+    """
+
+def crDisplayRect(left: int, top: int, right: int, bottom: int, duration: int) -> None:
+    """Displays a selection rectangle on the channel rack
+
+    Args:
+     * `left` (`int`): left position
+     * `top` (`int`): top position
+     * `right` (`int`): right border (not inclusive)
+     * `bottom` (`int`): bottom index (not inclusive)
+     * `duration` (`int`): duration to display for (in ms)
+    
+    Included since API version 1
+    """
+
+def miDisplayRect(start: int, end: int, duration: int) -> None:
+    """Displays a selection rectangle on the mixer
+
+    TODO: Ensure these docs are correct when it gets added
+
+    Args:
+     * `start` (`int`): start track index
+     * `end` (`int`): end track index
+     * `duration` (`int`): duration to display for (in ms)??
+    
+    Included since API version 13
     """
