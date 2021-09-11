@@ -10,8 +10,10 @@ resolve issues with incorrect function calls when interacting with the API.
 
 # Important Note
 
-Currently, these stubs are incomplete. Contributions are encouraged, although
-I'd prefer for people to stick to the style of the existing documentation.
+Although the stubs are mostly complete, there are a few functions where I don't
+fully understand how they work. These functions have a `HELP WANTED:` label in
+their documentation. If you happen to know how to use one, I'd love it if you 
+helped out by improving the documentation!
 
 # Differences to Official Implementation
 
