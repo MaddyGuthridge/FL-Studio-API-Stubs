@@ -34,6 +34,4 @@ you install this script in a virtual environment by following
 official Python documentation.
 
 After activating the environment in your editor, you can install the stub 
-modules by running the command `pip3 install [MODULE-NAME]`.
-
-NOTE: Not yet published
+modules by running the command `pip install FL-Studio-API-Stubs`.
