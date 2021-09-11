@@ -90,16 +90,196 @@ def processMIDICC(eventData) -> None:
     """Lets FL Studio process a MIDI CC message.
 
     Args:
-        eventData (`eventData`): FL MIDI Event to process.
+     * `eventData` (`eventData`): FL MIDI Event to process.
     """
 
 def forwardMIDICC(message: int, mode:int=1) -> None:
     """Forwards a MIDI CC message to the currently focused plugin.
 
     Args:
-        message (`int`): MIDI message to forward
-        mode (`int`, optional): Where to send the message:
+     * `message` (`int`): MIDI message to forward
+     * `mode` (`int`, optional): Where to send the message:
             * `0`: Send the message to all plugins
             * `1` (default): ???
             * `2`: Send the message to the selected channels
+    """
+
+def directFeedback(eventData) -> None:
+    """Send a received message to the linked output device
+
+    Args:
+     * `eventData` (`eventData`): event to send
+    """
+
+def repeatMidiEvent(eventData, delay:int=300, rate:int=300) -> None:
+    """Start repeatedly sending out the message in `eventData` every `rate`
+    ms after `delay` ms.
+
+    Args:
+     * `eventData` (`eventData`): event to repeat
+     * `delay` (`int`, optional): initial delay before sending in ms. Defaults to 300.
+     * `rate` (`int`, optional): time between each send in ms. Defaults to 300.
+    """
+
+def stopRepeatMidiEvent() -> None:
+    """Stop sending a currently repeating MIDI event.
+    """
+
+def findEventID(controlId: int, flags:int=[]) -> int:
+    """Returns eventID for controlId.
+
+    HELP WANTED: What does this do?
+
+    Args:
+     * `controlId` (`int`): ???
+     * `flags` (`int`, optional): ???. Defaults to [].
+
+    Returns:
+     * `int`: event ID
+    """
+
+def getLinkedValue(eventID: int) -> float:
+    """Returns normalised value of the linked control via eventID. Returns `-1`
+    if there is no linked control.
+
+    HELP WANTED: What does this do?
+
+    Args:
+     * `eventID` (`int`): eventID
+
+    Returns:
+     * `float`: Linked value
+    """
+
+def getLinkedValueString(eventID: int) -> str:
+    """Returns text value of a linked control via eventID
+
+    HELP WANTED: What does this do?
+
+    Args:
+     * `eventID` (`int`): eventID
+
+    Returns:
+     * `str`: Parameter value string
+    """
+
+def getLinkedParamName(eventID: int) -> str:
+    """Returns the parameter name of the control linked via `eventID`.
+
+    HELP WANTED: What does this do?
+
+    Args:
+     * `eventID` (`int`): eventID
+
+    Returns:
+     * `str`: Parameter name
+    """
+
+def getLinkedInfo(eventID: int) -> int:
+    """Returns information about a linked control via `eventID`.
+
+    Args:
+     * `eventID` (`int`): eventID
+
+    Returns:
+     * `int`: linked control info:
+            * `-1`: no linked control
+            * `Event_CantInterpolate` (`1`): ???
+            * `Event_Float` (`2`): ???
+            * `Event_Centered` (`4`): ???
+    """
+
+def createRefreshThread() -> None:
+    """Start a threaded refresh of the entire MIDI device.
+    """
+
+def destroyRefreshThread() -> None:
+    """Stop a previously started threaded refresh
+    """
+
+def fullRefresh() -> None:
+    """Trigger a previously started threaded refresh. If there is none, the
+    refresh is triggered immediately.
+    """
+
+def isDoubleClick(index: int) -> bool:
+    """Returns whether the function was called with the same index shortly 
+    before, indicating a double click.
+
+    Args:
+     * `index` (`int`): a unique value representing the current control
+
+    Returns:
+     * `bool`: whether the event was a double click
+    """
+
+def setHasMeters() -> None:
+    """Registers the controller as having peak meters, meaning that the 
+    `OnUpdateMeters()` function will be called. This function should be called 
+    within `OnInit()`.
+    """
+
+def baseTrackSelect(index: int, step: int) -> None:
+    """Base track selection (for control surfaces). Set `step` to `MaxInt` to
+    reset.
+    
+    HELP WANTED: What does this do?
+
+    Args:
+     * `index` (`int`): ???
+     * `step` (`int`): ???
+    """
+
+def hardwareRefreshMixerTrack(index: int) -> None:
+    """Hardware refresh mixer track at `index`.
+    
+    HELP WANTED: What does this mean?
+
+    Args:
+     * `index` (`int`): track index. `-1` refreshes all tracks.
+    """
+
+def dispatch(ctrlIndex: int, message: int, sysex: bytes) -> None:
+    """Dispatch a MIDI message (either via a standard MIDI Message or through a 
+    system exclusive (SysEx) message) that is sent to another controller script.
+    This allows communication between different devices provided that they have
+    a stardardised communication method.
+    
+    MIDI messages sent through this method are received in the same way as all
+    other messages, so it should be ensured that they can be differentiated
+    by the receiving controller.
+    
+    In order to allow a device to receive MIDI messages via a dispatch command,
+    it must have a `receiveFrom` pre-processor comment for FL Studio to detect
+    when the script is loaded. This comment should be at the top of the
+    `device_MyController.py` file along with the name and URL, for example:
+    
+    ```py
+    # name=My Controller
+    # receiveFrom=My Other Controller
+    ```
+    After this declaration, the script named "My Other Controller" will be able
+    to dispatch MIDI messages to the script named "My Controler".
+
+    Args:
+     * `ctrlIndex` (`int`): index of the controller to dispatch to
+     * `message` (`int`): MIDI message to send (or header of a SysEx message)
+     * `sysex` (`bytes`, optional): SysEx data to send, if applicable
+    """
+
+def dispatchReceiverCount() -> int:
+    """Returns the number of device scripts that this script can dispatch to.
+
+    Returns:
+     * `int`: number of available receiver devices.
+    """
+
+def dispatchGetReceiverPortNumber(ctrlIndex: int) -> int:
+    """Returns the port of the receiver device specified by `ctrlIndex`.
+
+    Args:
+     * `ctrlIndex` (`int`): device script to check
+
+    Returns:
+     * `int`: MIDI port associated with the reciever device
     """
