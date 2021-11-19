@@ -141,13 +141,16 @@ def soloChannel(index: int) -> None:
     Included since API version 1
     """
 
-def getChannelVolume(index: int) -> float:
+def getChannelVolume(index: int, mode:int=0) -> float:
     """Returns the normalised volume of the channel at `index`, where `0.0` is
     the minimum value, and `1.0` is the maximum value. Note that the default
-    volume for channels is `0.78125`.
+    volume for channels is `0.78125`. By setting the `mode` flag to `1`, the
+    volume is returned in decibels.
 
     Args:
      * `index` (`int`): index of channel
+     * `mode` (`int`, optional): whether to return as a float between 0 and 1
+       of a value in dB
 
     Returns:
      * `float`: channel volume
@@ -155,14 +158,17 @@ def getChannelVolume(index: int) -> float:
     Included since API version 1
     """
 
-def setChannelVolume(index: int, volume: float) -> None:
+def setChannelVolume(index: int, volume: float, pickupMode:int=0) -> None:
     """Sets the normalised volume of the channel at `index`, where `0.0` is
     the minimum value, and `1.0` is the maximum value. Note that the default
-    volume for channels is `0.78125`.
+    volume for channels is `0.78125`. Use the pickup mode flag to set pickup
+    options.
 
     Args:
      * `index` (`int`): index of channel
      * `volume` (`float`): channel volume
+     * `pickupMode` (`int`, optional): define the pickup behaviour. Refer to
+       the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
     
     Included since API version 1
     """
@@ -181,21 +187,24 @@ def getChannelPan(index: int) -> float:
     Included since API version 1
     """
 
-def setChannelPan(index: int, pan: float) -> None:
+def setChannelPan(index: int, pan: float, pickupMode:int=0) -> None:
     """Sets the normalised pan of the channel at `index`, where `-1.0` is
     100% left, and `1.0` is 100% right. Note that the default
-    pan for channels is `0.0` (centre).
+    pan for channels is `0.0` (centre). Use the pickup mode flag to set pickup
+    options.
 
     Args:
      * `index` (`int`): index of channel
      * `pan` (`float`): channel pan
+     * `pickupMode` (`int`, optional): define the pickup behaviour. Refer to
+       the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
     
     Included since API version 1
     """
 
 def getChannelPitch(index: int, mode:int=0) -> 'float | int':
     """Returns the pitch of the channel at `index`. The `mode` parameter is used
-    to determine the type of pitch returned.
+    to determine the type of pitch returned. 
     
     HELP WANTED: What do the `mode` parameter options mean?
     
@@ -214,7 +223,8 @@ def getChannelPitch(index: int, mode:int=0) -> 'float | int':
 
 def setChannelPitch(index: int, value: float, mode:int=0) -> 'float | int':
     """Sets the pitch of the channel at `index` to value. The `mode` parameter is used
-    to determine the type of pitch set.
+    to determine the type of pitch set. Use the pickup mode flag to set pickup
+    options.
     
     HELP WANTED: What do the `mode` parameter options mean?
     
@@ -224,6 +234,9 @@ def setChannelPitch(index: int, value: float, mode:int=0) -> 'float | int':
      * `mode` (`int`, optional):
             * `1`: set value in semitones
             * `2`: set value pitch range???
+     * `pickupMode` (`int`, optional): define the pickup behaviour. Refer to
+       the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
+    
     
     Included since API version 8
     """
