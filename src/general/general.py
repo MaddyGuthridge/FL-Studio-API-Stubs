@@ -246,3 +246,18 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
     
     Included since API version 7
     """
+
+def dumpScoreLog(time: int, silent:int=0) -> None:
+    """Dump score log
+    
+    Args:
+     * `time` (`int`): ?
+     * `silent` (`int`): Whether the empty score message is suppressed (`1`) or
+       not (`0`)
+    
+    Included since API version 15
+    """
+
+def clearLog() -> None:
+    """Clear log
+    """

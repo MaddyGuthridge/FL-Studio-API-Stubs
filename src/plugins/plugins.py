@@ -192,6 +192,16 @@ def getName(index: int, slotIndex:int=-1, flag:int=midi.FPN_Param,
     Included since API version 13
     """
 
+def getPresetCount(index: int, slotIndex:int=-1) -> int:
+    """Returns the number of presets available for the selected plugin.
+
+    Args:
+     * `index` (`int`): index of plugin on channel rack or mixer
+     * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
+    
+    Included since API version 15
+    """
+  
 def nextPreset(index: int, slotIndex:int=-1) -> None:
     """Navigate to the next preset for plugin at `index`/`slotIndex`.
 
