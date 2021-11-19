@@ -90,19 +90,6 @@ def previous() -> int:
     Included since API version 1
     """
 
-def previous() -> int:
-    """Select to previous control:
-     * in mixer: select previous track
-     * in channel rack: select previous channel
-     * in browser: scroll to previous item
-     * in plugin: switch to previous preset (since API version 9)
-
-    Returns:
-     * `int`: ?
-    
-    Included since API version 1
-    """
-
 def next() -> int:
     """Select to next control:
      * in mixer: select next track
@@ -503,7 +490,7 @@ def getFocusedPluginName() -> str:
     Included since API version 5
     """
 
-def scrollWindow(index: int, value: int) -> None:
+def scrollWindow(index: int, value: int, directionFlag:int=0) -> None:
     """Scrolls on the window specified by `index`. Value is index for whatever
     is contained on that window (eg channels for the Channel Rack or tracks for
     the Mixer).
@@ -519,6 +506,7 @@ def scrollWindow(index: int, value: int) -> None:
             * on mixer: track number
             * on channel rack: channel number
             * on playlist: playlist track number
+            * on playlist: bar number (when `directionFlag` is set to `1`)
     
     Included since API version 13
     """
@@ -720,11 +708,12 @@ def getVersion(mode:int=4) -> 'str | int':
               Eg: `"Producer Edition v20.8.4 [build 2553]"`
             * `VER_FillVersionAndEdition` (`5`): Full version and edition (as `str`).
               Eg: `"Producer Edition v20.8.4 [build 2553] - Signature Bundle - 64Bit"`
+            * `VER_ArchAndBuild` (`6`): Architecture and build number?
     
     Included since API version 1, with mode parameter since API version 7
     """
 
-def crDisplayRect(left: int, top: int, right: int, bottom: int, duration: int) -> None:
+def crDisplayRect(left: int, top: int, right: int, bottom: int, duration: int, flags:int=0) -> None:
     """Displays a selection rectangle on the channel rack
 
     Args:
@@ -733,11 +722,15 @@ def crDisplayRect(left: int, top: int, right: int, bottom: int, duration: int) -
      * `right` (`int`): right border (not inclusive)
      * `bottom` (`int`): bottom index (not inclusive)
      * `duration` (`int`): duration to display for (in ms)
+     * `flags` (`int`, optional): a bitwise combination of:
+            * `CR_HighlightChannels`: Display on channel list rather than on
+              grid
+            * `CR_ScrollToView`: Scroll channel rack to specified position
     
     Included since API version 1
     """
 
-def miDisplayRect(start: int, end: int, duration: int) -> None:
+def miDisplayRect(start: int, end: int, duration: int, flags:int=0) -> None:
     """Displays a selection rectangle on the mixer
 
     TODO: Ensure these docs are correct when it gets added
@@ -746,6 +739,7 @@ def miDisplayRect(start: int, end: int, duration: int) -> None:
      * `start` (`int`): start track index
      * `end` (`int`): end track index
      * `duration` (`int`): duration to display for (in ms)??
+     * `flags` (`int`, optional): unknown
     
     Included since API version 13
     """
