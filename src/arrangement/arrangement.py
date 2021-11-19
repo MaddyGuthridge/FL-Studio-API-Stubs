@@ -70,7 +70,7 @@ def currentTime(snap: int) -> int:
     Included since API version 1
     """
 
-def currentTimeHint(mode: int, time: int, setRecPPB:int='?', isLength:int=0)\
+def currentTimeHint(mode: int, time: int, setRecPPB:int=0, isLength:int=0)\
     -> str:
     """Returns a hint string for the given time
     

@@ -152,14 +152,14 @@ def stopRepeatMidiEvent() -> None:
     Included since API version 1
     """
 
-def findEventID(controlId: int, flags:int=[]) -> int:
+def findEventID(controlId: int, flags:int=0) -> int:
     """Returns eventID for controlId.
 
     HELP WANTED: What does this do?
 
     Args:
      * `controlId` (`int`): ???
-     * `flags` (`int`, optional): ???. Defaults to [].
+     * `flags` (`int`, optional): ???. Defaults to 0.
 
     Returns:
      * `int`: event ID
