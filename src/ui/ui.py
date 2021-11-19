@@ -90,19 +90,6 @@ def previous() -> int:
     Included since API version 1
     """
 
-def previous() -> int:
-    """Select to previous control:
-     * in mixer: select previous track
-     * in channel rack: select previous channel
-     * in browser: scroll to previous item
-     * in plugin: switch to previous preset (since API version 9)
-
-    Returns:
-     * `int`: ?
-    
-    Included since API version 1
-    """
-
 def next() -> int:
     """Select to next control:
      * in mixer: select next track
@@ -133,7 +120,7 @@ def moveJog(value: int) -> int:
 def up(value:int=1) -> int:
     """Generic up control.
 
-    WARNING: This function echos the up arrow key, and thus will affect
+    WARNING: This function echoes the up arrow key, and thus will affect
     programs outside of FL Studio. Use with caution.
     
     HELP WANTED: What does the `value` variable do?
@@ -150,7 +137,7 @@ def up(value:int=1) -> int:
 def down(value:int=1) -> int:
     """Generic down control.
 
-    WARNING: This function echos the down arrow key, and thus will affect
+    WARNING: This function echoes the down arrow key, and thus will affect
     programs outside of FL Studio. Use with caution.
     
     HELP WANTED: What does the `value` variable do?
@@ -167,7 +154,7 @@ def down(value:int=1) -> int:
 def left(value:int=1) -> int:
     """Generic left control.
 
-    WARNING: This function echos the left arrow key, and thus will affect
+    WARNING: This function echoes the left arrow key, and thus will affect
     programs outside of FL Studio. Use with caution.
     
     HELP WANTED: What does the `value` variable do?
@@ -184,7 +171,7 @@ def left(value:int=1) -> int:
 def right(value:int=1) -> int:
     """Generic right control.
 
-    WARNING: This function echos the right arrow key, and thus will affect
+    WARNING: This function echoes the right arrow key, and thus will affect
     programs outside of FL Studio. Use with caution.
     
     HELP WANTED: What does the `value` variable do?
@@ -236,7 +223,7 @@ def snapOnOff() -> int:
 def cut() -> int:
     """Cut the selection.
     
-    WARNING: This function echos the hotkey to cut, and thus will affect
+    WARNING: This function echoes the hotkey to cut, and thus will affect
     programs outside of FL Studio. Use with caution.
 
     Returns:
@@ -248,7 +235,7 @@ def cut() -> int:
 def copy() -> int:
     """Copy the selection.
     
-    WARNING: This function echos the hotkey to copy, and thus will affect
+    WARNING: This function echoes the hotkey to copy, and thus will affect
     programs outside of FL Studio. Use with caution.
 
     Returns:
@@ -260,7 +247,7 @@ def copy() -> int:
 def paste() -> int:
     """Paste the selection.
     
-    WARNING: This function echos the hotkey to paste, and thus will affect
+    WARNING: This function echoes the hotkey to paste, and thus will affect
     programs outside of FL Studio. Use with caution.
 
     Returns:
@@ -272,7 +259,7 @@ def paste() -> int:
 def insert() -> int:
     """Press the insert key.
     
-    WARNING: This function echos the insert key, and thus will affect
+    WARNING: This function echoes the insert key, and thus will affect
     programs outside of FL Studio. Use with caution.
 
     Returns:
@@ -284,7 +271,7 @@ def insert() -> int:
 def delete() -> int:
     """Press the delete key.
     
-    WARNING: This function echos the delete key, and thus will affect
+    WARNING: This function echoes the delete key, and thus will affect
     programs outside of FL Studio. Use with caution.
 
     Returns:
@@ -296,7 +283,7 @@ def delete() -> int:
 def enter() -> int:
     """Press the enter key.
     
-    WARNING: This function echos the enter key, and thus will affect
+    WARNING: This function echoes the enter key, and thus will affect
     programs outside of FL Studio. Use with caution.
 
     Returns:
@@ -308,7 +295,7 @@ def enter() -> int:
 def escape() -> int:
     """Press the escape key.
     
-    WARNING: This function echos the escape key, and thus will affect
+    WARNING: This function echoes the escape key, and thus will affect
     programs outside of FL Studio. Use with caution.
 
     Returns:
@@ -320,7 +307,7 @@ def escape() -> int:
 def yes() -> int:
     """Press the y key.
     
-    WARNING: This function echos the y key, and thus will affect
+    WARNING: This function echoes the y key, and thus will affect
     programs outside of FL Studio. Use with caution.
 
     Returns:
@@ -332,7 +319,7 @@ def yes() -> int:
 def no() -> int:
     """Press the n key.
     
-    WARNING: This function echos the n key, and thus will affect
+    WARNING: This function echoes the n key, and thus will affect
     programs outside of FL Studio. Use with caution.
 
     NOTE: This function is listed in the official documentation as `not`, 
@@ -503,7 +490,7 @@ def getFocusedPluginName() -> str:
     Included since API version 5
     """
 
-def scrollWindow(index: int, value: int) -> None:
+def scrollWindow(index: int, value: int, directionFlag:int=0) -> None:
     """Scrolls on the window specified by `index`. Value is index for whatever
     is contained on that window (eg channels for the Channel Rack or tracks for
     the Mixer).
@@ -519,6 +506,7 @@ def scrollWindow(index: int, value: int) -> None:
             * on mixer: track number
             * on channel rack: channel number
             * on playlist: playlist track number
+            * on playlist: bar number (when `directionFlag` is set to `1`)
     
     Included since API version 13
     """
@@ -536,7 +524,7 @@ def selectWindow(shift: int) -> int:
     """Switch to the next window by pressing the `Tab` key. If `shift` is true 
     (`1`), switch to the previous window by pressing `Shift` and `Tab`.
 
-    WARNING: This function echos the tab key, and thus will affect
+    WARNING: This function echoes the tab key, and thus will affect
     programs outside of FL Studio. Use with caution.
 
     Args:
@@ -720,11 +708,12 @@ def getVersion(mode:int=4) -> 'str | int':
               Eg: `"Producer Edition v20.8.4 [build 2553]"`
             * `VER_FillVersionAndEdition` (`5`): Full version and edition (as `str`).
               Eg: `"Producer Edition v20.8.4 [build 2553] - Signature Bundle - 64Bit"`
+            * `VER_ArchAndBuild` (`6`): Architecture and build number?
     
     Included since API version 1, with mode parameter since API version 7
     """
 
-def crDisplayRect(left: int, top: int, right: int, bottom: int, duration: int) -> None:
+def crDisplayRect(left: int, top: int, right: int, bottom: int, duration: int, flags:int=0) -> None:
     """Displays a selection rectangle on the channel rack
 
     Args:
@@ -733,11 +722,15 @@ def crDisplayRect(left: int, top: int, right: int, bottom: int, duration: int) -
      * `right` (`int`): right border (not inclusive)
      * `bottom` (`int`): bottom index (not inclusive)
      * `duration` (`int`): duration to display for (in ms)
+     * `flags` (`int`, optional): a bitwise combination of:
+            * `CR_HighlightChannels`: Display on channel list rather than on
+              grid
+            * `CR_ScrollToView`: Scroll channel rack to specified position
     
     Included since API version 1
     """
 
-def miDisplayRect(start: int, end: int, duration: int) -> None:
+def miDisplayRect(start: int, end: int, duration: int, flags:int=0) -> None:
     """Displays a selection rectangle on the mixer
 
     TODO: Ensure these docs are correct when it gets added
@@ -746,6 +739,7 @@ def miDisplayRect(start: int, end: int, duration: int) -> None:
      * `start` (`int`): start track index
      * `end` (`int`): end track index
      * `duration` (`int`): duration to display for (in ms)??
+     * `flags` (`int`, optional): unknown
     
     Included since API version 13
     """

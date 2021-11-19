@@ -38,7 +38,7 @@ def getTrackInfo(mode: int) -> int:
     Included since API version 1
     """
 
-def setTrackNumber(trackNumber: int, flags:int=[]) -> None:
+def setTrackNumber(trackNumber: int, flags:int=0) -> None:
     """Selects the mixer track at `trackNumber`.
     
     NOTE: All functionality except for scrolling flag can be replicated more
@@ -53,7 +53,7 @@ def setTrackNumber(trackNumber: int, flags:int=[]) -> None:
             * `curfxNoDeselectAll` (`4`): Prevent the deselection of other
               selected tracks??? Doesn't seem to work.
             * `curfxMinimalLatencyUpdate` (`8`): Effect unknown
-            Defaults to `[]`.
+            Defaults to `0`.
     
     Included since API version 1
     """
@@ -262,28 +262,35 @@ def isTrackPluginValid(index: int, plugIndex: int) -> bool:
     Included since API version 1
     """
 
-def getTrackVolume(index: int) -> float:
+def getTrackVolume(index: int, mode:int=0) -> float:
     """Returns the volume of the track at `index`. Volume lies within the range
-    `0.0` - `1.0`. Note that the default value is `0.8`.
+    `0.0` - `1.0`. Note that the default value is `0.8`. Use the `mode` flag to
+    get the volume in decibels.
 
     Args:
      * `index` (`int`): track index
+     * `mode` (`int`, optional): whether to return the volume as a value between
+       0 and 1, or in decibels.
 
     Returns:
      * `float`: volume of track
     
-    Included since API verson 1
+    Included since API version 1
     """
 
-def setTrackVolume(index: int, volume: float) -> None:
+def setTrackVolume(index: int, volume: float,  pickupMode:int=0) -> None:
     """Sets the volume of the track at `index`. Volume lies within the range
-    `0.0` - `1.0`. Note that the default value is `0.8`.
+    `0.0` - `1.0`. Note that the default value is `0.8`. Use the pickup mode
+    flag to set pickup options.
 
     Args:
      * `index` (`int`): track index
      * `volume` (`float`): volume of track
+     * `pickupMode` (`int`, optional): define the pickup behaviour. Refer to
+       the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
     
-    Included since API verson 1
+    
+    Included since API version 1
     """
 
 def getTrackPan(index: int) -> float:
@@ -297,19 +304,22 @@ def getTrackPan(index: int) -> float:
     Returns:
      * `float`: pan of track
     
-    Included since API verson 1
+    Included since API version 1
     """
 
-def setTrackPan(index: int, pan: float) -> None:
+def setTrackPan(index: int, pan: float, pickupMode:int=0) -> None:
     """Sets the pan of the track at `index`. Pan lies within the range
     100% left (`-1.0`) - 100% right (`1.0`). Note that the default value is 
-    `0.0`.
+    `0.0`. Use the pickup mode flag to set pickup options.
 
     Args:
      * `index` (`int`): track index
      * `pan` (`float`): pan of track
+     * `pickupMode` (`int`, optional): define the pickup behaviour. Refer to
+       the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
     
-    Included since API verson 1
+    
+    Included since API version 1
     """
 
 def getTrackStereoSep(index: int) -> float:
@@ -323,19 +333,22 @@ def getTrackStereoSep(index: int) -> float:
     Returns:
      * `float`: stereo separation of track
     
-    Included since API verson 12
+    Included since API version 12
     """
 
-def setTrackStereoSep(index: int, pan: float) -> None:
+def setTrackStereoSep(index: int, pan: float, pickupMode:int=0) -> None:
     """Sets the stereo separation of the track at `index`. Stereo separation 
     lies within the range 100% centred (`-1.0`) - 100% separated (`1.0`). Note 
-    that the default value is `0.0`.
+    that the default value is `0.0`. Use the pickup mode flag to set pickup
+    options.
 
     Args:
      * `index` (`int`): track index
      * `sep` (`float`): stereo separation of track
+     * `pickupMode` (`int`, optional): define the pickup behaviour. Refer to
+       the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
     
-    Included since API verson 12
+    Included since API version 12
     """
 
 def isTrackSelected(index: int) -> bool:
@@ -484,7 +497,7 @@ def getAutoSmoothEventValue(index: int, locked:int=1) -> int:
     """
 
 def automateEvent(index: int, value: int, flags: int, speed:int=0, 
-                  isIncrement:int=0, res:float=midi.EKRes) -> long:
+                  isIncrement:int=0, res:float=midi.EKRes) -> int:
     """Automate event
     
     HELP WANTED: What does this do?
@@ -601,7 +614,7 @@ def getLastPeakVol(section: int) -> float:
      * `float`: last peak volume (`0.0` for silence, `1.0` for 0 dB, `>1.0` for 
        clipping)
     
-    Inlcuded since API version 9
+    Included since API version 9
     """
 
 def getTrackDockSide(index: int) -> int:
