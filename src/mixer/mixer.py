@@ -614,7 +614,7 @@ def getLastPeakVol(section: int) -> float:
      * `float`: last peak volume (`0.0` for silence, `1.0` for 0 dB, `>1.0` for 
        clipping)
     
-    Inlcuded since API version 9
+    Included since API version 9
     """
 
 def getTrackDockSide(index: int) -> int:
