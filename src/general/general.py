@@ -245,7 +245,7 @@ def getVersion() -> int:
     
     Included since API version 1
     """
-    return 0
+    return 15
 
 def processRECEvent(eventId: int, value: int, flags: int) -> int:
     """Processes a recording event.
