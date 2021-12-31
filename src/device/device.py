@@ -13,6 +13,7 @@ def isAssigned() -> bool:
     
     Included since API version 1
     """
+    return False
 
 def getPortNumber() -> int:
     """Returns the port number for the input device that the script is attached
@@ -25,6 +26,7 @@ def getPortNumber() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getName() -> str:
     """Returns the name of the device.
@@ -34,6 +36,7 @@ def getName() -> str:
     
     Included since API version 7
     """
+    return ""
 
 def midiOutMsg(message: int, channel:int=None, data1:int=None, data2:int=None)\
     -> None:
@@ -100,6 +103,7 @@ def sendMsgGeneric(id: int, message: str, lastMsg: str, offset:int=0) -> str:
     
     Included since API version 1
     """
+    return ""
 
 def processMIDICC(eventData) -> None:
     """Lets FL Studio process a MIDI CC message.
@@ -166,6 +170,7 @@ def findEventID(controlId: int, flags:int=0) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getLinkedValue(eventID: int) -> float:
     """Returns normalised value of the linked control via eventID. Returns `-1`
@@ -181,6 +186,7 @@ def getLinkedValue(eventID: int) -> float:
     
     Included since API version 1
     """
+    return 0.0
 
 def getLinkedValueString(eventID: int) -> str:
     """Returns text value of a linked control via eventID
@@ -195,6 +201,7 @@ def getLinkedValueString(eventID: int) -> str:
     
     Included since API version 10
     """
+    return ""
 
 def getLinkedParamName(eventID: int) -> str:
     """Returns the parameter name of the control linked via `eventID`.
@@ -209,6 +216,7 @@ def getLinkedParamName(eventID: int) -> str:
     
     Included since API version 10
     """
+    return ""
 
 def getLinkedInfo(eventID: int) -> int:
     """Returns information about a linked control via `eventID`.
@@ -225,6 +233,7 @@ def getLinkedInfo(eventID: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def createRefreshThread() -> None:
     """Start a threaded refresh of the entire MIDI device.
@@ -263,6 +272,7 @@ def isDoubleClick(index: int) -> bool:
     
     Included since API version 1
     """
+    return False
 
 def setHasMeters() -> None:
     """Registers the controller as having peak meters, meaning that the 
@@ -334,6 +344,7 @@ def dispatchReceiverCount() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def dispatchGetReceiverPortNumber(ctrlIndex: int) -> int:
     """Returns the port of the receiver device specified by `ctrlIndex`.
@@ -346,3 +357,4 @@ def dispatchGetReceiverPortNumber(ctrlIndex: int) -> int:
     
     Included since API version 5
     """
+    return 0

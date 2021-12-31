@@ -25,6 +25,7 @@ def getMarkerName(index: int) -> str:
     
     Included since API version 1
     """
+    return ""
 
 def addAutoTimeMarker(time: int, name: str) -> None:
     """Add an automatic time marker at `time`.
@@ -57,6 +58,7 @@ def liveSelectionStart() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def currentTime(snap: int) -> int:
     """Returns the current time in the current arrangement.
@@ -69,6 +71,7 @@ def currentTime(snap: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def currentTimeHint(mode: int, time: int, setRecPPB:int=0, isLength:int=0)\
     -> str:
@@ -87,6 +90,7 @@ def currentTimeHint(mode: int, time: int, setRecPPB:int=0, isLength:int=0)\
     
     Included since API version 1
     """
+    return ""
 
 def selectionStart() -> int:
     """Returns the returns the start time of the current selection.
@@ -96,6 +100,7 @@ def selectionStart() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def selectionEnd() -> int:
     """Returns the returns the end time of the current selection.
@@ -105,3 +110,4 @@ def selectionEnd() -> int:
     
     Included since API version 1
     """
+    return 0

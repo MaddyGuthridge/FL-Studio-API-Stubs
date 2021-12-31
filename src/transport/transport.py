@@ -6,7 +6,7 @@ Handles transport in FL Studio (for example play/pause or record)
 import midi
 
 def globalTransport(command: int, value: int, pmeflags:int=midi.PME_System,
-                    flags=midi.GT_ALL) -> int:
+                    flags=midi.GT_All) -> int:
     """Used as a generic way to run transport commands if a specific function
     doesn't exist for it.
     
@@ -33,6 +33,7 @@ def globalTransport(command: int, value: int, pmeflags:int=midi.PME_System,
     
     Included since API version 1
     """
+    return 0
 
 def start() -> None:
     """Start or pause playback (play/pause)
@@ -60,6 +61,7 @@ def isRecording() -> bool:
     
     Included since API version 1
     """
+    return False
 
 def getLoopMode() -> int:
     """Returns the current looping mode
@@ -71,6 +73,7 @@ def getLoopMode() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def setLoopMode() -> None:
     """Toggles the looping mode between pattern and song
@@ -113,6 +116,7 @@ def getSongPos(mode:int=-1) -> 'float | int':
     
     Included since API version 1, with optional parameter added in API version 3
     """
+    return 0
 
 def setSongPos(position:'float | int', mode:int=-1) -> None:
     """Sets the playback position
@@ -168,6 +172,7 @@ def getSongLength(mode: int) -> int:
     
     Included since API version 3
     """
+    return 0
 
 def getSongPosHint() -> str:
     """Returns a hint for the current playback position as `"bars:steps:ticks"`.
@@ -179,6 +184,7 @@ def getSongPosHint() -> str:
     
     Included since API version 1
     """
+    return ""
 
 def isPlaying() -> bool:
     """Returns `True` if playback is currently occurring.
@@ -188,6 +194,7 @@ def isPlaying() -> bool:
     
     Included since API version 1
     """
+    return False
 
 def markerJumpJog(value: int, flags:int=midi.GT_All) -> None:
     """Jump to a marker position, where `value` is an delta (increment) value.
@@ -221,6 +228,7 @@ def getHWBeatLEDState() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def rewind(startStop: int, flags:int=midi.GT_All) -> None:
     """Rewinds the playback position.

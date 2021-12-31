@@ -19,6 +19,7 @@ def jog(value: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def jog2(value: int) -> int:
     """Alternate jog control. Used to map a jog wheel to relocate.
@@ -33,6 +34,7 @@ def jog2(value: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def strip(value: int) -> int:
     """Used by touch-sensitive strip controls.
@@ -47,6 +49,7 @@ def strip(value: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def stripJog(value: int) -> int:
     """Touch-sensitive strip in jog mode.
@@ -59,6 +62,7 @@ def stripJog(value: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def stripHold(value: int) -> int:
     """Touch-sensitive strip in hold mode
@@ -76,6 +80,7 @@ def stripHold(value: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def previous() -> int:
     """Select to previous control:
@@ -89,6 +94,7 @@ def previous() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def next() -> int:
     """Select to next control:
@@ -102,6 +108,7 @@ def next() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def moveJog(value: int) -> int:
     """Used to relocate items with a jog control.
@@ -116,6 +123,7 @@ def moveJog(value: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def up(value:int=1) -> int:
     """Generic up control.
@@ -133,6 +141,7 @@ def up(value:int=1) -> int:
     
     Included since API version 1, with option parameter since API version 4
     """
+    return 0
 
 def down(value:int=1) -> int:
     """Generic down control.
@@ -150,6 +159,7 @@ def down(value:int=1) -> int:
     
     Included since API version 1, with option parameter since API version 4
     """
+    return 0
 
 def left(value:int=1) -> int:
     """Generic left control.
@@ -167,6 +177,7 @@ def left(value:int=1) -> int:
     
     Included since API version 1, with option parameter since API version 4
     """
+    return 0
 
 def right(value:int=1) -> int:
     """Generic right control.
@@ -184,6 +195,7 @@ def right(value:int=1) -> int:
     
     Included since API version 1, with option parameter since API version 4
     """
+    return 0
 
 def horZoom(value: int) -> int:
     """Zoom horizontally by `value`.
@@ -197,6 +209,7 @@ def horZoom(value: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def verZoom(value: int) -> int:
     """Zoom vertically by `value`.
@@ -210,6 +223,7 @@ def verZoom(value: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def snapOnOff() -> int:
     """Toggle whether snapping is enabled globally.
@@ -219,6 +233,7 @@ def snapOnOff() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def cut() -> int:
     """Cut the selection.
@@ -231,6 +246,7 @@ def cut() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def copy() -> int:
     """Copy the selection.
@@ -243,6 +259,7 @@ def copy() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def paste() -> int:
     """Paste the selection.
@@ -255,6 +272,7 @@ def paste() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def insert() -> int:
     """Press the insert key.
@@ -267,6 +285,7 @@ def insert() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def delete() -> int:
     """Press the delete key.
@@ -279,6 +298,7 @@ def delete() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def enter() -> int:
     """Press the enter key.
@@ -291,6 +311,7 @@ def enter() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def escape() -> int:
     """Press the escape key.
@@ -303,6 +324,7 @@ def escape() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def yes() -> int:
     """Press the y key.
@@ -315,6 +337,7 @@ def yes() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def no() -> int:
     """Press the n key.
@@ -332,6 +355,7 @@ def no() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getHintMsg() -> str:
     """Returns the current message in FL Studio's hint panel.
@@ -339,6 +363,7 @@ def getHintMsg() -> str:
     Returns:
      * `str`: hint
     """
+    return ""
 
 def setHintMessage(msg: str) -> None:
     """Sets the current hint message in FL Studio's hint panel to `msg`.
@@ -363,6 +388,7 @@ def getHintValue(value: int, max: int) -> str:
     
     Included since API version 1
     """
+    return ""
 
 def getTimeDispMin() -> bool:
     """Returns `True` when the song position panel is displaying time, rather
@@ -373,6 +399,7 @@ def getTimeDispMin() -> bool:
     
     Included since API version 1
     """
+    return False
 
 def setTimeDispMin() -> None:
     """Toggles whether the song position panel is displaying time or bar and 
@@ -397,6 +424,7 @@ def getVisible(index: int) -> bool:
     
     Included since API version 1
     """
+    return False
 
 def showWindow(index: int) -> None:
     """Shows an FL Studio window specified by `index`.
@@ -449,6 +477,7 @@ def getFocused(index: int) -> bool:
     
     Included since API version 1
     """
+    return False
 
 def setFocused(index: int) -> None:
     """Sets which FL Studio window should be focused (meaning it is the
@@ -479,6 +508,7 @@ def getFocusedFormCaption() -> str:
     
     Included since API version 1
     """
+    return ""
 
 def getFocusedPluginName() -> str:
     """Returns the plugin name for the active window if it is a plugin,
@@ -489,6 +519,7 @@ def getFocusedPluginName() -> str:
     
     Included since API version 5
     """
+    return ""
 
 def scrollWindow(index: int, value: int, directionFlag:int=0) -> None:
     """Scrolls on the window specified by `index`. Value is index for whatever
@@ -519,6 +550,7 @@ def nextWindow() -> int:
     
     Included since API version 1
     """
+    return 0
     
 def selectWindow(shift: int) -> int:
     """Switch to the next window by pressing the `Tab` key. If `shift` is true 
@@ -535,6 +567,7 @@ def selectWindow(shift: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def launchAudioEditor(reuse: int, filename: str, index: int, preset: str,
                       presetGUID: str) -> int:
@@ -557,6 +590,7 @@ def launchAudioEditor(reuse: int, filename: str, index: int, preset: str,
     
     Included since API version 1
     """
+    return 0
 
 def openEventEditor(eventId: int, mode: int, newWindow:int=0) -> int:
     """Launches an event editor for `eventId`.
@@ -574,6 +608,7 @@ def openEventEditor(eventId: int, mode: int, newWindow:int=0) -> int:
     
     Included since API version 9
     """
+    return 0
 
 def isInPopupMenu() -> bool:
     """Returns `True` when a popup menu is open (for example a rick-click or
@@ -584,6 +619,7 @@ def isInPopupMenu() -> bool:
     
     Included since API version 1
     """
+    return False
 
 def closeActivePopupMenu() -> None:
     """Closes a currently-open popup menu (for example a rick-click or
@@ -600,6 +636,7 @@ def isClosing() -> bool:
     
     Included since API version 1
     """
+    return False
 
 def isMetronomeEnabled() -> bool:
     """Returns whether the metronome is enabled
@@ -609,6 +646,7 @@ def isMetronomeEnabled() -> bool:
     
     Included since API version 1
     """
+    return False
 
 def isStartOnInputEnabled() -> bool:
     """Returns whether start on input is enabled
@@ -618,6 +656,7 @@ def isStartOnInputEnabled() -> bool:
     
     Included since API version 1
     """
+    return False
 
 def isPrecountEnabled() -> bool:
     """Returns whether precount is enabled
@@ -627,6 +666,7 @@ def isPrecountEnabled() -> bool:
     
     Included since API version 1
     """
+    return False
 
 def isLoopRecEnabled() -> bool:
     """Returns whether loop recording is enabled
@@ -636,6 +676,7 @@ def isLoopRecEnabled() -> bool:
     
     Included since API version 1
     """
+    return False
 
 def getSnapMode() -> int:
     """Returns the current snap mode.
@@ -663,6 +704,7 @@ def getSnapMode() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def snapMode(value: int) -> int:
     """Changes the snap mode, by shifting it by `value` in the list of modes.
@@ -681,6 +723,7 @@ def snapMode(value: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getProgTitle() -> str:
     """Returns the title of the FL Studio window
@@ -690,6 +733,7 @@ def getProgTitle() -> str:
     
     Included since API version 1
     """
+    return ""
 
 def getVersion(mode:int=4) -> 'str | int':
     """Returns the version number of FL Studio
@@ -712,6 +756,7 @@ def getVersion(mode:int=4) -> 'str | int':
     
     Included since API version 1, with mode parameter since API version 7
     """
+    return 0
 
 def crDisplayRect(left: int, top: int, right: int, bottom: int, duration: int, flags:int=0) -> None:
     """Displays a selection rectangle on the channel rack

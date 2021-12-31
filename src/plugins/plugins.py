@@ -29,6 +29,7 @@ def isValid(index: int, slotIndex:int=-1) -> bool:
     
     Included since API version 8
     """
+    return False
 
 def getPluginName(index: int, slotIndex:int=-1, userName:int=0) -> str:
     """Returns the name of the plugin at `index`/slotIndex`. This returns the
@@ -45,6 +46,7 @@ def getPluginName(index: int, slotIndex:int=-1, userName:int=0) -> str:
     Included since API version 8, with `userName` parameter added in API version
     12
     """
+    return ""
 
 def getParamCount(index: int, slotIndex:int=-1) -> int:
     """Returns the number of parameters that the plugin at `index`/`slotIndex`
@@ -64,6 +66,7 @@ def getParamCount(index: int, slotIndex:int=-1) -> int:
     
     Included since API version 8
     """
+    return 0
 
 def getParamName(paramIndex: int, index: int, slotIndex:int=-1) -> str:
     """Returns the name of the parameter at `paramIndex` for the plugin at
@@ -79,6 +82,7 @@ def getParamName(paramIndex: int, index: int, slotIndex:int=-1) -> str:
     
     Included since API version 8
     """
+    return ""
 
 def getParamValue(paramIndex: int, index: int, slotIndex:int=-1) -> float:
     """Returns the value of the parameter at `paramIndex` for the plugin at
@@ -97,6 +101,7 @@ def getParamValue(paramIndex: int, index: int, slotIndex:int=-1) -> float:
     
     Included since API version 8
     """
+    return 0.0
 
 def setParamValue(value: float, paramIndex: int, index: int, slotIndex:int=-1)\
     -> None:
@@ -130,6 +135,7 @@ def getParamValueString(paramIndex: int, index: int, slotIndex:int=-1) -> str:
     
     Included since API version 8
     """
+    return ""
 
 def getColor(index: int, slotIndex:int=-1, flag:int=midi.GC_BackgroundColor)\
     -> int:
@@ -150,6 +156,7 @@ def getColor(index: int, slotIndex:int=-1, flag:int=midi.GC_BackgroundColor)\
     
     Included since API version 12
     """
+    return 0
 
 def getName(index: int, slotIndex:int=-1, flag:int=midi.FPN_Param,
             paramIndex:int=0) -> str:
@@ -191,6 +198,7 @@ def getName(index: int, slotIndex:int=-1, flag:int=midi.FPN_Param,
     
     Included since API version 13
     """
+    return ""
 
 def getPresetCount(index: int, slotIndex:int=-1) -> int:
     """Returns the number of presets available for the selected plugin.
@@ -201,6 +209,7 @@ def getPresetCount(index: int, slotIndex:int=-1) -> int:
     
     Included since API version 15
     """
+    return 0
   
 def nextPreset(index: int, slotIndex:int=-1) -> None:
     """Navigate to the next preset for plugin at `index`/`slotIndex`.

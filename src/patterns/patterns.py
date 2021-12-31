@@ -14,6 +14,7 @@ def patternNumber() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def patternCount() -> int:
     """Returns the number of patterns in the project
@@ -23,6 +24,7 @@ def patternCount() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def patternMax() -> int:
     """Returns the maximum number of patterns that can be created.
@@ -32,6 +34,7 @@ def patternMax() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getPatternName(index: int) -> str:
     """Returns the name of the pattern at `index`.
@@ -44,6 +47,7 @@ def getPatternName(index: int) -> str:
         
     Included since API version 1
     """
+    return ""
 
 def setPatternName(index: int, name: str) -> None:
     """Sets the name of pattern at `index`
@@ -69,6 +73,7 @@ def getPatternColor(index: int) -> int:
         
     Included since API version 1
     """
+    return 0
 
 def setPatternColor(index: int, color: int) -> None:
     """Sets the colour of the pattern at `index`.
@@ -91,6 +96,7 @@ def getPatternLength(index: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getBlockSetStatus(left: int, top: int, right: int, bottom: int) -> int:
     """Returns the status of the live block.
@@ -111,6 +117,7 @@ def getBlockSetStatus(left: int, top: int, right: int, bottom: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def ensureValidNoteRecord(index: int, playNow:int=0) -> int:
     """Ensures valid note on the pattern at `index`.
@@ -127,6 +134,7 @@ def ensureValidNoteRecord(index: int, playNow:int=0) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def jumpToPattern(index: int) -> None:
     """Scroll the patterns list to the pattern at `index`, and select it.
@@ -165,6 +173,7 @@ def isPatternSelected(index: int) -> bool:
     
     Included since API version 2
     """
+    return False
 
 def selectPattern(index: int, value:int=-1, preview:int=0) -> None:
     """Selects the pattern at `index`.

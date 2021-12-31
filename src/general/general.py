@@ -36,6 +36,7 @@ def undo() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def undoUp() -> int:
     """Move up in the undo history. This is much like undo in most programs
@@ -45,6 +46,7 @@ def undoUp() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def undoDown() -> int:
     """Move down in the undo history. This is much like redo in most programs
@@ -54,6 +56,7 @@ def undoDown() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def undoUpDown(value: int) -> int:
     """Move in the undo history by delta `value`
@@ -67,6 +70,7 @@ def undoUpDown(value: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def restoreUndo() -> int:
     """???
@@ -80,6 +84,7 @@ def restoreUndo() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def restoreUndoLevel(level: int) -> int:
     """???
@@ -96,6 +101,7 @@ def restoreUndoLevel(level: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getUndoLevelHint() -> str:
     """Returns a fraction-like string that shows the position in the undo
@@ -108,6 +114,7 @@ def getUndoLevelHint() -> str:
     
     Included since API version 1
     """
+    return ""
 
 def getUndoHistoryPos() -> int:
     """Returns the length of the undo history
@@ -120,6 +127,7 @@ def getUndoHistoryPos() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getundoHistoryCount() -> int:
     """Returns the length of the undo history
@@ -129,6 +137,7 @@ def getundoHistoryCount() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getUndoHistoryLast() -> int:
     """Returns the current position in the undo history. The most recent
@@ -139,6 +148,7 @@ def getUndoHistoryLast() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def setUndoHistoryPos(index: int) -> None:
     """Removes recent elements from the undo history, leaving only the first
@@ -181,6 +191,7 @@ def getRecPPB() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getRecPPQ() -> int:
     """Returns the current timebase (PPQN)
@@ -190,6 +201,7 @@ def getRecPPQ() -> int:
     
     Included since API version 8
     """
+    return 0
 
 def getUseMetronome() -> bool:
     """Returns whether the metronome is active
@@ -199,6 +211,7 @@ def getUseMetronome() -> bool:
     
     Included since API version 1
     """
+    return False
 
 def getPrecount() -> bool:
     """Returns whether precount before recording is enabled
@@ -208,6 +221,7 @@ def getPrecount() -> bool:
     
     Included since API version 1
     """
+    return False
 
 def getChangedFlag() -> int:
     """Returns whether a project has been changed since the last save
@@ -220,6 +234,7 @@ def getChangedFlag() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getVersion() -> int:
     """Returns MIDI Scripting API version number. Note that this is the API
@@ -230,6 +245,7 @@ def getVersion() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def processRECEvent(eventId: int, value: int, flags: int) -> int:
     """Processes a recording event.
@@ -246,6 +262,7 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
     
     Included since API version 7
     """
+    return 0
 
 def dumpScoreLog(time: int, silent:int=0) -> None:
     """Dump score log

@@ -26,6 +26,7 @@ def trackCount() -> int:
 
     Included since API version 1
     """
+    return 0
 
 def getTrackName(index: int) -> str:
     """Returns the name of the track at `index`
@@ -47,6 +48,7 @@ def getTrackName(index: int) -> str:
     
     Included since API version 1
     """
+    return ""
 
 def setTrackName(index: int, name: str) -> None:
     """Sets the name of the track at `index`
@@ -90,6 +92,7 @@ def getTrackColor(index: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def setTrackColor(index: int, color: int) -> None:
     """Sets the colour of the track at `index`
@@ -131,6 +134,7 @@ def isTrackMuted(index: int) -> bool:
      
     Included since API version 1
     """
+    return False
 
 def muteTrack(index: int) -> None:
     """Toggle whether the track at `index` is muted. An unmuted track will 
@@ -166,6 +170,7 @@ def isTrackMuteLock(index: int) -> bool:
      
     Included since API version 2
     """
+    return False
 
 def muteTrackLock(index: int) -> None:
     """Toggle whether the track at `index`'s mute status is locked (meaning that 
@@ -202,6 +207,7 @@ def isTrackSolo(index: int) -> bool:
      
     Included since API version 1
     """
+    return False
 
 def soloTrack(index: int, value:int = -1) -> None:
     """Toggle whether the track at `index` is solo. An unsolo track will become
@@ -238,6 +244,7 @@ def isTrackSelected(index: int) -> bool:
      
     Included since API version 12
     """
+    return False
 
 def selectTrack(index: int) -> None:
     """Toggle whether the track at `index` is selected. A deselected track will 
@@ -290,6 +297,7 @@ def getTrackActivityLevel(index: int) -> float:
      
     Included since API version 1
     """
+    return 0.0
 
 def getTrackActivityLevelVis(index: int) -> float:
     """Returns the visual activity level of the track at `index`. This value is a
@@ -314,6 +322,7 @@ def getTrackActivityLevelVis(index: int) -> float:
      
     Included since API version 1
     """
+    return 0.0
 
 def getDisplayZone() -> int:
     """Returns the current display zone in the playlist or zero if none.
@@ -325,6 +334,7 @@ def getDisplayZone() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def lockDisplayZone(index: int, value: int) -> None:
     """Lock display zone at `index`.
@@ -377,6 +387,7 @@ def getLiveLoopMode(index: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getLiveTriggerMode(index: int) -> int:
     """Get live trigger mode
@@ -395,6 +406,7 @@ def getLiveTriggerMode(index: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getLivePosSnap(index: int) -> int:
     """Get live position snap
@@ -416,6 +428,7 @@ def getLivePosSnap(index: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getLiveTrigSnap(index: int) -> int:
     """Get live trigger snap
@@ -437,6 +450,7 @@ def getLiveTrigSnap(index: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getLiveStatus(index: int, mode:int=midi.LB_Status_Default) -> int:
     """Returns the live status for track at `index`
@@ -453,6 +467,7 @@ def getLiveStatus(index: int, mode:int=midi.LB_Status_Default) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getLiveBlockStatus(index: int, blockNum:int, mode:int=midi.LB_Status_Default) -> int:
     """Returns the live block status for track at `index` and for block 
@@ -471,6 +486,7 @@ def getLiveBlockStatus(index: int, blockNum:int, mode:int=midi.LB_Status_Default
     
     Included since API version 1
     """
+    return 0
 
 def getLiveBlockColor(index: int, blockNum: int) -> int:
     """Returns the colour of block on track `index` at position `blockNum`
@@ -491,6 +507,7 @@ def getLiveBlockColor(index: int, blockNum: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def triggerLiveClip(index: int, subNum:int, flags: int, velocity:int=-1) -> None:
     """Triggers live clip for track at `index` and for block `subNum`
@@ -577,6 +594,7 @@ def getVisTimeBar() -> int:
 
     Included since API version 1
     """
+    return 0
 
 def getVisTimeTick() -> int:
     """Returns the time tick
@@ -588,6 +606,7 @@ def getVisTimeTick() -> int:
 
     Included since API version 1
     """
+    return 0
 
 def getVisTimeStep() -> int:
     """Returns the time bar
@@ -599,3 +618,4 @@ def getVisTimeStep() -> int:
 
     Included since API version 1
     """
+    return 0

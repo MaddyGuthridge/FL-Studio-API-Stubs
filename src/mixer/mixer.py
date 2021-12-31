@@ -17,6 +17,7 @@ def trackNumber() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getTrackInfo(mode: int) -> int:
     """Returns the index of a special mixer track depending on `mode`.
@@ -37,6 +38,7 @@ def getTrackInfo(mode: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def setTrackNumber(trackNumber: int, flags:int=0) -> None:
     """Selects the mixer track at `trackNumber`.
@@ -68,6 +70,7 @@ def trackCount() -> int:
         
     Included since API version 1
     """
+    return 0
 
 def getTrackName(index: int) -> str:
     """Returns the name of the track at `index`.
@@ -80,6 +83,7 @@ def getTrackName(index: int) -> str:
         
     Included since API version 1
     """
+    return ""
 
 def setTrackName(index: int, name: str) -> None:
     """Sets the name of track at `index`
@@ -105,6 +109,7 @@ def getTrackColor(index: int) -> int:
         
     Included since API version 1
     """
+    return 0
 
 def setTrackColor(index: int, color: int) -> None:
     """Sets the colour of the track at `index`.
@@ -127,6 +132,7 @@ def isTrackArmed(index: int) -> bool:
         
     Included since API version 1
     """
+    return False
 
 def armTrack(index: int) -> None:
     """Toggles whether the track at index is armed for recording
@@ -148,6 +154,7 @@ def isTrackSolo(index: int) -> bool:
         
     Included since API version 1
     """
+    return False
 
 def soloTrack(index: int) -> None:
     """Toggles whether the track at index is solo
@@ -171,6 +178,7 @@ def isTrackEnabled(index: int) -> bool:
         
     Included since API version 1
     """
+    return False
 
 def isTrackAutomationEnabled(index: int, plugIndex: int) -> bool:
     """Returns whether the plugin at `plugIndex` on track at `index` has 
@@ -185,6 +193,7 @@ def isTrackAutomationEnabled(index: int, plugIndex: int) -> bool:
         
     Included since API version 1
     """
+    return False
 
 def enableTrack(index: int) -> None:
     """Toggles whether the track at `index` is enabled.
@@ -208,6 +217,7 @@ def isTrackMuted(index: int) -> bool:
         
     Included since API version 2
     """
+    return False
 
 def muteTrack(index: int) -> None:
     """Toggles whether the track at index is muted
@@ -232,6 +242,7 @@ def isTrackMuteLock(index: int) -> bool:
         
     Included since API version 13
     """
+    return False
 
 def getTrackPluginId(index: int, plugIndex: int) -> int:
     """Returns the plugin ID of the plugin on track `index` in slot `plugIndex`
@@ -247,6 +258,7 @@ def getTrackPluginId(index: int, plugIndex: int) -> int:
         
     Included since API version 1
     """
+    return 0
 
 def isTrackPluginValid(index: int, plugIndex: int) -> bool:
     """Returns whether a plugin on track `index` in slot `plugIndex` is valid
@@ -261,6 +273,7 @@ def isTrackPluginValid(index: int, plugIndex: int) -> bool:
         
     Included since API version 1
     """
+    return False
 
 def getTrackVolume(index: int, mode:int=0) -> float:
     """Returns the volume of the track at `index`. Volume lies within the range
@@ -277,6 +290,7 @@ def getTrackVolume(index: int, mode:int=0) -> float:
     
     Included since API version 1
     """
+    return 0.0
 
 def setTrackVolume(index: int, volume: float,  pickupMode:int=0) -> None:
     """Sets the volume of the track at `index`. Volume lies within the range
@@ -306,6 +320,7 @@ def getTrackPan(index: int) -> float:
     
     Included since API version 1
     """
+    return 0.0
 
 def setTrackPan(index: int, pan: float, pickupMode:int=0) -> None:
     """Sets the pan of the track at `index`. Pan lies within the range
@@ -335,6 +350,7 @@ def getTrackStereoSep(index: int) -> float:
     
     Included since API version 12
     """
+    return 0.0
 
 def setTrackStereoSep(index: int, pan: float, pickupMode:int=0) -> None:
     """Sets the stereo separation of the track at `index`. Stereo separation 
@@ -362,6 +378,7 @@ def isTrackSelected(index: int) -> bool:
     
     Included since API version 1
     """
+    return False
 
 def selectTrack(index: int) -> None:
     """Toggles whether the track at `index` is selected.
@@ -410,6 +427,7 @@ def getRouteSendActive(index: int, destIndex: int) -> bool:
     
     Included since API version 1
     """
+    return False
 
 def afterRoutingChanged() -> None:
     """Notify FL Studio that channel routings have changed.
@@ -432,6 +450,7 @@ def getEventValue(index: int, value:int=midi.MaxInt, smoothTarget:int=1) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def remoteFindEventValue(index: int, flags:int=0) -> float:
     """Returns event value
@@ -447,6 +466,7 @@ def remoteFindEventValue(index: int, flags:int=0) -> float:
     
     Included since API version 1
     """
+    return 0.0
 
 def getEventIDName(index: int, shortname:int=0) -> str:
     """Returns event name for event at `index`
@@ -465,6 +485,7 @@ def getEventIDName(index: int, shortname:int=0) -> str:
     
     Included since API version 1
     """
+    return ""
 
 def getEventIDValueString(index: int, value: int) -> str:
     """Returns event value as a string
@@ -480,6 +501,7 @@ def getEventIDValueString(index: int, value: int) -> str:
     
     Included since API version 1
     """
+    return ""
 
 def getAutoSmoothEventValue(index: int, locked:int=1) -> int:
     """Returns auto smooth event value
@@ -495,6 +517,7 @@ def getAutoSmoothEventValue(index: int, locked:int=1) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def automateEvent(index: int, value: int, flags: int, speed:int=0, 
                   isIncrement:int=0, res:float=midi.EKRes) -> int:
@@ -515,6 +538,7 @@ def automateEvent(index: int, value: int, flags: int, speed:int=0,
     
     Included since API version 1
     """
+    return 0
 
 def getTrackPeaks(index: int, mode: int) -> float:
     """Returns the current audio peak value for the track at `index`.
@@ -531,6 +555,7 @@ def getTrackPeaks(index: int, mode: int) -> float:
     
     Included since API version 1
     """
+    return 0.0
 
 def getTrackRecordingFileName(index: int) -> str:
     """Returns the file name for audio being recorded on the track at `index`.
@@ -546,6 +571,7 @@ def getTrackRecordingFileName(index: int) -> str:
     
     Included since API version 1
     """
+    return ""
     
 def linkTrackToChannel(mode: int) -> None:
     """Link a mixer track to a channel.
@@ -568,6 +594,7 @@ def getSongStepPos() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getCurrentTempo(asInt:int=0) -> 'int | float':
     """Returns the current tempo of the song
@@ -581,6 +608,7 @@ def getCurrentTempo(asInt:int=0) -> 'int | float':
     
     Included since API version 1
     """
+    return 0
 
 def getRecPPS() -> int:
     """Returns the recording PPS
@@ -592,6 +620,7 @@ def getRecPPS() -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getSongTickPos(mode:int=midi.ST_Int) -> 'int | float':
     """Returns the current position in the song, measured in ticks.
@@ -601,6 +630,7 @@ def getSongTickPos(mode:int=midi.ST_Int) -> 'int | float':
     
     Included since API version 1
     """
+    return 0
 
 def getLastPeakVol(section: int) -> float:
     """Returns last peak volume.
@@ -616,6 +646,7 @@ def getLastPeakVol(section: int) -> float:
     
     Included since API version 9
     """
+    return 0.0
 
 def getTrackDockSide(index: int) -> int:
     """Returns the dock side of the mixer for track at `index`
@@ -631,3 +662,4 @@ def getTrackDockSide(index: int) -> int:
     
     Included since API version 13
     """
+    return 0

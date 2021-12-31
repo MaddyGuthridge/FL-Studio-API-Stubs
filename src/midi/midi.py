@@ -623,6 +623,10 @@ ssLoopNextBar = -3
 EventNameT = ['Note Off', 'Note On ', 'Key Aftertouch', 'Control Change','Program Change',  'Channel Aftertouch', 'Pitch Bend', 'System Message' ]
 ChannelDefaultVolume = 1000 / 1280
 TackDefaultVolume = 800 / 1000
+
+GC_BackgroundColor = 0
+
+FPN_Param = 0
     
 def EncodeRemoteControlID(PortNum, ChanNum, CCNum):
   return CCNum + (ChanNum << 16) + ((PortNum + 1) << 22)

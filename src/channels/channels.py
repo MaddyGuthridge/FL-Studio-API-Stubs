@@ -28,6 +28,7 @@ def channelNumber(canBeNone:int=0, offset:int=0) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def channelCount(mode:int=0) -> int:
     """Returns the number of channels on the channel rack. Respect for groups is
@@ -43,6 +44,7 @@ def channelCount(mode:int=0) -> int:
     Included since API version 1. (updated with optional parameter in API 
     version 3).
     """
+    return 0
 
 def getChannelName(index: int) -> str:
     """Returns the name of the channel at `index` (respecting groups)
@@ -55,6 +57,7 @@ def getChannelName(index: int) -> str:
     
     Included since API version 1
     """
+    return ""
 
 def setChannelName(index: int, name: str) -> None:
     """Sets the name of the channel at `index` (respecting groups)
@@ -85,6 +88,7 @@ def getChannelColor(index: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def setChannelColor(index: int, color: int) -> None:
     """Sets the colour of the channel at `index` (respecting groups)
@@ -112,6 +116,7 @@ def isChannelMuted(index: int) -> bool:
     
     Included since API version 1
     """
+    return False
 
 def muteChannel(index: int) -> None:
     """Toggles the mute state of the channel at `index`
@@ -131,6 +136,7 @@ def isChannelSolo(index: int) -> bool:
     
     Included since API version 1
     """
+    return False
 
 def soloChannel(index: int) -> None:
     """Toggles the solo state of the channel at `index`
@@ -157,6 +163,7 @@ def getChannelVolume(index: int, mode:int=0) -> float:
     
     Included since API version 1
     """
+    return 0.0
 
 def setChannelVolume(index: int, volume: float, pickupMode:int=0) -> None:
     """Sets the normalised volume of the channel at `index`, where `0.0` is
@@ -186,6 +193,7 @@ def getChannelPan(index: int) -> float:
     
     Included since API version 1
     """
+    return 0.0
 
 def setChannelPan(index: int, pan: float, pickupMode:int=0) -> None:
     """Sets the normalised pan of the channel at `index`, where `-1.0` is
@@ -220,6 +228,7 @@ def getChannelPitch(index: int, mode:int=0) -> 'float | int':
     
     Included since API version 8
     """
+    return 0
 
 def setChannelPitch(index: int, value: float, mode:int=0) -> 'float | int':
     """Sets the pitch of the channel at `index` to value. The `mode` parameter is used
@@ -240,6 +249,7 @@ def setChannelPitch(index: int, value: float, mode:int=0) -> 'float | int':
     
     Included since API version 8
     """
+    return 0
 
 def isChannelSelected(index: int) -> bool:
     """Returns whether the channel at `index` is selected (not respecting 
@@ -253,6 +263,7 @@ def isChannelSelected(index: int) -> bool:
     
     Included since API version 1
     """
+    return False
 
 def selectChannel(index: int, value:int=-1) -> None:
     """Select the channel at `index` (respecting groups).
@@ -304,6 +315,7 @@ def selectedChannel(canBeNone:int=0, offset:int=0, indexGlobal:int=0) -> int:
     
     Included since API version 5
     """
+    return 0
 
 def selectAll() -> None:
     """Selects all channels in the current channel group
@@ -330,6 +342,7 @@ def getChannelMidiInPort(index: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getChannelIndex(index: int) -> int:
     """Returns the global index of a channel given the group `index`.
@@ -342,6 +355,7 @@ def getChannelIndex(index: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getTargetFxTrack(index: int) -> int:
     """Returns the mixer track that the channel at `index` is linked to.
@@ -354,6 +368,7 @@ def getTargetFxTrack(index: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def isHighlighted() -> bool:
     """Returns True when a red highlight rectangle is displayed on the channel
@@ -368,6 +383,7 @@ def isHighlighted() -> bool:
     
     Included since API version 1
     """
+    return False
 
 def processRECEvent(eventId: int, value: int, flags: int) -> int:
     """Processes a recording event.
@@ -388,6 +404,7 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
     Included since API version 1
     Depreciated since API version 7
     """
+    return 0
 
 def incEventValue(eventId: int, step: int, res: float) -> int:
     """Increase recording event value
@@ -404,6 +421,7 @@ def incEventValue(eventId: int, step: int, res: float) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getRecEventId(index: int) -> int:
     """Returns recording event ID for channel at `index`.
@@ -419,6 +437,7 @@ def getRecEventId(index: int) -> int:
     
     Included since API version 1
     """
+    return 0
 
 def getGridBit(index: int, position: int) -> bool:
     """Returns whether the grid bit on channel at `index` in `position` is set.
@@ -432,6 +451,7 @@ def getGridBit(index: int, position: int) -> bool:
     
     Included since API version 1
     """
+    return False
 
 def setGridBit(index: int, position: int, value: int) -> None:
     """Sets the value of the grid bit on channel at `index` in `position`.
@@ -463,6 +483,7 @@ def getStepParam(step: int, param: int, ofset: int, startPos: int,
     
     Included since API version 1
     """
+    return 0
 
 def getCurrentStepParam(index: int, step: int, param: int) -> None:
     """Get current step parameter for channel at `index` and for step at `step`.
@@ -497,6 +518,7 @@ def getGridBitWithLoop(index: int, position: int) -> bool:
     
     Included since API version 1
     """
+    return False
 
 def showEditor(index: int, value:int=-1) -> None:
     """Toggle whether the plugin window for the channel at `index` is shown.
@@ -561,3 +583,4 @@ def getActivityLevel(index: int) -> float:
     
     Included since API version 9
     """
+    return 0.0
