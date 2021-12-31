@@ -510,6 +510,16 @@ def getFocusedFormCaption() -> str:
     """
     return ""
 
+def getFocusedFormID() -> str:
+    """Returns ID of the focused window.
+
+    Used to get the channel rack index or mixer track and slot index for plugins
+
+    Returns:
+        str: form ID
+    """
+    return ""
+
 def getFocusedPluginName() -> str:
     """Returns the plugin name for the active window if it is a plugin,
     otherwise an empty string.
@@ -766,7 +776,9 @@ def crDisplayRect(left: int, top: int, right: int, bottom: int, duration: int, f
      * `top` (`int`): top position
      * `right` (`int`): right border (not inclusive)
      * `bottom` (`int`): bottom index (not inclusive)
-     * `duration` (`int`): duration to display for (in ms)
+     * `duration` (`int`): duration to display for (in ms). Or,
+            * use `midi.MaxInt` to show indefinitely
+            * use `0` to hide
      * `flags` (`int`, optional): a bitwise combination of:
             * `CR_HighlightChannels`: Display on channel list rather than on
               grid
@@ -783,7 +795,9 @@ def miDisplayRect(start: int, end: int, duration: int, flags:int=0) -> None:
     Args:
      * `start` (`int`): start track index
      * `end` (`int`): end track index
-     * `duration` (`int`): duration to display for (in ms)??
+     * `duration` (`int`): duration to display for (in ms). Or,
+            * use `midi.MaxInt` to show indefinitely
+            * use `0` to hide
      * `flags` (`int`, optional): unknown
     
     Included since API version 13

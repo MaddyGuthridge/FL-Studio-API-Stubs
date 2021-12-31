@@ -625,8 +625,14 @@ ChannelDefaultVolume = 1000 / 1280
 TackDefaultVolume = 800 / 1000
 
 GC_BackgroundColor = 0
+GC_Semitone = 1
 
 FPN_Param = 0
+
+# Pickup Follow Modes
+PIM_None = 0
+PIM_AlwaysPickup = 1
+PIM_FollowGlobal = 2
     
 def EncodeRemoteControlID(PortNum, ChanNum, CCNum):
   return CCNum + (ChanNum << 16) + ((PortNum + 1) << 22)

@@ -120,7 +120,9 @@ def setParamValue(value: float, paramIndex: int, index: int, slotIndex:int=-1)\
     Included since API version 8
     """
 
-def getParamValueString(paramIndex: int, index: int, slotIndex:int=-1) -> str:
+def getParamValueString(
+  paramIndex: int, index: int, slotIndex:int=-1, pickupMode:int=midi.PIM_None
+) -> str:
     """Returns a string value of the parameter at `paramIndex` for the plugin at
     `index`/`slotIndex`. This function is only supported by some FL Studio
     plugins.

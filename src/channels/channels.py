@@ -9,6 +9,9 @@ NOTES:
  * Channels are zero-indexed.
 """
 
+import midi
+
+
 def channelNumber(canBeNone:int=0, offset:int=0) -> int:
     """Returns the global index of the first selected channel, otherwise the nth
     selected channel where n is `offset` + 1. If n is greater than the number of
@@ -165,7 +168,7 @@ def getChannelVolume(index: int, mode:int=0) -> float:
     """
     return 0.0
 
-def setChannelVolume(index: int, volume: float, pickupMode:int=0) -> None:
+def setChannelVolume(index: int, volume: float, pickupMode:int=midi.PIM_None) -> None:
     """Sets the normalised volume of the channel at `index`, where `0.0` is
     the minimum value, and `1.0` is the maximum value. Note that the default
     volume for channels is `0.78125`. Use the pickup mode flag to set pickup
@@ -195,7 +198,7 @@ def getChannelPan(index: int) -> float:
     """
     return 0.0
 
-def setChannelPan(index: int, pan: float, pickupMode:int=0) -> None:
+def setChannelPan(index: int, pan: float, pickupMode:int=midi.PIM_None) -> None:
     """Sets the normalised pan of the channel at `index`, where `-1.0` is
     100% left, and `1.0` is 100% right. Note that the default
     pan for channels is `0.0` (centre). Use the pickup mode flag to set pickup
@@ -230,7 +233,7 @@ def getChannelPitch(index: int, mode:int=0) -> 'float | int':
     """
     return 0
 
-def setChannelPitch(index: int, value: float, mode:int=0) -> 'float | int':
+def setChannelPitch(index: int, value: float, mode:int=0, pickupMode:int=midi.PIM_None) -> 'float | int':
     """Sets the pitch of the channel at `index` to value. The `mode` parameter is used
     to determine the type of pitch set. Use the pickup mode flag to set pickup
     options.

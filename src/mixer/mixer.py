@@ -292,7 +292,7 @@ def getTrackVolume(index: int, mode:int=0) -> float:
     """
     return 0.0
 
-def setTrackVolume(index: int, volume: float,  pickupMode:int=0) -> None:
+def setTrackVolume(index: int, volume: float,  pickupMode:int=midi.PIM_None) -> None:
     """Sets the volume of the track at `index`. Volume lies within the range
     `0.0` - `1.0`. Note that the default value is `0.8`. Use the pickup mode
     flag to set pickup options.
@@ -322,7 +322,7 @@ def getTrackPan(index: int) -> float:
     """
     return 0.0
 
-def setTrackPan(index: int, pan: float, pickupMode:int=0) -> None:
+def setTrackPan(index: int, pan: float, pickupMode:int=midi.PIM_None) -> None:
     """Sets the pan of the track at `index`. Pan lies within the range
     100% left (`-1.0`) - 100% right (`1.0`). Note that the default value is 
     `0.0`. Use the pickup mode flag to set pickup options.
@@ -352,7 +352,7 @@ def getTrackStereoSep(index: int) -> float:
     """
     return 0.0
 
-def setTrackStereoSep(index: int, pan: float, pickupMode:int=0) -> None:
+def setTrackStereoSep(index: int, pan: float, pickupMode:int=midi.PIM_None) -> None:
     """Sets the stereo separation of the track at `index`. Stereo separation 
     lies within the range 100% centred (`-1.0`) - 100% separated (`1.0`). Note 
     that the default value is `0.0`. Use the pickup mode flag to set pickup
