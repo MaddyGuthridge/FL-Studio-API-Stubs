@@ -11,11 +11,16 @@ content.
 However, the documentation for the provided code is created by the
 authors of this repository.
 
-WARNING: Some of the provided functions in the FL Studio installation have bugs
+WARNING: Many of the provided functions in the FL Studio installation have bugs
 that may result in unexpected behaviour. These bugs have been left as-is in this
 file for your inspection and warnings have been added to the docstrings. Use
-these functions with caution.
+any functions here with caution.
 """
+
+import warnings
+
+warnings.warn("The utils module contains exceptionally buggy code. Usage is "
+              "not recommended", stacklevel=3)
 
 import math
 
@@ -261,18 +266,18 @@ def OffsetRect(R: TRect, dx: int, dy: int) -> None:
 
 def RGBToHSV(R: float, G: float, B: float) -> 'tuple[float, float, float]':
     """Convert an RGB colour to a HSV colour
-
-    TODO: What scale is being used? 0.0-1.0 or 0-255?
+    
+    WARNING: Make sure to convert 
 
     Args:
-     * R (float): red
-     * G (float): green
-     * B (float): blue
+     * R (float): red (0.0 - 1.0)
+     * G (float): green (0.0 - 1.0)
+     * B (float): blue (0.0 - 1.0)
 
     Returns:
-     * H: hue
-     * S: saturation
-     * V: value (brightness)
+     * H: hue (degrees: 0.0-360)
+     * S: saturation (0.0-1.0)
+     * V: value/luminosity (0.0/1.0)
     """
     Min = min(min(R, G), B)
     V = max(max(R, G), B)
@@ -318,16 +323,19 @@ def RGBToHSVColor(Color: int) -> 'tuple[float, float, float]':
 
 def HSVtoRGB(H: float, S: float, V: float) -> 'tuple[float, float, float]':
     """Convert an HSV colour to an RGB colour
+    
+    WARNING: This function returns data in an unexpected format! Be sure to
+    convert as required before usage.
 
     Args:
-     * H (float): hue
-     * S (float): saturation
-     * V (float): value (brightness)
+     * H (float): hue (degrees: 0.0-360)
+     * S (float): saturation (0-1.0)
+     * V (float): value/luminosity (0-1.0)
 
     Returns:
-     * float: red
-     * float: green
-     * float: blue
+     * float: red (0.0-1.0)
+     * float: green (0.0-1.0)
+     * float: blue (0.0-1.0)
     """
     hTemp = 0
     if S == 0.0:
