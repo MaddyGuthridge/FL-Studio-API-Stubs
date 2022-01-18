@@ -76,7 +76,7 @@ def midiOutNewMsg(slotIndex: int, message: int) -> None:
     Included since API version 1
     """
 
-def midiOutSysex(message: str) -> None:
+def midiOutSysex(message: bytes) -> None:
     """Send a SysEx message to the (linked) output device.
 
     Args:
