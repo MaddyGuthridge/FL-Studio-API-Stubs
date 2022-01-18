@@ -365,7 +365,7 @@ def getHintMsg() -> str:
     """
     return ""
 
-def setHintMessage(msg: str) -> None:
+def setHintMsg(msg: str) -> None:
     """Sets the current hint message in FL Studio's hint panel to `msg`.
 
     Args:
