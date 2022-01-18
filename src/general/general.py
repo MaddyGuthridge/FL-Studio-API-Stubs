@@ -276,9 +276,7 @@ def dumpScoreLog(time: int, silent:int=0) -> None:
     """
 
 def clearLog() -> None:
-    """Clear log
-    
-    TODO: What log? Score log? Console log?
+    """Clear the score log log
     
     Included since API version 15
     """

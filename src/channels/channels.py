@@ -488,13 +488,13 @@ def getStepParam(step: int, param: int, ofset: int, startPos: int,
     """
     return 0
 
-def getCurrentStepParam(index: int, step: int, param: int) -> None:
+def getCurrentStepParam(index: int, step: int, param: int) -> int:
     """Get current step parameter for channel at `index` and for step at `step`.
     
     HELP WANTED: What does this do?
 
-    TODO: Official documentation says this returns None, but it shouldn't.
-    Check this.
+    TODO: Official documentation says this returns None, but it actually seems
+    to return an int.
 
     Args:
      * `index` (`int`): channel index
@@ -548,7 +548,7 @@ def showCSForm(index: int, state:int=1) -> None:
     """Show the channel settings window (or plugin window for plugins) for 
     channel at `index`.
     
-    TODO: Difference to `showEditor()`??? Check this.
+    This appears to perform the same action as `focusEditor()`.
 
     Args:
      * `index` (int): channel index
