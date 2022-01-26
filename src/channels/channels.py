@@ -254,6 +254,25 @@ def setChannelPitch(index: int, value: float, mode:int=0, pickupMode:int=midi.PI
     """
     return 0
 
+def getChannelType(index: int) -> int:
+    """
+    Returns the type of instrument loaded into the channel rack at `index`
+    
+    ### Args:
+    * `index` (`int`): index of channel
+    
+    
+    ### Returns:
+    * `int`: type of channel:
+        * `GT_Sampler` (`0`): internal sampler
+        * `GT_Hybrid` (`1`): generator plugin feeding internal sampler
+        * `GT_GenPlug` (`2`): generator plugin
+        * `GT_Layer` (`3`): layer (refer to the [FL Studio Manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/chansettings_layer.htm))
+        * `GT_AutoClip` (`4`): automation clip
+    
+    Included since API Version 19
+    """
+
 def isChannelSelected(index: int) -> bool:
     """Returns whether the channel at `index` is selected (not respecting 
     channel groups).

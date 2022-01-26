@@ -358,3 +358,36 @@ def dispatchGetReceiverPortNumber(ctrlIndex: int) -> int:
     Included since API version 5
     """
     return 0
+
+def setMasterSync(value: int) -> None:
+    """
+    Control the value of the "send master sync" option in FL Studio's MIDI
+    settings for this device.
+    
+    This option controls whether stop, pause and play transport notifications
+    are sent to the MIDI device. This shouldn't be enabled unless the device
+    explicitly requires it, as it can lead to unpredictable and sometimes broken
+    behaviour.
+    
+    ### Args:
+    * `value` (`int`): Whether to enable (`1`) or disable (`0`)
+    
+    Included since API Version 18
+    """
+
+def getMasterSync() -> bool:
+    """
+    Returns the value of the "send master sync" option in FL Studio's MIDI
+    settings for this device.
+    
+    This option controls whether stop, pause and play transport notifications
+    are sent to the MIDI device, and shouldn't be enabled unless the device
+    explicitly requires it, as it can lead to unpredictable and sometimes broken
+    behaviour.
+    
+    ### Returns:
+    * `bool`: Whether master sync is enabled (`1`) or disabled (`0`)
+    
+    Included since API Version 19
+    """
+    return False
