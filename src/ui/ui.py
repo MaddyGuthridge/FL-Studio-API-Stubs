@@ -510,15 +510,23 @@ def getFocusedFormCaption() -> str:
     """
     return ""
 
-def getFocusedFormID() -> str:
+def getFocusedFormID() -> int:
     """Returns ID of the focused window.
 
-    Used to get the channel rack index or mixer track and slot index for plugins
+    Used to get the channel rack index or mixer plugin ID for plugins
+    
+    NOTE: The official documentation says that this function returns a string,
+    which is incorrect.
 
     Returns:
-        str: form ID
+    * `int`: form ID:
+            * Index in channel rack (zero indexed)
+            * Plugin ID in mixer (track number * 4194304 + slot index * 65536, 
+              all zero indexed)
+            * Window ID for mixer, channel rack, playlist, etc
+            * `-1` for invalid plugin (eg. script output or settings window)
     """
-    return ""
+    return 0
 
 def getFocusedPluginName() -> str:
     """Returns the plugin name for the active window if it is a plugin,
