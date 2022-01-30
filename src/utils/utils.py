@@ -267,7 +267,7 @@ def OffsetRect(R: TRect, dx: int, dy: int) -> None:
 def RGBToHSV(R: float, G: float, B: float) -> 'tuple[float, float, float]':
     """Convert an RGB colour to a HSV colour
     
-    WARNING: Make sure to convert 
+    WARNING: Make sure to convert
 
     Args:
      * R (float): red (0.0 - 1.0)
@@ -287,7 +287,7 @@ def RGBToHSV(R: float, G: float, B: float) -> 'tuple[float, float, float]':
     if V == 0:
         S = 0
     else:
-        S = Delta / V
+        S = Delta / V # type: ignore
 
     if S == 0.0:
         H = 0.0 
@@ -299,10 +299,10 @@ def RGBToHSV(R: float, G: float, B: float) -> 'tuple[float, float, float]':
         elif B == V:
             H = 240.0 + 60.0 * (R - G) / Delta
 
-        if H < 0.0:
-            H = H + 360.0
+        if H < 0.0: # type: ignore
+            H = H + 360.0 # type: ignore
 
-    return H, S, V
+    return H, S, V # type: ignore
 
 def RGBToHSVColor(Color: int) -> 'tuple[float, float, float]':
     """Convert an RGB colour to a HSV colour
@@ -344,11 +344,11 @@ def HSVtoRGB(H: float, S: float, V: float) -> 'tuple[float, float, float]':
         B = V
     else:
         if H == 360.0:
-            hTemp = 0.0
+            hTemp = 0.0 # type: ignore
         else:
-            hTemp = H
+            hTemp = H # type: ignore
 
-        hTemp = hTemp / 60
+        hTemp = hTemp / 60 # type: ignore
         i = math.trunc(hTemp)
         f = hTemp - i
 
@@ -380,7 +380,7 @@ def HSVtoRGB(H: float, S: float, V: float) -> 'tuple[float, float, float]':
             R = V
             G = p
             B = q
-    return R, G, B
+    return R, G, B # type: ignore
 
 NoteNameT = ('C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B')
 
