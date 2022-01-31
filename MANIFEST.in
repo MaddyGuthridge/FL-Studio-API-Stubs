@@ -1,1 +1,1 @@
-include *py.typed*
+global-include py.typed
