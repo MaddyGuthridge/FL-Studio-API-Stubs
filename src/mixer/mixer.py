@@ -7,6 +7,7 @@ NOTES:
  * Mixer tracks are zero-indexed
 """
 
+from typing import Any
 import midi
 
 def trackNumber() -> int:
@@ -649,7 +650,8 @@ def getLastPeakVol(section: int) -> float:
     return 0.0
 
 def getTrackDockSide(index: int) -> int:
-    """Returns the dock side of the mixer for track at `index`
+    """
+    Returns the dock side of the mixer for track at `index`
 
     Args:
      * `index` (`int`): track index
@@ -663,3 +665,66 @@ def getTrackDockSide(index: int) -> int:
     Included since API version 13
     """
     return 0
+
+def isTrackSlotsAvailable(*args, **kwargs) -> Any:
+    """
+    Returns whether slots are available for a particular track????
+    
+    WARNING: This function isn't documented
+    
+    ### Returns:
+    * `bool`: ???
+    
+    Included since API Version 19
+    """
+    return False
+
+def isTrackSlotsEnabled(*args, **kwargs) -> Any:
+    """
+    Returns whether slots are enabled for a particular track????
+    
+    WARNING: This function isn't documented
+    
+    ### Returns:
+    * `bool`: ???
+    
+    Included since API Version 19
+    """
+    return False
+
+def isTrackSwapChannels(*args, **kwargs) -> bool:
+    """
+    Returns whether polarity is inverted for a particular track????
+    
+    WARNING: This function isn't documented
+    
+    ### Returns:
+    * `bool`: ???
+    
+    Included since API Version 19
+    """
+    return False
+
+def revTrackPolarity(*args, **kwargs) -> None:
+    """
+    Inverts the polarity for a particular track
+    
+    WARNING: This function isn't documented
+    
+    ### Returns:
+    * `bool`: ???
+    
+    Included since API Version 19
+    """
+
+def swapTrackChannels(*args, **kwargs) -> None:
+    """
+    ????
+    
+    WARNING: This function isn't documented
+    
+    ### Returns:
+    * `bool`: ???
+    
+    Included since API Version 19
+    """
