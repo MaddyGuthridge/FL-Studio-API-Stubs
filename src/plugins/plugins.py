@@ -72,6 +72,9 @@ def getParamName(paramIndex: int, index: int, slotIndex:int=-1) -> str:
     """Returns the name of the parameter at `paramIndex` for the plugin at
     `index`/`slotIndex`.
 
+    WARNING: FL Studio's Python environment will crash if an invalid
+    paramIndex is provided to this function.
+
     Args:
      * `paramIndex` (`int`): index of parameter
      * `index` (`int`): index of plugin on channel rack or mixer
@@ -126,6 +129,9 @@ def getParamValueString(
     """Returns a string value of the parameter at `paramIndex` for the plugin at
     `index`/`slotIndex`. This function is only supported by some FL Studio
     plugins.
+
+    WARNING: FL Studio's Python environment will crash if an invalid
+    paramIndex is provided to this function.
 
     Args:
      * `paramIndex` (`int`): index of parameter
