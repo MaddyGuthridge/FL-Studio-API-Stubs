@@ -106,7 +106,7 @@ def getTrackColor(index: int) -> int:
      * `index` (`int`): track index
 
     Returns:
-     * `int`: colour of track (0x--RRGGBB)
+     * `int`: colour of track (0x--BBGGRR)
         
     Included since API version 1
     """
@@ -117,7 +117,7 @@ def setTrackColor(index: int, color: int) -> None:
 
     Args:
      * `index` (`int`): track index
-     * `color` (`int`): colour of track (0x--RRGGBB)
+     * `color` (`int`): colour of track (0x--BBGGRR)
         
     Included since API version 1
     """

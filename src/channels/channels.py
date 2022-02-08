@@ -87,7 +87,7 @@ def getChannelColor(index: int) -> int:
      * `index` (`int`): index of channel
 
     Returns:
-     * `int`: channel colour (0x--RRGGBB)
+     * `int`: channel colour (0x--BBGGRR)
     
     Included since API version 1
     """
@@ -103,7 +103,7 @@ def setChannelColor(index: int, color: int) -> None:
 
     Args:
      * `index` (`int`): index of channel
-     * `colour` (`int`): new colour for channel (0x--RRGGBB)
+     * `colour` (`int`): new colour for channel (0x--BBGGRR)
     
     Included since API version 1
     """

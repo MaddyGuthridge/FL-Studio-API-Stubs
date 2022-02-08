@@ -82,7 +82,7 @@ def getTrackColor(index: int) -> int:
      * `index` (`int`): track index
 
     Returns:
-     * `int`: track colour (0x--RRGGBB)
+     * `int`: track colour (0x--BBGGRR)
 
     Raises:
      * `TypeError`: Index out of range
@@ -106,7 +106,7 @@ def setTrackColor(index: int, color: int) -> None:
 
     Args:
      * `index` (`int`): track index
-     * `color` (`int`): track colour (0x--RRGGBB)
+     * `color` (`int`): track colour (0x--BBGGRR)
 
     Raises:
      * `TypeError`: Index out of range
@@ -503,7 +503,7 @@ def getLiveBlockColor(index: int, blockNum: int) -> int:
      * `blockNum` (`int`): block number
 
     Returns:
-     * `int`: block colour (`0x--RRGGBB`)
+     * `int`: block colour (`0x--BBGGRR`)
     
     Included since API version 1
     """

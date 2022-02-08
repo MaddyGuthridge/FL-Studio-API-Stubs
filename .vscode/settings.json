@@ -2,7 +2,7 @@
     "autoDocstring.customTemplatePath": "resources/docstring_template.mustache",
     "cSpell.words": [
         "Rect",
-        "RRGGBB",
+        "BBGGRR",
         "Sysex"
     ]
 }

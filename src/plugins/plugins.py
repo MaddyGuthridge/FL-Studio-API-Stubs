@@ -160,7 +160,7 @@ def getColor(index: int, slotIndex:int=-1, flag:int=midi.GC_BackgroundColor)\
               colour of drum pads).
 
     Returns:
-     * `int`: colour (`0x--RRGGBB`)
+     * `int`: colour (`0x--BBGGRR`)
     
     Included since API version 12
     """

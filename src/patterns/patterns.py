@@ -69,7 +69,7 @@ def getPatternColor(index: int) -> int:
      * `index` (`int`): pattern index
 
     Returns:
-     * `int`: colour of pattern (0x--RRGGBB)
+     * `int`: colour of pattern (0x--BBGGRR)
         
     Included since API version 1
     """
@@ -80,7 +80,7 @@ def setPatternColor(index: int, color: int) -> None:
 
     Args:
      * `index` (`int`): pattern index
-     * `color` (`int`): colour of pattern (0x--RRGGBB)
+     * `color` (`int`): colour of pattern (0x--BBGGRR)
         
     Included since API version 1
     """

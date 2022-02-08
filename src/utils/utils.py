@@ -308,7 +308,7 @@ def RGBToHSVColor(Color: int) -> 'tuple[float, float, float]':
     """Convert an RGB colour to a HSV colour
 
     Args:
-     * Color (int): colour as integer (`0x--RRGGBB`)
+     * Color (int): colour as integer (`0x--BBGGRR`)
 
     Returns:
      * H: hue
