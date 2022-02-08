@@ -208,6 +208,41 @@ def getName(index: int, slotIndex:int=-1, flag:int=midi.FPN_Param,
     """
     return ""
 
+def getPadInfo(
+    chanIndex: int,
+    slotIndex: int = -1,
+    paramOption: int = 0,
+    paramIndex: int = -1
+) -> int:
+    """
+    Returns info about drum pads
+    
+    Currently only supported by FPC
+    
+    WARNING: None of the parameters can be given as keyword arguments
+    
+    WARNING: The official documentation lists this as returning a string, but it
+    actually returns an int.
+    
+    ### Args:
+    * `chanIndex` (`int`): channel of plugin to check
+    * `slotIndex` (`int`, optional): slot of mixer track plugin. Defaults to -1.
+    * `paramOption` (`int`, optional): type of query:
+            * `0`: number of pads (note: given number is one greater than there
+              actually are, ie. FPC has 32 pads but 33 is returned)
+            * `1`: semitone number of pad (use `paramIndex`)
+            * `2`: color of pad as 0xBBGGRR (use `paramIndex`)
+    * `paramIndex` (`int`, optional): drum pad number (0-indexed)
+    
+    ### Returns:
+    * `int`: number of parameters
+    * `int`: note number of pad
+    * `int`: color of pad
+    
+    Included since API Version 19
+    """
+    return 0
+
 def getPresetCount(index: int, slotIndex:int=-1) -> int:
     """Returns the number of presets available for the selected plugin.
 

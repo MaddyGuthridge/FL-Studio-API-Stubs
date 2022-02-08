@@ -681,7 +681,8 @@ def isTrackSlotsAvailable(*args, **kwargs) -> Any:
 
 def isTrackSlotsEnabled(*args, **kwargs) -> Any:
     """
-    Returns whether slots are enabled for a particular track????
+    Returns whether effects are enabled for a particular track, using the
+    "enable effects slots" button.
     
     WARNING: This function isn't documented
     
@@ -694,12 +695,12 @@ def isTrackSlotsEnabled(*args, **kwargs) -> Any:
 
 def isTrackSwapChannels(*args, **kwargs) -> bool:
     """
-    Returns whether polarity is inverted for a particular track????
+    Returns whether left and right channels are inverted for a particular track
     
     WARNING: This function isn't documented
     
     ### Returns:
-    * `bool`: ???
+    * `bool`: whether left and right are inverted
     
     Included since API Version 19
     """
@@ -709,7 +710,7 @@ def revTrackPolarity(*args, **kwargs) -> None:
     """
     Inverts the polarity for a particular track
     
-    WARNING: This function isn't documented
+    WARNING: This function isn't documented, and seems to do nothing
     
     ### Returns:
     * `bool`: ???
@@ -721,7 +722,7 @@ def swapTrackChannels(*args, **kwargs) -> None:
     """
     ????
     
-    WARNING: This function isn't documented
+    WARNING: This function isn't documented, and seems to do nothing
     
     ### Returns:
     * `bool`: ???
