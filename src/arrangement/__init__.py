@@ -1,14 +1,15 @@
 """Arrangement Module (FL Studio built-in)
 
-Allows you to control and interact with FL Studio Arrangements, inlcuding 
+Allows you to control and interact with FL Studio Arrangements, including 
 markers, selections and timestamps.
 """
 
 def jumpToMarker(index: int, select: int) -> None:
     """Jumps to the marker at index.
 
-    Args:
+    ## Args:
      * index (`int`): marker index
+     
      * select (`int`): whether to select the marker
     
     Included since API version 1
@@ -17,10 +18,10 @@ def jumpToMarker(index: int, select: int) -> None:
 def getMarkerName(index: int) -> str:
     """Returns the name of the marker at `index`
 
-    Args:
+    ## Args:
      * index (`int`): marker index
 
-    Returns:
+    ## Returns:
      * `str`: name of the marker
     
     Included since API version 1
@@ -30,8 +31,9 @@ def getMarkerName(index: int) -> str:
 def addAutoTimeMarker(time: int, name: str) -> None:
     """Add an automatic time marker at `time`.
 
-    Args:
+    ## Args:
      * `time` (`int`): time (TODO: What are the units?)
+     
      * `name` (`str`): name of new marker
     
     Included since API version 1
@@ -39,12 +41,14 @@ def addAutoTimeMarker(time: int, name: str) -> None:
 
 def liveSelection(time: int, stop: int) -> None:
     """Set a live selection point at `time`.
-    set `stop` to True, to use end point of the selection (instead of start).
+    
+    Set `stop` to True, to use end point of the selection (instead of start).
     
     HELP WANTED: A better explanation would be good
 
-    Args:
+    ## Args:
      * `time` (`int`): ???
+     
      * `stop` (`int`): ???
     
     Included since API version 1
@@ -53,7 +57,7 @@ def liveSelection(time: int, stop: int) -> None:
 def liveSelectionStart() -> int:
     """Returns the start time of the current live selection
 
-    Returns:
+    ## Returns:
      * `int`: start of selection time
     
     Included since API version 1
@@ -65,10 +69,10 @@ def currentTime(snap: int) -> int:
     Note that by default, most projects have a PPQ of 96. Use `general.getRecPPQ()`
     to get the PPQ of the project.
 
-    Args:
+    ## Args:
      * `snap` (`int`): whether to get time snapped to grid
 
-    Returns:
+    ## Returns:
      * `int`: current time
     
     Included since API version 1
@@ -80,13 +84,16 @@ def currentTimeHint(mode: int, time: int, setRecPPB:int=0, isLength:int=0)\
     """Returns a hint string for the given time, formatted as:
     Bar:Beat?:Tick
     
-    Args:
+    ## Args:
      * `mode` (`int`): pattern mode (`0`) or song mode (`1`)
+     
      * `time` (`int`): time in ticks
+     
      * `setRecPPB` (`int`, optional): ???. Defaults to ?
+     
      * `isLength` (`int`, optional): ???. Defaults to 0
 
-    Returns:
+    ## Returns:
      * `str`: current time as string hint
     
     Included since API version 1
@@ -96,8 +103,8 @@ def currentTimeHint(mode: int, time: int, setRecPPB:int=0, isLength:int=0)\
 def selectionStart() -> int:
     """Returns the returns the start time of the current selection.
 
-    Returns:
-        `int`: start time
+    ## Returns:
+     * `int`: start time
     
     Included since API version 1
     """
@@ -106,8 +113,8 @@ def selectionStart() -> int:
 def selectionEnd() -> int:
     """Returns the returns the end time of the current selection.
 
-    Returns:
-        `int`: end time
+    ## Returns:
+     * `int`: end time
     
     Included since API version 1
     """
