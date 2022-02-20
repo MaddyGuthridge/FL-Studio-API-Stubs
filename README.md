@@ -15,6 +15,11 @@ fully understand how they work. These functions have a `HELP WANTED:` label in
 their documentation. If you happen to know how to use one, I'd love it if you 
 helped out by improving the documentation!
 
+# Online Reference
+
+The documentation is also available as an [online reference](https://miguelguthridge.github.io/FL-Midi-Stub/pdoc/src/index.html)
+if Image-Line's own documentation isn't up to scratch.
+
 # Differences to Official Implementation
 
 A small number of tweaks have been made to these stubs in order to ease code 
