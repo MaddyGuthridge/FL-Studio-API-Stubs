@@ -6,7 +6,7 @@ parameter values for plugins on the mixer and the channel rack.
 
 Module added in API version 8.
 
-NOTES:
+## NOTES:
  * `index` either refers to the index of the plugin on the channel rack, or the
    index of the mixer track containing the plugin on the mixer.
 

@@ -2,7 +2,7 @@
 
 Allows you to control and interact with FL Studio's UI.
 
-HELP WANTED:
+## HELP WANTED:
  * What do the return values mean?
 """
 
