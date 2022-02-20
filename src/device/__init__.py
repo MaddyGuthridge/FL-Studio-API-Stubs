@@ -8,7 +8,7 @@ def isAssigned() -> bool:
     """Returns `True` if an output interface is linked to the script, meaning
     that the script can send MIDI messages to that device.
 
-    Returns:
+    ## Returns:
      * `bool`: whether the device is assigned
     
     Included since API version 1
@@ -21,7 +21,7 @@ def getPortNumber() -> int:
     functions like `midiOutMsg()` send their data to) should be set to the value
     of the input port, which is returned by this function.
 
-    Returns:
+    ## Returns:
      * `int`: port number of the input device
     
     Included since API version 1
@@ -31,7 +31,7 @@ def getPortNumber() -> int:
 def getName() -> str:
     """Returns the name of the device.
 
-    Returns:
+    ## Returns:
      * `str`: device name
     
     Included since API version 7
@@ -45,18 +45,24 @@ def midiOutMsg(message: int, channel:int=None, data1:int=None, data2:int=None)\
     This can be done either through a single combined message, or in its 
     distinct components.
 
-    Args:
+    ## Args:
      * `message` (`int`): 
-            * the MIDI message to send (if sending a complete message):
-                * Lowest byte: `status`
-                * Middle byte: `data 1`
-                * Upper byte: `data 2`
-            * OR the message type (if sending a partial MIDI message, 
-              eg `0xB` for a CC message)
+          * the MIDI message to send (if sending a complete message):
+              * Lowest byte: `status`
+              
+              * Middle byte: `data 1`
+              
+              * Upper byte: `data 2`
+              
+          * OR the message type (if sending a partial MIDI message, 
+            eg `0xB` for a CC message)
+            
      * `channel` (`int`, optional): the channel to send the message to (if 
        sending a partial MIDI message)
+       
      * `data1` (`int`, optional): the note data value for the message (if
        sending a partial MIDI message)
+       
      * `data2` (`int`, optional): the velocity data value for the message (if
        sending a partial MIDI message)
     
@@ -69,8 +75,9 @@ def midiOutNewMsg(slotIndex: int, message: int) -> None:
     being sent has changed compared to the last message sent with the same 
     `slotIndex`.
 
-    Args:
+    ## Args:
      * `slotIndex` (`int`): index for MIDI message comparison
+     
      * `message` (`int`): message to potentially send
     
     Included since API version 1
@@ -79,7 +86,7 @@ def midiOutNewMsg(slotIndex: int, message: int) -> None:
 def midiOutSysex(message: bytes) -> None:
     """Send a SysEx message to the (linked) output device.
 
-    Args:
+    ## Args:
      * `message` (`str`): SysEx message to send
     
     Included since API version 1
@@ -90,15 +97,18 @@ def sendMsgGeneric(id: int, message: str, lastMsg: str, offset:int=0) -> str:
     
     WARNING: This function is depreciated
 
-    Args:
+    ## Args:
      * `id` (`int`): the first 6 bytes of the message (the end value `0xF7` is 
        added automatically)
+       
      * `message` (`str`): the text to send
+     
      * `lastMsg` (`str`): the string returned by the previous call to this
        function.
+       
      * `offset` (`int`, optional): ???. Defaults to 0.
 
-    Returns:
+    ## Returns:
      * `str`: value to use in the next call of this function
     
     Included since API version 1
@@ -108,7 +118,7 @@ def sendMsgGeneric(id: int, message: str, lastMsg: str, offset:int=0) -> str:
 def processMIDICC(eventData) -> None:
     """Lets FL Studio process a MIDI CC message.
 
-    Args:
+    ## Args:
      * `eventData` (`eventData`): FL MIDI Event to process.
     
     Included since API version 1
@@ -117,12 +127,15 @@ def processMIDICC(eventData) -> None:
 def forwardMIDICC(message: int, mode:int=1) -> None:
     """Forwards a MIDI CC message to the currently focused plugin.
 
-    Args:
+    ## Args:
      * `message` (`int`): MIDI message to forward
+     
      * `mode` (`int`, optional): Where to send the message:
-            * `0`: Send the message to all plugins
-            * `1` (default): ???
-            * `2`: Send the message to the selected channels
+          * `0`: Send the message to all plugins
+
+          * `1` (default): ???
+
+          * `2`: Send the message to the selected channels
     
     Included since API version 7
     """
@@ -130,7 +143,7 @@ def forwardMIDICC(message: int, mode:int=1) -> None:
 def directFeedback(eventData) -> None:
     """Send a received message to the linked output device
 
-    Args:
+    ## Args:
      * `eventData` (`eventData`): event to send
     
     Included since API version 1
@@ -140,9 +153,11 @@ def repeatMidiEvent(eventData, delay:int=300, rate:int=300) -> None:
     """Start repeatedly sending out the message in `eventData` every `rate`
     ms after `delay` ms.
 
-    Args:
+    ## Args:
      * `eventData` (`eventData`): event to repeat
+
      * `delay` (`int`, optional): initial delay before sending in ms. Defaults to 300.
+
      * `rate` (`int`, optional): time between each send in ms. Defaults to 300.
     
     Included since API version 1
@@ -161,11 +176,12 @@ def findEventID(controlId: int, flags:int=0) -> int:
 
     HELP WANTED: What does this do?
 
-    Args:
+    ## Args:
      * `controlId` (`int`): ???
+
      * `flags` (`int`, optional): ???. Defaults to 0.
 
-    Returns:
+    ## Returns:
      * `int`: event ID
     
     Included since API version 1
@@ -178,10 +194,10 @@ def getLinkedValue(eventID: int) -> float:
 
     HELP WANTED: What does this do?
 
-    Args:
+    ## Args:
      * `eventID` (`int`): eventID
 
-    Returns:
+    ## Returns:
      * `float`: Linked value
     
     Included since API version 1
@@ -193,10 +209,10 @@ def getLinkedValueString(eventID: int) -> str:
 
     HELP WANTED: What does this do?
 
-    Args:
+    ## Args:
      * `eventID` (`int`): eventID
 
-    Returns:
+    ## Returns:
      * `str`: Parameter value string
     
     Included since API version 10
@@ -208,10 +224,10 @@ def getLinkedParamName(eventID: int) -> str:
 
     HELP WANTED: What does this do?
 
-    Args:
+    ## Args:
      * `eventID` (`int`): eventID
 
-    Returns:
+    ## Returns:
      * `str`: Parameter name
     
     Included since API version 10
@@ -221,15 +237,18 @@ def getLinkedParamName(eventID: int) -> str:
 def getLinkedInfo(eventID: int) -> int:
     """Returns information about a linked control via `eventID`.
 
-    Args:
+    ## Args:
      * `eventID` (`int`): eventID
 
-    Returns:
+    ## Returns:
      * `int`: linked control info:
-            * `-1`: no linked control
-            * `Event_CantInterpolate` (`1`): ???
-            * `Event_Float` (`2`): ???
-            * `Event_Centered` (`4`): ???
+          * `-1`: no linked control
+
+          * `Event_CantInterpolate` (`1`): ???
+
+          * `Event_Float` (`2`): ???
+
+          * `Event_Centered` (`4`): ???
     
     Included since API version 1
     """
@@ -264,10 +283,10 @@ def isDoubleClick(index: int) -> bool:
     """Returns whether the function was called with the same index shortly 
     before, indicating a double click.
 
-    Args:
+    ## Args:
      * `index` (`int`): a unique value representing the current control
 
-    Returns:
+    ## Returns:
      * `bool`: whether the event was a double click
     
     Included since API version 1
@@ -288,8 +307,9 @@ def baseTrackSelect(index: int, step: int) -> None:
     
     HELP WANTED: What does this do?
 
-    Args:
+    ## Args:
      * `index` (`int`): ???
+     
      * `step` (`int`): ???
     
     Included since API version 1
@@ -300,7 +320,7 @@ def hardwareRefreshMixerTrack(index: int) -> None:
     
     HELP WANTED: What does this mean?
 
-    Args:
+    ## Args:
      * `index` (`int`): track index. `-1` refreshes all tracks.
     
     Included since API version 1
@@ -326,11 +346,13 @@ def dispatch(ctrlIndex: int, message: int, sysex:bytes=None) -> None:
     # receiveFrom=My Other Controller
     ```
     After this declaration, the script named "My Other Controller" will be able
-    to dispatch MIDI messages to the script named "My Controler".
+    to dispatch MIDI messages to the script named "My Controller".
 
-    Args:
+    ## Args:
      * `ctrlIndex` (`int`): index of the controller to dispatch to
+
      * `message` (`int`): MIDI message to send (or header of a SysEx message)
+
      * `sysex` (`bytes`, optional): SysEx data to send, if applicable
     
     Included since API version 1
@@ -339,7 +361,7 @@ def dispatch(ctrlIndex: int, message: int, sysex:bytes=None) -> None:
 def dispatchReceiverCount() -> int:
     """Returns the number of device scripts that this script can dispatch to.
 
-    Returns:
+    ## Returns:
      * `int`: number of available receiver devices.
     
     Included since API version 1
@@ -349,10 +371,10 @@ def dispatchReceiverCount() -> int:
 def dispatchGetReceiverPortNumber(ctrlIndex: int) -> int:
     """Returns the port of the receiver device specified by `ctrlIndex`.
 
-    Args:
+    ## Args:
      * `ctrlIndex` (`int`): device script to check
 
-    Returns:
+    ## Returns:
      * `int`: MIDI port associated with the reciever device
     
     Included since API version 5
@@ -369,7 +391,7 @@ def setMasterSync(value: int) -> None:
     explicitly requires it, as it can lead to unpredictable and sometimes broken
     behaviour.
     
-    ### Args:
+    ## Args:
     * `value` (`int`): Whether to enable (`1`) or disable (`0`)
     
     Included since API Version 18
@@ -385,7 +407,7 @@ def getMasterSync() -> bool:
     explicitly requires it, as it can lead to unpredictable and sometimes broken
     behaviour.
     
-    ### Returns:
+    ## Returns:
     * `bool`: Whether master sync is enabled (`1`) or disabled (`0`)
     
     Included since API Version 19
