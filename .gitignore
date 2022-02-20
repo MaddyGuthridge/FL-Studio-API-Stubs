@@ -113,3 +113,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 temp.py
+
+# Pdoc3 documentation
+pdoc/
