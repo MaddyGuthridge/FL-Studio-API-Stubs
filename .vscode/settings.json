@@ -1,8 +1,10 @@
 {
+    // "autoDocstring.docstringFormat": "numpy",
     "autoDocstring.customTemplatePath": "resources/docstring_template.mustache",
     "cSpell.words": [
         "Rect",
         "BBGGRR",
         "Sysex"
-    ]
+    ],
+    "editor.tabSize": 4,
 }

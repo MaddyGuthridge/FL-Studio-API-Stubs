@@ -7,39 +7,42 @@
 {{extendedSummaryPlaceholder}}
 
 {{#parametersExist}}
-### Args:
+## Args:
 {{#args}}
 * `{{var}}` (`{{typePlaceholder}}`): {{descriptionPlaceholder}}
+
 {{/args}}
 {{#kwargs}}
 * `{{var}}` (`{{typePlaceholder}}`, optional): {{descriptionPlaceholder}}. Defaults to `{{&default}}`.
+
 {{/kwargs}}
 
 {{/parametersExist}}
 {{#exceptionsExist}}
-### Raises:
+## Raises:
 {{#exceptions}}
 * `{{type}}`: {{descriptionPlaceholder}}
+
 {{/exceptions}}
 
 {{/exceptionsExist}}
 {{#returnsExist}}
-### Returns:
+## Returns:
 {{#returns}}
 * `{{typePlaceholder}}`: {{descriptionPlaceholder}}
+
 {{/returns}}
 
 {{/returnsExist}}
 {{#yieldsExist}}
-### Yields:
+## Yields:
 {{#yields}}
 * `{{typePlaceholder}}`: {{descriptionPlaceholder}}
+
 {{/yields}}
 
 {{/yieldsExist}}
 Included since API Version {{#placeholder}}_{{/placeholder}}
 
-### API Changes:
-* v{{#placeholder}}_{{/placeholder}}: {{#placeholder}}change{{/placeholder}}
-* v{{#placeholder}}_{{/placeholder}}: {{#placeholder}}change{{/placeholder}}
+## API Changes:
 * v{{#placeholder}}_{{/placeholder}}: {{#placeholder}}change{{/placeholder}}
