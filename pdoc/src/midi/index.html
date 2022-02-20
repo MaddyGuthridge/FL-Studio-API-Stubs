@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>src.midi API documentation</title>
+<meta name="description" content="Midi Module (included in FL Studio Python lib folder) …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.midi</code></h1>
+</header>
+<section id="section-intro">
+<p>Midi Module (included in FL Studio Python lib folder)</p>
+<p>Contains useful constants for working with MIDI events, and with FL Studio API
+flags.</p>
+<p>NOTE: This code is taken from FL Studio's Python lib folder and included in this
+package in the hope that it will be useful for script developers. It is not the
+creation of the repository authors, and no credit is claimed.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Midi Module (included in FL Studio Python lib folder)
+
+Contains useful constants for working with MIDI events, and with FL Studio API
+flags.
+
+NOTE: This code is taken from FL Studio&#39;s Python lib folder and included in this
+package in the hope that it will be useful for script developers. It is not the
+creation of the repository authors, and no credit is claimed.
+&#34;&#34;&#34;
+
+MaxInt = 2147483647
+
+# midi codes
+MIDI_NOTEON = 0x90
+MIDI_NOTEOFF = 0x80
+MIDI_KEYAFTERTOUCH = 0xA0
+MIDI_CONTROLCHANGE = 0xB0
+MIDI_PROGRAMCHANGE = 0xC0
+MIDI_CHANAFTERTOUCH = 0xD0
+MIDI_PITCHBEND = 0xE0
+MIDI_SYSTEMMESSAGE = 0xF0
+MIDI_BEGINSYSEX = 0xF0
+MIDI_MTCQUARTERFRAME = 0xF1
+MIDI_SONGPOSPTR = 0xF2
+MIDI_SONGSELECT = 0xF3
+MIDI_ENDSYSEX = 0xF7
+MIDI_TIMINGCLOCK = 0xF8
+MIDI_START = 0xFA
+MIDI_CONTINUE = 0xFB
+MIDI_STOP = 0xFC
+MIDI_ACTIVESENSING = 0xFE
+MIDI_SYSTEMRESET = 0xFF
+
+# processMIDIEvent flags
+PME_LiveInput = 1
+PME_System = 1 &lt;&lt; 1
+PME_System_Safe = 1 &lt;&lt; 2
+PME_PreviewNote = 1 &lt;&lt; 3
+PME_FromHost = 1 &lt;&lt; 4
+PME_FromMIDI = 1 &lt;&lt; 5
+PME_FromScript = 1 &lt;&lt; 6
+
+# playlist.triggerLiveClip flags
+TLC_MuteOthers = 1
+TLC_Fill = 1 &lt;&lt; 1
+TLC_Queue = 1 &lt;&lt; 2
+TLC_Release = 1 &lt;&lt; 5
+TLC_NoPlayCheck = 1 &lt;&lt; 6
+TLC_NoHardwareUpdate = 1 &lt;&lt; 30
+TLC_SecondPass = 1 &lt;&lt; 31 # system
+
+TLC_ColumnMode = 1 &lt;&lt; 7 # scene
+TLC_WeakColumnMode = 1 &lt;&lt; 8 # +scene
+TLC_TriggerCheckColumnMode = 1 &lt;&lt; 9 # same press mode
+
+TLC_TrackSnap = 0 &lt;&lt; 3
+TLC_GlobalSnap = 1 &lt;&lt; 3
+TLC_NoSnap = 2 &lt;&lt; 3
+
+TLC_SubNum_Normal = 0 &lt;&lt; 16
+TLC_SubNum_ClipPos = 1 &lt;&lt; 16
+TLC_SubNum_GroupNum = 2 &lt;&lt; 16
+TLC_SubNum_Read = 3 &lt;&lt; 16
+TLC_SubNum_Leave = 4 &lt;&lt; 16
+
+# playing modes
+PM_Stopped = 0
+PM_Playing = 1
+PM_Precount = 2
+
+# hardware dirty flags
+HW_Dirty_Mixer_Sel = 1
+HW_Dirty_Mixer_Display = 2
+HW_Dirty_Mixer_Controls = 4
+HW_Dirty_RemoteLinks = 16 # links have changed
+HW_Dirty_FocusedWindow = 32 # needed for controllers that reflect generic links
+HW_Dirty_Performance = 64 # performance layout (not playing state!) has changed
+HW_Dirty_LEDs = 256
+HW_Dirty_RemoteLinkValues = 512
+
+#song time flags
+SONGLENGTH_MS = 0
+SONGLENGTH_S = 1
+SONGLENGTH_ABSTICKS = 2
+SONGLENGTH_BARS = 3
+SONGLENGTH_STEPS = 4
+SONGLENGTH_TICKS = 5
+
+#TEventIDInfo
+Event_CantInterpolate = 0x00
+Event_Float = 0x02
+Event_Centered = 0x04
+
+#rec events
+REC_ItemRange = 0x10000
+REC_TrackRange = 0x10
+REC_EnvRange = 0x100
+REC_PluginBase = 0x8000
+REC_PluginRange = 0x8000
+REC_ItemMask = 0xFFFF
+
+REC_MaxChan = 0x1000
+REC_MaxPat = 0x1000
+REC_GlobalChan = REC_MaxChan - 1
+
+REC_GlobalPlugTrack = 128 - 1
+REC_GlobalPlug = (0x2000 &gt;&gt; 6) + REC_GlobalPlugTrack
+REC_MixerMask = 0x3FFFFF
+
+# event ID&#39;s     channels (up to 4096)
+REC_Chan_First = 0
+REC_Chan_Last = REC_MaxChan * REC_ItemRange - 1
+REC_Chan_Vol = REC_Chan_First
+REC_Chan_Pan = REC_Chan_First + 1
+REC_Chan_FCut = REC_Chan_First + 2
+REC_Chan_FRes = REC_Chan_First + 3
+REC_Chan_Pitch = REC_Chan_First + 4
+REC_Chan_FType = REC_Chan_First + 5
+REC_Chan_PortaTime = REC_Chan_First + 6
+REC_Chan_Mute = REC_Chan_First + 7
+REC_Chan_FXTrack = REC_Chan_First + 8
+REC_Chan_GateTime = REC_Chan_First + 9
+REC_Chan_Crossfade = REC_Chan_First + 10
+REC_Chan_TimeOfs = REC_Chan_First + 11
+REC_Chan_SwingMix = REC_Chan_First + 12
+REC_Chan_SmpOfs = REC_Chan_First + 13
+REC_Chan_StretchTime = REC_Chan_First + 14
+
+REC_Chan_OfsPan = REC_Chan_First + 16
+REC_Chan_OfsVol = REC_Chan_First + 17
+REC_Chan_OfsPitch = REC_Chan_First + 18
+REC_Chan_OfsFCut = REC_Chan_First + 19
+REC_Chan_OfsFRes = REC_Chan_First + 20
+
+# TS404
+REC_Chan_TS404_First = REC_Chan_First + 0x100 # same order as the 404 params
+REC_Chan_TS404_FCut = REC_Chan_TS404_First + 18
+REC_Chan_TS404_FRes = REC_Chan_TS404_First + 19
+REC_Chan_TS404_Env_First = REC_Chan_TS404_First + 31
+REC_Chan_TS404_Env_Last = REC_Chan_TS404_Env_First + 4
+REC_Chan_TS404_Last = REC_Chan_TS404_First + 0x100 - 1
+REC_Chan_TS404_Valid_First = 259
+REC_Chan_TS404_Valid_Last = 293
+
+# delay
+REC_Chan_Delay_First = REC_Chan_First + 0x200
+REC_Chan_Delay_Last = REC_Chan_Delay_First + 0x100 - 1
+REC_Chan_Delay_Time = REC_Chan_Delay_First + 4
+
+# arpeggiator
+REC_Chan_Arp_First = REC_Chan_First + 0x300
+REC_Chan_Arp_Last = REC_Chan_Arp_First + 0x100 - 1
+REC_Chan_Arp_Chord = REC_Chan_Arp_First + 2
+REC_Chan_Arp_Time = REC_Chan_Arp_First + 3
+REC_Chan_Arp_Gate = REC_Chan_Arp_First + 4
+REC_Chan_Arp_Repeat = REC_Chan_Arp_First + 5
+
+# misc
+REC_Chan_Misc = REC_Chan_First + 0x400
+
+# tracking
+REC_Chan_Track_First = REC_Chan_First + 0x500
+REC_Chan_Track_PLast = REC_Chan_Track_First + 2
+REC_Chan_Track_Last = REC_Chan_Track_First + 0x100 - 1
+
+# automation articulator
+REC_Chan_AC_First = REC_Chan_First + 0x600
+REC_Chan_AC_Last = REC_Chan_AC_First + 0x100 - 1
+
+# envelope
+REC_Chan_Env_First = REC_Chan_First + 0x1000
+REC_Chan_Env_LFO_First = REC_Chan_Env_First + 9
+REC_Chan_Env_MA = REC_Chan_Env_First + 8
+REC_Chan_Env_LFOA = REC_Chan_Env_First + 11
+REC_Chan_Env_Hole = REC_Chan_Env_LFOA + 2
+REC_Chan_Env_PLast = REC_Chan_Env_Hole + 3
+REC_Chan_Env_Last = REC_Chan_Env_First + 0x800 - 1
+
+# note events
+REC_Chan_Note_First = REC_Chan_First + 0x4000
+REC_Chan_Note_Num = 0x20
+REC_Chan_Note_Last = REC_Chan_Note_First + REC_Chan_Note_Num
+
+REC_Chan_NoteOn = REC_Chan_Note_First
+REC_Chan_NoteMask = 0xFFFFFFF0
+# slides
+REC_Chan_NoteSlideMask = 8
+REC_Chan_NoteSlide = REC_Chan_NoteOn + REC_Chan_NoteSlideMask
+REC_Chan_NoteSlideTo = REC_Chan_NoteSlide
+REC_Chan_NoteSlideOfs = REC_Chan_NoteSlide + 1
+# misc
+REC_Chan_NoteOff = REC_Chan_NoteOn + 0x20
+REC_Chan_PianoRoll = REC_Chan_NoteOn
+
+REC_Chan_Clip = REC_Chan_First + 0x5000
+
+# linked plugin (&gt;0x8000)
+REC_Chan_Plugin_First = REC_Chan_First + REC_PluginBase
+REC_Chan_Plugin_Last = REC_Chan_Plugin_First + REC_PluginRange - 1
+
+# *** effect plugins (up to 128 mixer tracks*64 plugins)
+# designed not to overlap with REC_Chan events, so that they can be merged later
+REC_Plug_First = 0x2000 * REC_ItemRange
+REC_Plug_Last = REC_Plug_First + 0x2000 * REC_ItemRange - 1
+
+# plugin common properties (up to 256)
+REC_Plug_General_First = REC_Plug_First + 0x2000 - 0x100
+REC_Plug_General_Last = REC_Plug_General_First + 0x40 - 1
+REC_Plug_Mute = REC_Plug_General_First # mute
+REC_Plug_MixLevel = REC_Plug_General_First + 1 # mix level
+
+# mixer track properties
+REC_Mixer_First = REC_Plug_General_First + 0x40
+REC_Mixer_Last = REC_Mixer_First + 0x800 - 1
+REC_Mixer_Send_First = REC_Mixer_First # sends (up to 128)
+REC_Mixer_Send_Last = REC_Mixer_Send_First + 0x80 - 1
+REC_Mixer_Vol = REC_Mixer_Send_Last + 1 # volume
+REC_Mixer_Pan = REC_Mixer_Vol + 1 # pan
+REC_Mixer_SS = REC_Mixer_Vol + 2 # stereo separation
+
+# EQ (up to 8 bands)
+REC_Mixer_EQ_First = REC_Mixer_Vol + 0x10
+REC_Mixer_EQ_Last = REC_Mixer_EQ_First + 8 * 3 - 1
+REC_Mixer_EQ_Gain = REC_Mixer_EQ_First
+REC_Mixer_EQ_Freq = REC_Mixer_EQ_First + 8
+REC_Mixer_EQ_Q = REC_Mixer_EQ_First + 8 * 2
+REC_Mixer_EQ_Type = REC_Mixer_EQ_First + 8 * 3
+
+# linked plugin (&gt;0x8000)
+REC_Plug_Plugin_First = REC_Plug_First + REC_PluginBase
+REC_Plug_Plugin_Last = REC_Plug_Plugin_First + REC_PluginRange - 1
+
+# global
+REC_Global_First = 0x4000 * REC_ItemRange
+REC_Global_Last = REC_Global_First + REC_ItemRange
+REC_MainVol = REC_Global_First
+REC_MainShuffle = REC_Global_First + 1
+REC_MainPitch = REC_Global_First + 2
+REC_MainFRes = REC_Global_First + 3 # obsolete
+REC_MainFCut = REC_Global_First + 4 # obsolete
+REC_Tempo = REC_Global_First + 5
+
+REC_TS404Delay_First = REC_Global_First + 0x100 # obsolete
+REC_TS404Delay_Feed = REC_TS404Delay_First
+REC_TS404Delay_Pan = REC_TS404Delay_First + 1
+REC_TS404Delay_Vol = REC_TS404Delay_First + 2
+REC_TS404Delay_Time = REC_TS404Delay_First + 3
+
+# playlist
+REC_Playlist_First = 0x5000 * REC_ItemRange
+REC_Playlist_Last = REC_Playlist_First + 0x2000 * REC_ItemRange - 1
+
+# patterns (up to 4096)
+REC_Pat_First = REC_Playlist_First
+REC_Pat_Last = REC_Pat_First + 0x1000 * REC_ItemRange - 1
+REC_Pat_Clip = REC_Pat_First + 0x5000 # clip item
+
+# all clips
+REC_PLClip_First = REC_Chan_First # this is not a typo, it includes channel and pattern clips
+REC_PLClip_Last = REC_Pat_Last
+
+# pattern instances at the top of the playlist
+REC_Playlist_Old = REC_Playlist_First # obsolete
+REC_Pat_Block = REC_Playlist_First + 0x1000 * REC_ItemRange # pattern block, but shouldn&#39;t happen anymore?
+REC_Playlist = REC_Playlist_Old
+
+# playlist tracks (up to 4096)
+REC_PLTrack_First = 0x6000 * REC_ItemRange
+REC_PLTrack_Last = REC_PLTrack_First + 0x1000 * REC_ItemRange - 1
+
+# reserved for future use
+REC_Reserved = 0x80000000
+
+# special commands
+# for remote control by external apps
+REC_Special = -1
+REC_StartStop = REC_Special # 0=Stop, 1=Start
+REC_SongPosition = REC_Special - 1 # get/set song position (in bars)
+REC_SongLength = REC_Special - 2 # get song length (in bars)
+# last tweaked
+REC_LastTweakedFirst = -32
+REC_LastTweakedLast = REC_LastTweakedFirst + 1
+# for the project browser
+REC_Proj_First = REC_Special - 0x100
+
+# process flags
+REC_UpdateValue = 1 &lt;&lt; 0
+REC_GetValue = 1 &lt;&lt; 1
+REC_ShowHint = 1 &lt;&lt; 2
+REC_UpdatePlugLabel = 1 &lt;&lt; 3
+REC_UpdateControl = 1 &lt;&lt; 4
+REC_FromMIDI = 1 &lt;&lt; 5
+REC_Store = 1 &lt;&lt; 6
+REC_SetChanged = 1 &lt;&lt; 7
+REC_SetTouched = 1 &lt;&lt; 8
+REC_Init = 1 &lt;&lt; 9
+REC_NoLink = 1 &lt;&lt; 10
+REC_InternalCtrl = 1 &lt;&lt; 11
+REC_PlugReserved = 1 &lt;&lt; 12
+REC_Smoothed = 1 &lt;&lt; 13
+REC_NoLastTweaked = 1 &lt;&lt; 14
+REC_NoSaveUndo = 1 &lt;&lt; 15
+
+# combo&#39;s
+REC_InitStore = REC_Init | REC_Store
+REC_Control = REC_UpdateValue | REC_UpdateControl | REC_ShowHint | REC_InitStore | REC_SetChanged | REC_SetTouched # called by a control
+REC_MIDIController = REC_Control | REC_FromMIDI # called by a MIDI controller from midi
+REC_Controller = REC_Control #for compatibility only, wrong name used
+
+REC_SetAll = REC_UpdateValue | REC_UpdateControl | REC_InitStore | REC_SetChanged | REC_SetTouched # called externally
+REC_Control = REC_UpdateValue | REC_ShowHint | REC_InitStore | REC_SetChanged | REC_UpdatePlugLabel | REC_SetTouched # called by the param&#39;s control
+REC_Visual = REC_GetValue | REC_UpdateControl | REC_UpdatePlugLabel # refresh visually
+REC_FromMixThread = REC_UpdateValue # change the value only
+REC_PlugCallback = REC_InitStore | REC_SetChanged | REC_SetTouched
+REC_FromInternalCtrl = REC_UpdateValue | REC_FromMIDI | REC_InternalCtrl # let&#39;s not prevent automation &amp; internal controllers at the same time
+REC_AnyInternalCtrl = REC_InternalCtrl | REC_Smoothed
+
+# ProcessRECEvent returns this when the ID is invalid
+REC_InvalidID = MaxInt
+
+# used when filtering events that have no ID&#39;s
+REC_None = MaxInt
+
+# Remote_FindEventID returns this when a generic link could be found, but it&#39;s not related to the focused window
+REC_SomeGeneric = REC_None - 1
+
+# Default mapping for the wrapper (to support mod wheel and aftertouch in VSTs)
+REC_WrapperModWheel = 0x0FFF9001
+REC_WrapperAfterTouch = 0x0FFF9080
+
+# recording flags for ProcessMIDIEvent
+PME_RECFlagsT = [REC_UpdateValue | REC_UpdateControl | REC_FromMIDI | REC_SetChanged | REC_SetTouched, REC_MIDIController]
+
+# Global transport commnads
+FPT_Jog = 0
+FPT_Jog2 = 1
+FPT_Strip = 2
+FPT_StripJog = 3
+FPT_StripHold = 4
+FPT_Previous = 5
+FPT_Next = 6
+FPT_PreviousNext = 7
+FPT_MoveJog = 8
+FPT_Play = 10
+FPT_Stop = 11
+FPT_Record = 12
+FPT_Rewind = 13
+FPT_FastForward = 14
+FPT_Loop = 15
+FPT_Mute = 16
+FPT_Mode = 17
+FPT_Undo = 20
+FPT_UndoUp = 21
+FPT_UndoJog = 22
+FPT_Punch = 30
+FPT_PunchIn = 31
+FPT_PunchOut = 32
+FPT_AddMarker = 33
+FPT_AddAltMarker = 34
+FPT_MarkerJumpJog = 35
+FPT_MarkerSelJog = 36
+
+FPT_Up = 40
+FPT_Down = 41
+FPT_Left = 42
+FPT_Right = 43
+FPT_HZoomJog = 44
+FPT_VZoomJog = 45
+FPT_Snap = 48
+FPT_SnapMode = 49
+
+FPT_Cut = 50
+FPT_Copy = 51
+FPT_Paste = 52
+FPT_Insert = 53
+FPT_Delete = 54
+FPT_NextWindow = 58
+FPT_WindowJog = 59
+
+FPT_F1 = 60
+FPT_F2 = 61
+FPT_F3 = 62
+FPT_F4 = 63
+FPT_F5 = 64
+FPT_F6 = 65
+FPT_F7 = 66
+FPT_F8 = 67
+FPT_F9 = 68
+FPT_F10 = 69
+FPT_F11 = 70
+FPT_F12 = 71
+
+FPT_Enter = 80
+FPT_Escape = 81
+FPT_Yes = 82
+FPT_No = 83
+
+FPT_Menu = 90
+FPT_ItemMenu = 91
+FPT_Save = 92
+FPT_SaveNew = 93
+
+FPT_PatternJog = 100
+FPT_TrackJog = 101
+FPT_ChannelJog = 102
+
+FPT_TempoJog = 105
+FPT_TapTempo = 106
+FPT_NudgeMinus = 107
+FPT_NudgePlus = 108
+
+FPT_Metronome = 110
+FPT_WaitForInput = 111
+FPT_Overdub = 112
+FPT_LoopRecord = 113
+FPT_StepEdit = 114
+FPT_CountDown = 115
+
+FPT_NextMixerWindow = 120
+FPT_MixerWindowJog = 121
+FPT_ShuffleJog = 122
+
+FPT_ArrangementJog = 123
+
+# Global transport flags
+GT_Cannot = -1
+GT_None = 0
+GT_Plugin = 1
+GT_Form = 2
+GT_Menu = 4
+GT_Global = 8
+GT_All = GT_Plugin | GT_Form | GT_Menu | GT_Global
+
+#
+TranzPort_OffOnT = [MIDI_NOTEON, MIDI_NOTEON + (0x7F &lt;&lt; 16)]
+TranzPort_OffBlinkT = [MIDI_NOTEON, MIDI_NOTEON + (1 &lt;&lt; 16)]
+TranzPort_OffOnBlinkT = [MIDI_NOTEON, MIDI_NOTEON + (0x7F &lt;&lt; 16), MIDI_NOTEON + (1 &lt;&lt; 16)]
+
+FromMIDI_Max = 1073741824
+FromMIDI_Half = FromMIDI_Max &gt;&gt; 1
+
+# resolution of endless knobs is assumed to be 24 ticks per revolution
+EKRes = 1 / 24
+
+
+
+TrackNum_Master = 0
+
+SM_Pat = 0
+SM_Song = 1
+
+# show ui 
+widMixer = 0
+widChannelRack = 1
+widPlaylist = 2
+widPianoRoll = 3
+widBrowser = 4
+
+curfxScrollToMakeVisible = 1
+StartcurfxCancelSmoothing = 1 &lt;&lt; 1
+curfxNoDeselectAll = 1 &lt;&lt; 2
+curfxMinimalLatencyUpdate = 1 &lt;&lt; 3
+
+fxSoloModeWithSourceTracks = 1
+fxSoloModeWithDestTracks = 1 &lt;&lt; 1
+fxSoloModeIgnorePrevious = 1 &lt;&lt; 2
+
+fxSoloSetOff = 0
+fxSoloSetOn = 1
+fxSoloToggle = 2
+fxSoloGetValue = 3
+
+EKRes = 1 / 24
+
+#get peaks mode
+PEAK_L = 0
+PEAK_R = 1
+PEAK_LR = 2
+PEAK_LR_INV = 3
+
+# routing mode
+ROUTE_ToThis = 0
+ROUTE_StartingFromThis = 1
+
+# scales
+HARMONICSCALE_MAJOR = 0
+HARMONICSCALE_HARMONICMINOR = 1
+HARMONICSCALE_MELODICMINOR = 2
+HARMONICSCALE_WHOLETONE = 3
+HARMONICSCALE_DIMINISHED = 4
+HARMONICSCALE_MAJORPENTATONIC = 5
+HARMONICSCALE_MINORPENTATONIC = 6
+HARMONICSCALE_JAPINSEN = 7
+HARMONICSCALE_MAJORBEBOP = 8
+HARMONICSCALE_DOMINANTBEBOP = 9
+HARMONICSCALE_BLUES = 10
+HARMONICSCALE_ARABIC = 11
+HARMONICSCALE_ENIGMATIC = 12
+HARMONICSCALE_NEAPOLITAN = 13
+HARMONICSCALE_NEAPOLITANMINOR = 14
+HARMONICSCALE_HUNGARIANMINOR = 15
+HARMONICSCALE_DORIAN = 16
+HARMONICSCALE_PHRYGIAN = 17
+HARMONICSCALE_LYDIAN = 18
+HARMONICSCALE_MIXOLYDIAN = 19
+HARMONICSCALE_AEOLIAN = 20
+HARMONICSCALE_LOCRIAN = 21
+HARMONICSCALE_CHROMATIC = 22
+
+HARMONICSCALE_LAST = 22
+
+MiddleNote_Default = 60
+FineTune_Default = 0
+
+DotVol_Default = 100
+DotPan_Default = 64
+DotVol_Max = 128
+DotNote_Default = MiddleNote_Default
+
+FFNEP_FindFirst = 0
+FFNEP_DontPromptName = 1 &lt;&lt; 1
+
+pPitch = 0
+pVelocity = 1
+pRelease = 2
+pFinePitch = 3
+pPan = 4
+pModX = 5
+pModY = 6
+pShift = 7
+
+CT_Sampler = 0
+CT_TS404 = 1
+CT_GenPlug = 2
+CT_Layer = 3
+CT_AudioClip = 4
+CT_AutoClip = 5
+
+CT_ColorT = (0x565148 + 0x141414 , 0x868178, 0x514F61, 0x474440, 0x787168, 0x787168)
+
+# event editor modes
+EE_EE = 0
+EE_PR = 1
+EE_PL = 2
+
+# snap modes
+Snap_Default = -2
+Snap_Line = 0
+Snap_Cell = 1
+Snap_None = 3
+Snap_SixthStep = 4
+Snap_FourthStep = 5
+Snap_ThirdStep = 6
+Snap_HalfStep = 7
+Snap_Step = 8
+Snap_SixthBeat = 9
+Snap_FourthBeat = 10
+Snap_ThirdBeat = 11
+Snap_HalfBeat = 12
+Snap_Beat = 13
+
+Snap_SixthBar  = 14
+Snap_FourthBar = 15
+Snap_ThirdBar  = 16
+Snap_HalfBar   = 17
+
+Snap_Bar = 14
+Snap_Events = 16
+Snap_Markers = 17
+
+Snap_ForceCell = 1 &lt;&lt; 8
+Snap_AltNone = 2 &lt;&lt; 8
+Snap_FlagsMask = 0xFF
+
+#
+TN_Master = 0
+TN_FirstIns = 1
+TN_LastIns = 2
+TN_Sel = 3
+
+#undo 
+UF_None = 0
+
+UF_EE = 1
+UF_PR = 2
+UF_PL = 4
+UF_EEPR = UF_EE | UF_PR
+
+UF_Knob = 1 &lt;&lt; 5
+UF_SS = UF_PR
+UF_AudioRec = 1 &lt;&lt; 8
+UF_AutoClip = 1 &lt;&lt; 9
+UF_PRMarker = 1 &lt;&lt; 10
+UF_PLMarker = 1 &lt;&lt; 11
+UF_Plugin = 1 &lt;&lt; 12
+UF_SSLooping = 1 &lt;&lt; 13
+
+CC_Normal = 0 # standard CC
+CC_Special = 128 # non-CC are mapped to CC after 128
+CC_PitchBend = 255
+CC_KeyAfterTouch = 254
+CC_ChanAfterTouch = 253
+CC_Note = 256 # when notes are linked to parameters
+CC_Free = 256 + 128
+CC_PLTrack = CC_Free # playlist track XY control (performance mode)
+
+# song tick options
+ST_Int = 0
+ST_Beat = 1
+ST_PGB = 2
+
+# Live block status
+LB_Status_Default = 0
+LB_Status_Simple = 1
+LB_Status_Simplest = 2
+
+# channel looping settings for a given pattern (see TChannelLoopInfo)
+ssLoopOff = 0
+ssLoopNextStep = -1
+ssLoopNextBeat = -2
+ssLoopNextBar = -3
+
+EventNameT = [&#39;Note Off&#39;, &#39;Note On &#39;, &#39;Key Aftertouch&#39;, &#39;Control Change&#39;,&#39;Program Change&#39;,  &#39;Channel Aftertouch&#39;, &#39;Pitch Bend&#39;, &#39;System Message&#39; ]
+ChannelDefaultVolume = 1000 / 1280
+TackDefaultVolume = 800 / 1000
+
+GC_BackgroundColor = 0
+GC_Semitone = 1
+
+FPN_Param = 0
+
+# Pickup Follow Modes
+PIM_None = 0
+PIM_AlwaysPickup = 1
+PIM_FollowGlobal = 2
+    
+def EncodeRemoteControlID(PortNum, ChanNum, CCNum):
+  return CCNum + (ChanNum &lt;&lt; 16) + ((PortNum + 1) &lt;&lt; 22)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="src.midi.EncodeRemoteControlID"><code class="name flex">
+<span>def <span class="ident">EncodeRemoteControlID</span></span>(<span>PortNum, ChanNum, CCNum)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def EncodeRemoteControlID(PortNum, ChanNum, CCNum):
+  return CCNum + (ChanNum &lt;&lt; 16) + ((PortNum + 1) &lt;&lt; 22)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src" href="../index.html">src</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="src.midi.EncodeRemoteControlID" href="#src.midi.EncodeRemoteControlID">EncodeRemoteControlID</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
