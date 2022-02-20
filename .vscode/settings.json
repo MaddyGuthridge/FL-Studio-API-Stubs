@@ -4,5 +4,6 @@
         "Rect",
         "BBGGRR",
         "Sysex"
-    ]
+    ],
+    "editor.tabSize": 4,
 }
