@@ -264,9 +264,28 @@ def getVersion() -> int:
     return 15
 
 def processRECEvent(eventId: int, value: int, flags: int) -> int:
-    """Processes a recording event.
-    
-    HELP WANTED: What does this do?
+    """Processes a REC event, usually changing an automatable value.
+
+    ## Try to achieve your task with other API functions first!
+
+    This part of FL's scripting API is incomplete, poorly documented, and
+    filled with hidden bugs. REC events expose more controls inside FL Studio,
+    while being *much* more confusing than other parts of the API.
+
+    "REC events" represent every automatable control in FL studio.
+    Each "REC" is identified with a unique integer, "event ID".
+    FL Studio reserves a range of event IDs for each channel, mixer track, plugin,
+    and so on.
+
+    REC events have some other properties available:
+
+     * Descriptive name: `device.getLinkedParamName`
+
+     * Current value: `device.getLinkedValue`
+
+     * Current value as an appropriately formatted string: `device.getLinkedValueString`
+
+    HELP WANTED: More information from Image-Line? More details on what `flags` can do?
 
     ## Args:
      * `eventId` (`int`): Refer to the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#RecEventParams)
@@ -277,7 +296,7 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
 
     ## Returns:
      * `int`: Unknown
-    
+
     Included since API version 7
     """
     return 0
