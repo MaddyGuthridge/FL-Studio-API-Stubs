@@ -40,8 +40,8 @@ def saveUndo(undoName: str, flags: int, update:int=1) -&gt; None:
 
     ## Args:
      * `undoName` (`str`): a descriptive name for the undo point
-     
-     * `flags` (`int`): Any combination of the following flags, combined using 
+
+     * `flags` (`int`): Any combination of the following flags, combined using
        the logical or (`|`) operator:
           * `UF_None` (`0`): No flags
 
@@ -68,7 +68,7 @@ def saveUndo(undoName: str, flags: int, update:int=1) -&gt; None:
           * `UF_Reset` (`65536`): Reset undo history
 
      * `update` (`int`, optional): ???. Defaults to 1.
-    
+
     Included since API version 1
     &#34;&#34;&#34;
 
@@ -78,7 +78,7 @@ def undo() -&gt; int:
 
     ## Returns:
      * `int`: ???
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
@@ -88,7 +88,7 @@ def undoUp() -&gt; int:
 
     ## Returns:
      * `int`: ?
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
@@ -98,7 +98,7 @@ def undoDown() -&gt; int:
 
     ## Returns:
      * `int`: ?
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
@@ -112,30 +112,30 @@ def undoUpDown(value: int) -&gt; int:
 
     ## Returns:
      * `int`: ?
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
 
 def restoreUndo() -&gt; int:
     &#34;&#34;&#34;???
-    
+
     This seems to behave in the same way as `undo()`.
-    
+
     HELP WANTED: What does this do?
 
     ## Returns:
      * `int`: ?
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
 
 def restoreUndoLevel(level: int) -&gt; int:
     &#34;&#34;&#34;???
-    
+
     This seems to behave in the same way as `undo()`.
-    
+
     HELP WANTED: What does this do? What is the parameter for?
 
     ## Args:
@@ -143,7 +143,7 @@ def restoreUndoLevel(level: int) -&gt; int:
 
     ## Returns:
      * `int`: ?
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
@@ -157,7 +157,7 @@ def getUndoLevelHint() -&gt; str:
           * numerator: position in history (`1` is most recent)
 
           * denominator: number of elements in history
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return &#34;&#34;
@@ -170,17 +170,17 @@ def getUndoHistoryPos() -&gt; int:
 
     ## Returns:
      * `int`: number of elements in undo history
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
 
-def getundoHistoryCount() -&gt; int:
+def getUndoHistoryCount() -&gt; int:
     &#34;&#34;&#34;Returns the length of the undo history
 
     ## Returns:
      * `int`: number of elements in undo history
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
@@ -191,7 +191,7 @@ def getUndoHistoryLast() -&gt; int:
 
     ## Returns:
      * `int`: position in undo history
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
@@ -202,7 +202,7 @@ def setUndoHistoryPos(index: int) -&gt; None:
 
     ## Args:
      * `index` (`int`): number of elements to leave at the start of the history
-    
+
     Included since API version 1
     &#34;&#34;&#34;
 
@@ -212,7 +212,7 @@ def setUndoHistoryCount(value: int) -&gt; None:
 
     ## Args:
      * `value` (`int`): number of elements to leave at the end of the history
-    
+
     Included since API version 1
     &#34;&#34;&#34;
 
@@ -222,19 +222,19 @@ def setUndoHistoryLast(index: int) -&gt; None:
 
     ## Args:
      * `index` (`int`): new position in undo history
-    
+
     Included since API version 1
     &#34;&#34;&#34;
 
 def getRecPPB() -&gt; int:
     &#34;&#34;&#34;Returns the current timebase (PPQN) multiplied by the number of beats in
     a bar.
-    
+
     NOTE: This DOES NOT respect time signature markers
 
     ## Returns:
      * `int`: timebase * numerator
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
@@ -244,7 +244,7 @@ def getRecPPQ() -&gt; int:
 
     ## Returns:
      * `int`: timebase
-    
+
     Included since API version 8
     &#34;&#34;&#34;
     return 0
@@ -254,7 +254,7 @@ def getUseMetronome() -&gt; bool:
 
     ## Returns:
      * `bool`: metronome enabled
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return False
@@ -264,7 +264,7 @@ def getPrecount() -&gt; bool:
 
     ## Returns:
      * `bool`: precount before recording
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return False
@@ -279,7 +279,7 @@ def getChangedFlag() -&gt; int:
           * `1`: Changed since last save
 
           * `2`: Changed since last save, but unchanged since last autosave
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
@@ -290,14 +290,14 @@ def getVersion() -&gt; int:
 
     ## Returns:
      * `int`: version number
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return _getValue(&#34;api_version&#34;)
 
 def processRECEvent(eventId: int, value: int, flags: int) -&gt; int:
     &#34;&#34;&#34;Processes a recording event.
-    
+
     HELP WANTED: What does this do?
 
     ## Args:
@@ -309,26 +309,26 @@ def processRECEvent(eventId: int, value: int, flags: int) -&gt; int:
 
     ## Returns:
      * `int`: Unknown
-    
+
     Included since API version 7
     &#34;&#34;&#34;
     return 0
 
 def dumpScoreLog(time: int, silent:int=0) -&gt; None:
     &#34;&#34;&#34;Dump score log
-    
+
     ## Args:
      * `time` (`int`): ?
 
      * `silent` (`int`): Whether the empty score message is suppressed (`1`) or
        not (`0`)
-    
+
     Included since API version 15
     &#34;&#34;&#34;
 
 def clearLog() -&gt; None:
     &#34;&#34;&#34;Clear the score log
-    
+
     Included since API version 15
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -352,7 +352,7 @@ def clearLog() -&gt; None:
 </summary>
 <pre><code class="python">def clearLog() -&gt; None:
     &#34;&#34;&#34;Clear the score log
-    
+
     Included since API version 15
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -379,13 +379,13 @@ not (<code>0</code>)</p>
 </summary>
 <pre><code class="python">def dumpScoreLog(time: int, silent:int=0) -&gt; None:
     &#34;&#34;&#34;Dump score log
-    
+
     ## Args:
      * `time` (`int`): ?
 
      * `silent` (`int`): Whether the empty score message is suppressed (`1`) or
        not (`0`)
-    
+
     Included since API version 15
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -427,7 +427,7 @@ not (<code>0</code>)</p>
           * `1`: Changed since last save
 
           * `2`: Changed since last save, but unchanged since last autosave
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -452,7 +452,7 @@ not (<code>0</code>)</p>
 
     ## Returns:
      * `bool`: precount before recording
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return False</code></pre>
@@ -477,12 +477,12 @@ a bar.</p>
 <pre><code class="python">def getRecPPB() -&gt; int:
     &#34;&#34;&#34;Returns the current timebase (PPQN) multiplied by the number of beats in
     a bar.
-    
+
     NOTE: This DOES NOT respect time signature markers
 
     ## Returns:
      * `int`: timebase * numerator
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -507,8 +507,33 @@ a bar.</p>
 
     ## Returns:
      * `int`: timebase
-    
+
     Included since API version 8
+    &#34;&#34;&#34;
+    return 0</code></pre>
+</details>
+</dd>
+<dt id="src.general.getUndoHistoryCount"><code class="name flex">
+<span>def <span class="ident">getUndoHistoryCount</span></span>(<span>) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the length of the undo history</p>
+<h2 id="returns">Returns:</h2>
+<ul>
+<li><code>int</code>: number of elements in undo history</li>
+</ul>
+<p>Included since API version 1</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getUndoHistoryCount() -&gt; int:
+    &#34;&#34;&#34;Returns the length of the undo history
+
+    ## Returns:
+     * `int`: number of elements in undo history
+
+    Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
 </details>
@@ -534,7 +559,7 @@ position is <code>0</code>, with earlier points in the history having higher ind
 
     ## Returns:
      * `int`: position in undo history
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -545,7 +570,7 @@ position is <code>0</code>, with earlier points in the history having higher ind
 </code></dt>
 <dd>
 <div class="desc"><p>Returns the length of the undo history</p>
-<p>HELP WANTED: This seems to behave the same as <code>getUndoHistoryCount()</code>.
+<p>HELP WANTED: This seems to behave the same as <code><a title="src.general.getUndoHistoryCount" href="#src.general.getUndoHistoryCount">getUndoHistoryCount()</a></code>.
 What's the difference?</p>
 <h2 id="returns">Returns:</h2>
 <ul>
@@ -564,7 +589,7 @@ What's the difference?</p>
 
     ## Returns:
      * `int`: number of elements in undo history
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -604,7 +629,7 @@ history as well as the total length of it.</p>
           * numerator: position in history (`1` is most recent)
 
           * denominator: number of elements in history
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return &#34;&#34;</code></pre>
@@ -629,7 +654,7 @@ history as well as the total length of it.</p>
 
     ## Returns:
      * `bool`: metronome enabled
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return False</code></pre>
@@ -656,35 +681,10 @@ version, rather than the FL Studio version</p>
 
     ## Returns:
      * `int`: version number
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return _getValue(&#34;api_version&#34;)</code></pre>
-</details>
-</dd>
-<dt id="src.general.getundoHistoryCount"><code class="name flex">
-<span>def <span class="ident">getundoHistoryCount</span></span>(<span>) ‑> int</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Returns the length of the undo history</p>
-<h2 id="returns">Returns:</h2>
-<ul>
-<li><code>int</code>: number of elements in undo history</li>
-</ul>
-<p>Included since API version 1</p></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def getundoHistoryCount() -&gt; int:
-    &#34;&#34;&#34;Returns the length of the undo history
-
-    ## Returns:
-     * `int`: number of elements in undo history
-    
-    Included since API version 1
-    &#34;&#34;&#34;
-    return 0</code></pre>
 </details>
 </dd>
 <dt id="src.general.processRECEvent"><code class="name flex">
@@ -716,7 +716,7 @@ version, rather than the FL Studio version</p>
 </summary>
 <pre><code class="python">def processRECEvent(eventId: int, value: int, flags: int) -&gt; int:
     &#34;&#34;&#34;Processes a recording event.
-    
+
     HELP WANTED: What does this do?
 
     ## Args:
@@ -728,7 +728,7 @@ version, rather than the FL Studio version</p>
 
     ## Returns:
      * `int`: Unknown
-    
+
     Included since API version 7
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -752,14 +752,14 @@ version, rather than the FL Studio version</p>
 </summary>
 <pre><code class="python">def restoreUndo() -&gt; int:
     &#34;&#34;&#34;???
-    
+
     This seems to behave in the same way as `undo()`.
-    
+
     HELP WANTED: What does this do?
 
     ## Returns:
      * `int`: ?
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -787,9 +787,9 @@ version, rather than the FL Studio version</p>
 </summary>
 <pre><code class="python">def restoreUndoLevel(level: int) -&gt; int:
     &#34;&#34;&#34;???
-    
+
     This seems to behave in the same way as `undo()`.
-    
+
     HELP WANTED: What does this do? What is the parameter for?
 
     ## Args:
@@ -797,7 +797,7 @@ version, rather than the FL Studio version</p>
 
     ## Returns:
      * `int`: ?
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -869,8 +869,8 @@ the logical or (<code>|</code>) operator:</p>
 
     ## Args:
      * `undoName` (`str`): a descriptive name for the undo point
-     
-     * `flags` (`int`): Any combination of the following flags, combined using 
+
+     * `flags` (`int`): Any combination of the following flags, combined using
        the logical or (`|`) operator:
           * `UF_None` (`0`): No flags
 
@@ -897,7 +897,7 @@ the logical or (<code>|</code>) operator:</p>
           * `UF_Reset` (`65536`): Reset undo history
 
      * `update` (`int`, optional): ???. Defaults to 1.
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -923,7 +923,7 @@ the logical or (<code>|</code>) operator:</p>
 
     ## Args:
      * `value` (`int`): number of elements to leave at the end of the history
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -949,7 +949,7 @@ recent element and earlier points have higher indexes.</p>
 
     ## Args:
      * `index` (`int`): new position in undo history
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -975,7 +975,7 @@ recent element and earlier points have higher indexes.</p>
 
     ## Args:
      * `index` (`int`): number of elements to leave at the start of the history
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -1001,7 +1001,7 @@ undo history is at the most recent, it will undo, otherwise, it will redo.</p>
 
     ## Returns:
      * `int`: ???
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -1026,7 +1026,7 @@ undo history is at the most recent, it will undo, otherwise, it will redo.</p>
 
     ## Returns:
      * `int`: ?
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -1051,7 +1051,7 @@ undo history is at the most recent, it will undo, otherwise, it will redo.</p>
 
     ## Returns:
      * `int`: ?
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -1085,7 +1085,7 @@ undo)</li>
 
     ## Returns:
      * `int`: ?
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -1115,12 +1115,12 @@ undo)</li>
 <li><code><a title="src.general.getPrecount" href="#src.general.getPrecount">getPrecount</a></code></li>
 <li><code><a title="src.general.getRecPPB" href="#src.general.getRecPPB">getRecPPB</a></code></li>
 <li><code><a title="src.general.getRecPPQ" href="#src.general.getRecPPQ">getRecPPQ</a></code></li>
+<li><code><a title="src.general.getUndoHistoryCount" href="#src.general.getUndoHistoryCount">getUndoHistoryCount</a></code></li>
 <li><code><a title="src.general.getUndoHistoryLast" href="#src.general.getUndoHistoryLast">getUndoHistoryLast</a></code></li>
 <li><code><a title="src.general.getUndoHistoryPos" href="#src.general.getUndoHistoryPos">getUndoHistoryPos</a></code></li>
 <li><code><a title="src.general.getUndoLevelHint" href="#src.general.getUndoLevelHint">getUndoLevelHint</a></code></li>
 <li><code><a title="src.general.getUseMetronome" href="#src.general.getUseMetronome">getUseMetronome</a></code></li>
 <li><code><a title="src.general.getVersion" href="#src.general.getVersion">getVersion</a></code></li>
-<li><code><a title="src.general.getundoHistoryCount" href="#src.general.getundoHistoryCount">getundoHistoryCount</a></code></li>
 <li><code><a title="src.general.processRECEvent" href="#src.general.processRECEvent">processRECEvent</a></code></li>
 <li><code><a title="src.general.restoreUndo" href="#src.general.restoreUndo">restoreUndo</a></code></li>
 <li><code><a title="src.general.restoreUndoLevel" href="#src.general.restoreUndoLevel">restoreUndoLevel</a></code></li>
