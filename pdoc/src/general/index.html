@@ -33,6 +33,8 @@
 Handles general interactions with FL Studio
 &#34;&#34;&#34;
 
+from fl_context import getValue as _getValue
+
 def saveUndo(undoName: str, flags: int, update:int=1) -&gt; None:
     &#34;&#34;&#34;Save an undo point into FL Studio&#39;s history.
 
@@ -291,7 +293,7 @@ def getVersion() -&gt; int:
     
     Included since API version 1
     &#34;&#34;&#34;
-    return 15
+    return _getValue(&#34;api_version&#34;)
 
 def processRECEvent(eventId: int, value: int, flags: int) -&gt; int:
     &#34;&#34;&#34;Processes a recording event.
@@ -657,7 +659,7 @@ version, rather than the FL Studio version</p>
     
     Included since API version 1
     &#34;&#34;&#34;
-    return 15</code></pre>
+    return _getValue(&#34;api_version&#34;)</code></pre>
 </details>
 </dd>
 <dt id="src.general.getundoHistoryCount"><code class="name flex">
