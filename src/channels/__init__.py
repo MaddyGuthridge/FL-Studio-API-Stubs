@@ -4,7 +4,7 @@ Allows you to control and interact with the FL Studio Channel Rack, and with
 instrument channels.
 
 ## NOTES:
- * In this documentation, an index respects channel groups, whereas a 
+ * In this documentation, an index respects channel groups, whereas a
    global index does not.
 
  * Channels are zero-indexed.
@@ -18,19 +18,19 @@ def channelNumber(canBeNone: int = 0, offset: int = 0) -> int:
     selected channel where n is `offset` + 1. If n is greater than the number of
     selected channels, the global index of the last selected channel will be
     returned.
-    
+
     If `canBeNone` is `1`, no selection will return `-1`. Otherwise, no selection
     will return `0` (representing the first channel).
 
     ## Args:
      * `canBeNone` (`int`, optional): Whether the function will return `-1` or `0`
        when there is no selection. Defaults to `0` (returning `0`).
-       
+
      * `offset` (`int`, optional): return other selected channels after offset. Defaults to 0.
 
     ## Returns:
      * `int`: global index of first selected channel
-    
+
     Included since API version 1
     """
     return 0
@@ -41,13 +41,13 @@ def channelCount(mode: int = 0) -> int:
     controlled by the `mode` flag.
 
     ## Args:
-     * `mode` (`int`, optional): Whether the number of channels respects groups. 
+     * `mode` (`int`, optional): Whether the number of channels respects groups.
        Defaults to 0.
 
     ## Returns:
      * `int`: number of channels
-    
-    Included since API version 1. (updated with optional parameter in API 
+
+    Included since API version 1. (updated with optional parameter in API
     version 3).
     """
     return 0
@@ -61,7 +61,7 @@ def getChannelName(index: int) -> str:
 
     ## Returns:
      * `str`: channel name
-    
+
     Included since API version 1
     """
     return ""
@@ -75,9 +75,9 @@ def setChannelName(index: int, name: str) -> None:
 
     ## Args:
      * `index` (`int`): index of channel
-     
+
      * `name` (`str`): new name for channel
-    
+
     Included since API version 1
     """
 
@@ -87,9 +87,9 @@ def getChannelColor(index: int) -> int:
 
     Note that colours can be split into or built from components using the
     functions provided in the module `utils`
-    
+
     * `ColorToRGB()`
-    
+
     * `RGBToColor()`
 
     ## Args:
@@ -97,7 +97,7 @@ def getChannelColor(index: int) -> int:
 
     ## Returns:
      * `int`: channel colour (0x--BBGGRR)
-    
+
     Included since API version 1
     """
     return 0
@@ -108,15 +108,15 @@ def setChannelColor(index: int, color: int) -> None:
 
     Note that colours can be split into or built from components using the
     functions provided in the module `utils`
-    
+
     * `ColorToRGB()`
-    
+
     * `RGBToColor()`
 
     ## Args:
      * `index` (`int`): index of channel
      * `colour` (`int`): new colour for channel (0x--BBGGRR)
-    
+
     Included since API version 1
     """
 
@@ -129,7 +129,7 @@ def isChannelMuted(index: int) -> bool:
 
     ## Returns:
      * `bool`: mute status
-    
+
     Included since API version 1
     """
     return False
@@ -151,7 +151,7 @@ def isChannelSolo(index: int) -> bool:
 
     ## Returns:
      * `bool`: solo status
-    
+
     Included since API version 1
     """
     return False
@@ -162,7 +162,7 @@ def soloChannel(index: int) -> None:
 
     ## Args:
      * `index` (`int`): index of channel
-    
+
     Included since API version 1
     """
 
@@ -175,13 +175,13 @@ def getChannelVolume(index: int, mode: int = 0) -> float:
 
     ## Args:
      * `index` (`int`): index of channel
-     
+
      * `mode` (`int`, optional): whether to return as a float between 0 and 1
        of a value in dB
 
     ## Returns:
      * `float`: channel volume
-    
+
     Included since API version 1
     """
     return 0.0
@@ -200,14 +200,14 @@ def setChannelVolume(index: int, volume: float, pickupMode: int = midi.PIM_None)
 
      * `pickupMode` (`int`, optional): define the pickup behaviour. Refer to
        the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
-    
+
     Included since API version 1
     """
 
 
 def getChannelPan(index: int) -> float:
-    """Returns the normalised pan of the channel at `index`, where `-1.0` is 
-    100% left, and `1.0` is 100% right. Note that the default pan for channels 
+    """Returns the normalised pan of the channel at `index`, where `-1.0` is
+    100% left, and `1.0` is 100% right. Note that the default pan for channels
     is `0.0` (centre).
 
     ## Args:
@@ -215,7 +215,7 @@ def getChannelPan(index: int) -> float:
 
     ## Returns:
      * `float`: channel pan
-    
+
     Included since API version 1
     """
     return 0.0
@@ -234,30 +234,30 @@ def setChannelPan(index: int, pan: float, pickupMode: int = midi.PIM_None) -> No
 
      * `pickupMode` (`int`, optional): define the pickup behaviour. Refer to
        the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
-    
+
     Included since API version 1
     """
 
 
 def getChannelPitch(index: int, mode: int = 0) -> 'float | int':
     """Returns the pitch of the channel at `index`. The `mode` parameter is used
-    to determine the type of pitch returned. 
-    
+    to determine the type of pitch returned.
+
     HELP WANTED: What do the `mode` parameter options mean?
-    
+
     ## Args:
     * `index` (`int`): index of channel
-     
+
     * `mode` (`int`, optional):
           * `1`: return value in semitones
 
           * `2`: return value pitch range???
-    
+
     ## Returns:
      * `float`: channel pitch (when `mode` is `1`)
-     
+
      * `int`: channel pitch range (when `mode` is `2`) ???
-    
+
     Included since API version 8
     """
     return 0
@@ -267,9 +267,9 @@ def setChannelPitch(index: int, value: float, mode: int = 0, pickupMode: int = m
     """Sets the pitch of the channel at `index` to value. The `mode` parameter is used
     to determine the type of pitch set. Use the pickup mode flag to set pickup
     options.
-    
+
     HELP WANTED: What do the `mode` parameter options mean?
-    
+
     ## Args:
      * `index` (`int`): index of channel
 
@@ -282,7 +282,7 @@ def setChannelPitch(index: int, value: float, mode: int = 0, pickupMode: int = m
 
      * `pickupMode` (`int`, optional): define the pickup behaviour. Refer to
        the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
-    
+
     Included since API version 8
     """
     return 0
@@ -291,11 +291,11 @@ def setChannelPitch(index: int, value: float, mode: int = 0, pickupMode: int = m
 def getChannelType(index: int) -> int:
     """
     Returns the type of instrument loaded into the channel rack at `index`
-    
+
     ## Args:
     * `index` (`int`): index of channel
-    
-    
+
+
     ## Returns:
     * `int`: type of channel:
           * `GT_Sampler` (`0`): internal sampler
@@ -307,14 +307,14 @@ def getChannelType(index: int) -> int:
           * `GT_Layer` (`3`): layer (refer to the [FL Studio Manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/chansettings_layer.htm))
 
           * `GT_AutoClip` (`4`): automation clip
-    
+
     Included since API Version 19
     """
     return 0
 
 
 def isChannelSelected(index: int) -> bool:
-    """Returns whether the channel at `index` is selected (not respecting 
+    """Returns whether the channel at `index` is selected (not respecting
     channel groups).
 
     ## Args:
@@ -322,7 +322,7 @@ def isChannelSelected(index: int) -> bool:
 
     ## Returns:
      * `bool`: whether the channel is selected
-    
+
     Included since API version 1
     """
     return False
@@ -333,14 +333,14 @@ def selectChannel(index: int, value: int = -1) -> None:
 
     ## Args:
      * `index` (`int`): channel index
-     
-     * `value` (`int`, optional): Whether to select or deselect the channel. 
+
+     * `value` (`int`, optional): Whether to select or deselect the channel.
           * `-1` (default): Toggle
 
           * `0` : Deselect
 
           * `1`: Select
-    
+
     Included since API version 1
     """
 
@@ -351,7 +351,7 @@ def selectOneChannel(index: int) -> None:
 
     ## Args:
      * `index` (`int`): channel index
-    
+
     Included since API version 8
     """
 
@@ -362,19 +362,19 @@ def selectedChannel(canBeNone: int = 0, offset: int = 0, indexGlobal: int = 0) -
     selected channels, the global index of the last selected channel will be
     returned. If `indexGlobal` is set to `1`, this will replicate the behaviour
     of `channelNumber()` by returning global indexes.
-    
-    NOTE: This function replaces the functionality of `channelNumber()` 
-    entirely, with the added functionality of providing indexes respecting 
+
+    NOTE: This function replaces the functionality of `channelNumber()`
+    entirely, with the added functionality of providing indexes respecting
     groups (when `indexGlobal` is not set).
-    
+
     If `canBeNone` is `1`, no selection will return `-1`. Otherwise, no selection
     will return `0` (representing the first channel).
 
     ## Args:
-     * `canBeNone` (`int`, optional): Whether the function will return `-1` or 
+     * `canBeNone` (`int`, optional): Whether the function will return `-1` or
        `0` when there is no selection. Defaults to `0` (returning `0`).
 
-     * `offset` (`int`, optional): return other selected channels after offset. 
+     * `offset` (`int`, optional): return other selected channels after offset.
        Defaults to 0.
 
      * `indexGlobal` (`int`, optional): Whether to return the group index (`0`)
@@ -382,7 +382,7 @@ def selectedChannel(canBeNone: int = 0, offset: int = 0, indexGlobal: int = 0) -
 
     ## Returns:
      * `int`: index of first selected channel
-    
+
     Included since API version 5
     """
     return 0
@@ -390,14 +390,14 @@ def selectedChannel(canBeNone: int = 0, offset: int = 0, indexGlobal: int = 0) -
 
 def selectAll() -> None:
     """Selects all channels in the current channel group
-    
+
     Included since API version 1
     """
 
 
 def deselectAll() -> None:
     """Deselects all channels in the current channel group
-    
+
     Included since API version 1
     """
 
@@ -412,7 +412,7 @@ def getChannelMidiInPort(index: int) -> int:
 
     ## Returns:
      * `int`: MIDI port associated with channel
-    
+
     Included since API version 1
     """
     return 0
@@ -426,7 +426,7 @@ def getChannelIndex(index: int) -> int:
 
     ## Returns:
      * `int`: global index of channel
-    
+
     Included since API version 1
     """
     return 0
@@ -440,7 +440,7 @@ def getTargetFxTrack(index: int) -> int:
 
     ## Returns:
      * `int`: index of targeted mixer track
-    
+
     Included since API version 1
     """
     return 0
@@ -449,14 +449,14 @@ def getTargetFxTrack(index: int) -> int:
 def isHighlighted() -> bool:
     """Returns True when a red highlight rectangle is displayed on the channel
     rack. This rectangle can be displayed using `ui.crDisplayRect()` in the UI
-    module. 
-    
-    These hints can be used to visually indicate on the channel rack where your 
+    module.
+
+    These hints can be used to visually indicate on the channel rack where your
     script is mapping to.
 
     ## Returns:
      * `bool`: whether highlight rectangle is visible.
-    
+
     Included since API version 1
     """
     return False
@@ -464,10 +464,10 @@ def isHighlighted() -> bool:
 
 def processRECEvent(eventId: int, value: int, flags: int) -> int:
     """Processes a recording event.
-    
+
     WARNING: This function is depreciated here, and moved to the `general`
     module as of API version 7.
-    
+
     HELP WANTED: What does this do?
 
     ## Args:
@@ -479,7 +479,7 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
 
     ## Returns:
      * `int`: Unknown
-    
+
     Included since API version 1
     Depreciated since API version 7
     """
@@ -488,7 +488,7 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
 
 def incEventValue(eventId: int, step: int, res: float) -> int:
     """Increase recording event value
-    
+
     HELP WANTED: I have no idea what any of this does
 
     ## Args:
@@ -500,7 +500,7 @@ def incEventValue(eventId: int, step: int, res: float) -> int:
 
     ## Returns:
      * `int`: unknown
-    
+
     Included since API version 1
     """
     return 0
@@ -508,8 +508,8 @@ def incEventValue(eventId: int, step: int, res: float) -> int:
 
 def getRecEventId(index: int) -> int:
     """Returns recording event ID for channel at `index`.
-    
-    HELP WANTED: Honestly REC events are sooooo confusing, and I avoid using 
+
+    HELP WANTED: Honestly REC events are sooooo confusing, and I avoid using
     them entirely. Can someone else explain them?
 
     ## Args:
@@ -517,7 +517,7 @@ def getRecEventId(index: int) -> int:
 
     ## Returns:
      * `int`: Recording event ID???
-    
+
     Included since API version 1
     """
     return 0
@@ -528,12 +528,12 @@ def getGridBit(index: int, position: int) -> bool:
 
     ## Args:
      * `index` (`int`): channel index
-     
+
      * `position` (`int`): index of grid bit (horizontal axis)
 
     ## Returns:
      * `bool`: whether grid bit is set
-    
+
     Included since API version 1
     """
     return False
@@ -548,7 +548,7 @@ def setGridBit(index: int, position: int, value: int) -> None:
      * `position` (`int`): index of grid bit (horizontal axis)
 
      * `value` (`int`): whether grid bit is set (`1`) or not (`0`)
-    
+
     Included since API version 1
     """
 
@@ -556,7 +556,7 @@ def setGridBit(index: int, position: int, value: int) -> None:
 def getStepParam(step: int, param: int, ofset: int, startPos: int,
                  padsStride: int = 16) -> int:
     """Get step parameter for `step`.
-    
+
     HELP WANTED: What does this do?
 
     ## Args:
@@ -573,7 +573,7 @@ def getStepParam(step: int, param: int, ofset: int, startPos: int,
 
     ## Returns:
      * `int`: ??????
-    
+
     Included since API version 1
     """
     return 0
@@ -581,7 +581,7 @@ def getStepParam(step: int, param: int, ofset: int, startPos: int,
 
 def getCurrentStepParam(index: int, step: int, param: int) -> int:
     """Get current step parameter for channel at `index` and for step at `step`.
-    
+
     HELP WANTED: What does this do?
 
     TODO: Official documentation says this returns None, but it actually seems
@@ -594,16 +594,16 @@ def getCurrentStepParam(index: int, step: int, param: int) -> int:
 
      * `param` (`int`): step parameter (refer to [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#stepParams)
        although it looks kinda dodgy for some values)
-    
+
     Included since API version 1
     """
     return 0
 
 
 def getGridBitWithLoop(index: int, position: int) -> bool:
-    """Get value of grid bit on channel `index` in `position` accounting for 
+    """Get value of grid bit on channel `index` in `position` accounting for
     loops.
-    
+
     NOTE: Official documentations say this returns None, but it doesn't. This
     documentation reflects the actual behaviour.
 
@@ -611,10 +611,10 @@ def getGridBitWithLoop(index: int, position: int) -> bool:
      * `index` (`int`): channel index`
 
      * `position` (`int`): position on grid (x axis)
-    
+
     ## Returns:
      * `bool`: whether grid bit is set
-    
+
     Included since API version 1
     """
     return False
@@ -629,7 +629,7 @@ def showEditor(index: int, value: int = -1) -> None:
 
      * `value` (`int`): whether to hide (`0`) or show (`1`) the plugin window.
        Defaults to `-1` (toggle).
-    
+
     Included since API version 1, with optional parameter added in version 3.
     """
 
@@ -639,23 +639,23 @@ def focusEditor(index: int) -> None:
 
     ## Args:
      * `index` (`int`): channel index.
-    
+
     Included since API version 1
     """
 
 
 def showCSForm(index: int, state: int = 1) -> None:
-    """Show the channel settings window (or plugin window for plugins) for 
+    """Show the channel settings window (or plugin window for plugins) for
     channel at `index`.
-    
+
     This appears to perform the same action as `focusEditor()`.
 
     ## Args:
      * `index` (int): channel index
 
-     * `state` (`int`, optional): whether to hide (`0`), show 
+     * `state` (`int`, optional): whether to hide (`0`), show
         (`1`) or toggle (`-1`) the plugin window. Defaults to `1`.
-    
+
     Included since API version 1, with optional parameter added in version 9
     """
 
@@ -663,7 +663,7 @@ def showCSForm(index: int, state: int = 1) -> None:
 def midiNoteOn(indexGlobal: int, note: int, velocity: int, channel: int = -1
                ) -> None:
     """Set a MIDI Note for the channel at `indexGlobal` (not respecting groups)
-    
+
     This can be used to create extra notes (eg mapping one note to a chord).
 
     ## Args:
@@ -674,7 +674,7 @@ def midiNoteOn(indexGlobal: int, note: int, velocity: int, channel: int = -1
      * `velocity` (`int`): note velocity (1-127, 0 is note off)
 
      * `channel` (`int`, optional): MIDI channel to use. Defaults to -1.
-    
+
     Included since API version 1
     """
 
@@ -689,7 +689,22 @@ def getActivityLevel(index: int) -> float:
 
     ## Returns:
      * `float`: activity level
-    
+
     Included since API version 9
     """
     return 0.0
+
+def quickQuantize(index: int, startOnly: int = 1) -> None:
+    """
+    Perform a quick quantize operation on the channel at index
+
+    NOTE: The API documentation lists this as returning a float, however it
+    actually returns None, which is documented here.
+
+    ## Args:
+    * `index` (`int`): channel index, respecting groups
+
+    * `startOnly` (`int`, optional): ???. Defaults to `1`.
+
+    Included since API Version 9
+    """
