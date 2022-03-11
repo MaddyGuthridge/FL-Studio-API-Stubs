@@ -8,8 +8,8 @@ def saveUndo(undoName: str, flags: int, update:int=1) -> None:
 
     ## Args:
      * `undoName` (`str`): a descriptive name for the undo point
-     
-     * `flags` (`int`): Any combination of the following flags, combined using 
+
+     * `flags` (`int`): Any combination of the following flags, combined using
        the logical or (`|`) operator:
           * `UF_None` (`0`): No flags
 
@@ -36,7 +36,7 @@ def saveUndo(undoName: str, flags: int, update:int=1) -> None:
           * `UF_Reset` (`65536`): Reset undo history
 
      * `update` (`int`, optional): ???. Defaults to 1.
-    
+
     Included since API version 1
     """
 
@@ -46,7 +46,7 @@ def undo() -> int:
 
     ## Returns:
      * `int`: ???
-    
+
     Included since API version 1
     """
     return 0
@@ -56,7 +56,7 @@ def undoUp() -> int:
 
     ## Returns:
      * `int`: ?
-    
+
     Included since API version 1
     """
     return 0
@@ -66,7 +66,7 @@ def undoDown() -> int:
 
     ## Returns:
      * `int`: ?
-    
+
     Included since API version 1
     """
     return 0
@@ -80,30 +80,30 @@ def undoUpDown(value: int) -> int:
 
     ## Returns:
      * `int`: ?
-    
+
     Included since API version 1
     """
     return 0
 
 def restoreUndo() -> int:
     """???
-    
+
     This seems to behave in the same way as `undo()`.
-    
+
     HELP WANTED: What does this do?
 
     ## Returns:
      * `int`: ?
-    
+
     Included since API version 1
     """
     return 0
 
 def restoreUndoLevel(level: int) -> int:
     """???
-    
+
     This seems to behave in the same way as `undo()`.
-    
+
     HELP WANTED: What does this do? What is the parameter for?
 
     ## Args:
@@ -111,7 +111,7 @@ def restoreUndoLevel(level: int) -> int:
 
     ## Returns:
      * `int`: ?
-    
+
     Included since API version 1
     """
     return 0
@@ -125,7 +125,7 @@ def getUndoLevelHint() -> str:
           * numerator: position in history (`1` is most recent)
 
           * denominator: number of elements in history
-    
+
     Included since API version 1
     """
     return ""
@@ -138,17 +138,17 @@ def getUndoHistoryPos() -> int:
 
     ## Returns:
      * `int`: number of elements in undo history
-    
+
     Included since API version 1
     """
     return 0
 
-def getundoHistoryCount() -> int:
+def getUndoHistoryCount() -> int:
     """Returns the length of the undo history
 
     ## Returns:
      * `int`: number of elements in undo history
-    
+
     Included since API version 1
     """
     return 0
@@ -159,7 +159,7 @@ def getUndoHistoryLast() -> int:
 
     ## Returns:
      * `int`: position in undo history
-    
+
     Included since API version 1
     """
     return 0
@@ -170,7 +170,7 @@ def setUndoHistoryPos(index: int) -> None:
 
     ## Args:
      * `index` (`int`): number of elements to leave at the start of the history
-    
+
     Included since API version 1
     """
 
@@ -180,7 +180,7 @@ def setUndoHistoryCount(value: int) -> None:
 
     ## Args:
      * `value` (`int`): number of elements to leave at the end of the history
-    
+
     Included since API version 1
     """
 
@@ -190,19 +190,19 @@ def setUndoHistoryLast(index: int) -> None:
 
     ## Args:
      * `index` (`int`): new position in undo history
-    
+
     Included since API version 1
     """
 
 def getRecPPB() -> int:
     """Returns the current timebase (PPQN) multiplied by the number of beats in
     a bar.
-    
+
     NOTE: This DOES NOT respect time signature markers
 
     ## Returns:
      * `int`: timebase * numerator
-    
+
     Included since API version 1
     """
     return 0
@@ -212,7 +212,7 @@ def getRecPPQ() -> int:
 
     ## Returns:
      * `int`: timebase
-    
+
     Included since API version 8
     """
     return 0
@@ -222,7 +222,7 @@ def getUseMetronome() -> bool:
 
     ## Returns:
      * `bool`: metronome enabled
-    
+
     Included since API version 1
     """
     return False
@@ -232,7 +232,7 @@ def getPrecount() -> bool:
 
     ## Returns:
      * `bool`: precount before recording
-    
+
     Included since API version 1
     """
     return False
@@ -247,7 +247,7 @@ def getChangedFlag() -> int:
           * `1`: Changed since last save
 
           * `2`: Changed since last save, but unchanged since last autosave
-    
+
     Included since API version 1
     """
     return 0
@@ -258,14 +258,14 @@ def getVersion() -> int:
 
     ## Returns:
      * `int`: version number
-    
+
     Included since API version 1
     """
     return 15
 
 def processRECEvent(eventId: int, value: int, flags: int) -> int:
     """Processes a recording event.
-    
+
     HELP WANTED: What does this do?
 
     ## Args:
@@ -277,25 +277,25 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
 
     ## Returns:
      * `int`: Unknown
-    
+
     Included since API version 7
     """
     return 0
 
 def dumpScoreLog(time: int, silent:int=0) -> None:
     """Dump score log
-    
+
     ## Args:
      * `time` (`int`): ?
 
      * `silent` (`int`): Whether the empty score message is suppressed (`1`) or
        not (`0`)
-    
+
     Included since API version 15
     """
 
 def clearLog() -> None:
     """Clear the score log
-    
+
     Included since API version 15
     """
