@@ -258,7 +258,9 @@ def getChannelPitch(index: int, mode: int = 0) -> 'float | int':
 
         * `2`: return the current pitch range in semitones.
 
-            BUG: This is not guaranteed to be correct. See `getChannelPitch`.
+            BUG: This is not guaranteed to be correct.
+            For more information, see `setChannelPitch` on
+            modifying the pitch range of a channel.
 
     ## Returns:
      * `float`: channel pitch (when `mode` is `0`)
@@ -479,8 +481,6 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
     WARNING: This function is depreciated here, and moved to the `general`
     module as of API version 7.
 
-    HELP WANTED: What does this do?
-
     ## Args:
      * `eventId` (`int`): Refer to the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#RecEventParams)
 
@@ -521,9 +521,6 @@ def getRecEventId(index: int) -> int:
     """Return the starting point of REC event IDs for the channel at `index`.
 
     See `general.processRECEvent` for more information.
-
-    HELP WANTED: Honestly REC events are sooooo confusing, and I avoid using 
-    them entirely. Can someone else explain them?
 
     ## Args:
      * `index` (`int`): channel index
