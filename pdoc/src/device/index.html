@@ -35,6 +35,9 @@ Handles the way that devices connect to FL Studio&#39;s MIDI interface, and how
 scripts communicate with each other.
 &#34;&#34;&#34;
 
+from typing import Optional
+from fl_context import getValue as _getValue
+
 def isAssigned() -&gt; bool:
     &#34;&#34;&#34;Returns `True` if an output interface is linked to the script, meaning
     that the script can send MIDI messages to that device.
@@ -44,7 +47,7 @@ def isAssigned() -&gt; bool:
     
     Included since API version 1
     &#34;&#34;&#34;
-    return False
+    return _getValue(&#34;device_assigned&#34;)
 
 def getPortNumber() -&gt; int:
     &#34;&#34;&#34;Returns the port number for the input device that the script is attached
@@ -57,7 +60,7 @@ def getPortNumber() -&gt; int:
     
     Included since API version 1
     &#34;&#34;&#34;
-    return 0
+    return _getValue(&#34;device_port&#34;)
 
 def getName() -&gt; str:
     &#34;&#34;&#34;Returns the name of the device.
@@ -67,9 +70,9 @@ def getName() -&gt; str:
     
     Included since API version 7
     &#34;&#34;&#34;
-    return &#34;&#34;
+    return _getValue(&#34;device_name&#34;)
 
-def midiOutMsg(message: int, channel:int=None, data1:int=None, data2:int=None)\
+def midiOutMsg(message: int, channel:int=-1, data1:int=-1, data2:int=-1)\
     -&gt; None:
     &#34;&#34;&#34;Sends a MIDI message to the linked output device.
     
@@ -372,7 +375,7 @@ def hardwareRefreshMixerTrack(index: int) -&gt; None:
     Included since API version 1
     &#34;&#34;&#34;
 
-def dispatch(ctrlIndex: int, message: int, sysex:bytes=None) -&gt; None:
+def dispatch(ctrlIndex: int, message: int, sysex:Optional[bytes]=None) -&gt; None:
     &#34;&#34;&#34;Dispatch a MIDI message (either via a standard MIDI Message or through a 
     system exclusive (SysEx) message) that is sent to another controller script.
     This allows communication between different devices provided that they have
@@ -421,7 +424,7 @@ def dispatchGetReceiverPortNumber(ctrlIndex: int) -&gt; int:
      * `ctrlIndex` (`int`): device script to check
 
     ## Returns:
-     * `int`: MIDI port associated with the reciever device
+     * `int`: MIDI port associated with the receiver device
     
     Included since API version 5
     &#34;&#34;&#34;
@@ -569,7 +572,7 @@ reset.</p>
 </details>
 </dd>
 <dt id="src.device.dispatch"><code class="name flex">
-<span>def <span class="ident">dispatch</span></span>(<span>ctrlIndex: int, message: int, sysex: bytes = None) ‑> None</span>
+<span>def <span class="ident">dispatch</span></span>(<span>ctrlIndex: int, message: int, sysex: Optional[bytes] = None) ‑> None</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Dispatch a MIDI message (either via a standard MIDI Message or through a
@@ -605,7 +608,7 @@ to dispatch MIDI messages to the script named "My Controller".</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def dispatch(ctrlIndex: int, message: int, sysex:bytes=None) -&gt; None:
+<pre><code class="python">def dispatch(ctrlIndex: int, message: int, sysex:Optional[bytes]=None) -&gt; None:
     &#34;&#34;&#34;Dispatch a MIDI message (either via a standard MIDI Message or through a 
     system exclusive (SysEx) message) that is sent to another controller script.
     This allows communication between different devices provided that they have
@@ -649,7 +652,7 @@ to dispatch MIDI messages to the script named "My Controller".</p>
 </ul>
 <h2 id="returns">Returns:</h2>
 <ul>
-<li><code>int</code>: MIDI port associated with the reciever device</li>
+<li><code>int</code>: MIDI port associated with the receiver device</li>
 </ul>
 <p>Included since API version 5</p></div>
 <details class="source">
@@ -663,7 +666,7 @@ to dispatch MIDI messages to the script named "My Controller".</p>
      * `ctrlIndex` (`int`): device script to check
 
     ## Returns:
-     * `int`: MIDI port associated with the reciever device
+     * `int`: MIDI port associated with the receiver device
     
     Included since API version 5
     &#34;&#34;&#34;
@@ -1059,7 +1062,7 @@ behaviour.</p>
     
     Included since API version 7
     &#34;&#34;&#34;
-    return &#34;&#34;</code></pre>
+    return _getValue(&#34;device_name&#34;)</code></pre>
 </details>
 </dd>
 <dt id="src.device.getPortNumber"><code class="name flex">
@@ -1090,7 +1093,7 @@ of the input port, which is returned by this function.</p>
     
     Included since API version 1
     &#34;&#34;&#34;
-    return 0</code></pre>
+    return _getValue(&#34;device_port&#34;)</code></pre>
 </details>
 </dd>
 <dt id="src.device.hardwareRefreshMixerTrack"><code class="name flex">
@@ -1144,7 +1147,7 @@ that the script can send MIDI messages to that device.</p>
     
     Included since API version 1
     &#34;&#34;&#34;
-    return False</code></pre>
+    return _getValue(&#34;device_assigned&#34;)</code></pre>
 </details>
 </dd>
 <dt id="src.device.isDoubleClick"><code class="name flex">
@@ -1182,7 +1185,7 @@ before, indicating a double click.</p>
 </details>
 </dd>
 <dt id="src.device.midiOutMsg"><code class="name flex">
-<span>def <span class="ident">midiOutMsg</span></span>(<span>message: int, channel: int = None, data1: int = None, data2: int = None) ‑> None</span>
+<span>def <span class="ident">midiOutMsg</span></span>(<span>message: int, channel: int = -1, data1: int = -1, data2: int = -1) ‑> None</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Sends a MIDI message to the linked output device.</p>
@@ -1232,7 +1235,7 @@ version 2</p></div>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def midiOutMsg(message: int, channel:int=None, data1:int=None, data2:int=None)\
+<pre><code class="python">def midiOutMsg(message: int, channel:int=-1, data1:int=-1, data2:int=-1)\
     -&gt; None:
     &#34;&#34;&#34;Sends a MIDI message to the linked output device.
     

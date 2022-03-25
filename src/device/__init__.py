@@ -4,6 +4,9 @@ Handles the way that devices connect to FL Studio's MIDI interface, and how
 scripts communicate with each other.
 """
 
+from typing import Optional
+from fl_context import getValue as _getValue
+
 def isAssigned() -> bool:
     """Returns `True` if an output interface is linked to the script, meaning
     that the script can send MIDI messages to that device.
@@ -13,7 +16,7 @@ def isAssigned() -> bool:
     
     Included since API version 1
     """
-    return False
+    return _getValue("device_assigned")
 
 def getPortNumber() -> int:
     """Returns the port number for the input device that the script is attached
@@ -26,7 +29,7 @@ def getPortNumber() -> int:
     
     Included since API version 1
     """
-    return 0
+    return _getValue("device_port")
 
 def getName() -> str:
     """Returns the name of the device.
@@ -36,9 +39,9 @@ def getName() -> str:
     
     Included since API version 7
     """
-    return ""
+    return _getValue("device_name")
 
-def midiOutMsg(message: int, channel:int=None, data1:int=None, data2:int=None)\
+def midiOutMsg(message: int, channel:int=-1, data1:int=-1, data2:int=-1)\
     -> None:
     """Sends a MIDI message to the linked output device.
     
@@ -341,7 +344,7 @@ def hardwareRefreshMixerTrack(index: int) -> None:
     Included since API version 1
     """
 
-def dispatch(ctrlIndex: int, message: int, sysex:bytes=None) -> None:
+def dispatch(ctrlIndex: int, message: int, sysex:Optional[bytes]=None) -> None:
     """Dispatch a MIDI message (either via a standard MIDI Message or through a 
     system exclusive (SysEx) message) that is sent to another controller script.
     This allows communication between different devices provided that they have
@@ -390,7 +393,7 @@ def dispatchGetReceiverPortNumber(ctrlIndex: int) -> int:
      * `ctrlIndex` (`int`): device script to check
 
     ## Returns:
-     * `int`: MIDI port associated with the reciever device
+     * `int`: MIDI port associated with the receiver device
     
     Included since API version 5
     """
