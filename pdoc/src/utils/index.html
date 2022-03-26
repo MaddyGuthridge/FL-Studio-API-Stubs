@@ -563,7 +563,7 @@ def VolTodB(Value: float) -&gt; float:
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
 <dt id="src.utils.ColorToRGB"><code class="name flex">
-<span>def <span class="ident">ColorToRGB</span></span>(<span>Color: int) ‑> tuple</span>
+<span>def <span class="ident">ColorToRGB</span></span>(<span>Color: int) ‑> tuple[int, int, int]</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Convert an integer colour to an RGB tuple that uses range 0-255.</p>
@@ -604,7 +604,7 @@ def VolTodB(Value: float) -&gt; float:
 </details>
 </dd>
 <dt id="src.utils.DivModU"><code class="name flex">
-<span>def <span class="ident">DivModU</span></span>(<span>A: int, B: int) ‑> tuple</span>
+<span>def <span class="ident">DivModU</span></span>(<span>A: int, B: int) ‑> tuple[int, int]</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Return integer division and modulus</p>
@@ -730,7 +730,7 @@ def VolTodB(Value: float) -&gt; float:
 </details>
 </dd>
 <dt id="src.utils.HSVtoRGB"><code class="name flex">
-<span>def <span class="ident">HSVtoRGB</span></span>(<span>H: float, S: float, V: float) ‑> tuple</span>
+<span>def <span class="ident">HSVtoRGB</span></span>(<span>H: float, S: float, V: float) ‑> tuple[float, float, float]</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Convert an HSV colour to an RGB colour</p>
@@ -1072,7 +1072,7 @@ convert as required before usage.</p>
 </details>
 </dd>
 <dt id="src.utils.RGBToHSV"><code class="name flex">
-<span>def <span class="ident">RGBToHSV</span></span>(<span>R: float, G: float, B: float) ‑> tuple</span>
+<span>def <span class="ident">RGBToHSV</span></span>(<span>R: float, G: float, B: float) ‑> tuple[float, float, float]</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Convert an RGB colour to a HSV colour</p>
@@ -1151,7 +1151,7 @@ convert as required before usage.</p>
 </details>
 </dd>
 <dt id="src.utils.RGBToHSVColor"><code class="name flex">
-<span>def <span class="ident">RGBToHSVColor</span></span>(<span>Color: int) ‑> tuple</span>
+<span>def <span class="ident">RGBToHSVColor</span></span>(<span>Color: int) ‑> tuple[float, float, float]</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Convert an RGB colour to a HSV colour</p>

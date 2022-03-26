@@ -240,23 +240,32 @@ def setChannelPan(index: int, pan: float, pickupMode: int = midi.PIM_None) -> No
 
 
 def getChannelPitch(index: int, mode: int = 0) -> 'float | int':
-    """Returns the pitch of the channel at `index`. The `mode` parameter is used
-    to determine the type of pitch returned.
-
-    HELP WANTED: What do the `mode` parameter options mean?
+    """Returns the current pitch bend (or range) of the channel at `index`.
+    The `mode` parameter is used to determine the type of pitch returned.
 
     ## Args:
     * `index` (`int`): index of channel
 
     * `mode` (`int`, optional):
-          * `1`: return value in semitones
 
-          * `2`: return value pitch range???
+        * `0` (default): return the current pitch bend as a factor of the current
+            range (usually `-1.0` to `1.0`). Larger values might be reached if the
+            pitch is automated with events, for example.
+
+        * `1`: return the current pitch offset in cents.
+
+            BUG: Official API docs incorrectly state "semitones".
+
+        * `2`: return the current pitch range in semitones.
+
+            BUG: This is not guaranteed to be correct.
+            For more information, see `setChannelPitch` on
+            modifying the pitch range of a channel.
 
     ## Returns:
-     * `float`: channel pitch (when `mode` is `1`)
+     * `float`: channel pitch (when `mode` is `0`)
 
-     * `int`: channel pitch range (when `mode` is `2`) ???
+     * `int`: channel pitch range (when `mode` is `1` or 2)
 
     Included since API version 8
     """
@@ -266,9 +275,7 @@ def getChannelPitch(index: int, mode: int = 0) -> 'float | int':
 def setChannelPitch(index: int, value: float, mode: int = 0, pickupMode: int = midi.PIM_None) -> 'float | int':
     """Sets the pitch of the channel at `index` to value. The `mode` parameter is used
     to determine the type of pitch set. Use the pickup mode flag to set pickup
-    options.
-
-    HELP WANTED: What do the `mode` parameter options mean?
+    options. The final pitch will be clamped to the current pitch range.
 
     ## Args:
      * `index` (`int`): index of channel
@@ -276,9 +283,15 @@ def setChannelPitch(index: int, value: float, mode: int = 0, pickupMode: int = m
      * `value` (`float`): value to set
 
      * `mode` (`int`, optional):
-          * `1`: set value in semitones
 
-          * `2`: set value pitch range???
+          * `0` (default): set pitch as a factor of the current pitch bend range (between [-1.0, 1.0]).
+
+          * `1`: set pitch in cents
+
+          * `2`: **UTTERLY BROKEN.** Set the pitch range in semitones.
+
+            BUG: This only affects the range reported by `getChannelPitch`.
+            This will desynchronize the reported range from what is visible in the UI.
 
      * `pickupMode` (`int`, optional): define the pickup behaviour. Refer to
        the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
@@ -468,8 +481,6 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
     WARNING: This function is depreciated here, and moved to the `general`
     module as of API version 7.
 
-    HELP WANTED: What does this do?
-
     ## Args:
      * `eventId` (`int`): Refer to the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#RecEventParams)
 
@@ -507,16 +518,15 @@ def incEventValue(eventId: int, step: int, res: float) -> int:
 
 
 def getRecEventId(index: int) -> int:
-    """Returns recording event ID for channel at `index`.
+    """Return the starting point of REC event IDs for the channel at `index`.
 
-    HELP WANTED: Honestly REC events are sooooo confusing, and I avoid using
-    them entirely. Can someone else explain them?
+    See `general.processRECEvent` for more information.
 
     ## Args:
      * `index` (`int`): channel index
 
     ## Returns:
-     * `int`: Recording event ID???
+     * `int`: REC event ID offset for accessing `midi.REC_Chan_*` parameters
 
     Included since API version 1
     """

@@ -192,25 +192,36 @@ def findEventID(controlId: int, flags:int=0) -> int:
     return 0
 
 def getLinkedValue(eventID: int) -> float:
-    """Returns normalised value of the linked control via eventID. Returns `-1`
-    if there is no linked control.
+    """Returns normalised value of the REC event at `eventID`. Returns `-1`
+    if "there is no linked control".
 
-    HELP WANTED: What does this do?
+    >>> channel_rec_id = channels.getRecEventId(0)
+    >>> device.getLinkedValue(channel_rec_id + midi.REC_Chan_Vol)
+    0.78125
+    >>> device.getLinkedValue(channel_rec_id + midi.REC_Chan_Pan)
+    0.5
 
     ## Args:
      * `eventID` (`int`): eventID
 
     ## Returns:
-     * `float`: Linked value
-    
+     * `float`: Current value of the controller parameter between [0.0, 1.0]
+
     Included since API version 1
     """
     return 0.0
 
 def getLinkedValueString(eventID: int) -> str:
-    """Returns text value of a linked control via eventID
+    """Returns text value of the REC event at `eventID`
 
-    HELP WANTED: What does this do?
+    The text representation is formatted appropriately based on the
+    REC parameter.
+
+    >>> channel_rec_id = channels.getRecEventId(0)
+    >>> device.getLinkedValueString(channel_rec_id + midi.REC_Chan_Vol)
+    '-5.2 dB'
+    >>> device.getLinkedValueString(channel_rec_id + midi.REC_Chan_Pan)
+    'Centered'
 
     ## Args:
      * `eventID` (`int`): eventID
@@ -223,9 +234,13 @@ def getLinkedValueString(eventID: int) -> str:
     return ""
 
 def getLinkedParamName(eventID: int) -> str:
-    """Returns the parameter name of the control linked via `eventID`.
+    """Returns the parameter name of the REC event at `eventID`.
 
-    HELP WANTED: What does this do?
+    >>> channel_rec_id = channels.getRecEventId(0)
+    >>> device.getLinkedParamName(channel_rec_id + midi.REC_Chan_Vol)
+    'Channel volume'
+    >>> device.getLinkedParamName(channel_rec_id + midi.REC_Chan_Pan)
+    'Channel panning'
 
     ## Args:
      * `eventID` (`int`): eventID
