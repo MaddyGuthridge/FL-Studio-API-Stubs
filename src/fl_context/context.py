@@ -8,8 +8,8 @@ from typing import Any
 
 
 default_values = {
-    "api_version": 19,
-    
+    "api_version": 20,
+
     "device_assigned": True,
     "device_port": 1,
     "device_name": "Device",
@@ -48,7 +48,7 @@ def getValue(key: str) -> Any:
 def setValue(key: str, value: Any) -> None:
     """
     Set the value of a key in the context.
-    
+
     Can be used within test files to control the stub return
     values.
     """
@@ -61,7 +61,7 @@ class FlContext:
     def __init__(self, state_mods: dict) -> None:
         self._old_state = getState()
         self._mods = state_mods
-    
+
     def __enter__(self):
         for k in self._old_state:
             if k not in self._mods:

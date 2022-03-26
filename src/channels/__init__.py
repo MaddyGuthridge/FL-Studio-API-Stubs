@@ -497,20 +497,28 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
     return 0
 
 
-def incEventValue(eventId: int, step: int, res: float) -> int:
-    """Increase recording event value
+def incEventValue(eventId: int, step: int, res: float = 1/24) -> int:
+    """Get event value increased by step. Use (optional) res paremeter to
+    specify increment resolution.
 
-    HELP WANTED: I have no idea what any of this does
+    Use result as new value in processRECEvent
+
+    Example (to increase volume of first channel):
+
+    step = 1
+    eventId = midi.REC_Chan_Vol + channels.getRecEventId(0)
+    newValue = channels.incEventValue(eventId, step)
+    general.processRECEvent(eventId, newValue, midi.REC_UpdateValue | midi.REC_UpdateControl)
 
     ## Args:
      * `eventId` (`int`): event ID, see the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#RecEventParams)
 
-     * `step` (`int`): unknown
+     * `step` (`int`): event value increased by step
 
-     * `res` (`float` (double precision)): unknown
+     * `res` (`float`, optional): increment resolution. Defaults to 1/24.
 
     ## Returns:
-     * `int`: unknown
+     * `int`: incremented event value, for use in `general.processRECEvent()`
 
     Included since API version 1
     """
@@ -629,6 +637,33 @@ def getGridBitWithLoop(index: int, position: int) -> bool:
     """
     return False
 
+def showGraphEditor(
+    temporary: bool,
+    param: int,
+    step: int,
+    index: int,
+    globalIndex: int = 1
+) -> None:
+    """
+    Show the graph editor for a step parameter on the channel at `index`
+
+    ## Args:
+    * `temporary` (`bool`): whether the editor should be temporary or stay open
+
+    * `param` (`int`): [step parameter](https://www.image-line.com/fl-studio-learning/fl-studio-beta-online-manual/html/midi_scripting.htm#stepParams)
+
+    * `step` (`int`): step ???
+
+    * `index` (`int`): index of channel
+
+    * `globalIndex` (`int`, optional): whether index should be global (`1`) or
+        not (`0`). Defaults to `1`.
+
+    Included since API Version 1
+
+    ## API Changes:
+    * v20: Add global index
+    """
 
 def showEditor(index: int, value: int = -1) -> None:
     """Toggle whether the plugin window for the channel at `index` is shown.
