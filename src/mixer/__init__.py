@@ -10,21 +10,23 @@ NOTES:
 from typing import Any
 import midi
 
+
 def trackNumber() -> int:
     """Returns the index of the first currently selected mixer track.
 
     ## Returns:
      * `int`: selected mixer track
-    
+
     Included since API version 1
     """
     return 0
 
+
 def getTrackInfo(mode: int) -> int:
     """Returns the index of a special mixer track depending on `mode`.
-    
-    This function can serve to help potentially future-proof scripts by ensuring
-    that they continue to use the correct indexes for mixer tracks
+
+    This function can serve to help potentially future-proof scripts by
+    ensuring that they continue to use the correct indexes for mixer tracks
 
     ## Args:
      * `mode` (`int`): Determined the type of information provided:
@@ -39,14 +41,15 @@ def getTrackInfo(mode: int) -> int:
 
     ## Returns:
      * `int`: requested track index
-    
+
     Included since API version 1
     """
     return 0
 
-def setTrackNumber(trackNumber: int, flags:int=0) -> None:
+
+def setTrackNumber(trackNumber: int, flags: int = 0) -> None:
     """Selects the mixer track at `trackNumber`.
-    
+
     NOTE: All functionality except for scrolling flag can be replicated more
     easily using `mixer.selectTrack()`.
 
@@ -54,7 +57,7 @@ def setTrackNumber(trackNumber: int, flags:int=0) -> None:
      * `trackNumber` (`int`): the track index to select
 
      * `flags` (`int`, optional): Options to do with new track selection.
-          * `curfxScrollToMakeVisible` (`1`): Scroll to make the 
+          * `curfxScrollToMakeVisible` (`1`): Scroll to make the
             newly-selected track visible.
 
           * `curfxCancelSmoothing` (`2`): Effect unknown
@@ -65,9 +68,10 @@ def setTrackNumber(trackNumber: int, flags:int=0) -> None:
           * `curfxMinimalLatencyUpdate` (`8`): Effect unknown
 
         Defaults to `0`.
-    
+
     Included since API version 1
     """
+
 
 def trackCount() -> int:
     """Returns the number of tracks available on the mixer.
@@ -76,10 +80,11 @@ def trackCount() -> int:
 
     ## Returns:
      * `int`: number of tracks
-        
+
     Included since API version 1
     """
     return 0
+
 
 def getTrackName(index: int) -> str:
     """Returns the name of the track at `index`.
@@ -89,24 +94,26 @@ def getTrackName(index: int) -> str:
 
     ## Returns:
      * `str`: name of track.
-        
+
     Included since API version 1
     """
     return ""
 
+
 def setTrackName(index: int, name: str) -> None:
     """Sets the name of track at `index`
-    
+
     Setting the name to an empty string will reset the name of the track to
     its default.
 
     ## Args:
      * index (`int`): index of mixer track
-     
+
      * name (`str`): new name
-        
+
     Included since API version 1
     """
+
 
 def getTrackColor(index: int) -> int:
     """Returns the colour of the track at `index`.
@@ -116,21 +123,23 @@ def getTrackColor(index: int) -> int:
 
     ## Returns:
      * `int`: colour of track (0x--BBGGRR)
-        
+
     Included since API version 1
     """
     return 0
+
 
 def setTrackColor(index: int, color: int) -> None:
     """Sets the colour of the track at `index`.
 
     ## Args:
      * `index` (`int`): track index
-     
+
      * `color` (`int`): colour of track (0x--BBGGRR)
-        
+
     Included since API version 1
     """
+
 
 def isTrackArmed(index: int) -> bool:
     """Returns whether the track at `index` is armed for recording
@@ -140,19 +149,21 @@ def isTrackArmed(index: int) -> bool:
 
     ## Returns:
      * `bool`: whether track is armed
-        
+
     Included since API version 1
     """
     return False
+
 
 def armTrack(index: int) -> None:
     """Toggles whether the track at index is armed for recording
 
     ## Args:
      * `index` (`int`): track index
-        
+
     Included since API version 1
     """
+
 
 def isTrackSolo(index: int) -> bool:
     """Returns whether the track at `index` is solo
@@ -162,19 +173,21 @@ def isTrackSolo(index: int) -> bool:
 
     ## Returns:
      * `bool`: whether track is solo
-        
+
     Included since API version 1
     """
     return False
+
 
 def soloTrack(index: int) -> None:
     """Toggles whether the track at index is solo
 
     ## Args:
      * `index` (`int`): track index
-        
+
     Included since API version 1
     """
+
 
 def isTrackEnabled(index: int) -> bool:
     """Returns whether the track at `index` is enabled
@@ -186,13 +199,14 @@ def isTrackEnabled(index: int) -> bool:
 
     ## Returns:
      * `bool`: whether track is enabled
-        
+
     Included since API version 1
     """
     return False
 
+
 def isTrackAutomationEnabled(index: int, plugIndex: int) -> bool:
-    """Returns whether the plugin at `plugIndex` on track at `index` has 
+    """Returns whether the plugin at `plugIndex` on track at `index` has
     automation enabled.
 
     ## Args:
@@ -202,21 +216,23 @@ def isTrackAutomationEnabled(index: int, plugIndex: int) -> bool:
 
     ## Returns:
      * `bool`: whether automation is enabled for the track
-        
+
     Included since API version 1
     """
     return False
 
+
 def enableTrack(index: int) -> None:
     """Toggles whether the track at `index` is enabled.
-    
+
     NOTE: This seems to be functionally identical to `muteTrack()`.
 
     ## Args:
      * index (`int`): track index
-        
+
     Included since API version 1
     """
+
 
 def isTrackMuted(index: int) -> bool:
     """Returns whether the track at `index` is muted
@@ -226,24 +242,26 @@ def isTrackMuted(index: int) -> bool:
 
     ## Returns:
      * `bool`: whether track is solo
-        
+
     Included since API version 2
     """
     return False
+
 
 def muteTrack(index: int) -> None:
     """Toggles whether the track at index is muted
 
     ## Args:
      * `index` (`int`): track index
-        
+
     Included since API version 2
     """
 
+
 def isTrackMuteLock(index: int) -> bool:
     """Returns whether the mute state of the track at `index` is locked.
-    
-    If this is true, the mute status of this track won't change when other 
+
+    If this is true, the mute status of this track won't change when other
     tracks are solo'd or unsolo'd.
 
     ## Args:
@@ -251,10 +269,11 @@ def isTrackMuteLock(index: int) -> bool:
 
     ## Returns:
      * `bool`: whether track is mute locked
-        
+
     Included since API version 13
     """
     return False
+
 
 def getTrackPluginId(index: int, plugIndex: int) -> int:
     """Returns the plugin ID of the plugin on track `index` in slot `plugIndex`
@@ -268,10 +287,11 @@ def getTrackPluginId(index: int, plugIndex: int) -> int:
 
     ## Returns:
      * `int`: plugin ID
-        
+
     Included since API version 1
     """
     return 0
+
 
 def isTrackPluginValid(index: int, plugIndex: int) -> bool:
     """Returns whether a plugin on track `index` in slot `plugIndex` is valid
@@ -284,12 +304,13 @@ def isTrackPluginValid(index: int, plugIndex: int) -> bool:
 
     ## Returns:
      * `bool`: whether track is mute locked
-        
+
     Included since API version 1
     """
     return False
 
-def getTrackVolume(index: int, mode:int=0) -> float:
+
+def getTrackVolume(index: int, mode: int = 0) -> float:
     """Returns the volume of the track at `index`. Volume lies within the range
     `0.0` - `1.0`. Note that the default value is `0.8`. Use the `mode` flag to
     get the volume in decibels.
@@ -297,17 +318,22 @@ def getTrackVolume(index: int, mode:int=0) -> float:
     ## Args:
      * `index` (`int`): track index
 
-     * `mode` (`int`, optional): whether to return the volume as a value between
-       0 and 1, or in decibels.
+     * `mode` (`int`, optional): whether to return the volume as a value
+       between `0` and `1`, or in decibels.
 
     ## Returns:
      * `float`: volume of track
-    
+
     Included since API version 1
     """
     return 0.0
 
-def setTrackVolume(index: int, volume: float,  pickupMode:int=midi.PIM_None) -> None:
+
+def setTrackVolume(
+    index: int,
+    volume: float,
+    pickupMode: int = midi.PIM_None
+) -> None:
     """Sets the volume of the track at `index`. Volume lies within the range
     `0.0` - `1.0`. Note that the default value is `0.8`. Use the pickup mode
     flag to set pickup options.
@@ -319,14 +345,15 @@ def setTrackVolume(index: int, volume: float,  pickupMode:int=midi.PIM_None) -> 
 
      * `pickupMode` (`int`, optional): define the pickup behaviour. Refer to
        the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
-    
-    
+
+
     Included since API version 1
     """
 
+
 def getTrackPan(index: int) -> float:
     """Returns the pan of the track at `index`. Pan lies within the range
-    100% left (`-1.0`) - 100% right (`1.0`). Note that the default value is 
+    100% left (`-1.0`) - 100% right (`1.0`). Note that the default value is
     `0.0`.
 
     ## Args:
@@ -334,14 +361,19 @@ def getTrackPan(index: int) -> float:
 
     ## Returns:
      * `float`: pan of track
-    
+
     Included since API version 1
     """
     return 0.0
 
-def setTrackPan(index: int, pan: float, pickupMode:int=midi.PIM_None) -> None:
+
+def setTrackPan(
+    index: int,
+    pan: float,
+    pickupMode: int = midi.PIM_None
+) -> None:
     """Sets the pan of the track at `index`. Pan lies within the range
-    100% left (`-1.0`) - 100% right (`1.0`). Note that the default value is 
+    100% left (`-1.0`) - 100% right (`1.0`). Note that the default value is
     `0.0`. Use the pickup mode flag to set pickup options.
 
     ## Args:
@@ -351,14 +383,15 @@ def setTrackPan(index: int, pan: float, pickupMode:int=midi.PIM_None) -> None:
 
      * `pickupMode` (`int`, optional): define the pickup behaviour. Refer to
        the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
-    
-    
+
+
     Included since API version 1
     """
 
+
 def getTrackStereoSep(index: int) -> float:
-    """Returns the stereo separation of the track at `index`. Stereo separation 
-    lies within the range 100% centred (`-1.0`) - 100% separated (`1.0`). Note 
+    """Returns the stereo separation of the track at `index`. Stereo separation
+    lies within the range 100% centred (`-1.0`) - 100% separated (`1.0`). Note
     that the default value is `0.0`.
 
     ## Args:
@@ -366,14 +399,19 @@ def getTrackStereoSep(index: int) -> float:
 
     ## Returns:
      * `float`: stereo separation of track
-    
+
     Included since API version 12
     """
     return 0.0
 
-def setTrackStereoSep(index: int, pan: float, pickupMode:int=midi.PIM_None) -> None:
-    """Sets the stereo separation of the track at `index`. Stereo separation 
-    lies within the range 100% centred (`-1.0`) - 100% separated (`1.0`). Note 
+
+def setTrackStereoSep(
+    index: int,
+    pan: float,
+    pickupMode: int = midi.PIM_None
+) -> None:
+    """Sets the stereo separation of the track at `index`. Stereo separation
+    lies within the range 100% centred (`-1.0`) - 100% separated (`1.0`). Note
     that the default value is `0.0`. Use the pickup mode flag to set pickup
     options.
 
@@ -384,9 +422,10 @@ def setTrackStereoSep(index: int, pan: float, pickupMode:int=midi.PIM_None) -> N
 
      * `pickupMode` (`int`, optional): define the pickup behaviour. Refer to
        the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
-    
+
     Included since API version 12
     """
+
 
 def isTrackSelected(index: int) -> bool:
     """Returns whether the track at `index` is selected
@@ -396,35 +435,39 @@ def isTrackSelected(index: int) -> bool:
 
     ## Returns:
      * `bool`: whether the track is selected
-    
+
     Included since API version 1
     """
     return False
+
 
 def selectTrack(index: int) -> None:
     """Toggles whether the track at `index` is selected.
 
     ## Args:
      * `index` (`int`): track index
-    
+
     Included since API version 1
     """
+
 
 def selectAll() -> None:
     """Selects all tracks
-    
+
     Included since API version 1
     """
+
 
 def deselectAll() -> None:
     """Deselects all tracks
-    
+
     Included since API version 1
     """
 
+
 def setRouteTo(index: int, destIndex: int, value: int) -> None:
     """Route the track at `index` to the track at `destIndex`.
-    
+
     Ensure that after all routing changes are made, the `afterRoutingChanged()`
     function is called to allow the UI to update correctly.
 
@@ -434,9 +477,10 @@ def setRouteTo(index: int, destIndex: int, value: int) -> None:
      * `destIndex` (`int`): destination track index
 
      * `value` (`int`): whether to enable the route (`1`) or disable it (`0`)
-    
+
     Included since API version 1
     """
+
 
 def getRouteSendActive(index: int, destIndex: int) -> bool:
     """Return whether the track at `index` is routed to the track at `destIndex`
@@ -448,20 +492,26 @@ def getRouteSendActive(index: int, destIndex: int) -> bool:
 
     ## Returns:
      * `bool`: whether the tracks are routed
-    
+
     Included since API version 1
     """
     return False
 
+
 def afterRoutingChanged() -> None:
     """Notify FL Studio that channel routings have changed.
-    
+
     Included since API version 1
     """
 
-def getEventValue(index: int, value:int=midi.MaxInt, smoothTarget:int=1) -> int:
+
+def getEventValue(
+    index: int,
+    value: int = midi.MaxInt,
+    smoothTarget: int = 1
+) -> int:
     """Returns event value from MIDI
-    
+
     HELP WANTED: What does this do?
 
     ## Args:
@@ -473,14 +523,15 @@ def getEventValue(index: int, value:int=midi.MaxInt, smoothTarget:int=1) -> int:
 
     ## Returns:
      * `int`: ???
-    
+
     Included since API version 1
     """
     return 0
 
-def remoteFindEventValue(index: int, flags:int=0) -> float:
+
+def remoteFindEventValue(index: int, flags: int = 0) -> float:
     """Returns event value
-    
+
     HELP WANTED: What does this do?
 
     ## Args:
@@ -490,14 +541,15 @@ def remoteFindEventValue(index: int, flags:int=0) -> float:
 
     ## Returns:
      * `float`: ???
-    
+
     Included since API version 1
     """
     return 0.0
 
-def getEventIDName(index: int, shortname:int=0) -> str:
+
+def getEventIDName(index: int, shortname: int = 0) -> str:
     """Returns event name for event at `index`
-    
+
     HELP WANTED: What does this do?
 
     NOTE: The official documentation states that this function returns `None`,
@@ -510,14 +562,15 @@ def getEventIDName(index: int, shortname:int=0) -> str:
 
     ## Returns:
      * `str`: name of event?
-    
+
     Included since API version 1
     """
     return ""
 
+
 def getEventIDValueString(index: int, value: int) -> str:
     """Returns event value as a string
-    
+
     HELP WANTED: What does this do?
 
     ## Args:
@@ -527,14 +580,15 @@ def getEventIDValueString(index: int, value: int) -> str:
 
     ## Returns:
      * `str`: ???
-    
+
     Included since API version 1
     """
     return ""
 
-def getAutoSmoothEventValue(index: int, locked:int=1) -> int:
+
+def getAutoSmoothEventValue(index: int, locked: int = 1) -> int:
     """Returns auto smooth event value
-    
+
     HELP WANTED: What does this do?
 
     ## Args:
@@ -544,15 +598,22 @@ def getAutoSmoothEventValue(index: int, locked:int=1) -> int:
 
     ## Returns:
      * `int`: ???
-    
+
     Included since API version 1
     """
     return 0
 
-def automateEvent(index: int, value: int, flags: int, speed:int=0, 
-                  isIncrement:int=0, res:float=midi.EKRes) -> int:
+
+def automateEvent(
+    index: int,
+    value: int,
+    flags: int,
+    speed: int = 0,
+    isIncrement: int = 0,
+    res: float = midi.EKRes
+) -> int:
     """Automate event
-    
+
     HELP WANTED: What does this do?
 
     ## Args:
@@ -570,10 +631,11 @@ def automateEvent(index: int, value: int, flags: int, speed:int=0,
 
     ## Returns:
      * `long`: ???
-    
+
     Included since API version 1
     """
     return 0
+
 
 def getTrackPeaks(index: int, mode: int) -> float:
     """Returns the current audio peak value for the track at `index`.
@@ -588,15 +650,16 @@ def getTrackPeaks(index: int, mode: int) -> float:
             * `0.0`: silence
             * `1.0`: 0 dB
             * `>1.0`: clipping
-    
+
     Included since API version 1
     """
     return 0.0
 
+
 def getTrackRecordingFileName(index: int) -> str:
     """Returns the file name for audio being recorded on the track at `index`.
 
-    NOTE: Files can't be opened in FL Studio's Python interpreter due to disk 
+    NOTE: Files can't be opened in FL Studio's Python interpreter due to disk
     access being disabled for security reasons.
 
     ## Args:
@@ -604,14 +667,15 @@ def getTrackRecordingFileName(index: int) -> str:
 
     ## Returns:
      * `str`: filename
-    
+
     Included since API version 1
     """
     return ""
-    
+
+
 def linkTrackToChannel(mode: int) -> None:
     """Link a mixer track to a channel.
-    
+
     HELP WANTED: How does this function call work?
 
     ## Args:
@@ -619,55 +683,60 @@ def linkTrackToChannel(mode: int) -> None:
           * `ROUTE_ToThis` (`0`)
 
           * `ROUTE_StartingFromThis` (`1`)
-    
+
     Included since API version 1
     """
+
 
 def getSongStepPos() -> int:
     """Returns the current position in the song, measured in steps.
 
     ## Returns:
      * `int`: song position
-    
+
     Included since API version 1
     """
     return 0
 
-def getCurrentTempo(asInt:int=0) -> 'int | float':
+
+def getCurrentTempo(asInt: int = 0) -> 'int | float':
     """Returns the current tempo of the song
-    
+
     ## Args:
      * `asInt` (`int`, optional): whether to return the tempo as an `int` (`1`)
        or not (`0`). Defaults to `0`.
-    
+
     ## Returns:
      * `int` or `float`: Current tempo
-    
+
     Included since API version 1
     """
     return 0
 
+
 def getRecPPS() -> int:
     """Returns the recording PPS
-    
+
     HELP WANTED: What is PPS?
 
     ## Returns:
      * `int`: recording PPS
-    
+
     Included since API version 1
     """
     return 0
 
-def getSongTickPos(mode:int=midi.ST_Int) -> 'int | float':
+
+def getSongTickPos(mode: int = midi.ST_Int) -> 'int | float':
     """Returns the current position in the song, measured in ticks.
 
     ## Returns:
      * `int` or `float`: song position in ticks
-    
+
     Included since API version 1
     """
     return 0
+
 
 def getLastPeakVol(section: int) -> float:
     """Returns last peak volume.
@@ -679,12 +748,13 @@ def getLastPeakVol(section: int) -> float:
           * `1`: right channel
 
     ## Returns:
-     * `float`: last peak volume (`0.0` for silence, `1.0` for 0 dB, `>1.0` for 
+     * `float`: last peak volume (`0.0` for silence, `1.0` for 0 dB, `>1.0` for
        clipping)
-    
+
     Included since API version 9
     """
     return 0.0
+
 
 def getTrackDockSide(index: int) -> int:
     """
@@ -699,72 +769,77 @@ def getTrackDockSide(index: int) -> int:
 
           * `1`: Centre (default)
 
-          * `2`: Right 
-    
+          * `2`: Right
+
     Included since API version 13
     """
     return 0
 
+
 def isTrackSlotsAvailable(*args, **kwargs) -> Any:
     """
     Returns whether slots are available for a particular track????
-    
+
     WARNING: This function isn't documented
-    
+
     ## Returns:
     * `bool`: ???
-    
+
     Included since API Version 19
     """
     return False
+
 
 def isTrackSlotsEnabled(*args, **kwargs) -> Any:
     """
     Returns whether effects are enabled for a particular track, using the
     "enable effects slots" button.
-    
+
     WARNING: This function isn't documented
-    
+
     ## Returns:
     * `bool`: ???
-    
+
     Included since API Version 19
     """
     return False
+
 
 def isTrackSwapChannels(*args, **kwargs) -> bool:
     """
     Returns whether left and right channels are inverted for a particular track
-    
+
     WARNING: This function isn't documented
-    
+
     ## Returns:
     * `bool`: whether left and right are inverted
-    
+
     Included since API Version 19
     """
     return False
 
+
 def revTrackPolarity(*args, **kwargs) -> None:
     """
     Inverts the polarity for a particular track
-    
+
     WARNING: This function isn't documented, and seems to do nothing
-    
+
     ## Returns:
     * `bool`: ???
-    
+
     Included since API Version 19
     """
+
 
 def swapTrackChannels(*args, **kwargs) -> None:
     """
     ????
-    
+
     WARNING: This function isn't documented, and seems to do nothing
-    
+
     ## Returns:
     * `bool`: ???
-    
+
     Included since API Version 19
     """

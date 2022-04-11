@@ -8,6 +8,7 @@ HELP WANTED: More detailed explanations would be good, since it's not very well
 explained by the manual.
 """
 
+
 def init(deviceName: str, width: int, height: int) -> None:
     """Initialise launchmap pages
 
@@ -17,9 +18,10 @@ def init(deviceName: str, width: int, height: int) -> None:
      * `width` (`int`): ???
 
      * `height` (`int`): ???
-    
+
     Included since API version 1
     """
+
 
 def createOverlayMap(offColor: int, onColor: int, width: int, height: int) -> None:
     """Creates an overlay map
@@ -32,28 +34,31 @@ def createOverlayMap(offColor: int, onColor: int, width: int, height: int) -> No
      * `width` (`int`): ?
 
      * `height` (`int`): ?
-    
+
     Included since API version 1
     """
+
 
 def length() -> int:
     """Returns launchmap pages length
 
     ## Returns:
      * `int`: length
-    
+
     Included since API version 1
     """
     return 0
+
 
 def updateMap(index: int) -> None:
     """Updates launchmap page at `index`
 
     ## Args:
      * `index` (`int`): index of page to update
-    
+
     Included since API version 1
     """
+
 
 def getMapItemColor(index: int, itemIndex: int) -> int:
     """Returns item colour of `itemIndex` in map `index`
@@ -65,10 +70,11 @@ def getMapItemColor(index: int, itemIndex: int) -> int:
 
     ## Returns:
      * `int`: colour
-    
+
     Included since API version 1
     """
     return 0
+
 
 def getMapCount(index: int) -> int:
     """Returns the number of items in page at `index`
@@ -78,10 +84,11 @@ def getMapCount(index: int) -> int:
 
     ## Returns:
      * `int`: number of items
-    
+
     Included since API version 1
     """
     return 0
+
 
 def getMapItemChannel(index: int, itemIndex: int) -> int:
     """Returns the channel for item at `itemIndex` on page at `index`
@@ -93,10 +100,11 @@ def getMapItemChannel(index: int, itemIndex: int) -> int:
 
     ## Returns:
      * `int`: channel number
-    
+
     Included since API version 1
     """
     return 0
+
 
 def getMapItemAftertouch(index: int, itemIndex: int) -> int:
     """Returns the aftertouch for item at `itemIndex` on page at `index`
@@ -108,10 +116,11 @@ def getMapItemAftertouch(index: int, itemIndex: int) -> int:
 
     ## Returns:
      * `int`: aftertouch value
-    
+
     Included since API version 1
     """
     return 0
+
 
 def processMapItem(eventData, index: int, itemIndex: int, velocity: int) -> None:
     """Process map item at `itemIndex` of page at `index`
@@ -124,9 +133,10 @@ def processMapItem(eventData, index: int, itemIndex: int, velocity: int) -> None
      * itemIndex (`int`): item index
 
      * velocity (`int`): velocity
-    
+
     Included since API version 1
     """
+
 
 def releaseMapItem(eventData, index: int) -> None:
     """Release map item at `itemIndex` of page at `index`
@@ -137,15 +147,17 @@ def releaseMapItem(eventData, index: int) -> None:
      * `eventData` (`eventData`): event data
 
      * `index` (`int`): page index
-    
+
     Included since API version 1
     """
 
+
 def checkMapForHiddenItem() -> None:
     """Checks for launchpad hidden item???
-    
+
     Included since API version 1
     """
+
 
 def setMapItemTarget(index: int, itemIndex: int, target: int) -> int:
     """Set target for item at `itemIndex` of page at `index`.
@@ -159,7 +171,7 @@ def setMapItemTarget(index: int, itemIndex: int, target: int) -> int:
 
     ## Returns:
      * `int`: ????
-    
+
     Included since API version 1
     """
     return 0

@@ -5,7 +5,8 @@ Handles general interactions with FL Studio
 
 from fl_context import getValue as _getValue
 
-def saveUndo(undoName: str, flags: int, update:int=1) -> None:
+
+def saveUndo(undoName: str, flags: int, update: int = 1) -> None:
     """Save an undo point into FL Studio's history.
 
     ## Args:
@@ -42,6 +43,7 @@ def saveUndo(undoName: str, flags: int, update:int=1) -> None:
     Included since API version 1
     """
 
+
 def undo() -> int:
     """Perform an undo toggle, much like pressing Ctrl+Z. If the position in the
     undo history is at the most recent, it will undo, otherwise, it will redo.
@@ -53,6 +55,7 @@ def undo() -> int:
     """
     return 0
 
+
 def undoUp() -> int:
     """Move up in the undo history. This is much like undo in most programs
 
@@ -63,6 +66,7 @@ def undoUp() -> int:
     """
     return 0
 
+
 def undoDown() -> int:
     """Move down in the undo history. This is much like redo in most programs
 
@@ -72,6 +76,7 @@ def undoDown() -> int:
     Included since API version 1
     """
     return 0
+
 
 def undoUpDown(value: int) -> int:
     """Move in the undo history by delta `value`
@@ -87,6 +92,7 @@ def undoUpDown(value: int) -> int:
     """
     return 0
 
+
 def restoreUndo() -> int:
     """???
 
@@ -100,6 +106,7 @@ def restoreUndo() -> int:
     Included since API version 1
     """
     return 0
+
 
 def restoreUndoLevel(level: int) -> int:
     """???
@@ -118,6 +125,7 @@ def restoreUndoLevel(level: int) -> int:
     """
     return 0
 
+
 def getUndoLevelHint() -> str:
     """Returns a fraction-like string that shows the position in the undo
     history as well as the total length of it.
@@ -132,6 +140,7 @@ def getUndoLevelHint() -> str:
     """
     return ""
 
+
 def getUndoHistoryPos() -> int:
     """Returns the length of the undo history
 
@@ -145,6 +154,7 @@ def getUndoHistoryPos() -> int:
     """
     return 0
 
+
 def getUndoHistoryCount() -> int:
     """Returns the length of the undo history
 
@@ -154,6 +164,7 @@ def getUndoHistoryCount() -> int:
     Included since API version 1
     """
     return 0
+
 
 def getUndoHistoryLast() -> int:
     """Returns the current position in the undo history. The most recent
@@ -166,6 +177,7 @@ def getUndoHistoryLast() -> int:
     """
     return 0
 
+
 def setUndoHistoryPos(index: int) -> None:
     """Removes recent elements from the undo history, leaving only the first
     `index` elements
@@ -175,6 +187,7 @@ def setUndoHistoryPos(index: int) -> None:
 
     Included since API version 1
     """
+
 
 def setUndoHistoryCount(value: int) -> None:
     """Removes old elements from the undo history, leaving only the last
@@ -186,6 +199,7 @@ def setUndoHistoryCount(value: int) -> None:
     Included since API version 1
     """
 
+
 def setUndoHistoryLast(index: int) -> None:
     """Sets the position in the undo history, where `index = 0` is the most
     recent element and earlier points have higher indexes.
@@ -195,6 +209,7 @@ def setUndoHistoryLast(index: int) -> None:
 
     Included since API version 1
     """
+
 
 def getRecPPB() -> int:
     """Returns the current timebase (PPQN) multiplied by the number of beats in
@@ -209,6 +224,7 @@ def getRecPPB() -> int:
     """
     return 0
 
+
 def getRecPPQ() -> int:
     """Returns the current timebase (PPQN)
 
@@ -218,6 +234,7 @@ def getRecPPQ() -> int:
     Included since API version 8
     """
     return 0
+
 
 def getUseMetronome() -> bool:
     """Returns whether the metronome is active
@@ -229,6 +246,7 @@ def getUseMetronome() -> bool:
     """
     return False
 
+
 def getPrecount() -> bool:
     """Returns whether precount before recording is enabled
 
@@ -238,6 +256,7 @@ def getPrecount() -> bool:
     Included since API version 1
     """
     return False
+
 
 def getChangedFlag() -> int:
     """Returns whether a project has been changed since the last save
@@ -254,6 +273,7 @@ def getChangedFlag() -> int:
     """
     return 0
 
+
 def getVersion() -> int:
     """Returns MIDI Scripting API version number. Note that this is the API
     version, rather than the FL Studio version
@@ -264,6 +284,7 @@ def getVersion() -> int:
     Included since API version 1
     """
     return _getValue("api_version")
+
 
 def processRECEvent(eventId: int, value: int, flags: int) -> int:
     """Processes a REC event, usually changing an automatable value.
@@ -303,7 +324,8 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
     """
     return 0
 
-def dumpScoreLog(time: int, silent:int=0) -> None:
+
+def dumpScoreLog(time: int, silent: int = 0) -> None:
     """Dump score log
 
     ## Args:
@@ -314,6 +336,7 @@ def dumpScoreLog(time: int, silent:int=0) -> None:
 
     Included since API version 15
     """
+
 
 def clearLog() -> None:
     """Clear the score log

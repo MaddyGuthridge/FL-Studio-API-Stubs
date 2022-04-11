@@ -637,6 +637,7 @@ def getGridBitWithLoop(index: int, position: int) -> bool:
     """
     return False
 
+
 def showGraphEditor(
     temporary: bool,
     param: int,
@@ -664,6 +665,7 @@ def showGraphEditor(
     ## API Changes:
     * v20: Add global index
     """
+
 
 def showEditor(index: int, value: int = -1) -> None:
     """Toggle whether the plugin window for the channel at `index` is shown.
@@ -738,6 +740,7 @@ def getActivityLevel(index: int) -> float:
     Included since API version 9
     """
     return 0.0
+
 
 def quickQuantize(index: int, startOnly: int = 1) -> None:
     """
