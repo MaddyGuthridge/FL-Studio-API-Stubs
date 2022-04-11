@@ -19,11 +19,13 @@ jobs:
         with:
           path: stubs
       - name: Checkout destination repo
-        uses: actions/checkout@v3
-        with:
-          repository: MiguelGuthridge/FL-Midi-Docs
-          ref: main
-          path: docs
+        # uses: actions/checkout@v3
+        # with:
+        #   repository: MiguelGuthridge/FL-Midi-Docs
+        #   ref: main
+        #   path: docs
+        run: |
+          git clone git@github.com:MiguelGuthridge/FL-Midi-Docs.git docs
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
