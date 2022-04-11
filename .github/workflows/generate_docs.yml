@@ -29,7 +29,8 @@ jobs:
           cd src && pdoc --html . -o ../pdoc --force
       - name: Move Documentation
         run: |
-          mv -r pdoc/src pdoc
+          mv -r pdoc/src/* pdoc
+          rm -r pdoc/src
       - name: Commit and push docs
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
