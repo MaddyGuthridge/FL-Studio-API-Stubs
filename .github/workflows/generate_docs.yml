@@ -16,16 +16,16 @@ jobs:
     steps:
       - name: Checkout this repo
         uses: actions/checkout@v3
-        with:
-          path: stubs
-      - name: Checkout destination repo
-        # uses: actions/checkout@v3
         # with:
-        #   repository: MiguelGuthridge/FL-Midi-Docs
-        #   ref: main
-        #   path: docs
-        run: |
-          git clone git@github.com:MiguelGuthridge/FL-Midi-Docs.git docs
+        #   path: stubs
+      # - name: Checkout destination repo
+      #   # uses: actions/checkout@v3
+      #   # with:
+      #   #   repository: MiguelGuthridge/FL-Midi-Docs
+      #   #   ref: main
+      #   #   path: docs
+      #   run: |
+      #     git clone git@github.com:MiguelGuthridge/FL-Midi-Docs.git docs
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
@@ -41,10 +41,12 @@ jobs:
         run: |
           cp -rf stubs/pdoc docs
       - name: Commit and push docs
-        run: |
-          cd docs
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add .
-          git commit -m "Updated documentation"
-          git push
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source_file: pdoc
+          destination_repo: MiguelGuthridge/FL-Midi-Docs
+          user_email: 'hdsq@outlook.com.au'
+          user_name: 'MiguelGuthridge'
+          commit_message: 'Automatic push'
