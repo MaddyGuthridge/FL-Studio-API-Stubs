@@ -756,3 +756,12 @@ def quickQuantize(index: int, startOnly: int = 1) -> None:
 
     Included since API Version 9
     """
+
+def updateGraphEditor() -> None:
+    """
+    ???
+
+    WARNING: This function has no official documentation
+
+    Included since API Version 20
+    """

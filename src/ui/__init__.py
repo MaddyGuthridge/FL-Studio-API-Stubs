@@ -931,8 +931,6 @@ def crDisplayRect(left: int, top: int, right: int, bottom: int, duration: int, f
 def miDisplayRect(start: int, end: int, duration: int, flags: int = 0) -> None:
     """Displays a selection rectangle on the mixer
 
-    TODO: Ensure these docs are correct when it gets added
-
     ## Args:
      * `start` (`int`): start track index
 
@@ -946,4 +944,144 @@ def miDisplayRect(start: int, end: int, duration: int, flags: int = 0) -> None:
      * `flags` (`int`, optional): unknown
 
     Included since API version 13
+    """
+
+
+def getFocusedNodeCaption() -> str:
+    """
+    Returns the filename associated with the currently selected item in the
+    browser
+
+    WARNING: This function has no official documentation
+
+    ## Returns:
+    * `str`: node caption
+
+    Included since API Version 20
+    """
+    return ""
+
+
+def getFocusedNodeFileType() -> int:
+    """
+    Returns a value based on the type of the selected file in the browser
+
+    WARNING: This function has no official documentation
+
+    ## Returns:
+    * `int`: ???
+
+    Included since API Version 20
+    """
+    return 0
+
+
+def isBrowserAutoHide() -> bool:
+    """
+    Returns whether the browser is set to auto-hide
+
+    WARNING: This function has no official documentation
+
+    ## Returns:
+    * `bool`: auto-hide
+
+    Included since API Version 20
+    """
+    return False
+
+
+def setBrowserAutoHide(value: int):
+    """
+    Toggle whether the browser is set to auto-hide
+
+    WARNING: This function has no official documentation
+
+    ## Args:
+    * `value` (`int`): whether the browser should auto-hide (`1`) or not (`0`)
+
+    Included since API Version 20
+    """
+
+def miDisplayDockRect(
+    start: int,
+    length: int,
+    dock_side: int,
+    time: int,
+):
+    """
+    Display a red guide rectangle on the mixer, but contained to one side of
+    the dock.
+
+    Compare to: `miDisplayRect()`
+
+    WARNING: This function has no official documentation
+
+    ## Args:
+    * `start` (`int`): the index of the starting point, with `1` being the 1st
+      track to be docked to that side, and `5` being the 5th track docked to
+      that side
+
+    * `length` (`int`): the length of the rectangle to display, for example `1`
+      means the rectangle will be `1` track wide
+
+    * `dock_side` (`int`): the dock side to show the rectangle on:
+          * `0`: left
+
+          * `1`: middle
+
+          * `2`: right
+
+    * `time` (`int`): the amount of time to display the rectangle for, or
+      `midi.MAXINT` to display indefinitely and `0` to turn off.
+
+    Included since API Version 20
+    """
+
+
+def navigateBrowserMenu(*args):
+    """
+    Navigate within the browser window???
+
+    WARNING: This function has no official documentation
+
+    ## Args:
+    * Unknown
+
+    Included since API Version 20
+    """
+
+
+def previewBrowserMenuItem():
+    """
+    Preview the currently selected item in the browser
+
+    WARNING: This function has no official documentation
+
+    Included since API Version 20
+    """
+
+
+def selectBrowserMenuItem():
+    """
+    ???
+
+    WARNING: This function has no official documentation
+
+    Included since API Version 20
+    """
+
+
+def showNotification(val: int):
+    """
+    Show a notification to the user
+
+    WARNING: This function has no official documentation
+
+    WARNING: This appears to crash FL Studio's Python environment when given
+    (seemingly) correct arguments??? Investigation needed
+
+    ## Args:
+    * `val` (`int`): ???
+
+    Included since API Version 20
     """
