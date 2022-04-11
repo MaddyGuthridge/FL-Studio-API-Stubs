@@ -29,14 +29,15 @@ jobs:
           cd src && pdoc --html . -o ../pdoc --force
       - name: Move Documentation
         run: |
-          mv pdoc/src/* pdoc
-          rm -r pdoc/src
+          mkdir docs
+          mv pdoc/src/* docs
+          rm -r pdoc
       - name: Commit and push docs
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.PUSH_TOKEN_GITHUB }}
         with:
-          source_file: pdoc
+          source_file: docs
           destination_repo: MiguelGuthridge/FL-Midi-Docs
           destination_folder: .
           user_email: 'hdsq@outlook.com.au'
