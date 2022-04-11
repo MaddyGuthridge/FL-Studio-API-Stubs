@@ -14,7 +14,15 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+      - name: Checkout this repo
+        uses: actions/checkout@v3
+        with:
+          path: stubs
+      - name: Checkout destination repo
+        uses: actions/checkout@v3
+        with:
+          repository: MiguelGuthridge/FL-Midi-Docs
+          path: docs
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
@@ -25,13 +33,13 @@ jobs:
           pip install pdoc3
       - name: Build Documentation
         run: |
-          cd src && pdoc --html . -o ../pdoc --force && cd ..
-      - uses: GuillaumeFalourd/git-commit-push@v1.3
-        with:
-          email: ${{ github.actor }}@users.noreply.github.com
-          name: ${{ github.actor }}
-          commit_message: Rebuild Documentation
-          target_branch: main
-          files: pdoc
-          remote_repository: https://github.com/MiguelGuthridge/FL-Midi-Docs
-          access_token: ${{ github.token }}
+          cd stubs/src && pdoc --html . -o ../pdoc --force
+      - name: Copy Documentation
+        run: |
+          cp -rf stubs/pdoc docs
+      - name: Commit and push docs
+        run: |
+          cd docs
+          git add .
+          git commit -m "Updated documentation"
+          git push
