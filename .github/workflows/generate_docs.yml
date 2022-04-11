@@ -6,12 +6,11 @@
 name: Generate Documentation and Push to FL-Midi-Docs
 
 on:
-  push:
   release:
     types: [published]
 
 jobs:
-  generate:
+  Generate Docs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout this repo

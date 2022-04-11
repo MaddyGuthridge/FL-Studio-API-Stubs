@@ -17,7 +17,7 @@ helped out by improving the documentation!
 
 # Online Reference
 
-The documentation is also available as an [online reference](https://miguelguthridge.github.io/FL-Midi-Stub/pdoc/src/index.html)
+The documentation is also available as an [online reference](https://miguelguthridge.github.io/FL-Midi-Docs)
 if Image-Line's own documentation isn't up to scratch.
 
 # Differences to Official Implementation
