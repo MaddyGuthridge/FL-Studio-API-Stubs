@@ -36,10 +36,7 @@ jobs:
           pip install pdoc3
       - name: Build Documentation
         run: |
-          cd stubs/src && pdoc --html . -o ../pdoc --force
-      - name: Copy Documentation
-        run: |
-          cp -rf stubs/pdoc docs
+          cd src && pdoc --html . -o ../pdoc --force
       - name: Commit and push docs
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
