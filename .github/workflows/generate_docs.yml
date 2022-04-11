@@ -41,6 +41,8 @@ jobs:
       - name: Commit and push docs
         run: |
           cd docs
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git add .
           git commit -m "Updated documentation"
           git push
