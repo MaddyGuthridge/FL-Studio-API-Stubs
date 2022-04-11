@@ -13,6 +13,8 @@ default_values = {
     "device_assigned": True,
     "device_port": 1,
     "device_name": "Device",
+    # List of ports that we can dispatch to
+    "dispatch_targets": [],
 }
 
 values = default_values.copy()
