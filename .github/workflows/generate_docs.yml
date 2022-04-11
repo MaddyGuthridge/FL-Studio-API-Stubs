@@ -11,7 +11,7 @@ on:
     types: [published]
 
 jobs:
-  deploy:
+  generate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout this repo
@@ -22,6 +22,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: MiguelGuthridge/FL-Midi-Docs
+          ref: main
           path: docs
       - name: Set up Python
         uses: actions/setup-python@v3
