@@ -1,11 +1,12 @@
 """
 fl_context
 
-The FL Context module isn't a module that is actually used by FL Studio, but
-instead can be used with unit tests for scripts using the stubs. It lets
-some return values for scripts be managed.
+NOTE: This module is not included in FL Studio's runtime, and should not be
+imported from within your main script. It is intended to be used within a
+testing framework in order to help validate the behaviour of MIDI scripts.
 
-This shouldn't be imported from your main script, but only from the test files.
+Refer to the `fl_context.context` module for help with using the stub code's
+state manager tools.
 """
 
 from .context import (
