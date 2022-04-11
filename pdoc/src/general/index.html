@@ -35,7 +35,8 @@ Handles general interactions with FL Studio
 
 from fl_context import getValue as _getValue
 
-def saveUndo(undoName: str, flags: int, update:int=1) -&gt; None:
+
+def saveUndo(undoName: str, flags: int, update: int = 1) -&gt; None:
     &#34;&#34;&#34;Save an undo point into FL Studio&#39;s history.
 
     ## Args:
@@ -72,6 +73,7 @@ def saveUndo(undoName: str, flags: int, update:int=1) -&gt; None:
     Included since API version 1
     &#34;&#34;&#34;
 
+
 def undo() -&gt; int:
     &#34;&#34;&#34;Perform an undo toggle, much like pressing Ctrl+Z. If the position in the
     undo history is at the most recent, it will undo, otherwise, it will redo.
@@ -83,6 +85,7 @@ def undo() -&gt; int:
     &#34;&#34;&#34;
     return 0
 
+
 def undoUp() -&gt; int:
     &#34;&#34;&#34;Move up in the undo history. This is much like undo in most programs
 
@@ -93,6 +96,7 @@ def undoUp() -&gt; int:
     &#34;&#34;&#34;
     return 0
 
+
 def undoDown() -&gt; int:
     &#34;&#34;&#34;Move down in the undo history. This is much like redo in most programs
 
@@ -102,6 +106,7 @@ def undoDown() -&gt; int:
     Included since API version 1
     &#34;&#34;&#34;
     return 0
+
 
 def undoUpDown(value: int) -&gt; int:
     &#34;&#34;&#34;Move in the undo history by delta `value`
@@ -117,6 +122,7 @@ def undoUpDown(value: int) -&gt; int:
     &#34;&#34;&#34;
     return 0
 
+
 def restoreUndo() -&gt; int:
     &#34;&#34;&#34;???
 
@@ -130,6 +136,7 @@ def restoreUndo() -&gt; int:
     Included since API version 1
     &#34;&#34;&#34;
     return 0
+
 
 def restoreUndoLevel(level: int) -&gt; int:
     &#34;&#34;&#34;???
@@ -148,6 +155,7 @@ def restoreUndoLevel(level: int) -&gt; int:
     &#34;&#34;&#34;
     return 0
 
+
 def getUndoLevelHint() -&gt; str:
     &#34;&#34;&#34;Returns a fraction-like string that shows the position in the undo
     history as well as the total length of it.
@@ -162,6 +170,7 @@ def getUndoLevelHint() -&gt; str:
     &#34;&#34;&#34;
     return &#34;&#34;
 
+
 def getUndoHistoryPos() -&gt; int:
     &#34;&#34;&#34;Returns the length of the undo history
 
@@ -175,6 +184,7 @@ def getUndoHistoryPos() -&gt; int:
     &#34;&#34;&#34;
     return 0
 
+
 def getUndoHistoryCount() -&gt; int:
     &#34;&#34;&#34;Returns the length of the undo history
 
@@ -184,6 +194,7 @@ def getUndoHistoryCount() -&gt; int:
     Included since API version 1
     &#34;&#34;&#34;
     return 0
+
 
 def getUndoHistoryLast() -&gt; int:
     &#34;&#34;&#34;Returns the current position in the undo history. The most recent
@@ -196,6 +207,7 @@ def getUndoHistoryLast() -&gt; int:
     &#34;&#34;&#34;
     return 0
 
+
 def setUndoHistoryPos(index: int) -&gt; None:
     &#34;&#34;&#34;Removes recent elements from the undo history, leaving only the first
     `index` elements
@@ -205,6 +217,7 @@ def setUndoHistoryPos(index: int) -&gt; None:
 
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def setUndoHistoryCount(value: int) -&gt; None:
     &#34;&#34;&#34;Removes old elements from the undo history, leaving only the last
@@ -216,6 +229,7 @@ def setUndoHistoryCount(value: int) -&gt; None:
     Included since API version 1
     &#34;&#34;&#34;
 
+
 def setUndoHistoryLast(index: int) -&gt; None:
     &#34;&#34;&#34;Sets the position in the undo history, where `index = 0` is the most
     recent element and earlier points have higher indexes.
@@ -225,6 +239,7 @@ def setUndoHistoryLast(index: int) -&gt; None:
 
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def getRecPPB() -&gt; int:
     &#34;&#34;&#34;Returns the current timebase (PPQN) multiplied by the number of beats in
@@ -239,6 +254,7 @@ def getRecPPB() -&gt; int:
     &#34;&#34;&#34;
     return 0
 
+
 def getRecPPQ() -&gt; int:
     &#34;&#34;&#34;Returns the current timebase (PPQN)
 
@@ -248,6 +264,7 @@ def getRecPPQ() -&gt; int:
     Included since API version 8
     &#34;&#34;&#34;
     return 0
+
 
 def getUseMetronome() -&gt; bool:
     &#34;&#34;&#34;Returns whether the metronome is active
@@ -259,6 +276,7 @@ def getUseMetronome() -&gt; bool:
     &#34;&#34;&#34;
     return False
 
+
 def getPrecount() -&gt; bool:
     &#34;&#34;&#34;Returns whether precount before recording is enabled
 
@@ -268,6 +286,7 @@ def getPrecount() -&gt; bool:
     Included since API version 1
     &#34;&#34;&#34;
     return False
+
 
 def getChangedFlag() -&gt; int:
     &#34;&#34;&#34;Returns whether a project has been changed since the last save
@@ -284,6 +303,7 @@ def getChangedFlag() -&gt; int:
     &#34;&#34;&#34;
     return 0
 
+
 def getVersion() -&gt; int:
     &#34;&#34;&#34;Returns MIDI Scripting API version number. Note that this is the API
     version, rather than the FL Studio version
@@ -294,6 +314,7 @@ def getVersion() -&gt; int:
     Included since API version 1
     &#34;&#34;&#34;
     return _getValue(&#34;api_version&#34;)
+
 
 def processRECEvent(eventId: int, value: int, flags: int) -&gt; int:
     &#34;&#34;&#34;Processes a REC event, usually changing an automatable value.
@@ -333,7 +354,8 @@ def processRECEvent(eventId: int, value: int, flags: int) -&gt; int:
     &#34;&#34;&#34;
     return 0
 
-def dumpScoreLog(time: int, silent:int=0) -&gt; None:
+
+def dumpScoreLog(time: int, silent: int = 0) -&gt; None:
     &#34;&#34;&#34;Dump score log
 
     ## Args:
@@ -344,6 +366,7 @@ def dumpScoreLog(time: int, silent:int=0) -&gt; None:
 
     Included since API version 15
     &#34;&#34;&#34;
+
 
 def clearLog() -&gt; None:
     &#34;&#34;&#34;Clear the score log
@@ -396,7 +419,7 @@ not (<code>0</code>)</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def dumpScoreLog(time: int, silent:int=0) -&gt; None:
+<pre><code class="python">def dumpScoreLog(time: int, silent: int = 0) -&gt; None:
     &#34;&#34;&#34;Dump score log
 
     ## Args:
@@ -922,7 +945,7 @@ the logical or (<code>|</code>) operator:</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def saveUndo(undoName: str, flags: int, update:int=1) -&gt; None:
+<pre><code class="python">def saveUndo(undoName: str, flags: int, update: int = 1) -&gt; None:
     &#34;&#34;&#34;Save an undo point into FL Studio&#39;s history.
 
     ## Args:

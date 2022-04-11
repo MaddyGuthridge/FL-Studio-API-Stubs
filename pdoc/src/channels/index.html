@@ -678,6 +678,7 @@ def getGridBitWithLoop(index: int, position: int) -&gt; bool:
     &#34;&#34;&#34;
     return False
 
+
 def showGraphEditor(
     temporary: bool,
     param: int,
@@ -705,6 +706,7 @@ def showGraphEditor(
     ## API Changes:
     * v20: Add global index
     &#34;&#34;&#34;
+
 
 def showEditor(index: int, value: int = -1) -&gt; None:
     &#34;&#34;&#34;Toggle whether the plugin window for the channel at `index` is shown.
@@ -780,6 +782,7 @@ def getActivityLevel(index: int) -&gt; float:
     &#34;&#34;&#34;
     return 0.0
 
+
 def quickQuantize(index: int, startOnly: int = 1) -&gt; None:
     &#34;&#34;&#34;
     Perform a quick quantize operation on the channel at index
@@ -793,6 +796,15 @@ def quickQuantize(index: int, startOnly: int = 1) -&gt; None:
     * `startOnly` (`int`, optional): ???. Defaults to `1`.
 
     Included since API Version 9
+    &#34;&#34;&#34;
+
+def updateGraphEditor() -&gt; None:
+    &#34;&#34;&#34;
+    ???
+
+    WARNING: This function has no official documentation
+
+    Included since API Version 20
     &#34;&#34;&#34;</code></pre>
 </details>
 </section>
@@ -2540,6 +2552,27 @@ not (<code>0</code>). Defaults to <code>1</code>.</p>
     &#34;&#34;&#34;</code></pre>
 </details>
 </dd>
+<dt id="src.channels.updateGraphEditor"><code class="name flex">
+<span>def <span class="ident">updateGraphEditor</span></span>(<span>) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>???</p>
+<p>WARNING: This function has no official documentation</p>
+<p>Included since API Version 20</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateGraphEditor() -&gt; None:
+    &#34;&#34;&#34;
+    ???
+
+    WARNING: This function has no official documentation
+
+    Included since API Version 20
+    &#34;&#34;&#34;</code></pre>
+</details>
+</dd>
 </dl>
 </section>
 <section>
@@ -2602,6 +2635,7 @@ not (<code>0</code>). Defaults to <code>1</code>.</p>
 <li><code><a title="src.channels.showEditor" href="#src.channels.showEditor">showEditor</a></code></li>
 <li><code><a title="src.channels.showGraphEditor" href="#src.channels.showGraphEditor">showGraphEditor</a></code></li>
 <li><code><a title="src.channels.soloChannel" href="#src.channels.soloChannel">soloChannel</a></code></li>
+<li><code><a title="src.channels.updateGraphEditor" href="#src.channels.updateGraphEditor">updateGraphEditor</a></code></li>
 </ul>
 </li>
 </ul>

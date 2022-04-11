@@ -40,35 +40,39 @@ Allows you to control and interact with FL Studio Patterns.
  * Patterns are 1-indexed
 &#34;&#34;&#34;
 
+
 def patternNumber() -&gt; int:
     &#34;&#34;&#34;Returns the index for the currently selected pattern.
 
     ## Returns:
      * `int`: index of the currently active pattern
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
+
 
 def patternCount() -&gt; int:
     &#34;&#34;&#34;Returns the number of patterns in the project
 
     ## Returns:
      * `int`: the number of patterns
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
+
 
 def patternMax() -&gt; int:
     &#34;&#34;&#34;Returns the maximum number of patterns that can be created.
 
     ## Returns:
      * `int`: max number of patterns
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
+
 
 def getPatternName(index: int) -&gt; str:
     &#34;&#34;&#34;Returns the name of the pattern at `index`.
@@ -78,14 +82,15 @@ def getPatternName(index: int) -&gt; str:
 
     ## Returns:
      * `str`: name of pattern.
-        
+
     Included since API version 1
     &#34;&#34;&#34;
     return &#34;&#34;
 
+
 def setPatternName(index: int, name: str) -&gt; None:
     &#34;&#34;&#34;Sets the name of pattern at `index`
-    
+
     Setting the name to an empty string will reset the name of the pattern to
     its default.
 
@@ -93,9 +98,10 @@ def setPatternName(index: int, name: str) -&gt; None:
      * index (`int`): index of pattern
 
      * name (`str`): new name
-        
+
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def getPatternColor(index: int) -&gt; int:
     &#34;&#34;&#34;Returns the colour of the pattern at `index`.
@@ -105,10 +111,11 @@ def getPatternColor(index: int) -&gt; int:
 
     ## Returns:
      * `int`: colour of pattern (0x--BBGGRR)
-        
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
+
 
 def setPatternColor(index: int, color: int) -&gt; None:
     &#34;&#34;&#34;Sets the colour of the pattern at `index`.
@@ -117,9 +124,10 @@ def setPatternColor(index: int, color: int) -&gt; None:
      * `index` (`int`): pattern index
 
      * `color` (`int`): colour of pattern (0x--BBGGRR)
-        
+
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def getPatternLength(index: int) -&gt; int:
     &#34;&#34;&#34;Returns the length of the pattern at `index` in beats.
@@ -129,14 +137,15 @@ def getPatternLength(index: int) -&gt; int:
 
     ## Returns:
      * `int`: length of pattern in beats
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
 
+
 def getBlockSetStatus(left: int, top: int, right: int, bottom: int) -&gt; int:
     &#34;&#34;&#34;Returns the status of the live block.
-    
+
     HELP WANTED: What does this do?
 
     ## Args:
@@ -155,12 +164,13 @@ def getBlockSetStatus(left: int, top: int, right: int, bottom: int) -&gt; int:
           * `LB_Status_Scheduled` (`2`): Scheduled
 
           * `LB_Status_Playing` (`4`): Playing
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
 
-def ensureValidNoteRecord(index: int, playNow:int=0) -&gt; int:
+
+def ensureValidNoteRecord(index: int, playNow: int = 0) -&gt; int:
     &#34;&#34;&#34;Ensures valid note on the pattern at `index`.
 
     HELP WANTED: What does this do? I haven&#39;t managed to get it to return
@@ -173,39 +183,42 @@ def ensureValidNoteRecord(index: int, playNow:int=0) -&gt; int:
 
     ## Returns:
      * `int`: ???
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
 
+
 def jumpToPattern(index: int) -&gt; None:
     &#34;&#34;&#34;Scroll the patterns list to the pattern at `index`, and select it.
-    
+
     NOTE: This function seems to cause some extremely buggy behaviour as of FL
     20.8.4, and as such, using it is not recommended.
 
     ## Args:
      * index (`int`): pattern index
-    
+
     Included since API version 1
     &#34;&#34;&#34;
 
-def findFirstNextEmptyPat(flags: int, x:int=-1, y:int=-1) -&gt; None:
+
+def findFirstNextEmptyPat(flags: int, x: int = -1, y: int = -1) -&gt; None:
     &#34;&#34;&#34;Selects the first or next empty pattern.
 
     ## Args:
      * `flags` (`int`):
           * `FFNEP_FindFirst` (`0`): Find first pattern
 
-          * `FFNEP_DontPromptName` (`1`): Don&#39;t prompt pattern name (this 
+          * `FFNEP_DontPromptName` (`1`): Don&#39;t prompt pattern name (this
             doesn&#39;t seem to work)
 
      * `x` (`int`, optional): ???. Defaults to -1.
 
      * `y` (`int`, optional): ???. Defaults to -1.
-    
+
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def isPatternSelected(index: int) -&gt; bool:
     &#34;&#34;&#34;Returns whether the pattern at `index` is selected.
@@ -215,12 +228,13 @@ def isPatternSelected(index: int) -&gt; bool:
 
     ## Returns:
      * `bool`: whether pattern is selected
-    
+
     Included since API version 2
     &#34;&#34;&#34;
     return False
 
-def selectPattern(index: int, value:int=-1, preview:int=0) -&gt; None:
+
+def selectPattern(index: int, value: int = -1, preview: int = 0) -&gt; None:
     &#34;&#34;&#34;Selects the pattern at `index`.
 
     ## Args:
@@ -235,25 +249,28 @@ def selectPattern(index: int, value:int=-1, preview:int=0) -&gt; None:
 
      * `preview` (`int`, optional): whether to preview the pattern.
        Defaults to 0.
-    
+
     Included since API version 2
     &#34;&#34;&#34;
+
 
 def selectAll() -&gt; None:
     &#34;&#34;&#34;Selects all patterns
-    
+
     Included since API version 2
     &#34;&#34;&#34;
+
 
 def deselectAll() -&gt; None:
     &#34;&#34;&#34;Deselects all patterns
-    
+
     Included since API version 2
     &#34;&#34;&#34;
 
-def burnLoop(index: int, storeUndo:int=1, updateUi:int=1) -&gt; None:
+
+def burnLoop(index: int, storeUndo: int = 1, updateUi: int = 1) -&gt; None:
     &#34;&#34;&#34;???
-    
+
     HELP WANTED: The documentation for this doesn&#39;t make sense.
 
     ## Args:
@@ -262,7 +279,7 @@ def burnLoop(index: int, storeUndo:int=1, updateUi:int=1) -&gt; None:
      * `storeUndo` (`int`, optional): ???. Defaults to 1.
 
      * `updateUi` (`int`, optional): ???. Defaults to 1.
-    
+
     Included since API version 9
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -297,9 +314,9 @@ def burnLoop(index: int, storeUndo:int=1, updateUi:int=1) -&gt; None:
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def burnLoop(index: int, storeUndo:int=1, updateUi:int=1) -&gt; None:
+<pre><code class="python">def burnLoop(index: int, storeUndo: int = 1, updateUi: int = 1) -&gt; None:
     &#34;&#34;&#34;???
-    
+
     HELP WANTED: The documentation for this doesn&#39;t make sense.
 
     ## Args:
@@ -308,7 +325,7 @@ def burnLoop(index: int, storeUndo:int=1, updateUi:int=1) -&gt; None:
      * `storeUndo` (`int`, optional): ???. Defaults to 1.
 
      * `updateUi` (`int`, optional): ???. Defaults to 1.
-    
+
     Included since API version 9
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -325,7 +342,7 @@ def burnLoop(index: int, storeUndo:int=1, updateUi:int=1) -&gt; None:
 </summary>
 <pre><code class="python">def deselectAll() -&gt; None:
     &#34;&#34;&#34;Deselects all patterns
-    
+
     Included since API version 2
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -355,7 +372,7 @@ anything other than zero.</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ensureValidNoteRecord(index: int, playNow:int=0) -&gt; int:
+<pre><code class="python">def ensureValidNoteRecord(index: int, playNow: int = 0) -&gt; int:
     &#34;&#34;&#34;Ensures valid note on the pattern at `index`.
 
     HELP WANTED: What does this do? I haven&#39;t managed to get it to return
@@ -368,7 +385,7 @@ anything other than zero.</p>
 
     ## Returns:
      * `int`: ???
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -405,20 +422,20 @@ doesn't seem to work)</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def findFirstNextEmptyPat(flags: int, x:int=-1, y:int=-1) -&gt; None:
+<pre><code class="python">def findFirstNextEmptyPat(flags: int, x: int = -1, y: int = -1) -&gt; None:
     &#34;&#34;&#34;Selects the first or next empty pattern.
 
     ## Args:
      * `flags` (`int`):
           * `FFNEP_FindFirst` (`0`): Find first pattern
 
-          * `FFNEP_DontPromptName` (`1`): Don&#39;t prompt pattern name (this 
+          * `FFNEP_DontPromptName` (`1`): Don&#39;t prompt pattern name (this
             doesn&#39;t seem to work)
 
      * `x` (`int`, optional): ???. Defaults to -1.
 
      * `y` (`int`, optional): ???. Defaults to -1.
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -468,7 +485,7 @@ doesn't seem to work)</p>
 </summary>
 <pre><code class="python">def getBlockSetStatus(left: int, top: int, right: int, bottom: int) -&gt; int:
     &#34;&#34;&#34;Returns the status of the live block.
-    
+
     HELP WANTED: What does this do?
 
     ## Args:
@@ -487,7 +504,7 @@ doesn't seem to work)</p>
           * `LB_Status_Scheduled` (`2`): Scheduled
 
           * `LB_Status_Playing` (`4`): Playing
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -519,7 +536,7 @@ doesn't seem to work)</p>
 
     ## Returns:
      * `int`: colour of pattern (0x--BBGGRR)
-        
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -551,7 +568,7 @@ doesn't seem to work)</p>
 
     ## Returns:
      * `int`: length of pattern in beats
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -583,7 +600,7 @@ doesn't seem to work)</p>
 
     ## Returns:
      * `str`: name of pattern.
-        
+
     Included since API version 1
     &#34;&#34;&#34;
     return &#34;&#34;</code></pre>
@@ -615,7 +632,7 @@ doesn't seem to work)</p>
 
     ## Returns:
      * `bool`: whether pattern is selected
-    
+
     Included since API version 2
     &#34;&#34;&#34;
     return False</code></pre>
@@ -639,13 +656,13 @@ doesn't seem to work)</p>
 </summary>
 <pre><code class="python">def jumpToPattern(index: int) -&gt; None:
     &#34;&#34;&#34;Scroll the patterns list to the pattern at `index`, and select it.
-    
+
     NOTE: This function seems to cause some extremely buggy behaviour as of FL
     20.8.4, and as such, using it is not recommended.
 
     ## Args:
      * index (`int`): pattern index
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -669,7 +686,7 @@ doesn't seem to work)</p>
 
     ## Returns:
      * `int`: the number of patterns
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -694,7 +711,7 @@ doesn't seem to work)</p>
 
     ## Returns:
      * `int`: max number of patterns
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -719,7 +736,7 @@ doesn't seem to work)</p>
 
     ## Returns:
      * `int`: index of the currently active pattern
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -737,7 +754,7 @@ doesn't seem to work)</p>
 </summary>
 <pre><code class="python">def selectAll() -&gt; None:
     &#34;&#34;&#34;Selects all patterns
-    
+
     Included since API version 2
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -776,7 +793,7 @@ Defaults to 0.</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def selectPattern(index: int, value:int=-1, preview:int=0) -&gt; None:
+<pre><code class="python">def selectPattern(index: int, value: int = -1, preview: int = 0) -&gt; None:
     &#34;&#34;&#34;Selects the pattern at `index`.
 
     ## Args:
@@ -791,7 +808,7 @@ Defaults to 0.</p>
 
      * `preview` (`int`, optional): whether to preview the pattern.
        Defaults to 0.
-    
+
     Included since API version 2
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -822,7 +839,7 @@ Defaults to 0.</p>
      * `index` (`int`): pattern index
 
      * `color` (`int`): colour of pattern (0x--BBGGRR)
-        
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -850,7 +867,7 @@ its default.</p>
 </summary>
 <pre><code class="python">def setPatternName(index: int, name: str) -&gt; None:
     &#34;&#34;&#34;Sets the name of pattern at `index`
-    
+
     Setting the name to an empty string will reset the name of the pattern to
     its default.
 
@@ -858,7 +875,7 @@ its default.</p>
      * index (`int`): index of pattern
 
      * name (`str`): new name
-        
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>

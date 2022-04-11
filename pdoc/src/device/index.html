@@ -38,174 +38,197 @@ scripts communicate with each other.
 from typing import Optional
 from fl_context import getValue as _getValue
 
+
 def isAssigned() -&gt; bool:
     &#34;&#34;&#34;Returns `True` if an output interface is linked to the script, meaning
     that the script can send MIDI messages to that device.
 
     ## Returns:
      * `bool`: whether the device is assigned
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return _getValue(&#34;device_assigned&#34;)
 
+
 def getPortNumber() -&gt; int:
     &#34;&#34;&#34;Returns the port number for the input device that the script is attached
-    to. If the device requires two-way communication, the output port (where 
-    functions like `midiOutMsg()` send their data to) should be set to the value
-    of the input port, which is returned by this function.
+    to. If the device requires two-way communication, the output port (where
+    functions like `midiOutMsg()` send their data to) should be set to the
+    value of the input port, which is returned by this function.
 
     ## Returns:
      * `int`: port number of the input device
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return _getValue(&#34;device_port&#34;)
+
 
 def getName() -&gt; str:
     &#34;&#34;&#34;Returns the name of the device.
 
     ## Returns:
      * `str`: device name
-    
+
     Included since API version 7
     &#34;&#34;&#34;
     return _getValue(&#34;device_name&#34;)
 
-def midiOutMsg(message: int, channel:int=-1, data1:int=-1, data2:int=-1)\
-    -&gt; None:
+
+def midiOutMsg(
+    message: int,
+    channel: int = -1,
+    data1: int = -1,
+    data2: int = -1
+) -&gt; None:
     &#34;&#34;&#34;Sends a MIDI message to the linked output device.
-    
-    This can be done either through a single combined message, or in its 
+
+    This can be done either through a single combined message, or in its
     distinct components.
 
     ## Args:
-     * `message` (`int`): 
+     * `message` (`int`):
           * the MIDI message to send (if sending a complete message):
               * Lowest byte: `status`
-              
+
               * Middle byte: `data 1`
-              
+
               * Upper byte: `data 2`
-              
-          * OR the message type (if sending a partial MIDI message, 
+
+          * OR the message type (if sending a partial MIDI message,
             eg `0xB` for a CC message)
-            
-     * `channel` (`int`, optional): the channel to send the message to (if 
+
+     * `channel` (`int`, optional): the channel to send the message to (if
        sending a partial MIDI message)
-       
+
      * `data1` (`int`, optional): the note data value for the message (if
        sending a partial MIDI message)
-       
+
      * `data2` (`int`, optional): the velocity data value for the message (if
        sending a partial MIDI message)
-    
-    Included since API version 1, with the component options added in API 
+
+    Included since API version 1, with the component options added in API
     version 2
     &#34;&#34;&#34;
 
+
 def midiOutNewMsg(slotIndex: int, message: int) -&gt; None:
-    &#34;&#34;&#34;Sends a MIDI message to the linked output device, but only if the message
-    being sent has changed compared to the last message sent with the same 
-    `slotIndex`.
+    &#34;&#34;&#34;Sends a MIDI message to the linked output device, but only if the
+    message being sent has changed compared to the last message sent with the
+    same `slotIndex`.
 
     ## Args:
      * `slotIndex` (`int`): index for MIDI message comparison
-     
+
      * `message` (`int`): message to potentially send
-    
+
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def midiOutSysex(message: bytes) -&gt; None:
     &#34;&#34;&#34;Send a SysEx message to the (linked) output device.
 
     ## Args:
      * `message` (`str`): SysEx message to send
-    
+
     Included since API version 1
     &#34;&#34;&#34;
 
-def sendMsgGeneric(id: int, message: str, lastMsg: str, offset:int=0) -&gt; str:
+
+def sendMsgGeneric(
+    id: int,
+    message: str,
+    lastMsg: str,
+    offset: int = 0
+) -&gt; str:
     &#34;&#34;&#34;Send a text string as a SysEx message to the linked output device.
-    
+
     WARNING: This function is depreciated
 
     ## Args:
-     * `id` (`int`): the first 6 bytes of the message (the end value `0xF7` is 
+     * `id` (`int`): the first 6 bytes of the message (the end value `0xF7` is
        added automatically)
-       
+
      * `message` (`str`): the text to send
-     
+
      * `lastMsg` (`str`): the string returned by the previous call to this
        function.
-       
+
      * `offset` (`int`, optional): ???. Defaults to 0.
 
     ## Returns:
      * `str`: value to use in the next call of this function
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return &#34;&#34;
+
 
 def processMIDICC(eventData) -&gt; None:
     &#34;&#34;&#34;Lets FL Studio process a MIDI CC message.
 
     ## Args:
      * `eventData` (`eventData`): FL MIDI Event to process.
-    
+
     Included since API version 1
     &#34;&#34;&#34;
 
-def forwardMIDICC(message: int, mode:int=1) -&gt; None:
+
+def forwardMIDICC(message: int, mode: int = 1) -&gt; None:
     &#34;&#34;&#34;Forwards a MIDI CC message to the currently focused plugin.
 
     ## Args:
      * `message` (`int`): MIDI message to forward
-     
+
      * `mode` (`int`, optional): Where to send the message:
           * `0`: Send the message to all plugins
 
           * `1` (default): ???
 
           * `2`: Send the message to the selected channels
-    
+
     Included since API version 7
     &#34;&#34;&#34;
+
 
 def directFeedback(eventData) -&gt; None:
     &#34;&#34;&#34;Send a received message to the linked output device
 
     ## Args:
      * `eventData` (`eventData`): event to send
-    
+
     Included since API version 1
     &#34;&#34;&#34;
 
-def repeatMidiEvent(eventData, delay:int=300, rate:int=300) -&gt; None:
+
+def repeatMidiEvent(eventData, delay: int = 300, rate: int = 300) -&gt; None:
     &#34;&#34;&#34;Start repeatedly sending out the message in `eventData` every `rate`
     ms after `delay` ms.
 
     ## Args:
      * `eventData` (`eventData`): event to repeat
 
-     * `delay` (`int`, optional): initial delay before sending in ms. Defaults to 300.
+     * `delay` (`int`, optional): initial delay before sending in ms. Defaults
+       to 300.
 
      * `rate` (`int`, optional): time between each send in ms. Defaults to 300.
-    
+
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def stopRepeatMidiEvent() -&gt; None:
     &#34;&#34;&#34;Stop sending a currently repeating MIDI event.
-    
+
     Refer to `repeatMidiEvent()`.
-    
+
     Included since API version 1
     &#34;&#34;&#34;
 
-def findEventID(controlId: int, flags:int=0) -&gt; int:
+
+def findEventID(controlId: int, flags: int = 0) -&gt; int:
     &#34;&#34;&#34;Returns eventID for controlId.
 
     HELP WANTED: What does this do?
@@ -217,10 +240,11 @@ def findEventID(controlId: int, flags:int=0) -&gt; int:
 
     ## Returns:
      * `int`: event ID
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
+
 
 def getLinkedValue(eventID: int) -&gt; float:
     &#34;&#34;&#34;Returns normalised value of the REC event at `eventID`. Returns `-1`
@@ -242,6 +266,7 @@ def getLinkedValue(eventID: int) -&gt; float:
     &#34;&#34;&#34;
     return 0.0
 
+
 def getLinkedValueString(eventID: int) -&gt; str:
     &#34;&#34;&#34;Returns text value of the REC event at `eventID`
 
@@ -259,10 +284,11 @@ def getLinkedValueString(eventID: int) -&gt; str:
 
     ## Returns:
      * `str`: Parameter value string
-    
+
     Included since API version 10
     &#34;&#34;&#34;
     return &#34;&#34;
+
 
 def getLinkedParamName(eventID: int) -&gt; str:
     &#34;&#34;&#34;Returns the parameter name of the REC event at `eventID`.
@@ -278,10 +304,11 @@ def getLinkedParamName(eventID: int) -&gt; str:
 
     ## Returns:
      * `str`: Parameter name
-    
+
     Included since API version 10
     &#34;&#34;&#34;
     return &#34;&#34;
+
 
 def getLinkedInfo(eventID: int) -&gt; int:
     &#34;&#34;&#34;Returns information about a linked control via `eventID`.
@@ -298,38 +325,42 @@ def getLinkedInfo(eventID: int) -&gt; int:
           * `Event_Float` (`2`): ???
 
           * `Event_Centered` (`4`): ???
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
 
+
 def createRefreshThread() -&gt; None:
     &#34;&#34;&#34;Start a threaded refresh of the entire MIDI device.
-    
+
     HELP WANTED: What do refresh threads do?
-    
+
     Included since API version 1
     &#34;&#34;&#34;
 
+
 def destroyRefreshThread() -&gt; None:
     &#34;&#34;&#34;Stop a previously started threaded refresh.
-    
+
     HELP WANTED: What do refresh threads do?
-    
+
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def fullRefresh() -&gt; None:
     &#34;&#34;&#34;Trigger a previously started threaded refresh. If there is none, the
     refresh is triggered immediately.
-    
+
     HELP WANTED: What do refresh threads do?
-    
+
     Included since API version 1
     &#34;&#34;&#34;
 
+
 def isDoubleClick(index: int) -&gt; bool:
-    &#34;&#34;&#34;Returns whether the function was called with the same index shortly 
+    &#34;&#34;&#34;Returns whether the function was called with the same index shortly
     before, indicating a double click.
 
     ## Args:
@@ -337,59 +368,67 @@ def isDoubleClick(index: int) -&gt; bool:
 
     ## Returns:
      * `bool`: whether the event was a double click
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return False
 
+
 def setHasMeters() -&gt; None:
-    &#34;&#34;&#34;Registers the controller as having peak meters, meaning that the 
-    `OnUpdateMeters()` function will be called. This function should be called 
+    &#34;&#34;&#34;Registers the controller as having peak meters, meaning that the
+    `OnUpdateMeters()` function will be called. This function should be called
     within `OnInit()`.
-    
+
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def baseTrackSelect(index: int, step: int) -&gt; None:
     &#34;&#34;&#34;Base track selection (for control surfaces). Set `step` to `MaxInt` to
     reset.
-    
+
     HELP WANTED: What does this do?
 
     ## Args:
      * `index` (`int`): ???
-     
+
      * `step` (`int`): ???
-    
+
     Included since API version 1
     &#34;&#34;&#34;
 
+
 def hardwareRefreshMixerTrack(index: int) -&gt; None:
     &#34;&#34;&#34;Hardware refresh mixer track at `index`.
-    
+
     HELP WANTED: What does this mean?
 
     ## Args:
      * `index` (`int`): track index. `-1` refreshes all tracks.
-    
+
     Included since API version 1
     &#34;&#34;&#34;
 
-def dispatch(ctrlIndex: int, message: int, sysex:Optional[bytes]=None) -&gt; None:
-    &#34;&#34;&#34;Dispatch a MIDI message (either via a standard MIDI Message or through a 
-    system exclusive (SysEx) message) that is sent to another controller script.
-    This allows communication between different devices provided that they have
-    a stardardised communication method.
-    
+
+def dispatch(
+    ctrlIndex: int,
+    message: int,
+    sysex: Optional[bytes] = None
+) -&gt; None:
+    &#34;&#34;&#34;Dispatch a MIDI message (either via a standard MIDI Message or through a
+    system exclusive (SysEx) message) that is sent to another controller
+    script. This allows communication between different devices provided that
+    they have a standardised communication method.
+
     MIDI messages sent through this method are received in the same way as all
     other messages, so it should be ensured that they can be differentiated
     by the receiving controller.
-    
+
     In order to allow a device to receive MIDI messages via a dispatch command,
     it must have a `receiveFrom` pre-processor comment for FL Studio to detect
     when the script is loaded. This comment should be at the top of the
     `device_MyController.py` file along with the name and URL, for example:
-    
+
     ```py
     # name=My Controller
     # receiveFrom=My Other Controller
@@ -403,19 +442,25 @@ def dispatch(ctrlIndex: int, message: int, sysex:Optional[bytes]=None) -&gt; Non
      * `message` (`int`): MIDI message to send (or header of a SysEx message)
 
      * `sysex` (`bytes`, optional): SysEx data to send, if applicable
-    
+
     Included since API version 1
     &#34;&#34;&#34;
+    # Check we&#39;re dispatching to the right place
+    if ctrlIndex &lt; 0 or ctrlIndex &gt;= len(_getValue(&#34;dispatch_targets&#34;)):
+        # The API raises a TypeError for this :puke:
+        raise TypeError(&#34;Index out of range&#34;)
+
 
 def dispatchReceiverCount() -&gt; int:
     &#34;&#34;&#34;Returns the number of device scripts that this script can dispatch to.
 
     ## Returns:
      * `int`: number of available receiver devices.
-    
+
     Included since API version 1
     &#34;&#34;&#34;
-    return 0
+    return len(_getValue(&#34;dispatch_targets&#34;))
+
 
 def dispatchGetReceiverPortNumber(ctrlIndex: int) -&gt; int:
     &#34;&#34;&#34;Returns the port of the receiver device specified by `ctrlIndex`.
@@ -425,40 +470,46 @@ def dispatchGetReceiverPortNumber(ctrlIndex: int) -&gt; int:
 
     ## Returns:
      * `int`: MIDI port associated with the receiver device
-    
+
     Included since API version 5
     &#34;&#34;&#34;
-    return 0
+    t = _getValue(&#34;dispatch_targets&#34;)
+    if ctrlIndex &lt; 0 or ctrlIndex &gt;= len(t):
+        # The API raises a TypeError for this :puke:
+        raise TypeError(&#34;Index out of range&#34;)
+    return t[ctrlIndex]
+
 
 def setMasterSync(value: int) -&gt; None:
     &#34;&#34;&#34;
     Control the value of the &#34;send master sync&#34; option in FL Studio&#39;s MIDI
     settings for this device.
-    
+
     This option controls whether stop, pause and play transport notifications
     are sent to the MIDI device. This shouldn&#39;t be enabled unless the device
-    explicitly requires it, as it can lead to unpredictable and sometimes broken
-    behaviour.
-    
+    explicitly requires it, as it can lead to unpredictable and sometimes
+    broken behaviour.
+
     ## Args:
     * `value` (`int`): Whether to enable (`1`) or disable (`0`)
-    
+
     Included since API Version 18
     &#34;&#34;&#34;
+
 
 def getMasterSync() -&gt; bool:
     &#34;&#34;&#34;
     Returns the value of the &#34;send master sync&#34; option in FL Studio&#39;s MIDI
     settings for this device.
-    
+
     This option controls whether stop, pause and play transport notifications
     are sent to the MIDI device, and shouldn&#39;t be enabled unless the device
-    explicitly requires it, as it can lead to unpredictable and sometimes broken
-    behaviour.
-    
+    explicitly requires it, as it can lead to unpredictable and sometimes
+    broken behaviour.
+
     ## Returns:
     * `bool`: Whether master sync is enabled (`1`) or disabled (`0`)
-    
+
     Included since API Version 19
     &#34;&#34;&#34;
     return False</code></pre>
@@ -495,14 +546,14 @@ reset.</p>
 <pre><code class="python">def baseTrackSelect(index: int, step: int) -&gt; None:
     &#34;&#34;&#34;Base track selection (for control surfaces). Set `step` to `MaxInt` to
     reset.
-    
+
     HELP WANTED: What does this do?
 
     ## Args:
      * `index` (`int`): ???
-     
+
      * `step` (`int`): ???
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -520,9 +571,9 @@ reset.</p>
 </summary>
 <pre><code class="python">def createRefreshThread() -&gt; None:
     &#34;&#34;&#34;Start a threaded refresh of the entire MIDI device.
-    
+
     HELP WANTED: What do refresh threads do?
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -540,9 +591,9 @@ reset.</p>
 </summary>
 <pre><code class="python">def destroyRefreshThread() -&gt; None:
     &#34;&#34;&#34;Stop a previously started threaded refresh.
-    
+
     HELP WANTED: What do refresh threads do?
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -566,7 +617,7 @@ reset.</p>
 
     ## Args:
      * `eventData` (`eventData`): event to send
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -576,9 +627,9 @@ reset.</p>
 </code></dt>
 <dd>
 <div class="desc"><p>Dispatch a MIDI message (either via a standard MIDI Message or through a
-system exclusive (SysEx) message) that is sent to another controller script.
-This allows communication between different devices provided that they have
-a stardardised communication method.</p>
+system exclusive (SysEx) message) that is sent to another controller
+script. This allows communication between different devices provided that
+they have a standardised communication method.</p>
 <p>MIDI messages sent through this method are received in the same way as all
 other messages, so it should be ensured that they can be differentiated
 by the receiving controller.</p>
@@ -608,21 +659,25 @@ to dispatch MIDI messages to the script named "My Controller".</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def dispatch(ctrlIndex: int, message: int, sysex:Optional[bytes]=None) -&gt; None:
-    &#34;&#34;&#34;Dispatch a MIDI message (either via a standard MIDI Message or through a 
-    system exclusive (SysEx) message) that is sent to another controller script.
-    This allows communication between different devices provided that they have
-    a stardardised communication method.
-    
+<pre><code class="python">def dispatch(
+    ctrlIndex: int,
+    message: int,
+    sysex: Optional[bytes] = None
+) -&gt; None:
+    &#34;&#34;&#34;Dispatch a MIDI message (either via a standard MIDI Message or through a
+    system exclusive (SysEx) message) that is sent to another controller
+    script. This allows communication between different devices provided that
+    they have a standardised communication method.
+
     MIDI messages sent through this method are received in the same way as all
     other messages, so it should be ensured that they can be differentiated
     by the receiving controller.
-    
+
     In order to allow a device to receive MIDI messages via a dispatch command,
     it must have a `receiveFrom` pre-processor comment for FL Studio to detect
     when the script is loaded. This comment should be at the top of the
     `device_MyController.py` file along with the name and URL, for example:
-    
+
     ```py
     # name=My Controller
     # receiveFrom=My Other Controller
@@ -636,9 +691,13 @@ to dispatch MIDI messages to the script named "My Controller".</p>
      * `message` (`int`): MIDI message to send (or header of a SysEx message)
 
      * `sysex` (`bytes`, optional): SysEx data to send, if applicable
-    
+
     Included since API version 1
-    &#34;&#34;&#34;</code></pre>
+    &#34;&#34;&#34;
+    # Check we&#39;re dispatching to the right place
+    if ctrlIndex &lt; 0 or ctrlIndex &gt;= len(_getValue(&#34;dispatch_targets&#34;)):
+        # The API raises a TypeError for this :puke:
+        raise TypeError(&#34;Index out of range&#34;)</code></pre>
 </details>
 </dd>
 <dt id="src.device.dispatchGetReceiverPortNumber"><code class="name flex">
@@ -667,10 +726,14 @@ to dispatch MIDI messages to the script named "My Controller".</p>
 
     ## Returns:
      * `int`: MIDI port associated with the receiver device
-    
+
     Included since API version 5
     &#34;&#34;&#34;
-    return 0</code></pre>
+    t = _getValue(&#34;dispatch_targets&#34;)
+    if ctrlIndex &lt; 0 or ctrlIndex &gt;= len(t):
+        # The API raises a TypeError for this :puke:
+        raise TypeError(&#34;Index out of range&#34;)
+    return t[ctrlIndex]</code></pre>
 </details>
 </dd>
 <dt id="src.device.dispatchReceiverCount"><code class="name flex">
@@ -692,10 +755,10 @@ to dispatch MIDI messages to the script named "My Controller".</p>
 
     ## Returns:
      * `int`: number of available receiver devices.
-    
+
     Included since API version 1
     &#34;&#34;&#34;
-    return 0</code></pre>
+    return len(_getValue(&#34;dispatch_targets&#34;))</code></pre>
 </details>
 </dd>
 <dt id="src.device.findEventID"><code class="name flex">
@@ -722,7 +785,7 @@ to dispatch MIDI messages to the script named "My Controller".</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def findEventID(controlId: int, flags:int=0) -&gt; int:
+<pre><code class="python">def findEventID(controlId: int, flags: int = 0) -&gt; int:
     &#34;&#34;&#34;Returns eventID for controlId.
 
     HELP WANTED: What does this do?
@@ -734,7 +797,7 @@ to dispatch MIDI messages to the script named "My Controller".</p>
 
     ## Returns:
      * `int`: event ID
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -770,19 +833,19 @@ to dispatch MIDI messages to the script named "My Controller".</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def forwardMIDICC(message: int, mode:int=1) -&gt; None:
+<pre><code class="python">def forwardMIDICC(message: int, mode: int = 1) -&gt; None:
     &#34;&#34;&#34;Forwards a MIDI CC message to the currently focused plugin.
 
     ## Args:
      * `message` (`int`): MIDI message to forward
-     
+
      * `mode` (`int`, optional): Where to send the message:
           * `0`: Send the message to all plugins
 
           * `1` (default): ???
 
           * `2`: Send the message to the selected channels
-    
+
     Included since API version 7
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -802,9 +865,9 @@ refresh is triggered immediately.</p>
 <pre><code class="python">def fullRefresh() -&gt; None:
     &#34;&#34;&#34;Trigger a previously started threaded refresh. If there is none, the
     refresh is triggered immediately.
-    
+
     HELP WANTED: What do refresh threads do?
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -858,7 +921,7 @@ refresh is triggered immediately.</p>
           * `Event_Float` (`2`): ???
 
           * `Event_Centered` (`4`): ???
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -902,7 +965,7 @@ refresh is triggered immediately.</p>
 
     ## Returns:
      * `str`: Parameter name
-    
+
     Included since API version 10
     &#34;&#34;&#34;
     return &#34;&#34;</code></pre>
@@ -997,7 +1060,7 @@ REC parameter.</p>
 
     ## Returns:
      * `str`: Parameter value string
-    
+
     Included since API version 10
     &#34;&#34;&#34;
     return &#34;&#34;</code></pre>
@@ -1011,8 +1074,8 @@ REC parameter.</p>
 settings for this device.</p>
 <p>This option controls whether stop, pause and play transport notifications
 are sent to the MIDI device, and shouldn't be enabled unless the device
-explicitly requires it, as it can lead to unpredictable and sometimes broken
-behaviour.</p>
+explicitly requires it, as it can lead to unpredictable and sometimes
+broken behaviour.</p>
 <h2 id="returns">Returns:</h2>
 <ul>
 <li><code>bool</code>: Whether master sync is enabled (<code>1</code>) or disabled (<code>0</code>)</li>
@@ -1026,15 +1089,15 @@ behaviour.</p>
     &#34;&#34;&#34;
     Returns the value of the &#34;send master sync&#34; option in FL Studio&#39;s MIDI
     settings for this device.
-    
+
     This option controls whether stop, pause and play transport notifications
     are sent to the MIDI device, and shouldn&#39;t be enabled unless the device
-    explicitly requires it, as it can lead to unpredictable and sometimes broken
-    behaviour.
-    
+    explicitly requires it, as it can lead to unpredictable and sometimes
+    broken behaviour.
+
     ## Returns:
     * `bool`: Whether master sync is enabled (`1`) or disabled (`0`)
-    
+
     Included since API Version 19
     &#34;&#34;&#34;
     return False</code></pre>
@@ -1059,7 +1122,7 @@ behaviour.</p>
 
     ## Returns:
      * `str`: device name
-    
+
     Included since API version 7
     &#34;&#34;&#34;
     return _getValue(&#34;device_name&#34;)</code></pre>
@@ -1071,8 +1134,8 @@ behaviour.</p>
 <dd>
 <div class="desc"><p>Returns the port number for the input device that the script is attached
 to. If the device requires two-way communication, the output port (where
-functions like <code><a title="src.device.midiOutMsg" href="#src.device.midiOutMsg">midiOutMsg()</a></code> send their data to) should be set to the value
-of the input port, which is returned by this function.</p>
+functions like <code><a title="src.device.midiOutMsg" href="#src.device.midiOutMsg">midiOutMsg()</a></code> send their data to) should be set to the
+value of the input port, which is returned by this function.</p>
 <h2 id="returns">Returns:</h2>
 <ul>
 <li><code>int</code>: port number of the input device</li>
@@ -1084,13 +1147,13 @@ of the input port, which is returned by this function.</p>
 </summary>
 <pre><code class="python">def getPortNumber() -&gt; int:
     &#34;&#34;&#34;Returns the port number for the input device that the script is attached
-    to. If the device requires two-way communication, the output port (where 
-    functions like `midiOutMsg()` send their data to) should be set to the value
-    of the input port, which is returned by this function.
+    to. If the device requires two-way communication, the output port (where
+    functions like `midiOutMsg()` send their data to) should be set to the
+    value of the input port, which is returned by this function.
 
     ## Returns:
      * `int`: port number of the input device
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return _getValue(&#34;device_port&#34;)</code></pre>
@@ -1113,12 +1176,12 @@ of the input port, which is returned by this function.</p>
 </summary>
 <pre><code class="python">def hardwareRefreshMixerTrack(index: int) -&gt; None:
     &#34;&#34;&#34;Hardware refresh mixer track at `index`.
-    
+
     HELP WANTED: What does this mean?
 
     ## Args:
      * `index` (`int`): track index. `-1` refreshes all tracks.
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -1144,7 +1207,7 @@ that the script can send MIDI messages to that device.</p>
 
     ## Returns:
      * `bool`: whether the device is assigned
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return _getValue(&#34;device_assigned&#34;)</code></pre>
@@ -1170,7 +1233,7 @@ before, indicating a double click.</p>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def isDoubleClick(index: int) -&gt; bool:
-    &#34;&#34;&#34;Returns whether the function was called with the same index shortly 
+    &#34;&#34;&#34;Returns whether the function was called with the same index shortly
     before, indicating a double click.
 
     ## Args:
@@ -1178,7 +1241,7 @@ before, indicating a double click.</p>
 
     ## Returns:
      * `bool`: whether the event was a double click
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return False</code></pre>
@@ -1194,7 +1257,7 @@ distinct components.</p>
 <h2 id="args">Args:</h2>
 <ul>
 <li>
-<p><code>message</code> (<code>int</code>): </p>
+<p><code>message</code> (<code>int</code>):</p>
 <ul>
 <li>
 <p>the MIDI message to send (if sending a complete message):</p>
@@ -1235,35 +1298,39 @@ version 2</p></div>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def midiOutMsg(message: int, channel:int=-1, data1:int=-1, data2:int=-1)\
-    -&gt; None:
+<pre><code class="python">def midiOutMsg(
+    message: int,
+    channel: int = -1,
+    data1: int = -1,
+    data2: int = -1
+) -&gt; None:
     &#34;&#34;&#34;Sends a MIDI message to the linked output device.
-    
-    This can be done either through a single combined message, or in its 
+
+    This can be done either through a single combined message, or in its
     distinct components.
 
     ## Args:
-     * `message` (`int`): 
+     * `message` (`int`):
           * the MIDI message to send (if sending a complete message):
               * Lowest byte: `status`
-              
+
               * Middle byte: `data 1`
-              
+
               * Upper byte: `data 2`
-              
-          * OR the message type (if sending a partial MIDI message, 
+
+          * OR the message type (if sending a partial MIDI message,
             eg `0xB` for a CC message)
-            
-     * `channel` (`int`, optional): the channel to send the message to (if 
+
+     * `channel` (`int`, optional): the channel to send the message to (if
        sending a partial MIDI message)
-       
+
      * `data1` (`int`, optional): the note data value for the message (if
        sending a partial MIDI message)
-       
+
      * `data2` (`int`, optional): the velocity data value for the message (if
        sending a partial MIDI message)
-    
-    Included since API version 1, with the component options added in API 
+
+    Included since API version 1, with the component options added in API
     version 2
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -1272,9 +1339,9 @@ version 2</p></div>
 <span>def <span class="ident">midiOutNewMsg</span></span>(<span>slotIndex: int, message: int) ‑> None</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Sends a MIDI message to the linked output device, but only if the message
-being sent has changed compared to the last message sent with the same
-<code>slotIndex</code>.</p>
+<div class="desc"><p>Sends a MIDI message to the linked output device, but only if the
+message being sent has changed compared to the last message sent with the
+same <code>slotIndex</code>.</p>
 <h2 id="args">Args:</h2>
 <ul>
 <li>
@@ -1290,15 +1357,15 @@ being sent has changed compared to the last message sent with the same
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def midiOutNewMsg(slotIndex: int, message: int) -&gt; None:
-    &#34;&#34;&#34;Sends a MIDI message to the linked output device, but only if the message
-    being sent has changed compared to the last message sent with the same 
-    `slotIndex`.
+    &#34;&#34;&#34;Sends a MIDI message to the linked output device, but only if the
+    message being sent has changed compared to the last message sent with the
+    same `slotIndex`.
 
     ## Args:
      * `slotIndex` (`int`): index for MIDI message comparison
-     
+
      * `message` (`int`): message to potentially send
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -1322,7 +1389,7 @@ being sent has changed compared to the last message sent with the same
 
     ## Args:
      * `message` (`str`): SysEx message to send
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -1346,7 +1413,7 @@ being sent has changed compared to the last message sent with the same
 
     ## Args:
      * `eventData` (`eventData`): FL MIDI Event to process.
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -1363,7 +1430,8 @@ ms after <code>delay</code> ms.</p>
 <p><code>eventData</code> (<code>eventData</code>): event to repeat</p>
 </li>
 <li>
-<p><code>delay</code> (<code>int</code>, optional): initial delay before sending in ms. Defaults to 300.</p>
+<p><code>delay</code> (<code>int</code>, optional): initial delay before sending in ms. Defaults
+to 300.</p>
 </li>
 <li>
 <p><code>rate</code> (<code>int</code>, optional): time between each send in ms. Defaults to 300.</p>
@@ -1374,17 +1442,18 @@ ms after <code>delay</code> ms.</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def repeatMidiEvent(eventData, delay:int=300, rate:int=300) -&gt; None:
+<pre><code class="python">def repeatMidiEvent(eventData, delay: int = 300, rate: int = 300) -&gt; None:
     &#34;&#34;&#34;Start repeatedly sending out the message in `eventData` every `rate`
     ms after `delay` ms.
 
     ## Args:
      * `eventData` (`eventData`): event to repeat
 
-     * `delay` (`int`, optional): initial delay before sending in ms. Defaults to 300.
+     * `delay` (`int`, optional): initial delay before sending in ms. Defaults
+       to 300.
 
      * `rate` (`int`, optional): time between each send in ms. Defaults to 300.
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -1421,25 +1490,30 @@ function.</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def sendMsgGeneric(id: int, message: str, lastMsg: str, offset:int=0) -&gt; str:
+<pre><code class="python">def sendMsgGeneric(
+    id: int,
+    message: str,
+    lastMsg: str,
+    offset: int = 0
+) -&gt; str:
     &#34;&#34;&#34;Send a text string as a SysEx message to the linked output device.
-    
+
     WARNING: This function is depreciated
 
     ## Args:
-     * `id` (`int`): the first 6 bytes of the message (the end value `0xF7` is 
+     * `id` (`int`): the first 6 bytes of the message (the end value `0xF7` is
        added automatically)
-       
+
      * `message` (`str`): the text to send
-     
+
      * `lastMsg` (`str`): the string returned by the previous call to this
        function.
-       
+
      * `offset` (`int`, optional): ???. Defaults to 0.
 
     ## Returns:
      * `str`: value to use in the next call of this function
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return &#34;&#34;</code></pre>
@@ -1458,10 +1532,10 @@ within <code>OnInit()</code>.</p>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def setHasMeters() -&gt; None:
-    &#34;&#34;&#34;Registers the controller as having peak meters, meaning that the 
-    `OnUpdateMeters()` function will be called. This function should be called 
+    &#34;&#34;&#34;Registers the controller as having peak meters, meaning that the
+    `OnUpdateMeters()` function will be called. This function should be called
     within `OnInit()`.
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -1474,8 +1548,8 @@ within <code>OnInit()</code>.</p>
 settings for this device.</p>
 <p>This option controls whether stop, pause and play transport notifications
 are sent to the MIDI device. This shouldn't be enabled unless the device
-explicitly requires it, as it can lead to unpredictable and sometimes broken
-behaviour.</p>
+explicitly requires it, as it can lead to unpredictable and sometimes
+broken behaviour.</p>
 <h2 id="args">Args:</h2>
 <ul>
 <li><code>value</code> (<code>int</code>): Whether to enable (<code>1</code>) or disable (<code>0</code>)</li>
@@ -1489,15 +1563,15 @@ behaviour.</p>
     &#34;&#34;&#34;
     Control the value of the &#34;send master sync&#34; option in FL Studio&#39;s MIDI
     settings for this device.
-    
+
     This option controls whether stop, pause and play transport notifications
     are sent to the MIDI device. This shouldn&#39;t be enabled unless the device
-    explicitly requires it, as it can lead to unpredictable and sometimes broken
-    behaviour.
-    
+    explicitly requires it, as it can lead to unpredictable and sometimes
+    broken behaviour.
+
     ## Args:
     * `value` (`int`): Whether to enable (`1`) or disable (`0`)
-    
+
     Included since API Version 18
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -1515,9 +1589,9 @@ behaviour.</p>
 </summary>
 <pre><code class="python">def stopRepeatMidiEvent() -&gt; None:
     &#34;&#34;&#34;Stop sending a currently repeating MIDI event.
-    
+
     Refer to `repeatMidiEvent()`.
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>

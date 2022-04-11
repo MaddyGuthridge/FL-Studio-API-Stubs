@@ -31,20 +31,22 @@ markers, selections and timestamps.</p>
 </summary>
 <pre><code class="python">&#34;&#34;&#34;Arrangement Module (FL Studio built-in)
 
-Allows you to control and interact with FL Studio Arrangements, including 
+Allows you to control and interact with FL Studio Arrangements, including
 markers, selections and timestamps.
 &#34;&#34;&#34;
+
 
 def jumpToMarker(index: int, select: int) -&gt; None:
     &#34;&#34;&#34;Jumps to the marker at index.
 
     ## Args:
      * index (`int`): marker index
-     
+
      * select (`int`): whether to select the marker
-    
+
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def getMarkerName(index: int) -&gt; str:
     &#34;&#34;&#34;Returns the name of the marker at `index`
@@ -54,46 +56,50 @@ def getMarkerName(index: int) -&gt; str:
 
     ## Returns:
      * `str`: name of the marker
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return &#34;&#34;
+
 
 def addAutoTimeMarker(time: int, name: str) -&gt; None:
     &#34;&#34;&#34;Add an automatic time marker at `time`.
 
     ## Args:
      * `time` (`int`): time (TODO: What are the units?)
-     
+
      * `name` (`str`): name of new marker
-    
+
     Included since API version 1
     &#34;&#34;&#34;
 
+
 def liveSelection(time: int, stop: int) -&gt; None:
     &#34;&#34;&#34;Set a live selection point at `time`.
-    
+
     Set `stop` to True, to use end point of the selection (instead of start).
-    
+
     HELP WANTED: A better explanation would be good
 
     ## Args:
      * `time` (`int`): ???
-     
+
      * `stop` (`int`): ???
-    
+
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def liveSelectionStart() -&gt; int:
     &#34;&#34;&#34;Returns the start time of the current live selection
 
     ## Returns:
      * `int`: start of selection time
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
+
 
 def currentTime(snap: int) -&gt; int:
     &#34;&#34;&#34;Returns the current time in the current arrangement, in terms of ticks.
@@ -105,48 +111,51 @@ def currentTime(snap: int) -&gt; int:
 
     ## Returns:
      * `int`: current time
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
 
-def currentTimeHint(mode: int, time: int, setRecPPB:int=0, isLength:int=0)\
-    -&gt; str:
+
+def currentTimeHint(mode: int, time: int, setRecPPB: int = 0, isLength: int = 0)\
+        -&gt; str:
     &#34;&#34;&#34;Returns a hint string for the given time, formatted as:
     Bar:Beat?:Tick
-    
+
     ## Args:
      * `mode` (`int`): pattern mode (`0`) or song mode (`1`)
-     
+
      * `time` (`int`): time in ticks
-     
+
      * `setRecPPB` (`int`, optional): ???. Defaults to ?
-     
+
      * `isLength` (`int`, optional): ???. Defaults to 0
 
     ## Returns:
      * `str`: current time as string hint
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return &#34;&#34;
+
 
 def selectionStart() -&gt; int:
     &#34;&#34;&#34;Returns the returns the start time of the current selection.
 
     ## Returns:
      * `int`: start time
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
+
 
 def selectionEnd() -&gt; int:
     &#34;&#34;&#34;Returns the returns the end time of the current selection.
 
     ## Returns:
      * `int`: end time
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -183,9 +192,9 @@ def selectionEnd() -&gt; int:
 
     ## Args:
      * `time` (`int`): time (TODO: What are the units?)
-     
+
      * `name` (`str`): name of new marker
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -220,7 +229,7 @@ to get the PPQ of the project.</p>
 
     ## Returns:
      * `int`: current time
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -256,23 +265,23 @@ Bar:Beat?:Tick</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def currentTimeHint(mode: int, time: int, setRecPPB:int=0, isLength:int=0)\
-    -&gt; str:
+<pre><code class="python">def currentTimeHint(mode: int, time: int, setRecPPB: int = 0, isLength: int = 0)\
+        -&gt; str:
     &#34;&#34;&#34;Returns a hint string for the given time, formatted as:
     Bar:Beat?:Tick
-    
+
     ## Args:
      * `mode` (`int`): pattern mode (`0`) or song mode (`1`)
-     
+
      * `time` (`int`): time in ticks
-     
+
      * `setRecPPB` (`int`, optional): ???. Defaults to ?
-     
+
      * `isLength` (`int`, optional): ???. Defaults to 0
 
     ## Returns:
      * `str`: current time as string hint
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return &#34;&#34;</code></pre>
@@ -304,7 +313,7 @@ Bar:Beat?:Tick</p>
 
     ## Returns:
      * `str`: name of the marker
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return &#34;&#34;</code></pre>
@@ -334,9 +343,9 @@ Bar:Beat?:Tick</p>
 
     ## Args:
      * index (`int`): marker index
-     
+
      * select (`int`): whether to select the marker
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -364,16 +373,16 @@ Bar:Beat?:Tick</p>
 </summary>
 <pre><code class="python">def liveSelection(time: int, stop: int) -&gt; None:
     &#34;&#34;&#34;Set a live selection point at `time`.
-    
+
     Set `stop` to True, to use end point of the selection (instead of start).
-    
+
     HELP WANTED: A better explanation would be good
 
     ## Args:
      * `time` (`int`): ???
-     
+
      * `stop` (`int`): ???
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -397,7 +406,7 @@ Bar:Beat?:Tick</p>
 
     ## Returns:
      * `int`: start of selection time
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -422,7 +431,7 @@ Bar:Beat?:Tick</p>
 
     ## Returns:
      * `int`: end time
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -447,7 +456,7 @@ Bar:Beat?:Tick</p>
 
     ## Returns:
      * `int`: start time
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>

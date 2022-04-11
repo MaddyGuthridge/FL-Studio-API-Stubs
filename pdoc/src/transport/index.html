@@ -35,66 +35,72 @@ Handles transport in FL Studio (for example play/pause or record)
 
 import midi
 
-def globalTransport(command: int, value: int, pmeflags:int=midi.PME_System,
+
+def globalTransport(command: int, value: int, pmeflags: int = midi.PME_System,
                     flags=midi.GT_All) -&gt; int:
     &#34;&#34;&#34;Used as a generic way to run transport commands if a specific function
     doesn&#39;t exist for it.
-    
-    WARNING: It is not recommended to use this function if a dedicated 
+
+    WARNING: It is not recommended to use this function if a dedicated
     function is available for it. Its usage can make code difficult to read and
     comprehend. Almost all functionality provided by this function can be done
     more easily and cleanly by using the dedicated functions.
-    
+
     WARNING: Some commands will echo keypresses (such as `FPT_F1`), meaning they
-    can affect windows outside FL Studio. Make sure you test your code 
+    can affect windows outside FL Studio. Make sure you test your code
     thoroughly if you decide to use this function.
 
     ## Args:
-     * `command` (`int`): command to execute, refer to 
+     * `command` (`int`): command to execute, refer to
        [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportCommands)
 
      * `value` (`int`): ???
 
-     * `pmeflags` (`int`, optional): current PME Flags. Defaults to 
+     * `pmeflags` (`int`, optional): current PME Flags. Defaults to
        `midi.PME_System`.
 
-     * `flags` (`int`, optional): ??? Refer to 
+     * `flags` (`int`, optional): ??? Refer to
        [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags)
 
     ## Returns:
      * `int`: ???
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
 
+
 def start() -&gt; None:
     &#34;&#34;&#34;Start or pause playback (play/pause)
-    
+
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def stop() -&gt; None:
     &#34;&#34;&#34;Stop playback
-    
+
     Included since API version 1
     &#34;&#34;&#34;
 
+
 def record() -&gt; None:
     &#34;&#34;&#34;Toggles recording
-    
+
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def isRecording() -&gt; bool:
     &#34;&#34;&#34;Returns whether recording is enabled
 
     ## Returns:
      * `bool`: whether recording is enabled
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return False
+
 
 def getLoopMode() -&gt; int:
     &#34;&#34;&#34;Returns the current looping mode
@@ -104,27 +110,29 @@ def getLoopMode() -&gt; int:
           * `0`: Pattern
 
           * `1`: Song
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
 
+
 def setLoopMode() -&gt; None:
     &#34;&#34;&#34;Toggles the looping mode between pattern and song
-    
+
     Included since API version 1
     &#34;&#34;&#34;
-    
-def getSongPos(mode:int=-1) -&gt; &#39;float | int&#39;:
+
+
+def getSongPos(mode: int = -1) -&gt; &#39;float | int&#39;:
     &#34;&#34;&#34;Returns the playback position
-    
+
     NOTE: This will set the position in the song in song mode, or the position
     in the pattern
 
     ## Args:
      * `mode` (`int`, optional): mode for return:
-          * [default] (`-1`): as a fraction of the total length between `0` 
-            and `1` (eg `0.5` would indicate we were half-way through the 
+          * [default] (`-1`): as a fraction of the total length between `0`
+            and `1` (eg `0.5` would indicate we were half-way through the
             song). Returns as `float`.
 
           * `SONGLENGTH_MS` (`0`): milliseconds (as `int`)
@@ -153,14 +161,15 @@ def getSongPos(mode:int=-1) -&gt; &#39;float | int&#39;:
 
     ## Returns:
      * `float` or `int`: song position
-    
+
     Included since API version 1, with optional parameter added in API version 3
     &#34;&#34;&#34;
     return 0
 
-def setSongPos(position:&#39;float | int&#39;, mode:int=-1) -&gt; None:
+
+def setSongPos(position: &#39;float | int&#39;, mode: int = -1) -&gt; None:
     &#34;&#34;&#34;Sets the playback position
-    
+
     NOTE: This will set the position in the song in song mode, or the position
     in the pattern
 
@@ -168,8 +177,8 @@ def setSongPos(position:&#39;float | int&#39;, mode:int=-1) -&gt; None:
      * `position` (`float` or `int`): new song position (type depends on `mode`).
 
      * `mode` (`int`, optional): mode for `position`:
-          * [default] (`-1`): as a fraction of the total length between `0` 
-            and `1` (eg `0.5` would indicate we were half-way through the 
+          * [default] (`-1`): as a fraction of the total length between `0`
+            and `1` (eg `0.5` would indicate we were half-way through the
             song). Returns as `float`.
 
           * `SONGLENGTH_MS` (`0`): milliseconds (as `int`)
@@ -186,18 +195,19 @@ def setSongPos(position:&#39;float | int&#39;, mode:int=-1) -&gt; None:
 
           * `SONGLENGTH_TICKS` (`5`): bars-steps-ticks format, ticks component
             (as `int`)
-    
-    WARNING: Positions currently won&#39;t work when using bars (`mode = 3`), 
+
+    WARNING: Positions currently won&#39;t work when using bars (`mode = 3`),
     steps (`mode = 4`) or ticks (`mode = 5`).
-    
+
     Included since API version 1, with optional parameter added in API version 4
     &#34;&#34;&#34;
 
+
 def getSongLength(mode: int) -&gt; int:
     &#34;&#34;&#34;Returns the total length of the song
-    
+
     NOTE: This only applies to the full song, not to the currently selected
-    pattern when in pattern mode. It will NOT return the length of the current 
+    pattern when in pattern mode. It will NOT return the length of the current
     pattern. For that, use `patterns.getPatternLength()` with the index of the
     current pattern.
 
@@ -221,56 +231,61 @@ def getSongLength(mode: int) -&gt; int:
 
     ## Returns:
      * `int`: song length
-    
+
     Included since API version 3
     &#34;&#34;&#34;
     return 0
 
+
 def getSongPosHint() -&gt; str:
     &#34;&#34;&#34;Returns a hint for the current playback position as `&#34;bars:steps:ticks&#34;`.
-    
+
     NOTE: This applies to both pattern mode and song mode
 
     ## Returns:
      * `str`: song position
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return &#34;&#34;
+
 
 def isPlaying() -&gt; bool:
     &#34;&#34;&#34;Returns `True` if playback is currently occurring.
 
     ## Returns:
      * `bool`: whether playback is active
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return False
 
-def markerJumpJog(value: int, flags:int=midi.GT_All) -&gt; None:
+
+def markerJumpJog(value: int, flags: int = midi.GT_All) -&gt; None:
     &#34;&#34;&#34;Jump to a marker position, where `value` is an delta (increment) value.
 
     ## Args:
      * `value` (`int`): delta
 
-     * `flags` (`int`, optional): ??? Refer to 
+     * `flags` (`int`, optional): ??? Refer to
        [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags)
-    
+
     Included since API version 1
     &#34;&#34;&#34;
 
-def markerSelJog(value: int, flags:int=midi.GT_All) -&gt; None:
+
+def markerSelJog(value: int, flags: int = midi.GT_All) -&gt; None:
     &#34;&#34;&#34;Select a marker, where `value` is an delta (increment) value.
 
     ## Args:
      * `value` (`int`): delta
 
-     * `flags` (`int`, optional): ??? Refer to 
+     * `flags` (`int`, optional): ??? Refer to
        [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags)
-    
+
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def getHWBeatLEDState() -&gt; int:
     &#34;&#34;&#34;Returns the state of the beat indicator.
@@ -279,17 +294,18 @@ def getHWBeatLEDState() -&gt; int:
 
     ## Returns:
      * `int`: beat indicator state
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
 
-def rewind(startStop: int, flags:int=midi.GT_All) -&gt; None:
+
+def rewind(startStop: int, flags: int = midi.GT_All) -&gt; None:
     &#34;&#34;&#34;Rewinds the playback position.
 
     NOTE: Rewinding should be considered as a toggle. All calls to this function
-    beginning rewinding with the `SS_Start` or `SS_StartStep` should have a pair 
-    call where rewinding is stopped using the `SS_Stop` option, otherwise FL 
+    beginning rewinding with the `SS_Start` or `SS_StartStep` should have a pair
+    call where rewinding is stopped using the `SS_Stop` option, otherwise FL
     Studio will rewind forever.
 
     ## Args:
@@ -301,18 +317,19 @@ def rewind(startStop: int, flags:int=midi.GT_All) -&gt; None:
 
           * `SS_Start` (`2`); Start movement
 
-     * `flags` (`int`, optional): ??? Refer to 
+     * `flags` (`int`, optional): ??? Refer to
        [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags)
-    
+
     Included since API version 1
     &#34;&#34;&#34;
 
-def fastForward(startStop: int, flags:int=midi.GT_All) -&gt; None:
+
+def fastForward(startStop: int, flags: int = midi.GT_All) -&gt; None:
     &#34;&#34;&#34;Fast-fowards the playback position.
 
-    NOTE: Fast-forwarding should be considered as a toggle. All calls to this 
-    function beginning fast-forwarding with the `SS_Start` or `SS_StartStep` 
-    should have a pair call where fast-forwarding is stopped using the `SS_Stop` 
+    NOTE: Fast-forwarding should be considered as a toggle. All calls to this
+    function beginning fast-forwarding with the `SS_Start` or `SS_StartStep`
+    should have a pair call where fast-forwarding is stopped using the `SS_Stop`
     option, otherwise FL Studio will fast-forward forever.
 
     ## Args:
@@ -324,22 +341,23 @@ def fastForward(startStop: int, flags:int=midi.GT_All) -&gt; None:
 
           * `SS_Start` (`2`); Start movement
 
-     * `flags` (`int`, optional): ??? Refer to 
+     * `flags` (`int`, optional): ??? Refer to
        [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags)
-    
+
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def continuousMove(speed: int, startStop: int) -&gt; None:
     &#34;&#34;&#34;Sets playback speed, allowing a scrub-like functionality
 
-    NOTE: scrubbing should be considered as a toggle. All calls to this 
-    function beginning scrubbing with the `SS_Start` or `SS_StartStep` 
-    should have a pair call where scrubbing is stopped using the `SS_Stop` 
+    NOTE: scrubbing should be considered as a toggle. All calls to this
+    function beginning scrubbing with the `SS_Start` or `SS_StartStep`
+    should have a pair call where scrubbing is stopped using the `SS_Stop`
     option, otherwise FL Studio will scrub forever.
 
     ## Args:
-     * `speed` (`int`): speed multiplier. Negative means reverse, `0` is 
+     * `speed` (`int`): speed multiplier. Negative means reverse, `0` is
        stopped, and `1` is normal playback speed.
 
      * `startStop` (`int`): start-stop option
@@ -349,22 +367,23 @@ def continuousMove(speed: int, startStop: int) -&gt; None:
             step editing mode
 
           * `SS_Start` (`2`); Start movement
-    
+
     Included since API version 1
     &#34;&#34;&#34;
 
-def continuousMovePos(speed: int, startStop:int) -&gt; None:
+
+def continuousMovePos(speed: int, startStop: int) -&gt; None:
     &#34;&#34;&#34;Sets playback speed, allowing a scrub-like functionality
 
     HELP WANTED: How is this different to `continuousMove()`?
 
-    NOTE: scrubbing should be considered as a toggle. All calls to this 
-    function beginning scrubbing with the `SS_Start` or `SS_StartStep` 
-    should have a pair call where scrubbing is stopped using the `SS_Stop` 
+    NOTE: scrubbing should be considered as a toggle. All calls to this
+    function beginning scrubbing with the `SS_Start` or `SS_StartStep`
+    should have a pair call where scrubbing is stopped using the `SS_Stop`
     option, otherwise FL Studio will scrub forever.
 
     ## Args:
-     * `speed` (`int`): speed multiplier. Negative means reverse, `0` is 
+     * `speed` (`int`): speed multiplier. Negative means reverse, `0` is
        stopped, and `1` is normal playback speed.
 
      * `startStop` (`int`): start-stop option
@@ -374,9 +393,10 @@ def continuousMovePos(speed: int, startStop:int) -&gt; None:
             step editing mode
 
           * `SS_Start` (`2`); Start movement
-    
+
     Included since API version 2
     &#34;&#34;&#34;
+
 
 def setPlaybackSpeed(speedMultiplier: float) -&gt; None:
     &#34;&#34;&#34;Sets a playback speed multiplier.
@@ -392,7 +412,7 @@ def setPlaybackSpeed(speedMultiplier: float) -&gt; None:
           * `0.25`: Minimum speed
 
           * `4.0`: Maximum speed
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -443,13 +463,13 @@ step editing mode</p>
 <pre><code class="python">def continuousMove(speed: int, startStop: int) -&gt; None:
     &#34;&#34;&#34;Sets playback speed, allowing a scrub-like functionality
 
-    NOTE: scrubbing should be considered as a toggle. All calls to this 
-    function beginning scrubbing with the `SS_Start` or `SS_StartStep` 
-    should have a pair call where scrubbing is stopped using the `SS_Stop` 
+    NOTE: scrubbing should be considered as a toggle. All calls to this
+    function beginning scrubbing with the `SS_Start` or `SS_StartStep`
+    should have a pair call where scrubbing is stopped using the `SS_Stop`
     option, otherwise FL Studio will scrub forever.
 
     ## Args:
-     * `speed` (`int`): speed multiplier. Negative means reverse, `0` is 
+     * `speed` (`int`): speed multiplier. Negative means reverse, `0` is
        stopped, and `1` is normal playback speed.
 
      * `startStop` (`int`): start-stop option
@@ -459,7 +479,7 @@ step editing mode</p>
             step editing mode
 
           * `SS_Start` (`2`); Start movement
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -501,18 +521,18 @@ step editing mode</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def continuousMovePos(speed: int, startStop:int) -&gt; None:
+<pre><code class="python">def continuousMovePos(speed: int, startStop: int) -&gt; None:
     &#34;&#34;&#34;Sets playback speed, allowing a scrub-like functionality
 
     HELP WANTED: How is this different to `continuousMove()`?
 
-    NOTE: scrubbing should be considered as a toggle. All calls to this 
-    function beginning scrubbing with the `SS_Start` or `SS_StartStep` 
-    should have a pair call where scrubbing is stopped using the `SS_Stop` 
+    NOTE: scrubbing should be considered as a toggle. All calls to this
+    function beginning scrubbing with the `SS_Start` or `SS_StartStep`
+    should have a pair call where scrubbing is stopped using the `SS_Stop`
     option, otherwise FL Studio will scrub forever.
 
     ## Args:
-     * `speed` (`int`): speed multiplier. Negative means reverse, `0` is 
+     * `speed` (`int`): speed multiplier. Negative means reverse, `0` is
        stopped, and `1` is normal playback speed.
 
      * `startStop` (`int`): start-stop option
@@ -522,7 +542,7 @@ step editing mode</p>
             step editing mode
 
           * `SS_Start` (`2`); Start movement
-    
+
     Included since API version 2
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -563,12 +583,12 @@ step editing mode</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def fastForward(startStop: int, flags:int=midi.GT_All) -&gt; None:
+<pre><code class="python">def fastForward(startStop: int, flags: int = midi.GT_All) -&gt; None:
     &#34;&#34;&#34;Fast-fowards the playback position.
 
-    NOTE: Fast-forwarding should be considered as a toggle. All calls to this 
-    function beginning fast-forwarding with the `SS_Start` or `SS_StartStep` 
-    should have a pair call where fast-forwarding is stopped using the `SS_Stop` 
+    NOTE: Fast-forwarding should be considered as a toggle. All calls to this
+    function beginning fast-forwarding with the `SS_Start` or `SS_StartStep`
+    should have a pair call where fast-forwarding is stopped using the `SS_Stop`
     option, otherwise FL Studio will fast-forward forever.
 
     ## Args:
@@ -580,9 +600,9 @@ step editing mode</p>
 
           * `SS_Start` (`2`); Start movement
 
-     * `flags` (`int`, optional): ??? Refer to 
+     * `flags` (`int`, optional): ??? Refer to
        [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags)
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -609,7 +629,7 @@ step editing mode</p>
 
     ## Returns:
      * `int`: beat indicator state
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -647,7 +667,7 @@ step editing mode</p>
           * `0`: Pattern
 
           * `1`: Song
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -702,9 +722,9 @@ documentation.</p>
 </summary>
 <pre><code class="python">def getSongLength(mode: int) -&gt; int:
     &#34;&#34;&#34;Returns the total length of the song
-    
+
     NOTE: This only applies to the full song, not to the currently selected
-    pattern when in pattern mode. It will NOT return the length of the current 
+    pattern when in pattern mode. It will NOT return the length of the current
     pattern. For that, use `patterns.getPatternLength()` with the index of the
     current pattern.
 
@@ -728,7 +748,7 @@ documentation.</p>
 
     ## Returns:
      * `int`: song length
-    
+
     Included since API version 3
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -791,16 +811,16 @@ overall_str = f&quot;{bars}:{steps}:{ticks}&quot;
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def getSongPos(mode:int=-1) -&gt; &#39;float | int&#39;:
+<pre><code class="python">def getSongPos(mode: int = -1) -&gt; &#39;float | int&#39;:
     &#34;&#34;&#34;Returns the playback position
-    
+
     NOTE: This will set the position in the song in song mode, or the position
     in the pattern
 
     ## Args:
      * `mode` (`int`, optional): mode for return:
-          * [default] (`-1`): as a fraction of the total length between `0` 
-            and `1` (eg `0.5` would indicate we were half-way through the 
+          * [default] (`-1`): as a fraction of the total length between `0`
+            and `1` (eg `0.5` would indicate we were half-way through the
             song). Returns as `float`.
 
           * `SONGLENGTH_MS` (`0`): milliseconds (as `int`)
@@ -829,7 +849,7 @@ overall_str = f&quot;{bars}:{steps}:{ticks}&quot;
 
     ## Returns:
      * `float` or `int`: song position
-    
+
     Included since API version 1, with optional parameter added in API version 3
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -852,12 +872,12 @@ overall_str = f&quot;{bars}:{steps}:{ticks}&quot;
 </summary>
 <pre><code class="python">def getSongPosHint() -&gt; str:
     &#34;&#34;&#34;Returns a hint for the current playback position as `&#34;bars:steps:ticks&#34;`.
-    
+
     NOTE: This applies to both pattern mode and song mode
 
     ## Returns:
      * `str`: song position
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return &#34;&#34;</code></pre>
@@ -903,35 +923,35 @@ thoroughly if you decide to use this function.</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def globalTransport(command: int, value: int, pmeflags:int=midi.PME_System,
+<pre><code class="python">def globalTransport(command: int, value: int, pmeflags: int = midi.PME_System,
                     flags=midi.GT_All) -&gt; int:
     &#34;&#34;&#34;Used as a generic way to run transport commands if a specific function
     doesn&#39;t exist for it.
-    
-    WARNING: It is not recommended to use this function if a dedicated 
+
+    WARNING: It is not recommended to use this function if a dedicated
     function is available for it. Its usage can make code difficult to read and
     comprehend. Almost all functionality provided by this function can be done
     more easily and cleanly by using the dedicated functions.
-    
+
     WARNING: Some commands will echo keypresses (such as `FPT_F1`), meaning they
-    can affect windows outside FL Studio. Make sure you test your code 
+    can affect windows outside FL Studio. Make sure you test your code
     thoroughly if you decide to use this function.
 
     ## Args:
-     * `command` (`int`): command to execute, refer to 
+     * `command` (`int`): command to execute, refer to
        [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportCommands)
 
      * `value` (`int`): ???
 
-     * `pmeflags` (`int`, optional): current PME Flags. Defaults to 
+     * `pmeflags` (`int`, optional): current PME Flags. Defaults to
        `midi.PME_System`.
 
-     * `flags` (`int`, optional): ??? Refer to 
+     * `flags` (`int`, optional): ??? Refer to
        [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags)
 
     ## Returns:
      * `int`: ???
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -956,7 +976,7 @@ thoroughly if you decide to use this function.</p>
 
     ## Returns:
      * `bool`: whether playback is active
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return False</code></pre>
@@ -981,7 +1001,7 @@ thoroughly if you decide to use this function.</p>
 
     ## Returns:
      * `bool`: whether recording is enabled
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return False</code></pre>
@@ -1007,15 +1027,15 @@ thoroughly if you decide to use this function.</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def markerJumpJog(value: int, flags:int=midi.GT_All) -&gt; None:
+<pre><code class="python">def markerJumpJog(value: int, flags: int = midi.GT_All) -&gt; None:
     &#34;&#34;&#34;Jump to a marker position, where `value` is an delta (increment) value.
 
     ## Args:
      * `value` (`int`): delta
 
-     * `flags` (`int`, optional): ??? Refer to 
+     * `flags` (`int`, optional): ??? Refer to
        [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags)
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -1040,15 +1060,15 @@ thoroughly if you decide to use this function.</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def markerSelJog(value: int, flags:int=midi.GT_All) -&gt; None:
+<pre><code class="python">def markerSelJog(value: int, flags: int = midi.GT_All) -&gt; None:
     &#34;&#34;&#34;Select a marker, where `value` is an delta (increment) value.
 
     ## Args:
      * `value` (`int`): delta
 
-     * `flags` (`int`, optional): ??? Refer to 
+     * `flags` (`int`, optional): ??? Refer to
        [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags)
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -1065,7 +1085,7 @@ thoroughly if you decide to use this function.</p>
 </summary>
 <pre><code class="python">def record() -&gt; None:
     &#34;&#34;&#34;Toggles recording
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -1106,12 +1126,12 @@ step editing mode</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def rewind(startStop: int, flags:int=midi.GT_All) -&gt; None:
+<pre><code class="python">def rewind(startStop: int, flags: int = midi.GT_All) -&gt; None:
     &#34;&#34;&#34;Rewinds the playback position.
 
     NOTE: Rewinding should be considered as a toggle. All calls to this function
-    beginning rewinding with the `SS_Start` or `SS_StartStep` should have a pair 
-    call where rewinding is stopped using the `SS_Stop` option, otherwise FL 
+    beginning rewinding with the `SS_Start` or `SS_StartStep` should have a pair
+    call where rewinding is stopped using the `SS_Stop` option, otherwise FL
     Studio will rewind forever.
 
     ## Args:
@@ -1123,9 +1143,9 @@ step editing mode</p>
 
           * `SS_Start` (`2`); Start movement
 
-     * `flags` (`int`, optional): ??? Refer to 
+     * `flags` (`int`, optional): ??? Refer to
        [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags)
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -1142,7 +1162,7 @@ step editing mode</p>
 </summary>
 <pre><code class="python">def setLoopMode() -&gt; None:
     &#34;&#34;&#34;Toggles the looping mode between pattern and song
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -1191,7 +1211,7 @@ pattern regardless of whether playback is active.</p>
           * `0.25`: Minimum speed
 
           * `4.0`: Maximum speed
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -1247,9 +1267,9 @@ steps (<code>mode = 4</code>) or ticks (<code>mode = 5</code>).</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def setSongPos(position:&#39;float | int&#39;, mode:int=-1) -&gt; None:
+<pre><code class="python">def setSongPos(position: &#39;float | int&#39;, mode: int = -1) -&gt; None:
     &#34;&#34;&#34;Sets the playback position
-    
+
     NOTE: This will set the position in the song in song mode, or the position
     in the pattern
 
@@ -1257,8 +1277,8 @@ steps (<code>mode = 4</code>) or ticks (<code>mode = 5</code>).</p>
      * `position` (`float` or `int`): new song position (type depends on `mode`).
 
      * `mode` (`int`, optional): mode for `position`:
-          * [default] (`-1`): as a fraction of the total length between `0` 
-            and `1` (eg `0.5` would indicate we were half-way through the 
+          * [default] (`-1`): as a fraction of the total length between `0`
+            and `1` (eg `0.5` would indicate we were half-way through the
             song). Returns as `float`.
 
           * `SONGLENGTH_MS` (`0`): milliseconds (as `int`)
@@ -1275,10 +1295,10 @@ steps (<code>mode = 4</code>) or ticks (<code>mode = 5</code>).</p>
 
           * `SONGLENGTH_TICKS` (`5`): bars-steps-ticks format, ticks component
             (as `int`)
-    
-    WARNING: Positions currently won&#39;t work when using bars (`mode = 3`), 
+
+    WARNING: Positions currently won&#39;t work when using bars (`mode = 3`),
     steps (`mode = 4`) or ticks (`mode = 5`).
-    
+
     Included since API version 1, with optional parameter added in API version 4
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -1295,7 +1315,7 @@ steps (<code>mode = 4</code>) or ticks (<code>mode = 5</code>).</p>
 </summary>
 <pre><code class="python">def start() -&gt; None:
     &#34;&#34;&#34;Start or pause playback (play/pause)
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -1312,7 +1332,7 @@ steps (<code>mode = 4</code>) or ticks (<code>mode = 5</code>).</p>
 </summary>
 <pre><code class="python">def stop() -&gt; None:
     &#34;&#34;&#34;Stop playback
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>

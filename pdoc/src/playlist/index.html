@@ -72,6 +72,7 @@ Allows you to control and interact with the FL Studio Playlist.
 
 import midi
 
+
 def trackCount() -&gt; int:
     &#34;&#34;&#34;Returns the number of tracks on the playlist.
     Includes empty tracks.
@@ -83,10 +84,11 @@ def trackCount() -&gt; int:
     &#34;&#34;&#34;
     return 0
 
+
 def getTrackName(index: int) -&gt; str:
     &#34;&#34;&#34;Returns the name of the track at `index`
     For unnamed tracks, returns &#34;Track `n`&#34; where `n` is `index` + 1
-    
+
     Note that playlist track indexes start at 1
 
     ## Args:
@@ -97,18 +99,19 @@ def getTrackName(index: int) -&gt; str:
 
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return &#34;&#34;
 
+
 def setTrackName(index: int, name: str) -&gt; None:
     &#34;&#34;&#34;Sets the name of the track at `index`
     Setting the name to an empty string (&#34;&#34;) will reset the name to &#34;Track n&#34;
-    
+
     Note that playlist track indexes start at 1
 
     ## Args:
@@ -116,23 +119,24 @@ def setTrackName(index: int, name: str) -&gt; None:
 
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-    
+
     Included since API version 1
     &#34;&#34;&#34;
 
+
 def getTrackColor(index: int) -&gt; int:
     &#34;&#34;&#34;Returns the colour of the track at `index`
-    
+
     Note that colours can be split into or built from components using the
     functions provided in the module `utils`
-    
+
     * `ColorToRGB()`
-    
+
     * `RGBToColor()`
-    
+
     Note that playlist track indexes start at 1
 
     ## Args:
@@ -143,24 +147,25 @@ def getTrackColor(index: int) -&gt; int:
 
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
 
+
 def setTrackColor(index: int, color: int) -&gt; None:
     &#34;&#34;&#34;Sets the colour of the track at `index`
-    
+
     Note that colours can be split into or built from components using the
     functions provided in the module `utils`
-    
+
     * `ColorToRGB()`
-    
+
     * `RGBToColor()`
-    
+
     Note that playlist track indexes start at 1
 
     ## Args:
@@ -170,12 +175,13 @@ def setTrackColor(index: int, color: int) -&gt; None:
 
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-    
+
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def isTrackMuted(index: int) -&gt; bool:
     &#34;&#34;&#34;Returns whether the track at `index` is muted
@@ -185,32 +191,34 @@ def isTrackMuted(index: int) -&gt; bool:
 
     ## Returns:
      * `bool`: whether track is muted
-    
+
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-     
+
     Included since API version 1
     &#34;&#34;&#34;
     return False
 
+
 def muteTrack(index: int) -&gt; None:
-    &#34;&#34;&#34;Toggle whether the track at `index` is muted. An unmuted track will 
+    &#34;&#34;&#34;Toggle whether the track at `index` is muted. An unmuted track will
     become muted and a muted track will become unmuted.
 
     ## Args:
      * `index` (`int`): track index
-    
+
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-     
+
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def isTrackMuteLock(index: int) -&gt; bool:
     &#34;&#34;&#34;Returns whether the mute status of the track at `index` is locked (meaning
@@ -221,32 +229,34 @@ def isTrackMuteLock(index: int) -&gt; bool:
 
     ## Returns:
      * `bool`: whether track&#39;s mute status is locked
-    
+
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-     
+
     Included since API version 2
     &#34;&#34;&#34;
     return False
 
+
 def muteTrackLock(index: int) -&gt; None:
-    &#34;&#34;&#34;Toggle whether the track at `index`&#39;s mute status is locked (meaning that 
+    &#34;&#34;&#34;Toggle whether the track at `index`&#39;s mute status is locked (meaning that
     solo/unsolo commands won&#39;t affect its mute status).
 
     ## Args:
      * `index` (`int`): track index
-    
+
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-     
+
     Included since API version 2
     &#34;&#34;&#34;
+
 
 def isTrackSolo(index: int) -&gt; bool:
     &#34;&#34;&#34;Returns whether the track at `index` is solo
@@ -256,18 +266,19 @@ def isTrackSolo(index: int) -&gt; bool:
 
     ## Returns:
      * `bool`: whether track is muted
-    
+
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-     
+
     Included since API version 1
     &#34;&#34;&#34;
     return False
 
-def soloTrack(index: int, value:int = -1) -&gt; None:
+
+def soloTrack(index: int, value: int = -1) -&gt; None:
     &#34;&#34;&#34;Toggle whether the track at `index` is solo. An unsolo track will become
     solo and a solo track will become unsolo. If `value` is provided, it will
     control what the new value will be (`1`: solo, `0`: unsolo).
@@ -276,15 +287,16 @@ def soloTrack(index: int, value:int = -1) -&gt; None:
      * `index` (`int`): track index
 
      * `value` (`int`, optional): new solo value
-    
+
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-     
+
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def isTrackSelected(index: int) -&gt; bool:
     &#34;&#34;&#34;Returns whether the track at `index` is selected
@@ -294,32 +306,34 @@ def isTrackSelected(index: int) -&gt; bool:
 
     ## Returns:
      * `bool`: whether track is selected
-    
+
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-     
+
     Included since API version 12
     &#34;&#34;&#34;
     return False
 
+
 def selectTrack(index: int) -&gt; None:
-    &#34;&#34;&#34;Toggle whether the track at `index` is selected. A deselected track will 
+    &#34;&#34;&#34;Toggle whether the track at `index` is selected. A deselected track will
     become selected and a selected track will become deselected.
 
     ## Args:
      * `index` (`int`): track index
-    
+
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-     
+
     Included since API version 12
     &#34;&#34;&#34;
+
 
 def selectAll() -&gt; None:
     &#34;&#34;&#34;Select all tracks on the playlist
@@ -327,15 +341,17 @@ def selectAll() -&gt; None:
     Included since API version 12
     &#34;&#34;&#34;
 
+
 def deselectAll() -&gt; None:
     &#34;&#34;&#34;Deselect all tracks on the playlist
 
     Included since API version 12
     &#34;&#34;&#34;
 
+
 def getTrackActivityLevel(index: int) -&gt; float:
     &#34;&#34;&#34;Returns the activity level of the track at `index`. This value is a float
-    in the range of 0.0 - 0.5 representing whether an unmuted playlist clip is 
+    in the range of 0.0 - 0.5 representing whether an unmuted playlist clip is
     active at the playhead. Compare to `playlist.getTrackActivityLevelVis()`.
 
     ## Args:
@@ -346,24 +362,25 @@ def getTrackActivityLevel(index: int) -&gt; float:
           * `0.0`: No clip is active
 
           * `0.5`: A clip is active at the play head
-    
+
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
 
      * This function will only return 0.0 or 0.5, and nothing in between. There
        is no documentation for whether this is by design.
-     
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0.0
 
+
 def getTrackActivityLevelVis(index: int) -&gt; float:
     &#34;&#34;&#34;Returns the visual activity level of the track at `index`. This value is a
-    float in the range of 0.0 - 1.0 representing whether an unmuted playlist 
-    clip is active at the playhead and how recently a note-on event was played 
+    float in the range of 0.0 - 1.0 representing whether an unmuted playlist
+    clip is active at the playhead and how recently a note-on event was played
     on this track.
 
     ## Args:
@@ -373,18 +390,19 @@ def getTrackActivityLevelVis(index: int) -&gt; float:
      * float: activity level
           * `0.0`: No clip is active
 
-          * `0.5 - 1.0`: A clip is active at the play head. Higher values 
+          * `0.5 - 1.0`: A clip is active at the play head. Higher values
             represent more recent note-on events.
-    
+
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-     
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0.0
+
 
 def getDisplayZone() -&gt; int:
     &#34;&#34;&#34;Returns the current display zone in the playlist or zero if none.
@@ -393,10 +411,11 @@ def getDisplayZone() -&gt; int:
 
     ## Returns:
      * `int`: current display zone
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
+
 
 def lockDisplayZone(index: int, value: int) -&gt; None:
     &#34;&#34;&#34;Lock display zone at `index`.
@@ -408,13 +427,14 @@ def lockDisplayZone(index: int, value: int) -&gt; None:
      * `index` (`int`): ???
 
      * `value` (`int`): ???
-    
+
     Included since API version 1
     &#34;&#34;&#34;
 
+
 def liveDisplayZone(left: int, top: int, right: int, bottom: int,
-                    duration:int=0) -&gt; None:
-    &#34;&#34;&#34;Set the display zone in the playlist to the specified co-ordinates. Use 
+                    duration: int = 0) -&gt; None:
+    &#34;&#34;&#34;Set the display zone in the playlist to the specified co-ordinates. Use
     optional `duration` parameter to make display zone temporary
 
     HELP WANTED: Explanation for what a display zone is.
@@ -430,13 +450,14 @@ def liveDisplayZone(left: int, top: int, right: int, bottom: int,
      * `bottom` (`int`): ???
 
      * `duration` (`int`, optional): ???. Defaults to `0`.
-    
+
     Included since API version 1
     &#34;&#34;&#34;
 
+
 def getLiveLoopMode(index: int) -&gt; int:
     &#34;&#34;&#34;Get live loop mode
-    
+
     HELP WANTED: Explanation for parameters.
 
     ## Args:
@@ -457,14 +478,15 @@ def getLiveLoopMode(index: int) -&gt; int:
           * `5` (`LiveLoop_Random`): Random
 
           * `6` (`LiveLoop_ExRandom`): Random, avoiding previous clip?
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
 
+
 def getLiveTriggerMode(index: int) -&gt; int:
     &#34;&#34;&#34;Get live trigger mode
-    
+
     HELP WANTED: Explanation.
 
     ## Args:
@@ -479,14 +501,15 @@ def getLiveTriggerMode(index: int) -&gt; int:
           * `2` (`LiveTrig_HMotion`): Hold and motion
 
           * `3` (`LiveTrig_Latch`): Latch
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
+
 
 def getLivePosSnap(index: int) -&gt; int:
     &#34;&#34;&#34;Get live position snap
-    
+
     HELP WANTED: Explanation.
 
     ## Args:
@@ -507,14 +530,15 @@ def getLivePosSnap(index: int) -&gt; int:
           * `5` (`LiveSnap_Four`): 4 beats
 
           * `6` (`LiveSnap_Auto`): Auto
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
+
 
 def getLiveTrigSnap(index: int) -&gt; int:
     &#34;&#34;&#34;Get live trigger snap
-    
+
     HELP WANTED: Explanation.
 
     ## Args:
@@ -535,14 +559,15 @@ def getLiveTrigSnap(index: int) -&gt; int:
           * `5` (`LiveSnap_Four`): 4 beats
 
           * `6` (`LiveSnap_Auto`): Auto
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
 
-def getLiveStatus(index: int, mode:int=midi.LB_Status_Default) -&gt; int:
+
+def getLiveStatus(index: int, mode: int = midi.LB_Status_Default) -&gt; int:
     &#34;&#34;&#34;Returns the live status for track at `index`
-    
+
     HELP WANTED: Explanation.
 
     ## Args:
@@ -553,15 +578,16 @@ def getLiveStatus(index: int, mode:int=midi.LB_Status_Default) -&gt; int:
     ## Returns:
      * `int`: live status of track:
             Refer to [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#getLiveStatusMode)
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
 
-def getLiveBlockStatus(index: int, blockNum:int, mode:int=midi.LB_Status_Default) -&gt; int:
-    &#34;&#34;&#34;Returns the live block status for track at `index` and for block 
+
+def getLiveBlockStatus(index: int, blockNum: int, mode: int = midi.LB_Status_Default) -&gt; int:
+    &#34;&#34;&#34;Returns the live block status for track at `index` and for block
     `blockNum`
-    
+
     HELP WANTED: Explanation.
 
     ## Args:
@@ -574,14 +600,15 @@ def getLiveBlockStatus(index: int, blockNum:int, mode:int=midi.LB_Status_Default
     ## Returns:
      * `int`: live status of track:
        Refer to [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#getLiveStatusMode).
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
 
+
 def getLiveBlockColor(index: int, blockNum: int) -&gt; int:
     &#34;&#34;&#34;Returns the colour of block on track `index` at position `blockNum`
-    
+
     HELP WANTED: Explanation.
 
     Note that colours can be split into or built from components using the
@@ -598,14 +625,15 @@ def getLiveBlockColor(index: int, blockNum: int) -&gt; int:
 
     ## Returns:
      * `int`: block colour (`0x--BBGGRR`)
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0
 
-def triggerLiveClip(index: int, subNum:int, flags: int, velocity:int=-1) -&gt; None:
+
+def triggerLiveClip(index: int, subNum: int, flags: int, velocity: int = -1) -&gt; None:
     &#34;&#34;&#34;Triggers live clip for track at `index` and for block `subNum`
-    
+
     HELP WANTED: Explanation.
 
     ## Args:
@@ -621,9 +649,10 @@ def triggerLiveClip(index: int, subNum:int, flags: int, velocity:int=-1) -&gt; N
     Included since API version 1
     &#34;&#34;&#34;
 
+
 def refreshLiveClip(index: int, value: int) -&gt; None:
     &#34;&#34;&#34;Triggers live clip for track at `index` and for block `subNum`
-    
+
     HELP WANTED: Explanation.
 
     ## Args:
@@ -633,10 +662,11 @@ def refreshLiveClip(index: int, value: int) -&gt; None:
 
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def incLivePosSnap(index: int, value: int) -&gt; None:
     &#34;&#34;&#34;Increase live position snap for track at `index`
-    
+
     HELP WANTED: Explanation.
 
     ## Args:
@@ -646,10 +676,11 @@ def incLivePosSnap(index: int, value: int) -&gt; None:
 
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def incLiveTrigSnap(index: int, value: int) -&gt; None:
     &#34;&#34;&#34;Increase live trigger snap for track at `index`
-    
+
     HELP WANTED: Explanation.
 
     ## Args:
@@ -659,10 +690,11 @@ def incLiveTrigSnap(index: int, value: int) -&gt; None:
 
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def incLiveLoopMode(index: int, value: int) -&gt; None:
     &#34;&#34;&#34;Increase live loop mode for track at `index`
-    
+
     HELP WANTED: Explanation.
 
     ## Args:
@@ -672,10 +704,11 @@ def incLiveLoopMode(index: int, value: int) -&gt; None:
 
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def incLiveTrigMode(index: int, value: int) -&gt; None:
     &#34;&#34;&#34;Increase live trigger mode for track at `index`
-    
+
     HELP WANTED: Explanation.
 
     ## Args:
@@ -685,6 +718,7 @@ def incLiveTrigMode(index: int, value: int) -&gt; None:
 
     Included since API version 1
     &#34;&#34;&#34;
+
 
 def getVisTimeBar() -&gt; int:
     &#34;&#34;&#34;Returns the time bar
@@ -698,6 +732,7 @@ def getVisTimeBar() -&gt; int:
     &#34;&#34;&#34;
     return 0
 
+
 def getVisTimeTick() -&gt; int:
     &#34;&#34;&#34;Returns the time tick
 
@@ -709,6 +744,7 @@ def getVisTimeTick() -&gt; int:
     Included since API version 1
     &#34;&#34;&#34;
     return 0
+
 
 def getVisTimeStep() -&gt; int:
     &#34;&#34;&#34;Returns the time bar
@@ -769,7 +805,7 @@ def getVisTimeStep() -&gt; int:
 
     ## Returns:
      * `int`: current display zone
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -811,7 +847,7 @@ functions provided in the module <code>utils</code></p>
 </summary>
 <pre><code class="python">def getLiveBlockColor(index: int, blockNum: int) -&gt; int:
     &#34;&#34;&#34;Returns the colour of block on track `index` at position `blockNum`
-    
+
     HELP WANTED: Explanation.
 
     Note that colours can be split into or built from components using the
@@ -828,7 +864,7 @@ functions provided in the module <code>utils</code></p>
 
     ## Returns:
      * `int`: block colour (`0x--BBGGRR`)
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -863,10 +899,10 @@ Refer to <a href="https://www.image-line.com/fl-studio-learning/fl-studio-online
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def getLiveBlockStatus(index: int, blockNum:int, mode:int=midi.LB_Status_Default) -&gt; int:
-    &#34;&#34;&#34;Returns the live block status for track at `index` and for block 
+<pre><code class="python">def getLiveBlockStatus(index: int, blockNum: int, mode: int = midi.LB_Status_Default) -&gt; int:
+    &#34;&#34;&#34;Returns the live block status for track at `index` and for block
     `blockNum`
-    
+
     HELP WANTED: Explanation.
 
     ## Args:
@@ -879,7 +915,7 @@ Refer to <a href="https://www.image-line.com/fl-studio-learning/fl-studio-online
     ## Returns:
      * `int`: live status of track:
        Refer to [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#getLiveStatusMode).
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -931,7 +967,7 @@ Refer to <a href="https://www.image-line.com/fl-studio-learning/fl-studio-online
 </summary>
 <pre><code class="python">def getLiveLoopMode(index: int) -&gt; int:
     &#34;&#34;&#34;Get live loop mode
-    
+
     HELP WANTED: Explanation for parameters.
 
     ## Args:
@@ -952,7 +988,7 @@ Refer to <a href="https://www.image-line.com/fl-studio-learning/fl-studio-online
           * `5` (`LiveLoop_Random`): Random
 
           * `6` (`LiveLoop_ExRandom`): Random, avoiding previous clip?
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -1004,7 +1040,7 @@ Refer to <a href="https://www.image-line.com/fl-studio-learning/fl-studio-online
 </summary>
 <pre><code class="python">def getLivePosSnap(index: int) -&gt; int:
     &#34;&#34;&#34;Get live position snap
-    
+
     HELP WANTED: Explanation.
 
     ## Args:
@@ -1025,7 +1061,7 @@ Refer to <a href="https://www.image-line.com/fl-studio-learning/fl-studio-online
           * `5` (`LiveSnap_Four`): 4 beats
 
           * `6` (`LiveSnap_Auto`): Auto
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -1056,9 +1092,9 @@ Refer to <a href="https://www.image-line.com/fl-studio-learning/fl-studio-online
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def getLiveStatus(index: int, mode:int=midi.LB_Status_Default) -&gt; int:
+<pre><code class="python">def getLiveStatus(index: int, mode: int = midi.LB_Status_Default) -&gt; int:
     &#34;&#34;&#34;Returns the live status for track at `index`
-    
+
     HELP WANTED: Explanation.
 
     ## Args:
@@ -1069,7 +1105,7 @@ Refer to <a href="https://www.image-line.com/fl-studio-learning/fl-studio-online
     ## Returns:
      * `int`: live status of track:
             Refer to [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#getLiveStatusMode)
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -1121,7 +1157,7 @@ Refer to <a href="https://www.image-line.com/fl-studio-learning/fl-studio-online
 </summary>
 <pre><code class="python">def getLiveTrigSnap(index: int) -&gt; int:
     &#34;&#34;&#34;Get live trigger snap
-    
+
     HELP WANTED: Explanation.
 
     ## Args:
@@ -1142,7 +1178,7 @@ Refer to <a href="https://www.image-line.com/fl-studio-learning/fl-studio-online
           * `5` (`LiveSnap_Four`): 4 beats
 
           * `6` (`LiveSnap_Auto`): Auto
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -1185,7 +1221,7 @@ Refer to <a href="https://www.image-line.com/fl-studio-learning/fl-studio-online
 </summary>
 <pre><code class="python">def getLiveTriggerMode(index: int) -&gt; int:
     &#34;&#34;&#34;Get live trigger mode
-    
+
     HELP WANTED: Explanation.
 
     ## Args:
@@ -1200,7 +1236,7 @@ Refer to <a href="https://www.image-line.com/fl-studio-learning/fl-studio-online
           * `2` (`LiveTrig_HMotion`): Hold and motion
 
           * `3` (`LiveTrig_Latch`): Latch
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -1252,7 +1288,7 @@ is no documentation for whether this is by design.</p>
 </summary>
 <pre><code class="python">def getTrackActivityLevel(index: int) -&gt; float:
     &#34;&#34;&#34;Returns the activity level of the track at `index`. This value is a float
-    in the range of 0.0 - 0.5 representing whether an unmuted playlist clip is 
+    in the range of 0.0 - 0.5 representing whether an unmuted playlist clip is
     active at the playhead. Compare to `playlist.getTrackActivityLevelVis()`.
 
     ## Args:
@@ -1263,16 +1299,16 @@ is no documentation for whether this is by design.</p>
           * `0.0`: No clip is active
 
           * `0.5`: A clip is active at the play head
-    
+
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
 
      * This function will only return 0.0 or 0.5, and nothing in between. There
        is no documentation for whether this is by design.
-     
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0.0</code></pre>
@@ -1320,8 +1356,8 @@ represent more recent note-on events.</p>
 </summary>
 <pre><code class="python">def getTrackActivityLevelVis(index: int) -&gt; float:
     &#34;&#34;&#34;Returns the visual activity level of the track at `index`. This value is a
-    float in the range of 0.0 - 1.0 representing whether an unmuted playlist 
-    clip is active at the playhead and how recently a note-on event was played 
+    float in the range of 0.0 - 1.0 representing whether an unmuted playlist
+    clip is active at the playhead and how recently a note-on event was played
     on this track.
 
     ## Args:
@@ -1331,15 +1367,15 @@ represent more recent note-on events.</p>
      * float: activity level
           * `0.0`: No clip is active
 
-          * `0.5 - 1.0`: A clip is active at the play head. Higher values 
+          * `0.5 - 1.0`: A clip is active at the play head. Higher values
             represent more recent note-on events.
-    
+
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-     
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0.0</code></pre>
@@ -1384,14 +1420,14 @@ functions provided in the module <code>utils</code></p>
 </summary>
 <pre><code class="python">def getTrackColor(index: int) -&gt; int:
     &#34;&#34;&#34;Returns the colour of the track at `index`
-    
+
     Note that colours can be split into or built from components using the
     functions provided in the module `utils`
-    
+
     * `ColorToRGB()`
-    
+
     * `RGBToColor()`
-    
+
     Note that playlist track indexes start at 1
 
     ## Args:
@@ -1402,10 +1438,10 @@ functions provided in the module <code>utils</code></p>
 
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return 0</code></pre>
@@ -1442,7 +1478,7 @@ For unnamed tracks, returns "Track <code>n</code>" where <code>n</code> is <code
 <pre><code class="python">def getTrackName(index: int) -&gt; str:
     &#34;&#34;&#34;Returns the name of the track at `index`
     For unnamed tracks, returns &#34;Track `n`&#34; where `n` is `index` + 1
-    
+
     Note that playlist track indexes start at 1
 
     ## Args:
@@ -1453,10 +1489,10 @@ For unnamed tracks, returns "Track <code>n</code>" where <code>n</code> is <code
 
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-    
+
     Included since API version 1
     &#34;&#34;&#34;
     return &#34;&#34;</code></pre>
@@ -1568,7 +1604,7 @@ For unnamed tracks, returns "Track <code>n</code>" where <code>n</code> is <code
 </summary>
 <pre><code class="python">def incLiveLoopMode(index: int, value: int) -&gt; None:
     &#34;&#34;&#34;Increase live loop mode for track at `index`
-    
+
     HELP WANTED: Explanation.
 
     ## Args:
@@ -1602,7 +1638,7 @@ For unnamed tracks, returns "Track <code>n</code>" where <code>n</code> is <code
 </summary>
 <pre><code class="python">def incLivePosSnap(index: int, value: int) -&gt; None:
     &#34;&#34;&#34;Increase live position snap for track at `index`
-    
+
     HELP WANTED: Explanation.
 
     ## Args:
@@ -1636,7 +1672,7 @@ For unnamed tracks, returns "Track <code>n</code>" where <code>n</code> is <code
 </summary>
 <pre><code class="python">def incLiveTrigMode(index: int, value: int) -&gt; None:
     &#34;&#34;&#34;Increase live trigger mode for track at `index`
-    
+
     HELP WANTED: Explanation.
 
     ## Args:
@@ -1670,7 +1706,7 @@ For unnamed tracks, returns "Track <code>n</code>" where <code>n</code> is <code
 </summary>
 <pre><code class="python">def incLiveTrigSnap(index: int, value: int) -&gt; None:
     &#34;&#34;&#34;Increase live trigger snap for track at `index`
-    
+
     HELP WANTED: Explanation.
 
     ## Args:
@@ -1718,13 +1754,13 @@ that solo/unsolo commands won't affect its mute status).</p>
 
     ## Returns:
      * `bool`: whether track&#39;s mute status is locked
-    
+
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-     
+
     Included since API version 2
     &#34;&#34;&#34;
     return False</code></pre>
@@ -1764,13 +1800,13 @@ that solo/unsolo commands won't affect its mute status).</p>
 
     ## Returns:
      * `bool`: whether track is muted
-    
+
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-     
+
     Included since API version 1
     &#34;&#34;&#34;
     return False</code></pre>
@@ -1810,13 +1846,13 @@ that solo/unsolo commands won't affect its mute status).</p>
 
     ## Returns:
      * `bool`: whether track is selected
-    
+
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-     
+
     Included since API version 12
     &#34;&#34;&#34;
     return False</code></pre>
@@ -1856,13 +1892,13 @@ that solo/unsolo commands won't affect its mute status).</p>
 
     ## Returns:
      * `bool`: whether track is muted
-    
+
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-     
+
     Included since API version 1
     &#34;&#34;&#34;
     return False</code></pre>
@@ -1900,8 +1936,8 @@ HELP WANTED: Explanation for parameters.</p>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def liveDisplayZone(left: int, top: int, right: int, bottom: int,
-                    duration:int=0) -&gt; None:
-    &#34;&#34;&#34;Set the display zone in the playlist to the specified co-ordinates. Use 
+                    duration: int = 0) -&gt; None:
+    &#34;&#34;&#34;Set the display zone in the playlist to the specified co-ordinates. Use
     optional `duration` parameter to make display zone temporary
 
     HELP WANTED: Explanation for what a display zone is.
@@ -1917,7 +1953,7 @@ HELP WANTED: Explanation for parameters.</p>
      * `bottom` (`int`): ???
 
      * `duration` (`int`, optional): ???. Defaults to `0`.
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -1953,7 +1989,7 @@ HELP WANTED: Explanation for parameters.</p>
      * `index` (`int`): ???
 
      * `value` (`int`): ???
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -1982,18 +2018,18 @@ become muted and a muted track will become unmuted.</p>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def muteTrack(index: int) -&gt; None:
-    &#34;&#34;&#34;Toggle whether the track at `index` is muted. An unmuted track will 
+    &#34;&#34;&#34;Toggle whether the track at `index` is muted. An unmuted track will
     become muted and a muted track will become unmuted.
 
     ## Args:
      * `index` (`int`): track index
-    
+
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-     
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -2022,18 +2058,18 @@ solo/unsolo commands won't affect its mute status).</p>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def muteTrackLock(index: int) -&gt; None:
-    &#34;&#34;&#34;Toggle whether the track at `index`&#39;s mute status is locked (meaning that 
+    &#34;&#34;&#34;Toggle whether the track at `index`&#39;s mute status is locked (meaning that
     solo/unsolo commands won&#39;t affect its mute status).
 
     ## Args:
      * `index` (`int`): track index
-    
+
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-     
+
     Included since API version 2
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -2060,7 +2096,7 @@ solo/unsolo commands won't affect its mute status).</p>
 </summary>
 <pre><code class="python">def refreshLiveClip(index: int, value: int) -&gt; None:
     &#34;&#34;&#34;Triggers live clip for track at `index` and for block `subNum`
-    
+
     HELP WANTED: Explanation.
 
     ## Args:
@@ -2113,18 +2149,18 @@ become selected and a selected track will become deselected.</p>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def selectTrack(index: int) -&gt; None:
-    &#34;&#34;&#34;Toggle whether the track at `index` is selected. A deselected track will 
+    &#34;&#34;&#34;Toggle whether the track at `index` is selected. A deselected track will
     become selected and a selected track will become deselected.
 
     ## Args:
      * `index` (`int`): track index
-    
+
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-     
+
     Included since API version 12
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -2169,14 +2205,14 @@ functions provided in the module <code>utils</code></p>
 </summary>
 <pre><code class="python">def setTrackColor(index: int, color: int) -&gt; None:
     &#34;&#34;&#34;Sets the colour of the track at `index`
-    
+
     Note that colours can be split into or built from components using the
     functions provided in the module `utils`
-    
+
     * `ColorToRGB()`
-    
+
     * `RGBToColor()`
-    
+
     Note that playlist track indexes start at 1
 
     ## Args:
@@ -2186,10 +2222,10 @@ functions provided in the module <code>utils</code></p>
 
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -2221,7 +2257,7 @@ Setting the name to an empty string ("") will reset the name to "Track n"</p>
 <pre><code class="python">def setTrackName(index: int, name: str) -&gt; None:
     &#34;&#34;&#34;Sets the name of the track at `index`
     Setting the name to an empty string (&#34;&#34;) will reset the name to &#34;Track n&#34;
-    
+
     Note that playlist track indexes start at 1
 
     ## Args:
@@ -2229,10 +2265,10 @@ Setting the name to an empty string ("") will reset the name to "Track n"</p>
 
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-    
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -2266,7 +2302,7 @@ control what the new value will be (<code>1</code>: solo, <code>0</code>: unsolo
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def soloTrack(index: int, value:int = -1) -&gt; None:
+<pre><code class="python">def soloTrack(index: int, value: int = -1) -&gt; None:
     &#34;&#34;&#34;Toggle whether the track at `index` is solo. An unsolo track will become
     solo and a solo track will become unsolo. If `value` is provided, it will
     control what the new value will be (`1`: solo, `0`: unsolo).
@@ -2275,13 +2311,13 @@ control what the new value will be (<code>1</code>: solo, <code>0</code>: unsolo
      * `index` (`int`): track index
 
      * `value` (`int`, optional): new solo value
-    
+
     ## Raises:
      * `TypeError`: Index out of range
-    
+
     ## Known Issues:
      * Trying to access track 500 raises an Index out of range `TypeError`
-     
+
     Included since API version 1
     &#34;&#34;&#34;</code></pre>
 </details>
@@ -2340,9 +2376,9 @@ Includes empty tracks.</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def triggerLiveClip(index: int, subNum:int, flags: int, velocity:int=-1) -&gt; None:
+<pre><code class="python">def triggerLiveClip(index: int, subNum: int, flags: int, velocity: int = -1) -&gt; None:
     &#34;&#34;&#34;Triggers live clip for track at `index` and for block `subNum`
-    
+
     HELP WANTED: Explanation.
 
     ## Args:

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
 <title>src.fl_context.context API documentation</title>
-<meta name="description" content="fl_context &gt; context …" />
+<meta name="description" content="fl_context …" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
 <link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
@@ -22,16 +22,62 @@
 <h1 class="title">Module <code>src.fl_context.context</code></h1>
 </header>
 <section id="section-intro">
-<p>fl_context &gt; context</p>
-<p>Underlying implementation of the FL Context of the stubs</p>
+<p>fl_context</p>
+<p>NOTE: This module is not included in FL Studio's runtime, and should not be
+imported from within your main script. It is intended to be used within a
+testing framework in order to help validate the behaviour of MIDI scripts.</p>
+<p>Currently, this module is terribly designed, and is very bare-bones. If there
+is enough interest, I will redesign it to improve its usability.</p>
+<h1 id="values">Values</h1>
+<p>Set the state's values either using an <code><a title="src.fl_context.context.FlContext" href="#src.fl_context.context.FlContext">FlContext</a></code> context manager, or the
+<code><a title="src.fl_context.context.setValue" href="#src.fl_context.context.setValue">setValue()</a></code> function.</p>
+<ul>
+<li>
+<p><code>api_version</code> (<code>int</code>): The version of the API</p>
+</li>
+<li>
+<p><code>device_assigned</code> (<code>bool</code>): Whether the device is assigned or not</p>
+</li>
+<li>
+<p><code>device_port</code> (<code>int</code>): The port of the device</p>
+</li>
+<li>
+<p><code>device_name</code> (<code>str</code>): The name of the device</p>
+</li>
+<li>
+<p><code>dispatch_targets</code> (<code>list[int]</code>): A list of the ports of potential targets
+used by <code>device.dispatch()</code></p>
+</li>
+</ul>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">&#34;&#34;&#34;
-fl_context &gt; context
+fl_context
 
-Underlying implementation of the FL Context of the stubs
+NOTE: This module is not included in FL Studio&#39;s runtime, and should not be
+imported from within your main script. It is intended to be used within a
+testing framework in order to help validate the behaviour of MIDI scripts.
+
+Currently, this module is terribly designed, and is very bare-bones. If there
+is enough interest, I will redesign it to improve its usability.
+
+# Values
+
+Set the state&#39;s values either using an `FlContext` context manager, or the
+`setValue()` function.
+
+* `api_version` (`int`): The version of the API
+
+* `device_assigned` (`bool`): Whether the device is assigned or not
+
+* `device_port` (`int`): The port of the device
+
+* `device_name` (`str`): The name of the device
+
+* `dispatch_targets` (`list[int]`): A list of the ports of potential targets
+  used by `device.dispatch()`
 &#34;&#34;&#34;
 
 from typing import Any
@@ -43,33 +89,35 @@ default_values = {
     &#34;device_assigned&#34;: True,
     &#34;device_port&#34;: 1,
     &#34;device_name&#34;: &#34;Device&#34;,
+    # List of ports that we can dispatch to
+    &#34;dispatch_targets&#34;: [],
 }
 
 values = default_values.copy()
 
 def resetState():
     &#34;&#34;&#34;
-    Reset the context to the default state
+    Reset the state to its default values
     &#34;&#34;&#34;
     global values
     values = default_values.copy()
 
 def setState(new_state: dict):
     &#34;&#34;&#34;
-    Set the context to a new state
+    Replace the state with a new one
     &#34;&#34;&#34;
     global values
     values = new_state
 
 def getState() -&gt; dict:
     &#34;&#34;&#34;
-    Get the current state of the context
+    Get the current state of the state
     &#34;&#34;&#34;
     return values
 
 def getValue(key: str) -&gt; Any:
     &#34;&#34;&#34;
-    Get the value of a key in the context.
+    Get the value of a key in the state.
 
     Used within the stubs to get return values
     &#34;&#34;&#34;
@@ -77,7 +125,7 @@ def getValue(key: str) -&gt; Any:
 
 def setValue(key: str, value: Any) -&gt; None:
     &#34;&#34;&#34;
-    Set the value of a key in the context.
+    Set the value of a key in the state.
 
     Can be used within test files to control the stub return
     values.
@@ -86,7 +134,10 @@ def setValue(key: str, value: Any) -&gt; None:
 
 class FlContext:
     &#34;&#34;&#34;
-    A context manager used to temporarily set the context
+    A context manager used to temporarily set the testing context.
+
+    To use this, provide a dictionary of values, which will be used by the
+    state until the context manager closes.
     &#34;&#34;&#34;
     def __init__(self, state_mods: dict) -&gt; None:
         self._old_state = getState()
@@ -113,14 +164,14 @@ class FlContext:
 <span>def <span class="ident">getState</span></span>(<span>) ‑> dict</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Get the current state of the context</p></div>
+<div class="desc"><p>Get the current state of the state</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def getState() -&gt; dict:
     &#34;&#34;&#34;
-    Get the current state of the context
+    Get the current state of the state
     &#34;&#34;&#34;
     return values</code></pre>
 </details>
@@ -129,7 +180,7 @@ class FlContext:
 <span>def <span class="ident">getValue</span></span>(<span>key: str) ‑> Any</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Get the value of a key in the context.</p>
+<div class="desc"><p>Get the value of a key in the state.</p>
 <p>Used within the stubs to get return values</p></div>
 <details class="source">
 <summary>
@@ -137,7 +188,7 @@ class FlContext:
 </summary>
 <pre><code class="python">def getValue(key: str) -&gt; Any:
     &#34;&#34;&#34;
-    Get the value of a key in the context.
+    Get the value of a key in the state.
 
     Used within the stubs to get return values
     &#34;&#34;&#34;
@@ -148,14 +199,14 @@ class FlContext:
 <span>def <span class="ident">resetState</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Reset the context to the default state</p></div>
+<div class="desc"><p>Reset the state to its default values</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def resetState():
     &#34;&#34;&#34;
-    Reset the context to the default state
+    Reset the state to its default values
     &#34;&#34;&#34;
     global values
     values = default_values.copy()</code></pre>
@@ -165,14 +216,14 @@ class FlContext:
 <span>def <span class="ident">setState</span></span>(<span>new_state: dict)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Set the context to a new state</p></div>
+<div class="desc"><p>Replace the state with a new one</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def setState(new_state: dict):
     &#34;&#34;&#34;
-    Set the context to a new state
+    Replace the state with a new one
     &#34;&#34;&#34;
     global values
     values = new_state</code></pre>
@@ -182,7 +233,7 @@ class FlContext:
 <span>def <span class="ident">setValue</span></span>(<span>key: str, value: Any) ‑> None</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Set the value of a key in the context.</p>
+<div class="desc"><p>Set the value of a key in the state.</p>
 <p>Can be used within test files to control the stub return
 values.</p></div>
 <details class="source">
@@ -191,7 +242,7 @@ values.</p></div>
 </summary>
 <pre><code class="python">def setValue(key: str, value: Any) -&gt; None:
     &#34;&#34;&#34;
-    Set the value of a key in the context.
+    Set the value of a key in the state.
 
     Can be used within test files to control the stub return
     values.
@@ -209,14 +260,19 @@ values.</p></div>
 <span>(</span><span>state_mods: dict)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>A context manager used to temporarily set the context</p></div>
+<div class="desc"><p>A context manager used to temporarily set the testing context.</p>
+<p>To use this, provide a dictionary of values, which will be used by the
+state until the context manager closes.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class FlContext:
     &#34;&#34;&#34;
-    A context manager used to temporarily set the context
+    A context manager used to temporarily set the testing context.
+
+    To use this, provide a dictionary of values, which will be used by the
+    state until the context manager closes.
     &#34;&#34;&#34;
     def __init__(self, state_mods: dict) -&gt; None:
         self._old_state = getState()
@@ -238,7 +294,9 @@ values.</p></div>
 <nav id="sidebar">
 <h1>Index</h1>
 <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#values">Values</a></li>
+</ul>
 </div>
 <ul id="index">
 <li><h3>Super-module</h3>

@@ -23,10 +23,11 @@
 </header>
 <section id="section-intro">
 <p>fl_context</p>
-<p>The FL Context module isn't a module that is actually used by FL Studio, but
-instead can be used with unit tests for scripts using the stubs. It lets
-some return values for scripts be managed.</p>
-<p>This shouldn't be imported from your main script, but only from the test files.</p>
+<p>NOTE: This module is not included in FL Studio's runtime, and should not be
+imported from within your main script. It is intended to be used within a
+testing framework in order to help validate the behaviour of MIDI scripts.</p>
+<p>Refer to the <code>fl_context.context</code> module for help with using the stub code's
+state manager tools.</p>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -34,11 +35,12 @@ some return values for scripts be managed.</p>
 <pre><code class="python">&#34;&#34;&#34;
 fl_context
 
-The FL Context module isn&#39;t a module that is actually used by FL Studio, but
-instead can be used with unit tests for scripts using the stubs. It lets
-some return values for scripts be managed.
+NOTE: This module is not included in FL Studio&#39;s runtime, and should not be
+imported from within your main script. It is intended to be used within a
+testing framework in order to help validate the behaviour of MIDI scripts.
 
-This shouldn&#39;t be imported from your main script, but only from the test files.
+Refer to the `fl_context.context` module for help with using the stub code&#39;s
+state manager tools.
 &#34;&#34;&#34;
 
 from .context import (
@@ -53,7 +55,7 @@ from .context import (
 <dl>
 <dt><code class="name"><a title="src.fl_context.context" href="context.html">src.fl_context.context</a></code></dt>
 <dd>
-<div class="desc"><p>fl_context &gt; context …</p></div>
+<div class="desc"><p>fl_context …</p></div>
 </dd>
 </dl>
 </section>
