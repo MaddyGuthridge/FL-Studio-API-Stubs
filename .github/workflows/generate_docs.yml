@@ -28,21 +28,13 @@ jobs:
         run: |
           cd src && pdoc --html . -o ../pdoc --force
       - name: Commit and push docs
-        # uses: dmnemec/copy_file_to_another_repo_action@main
-        # env:
-        #   API_TOKEN_GITHUB: ${{ secrets.PUSH_TOKEN_GITHUB }}
-        # with:
-        #   source_file: pdoc
-        #   destination_repo: MiguelGuthridge/FL-Midi-Docs
-        #   user_email: 'hdsq@outlook.com.au'
-        #   user_name: 'MiguelGuthridge'
-        #   commit_message: 'Automatic push'
-        uses: cpina/github-action-push-to-another-repository@main
+        uses: dmnemec/copy_file_to_another_repo_action@main
         env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+          API_TOKEN_GITHUB: ${{ secrets.PUSH_TOKEN_GITHUB }}
         with:
-          source-directory: pdoc
-          destination-github-username: MiguelGuthridge
-          destination-repository-name: FL-Midi-Docs
-          user-email: hdsq@outlook.com.au
-          commit-message: 'Automatic push'
+          source_file: pdoc
+          destination_repo: MiguelGuthridge/FL-Midi-Docs
+          destination_folder: .
+          user_email: 'hdsq@outlook.com.au'
+          user_name: 'MiguelGuthridge'
+          commit_message: 'Automatic push'
