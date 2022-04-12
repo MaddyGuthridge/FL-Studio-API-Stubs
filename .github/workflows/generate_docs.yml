@@ -10,7 +10,7 @@ on:
     types: [published]
 
 jobs:
-  Generate Docs:
+  Generate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout this repo
@@ -40,5 +40,5 @@ jobs:
           destination_repo: MiguelGuthridge/FL-Midi-Docs
           destination_folder: .
           user_email: 'hdsq@outlook.com.au'
-          user_name: 'MiguelGuthridge'
-          commit_message: 'Automatic push'
+          user_name: 'MiguelGBot'
+          commit_message: 'Push updated docs'
