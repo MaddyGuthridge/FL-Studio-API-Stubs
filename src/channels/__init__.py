@@ -38,12 +38,12 @@ def channelNumber(canBeNone: int = 0, offset: int = 0) -> int:
 
 
 def channelCount(mode: int = 0) -> int:
-    """Returns the number of channels on the channel rack. Respect for groups is
-    controlled by the `mode` flag.
+    """Returns the number of channels on the channel rack. Respect for groups
+    is controlled by the `mode` flag.
 
     ## Args:
-     * `mode` (`int`, optional): Whether the number of channels respects groups.
-       Defaults to 0.
+     * `mode` (`int`, optional): Whether the number of channels respects
+       groups. Defaults to 0.
 
     ## Returns:
      * `int`: number of channels
@@ -188,7 +188,11 @@ def getChannelVolume(index: int, mode: int = 0) -> float:
     return 0.0
 
 
-def setChannelVolume(index: int, volume: float, pickupMode: int = midi.PIM_None) -> None:
+def setChannelVolume(
+    index: int,
+    volume: float,
+    pickupMode: int = midi.PIM_None
+) -> None:
     """Sets the normalised volume of the channel at `index`, where `0.0` is
     the minimum value, and `1.0` is the maximum value. Note that the default
     volume for channels is `0.78125`. Use the pickup mode flag to set pickup
