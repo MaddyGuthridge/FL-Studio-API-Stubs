@@ -14,19 +14,20 @@ import midi
 
 
 def channelNumber(canBeNone: int = 0, offset: int = 0) -> int:
-    """Returns the global index of the first selected channel, otherwise the nth
-    selected channel where n is `offset` + 1. If n is greater than the number of
-    selected channels, the global index of the last selected channel will be
-    returned.
+    """Returns the global index of the first selected channel, otherwise the
+    nth selected channel where n is `offset` + 1. If n is greater than the
+    number of selected channels, the global index of the last selected channel
+    will be returned.
 
-    If `canBeNone` is `1`, no selection will return `-1`. Otherwise, no selection
-    will return `0` (representing the first channel).
+    If `canBeNone` is `1`, no selection will return `-1`. Otherwise, no
+    selection will return `0` (representing the first channel).
 
     ## Args:
-     * `canBeNone` (`int`, optional): Whether the function will return `-1` or `0`
-       when there is no selection. Defaults to `0` (returning `0`).
+     * `canBeNone` (`int`, optional): Whether the function will return `-1` or
+       `0` when there is no selection. Defaults to `0` (returning `0`).
 
-     * `offset` (`int`, optional): return other selected channels after offset. Defaults to 0.
+     * `offset` (`int`, optional): return other selected channels after offset.
+       Defaults to 0.
 
     ## Returns:
      * `int`: global index of first selected channel
