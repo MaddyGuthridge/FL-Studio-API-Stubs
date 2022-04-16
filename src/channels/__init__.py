@@ -3,7 +3,7 @@
 Allows you to control and interact with the FL Studio Channel Rack, and with
 instrument channels.
 
-## NOTES:
+## NOTE:
  * In this documentation, an index respects channel groups, whereas a
    global index does not.
 
@@ -381,9 +381,10 @@ def selectedChannel(canBeNone: int = 0, offset: int = 0, indexGlobal: int = 0) -
     returned. If `indexGlobal` is set to `1`, this will replicate the behaviour
     of `channelNumber()` by returning global indexes.
 
-    NOTE: This function replaces the functionality of `channelNumber()`
-    entirely, with the added functionality of providing indexes respecting
-    groups (when `indexGlobal` is not set).
+    ## NOTE:
+    * This function replaces the functionality of `channelNumber()`
+      entirely, with the added functionality of providing indexes respecting
+      groups (when `indexGlobal` is not set).
 
     If `canBeNone` is `1`, no selection will return `-1`. Otherwise, no selection
     will return `0` (representing the first channel).
@@ -423,13 +424,18 @@ def deselectAll() -> None:
 def getChannelMidiInPort(index: int) -> int:
     """Returns the MIDI port associated with the channel at `index`.
 
-    TODO: Write use cases
+    This can be used to send data directly to channels that are associated with
+    a MIDI in port. Although channels are unassigned by default, a user can
+    configure plugins to receive MIDI on a certain channel which can unlock
+    many useful plugin-specific features.
 
     ## Args:
      * `index` (`int`): channel index
 
     ## Returns:
      * `int`: MIDI port associated with channel
+
+     * `-2`: Channel not assigned to a MIDI port
 
     Included since API version 1
     """
@@ -483,8 +489,9 @@ def isHighlighted() -> bool:
 def processRECEvent(eventId: int, value: int, flags: int) -> int:
     """Processes a recording event.
 
-    WARNING: This function is depreciated here, and moved to the `general`
-    module as of API version 7.
+    ## WARNING:
+    * This function is depreciated here, and moved to the `general` module as
+      of API version 7.
 
     ## Args:
      * `eventId` (`int`): Refer to the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#RecEventParams)
@@ -508,12 +515,14 @@ def incEventValue(eventId: int, step: int, res: float = 1/24) -> int:
 
     Use result as new value in processRECEvent
 
-    Example (to increase volume of first channel):
-
+    ## Example usage:
+    ```py
+    # Increase volume of first channel
     step = 1
     eventId = midi.REC_Chan_Vol + channels.getRecEventId(0)
     newValue = channels.incEventValue(eventId, step)
     general.processRECEvent(eventId, newValue, midi.REC_UpdateValue | midi.REC_UpdateControl)
+    ```
 
     ## Args:
      * `eventId` (`int`): event ID, see the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#RecEventParams)
@@ -580,12 +589,13 @@ def getStepParam(step: int, param: int, ofset: int, startPos: int,
                  padsStride: int = 16) -> int:
     """Get step parameter for `step`.
 
-    HELP WANTED: What does this do?
+    ## HELP WANTED:
+    * What does this do?
 
     ## Args:
      * `step` (`int`): ?
 
-     * `param` (`int`): ?? at least there's the [offical documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#stepParams)
+     * `param` (`int`): ?? at least there's the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#stepParams)
        (actually, tbh the docs on this looks kinda dodgy for some values)
 
      * `ofset` (`int`): ??? (this typo is in the official docs too)
@@ -605,10 +615,12 @@ def getStepParam(step: int, param: int, ofset: int, startPos: int,
 def getCurrentStepParam(index: int, step: int, param: int) -> int:
     """Get current step parameter for channel at `index` and for step at `step`.
 
-    HELP WANTED: What does this do?
+    ## HELP WANTED:
+    * What does this do?
 
-    TODO: Official documentation says this returns None, but it actually seems
-    to return an int.
+    ## NOTE:
+    * Official documentation says this returns None, but it actually seems to
+      return an int.
 
     ## Args:
      * `index` (`int`): channel index
@@ -627,8 +639,9 @@ def getGridBitWithLoop(index: int, position: int) -> bool:
     """Get value of grid bit on channel `index` in `position` accounting for
     loops.
 
-    NOTE: Official documentations say this returns None, but it doesn't. This
-    documentation reflects the actual behaviour.
+    ## NOTE:
+    * Official documentations say this returns None, but it doesn't. This
+      documentation reflects the actual behaviour.
 
     ## Args:
      * `index` (`int`): channel index`
@@ -682,7 +695,10 @@ def showEditor(index: int, value: int = -1) -> None:
      * `value` (`int`): whether to hide (`0`) or show (`1`) the plugin window.
        Defaults to `-1` (toggle).
 
-    Included since API version 1, with optional parameter added in version 3.
+    Included since API version 1
+
+    ## API Changes:
+    * v3: Add `value` parameter
     """
 
 
@@ -718,14 +734,17 @@ def midiNoteOn(indexGlobal: int, note: int, velocity: int, channel: int = -1
 
     This can be used to create extra notes (eg mapping one note to a chord).
 
+    ## WARNING:
+    * Specifying a `channel` doesn't appear to do anything
+
     ## Args:
-     * `indexGlobal` (`int`): channel index (not respecting groups)
+    * `indexGlobal` (`int`): channel index (not respecting groups)
 
-     * `note` (`int`): note number (0-127)
+    * `note` (`int`): note number (0-127)
 
-     * `velocity` (`int`): note velocity (1-127, 0 is note off)
+    * `velocity` (`int`): note velocity (1-127, 0 is note off)
 
-     * `channel` (`int`, optional): MIDI channel to use. Defaults to -1.
+    * `channel` (`int`, optional): MIDI channel to use. Defaults to -1.
 
     Included since API version 1
     """
@@ -751,8 +770,9 @@ def quickQuantize(index: int, startOnly: int = 1) -> None:
     """
     Perform a quick quantize operation on the channel at index
 
-    NOTE: The API documentation lists this as returning a float, however it
-    actually returns None, which is documented here.
+    ## NOTE:
+    * The API documentation lists this as returning a float, however it
+      actually returns None, which is what is documented here.
 
     ## Args:
     * `index` (`int`): channel index, respecting groups
@@ -766,7 +786,8 @@ def updateGraphEditor() -> None:
     """
     ???
 
-    WARNING: This function has no official documentation
+    ## WARNING:
+    * This function has no official documentation
 
-    Included since API Version 20
+    Included since API Version 20?
     """
