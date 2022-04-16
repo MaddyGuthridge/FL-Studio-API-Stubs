@@ -114,5 +114,5 @@ dmypy.json
 .pyre/
 temp.py
 
-# Pdoc3 documentation
-# pdoc/
+# Pdoc documentation
+pdoc/
