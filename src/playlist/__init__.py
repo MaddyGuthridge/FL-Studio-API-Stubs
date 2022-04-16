@@ -6,10 +6,8 @@ Allows you to control and interact with the FL Studio Playlist.
  * Playlist tracks are 1-indexed.
 
 ## KNOWN ISSUES:
- * When a track index is required, track zero can be accessed, but does not give
-   results (as track indexes start at 1)
-
- * Trying to access track `500` raises an Index out of range `TypeError`
+ * For all API versions below 20, the accessible range is 0-499 rather than
+   1-500.
 
 ## HELP WANTED:
  * Explanations for display zone functions
@@ -47,9 +45,6 @@ def getTrackName(index: int) -> str:
     ## Raises:
      * `TypeError`: Index out of range
 
-    ## Known Issues:
-     * Trying to access track 500 raises an Index out of range `TypeError`
-
     Included since API version 1
     """
     return ""
@@ -66,9 +61,6 @@ def setTrackName(index: int, name: str) -> None:
 
     ## Raises:
      * `TypeError`: Index out of range
-
-    ## Known Issues:
-     * Trying to access track 500 raises an Index out of range `TypeError`
 
     Included since API version 1
     """
@@ -95,9 +87,6 @@ def getTrackColor(index: int) -> int:
     ## Raises:
      * `TypeError`: Index out of range
 
-    ## Known Issues:
-     * Trying to access track 500 raises an Index out of range `TypeError`
-
     Included since API version 1
     """
     return 0
@@ -123,9 +112,6 @@ def setTrackColor(index: int, color: int) -> None:
     ## Raises:
      * `TypeError`: Index out of range
 
-    ## Known Issues:
-     * Trying to access track 500 raises an Index out of range `TypeError`
-
     Included since API version 1
     """
 
@@ -142,9 +128,6 @@ def isTrackMuted(index: int) -> bool:
     ## Raises:
      * `TypeError`: Index out of range
 
-    ## Known Issues:
-     * Trying to access track 500 raises an Index out of range `TypeError`
-
     Included since API version 1
     """
     return False
@@ -159,9 +142,6 @@ def muteTrack(index: int) -> None:
 
     ## Raises:
      * `TypeError`: Index out of range
-
-    ## Known Issues:
-     * Trying to access track 500 raises an Index out of range `TypeError`
 
     Included since API version 1
     """
@@ -180,9 +160,6 @@ def isTrackMuteLock(index: int) -> bool:
     ## Raises:
      * `TypeError`: Index out of range
 
-    ## Known Issues:
-     * Trying to access track 500 raises an Index out of range `TypeError`
-
     Included since API version 2
     """
     return False
@@ -197,9 +174,6 @@ def muteTrackLock(index: int) -> None:
 
     ## Raises:
      * `TypeError`: Index out of range
-
-    ## Known Issues:
-     * Trying to access track 500 raises an Index out of range `TypeError`
 
     Included since API version 2
     """
@@ -216,9 +190,6 @@ def isTrackSolo(index: int) -> bool:
 
     ## Raises:
      * `TypeError`: Index out of range
-
-    ## Known Issues:
-     * Trying to access track 500 raises an Index out of range `TypeError`
 
     Included since API version 1
     """
@@ -238,9 +209,6 @@ def soloTrack(index: int, value: int = -1) -> None:
     ## Raises:
      * `TypeError`: Index out of range
 
-    ## Known Issues:
-     * Trying to access track 500 raises an Index out of range `TypeError`
-
     Included since API version 1
     """
 
@@ -257,9 +225,6 @@ def isTrackSelected(index: int) -> bool:
     ## Raises:
      * `TypeError`: Index out of range
 
-    ## Known Issues:
-     * Trying to access track 500 raises an Index out of range `TypeError`
-
     Included since API version 12
     """
     return False
@@ -274,9 +239,6 @@ def selectTrack(index: int) -> None:
 
     ## Raises:
      * `TypeError`: Index out of range
-
-    ## Known Issues:
-     * Trying to access track 500 raises an Index out of range `TypeError`
 
     Included since API version 12
     """
@@ -305,19 +267,17 @@ def getTrackActivityLevel(index: int) -> float:
      * `index` (`int`): track index
 
     ## Returns:
-     * `float`: activity level
-          * `0.0`: No clip is active
+    * `float`: activity level
+         * `0.0`: No clip is active
 
-          * `0.5`: A clip is active at the play head
+         * `0.5`: A clip is active at the play head
 
     ## Raises:
      * `TypeError`: Index out of range
 
     ## Known Issues:
-     * Trying to access track 500 raises an Index out of range `TypeError`
-
-     * This function will only return 0.0 or 0.5, and nothing in between. There
-       is no documentation for whether this is by design.
+    * This function will only return 0.0 or 0.5, and nothing in between. There
+      is no documentation for whether this is by design.
 
     Included since API version 1
     """
@@ -342,9 +302,6 @@ def getTrackActivityLevelVis(index: int) -> float:
 
     ## Raises:
      * `TypeError`: Index out of range
-
-    ## Known Issues:
-     * Trying to access track 500 raises an Index out of range `TypeError`
 
     Included since API version 1
     """
