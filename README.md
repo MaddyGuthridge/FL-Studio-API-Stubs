@@ -13,12 +13,15 @@ resolve issues with incorrect function calls when interacting with the API.
 Although the stubs are mostly complete, there are a few functions where I don't
 fully understand how they work. These functions have a `HELP WANTED:` label in
 their documentation. If you happen to know how to use one, I'd love it if you
-helped out by improving the documentation!
+helped out by improving the documentation! I may also have incorrect
+definitions for some functions. Please raise an issue if you find anything
+incorrect.
 
 # Online Reference
 
-The documentation is also available as an [online reference](https://miguelguthridge.github.io/FL-Midi-Docs)
-if Image-Line's own documentation isn't up to scratch.
+The documentation is also available as an
+[online reference](https://miguelguthridge.github.io/FL-Midi-Docs) if
+Image-Line's own documentation isn't up to scratch.
 
 # Differences to Official Implementation
 
