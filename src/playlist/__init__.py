@@ -311,7 +311,8 @@ def getTrackActivityLevelVis(index: int) -> float:
 def getDisplayZone() -> int:
     """Returns the current display zone in the playlist or zero if none.
 
-    HELP WANTED: Explanation for what a display zone is.
+    ## HELP WANTED:
+    * Explanation for what a display zone is.
 
     ## Returns:
      * `int`: current display zone
@@ -324,8 +325,9 @@ def getDisplayZone() -> int:
 def lockDisplayZone(index: int, value: int) -> None:
     """Lock display zone at `index`.
 
-    HELP WANTED: Explanation for what a display zone is.
-    HELP WANTED: Explanation for parameters.
+    ## HELP WANTED:
+    * Explanation for what a display zone is.
+    * Explanation for parameters.
 
     ## Args:
      * `index` (`int`): ???
@@ -341,8 +343,9 @@ def liveDisplayZone(left: int, top: int, right: int, bottom: int,
     """Set the display zone in the playlist to the specified co-ordinates. Use
     optional `duration` parameter to make display zone temporary
 
-    HELP WANTED: Explanation for what a display zone is.
-    HELP WANTED: Explanation for parameters.
+    ## HELP WANTED:
+    * Explanation for what a display zone is.
+    * Explanation for parameters.
 
     ## Args:
      * `left` (`int`): ???
@@ -362,7 +365,8 @@ def liveDisplayZone(left: int, top: int, right: int, bottom: int,
 def getLiveLoopMode(index: int) -> int:
     """Get live loop mode
 
-    HELP WANTED: Explanation for parameters.
+    ## HELP WANTED:
+    * Explanation for parameters.
 
     ## Args:
      * `index` (`int`): track index???
@@ -391,7 +395,8 @@ def getLiveLoopMode(index: int) -> int:
 def getLiveTriggerMode(index: int) -> int:
     """Get live trigger mode
 
-    HELP WANTED: Explanation.
+    ## HELP WANTED:
+    * What does this do?
 
     ## Args:
      * `index` (`int`): track index???
@@ -414,7 +419,8 @@ def getLiveTriggerMode(index: int) -> int:
 def getLivePosSnap(index: int) -> int:
     """Get live position snap
 
-    HELP WANTED: Explanation.
+    ## HELP WANTED:
+    * What does this do?
 
     ## Args:
      * `index` (`int`): track index???
@@ -443,7 +449,8 @@ def getLivePosSnap(index: int) -> int:
 def getLiveTrigSnap(index: int) -> int:
     """Get live trigger snap
 
-    HELP WANTED: Explanation.
+    ## HELP WANTED:
+    * What does this do?
 
     ## Args:
      * `index` (`int`): track index???
@@ -472,7 +479,8 @@ def getLiveTrigSnap(index: int) -> int:
 def getLiveStatus(index: int, mode: int = midi.LB_Status_Default) -> int:
     """Returns the live status for track at `index`
 
-    HELP WANTED: Explanation.
+    ## HELP WANTED:
+    * What does this do?
 
     ## Args:
      * `index` (`int`): track index
@@ -492,7 +500,8 @@ def getLiveBlockStatus(index: int, blockNum: int, mode: int = midi.LB_Status_Def
     """Returns the live block status for track at `index` and for block
     `blockNum`
 
-    HELP WANTED: Explanation.
+    ## HELP WANTED:
+    * What does this do?
 
     ## Args:
      * `index` (`int`): track index
@@ -513,7 +522,8 @@ def getLiveBlockStatus(index: int, blockNum: int, mode: int = midi.LB_Status_Def
 def getLiveBlockColor(index: int, blockNum: int) -> int:
     """Returns the colour of block on track `index` at position `blockNum`
 
-    HELP WANTED: Explanation.
+    ## HELP WANTED:
+    * What does this do?
 
     Note that colours can be split into or built from components using the
     functions provided in the module `utils`
@@ -538,7 +548,8 @@ def getLiveBlockColor(index: int, blockNum: int) -> int:
 def triggerLiveClip(index: int, subNum: int, flags: int, velocity: int = -1) -> None:
     """Triggers live clip for track at `index` and for block `subNum`
 
-    HELP WANTED: Explanation.
+    ## HELP WANTED:
+    * What does this do?
 
     ## Args:
      * `index` (`int`): track index
@@ -557,7 +568,8 @@ def triggerLiveClip(index: int, subNum: int, flags: int, velocity: int = -1) -> 
 def refreshLiveClip(index: int, value: int) -> None:
     """Triggers live clip for track at `index` and for block `subNum`
 
-    HELP WANTED: Explanation.
+    ## HELP WANTED:
+    * What does this do?
 
     ## Args:
      * `index` (`int`): track index
@@ -571,7 +583,8 @@ def refreshLiveClip(index: int, value: int) -> None:
 def incLivePosSnap(index: int, value: int) -> None:
     """Increase live position snap for track at `index`
 
-    HELP WANTED: Explanation.
+    ## HELP WANTED:
+    * What does this do?
 
     ## Args:
      * `index` (`int`): track index
@@ -585,7 +598,8 @@ def incLivePosSnap(index: int, value: int) -> None:
 def incLiveTrigSnap(index: int, value: int) -> None:
     """Increase live trigger snap for track at `index`
 
-    HELP WANTED: Explanation.
+    ## HELP WANTED:
+    * What does this do?
 
     ## Args:
      * `index` (`int`): track index
@@ -599,7 +613,8 @@ def incLiveTrigSnap(index: int, value: int) -> None:
 def incLiveLoopMode(index: int, value: int) -> None:
     """Increase live loop mode for track at `index`
 
-    HELP WANTED: Explanation.
+    ## HELP WANTED:
+    * What does this do?
 
     ## Args:
      * `index` (`int`): track index
@@ -613,7 +628,8 @@ def incLiveLoopMode(index: int, value: int) -> None:
 def incLiveTrigMode(index: int, value: int) -> None:
     """Increase live trigger mode for track at `index`
 
-    HELP WANTED: Explanation.
+    ## HELP WANTED:
+    * What does this do?
 
     ## Args:
      * `index` (`int`): track index
@@ -627,7 +643,8 @@ def incLiveTrigMode(index: int, value: int) -> None:
 def getVisTimeBar() -> int:
     """Returns the time bar
 
-    HELP WANTED: Explanation. I could only get this function to return `0`.
+    ## HELP WANTED:
+    * Explanation. I could only get this function to return `0`.
 
     ## Returns:
      * `int`: time bar
@@ -640,7 +657,8 @@ def getVisTimeBar() -> int:
 def getVisTimeTick() -> int:
     """Returns the time tick
 
-    HELP WANTED: Explanation. I could only get this function to return `0`.
+    ## HELP WANTED:
+    * Explanation. I could only get this function to return `0`.
 
     ## Returns:
      * `int`: time tick
@@ -653,7 +671,8 @@ def getVisTimeTick() -> int:
 def getVisTimeStep() -> int:
     """Returns the time bar
 
-    HELP WANTED: Explanation. I could only get this function to return `0`.
+    ## HELP WANTED:
+    * Explanation. I could only get this function to return `0`.
 
     ## Returns:
      * `int`: time step

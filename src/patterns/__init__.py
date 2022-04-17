@@ -3,7 +3,7 @@
 Allows you to control and interact with FL Studio Patterns.
 
 ## NOTES:
- * Patterns are 1-indexed
+ * Patterns are 1-indexed, with a range from `1` - `999`
 """
 
 
@@ -139,8 +139,9 @@ def getBlockSetStatus(left: int, top: int, right: int, bottom: int) -> int:
 def ensureValidNoteRecord(index: int, playNow: int = 0) -> int:
     """Ensures valid note on the pattern at `index`.
 
-    HELP WANTED: What does this do? I haven't managed to get it to return
-    anything other than zero.
+    ## HELP WANTED:
+    * What does this do? I haven't managed to get it to return
+      anything other than zero.
 
     ## Args:
      * `index` (`int`): pattern index
@@ -158,8 +159,11 @@ def ensureValidNoteRecord(index: int, playNow: int = 0) -> int:
 def jumpToPattern(index: int) -> None:
     """Scroll the patterns list to the pattern at `index`, and select it.
 
-    NOTE: This function seems to cause some extremely buggy behaviour as of FL
-    20.8.4, and as such, using it is not recommended.
+    ## NOTE:
+    * It is possible to jump to non-existent patterns. They will be created at
+      the requested index. Script writers should be careful not to create
+      patterns at unusual indexes. For example, creating a "Pattern 999" as the
+      second pattern in a project would be somewhat confusing for user.
 
     ## Args:
      * index (`int`): pattern index
@@ -237,7 +241,8 @@ def deselectAll() -> None:
 def burnLoop(index: int, storeUndo: int = 1, updateUi: int = 1) -> None:
     """???
 
-    HELP WANTED: The documentation for this doesn't make sense.
+    ## HELP WANTED:
+    * The documentation for this doesn't make sense.
 
     ## Args:
      * `index` (`int`): ???

@@ -2,8 +2,14 @@
 
 Allows you to control and interact with FL Studio's UI.
 
+## WARNING:
+* Many of the functions in this module will simply echo a hotkey into whatever
+  application is active, meaning that actions can potentially be sent to the
+  wrong application. Functions that have this behaviour are listed with a short
+  warning saying so.
+
 ## HELP WANTED:
- * What do the return values mean?
+* What do the return values mean?
 """
 
 
@@ -44,7 +50,8 @@ def jog2(value: int) -> int:
 def strip(value: int) -> int:
     """Used by touch-sensitive strip controls.
 
-    HELP WANTED: What does this apply to?
+    ## HELP WANTED:
+    * What controls does this apply to?
 
     ## Args:
      * `value` (`int`): ???
@@ -133,7 +140,8 @@ def next() -> int:
 def moveJog(value: int) -> int:
     """Used to relocate items with a jog control.
 
-    HELP WANTED: How does this differ from `jog2()`?
+    ## HELP WANTED:
+    * How does this differ from `jog2()`?
 
     ## Args:
      * `value` (`int`): delta value (increment)
@@ -149,10 +157,12 @@ def moveJog(value: int) -> int:
 def up(value: int = 1) -> int:
     """Generic up control.
 
-    WARNING: This function echoes the up arrow key, and thus will affect
-    programs outside of FL Studio. Use with caution.
+    ## WARNING:
+    * This function echoes the up arrow key, and thus will affect
+      programs outside of FL Studio. Use with caution.
 
-    HELP WANTED: What does the `value` variable do?
+    ## HELP WANTED:
+    * What does the `value` variable do?
 
     ## Args:
      * `value` (`int`, optional): ???. Defaults to 1.
@@ -168,10 +178,12 @@ def up(value: int = 1) -> int:
 def down(value: int = 1) -> int:
     """Generic down control.
 
-    WARNING: This function echoes the down arrow key, and thus will affect
-    programs outside of FL Studio. Use with caution.
+    ## WARNING:
+    * This function echoes the down arrow key, and thus will affect
+      programs outside of FL Studio. Use with caution.
 
-    HELP WANTED: What does the `value` variable do?
+    ## HELP WANTED:
+    * What does the `value` variable do?
 
     ## Args:
      * `value` (`int`, optional): ???. Defaults to 1.
@@ -187,10 +199,12 @@ def down(value: int = 1) -> int:
 def left(value: int = 1) -> int:
     """Generic left control.
 
-    WARNING: This function echoes the left arrow key, and thus will affect
-    programs outside of FL Studio. Use with caution.
+    ## WARNING:
+    * This function echoes the left arrow key, and thus will affect
+      programs outside of FL Studio. Use with caution.
 
-    HELP WANTED: What does the `value` variable do?
+    ## HELP WANTED:
+    * What does the `value` variable do?
 
     ## Args:
      * `value` (`int`, optional): ???. Defaults to 1.
@@ -206,10 +220,12 @@ def left(value: int = 1) -> int:
 def right(value: int = 1) -> int:
     """Generic right control.
 
-    WARNING: This function echoes the right arrow key, and thus will affect
-    programs outside of FL Studio. Use with caution.
+    ## WARNING:
+    * This function echoes the right arrow key, and thus will affect
+      programs outside of FL Studio. Use with caution.
 
-    HELP WANTED: What does the `value` variable do?
+    ## HELP WANTED:
+    * What does the `value` variable do?
 
     ## Args:
      * `value` (`int`, optional): ???. Defaults to 1.
@@ -266,8 +282,9 @@ def snapOnOff() -> int:
 def cut() -> int:
     """Cut the selection.
 
-    WARNING: This function echoes the hotkey to cut, and thus will affect
-    programs outside of FL Studio. Use with caution.
+    ## WARNING:
+    * This function echoes the hotkey to cut, and thus will affect
+      programs outside of FL Studio. Use with caution.
 
     ## Returns:
      * `int`: ?
@@ -280,8 +297,9 @@ def cut() -> int:
 def copy() -> int:
     """Copy the selection.
 
-    WARNING: This function echoes the hotkey to copy, and thus will affect
-    programs outside of FL Studio. Use with caution.
+    ## WARNING:
+    * This function echoes the hotkey to copy, and thus will affect
+      programs outside of FL Studio. Use with caution.
 
     ## Returns:
      * `int`: ?
@@ -294,8 +312,9 @@ def copy() -> int:
 def paste() -> int:
     """Paste the selection.
 
-    WARNING: This function echoes the hotkey to paste, and thus will affect
-    programs outside of FL Studio. Use with caution.
+    ## WARNING:
+    * This function echoes the hotkey to paste, and thus will affect
+      programs outside of FL Studio. Use with caution.
 
     ## Returns:
      * `int`: ?
@@ -308,8 +327,9 @@ def paste() -> int:
 def insert() -> int:
     """Press the insert key.
 
-    WARNING: This function echoes the insert key, and thus will affect
-    programs outside of FL Studio. Use with caution.
+    ## WARNING:
+    * This function echoes the insert key, and thus will affect
+      programs outside of FL Studio. Use with caution.
 
     ## Returns:
      * `int`: ?
@@ -322,8 +342,9 @@ def insert() -> int:
 def delete() -> int:
     """Press the delete key.
 
-    WARNING: This function echoes the delete key, and thus will affect
-    programs outside of FL Studio. Use with caution.
+    ## WARNING:
+    * This function echoes the delete key, and thus will affect
+      programs outside of FL Studio. Use with caution.
 
     ## Returns:
      * `int`: ?
@@ -336,8 +357,9 @@ def delete() -> int:
 def enter() -> int:
     """Press the enter key.
 
-    WARNING: This function echoes the enter key, and thus will affect
-    programs outside of FL Studio. Use with caution.
+    ## WARNING:
+    * This function echoes the enter key, and thus will affect
+      programs outside of FL Studio. Use with caution.
 
     ## Returns:
      * `int`: ?
@@ -350,8 +372,9 @@ def enter() -> int:
 def escape() -> int:
     """Press the escape key.
 
-    WARNING: This function echoes the escape key, and thus will affect
-    programs outside of FL Studio. Use with caution.
+    ## WARNING:
+    * This function echoes the escape key, and thus will affect
+      programs outside of FL Studio. Use with caution.
 
     ## Returns:
      * `int`: ?
@@ -364,8 +387,9 @@ def escape() -> int:
 def yes() -> int:
     """Press the y key.
 
-    WARNING: This function echoes the y key, and thus will affect
-    programs outside of FL Studio. Use with caution.
+    ## WARNING:
+    * This function echoes the y key, and thus will affect
+      programs outside of FL Studio. Use with caution.
 
     ## Returns:
      * `int`: ?
@@ -378,13 +402,15 @@ def yes() -> int:
 def no() -> int:
     """Press the n key.
 
-    WARNING: This function echoes the n key, and thus will affect
-    programs outside of FL Studio. Use with caution.
+    ## WARNING:
+    * This function echoes the n key, and thus will affect
+      programs outside of FL Studio. Use with caution.
 
-    NOTE: This function is listed in the official documentation as `not`,
-    however this is incorrect, and will result in a syntax error since
-    overriding core keywords (such as `if`, `def` and `not`) is not allowed. The
-    function is actually named `no`, which is how this documentation lists it.
+    * This function is listed in the official documentation as `not`,
+      however this is incorrect, and will result in a syntax error since
+      overriding core keywords (such as `if`, `def` and `not`) is not allowed.
+      The function is actually named `no`, which is how this documentation
+      lists it.
 
     ## Returns:
      * `int`: ?
@@ -416,7 +442,8 @@ def setHintMsg(msg: str) -> None:
 def getHintValue(value: int, max: int) -> str:
     """Returns hint for `value`.
 
-    HELP WANTED: What does this do?
+    ## HELP WANTED:
+    * What does this do?
 
     ## Args:
      * `value` (`int`): ???
@@ -516,9 +543,10 @@ def getFocused(index: int) -> bool:
     """Returns whether an FL Studio window is focused (meaning it is the
     currently selected Window in FL Studio).
 
-    NOTE: this doesn't necessarily mean that it is the currently selected window
-    in the host operating system, so functions that rely on keypress emulation
-    (such as `ui.copy()`) may not work as intended, even if this returns `True`.
+    ## NOTE:
+    * this doesn't necessarily mean that it is the currently selected window
+      in the host operating system, so functions that rely on keypress emulation
+      (such as `ui.copy()`) may not work as intended, even if this returns `True`.
 
     ## Args:
      * `index` (`int`): window index:
@@ -547,10 +575,11 @@ def setFocused(index: int) -> None:
     """Sets which FL Studio window should be focused (meaning it is the
     currently selected Window in FL Studio).
 
-    NOTE: this doesn't necessarily mean that it will be the currently selected
-    window in the host operating system, so functions that rely on keypress
-    emulation (such as `ui.copy()`) may not work as intended, even after calling
-    this function.
+    ## NOTE:
+    * This doesn't necessarily mean that it will be the currently selected
+      window in the host operating system, so functions that rely on keypress
+      emulation (such as `ui.copy()`) may not work as intended, even after calling
+      this function.
 
     ## Args:
      * `index` (`int`): window index:
@@ -585,8 +614,9 @@ def getFocusedFormID() -> int:
 
     Used to get the channel rack index or mixer plugin ID for plugins
 
-    NOTE: The official documentation says that this function returns a string,
-    which is incorrect.
+    ## NOTE:
+    * The official documentation says that this function returns a string,
+      which is incorrect.
 
     ## Returns:
     * `int`: form ID:
@@ -659,8 +689,9 @@ def selectWindow(shift: int) -> int:
     """Switch to the next window by pressing the `Tab` key. If `shift` is true
     (`1`), switch to the previous window by pressing `Shift` and `Tab`.
 
-    WARNING: This function echoes the tab key, and thus will affect
-    programs outside of FL Studio. Use with caution.
+    ## WARNING:
+    * This function echoes the tab key, and thus will affect
+      programs outside of FL Studio. Use with caution.
 
     ## Args:
      * `shift` (`int`): whether the shift key is pressed.
@@ -679,8 +710,8 @@ def launchAudioEditor(reuse: int, filename: str, index: int, preset: str,
     the editor. Set `reuse` to true (`1`) to reuse an already loaded audio
     editor.
 
-    HELP WANTED: How do I get this to work? I can only get it to open an empty
-    window.
+    ## HELP WANTED:
+    * How do I get this to work? I can only get it to open an empty window.
 
     ## Args:
      * `reuse` (`int`): whether to reuse an already open audio editor
@@ -704,7 +735,8 @@ def launchAudioEditor(reuse: int, filename: str, index: int, preset: str,
 def openEventEditor(eventId: int, mode: int, newWindow: int = 0) -> int:
     """Launches an event editor for `eventId`.
 
-    HELP WANTED: Yuck REC events please help me.
+    ## HELP WANTED:
+    * Yuck REC events please help me.
 
     ## Args:
      * `eventId` (`int`): ???
@@ -800,8 +832,8 @@ def isLoopRecEnabled() -> bool:
 def getSnapMode() -> int:
     """Returns the current snap mode.
 
-    NOTE: Although the official documentation states that this takes an
-    argument `value`, it does not. This stub reflects the actual behaviour.
+    Although the official documentation states that this takes an argument
+    `value`, it does not. This stub reflects the actual behaviour.
 
     ## Returns:
      * `int`: index in the snap mode list:
@@ -952,7 +984,8 @@ def getFocusedNodeCaption() -> str:
     Returns the filename associated with the currently selected item in the
     browser
 
-    WARNING: This function has no official documentation
+    ## WARNING:
+    * This function has no official documentation
 
     ## Returns:
     * `str`: node caption
@@ -966,7 +999,8 @@ def getFocusedNodeFileType() -> int:
     """
     Returns a value based on the type of the selected file in the browser
 
-    WARNING: This function has no official documentation
+    ## WARNING:
+    * This function has no official documentation
 
     ## Returns:
     * `int`: ???
@@ -980,7 +1014,8 @@ def isBrowserAutoHide() -> bool:
     """
     Returns whether the browser is set to auto-hide
 
-    WARNING: This function has no official documentation
+    ## WARNING:
+    * This function has no official documentation
 
     ## Returns:
     * `bool`: auto-hide
@@ -994,7 +1029,8 @@ def setBrowserAutoHide(value: int):
     """
     Toggle whether the browser is set to auto-hide
 
-    WARNING: This function has no official documentation
+    ## WARNING:
+    * This function has no official documentation
 
     ## Args:
     * `value` (`int`): whether the browser should auto-hide (`1`) or not (`0`)
@@ -1014,7 +1050,8 @@ def miDisplayDockRect(
 
     Compare to: `miDisplayRect()`
 
-    WARNING: This function has no official documentation
+    ## WARNING:
+    * This function has no official documentation
 
     ## Args:
     * `start` (`int`): the index of the starting point, with `1` being the 1st
@@ -1042,7 +1079,8 @@ def navigateBrowserMenu(*args):
     """
     Navigate within the browser window???
 
-    WARNING: This function has no official documentation
+    ## WARNING:
+    * This function has no official documentation
 
     ## Args:
     * Unknown
@@ -1055,7 +1093,8 @@ def previewBrowserMenuItem():
     """
     Preview the currently selected item in the browser
 
-    WARNING: This function has no official documentation
+    ## WARNING:
+    * This function has no official documentation
 
     Included since API Version 20
     """
@@ -1065,7 +1104,8 @@ def selectBrowserMenuItem():
     """
     ???
 
-    WARNING: This function has no official documentation
+    ## WARNING:
+    * This function has no official documentation
 
     Included since API Version 20
     """
@@ -1075,10 +1115,11 @@ def showNotification(val: int):
     """
     Show a notification to the user
 
-    WARNING: This function has no official documentation
+    ## WARNING:
+    * This function has no official documentation
 
-    WARNING: This appears to crash FL Studio's Python environment when given
-    (seemingly) correct arguments??? Investigation needed
+    * This appears to crash FL Studio's Python environment when given
+      (seemingly) correct arguments??? Investigation needed
 
     ## Args:
     * `val` (`int`): ???

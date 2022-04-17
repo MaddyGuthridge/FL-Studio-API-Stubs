@@ -829,7 +829,7 @@ def enableTrackSlots(index: int, value: bool = False) -> None:
     """
     Toggle whether all effects are enabled on a track.
 
-    KNOWN ISSUES:
+    ## KNOWN ISSUES:
     * If a `value` isn't supplied, the value will be set to `False` rather than
       toggled.
 
@@ -864,7 +864,7 @@ def revTrackPolarity(index: int, value: bool = False) -> None:
     """
     Inverts the polarity for a particular track.
 
-    KNOWN ISSUES:
+    ## KNOWN ISSUES:
     * If a `value` isn't supplied, the value will be set to `False` rather than
       toggled.
 
@@ -896,7 +896,7 @@ def swapTrackChannels(index: int, value: bool = False) -> None:
     Toggle whether left and right channels are swapped for the mixer track at
     `index`.
 
-    KNOWN ISSUES:
+    ## KNOWN ISSUES:
     * If a `value` isn't supplied, the value will be set to `False` rather than
       toggled.
 

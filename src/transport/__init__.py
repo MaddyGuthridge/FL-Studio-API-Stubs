@@ -6,19 +6,25 @@ Handles transport in FL Studio (for example play/pause or record)
 import midi
 
 
-def globalTransport(command: int, value: int, pmeflags: int = midi.PME_System,
-                    flags=midi.GT_All) -> int:
+def globalTransport(
+    command: int,
+    value: int,
+    pmeflags: int = midi.PME_System,
+    flags=midi.GT_All
+) -> int:
     """Used as a generic way to run transport commands if a specific function
     doesn't exist for it.
 
-    WARNING: It is not recommended to use this function if a dedicated
-    function is available for it. Its usage can make code difficult to read and
-    comprehend. Almost all functionality provided by this function can be done
-    more easily and cleanly by using the dedicated functions.
+    ## WARNING:
+    * It is not recommended to use this function if a dedicated
+      function is available for it. Its usage can make code difficult to read and
+      comprehend. Almost all functionality provided by this function can be done
+      more easily and cleanly by using the dedicated functions.
 
-    WARNING: Some commands will echo keypresses (such as `FPT_F1`), meaning they
-    can affect windows outside FL Studio. Make sure you test your code
-    thoroughly if you decide to use this function.
+    ## WARNING:
+    * Some commands will echo keypresses (such as `FPT_F1`), meaning they
+      can affect windows outside FL Studio. Make sure you test your code
+      thoroughly if you decide to use this function.
 
     ## Args:
      * `command` (`int`): command to execute, refer to
@@ -96,8 +102,9 @@ def setLoopMode() -> None:
 def getSongPos(mode: int = -1) -> 'float | int':
     """Returns the playback position
 
-    NOTE: This will set the position in the song in song mode, or the position
-    in the pattern
+    ## NOTE:
+    * This will set the position in the song in song mode, or the position
+      in the pattern
 
     ## Args:
      * `mode` (`int`, optional): mode for return:
@@ -120,7 +127,9 @@ def getSongPos(mode: int = -1) -> 'float | int':
           * `SONGLENGTH_TICKS` (`5`): bars-steps-ticks format, ticks component
             (as `int`)
 
-    NOTE: An overall bars-steps-ticks position can be gathered through making
+    ## Example Usage:
+
+    An overall bars-steps-ticks position can be gathered through making
     three calls to the function as follows:
     ```py
     bars = transport.getSongPosition(3)
@@ -140,8 +149,8 @@ def getSongPos(mode: int = -1) -> 'float | int':
 def setSongPos(position: 'float | int', mode: int = -1) -> None:
     """Sets the playback position
 
-    NOTE: This will set the position in the song in song mode, or the position
-    in the pattern
+    This will set the position in the song in song mode, or the position
+    in the pattern.
 
     ## Args:
      * `position` (`float` or `int`): new song position (type depends on `mode`).
@@ -166,8 +175,9 @@ def setSongPos(position: 'float | int', mode: int = -1) -> None:
           * `SONGLENGTH_TICKS` (`5`): bars-steps-ticks format, ticks component
             (as `int`)
 
-    WARNING: Positions currently won't work when using bars (`mode = 3`),
-    steps (`mode = 4`) or ticks (`mode = 5`).
+    ## WARNING:
+    * Positions currently won't work when using bars (`mode = 3`),
+      steps (`mode = 4`) or ticks (`mode = 5`).
 
     Included since API version 1, with optional parameter added in API version 4
     """
@@ -176,10 +186,9 @@ def setSongPos(position: 'float | int', mode: int = -1) -> None:
 def getSongLength(mode: int) -> int:
     """Returns the total length of the song
 
-    NOTE: This only applies to the full song, not to the currently selected
-    pattern when in pattern mode. It will NOT return the length of the current
-    pattern. For that, use `patterns.getPatternLength()` with the index of the
-    current pattern.
+    This only applies to the full song, not to the currently selected pattern
+    when in pattern mode. To get the length of the current pattern, use
+    `patterns.getPatternLength()` with the index of the current pattern.
 
     ## Args:
      * `mode` (`int`): mode for length:
@@ -195,9 +204,10 @@ def getSongLength(mode: int) -> int:
 
           * `SONGLENGTH_TICKS` (`5`): bars-steps-ticks format, ticks component
 
-    NOTE: The official documentation states that this function has no return,
-    but in practice, it returns an `int`. The actual behaviour is used by this
-    documentation.
+    ## NOTE:
+    * The official documentation states that this function has no return,
+      but in practice, it returns an `int`. The actual behaviour is used by this
+      documentation.
 
     ## Returns:
      * `int`: song length
@@ -210,7 +220,7 @@ def getSongLength(mode: int) -> int:
 def getSongPosHint() -> str:
     """Returns a hint for the current playback position as `"bars:steps:ticks"`.
 
-    NOTE: This applies to both pattern mode and song mode
+    This applies to both pattern mode and song mode
 
     ## Returns:
      * `str`: song position
@@ -260,7 +270,8 @@ def markerSelJog(value: int, flags: int = midi.GT_All) -> None:
 def getHWBeatLEDState() -> int:
     """Returns the state of the beat indicator.
 
-    HELP WANTED: I couldn't get this to return anything other than zero
+    ## HELP WANTED:
+    * I couldn't get this to return anything other than zero
 
     ## Returns:
      * `int`: beat indicator state
@@ -273,7 +284,7 @@ def getHWBeatLEDState() -> int:
 def rewind(startStop: int, flags: int = midi.GT_All) -> None:
     """Rewinds the playback position.
 
-    NOTE: Rewinding should be considered as a toggle. All calls to this function
+    Rewinding should be considered as a toggle. All calls to this function
     beginning rewinding with the `SS_Start` or `SS_StartStep` should have a pair
     call where rewinding is stopped using the `SS_Stop` option, otherwise FL
     Studio will rewind forever.
@@ -297,7 +308,7 @@ def rewind(startStop: int, flags: int = midi.GT_All) -> None:
 def fastForward(startStop: int, flags: int = midi.GT_All) -> None:
     """Fast-fowards the playback position.
 
-    NOTE: Fast-forwarding should be considered as a toggle. All calls to this
+    Fast-forwarding should be considered as a toggle. All calls to this
     function beginning fast-forwarding with the `SS_Start` or `SS_StartStep`
     should have a pair call where fast-forwarding is stopped using the `SS_Stop`
     option, otherwise FL Studio will fast-forward forever.
@@ -321,7 +332,7 @@ def fastForward(startStop: int, flags: int = midi.GT_All) -> None:
 def continuousMove(speed: int, startStop: int) -> None:
     """Sets playback speed, allowing a scrub-like functionality
 
-    NOTE: scrubbing should be considered as a toggle. All calls to this
+    Scrubbing should be considered as a toggle. All calls to this
     function beginning scrubbing with the `SS_Start` or `SS_StartStep`
     should have a pair call where scrubbing is stopped using the `SS_Stop`
     option, otherwise FL Studio will scrub forever.
@@ -345,9 +356,10 @@ def continuousMove(speed: int, startStop: int) -> None:
 def continuousMovePos(speed: int, startStop: int) -> None:
     """Sets playback speed, allowing a scrub-like functionality
 
-    HELP WANTED: How is this different to `continuousMove()`?
+    ## HELP WANTED:
+    * How is this different to `continuousMove()`?
 
-    NOTE: scrubbing should be considered as a toggle. All calls to this
+    Scrubbing should be considered as a toggle. All calls to this
     function beginning scrubbing with the `SS_Start` or `SS_StartStep`
     should have a pair call where scrubbing is stopped using the `SS_Stop`
     option, otherwise FL Studio will scrub forever.
@@ -371,7 +383,7 @@ def continuousMovePos(speed: int, startStop: int) -> None:
 def setPlaybackSpeed(speedMultiplier: float) -> None:
     """Sets a playback speed multiplier.
 
-    NOTE: This differs from the `continuousMove` function as it only controls
+    This differs from the `continuousMove` function as it only controls
     speed when playback is active, rather than scrubbing through song or
     pattern regardless of whether playback is active.
 
