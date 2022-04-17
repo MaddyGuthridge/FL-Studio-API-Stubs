@@ -98,7 +98,8 @@ def restoreUndo() -> int:
 
     This seems to behave in the same way as `undo()`.
 
-    HELP WANTED: What does this do?
+    ## HELP WANTED:
+    * What does this do?
 
     ## Returns:
      * `int`: ?
@@ -113,7 +114,8 @@ def restoreUndoLevel(level: int) -> int:
 
     This seems to behave in the same way as `undo()`.
 
-    HELP WANTED: What does this do? What is the parameter for?
+    ## HELP WANTED:
+    * What does this do? What is the parameter for?
 
     ## Args:
      * `level` (`int`): ???
@@ -144,8 +146,9 @@ def getUndoLevelHint() -> str:
 def getUndoHistoryPos() -> int:
     """Returns the length of the undo history
 
-    HELP WANTED: This seems to behave the same as `getUndoHistoryCount()`.
-    What's the difference?
+    ## HELP WANTED:
+    * This seems to behave the same as `getUndoHistoryCount()`. What's the
+      difference?
 
     ## Returns:
      * `int`: number of elements in undo history
@@ -215,7 +218,8 @@ def getRecPPB() -> int:
     """Returns the current timebase (PPQN) multiplied by the number of beats in
     a bar.
 
-    NOTE: This DOES NOT respect time signature markers
+    ## NOTE:
+    * This DOES NOT respect time signature markers
 
     ## Returns:
      * `int`: timebase * numerator
@@ -302,13 +306,15 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
 
     REC events have some other properties available:
 
-     * Descriptive name: `device.getLinkedParamName`
+    * Descriptive name: `device.getLinkedParamName()`
 
-     * Current value: `device.getLinkedValue`
+    * Current value: `device.getLinkedValue()`
 
-     * Current value as an appropriately formatted string: `device.getLinkedValueString`
+    * Current value as an appropriately formatted string:
+      `device.getLinkedValueString()`
 
-    HELP WANTED: More information from Image-Line? More details on what `flags` can do?
+    ## HELP WANTED:
+    * More information from Image-Line? More details on what `flags` can do?
 
     ## Args:
      * `eventId` (`int`): Refer to the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#RecEventParams)

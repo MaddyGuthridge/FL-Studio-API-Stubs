@@ -48,7 +48,8 @@ def liveSelection(time: int, stop: int) -> None:
 
     Set `stop` to True, to use end point of the selection (instead of start).
 
-    HELP WANTED: A better explanation would be good
+    ## HELP WANTED:
+    * A better explanation would be good
 
     ## Args:
      * `time` (`int`): ???
@@ -86,10 +87,13 @@ def currentTime(snap: int) -> int:
     return 0
 
 
-def currentTimeHint(mode: int, time: int, setRecPPB: int = 0, isLength: int = 0)\
-        -> str:
-    """Returns a hint string for the given time, formatted as:
-    Bar:Beat?:Tick
+def currentTimeHint(
+    mode: int,
+    time: int,
+    setRecPPB: int = 0,
+    isLength: int = 0
+) -> str:
+    """Returns a hint string for the given time, formatted as: Bar:Beat?:Tick
 
     ## Args:
      * `mode` (`int`): pattern mode (`0`) or song mode (`1`)

@@ -114,7 +114,8 @@ def sendMsgGeneric(
 ) -> str:
     """Send a text string as a SysEx message to the linked output device.
 
-    WARNING: This function is depreciated
+    ## WARNING:
+    * This function is depreciated
 
     ## Args:
      * `id` (`int`): the first 6 bytes of the message (the end value `0xF7` is
@@ -200,7 +201,8 @@ def stopRepeatMidiEvent() -> None:
 def findEventID(controlId: int, flags: int = 0) -> int:
     """Returns eventID for controlId.
 
-    HELP WANTED: What does this do?
+    ## HELP WANTED:
+    * What does this do?
 
     ## Args:
      * `controlId` (`int`): ???
@@ -219,11 +221,13 @@ def getLinkedValue(eventID: int) -> float:
     """Returns normalised value of the REC event at `eventID`. Returns `-1`
     if "there is no linked control".
 
+    ```
     >>> channel_rec_id = channels.getRecEventId(0)
     >>> device.getLinkedValue(channel_rec_id + midi.REC_Chan_Vol)
     0.78125
     >>> device.getLinkedValue(channel_rec_id + midi.REC_Chan_Pan)
     0.5
+    ```
 
     ## Args:
      * `eventID` (`int`): eventID
@@ -242,11 +246,13 @@ def getLinkedValueString(eventID: int) -> str:
     The text representation is formatted appropriately based on the
     REC parameter.
 
+    ```
     >>> channel_rec_id = channels.getRecEventId(0)
     >>> device.getLinkedValueString(channel_rec_id + midi.REC_Chan_Vol)
     '-5.2 dB'
     >>> device.getLinkedValueString(channel_rec_id + midi.REC_Chan_Pan)
     'Centered'
+    ```
 
     ## Args:
      * `eventID` (`int`): eventID
@@ -262,11 +268,13 @@ def getLinkedValueString(eventID: int) -> str:
 def getLinkedParamName(eventID: int) -> str:
     """Returns the parameter name of the REC event at `eventID`.
 
+    ```
     >>> channel_rec_id = channels.getRecEventId(0)
     >>> device.getLinkedParamName(channel_rec_id + midi.REC_Chan_Vol)
     'Channel volume'
     >>> device.getLinkedParamName(channel_rec_id + midi.REC_Chan_Pan)
     'Channel panning'
+    ```
 
     ## Args:
      * `eventID` (`int`): eventID
@@ -303,7 +311,8 @@ def getLinkedInfo(eventID: int) -> int:
 def createRefreshThread() -> None:
     """Start a threaded refresh of the entire MIDI device.
 
-    HELP WANTED: What do refresh threads do?
+    ## HELP WANTED:
+    * What do refresh threads do?
 
     Included since API version 1
     """
@@ -312,7 +321,8 @@ def createRefreshThread() -> None:
 def destroyRefreshThread() -> None:
     """Stop a previously started threaded refresh.
 
-    HELP WANTED: What do refresh threads do?
+    ## HELP WANTED:
+    * What do refresh threads do?
 
     Included since API version 1
     """
@@ -322,7 +332,8 @@ def fullRefresh() -> None:
     """Trigger a previously started threaded refresh. If there is none, the
     refresh is triggered immediately.
 
-    HELP WANTED: What do refresh threads do?
+    ## HELP WANTED:
+    * What do refresh threads do?
 
     Included since API version 1
     """
@@ -356,7 +367,8 @@ def baseTrackSelect(index: int, step: int) -> None:
     """Base track selection (for control surfaces). Set `step` to `MaxInt` to
     reset.
 
-    HELP WANTED: What does this do?
+    ## HELP WANTED:
+    * What does this do?
 
     ## Args:
      * `index` (`int`): ???
@@ -370,7 +382,8 @@ def baseTrackSelect(index: int, step: int) -> None:
 def hardwareRefreshMixerTrack(index: int) -> None:
     """Hardware refresh mixer track at `index`.
 
-    HELP WANTED: What does this mean?
+    ## HELP WANTED:
+    * What does this mean?
 
     ## Args:
      * `index` (`int`): track index. `-1` refreshes all tracks.
@@ -408,9 +421,20 @@ def dispatch(
     ## Args:
      * `ctrlIndex` (`int`): index of the controller to dispatch to
 
-     * `message` (`int`): MIDI message to send (or header of a SysEx message)
+     * `message` (`int`): MIDI message to send (`0xF0` for a SysEx message)
 
      * `sysex` (`bytes`, optional): SysEx data to send, if applicable
+
+    ## Example Usage:
+    ```py
+    # Send a standard MIDI event (middle C note on) to the device indexed 0.
+    device.dispatch(0, 0x90 + (0x3C << 8) + (0x7F << 16))
+
+    # Send a sysex MIDI event to the device indexed 0. Note that the full
+    # message is still contained within the bytes object, even though the
+    # `0xF0` is also given as `message`.
+    device.dispatch(0, 0xF0, bytes([0xF0, 0x7E, 0x7F, 0x06, 0x01, 0xF7]))
+    ```
 
     Included since API version 1
     """

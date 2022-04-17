@@ -252,20 +252,17 @@ def getChannelPitch(index: int, mode: int = 0) -> 'float | int':
     * `index` (`int`): index of channel
 
     * `mode` (`int`, optional):
+          * `0` (default): return the current pitch bend as a factor of the current
+              range (usually `-1.0` to `1.0`). Larger values might be reached if the
+              pitch is automated with events, for example.
 
-        * `0` (default): return the current pitch bend as a factor of the current
-            range (usually `-1.0` to `1.0`). Larger values might be reached if the
-            pitch is automated with events, for example.
+          * `1`: return the current pitch offset in cents.
+              * BUG: Official API docs incorrectly state "semitones".
 
-        * `1`: return the current pitch offset in cents.
-
-            BUG: Official API docs incorrectly state "semitones".
-
-        * `2`: return the current pitch range in semitones.
-
-            BUG: This is not guaranteed to be correct.
-            For more information, see `setChannelPitch` on
-            modifying the pitch range of a channel.
+          * `2`: return the current pitch range in semitones.
+              * BUG: This is not guaranteed to be correct.
+                For more information, see `setChannelPitch` on
+                modifying the pitch range of a channel.
 
     ## Returns:
      * `float`: channel pitch (when `mode` is `0`)
@@ -288,7 +285,6 @@ def setChannelPitch(index: int, value: float, mode: int = 0, pickupMode: int = m
      * `value` (`float`): value to set
 
      * `mode` (`int`, optional):
-
           * `0` (default): set pitch as a factor of the current pitch bend range (between [-1.0, 1.0]).
 
           * `1`: set pitch in cents
@@ -724,7 +720,10 @@ def showCSForm(index: int, state: int = 1) -> None:
      * `state` (`int`, optional): whether to hide (`0`), show
         (`1`) or toggle (`-1`) the plugin window. Defaults to `1`.
 
-    Included since API version 1, with optional parameter added in version 9
+    Included since API version 1
+
+    ## API Changes:
+    * v9: Add `state` parameter
     """
 
 
