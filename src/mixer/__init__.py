@@ -50,8 +50,9 @@ def getTrackInfo(mode: int) -> int:
 def setTrackNumber(trackNumber: int, flags: int = 0) -> None:
     """Selects the mixer track at `trackNumber`.
 
-    NOTE: All functionality except for scrolling flag can be replicated more
-    easily using `mixer.selectTrack()`.
+    ## NOTE:
+    * All functionality except for scrolling flag can be replicated more
+      easily using `mixer.selectTrack()`.
 
     ## Args:
      * `trackNumber` (`int`): the track index to select
@@ -192,7 +193,8 @@ def soloTrack(index: int) -> None:
 def isTrackEnabled(index: int) -> bool:
     """Returns whether the track at `index` is enabled
 
-    NOTE: This seems to be functionally identical to `not isTrackMuted()`.
+    ## NOTE:
+    * This seems to be functionally identical to `not isTrackMuted()`.
 
     ## Args:
      * `index` (`int`): track index
@@ -225,7 +227,8 @@ def isTrackAutomationEnabled(index: int, plugIndex: int) -> bool:
 def enableTrack(index: int) -> None:
     """Toggles whether the track at `index` is enabled.
 
-    NOTE: This seems to be functionally identical to `muteTrack()`.
+    ## NOTE:
+    * This seems to be functionally identical to `muteTrack()`.
 
     ## Args:
      * index (`int`): track index
@@ -262,7 +265,7 @@ def isTrackMuteLock(index: int) -> bool:
     """Returns whether the mute state of the track at `index` is locked.
 
     If this is true, the mute status of this track won't change when other
-    tracks are solo'd or unsolo'd.
+    tracks are solo or unsolo.
 
     ## Args:
      * `index` (`int`): track index
@@ -278,7 +281,14 @@ def isTrackMuteLock(index: int) -> bool:
 def getTrackPluginId(index: int, plugIndex: int) -> int:
     """Returns the plugin ID of the plugin on track `index` in slot `plugIndex`
 
-    HELP WANTED: what is a plugin ID?
+    A plugin ID is used internally by FL Studio to represent effects present
+    on the mixer. A plugin ID can be used with REC events in order to automate
+    plugins, and is also the return value of `ui.getFocusedFormID()` if the
+    focused window is an effect plugin.
+
+    Plugin IDs are represented as `((track << 6) + index) << 16`, although
+    the official documentation lists them as `(track << 6 + index) << 16`,
+    which uses the order of operations incorrectly.
 
     ## Args:
      * index (`int`): track index
@@ -512,7 +522,8 @@ def getEventValue(
 ) -> int:
     """Returns event value from MIDI
 
-    HELP WANTED: What does this do?
+    ## HELP WANTED:
+    * What does this do?
 
     ## Args:
      * `index` (`int`): ???
@@ -532,7 +543,8 @@ def getEventValue(
 def remoteFindEventValue(index: int, flags: int = 0) -> float:
     """Returns event value
 
-    HELP WANTED: What does this do?
+    ## HELP WANTED:
+    * What does this do?
 
     ## Args:
      * `index` (`int`): ???
@@ -550,10 +562,12 @@ def remoteFindEventValue(index: int, flags: int = 0) -> float:
 def getEventIDName(index: int, shortname: int = 0) -> str:
     """Returns event name for event at `index`
 
-    HELP WANTED: What does this do?
+    ## HELP WANTED:
+    * What does this do?
 
-    NOTE: The official documentation states that this function returns `None`,
-    but it actually returns a `str`. These stubs document the actual behaviour.
+    ## NOTE:
+    * The official documentation states that this function returns `None`,
+      but it actually returns a `str`. These stubs document the actual behaviour.
 
     ## Args:
      * `index` (`int`): ???
@@ -571,7 +585,8 @@ def getEventIDName(index: int, shortname: int = 0) -> str:
 def getEventIDValueString(index: int, value: int) -> str:
     """Returns event value as a string
 
-    HELP WANTED: What does this do?
+    ## HELP WANTED:
+    * What does this do?
 
     ## Args:
      * `index` (`int`): ???
@@ -589,7 +604,8 @@ def getEventIDValueString(index: int, value: int) -> str:
 def getAutoSmoothEventValue(index: int, locked: int = 1) -> int:
     """Returns auto smooth event value
 
-    HELP WANTED: What does this do?
+    ## HELP WANTED:
+    * What does this do?
 
     ## Args:
      * `index` (`int`): ???
@@ -614,7 +630,8 @@ def automateEvent(
 ) -> int:
     """Automate event
 
-    HELP WANTED: What does this do?
+    ## HELP WANTED:
+    * What does this do?
 
     ## Args:
      * `index` (`int`): ???
@@ -659,8 +676,9 @@ def getTrackPeaks(index: int, mode: int) -> float:
 def getTrackRecordingFileName(index: int) -> str:
     """Returns the file name for audio being recorded on the track at `index`.
 
-    NOTE: Files can't be opened in FL Studio's Python interpreter due to disk
-    access being disabled for security reasons.
+    ## NOTE:
+    * Files can't be opened in FL Studio's Python interpreter due to disk
+      access being disabled for security reasons.
 
     ## Args:
      * `index` (`int`): track index
@@ -676,7 +694,8 @@ def getTrackRecordingFileName(index: int) -> str:
 def linkTrackToChannel(mode: int) -> None:
     """Link a mixer track to a channel.
 
-    HELP WANTED: How does this function call work?
+    ## HELP WANTED:
+    * How does this function call work?
 
     ## Args:
      * `mode` (`int`): link mode
@@ -717,7 +736,9 @@ def getCurrentTempo(asInt: int = 0) -> 'int | float':
 def getRecPPS() -> int:
     """Returns the recording PPS
 
-    HELP WANTED: What is PPS?
+    ## HELP WANTED:
+    * What is PPS? I can only get this to return 24. Perhaps this is the bit
+      depth of the incoming audio?
 
     ## Returns:
      * `int`: recording PPS
@@ -776,40 +797,91 @@ def getTrackDockSide(index: int) -> int:
     return 0
 
 
-def isTrackSlotsAvailable(*args, **kwargs) -> Any:
-    """
-    Returns whether slots are available for a particular track????
+# NOTE: This function seems to be missing: was it ever here?
+# def isTrackSlotsAvailable(*args, **kwargs) -> Any:
+#     """
+#     Returns whether slots are available for a particular track
+#
+#     ## Returns:
+#     * `bool`: ???
+#
+#     Included since API Version 19
+#     """
+#     return False
 
-    WARNING: This function isn't documented
 
-    ## Returns:
-    * `bool`: ???
-
-    Included since API Version 19
-    """
-    return False
-
-
-def isTrackSlotsEnabled(*args, **kwargs) -> Any:
+def isTrackSlotsEnabled(index: int) -> bool:
     """
     Returns whether effects are enabled for a particular track, using the
     "enable effects slots" button.
 
-    WARNING: This function isn't documented
+    ## Args:
+    * `index` (`int`): track index
 
     ## Returns:
-    * `bool`: ???
+    * `bool`: whether effects are enabled on the track
+
+    Included since API Version 19
+    """
+    return False
+
+def enableTrackSlots(index: int, value: bool = False) -> None:
+    """
+    Toggle whether all effects are enabled on a track.
+
+    KNOWN ISSUES:
+    * If a `value` isn't supplied, the value will be set to `False` rather than
+      toggled.
+
+    ## NOTE:
+    * Although there is no visual indication, this can be used to toggle
+      effects for empty tracks, leading to effects they may add in the future
+      not doing anything.
+
+    ## Args:
+    * `index` (`int`): Track index
+    * `value` (`bool`): Whether effects should be enabled or not
+
+    Included since API Version 19
+    """
+
+def isTrackRevPolarity(index: int) -> bool:
+    """
+    Returns whether the polarity is reversed for the track at `index`
+
+    ## Args:
+    * `index` (`int`): track index
+
+    ## Returns:
+    * `bool`: whether polarity is inverted
 
     Included since API Version 19
     """
     return False
 
 
-def isTrackSwapChannels(*args, **kwargs) -> bool:
+def revTrackPolarity(index: int, value: bool = False) -> None:
+    """
+    Inverts the polarity for a particular track.
+
+    KNOWN ISSUES:
+    * If a `value` isn't supplied, the value will be set to `False` rather than
+      toggled.
+
+    ## Args:
+    * `index` (`int`): Index of track to reverse polarity for
+    * `value` (`bool`): Whether polarity should be swapped or not
+
+    Included since API Version 19
+    """
+
+
+def isTrackSwapChannels(index: int) -> bool:
     """
     Returns whether left and right channels are inverted for a particular track
 
-    WARNING: This function isn't documented
+    ## Args:
+    * `index` (`int`): track index
 
     ## Returns:
     * `bool`: whether left and right are inverted
@@ -819,27 +891,18 @@ def isTrackSwapChannels(*args, **kwargs) -> bool:
     return False
 
 
-def revTrackPolarity(*args, **kwargs) -> None:
+def swapTrackChannels(index: int, value: bool = False) -> None:
     """
-    Inverts the polarity for a particular track
+    Toggle whether left and right channels are swapped for the mixer track at
+    `index`.
 
-    WARNING: This function isn't documented, and seems to do nothing
+    KNOWN ISSUES:
+    * If a `value` isn't supplied, the value will be set to `False` rather than
+      toggled.
 
-    ## Returns:
-    * `bool`: ???
-
-    Included since API Version 19
-    """
-
-
-def swapTrackChannels(*args, **kwargs) -> None:
-    """
-    ????
-
-    WARNING: This function isn't documented, and seems to do nothing
-
-    ## Returns:
-    * `bool`: ???
+    ## Args:
+    * `index` (`int`): Index of track to swap channels for
+    * `value` (`bool`): Whether channels should be swapped or not
 
     Included since API Version 19
     """
