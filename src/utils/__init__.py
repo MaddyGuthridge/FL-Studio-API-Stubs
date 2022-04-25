@@ -7,9 +7,7 @@ Python API
 This code is taken from FL Studio's Python lib folder and included in this
 package in the hope that it will be useful for script developers. It is not the
 creation of the repository authors, and no credit is claimed for the code
-content.
-
-However, the documentation for the provided code is created by the
+content. However, the documentation for the provided code is created by the
 authors of this repository.
 
 ## WARNING:
@@ -20,7 +18,7 @@ any functions here with caution.
 """
 
 # import warnings
-# 
+#
 # warnings.warn("The utils module contains exceptionally buggy code. Usage is "
 #               "not recommended", stacklevel=2)
 
@@ -34,11 +32,11 @@ class TRect:
 
         ## Args:
          * left (int): left position
-    
+
          * top (int): top position
-    
+
          * right (int): right position
-    
+
          * bottom (int): bottom position
         """
         self.Top = top
@@ -198,7 +196,7 @@ def Zeros_Strict(value, nChars, c ='0'):
 
     ## Returns:
      * [type]: [description]
-    
+
     WARNING:
      * Strict trimming looks incorrect
     """
@@ -221,11 +219,11 @@ def Sign(value: 'float | int') -> int:
     ## Returns:
      * `int`: sign
     """
-    if value < 0: 
+    if value < 0:
         return -1
     elif value == 0:
         return 0
-    else:   
+    else:
         return 1
 
 SignBitPos_64 = 63
@@ -250,7 +248,7 @@ def SignOf(value: 'float | int') -> int:
         return 0
     elif value < 0:
         return -1
-    else:   
+    else:
         return 1
 
 def KnobAccelToRes2(Value):
@@ -278,7 +276,7 @@ def OffsetRect(R: TRect, dx: int, dy: int) -> None:
      * dx (int): x offset
 
      * dy (int): y offset
-    
+
     NOTE: Rectangle is adjusted in-place
     """
     R.Left = R.Left + dx
@@ -288,7 +286,7 @@ def OffsetRect(R: TRect, dx: int, dy: int) -> None:
 
 def RGBToHSV(R: float, G: float, B: float) -> 'tuple[float, float, float]':
     """Convert an RGB colour to a HSV colour
-    
+
     WARNING: Make sure to convert
 
     ## Args:
@@ -316,7 +314,7 @@ def RGBToHSV(R: float, G: float, B: float) -> 'tuple[float, float, float]':
         S = Delta / V # type: ignore
 
     if S == 0.0:
-        H = 0.0 
+        H = 0.0
     else:
         if R == V:
             H = 60.0 * (G - B) / Delta
@@ -351,7 +349,7 @@ def RGBToHSVColor(Color: int) -> 'tuple[float, float, float]':
 
 def HSVtoRGB(H: float, S: float, V: float) -> 'tuple[float, float, float]':
     """Convert an HSV colour to an RGB colour
-    
+
     WARNING: This function returns data in an unexpected format! Be sure to
     convert as required before usage.
 
@@ -470,7 +468,7 @@ def FadeColor(StartColor: int, EndColor: int, Value: float) -> int:
 
     ## Returns:
      * int: faded colour
-    
+
     WARNING:
      * Blue value is incorrect, using green start value
     """

@@ -278,7 +278,6 @@ def getPadInfo(
     ## WARNING:
     * None of the parameters can be given as keyword arguments
 
-    ## WARNING:
     * The official documentation lists this as returning a string, but it
       actually returns an int.
 

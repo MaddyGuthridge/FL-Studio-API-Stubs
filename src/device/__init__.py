@@ -115,7 +115,7 @@ def sendMsgGeneric(
     """Send a text string as a SysEx message to the linked output device.
 
     ## WARNING:
-    * This function is depreciated
+    * This function is deprecated
 
     ## Args:
      * `id` (`int`): the first 6 bytes of the message (the end value `0xF7` is
