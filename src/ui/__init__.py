@@ -1113,16 +1113,23 @@ def selectBrowserMenuItem():
 
 def showNotification(val: int):
     """
-    Show a notification to the user
+    Show a notification to the user, which is chosen from a set of notification
+    strings. This notification appears in the hint panel, much like with
+    `ui.setHintMsg()`, except with less customisation. Currently there is no
+    apparent way to link these to the Script output window.
 
     ## WARNING:
     * This function has no official documentation
 
-    * This appears to crash FL Studio's Python environment when given
-      (seemingly) correct arguments??? Investigation needed
+    * This function appears to cause FL Studio's scripting environment to crash
+      when used under Wine on Linux
 
     ## Args:
-    * `val` (`int`): ???
+    * `val` (`int`): Notification ID, the identifier of the notification string
+      to send.
+          * `0`: `"Now firmware is available for your MIDI device"`
+
+          * `1`: `"New version of script is available"`
 
     Included since API Version 20
     """
