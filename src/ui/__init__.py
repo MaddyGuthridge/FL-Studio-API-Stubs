@@ -614,6 +614,10 @@ def getFocusedFormID() -> int:
 
     Used to get the channel rack index or mixer plugin ID for plugins
 
+    ## WARNING:
+    * This can crash FL Studio's API if a plugin window is in the process of
+      closing.
+
     ## NOTE:
     * The official documentation says that this function returns a string,
       which is incorrect.
