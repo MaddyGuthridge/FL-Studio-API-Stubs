@@ -5,9 +5,7 @@
 
 name: Generate Documentation and Push to FL-Midi-Docs
 
-on:
-  release:
-    types: [published]
+on: [push]
 
 jobs:
   Generate:
