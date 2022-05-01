@@ -563,6 +563,10 @@ def getFocused(index: int) -> bool:
           * `widPlugin` (`5`): Plugin Window (note that this constant is only
             usable in this particular function).
 
+          * `widPluginEffect` (`6`): Effect Plugin Window.
+
+          * `widPluginGenerator` (`6`): Generator Plugin Window.
+
     ## Returns:
      * `bool`: whether it is visible
 
@@ -632,6 +636,8 @@ def getFocusedFormID() -> int:
           * Window ID for mixer, channel rack, playlist, etc
 
           * `-1` for invalid plugin (eg. script output or settings window)
+
+    Included since API version 13
     """
     return 0
 
