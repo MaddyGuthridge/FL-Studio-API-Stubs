@@ -332,10 +332,12 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
 
 
 def dumpScoreLog(time: int, silent: int = 0) -> None:
-    """Dump score log
+    """
+    Write recently played MIDI to the selected pattern.
 
     ## Args:
-     * `time` (`int`): ?
+     * `time` (`int`): The duration of time to write, from `time` seconds
+       before the last note played, to the last note.
 
      * `silent` (`int`): Whether the empty score message is suppressed (`1`) or
        not (`0`)
