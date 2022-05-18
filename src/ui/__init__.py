@@ -944,16 +944,22 @@ def getVersion(mode: int = 4) -> 'str | int':
 
 
 def crDisplayRect(left: int, top: int, right: int, bottom: int, duration: int, flags: int = 0) -> None:
-    """Displays a selection rectangle on the channel rack
+    """Displays a selection rectangle on the channel rack.
+
+    This rectangle is anchored using the top left corner, and a width and
+    height.
+
+    Subsequent calls to this function will remove previously displaying
+    rectangles.
 
     ## Args:
      * `left` (`int`): left position
 
      * `top` (`int`): top position
 
-     * `right` (`int`): right border (not inclusive)
+     * `width` (`int`): horizontal width
 
-     * `bottom` (`int`): bottom index (not inclusive)
+     * `height` (`int`): vertical height
 
      * `duration` (`int`): duration to display for (in ms). Or,
           * use `midi.MaxInt` to show indefinitely
@@ -972,6 +978,9 @@ def crDisplayRect(left: int, top: int, right: int, bottom: int, duration: int, f
 
 def miDisplayRect(start: int, end: int, duration: int, flags: int = 0) -> None:
     """Displays a selection rectangle on the mixer
+
+    Subsequent calls to this function will remove previously displaying
+    rectangles.
 
     ## Args:
      * `start` (`int`): start track index
