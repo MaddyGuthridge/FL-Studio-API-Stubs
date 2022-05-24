@@ -56,8 +56,11 @@ def midiOutMsg(
     This can be done either through a single combined message, or in its
     distinct components.
 
+    ## WARNING:
+    * Sending an invalid message will cause FL Studio to crash (API v20)
+
     ## Args:
-     * `message` (`int`):
+    * `message` (`int`):
           * the MIDI message to send (if sending a complete message):
               * Lowest byte: `status`
 
@@ -68,14 +71,14 @@ def midiOutMsg(
           * OR the message type (if sending a partial MIDI message,
             eg `0xB` for a CC message)
 
-     * `channel` (`int`, optional): the channel to send the message to (if
-       sending a partial MIDI message)
+    * `channel` (`int`, optional): the channel to send the message to (if
+      sending a partial MIDI message)
 
-     * `data1` (`int`, optional): the note data value for the message (if
-       sending a partial MIDI message)
+    * `data1` (`int`, optional): the note data value for the message (if
+      sending a partial MIDI message)
 
-     * `data2` (`int`, optional): the velocity data value for the message (if
-       sending a partial MIDI message)
+    * `data2` (`int`, optional): the velocity data value for the message (if
+      sending a partial MIDI message)
 
     Included since API version 1, with the component options added in API
     version 2
