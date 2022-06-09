@@ -1,6 +1,7 @@
 {
     // "autoDocstring.docstringFormat": "numpy",
     "autoDocstring.customTemplatePath": "resources/docstring_template.mustache",
+    "cSpell.language": "en",
     "cSpell.words": [
         "Rect",
         "BBGGRR",
