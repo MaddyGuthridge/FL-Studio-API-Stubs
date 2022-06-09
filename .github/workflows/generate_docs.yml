@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout this repo
         uses: actions/checkout@v3
+        with:
+          submodules: true
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
