@@ -8,4 +8,6 @@
         "Sysex"
     ],
     "editor.tabSize": 4,
+    "python.linting.mypyEnabled": true,
+    "python.linting.enabled": true,
 }
