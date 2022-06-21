@@ -271,7 +271,7 @@ def getChangedFlag() -> int:
 
           * `1`: Changed since last save
 
-          * `2`: Changed since last save, but unchanged since last autosave
+          * `2`: Changed since last save, but unchanged since last auto-save
 
     Included since API version 1
     """

@@ -3,9 +3,13 @@
     "autoDocstring.customTemplatePath": "resources/docstring_template.mustache",
     "cSpell.language": "en",
     "cSpell.words": [
+        "automatable",
+        "autouse",
         "BBGGRR",
         "MIDICC",
+        "mypy",
         "ppqn",
+        "Precount",
         "Rect",
         "Sysex",
         "timebase"
