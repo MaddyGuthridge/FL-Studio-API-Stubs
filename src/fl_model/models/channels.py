@@ -53,6 +53,8 @@ class ChannelsModel:
     """
     channel_list: list[ChannelPlug]
     selections: list[int]
+    groups: dict[str, set[int]]
+    selected_group: str
 
 
 default_channels = ChannelsModel(
@@ -62,5 +64,7 @@ default_channels = ChannelsModel(
         name='Sampler',
         ch_type=ChannelType.SAMPLER,
         grid_bits=GridBits()
-    )]
+    )],
+    groups={},
+    selected_group='',
 )

@@ -121,3 +121,39 @@ def addVstPlugin(
             param_list.append(PluginParam(''))
     plug = PlugInfo(plug_name, param_list)
     addChannel(plug, name, ChannelType.GENERATOR, **kwargs)
+
+
+def addToGroup(
+    name: str,
+    plugs: set[int],
+) -> None:
+    """
+    Add a set of plugins, specified by their global indexes, to a group
+
+    If a group with the given name can't be found, a new one is created
+
+    ## Args:
+    * `name` (`str`): nme of group
+
+    * `plugs` (`set[int]`): set of channels to add
+
+    ## Raises:
+    * `ValueError`: name of group can't be empty
+    """
+    if name == '':
+        raise ValueError("Name can't be empty")
+    fl = getState()
+    # Get the group we want to modify
+    group = fl.channels.groups.get(name, set())
+
+    # Remove each plugin from any groups it is already in
+    def removeFromGroupIfPresent(plug: int):
+        for g in fl.channels.groups.values():
+            if plug in g:
+                g.remove(plug)
+    for p in plugs:
+        removeFromGroupIfPresent(p)
+        group.add(p)
+
+    # Store the group back into the dictionary
+    fl.channels.groups[name] = group
