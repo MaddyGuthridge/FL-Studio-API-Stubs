@@ -435,15 +435,76 @@ def setHintMsg(msg: str) -> None:
     ## Args:
      * `msg` (`str`): new message
 
+    ## Usage:
+
+    As well as setting basic info, scripts can use a variety of icons before
+    their hint messages, which can be accessed by embedding `^c` at the start
+    of the string, where `c` is a character from the list below:
+
+    * `b`: record
+
+    * `c`: yellow smiling face
+
+    * `d`: mouse right click
+
+    * `e`: red sad face
+
+    * `f`: orange left-facing triangle
+
+    * `g`: fast-forward icon
+
+    * `h`: exclamation point in a red circle
+
+    * `i`: clock
+
+    * `j`: rewind icon
+
+    * `k`: link icon
+
+    * `l`: midi keyboard
+
+    * `m`: F1 (help) key icon
+
+    * `n`: Image-Line icon
+
+    * `r`: plugin icon
+
+    * `s`: file icon
+
+    * `t`: eye
+
+    * `u`: tempo tap icon
+
+    * `v`: left-facing triangle
+
+    * `w`: right-facing triangle
+
+    * `x`: pencil
+
+    * `y`: slice tool
+
+    * `z`: brush tool icon
+
+    For example, to display a tempo tap message with a relevant icon, the
+    following code could be used:
+
+    ```py
+    ui.setHintMsg("^uTap tempo")
+    ```
+
+    Note that these icon codes are not returned by `getHintMsg()`.
+
     Included since API version 1
     """
 
 
 def getHintValue(value: int, max: int) -> str:
-    """Returns hint for `value`.
+    """Returns `value/max` as a percentage.
 
-    ## HELP WANTED:
-    * What does this do?
+    Equivalent to:
+    ```
+    f"{value/max:.0%}"
+    ```
 
     ## Args:
      * `value` (`int`): ???
@@ -455,7 +516,7 @@ def getHintValue(value: int, max: int) -> str:
 
     Included since API version 1
     """
-    return ""
+    return f"{value/max:.0%}"
 
 
 def getTimeDispMin() -> bool:
