@@ -3,9 +3,12 @@
     "autoDocstring.customTemplatePath": "resources/docstring_template.mustache",
     "cSpell.language": "en",
     "cSpell.words": [
-        "Rect",
         "BBGGRR",
-        "Sysex"
+        "MIDICC",
+        "ppqn",
+        "Rect",
+        "Sysex",
+        "timebase"
     ],
     "editor.tabSize": 4,
     "python.linting.mypyEnabled": true,

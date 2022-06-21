@@ -3,7 +3,7 @@
 Handles general interactions with FL Studio
 """
 
-from fl_context import getValue as _getValue
+from fl_model import getState as __getState
 
 
 def saveUndo(undoName: str, flags: int, update: int = 1) -> None:
@@ -287,7 +287,7 @@ def getVersion() -> int:
 
     Included since API version 1
     """
-    return _getValue("api_version")
+    return __getState().general.api_version
 
 
 def processRECEvent(eventId: int, value: int, flags: int) -> int:

@@ -565,7 +565,7 @@ def getFocused(index: int) -> bool:
 
           * `widPluginEffect` (`6`): Effect Plugin Window.
 
-          * `widPluginGenerator` (`6`): Generator Plugin Window.
+          * `widPluginGenerator` (`7`): Generator Plugin Window.
 
     ## Returns:
      * `bool`: whether it is visible

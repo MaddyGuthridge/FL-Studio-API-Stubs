@@ -5,7 +5,10 @@
 
 name: Generate Documentation and Push to FL-Midi-Docs
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   Generate:

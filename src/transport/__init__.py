@@ -305,7 +305,7 @@ def rewind(startStop: int, flags: int = midi.GT_All) -> None:
 
 
 def fastForward(startStop: int, flags: int = midi.GT_All) -> None:
-    """Fast-fowards the playback position.
+    """Fast-forwards the playback position.
 
     Fast-forwarding should be considered as a toggle. All calls to this
     function beginning fast-forwarding with the `SS_Start` or `SS_StartStep`

@@ -5,7 +5,7 @@ scripts communicate with each other.
 """
 
 from typing import Optional
-from fl_context import getValue as _getValue
+from fl_model import getState as __getState
 
 
 def isAssigned() -> bool:
@@ -17,7 +17,7 @@ def isAssigned() -> bool:
 
     Included since API version 1
     """
-    return _getValue("device_assigned")
+    return __getState().device.assigned
 
 
 def getPortNumber() -> int:
@@ -31,7 +31,7 @@ def getPortNumber() -> int:
 
     Included since API version 1
     """
-    return _getValue("device_port")
+    return __getState().device.port
 
 
 def getName() -> str:
@@ -42,7 +42,7 @@ def getName() -> str:
 
     Included since API version 7
     """
-    return _getValue("device_name")
+    return __getState().device.name
 
 
 def midiOutMsg(
@@ -221,7 +221,7 @@ def findEventID(controlId: int, flags: int = 0) -> int:
 
 
 def getLinkedValue(eventID: int) -> float:
-    """Returns normalised value of the REC event at `eventID`. Returns `-1`
+    """Returns normalized value of the REC event at `eventID`. Returns `-1`
     if "there is no linked control".
 
     ```
@@ -403,7 +403,7 @@ def dispatch(
     """Dispatch a MIDI message (either via a standard MIDI Message or through a
     system exclusive (SysEx) message) that is sent to another controller
     script. This allows communication between different devices provided that
-    they have a standardised communication method.
+    they have a standardized communication method.
 
     MIDI messages sent through this method are received in the same way as all
     other messages, so it should be ensured that they can be differentiated
@@ -442,7 +442,7 @@ def dispatch(
     Included since API version 1
     """
     # Check we're dispatching to the right place
-    if ctrlIndex < 0 or ctrlIndex >= len(_getValue("dispatch_targets")):
+    if ctrlIndex < 0 or ctrlIndex >= len(__getState().device.dispatch_targets):
         # The API raises a TypeError for this :puke:
         raise TypeError("Index out of range")
 
@@ -455,7 +455,7 @@ def dispatchReceiverCount() -> int:
 
     Included since API version 1
     """
-    return len(_getValue("dispatch_targets"))
+    return len(__getState().device.dispatch_targets)
 
 
 def dispatchGetReceiverPortNumber(ctrlIndex: int) -> int:
@@ -469,7 +469,7 @@ def dispatchGetReceiverPortNumber(ctrlIndex: int) -> int:
 
     Included since API version 5
     """
-    t = _getValue("dispatch_targets")
+    t = __getState().device.dispatch_targets
     if ctrlIndex < 0 or ctrlIndex >= len(t):
         # The API raises a TypeError for this :puke:
         raise TypeError("Index out of range")
@@ -484,7 +484,7 @@ def setMasterSync(value: int) -> None:
     This option controls whether stop, pause and play transport notifications
     are sent to the MIDI device. This shouldn't be enabled unless the device
     explicitly requires it, as it can lead to unpredictable and sometimes
-    broken behaviour.
+    broken behavior.
 
     ## Args:
     * `value` (`int`): Whether to enable (`1`) or disable (`0`)
@@ -501,7 +501,7 @@ def getMasterSync() -> bool:
     This option controls whether stop, pause and play transport notifications
     are sent to the MIDI device, and shouldn't be enabled unless the device
     explicitly requires it, as it can lead to unpredictable and sometimes
-    broken behaviour.
+    broken behavior.
 
     ## Returns:
     * `bool`: Whether master sync is enabled (`1`) or disabled (`0`)
