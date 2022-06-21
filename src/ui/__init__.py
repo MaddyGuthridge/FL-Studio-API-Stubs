@@ -1057,6 +1057,7 @@ def setBrowserAutoHide(value: int):
     Included since API Version 20
     """
 
+
 def miDisplayDockRect(
     start: int,
     length: int,

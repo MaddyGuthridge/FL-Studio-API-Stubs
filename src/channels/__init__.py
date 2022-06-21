@@ -505,7 +505,7 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
     return 0
 
 
-def incEventValue(eventId: int, step: int, res: float = 1/24) -> int:
+def incEventValue(eventId: int, step: int, res: float = 1 / 24) -> int:
     """Get event value increased by step. Use (optional) res paremeter to
     specify increment resolution.
 
@@ -780,6 +780,7 @@ def quickQuantize(index: int, startOnly: int = 1) -> None:
 
     Included since API Version 9
     """
+
 
 def updateGraphEditor() -> None:
     """
