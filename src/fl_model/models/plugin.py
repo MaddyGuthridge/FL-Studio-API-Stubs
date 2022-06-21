@@ -1,5 +1,6 @@
 
 from dataclasses import dataclass
+from typing import Optional
 
 
 @dataclass
@@ -31,13 +32,5 @@ class PlugInfo:
     * `params`: list of plugin parameters
     """
     is_valid: bool
-    name: str
     plug_name: str
-    params: list[Param] = []
-
-
-SAMPLER = PlugInfo(
-    is_valid=False,
-    name="Sampler",
-    plug_name='',
-)
+    params: Optional[list[Param]] = None

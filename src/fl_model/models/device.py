@@ -19,11 +19,12 @@ class DeviceModel:
     assigned: bool
     port: int
     name: str
-    dispatch_targets: list[int] = []
+    dispatch_targets: list[int]
 
 
 default_device = DeviceModel(
     assigned=True,
     port=0,
     name="Device",
+    dispatch_targets=[]
 )

@@ -567,7 +567,7 @@ def getGridBit(index: int, position: int) -> bool:
     return False
 
 
-def setGridBit(index: int, position: int, value: int) -> None:
+def setGridBit(index: int, position: int, value: bool) -> None:
     """Sets the value of the grid bit on channel at `index` in `position`.
 
     ## Args:
@@ -575,7 +575,7 @@ def setGridBit(index: int, position: int, value: int) -> None:
 
      * `position` (`int`): index of grid bit (horizontal axis)
 
-     * `value` (`int`): whether grid bit is set (`1`) or not (`0`)
+     * `value` (`bool`): whether grid bit is set (`True`) or not (`False`)
 
     Included since API version 1
     """
@@ -637,7 +637,7 @@ def getGridBitWithLoop(index: int, position: int) -> bool:
 
     ## NOTE:
     * Official documentations say this returns None, but it doesn't. This
-      documentation reflects the actual behaviour.
+      documentation reflects the actual behavior.
 
     ## Args:
      * `index` (`int`): channel index`
