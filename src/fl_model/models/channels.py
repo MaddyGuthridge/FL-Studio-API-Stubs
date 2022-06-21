@@ -3,9 +3,23 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Optional
 from .plugin import PlugInfo
+from ..exceptions import FlIndexError
 
 
 class ChannelType(Enum):
+    """
+    Represents the type of a channel
+
+    * `SAMPLER`
+
+    * `HYBRID`: sampler fed by generator
+
+    * `GENERATOR`
+
+    * `LAYER`
+
+    * `AUTOMATION`: automation clip
+    """
     SAMPLER = 0
     HYBRID = 1
     GENERATOR = 2
@@ -14,10 +28,16 @@ class ChannelType(Enum):
 
 
 class GridBits:
+    """
+    Represents the grid bits for a single channel, allowing the bits to be
+    toggled or set for each index.
+    """
     def __init__(self) -> None:
         self.__bits: set[int] = set()
 
     def __setitem__(self, index: int, value: bool):
+        if index < 0:
+            raise FlIndexError()
         if value:
             self.__bits.add(index)
         else:
@@ -32,6 +52,25 @@ class GridBits:
 
 @dataclass
 class ChannelPlug:
+    """
+    Represents a plugin on the channel rack
+
+    * `plug`: plugin if applicable
+
+    * `name`: channel name
+
+    * `ch_type`: type of channel
+
+    * `grid_bits`
+
+    * `target`: target mixer track
+
+    * `color`
+
+    * `volume`
+
+    * `pan`
+    """
     plug: Optional[PlugInfo]
     name: str
     ch_type: ChannelType
@@ -50,10 +89,14 @@ class ChannelsModel:
     * `selections`: list of selected channels
 
     * `plugins`: info for each plugin
+
+    * `groups`: dictionary of groups
+
+    * `selected_group`: name of currently selected group
     """
     channel_list: list[ChannelPlug]
     selections: list[int]
-    groups: dict[str, set[int]]
+    groups: dict[str, list[int]]
     selected_group: str
 
 

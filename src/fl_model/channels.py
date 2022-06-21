@@ -1,10 +1,16 @@
 
+from copy import deepcopy
 from typing import Optional
 
 from .consts import VST_FINAL_PARAM_NAMES
 from .state import getState
 from .models import PlugInfo, PluginParam
-from .models.channels import ChannelPlug, ChannelType, GridBits
+from .models.channels import (
+    ChannelPlug,
+    ChannelType,
+    GridBits,
+    default_channels,
+)
 
 
 def addChannel(
@@ -52,6 +58,36 @@ def addChannel(
         volume,
         pan,
     ))
+    # Update groups
+    for g in fl.channels.groups.values():
+        for i, j in enumerate(g):
+            if j >= index:
+                g[i] = j + 1
+
+
+def removeChannel(index: int) -> None:
+    """
+    Remove a channel from the channel rack
+
+    ## Args:
+    * `index` (`int`): index of channel to remove
+    """
+    fl = getState()
+    for g in fl.channels.groups.values():
+        for i, j in enumerate(g):
+            if j == index:
+                g.remove(j)
+            elif j > index:
+                g[i] = j - 1
+    fl.channels.channel_list.pop(index)
+
+
+def resetChannels() -> None:
+    """
+    Reset channels to their default state
+    """
+    fl = getState()
+    fl.channels = deepcopy(default_channels)
 
 
 def addSampler(
@@ -144,16 +180,51 @@ def addToGroup(
         raise ValueError("Name can't be empty")
     fl = getState()
     # Get the group we want to modify
-    group = fl.channels.groups.get(name, set())
+    group = fl.channels.groups.get(name, [])
 
     # Remove each plugin from any groups it is already in
-    def removeFromGroupIfPresent(plug: int):
-        for g in fl.channels.groups.values():
-            if plug in g:
-                g.remove(plug)
     for p in plugs:
-        removeFromGroupIfPresent(p)
-        group.add(p)
+        removeChannelFromAnyGroup(p)
+        group.append(p)
 
     # Store the group back into the dictionary
+    group.sort()
     fl.channels.groups[name] = group
+
+
+def removeChannelFromGroup(idx: int, group: str) -> bool:
+    """
+    Remove a channel from the group if present. Delete the group if empty.
+
+    ## Args:
+    * `idx` (`int`): global index of channel
+
+    * `group` (`str`): group name
+
+    ## Returns:
+    * `bool`: whether the channel was removed
+    """
+    fl = getState()
+    try:
+        fl.channels.groups[group].remove(idx)
+        if not len(fl.channels.groups[group]):
+            fl.channels.groups.pop(group)
+    except ValueError:
+        return False
+    return True
+
+
+def removeChannelFromAnyGroup(idx: int):
+    """
+    Removes a channel from its group
+
+    ## Args:
+    * `plug` (`int`): global index of channel
+    """
+    fl = getState()
+    for g in fl.channels.groups.values():
+        if idx in g:
+            g.remove(idx)
+            # Assumes it's only in one group, which should be the case if the
+            # correct functions are used
+            return

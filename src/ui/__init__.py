@@ -1135,7 +1135,7 @@ def showNotification(val: int):
     """
     Show a notification to the user, which is chosen from a set of notification
     strings. This notification appears in the hint panel, much like with
-    `ui.setHintMsg()`, except with less customisation. Currently there is no
+    `ui.setHintMsg()`, except with less customization. Currently there is no
     apparent way to link these to the Script output window.
 
     ## WARNING:
