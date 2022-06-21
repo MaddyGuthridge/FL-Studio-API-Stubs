@@ -294,7 +294,7 @@ def setChannelPitch(index: int, value: float, mode: int = 0, pickupMode: int = m
             BUG: This only affects the range reported by `getChannelPitch`.
             This will desynchronize the reported range from what is visible in the UI.
 
-     * `pickupMode` (`int`, optional): define the pickup behaviour. Refer to
+     * `pickupMode` (`int`, optional): define the pickup behavior. Refer to
        the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
 
     Included since API version 8
@@ -581,7 +581,7 @@ def setGridBit(index: int, position: int, value: bool) -> None:
     """
 
 
-def getStepParam(step: int, param: int, ofset: int, startPos: int,
+def getStepParam(step: int, param: int, offset: int, startPos: int,
                  padsStride: int = 16) -> int:
     """Get step parameter for `step`.
 
@@ -594,7 +594,7 @@ def getStepParam(step: int, param: int, ofset: int, startPos: int,
      * `param` (`int`): ?? at least there's the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#stepParams)
        (actually, tbh the docs on this looks kinda dodgy for some values)
 
-     * `ofset` (`int`): ??? (this typo is in the official docs too)
+     * `offset` (`int`): ???
 
      * `startPos` (`int`): ????
 

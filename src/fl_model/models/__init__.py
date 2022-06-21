@@ -1,10 +1,25 @@
 
 from dataclasses import dataclass
-from .channels import ChannelsModel, default_channels
+from .channels import ChannelsModel, ChannelPlug, default_channels
 from .device import DeviceModel, default_device
 from .ui import UiModel, default_ui
 from .general import GeneralModel, default_general
+from .mixer import MixerModel, MixerPlug
+from .plugin import PlugInfo, PluginParam
 from .transport import TransportModel, default_transport
+
+__all__ = [
+    'ChannelsModel',
+    'ChannelPlug',
+    'DeviceModel',
+    'UiModel',
+    'GeneralModel',
+    'PlugInfo',
+    'PluginParam',
+    'TransportModel',
+    'MixerModel',
+    'MixerPlug',
+]
 
 
 @dataclass

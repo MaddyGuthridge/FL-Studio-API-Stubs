@@ -1,6 +1,16 @@
 
 from dataclasses import dataclass
+from enum import Enum
+from typing import Optional
 from .plugin import PlugInfo
+
+
+class ChannelType(Enum):
+    SAMPLER = 0
+    HYBRID = 1
+    GENERATOR = 2
+    LAYER = 3
+    AUTOMATION = 4
 
 
 class GridBits:
@@ -22,9 +32,11 @@ class GridBits:
 
 @dataclass
 class ChannelPlug:
-    plug: PlugInfo
+    plug: Optional[PlugInfo]
     name: str
+    ch_type: ChannelType
     grid_bits: GridBits
+    target: int = 0
     color: int = 0x5C656A
     volume: float = 0.78125
     pan: float = 0.0
@@ -39,15 +51,16 @@ class ChannelsModel:
 
     * `plugins`: info for each plugin
     """
-    plugins: list[ChannelPlug]
+    channel_list: list[ChannelPlug]
     selections: list[int]
 
 
 default_channels = ChannelsModel(
     selections=[0],
-    plugins=[ChannelPlug(
-        PlugInfo(is_valid=False, plug_name='Sampler'),
+    channel_list=[ChannelPlug(
+        plug=None,
         name='Sampler',
+        ch_type=ChannelType.SAMPLER,
         grid_bits=GridBits()
     )]
 )

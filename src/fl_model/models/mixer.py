@@ -4,7 +4,7 @@ from .plugin import PlugInfo
 
 
 @dataclass
-class MixerPlugInfo:
+class MixerPlug:
     """
     Mixer plugin info
 
