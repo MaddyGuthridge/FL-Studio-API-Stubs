@@ -65,6 +65,8 @@ class ChannelPlug:
 
     * `grid_bits`
 
+    * `group`
+
     * `target`: target mixer track
 
     * `color`

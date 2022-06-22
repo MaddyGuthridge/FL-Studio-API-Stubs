@@ -1,7 +1,7 @@
 
 import pytest
 import channels
-from fl_model.channels import addSampler
+from fl_model.channels import addSampler, removeChannel, getChannelsInGroup
 from fl_model.exceptions import FlIndexError
 
 
@@ -55,3 +55,24 @@ def test_access_invalid_index(func, args):
     func(1, *args)  # No error
     with pytest.raises(FlIndexError):
         func(2, *args)
+
+
+def test_get_channel_groups_all(resetFl):
+    """Test all channels are included in the list of unsorted channels"""
+    removeChannel(0)
+    for i in range(10):
+        addSampler(f'Sampler {i+1}')
+
+    assert getChannelsInGroup('') == [i for i in range(10)]
+
+
+def test_split_groups(resetFl):
+    """Test channels in group works for split up"""
+    removeChannel(0)
+    for i in range(10):
+        if i % 2:
+            addSampler(f'Sampler {i+1}', group='Test')
+        else:
+            addSampler(f'Sampler {i+1}')
+
+    assert getChannelsInGroup('Test') == [i for i in range(10) if i % 2]
