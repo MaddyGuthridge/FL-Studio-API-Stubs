@@ -84,9 +84,9 @@ def setChannelName(index: int, name: str) -> None:
 
 
 def getChannelColor(index: int) -> int:
-    """Returns the colour of the channel at `index` (respecting groups)
+    """Returns the color of the channel at `index` (respecting groups)
 
-    Note that colours can be split into or built from components using the
+    Note that colors can be split into or built from components using the
     functions provided in the module `utils`
 
     * `ColorToRGB()`
@@ -97,7 +97,7 @@ def getChannelColor(index: int) -> int:
      * `index` (`int`): index of channel
 
     ## Returns:
-     * `int`: channel colour (0x--BBGGRR)
+     * `int`: channel color (0x--BBGGRR)
 
     Included since API version 1
     """
@@ -105,9 +105,9 @@ def getChannelColor(index: int) -> int:
 
 
 def setChannelColor(index: int, color: int) -> None:
-    """Sets the colour of the channel at `index` (respecting groups)
+    """Sets the color of the channel at `index` (respecting groups)
 
-    Note that colours can be split into or built from components using the
+    Note that colors can be split into or built from components using the
     functions provided in the module `utils`
 
     * `ColorToRGB()`
@@ -116,7 +116,7 @@ def setChannelColor(index: int, color: int) -> None:
 
     ## Args:
      * `index` (`int`): index of channel
-     * `colour` (`int`): new colour for channel (0x--BBGGRR)
+     * `color` (`int`): new color for channel (0x--BBGGRR)
 
     Included since API version 1
     """
@@ -169,7 +169,7 @@ def soloChannel(index: int) -> None:
 
 
 def getChannelVolume(index: int, mode: int = 0) -> float:
-    """Returns the normalised volume of the channel at `index`, where `0.0` is
+    """Returns the normalized volume of the channel at `index`, where `0.0` is
     the minimum value, and `1.0` is the maximum value. Note that the default
     volume for channels is `0.78125`. By setting the `mode` flag to `1`, the
     volume is returned in decibels.
@@ -193,7 +193,7 @@ def setChannelVolume(
     volume: float,
     pickupMode: int = midi.PIM_None
 ) -> None:
-    """Sets the normalised volume of the channel at `index`, where `0.0` is
+    """Sets the normalized volume of the channel at `index`, where `0.0` is
     the minimum value, and `1.0` is the maximum value. Note that the default
     volume for channels is `0.78125`. Use the pickup mode flag to set pickup
     options.
@@ -203,7 +203,7 @@ def setChannelVolume(
 
      * `volume` (`float`): channel volume
 
-     * `pickupMode` (`int`, optional): define the pickup behaviour. Refer to
+     * `pickupMode` (`int`, optional): define the pickup behavior. Refer to
        the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
 
     Included since API version 1
@@ -211,7 +211,7 @@ def setChannelVolume(
 
 
 def getChannelPan(index: int) -> float:
-    """Returns the normalised pan of the channel at `index`, where `-1.0` is
+    """Returns the normalized pan of the channel at `index`, where `-1.0` is
     100% left, and `1.0` is 100% right. Note that the default pan for channels
     is `0.0` (centre).
 
@@ -227,7 +227,7 @@ def getChannelPan(index: int) -> float:
 
 
 def setChannelPan(index: int, pan: float, pickupMode: int = midi.PIM_None) -> None:
-    """Sets the normalised pan of the channel at `index`, where `-1.0` is
+    """Sets the normalized pan of the channel at `index`, where `-1.0` is
     100% left, and `1.0` is 100% right. Note that the default
     pan for channels is `0.0` (centre). Use the pickup mode flag to set pickup
     options.
@@ -237,7 +237,7 @@ def setChannelPan(index: int, pan: float, pickupMode: int = midi.PIM_None) -> No
 
      * `pan` (`float`): channel pan
 
-     * `pickupMode` (`int`, optional): define the pickup behaviour. Refer to
+     * `pickupMode` (`int`, optional): define the pickup behavior. Refer to
        the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
 
     Included since API version 1
@@ -374,7 +374,7 @@ def selectedChannel(canBeNone: int = 0, offset: int = 0, indexGlobal: int = 0) -
     """Returns the index of the first selected channel, otherwise the nth
     selected channel where n is `offset` + 1. If n is greater than the number of
     selected channels, the global index of the last selected channel will be
-    returned. If `indexGlobal` is set to `1`, this will replicate the behaviour
+    returned. If `indexGlobal` is set to `1`, this will replicate the behavior
     of `channelNumber()` by returning global indexes.
 
     ## NOTE:
@@ -506,7 +506,7 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
 
 
 def incEventValue(eventId: int, step: int, res: float = 1/24) -> int:
-    """Get event value increased by step. Use (optional) res paremeter to
+    """Get event value increased by step. Use (optional) res parameter to
     specify increment resolution.
 
     Use result as new value in processRECEvent
@@ -581,7 +581,7 @@ def setGridBit(index: int, position: int, value: int) -> None:
     """
 
 
-def getStepParam(step: int, param: int, ofset: int, startPos: int,
+def getStepParam(step: int, param: int, offset: int, startPos: int,
                  padsStride: int = 16) -> int:
     """Get step parameter for `step`.
 
@@ -594,7 +594,7 @@ def getStepParam(step: int, param: int, ofset: int, startPos: int,
      * `param` (`int`): ?? at least there's the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#stepParams)
        (actually, tbh the docs on this looks kinda dodgy for some values)
 
-     * `ofset` (`int`): ??? (this typo is in the official docs too)
+     * `offset` (`int`): ???
 
      * `startPos` (`int`): ????
 
