@@ -171,7 +171,10 @@ def addToGroup(
     """
     channels = getState().channels.channel_list
     for p in plugs:
-        channels[p].group = name
+        try:
+            channels[p].group = name
+        except IndexError as e:
+            raise FlIndexError() from e
 
 
 def removeChannelFromGroup(idx: int, group: str) -> bool:

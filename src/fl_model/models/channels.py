@@ -31,6 +31,8 @@ class GridBits:
     """
     Represents the grid bits for a single channel, allowing the bits to be
     toggled or set for each index.
+
+    TODO: Move to patterns
     """
     def __init__(self) -> None:
         self.__bits: set[int] = set()
@@ -59,15 +61,15 @@ class ChannelPlug:
 
     * `name`: channel name
 
-    * `group`: group that the channel belongs to
-
     * `ch_type`: type of channel
 
-    * `grid_bits`
-
-    * `group`
+    * `grid_bits`: grid bits for this channel (will move to patterns module)
 
     * `target`: target mixer track
+
+    * `group`: group that the channel belongs to
+
+    * `selected`: whether the channel is selected
 
     * `color`
 
@@ -92,16 +94,13 @@ class ChannelsModel:
     """
     Model of generator channels
 
-    * `selections`: list of selected channels
+    * `channel_list`: list of channels
 
-    * `plugins`: info for each plugin
-
-    * `groups`: dictionary of groups
-
-    * `selected_group`: name of currently selected group
+    * `selected_group`: name of currently selected group (`''` if viewing
+      unsorted, `None` if viewing all)
     """
     channel_list: list[ChannelPlug]
-    selected_group: str
+    selected_group: Optional[str]
 
 
 default_channels = ChannelsModel(
