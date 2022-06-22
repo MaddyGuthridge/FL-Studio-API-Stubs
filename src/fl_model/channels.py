@@ -243,7 +243,7 @@ def globalIndexToGroupIndex(idx: int, group: Optional[str] = None) -> int:
     * `int`: group index
     """
     channels = getState().channels.channel_list
-    if group is not None:
+    if group is None:
         group = channels[idx].group
     group_idx = 0
     for i, c in enumerate(channels):
