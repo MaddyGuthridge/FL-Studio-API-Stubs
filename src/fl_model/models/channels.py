@@ -59,6 +59,8 @@ class ChannelPlug:
 
     * `name`: channel name
 
+    * `group`: group that the channel belongs to
+
     * `ch_type`: type of channel
 
     * `grid_bits`
@@ -76,6 +78,8 @@ class ChannelPlug:
     ch_type: ChannelType
     grid_bits: GridBits
     target: int = 0
+    group: str = ''
+    selected: bool = False
     color: int = 0x5C656A
     volume: float = 0.78125
     pan: float = 0.0
@@ -95,19 +99,16 @@ class ChannelsModel:
     * `selected_group`: name of currently selected group
     """
     channel_list: list[ChannelPlug]
-    selections: list[int]
-    groups: dict[str, list[int]]
     selected_group: str
 
 
 default_channels = ChannelsModel(
-    selections=[0],
     channel_list=[ChannelPlug(
         plug=None,
         name='Sampler',
+        group='',
         ch_type=ChannelType.SAMPLER,
         grid_bits=GridBits()
     )],
-    groups={},
     selected_group='',
 )

@@ -3,6 +3,7 @@ from copy import deepcopy
 from typing import Optional
 
 from .consts import VST_FINAL_PARAM_NAMES
+from .exceptions import FlIndexError
 from .state import getState
 from .models import PlugInfo, PluginParam
 from .models.channels import (
@@ -54,15 +55,12 @@ def addChannel(
         ch_type,
         GridBits(),
         target,
+        '',
+        False,
         color,
         volume,
         pan,
     ))
-    # Update groups
-    for g in fl.channels.groups.values():
-        for i, j in enumerate(g):
-            if j >= index:
-                g[i] = j + 1
 
 
 def removeChannel(index: int) -> None:
@@ -73,12 +71,6 @@ def removeChannel(index: int) -> None:
     * `index` (`int`): index of channel to remove
     """
     fl = getState()
-    for g in fl.channels.groups.values():
-        for i, j in enumerate(g):
-            if j == index:
-                g.remove(j)
-            elif j > index:
-                g[i] = j - 1
     fl.channels.channel_list.pop(index)
 
 
@@ -176,20 +168,9 @@ def addToGroup(
     ## Raises:
     * `ValueError`: name of group can't be empty
     """
-    if name == '':
-        raise ValueError("Name can't be empty")
-    fl = getState()
-    # Get the group we want to modify
-    group = fl.channels.groups.get(name, [])
-
-    # Remove each plugin from any groups it is already in
+    channels = getState().channels.channel_list
     for p in plugs:
-        removeChannelFromAnyGroup(p)
-        group.append(p)
-
-    # Store the group back into the dictionary
-    group.sort()
-    fl.channels.groups[name] = group
+        channels[p].group = name
 
 
 def removeChannelFromGroup(idx: int, group: str) -> bool:
@@ -204,14 +185,11 @@ def removeChannelFromGroup(idx: int, group: str) -> bool:
     ## Returns:
     * `bool`: whether the channel was removed
     """
-    fl = getState()
-    try:
-        fl.channels.groups[group].remove(idx)
-        if not len(fl.channels.groups[group]):
-            fl.channels.groups.pop(group)
-    except ValueError:
-        return False
-    return True
+    channels = getState().channels.channel_list
+    if channels[idx].group == group:
+        channels[idx].group = ''
+        return True
+    return False
 
 
 def removeChannelFromAnyGroup(idx: int):
@@ -221,10 +199,54 @@ def removeChannelFromAnyGroup(idx: int):
     ## Args:
     * `plug` (`int`): global index of channel
     """
-    fl = getState()
-    for g in fl.channels.groups.values():
-        if idx in g:
-            g.remove(idx)
-            # Assumes it's only in one group, which should be the case if the
-            # correct functions are used
-            return
+    channels = getState().channels.channel_list
+    channels[idx].group = ''
+
+
+def getChannelsInGroup(group: str) -> list[int]:
+    """
+    Return a list of the indexes of channels in a group
+
+    ## Args:
+    * `group` (`str`): name of group ('' for unsorted)
+
+    ## Returns:
+    * `list[int]`: list of global channel indexes
+    """
+    group_indexes: list[int] = []
+    for i, c in enumerate(getState().channels.channel_list):
+        if c.group == group:
+            group_indexes.append(i)
+    return group_indexes
+
+
+def globalIndexToGroupIndex(idx: int, group: Optional[str] = None) -> int:
+    """
+    Convert a global channel index to a grouped channel index
+
+    Group argument can be used to validate that the channel is a member of that
+    particular group.
+
+    ## Args:
+    * `idx` (`int`): global index
+
+    * `group` (`str`, optional): group. Defaults to `None`, for any group.
+
+    ## Raises:
+    * `ValueError`: channel not a member of that group
+
+    ## Returns:
+    * `int`: group index
+    """
+    channels = getState().channels.channel_list
+    if group is not None:
+        group = channels[idx].group
+    group_idx = 0
+    for i, c in enumerate(channels):
+        if i == idx:
+            if c.group != group:
+                raise ValueError("Channel not a member of that group")
+            return group_idx
+        if c.group == group:
+            group_idx += 1
+    raise FlIndexError()
