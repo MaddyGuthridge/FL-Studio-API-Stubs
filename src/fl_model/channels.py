@@ -1,6 +1,6 @@
 
 from copy import deepcopy
-from typing import Optional
+from typing import Optional, Union
 
 from .consts import VST_FINAL_PARAM_NAMES
 from .exceptions import FlIndexError
@@ -254,3 +254,32 @@ def globalIndexToGroupIndex(idx: int, group: Optional[str] = None) -> int:
         if c.group == group:
             group_idx += 1
     raise FlIndexError()
+
+
+def groupIndexToGlobalIndex(
+    idx: int,
+    group: Union[str, None, 'ellipsis'] = None  # noqa: F821
+) -> int:
+    """
+    Convert a grouped channel index to a global channel index
+
+    Group argument can be used to specify a group to search in.
+
+    ## Args:
+    * `idx` (`int`): grouped channel index
+
+    * `group` (`Optional[str]`, optional): group to search in. Defaults to
+      `None` for currently selected group.
+
+    ## Returns:
+    * `int`: global index
+    """
+    fl = getState()
+    # If it's None
+    if group is None:
+        group = fl.channels.selected_group
+    # If we're viewing the "all" group (...), no change is required
+    if group is Ellipsis:
+        return idx
+    # Now group is guaranteed to be a str, regardless of what mypy thinks
+    return getChannelsInGroup(group)[idx]  # type: ignore

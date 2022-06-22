@@ -1,7 +1,7 @@
 
 from dataclasses import dataclass
 from enum import Enum
-from typing import Optional
+from typing import Optional, Union
 from .plugin import PlugInfo
 from ..exceptions import FlIndexError
 
@@ -100,7 +100,7 @@ class ChannelsModel:
       unsorted, `None` if viewing all)
     """
     channel_list: list[ChannelPlug]
-    selected_group: Optional[str]
+    selected_group: Union[str, 'ellipsis']  # noqa: F821
 
 
 default_channels = ChannelsModel(
@@ -111,5 +111,5 @@ default_channels = ChannelsModel(
         ch_type=ChannelType.SAMPLER,
         grid_bits=GridBits()
     )],
-    selected_group='',
+    selected_group=...,
 )

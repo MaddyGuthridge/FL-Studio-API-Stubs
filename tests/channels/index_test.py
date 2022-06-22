@@ -3,6 +3,7 @@ import pytest
 import channels
 from fl_model.channels import (
     addSampler,
+    groupIndexToGlobalIndex,
     removeChannel,
     getChannelsInGroup,
     addToGroup,
@@ -167,7 +168,7 @@ def test_remove_from_any_group(ten_grouped_channels):
         [i for i in range(10) if i == 1 or (i % 2 == 0)]
 
 
-def test_index_conversion_ungrouped(ten_channels):
+def test_index_to_grouped_index_ungrouped(ten_channels):
     """
     Do we get the right indexes when we get group indexes for channels when
     there are no groups
@@ -176,7 +177,7 @@ def test_index_conversion_ungrouped(ten_channels):
         assert globalIndexToGroupIndex(i) == i
 
 
-def test_index_conversion_grouped(ten_grouped_channels):
+def test_index_to_grouped_index_grouped(ten_grouped_channels):
     """
     Do we get the right indexes when we get group indexes for channels when
     the are grouped
@@ -185,7 +186,7 @@ def test_index_conversion_grouped(ten_grouped_channels):
         assert globalIndexToGroupIndex(i) == i // 2
 
 
-def test_index_conversion_wrong_group(ten_grouped_channels):
+def test_index_to_grouped_index_wrong_group(ten_grouped_channels):
     """
     Do we get a ValueError when we ask for the group index of a track not in
     that group
@@ -194,3 +195,15 @@ def test_index_conversion_wrong_group(ten_grouped_channels):
         globalIndexToGroupIndex(0, 'Test')
     with pytest.raises(ValueError):
         globalIndexToGroupIndex(1, '')
+
+
+def test_index_to_global_index_no_groups(ten_channels):
+    """
+    Do we get the right indexes when we get global indexes for channels when
+    there are no groups
+    """
+    for i in range(10):
+        assert groupIndexToGlobalIndex(i) == i
+
+
+# TODO: Index errors for group conversion, all group, selected group,
