@@ -13,7 +13,7 @@ instrument channels.
 import midi
 
 
-def channelNumber(canBeNone: int = 0, offset: int = 0) -> int:
+def channelNumber(canBeNone: bool = False, offset: int = 0) -> int:
     """Returns the global index of the first selected channel, otherwise the
     nth selected channel where n is `offset` + 1. If n is greater than the
     number of selected channels, the global index of the last selected channel
@@ -23,30 +23,30 @@ def channelNumber(canBeNone: int = 0, offset: int = 0) -> int:
     selection will return `0` (representing the first channel).
 
     ## Args:
-     * `canBeNone` (`int`, optional): Whether the function will return `-1` or
-       `0` when there is no selection. Defaults to `0` (returning `0`).
+    * `canBeNone` (`bool`, optional): Whether the function will return `-1` or
+      `0` when there is no selection. Defaults to `False` (returning `0`).
 
-     * `offset` (`int`, optional): return other selected channels after offset.
-       Defaults to 0.
+    * `offset` (`int`, optional): return other selected channels after offset.
+      Defaults to 0.
 
     ## Returns:
-     * `int`: global index of first selected channel
+    * `int`: global index of first selected channel
 
     Included since API version 1
     """
     return 0
 
 
-def channelCount(mode: int = 0) -> int:
+def channelCount(mode: bool = False) -> int:
     """Returns the number of channels on the channel rack. Respect for groups
     is controlled by the `mode` flag.
 
     ## Args:
-     * `mode` (`int`, optional): Whether the number of channels respects
-       groups. Defaults to 0.
+    * `mode` (`bool`, optional): Whether the number of channels should be
+      global. Defaults to `False` (groups respected).
 
     ## Returns:
-     * `int`: number of channels
+    * `int`: number of channels
 
     Included since API version 1. (updated with optional parameter in API
     version 3).
@@ -168,20 +168,20 @@ def soloChannel(index: int) -> None:
     """
 
 
-def getChannelVolume(index: int, mode: int = 0) -> float:
+def getChannelVolume(index: int, mode: bool = False) -> float:
     """Returns the normalized volume of the channel at `index`, where `0.0` is
     the minimum value, and `1.0` is the maximum value. Note that the default
-    volume for channels is `0.78125`. By setting the `mode` flag to `1`, the
+    volume for channels is `0.78125`. By setting the `mode` flag to `True`, the
     volume is returned in decibels.
 
     ## Args:
-     * `index` (`int`): index of channel
+    * `index` (`int`): index of channel
 
-     * `mode` (`int`, optional): whether to return as a float between 0 and 1
-       of a value in dB
+    * `mode` (`int`, optional): whether to return as a float between 0 and 1
+      (`False`) or a value in dB (`True`)
 
     ## Returns:
-     * `float`: channel volume
+    * `float`: channel volume
 
     Included since API version 1
     """
