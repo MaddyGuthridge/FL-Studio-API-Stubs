@@ -3,12 +3,21 @@
 Allows you to control and interact with FL Studio Patterns.
 
 ## NOTES:
- * Patterns are 1-indexed, with a range from `1` - `999`
+
+* Patterns are 1-indexed, with a range from `1` - `999`, meaning that the
+  1000th pattern cannot be created
+
+    * HELP WANTED: What happens when you create that many patterns
 """
 
 
 def patternNumber() -> int:
-    """Returns the index for the currently selected pattern.
+    """Returns the index for the currently active pattern.
+
+    This is the pattern where notes and step sequencing will be modified. It is
+    usually equal to the most recently selected pattern. If that pattern is
+    deselected, it the pattern number will return to the first selected
+    pattern, or if there are no selections, it will remain the same.
 
     ## Returns:
      * `int`: index of the currently active pattern

@@ -55,6 +55,7 @@ class PatternModel:
 @dataclass
 class PatternListModel:
     p: list[PatternModel]
+    active_pattern: int = 1
 
 
 default_pattern_list = PatternListModel([PatternModel(1, 1)])

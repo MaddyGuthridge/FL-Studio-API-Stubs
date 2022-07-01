@@ -68,11 +68,49 @@ def test_deselect_pattern():
 def test_pattern_multi_select():
     addPattern()
     addPattern()
-    for i in range(1, 4):
+    addPattern()
+    for i in range(1, 5):
         assert not patterns.isPatternSelected(i)
         # Select it for next time
         patterns.selectPattern(i)
     # Now they should all be selected
-    for i in range(1, 4):
+    for i in range(1, 5):
         assert patterns.isPatternSelected(i)
 
+
+def test_default_active_pattern():
+    assert patterns.patternNumber() == 0
+
+
+def test_selection_changes_active_pattern():
+    addPattern()
+    addPattern()
+    addPattern()
+    patterns.selectPattern(4)
+    assert patterns.patternNumber() == 4
+
+
+def test_deselection_changes_active_to_first_selected():
+    addPattern()
+    addPattern()
+    addPattern()
+    patterns.selectPattern(2)
+    patterns.selectPattern(3)
+    patterns.selectPattern(4)
+    # Deselect
+    patterns.selectPattern(4)
+    # Active returned to first selection
+    assert patterns.patternNumber() == 2
+
+
+def test_last_deselection_leaves_active():
+    addPattern()
+    addPattern()
+    addPattern()
+    patterns.selectPattern(1, 0)
+    patterns.selectPattern(2, 1)
+    assert patterns.patternNumber() == 2
+    # Deselect
+    patterns.selectPattern(2, 0)
+    # Pattern number remains unchanged
+    assert patterns.patternNumber() == 2
