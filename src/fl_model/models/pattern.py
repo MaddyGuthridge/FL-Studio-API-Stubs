@@ -1,6 +1,7 @@
 
 from dataclasses import dataclass
 from fl_model.exceptions import FlIndexError
+from ..consts import DEFAULT_FL_COLOR
 
 
 class GridBits:
@@ -29,12 +30,14 @@ class GridBits:
 class PatternModel:
     name: str
     color: int
+    selected: bool
     track_contents: list[GridBits]
 
     def __init__(self, num_tracks: int, pattern_num: int) -> None:
         self.track_contents = []
-        self.color = 0
+        self.color = DEFAULT_FL_COLOR
         self.name = f'Pattern {pattern_num}'
+        self.selected = False
         for _ in range(num_tracks):
             self.track_contents.append(GridBits())
 
@@ -51,7 +54,7 @@ class PatternModel:
 
 @dataclass
 class PatternListModel:
-    patterns: list[PatternModel]
+    p: list[PatternModel]
 
 
 default_pattern_list = PatternListModel([PatternModel(1, 1)])

@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Optional, Union
 from .plugin import PlugInfo
+from ..consts import DEFAULT_FL_COLOR
 
 
 class ChannelType(Enum):
@@ -57,7 +58,7 @@ class ChannelPlug:
     target: int = 0
     group: str = ''
     selected: bool = False
-    color: int = 0x5C656A
+    color: int = DEFAULT_FL_COLOR
     volume: float = 0.78125
     pan: float = 0.0
 

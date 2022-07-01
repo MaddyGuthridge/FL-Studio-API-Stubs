@@ -7,7 +7,7 @@ from .general import GeneralModel, default_general
 from .mixer import MixerModel, MixerPlug, default_mixer
 from .plugin import PlugInfo, PluginParam
 from .transport import TransportModel, default_transport
-from .pattern import PatternListModel, default_pattern_list
+from .pattern import PatternListModel, PatternModel, default_pattern_list
 
 __all__ = [
     'ChannelsModel',
@@ -20,6 +20,8 @@ __all__ = [
     'TransportModel',
     'MixerModel',
     'MixerPlug',
+    'PatternModel',
+    'PatternListModel',
 ]
 
 

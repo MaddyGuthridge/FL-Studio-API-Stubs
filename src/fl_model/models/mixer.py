@@ -1,6 +1,7 @@
 
 from dataclasses import dataclass
 from .plugin import PlugInfo
+from ..consts import DEFAULT_FL_COLOR
 
 
 @dataclass
@@ -52,6 +53,7 @@ class MixerTrack:
     pan: float
     sends: list[SendInfo]
     muted: bool
+    color: int = DEFAULT_FL_COLOR
 
 
 @dataclass
