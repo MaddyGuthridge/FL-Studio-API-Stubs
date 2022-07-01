@@ -9,7 +9,6 @@ from .models import PlugInfo, PluginParam
 from .models.channels import (
     ChannelPlug,
     ChannelType,
-    GridBits,
     default_channels,
 )
 
@@ -54,7 +53,6 @@ def addChannel(
         plug,
         name,
         ch_type,
-        GridBits(),
         target,
         group,
         False,

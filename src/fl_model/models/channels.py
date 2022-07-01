@@ -3,7 +3,6 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Optional, Union
 from .plugin import PlugInfo
-from ..exceptions import FlIndexError
 
 
 class ChannelType(Enum):
@@ -25,31 +24,6 @@ class ChannelType(Enum):
     GENERATOR = 2
     LAYER = 3
     AUTOMATION = 4
-
-
-class GridBits:
-    """
-    Represents the grid bits for a single channel, allowing the bits to be
-    toggled or set for each index.
-
-    TODO: Move to patterns
-    """
-    def __init__(self) -> None:
-        self.__bits: set[int] = set()
-
-    def __setitem__(self, index: int, value: bool):
-        if index < 0:
-            raise FlIndexError()
-        if value:
-            self.__bits.add(index)
-        else:
-            self.__bits.discard(index)
-
-    def __getitem__(self, index: int) -> bool:
-        return index in self.__bits
-
-    def toggle(self, index: int):
-        self[index] = not self[index]
 
 
 @dataclass
@@ -80,7 +54,6 @@ class ChannelPlug:
     plug: Optional[PlugInfo]
     name: str
     ch_type: ChannelType
-    grid_bits: GridBits
     target: int = 0
     group: str = ''
     selected: bool = False
@@ -109,7 +82,6 @@ default_channels = ChannelsModel(
         name='Sampler',
         group='',
         ch_type=ChannelType.SAMPLER,
-        grid_bits=GridBits()
     )],
     selected_group=...,
 )
