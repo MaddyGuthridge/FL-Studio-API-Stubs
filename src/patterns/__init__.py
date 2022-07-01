@@ -9,6 +9,7 @@ Allows you to control and interact with FL Studio Patterns.
 
     * HELP WANTED: What happens when you create that many patterns
 """
+from fl_model import getState as __getState
 
 
 def patternNumber() -> int:
@@ -24,7 +25,7 @@ def patternNumber() -> int:
 
     Included since API version 1
     """
-    return 0
+    return __getState().patterns.active_pattern
 
 
 def patternCount() -> int:
@@ -35,7 +36,7 @@ def patternCount() -> int:
 
     Included since API version 1
     """
-    return 0
+    return len(__getState().patterns.p)
 
 
 def patternMax() -> int:
@@ -79,13 +80,13 @@ def setPatternName(index: int, name: str) -> None:
 
 
 def getPatternColor(index: int) -> int:
-    """Returns the colour of the pattern at `index`.
+    """Returns the color of the pattern at `index`.
 
     ## Args:
      * `index` (`int`): pattern index
 
     ## Returns:
-     * `int`: colour of pattern (0x--BBGGRR)
+     * `int`: color of pattern (0x--BBGGRR)
 
     Included since API version 1
     """
@@ -93,12 +94,12 @@ def getPatternColor(index: int) -> int:
 
 
 def setPatternColor(index: int, color: int) -> None:
-    """Sets the colour of the pattern at `index`.
+    """Sets the color of the pattern at `index`.
 
     ## Args:
      * `index` (`int`): pattern index
 
-     * `color` (`int`): colour of pattern (0x--BBGGRR)
+     * `color` (`int`): color of pattern (0x--BBGGRR)
 
     Included since API version 1
     """
@@ -210,7 +211,7 @@ def isPatternSelected(index: int) -> bool:
 
     Included since API version 2
     """
-    return False
+    return __getState().patterns.p[index - 1].selected
 
 
 def selectPattern(index: int, value: int = -1, preview: int = 0) -> None:
@@ -231,6 +232,25 @@ def selectPattern(index: int, value: int = -1, preview: int = 0) -> None:
 
     Included since API version 2
     """
+    if value == -1:
+        select = not __getState().patterns.p[index - 1].selected
+    elif value == 0:
+        select = False
+    elif value == 1:
+        select = True
+    else:
+        raise ValueError(f"Invalid 'value' parameter: {value}")
+    __getState().patterns.p[index - 1].selected = select
+    if select:
+        # Set active pattern to this one
+        __getState().patterns.active_pattern = index
+    else:
+        # Set active pattern to first active pattern
+        for i, p in enumerate(__getState().patterns.p):
+            i += 1
+            if p.selected:
+                __getState().patterns.active_pattern = i
+                break
 
 
 def selectAll() -> None:

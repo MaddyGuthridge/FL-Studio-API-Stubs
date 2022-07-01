@@ -79,7 +79,7 @@ def test_pattern_multi_select():
 
 
 def test_default_active_pattern():
-    assert patterns.patternNumber() == 0
+    assert patterns.patternNumber() == 1
 
 
 def test_selection_changes_active_pattern():
