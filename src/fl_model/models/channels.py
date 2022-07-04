@@ -51,6 +51,8 @@ class ChannelPlug:
     * `volume`
 
     * `pan`
+
+    * `muted`
     """
     plug: Optional[PlugInfo]
     name: str
@@ -61,6 +63,7 @@ class ChannelPlug:
     color: int = DEFAULT_FL_COLOR
     volume: float = 0.78125
     pan: float = 0.0
+    muted: bool = False
 
 
 @dataclass

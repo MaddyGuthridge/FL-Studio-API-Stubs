@@ -4,13 +4,13 @@ channels > helpers
 Helper functions for working with channels
 """
 from fl_model.exceptions import FlIndexError
-from fl_model.channels import getChannelsInGroup
+from fl_model.channels import getChannelsInGroup, ChannelPlug
 from fl_model import getState
 
 
 def checkGroupIndex(index: int) -> None:
     """
-    Ensures that the index lies within the allowed range for groups
+    Ensures that the index lies within the allowed range for group indexes
 
     ## Args:
     * `index` (`int`): index to check
@@ -20,5 +20,24 @@ def checkGroupIndex(index: int) -> None:
 
 
 def checkGlobalIndex(index: int) -> None:
+    """
+    Ensures that the index lies within the allowed range for global indexes
+
+    ## Args:
+    * `index` (`int`): index to check
+    """
     if not 0 <= index < len(getState().channels.channel_list):
         raise FlIndexError
+
+
+def getGroupedChannelReference(index: int) -> ChannelPlug:
+    """
+    Returns a reference to a channel given its group index
+
+    ## Args:
+    * `index` (`int`): group index
+
+    ## Returns:
+    * `ChannelPlug`: channel
+    """
+    return getState().channels.channel_list[getChannelsInGroup()[index]]

@@ -4,7 +4,9 @@ channels > properties
 Function definitions for managing channel properties.
 """
 import midi
-from .__helpers import checkGroupIndex
+from fl_model import getState
+from fl_model.channels import getChannelsInGroup
+from .__helpers import checkGroupIndex, getGroupedChannelReference
 
 
 def channelNumber(canBeNone: bool = False, offset: int = 0) -> int:
@@ -28,7 +30,16 @@ def channelNumber(canBeNone: bool = False, offset: int = 0) -> int:
 
     Included since API version 1
     """
-    return 0
+    found = 0
+    for i in getChannelsInGroup():
+        if getState().channels.channel_list[i].selected:
+            if found == offset:
+                return i
+            found += 1
+    if canBeNone:
+        return -1
+    else:
+        return 0
 
 
 def channelCount(mode: bool = False) -> int:
@@ -45,7 +56,10 @@ def channelCount(mode: bool = False) -> int:
     Included since API version 1. (updated with optional parameter in API
     version 3).
     """
-    return 0
+    if mode:
+        return len(getState().channels.channel_list)
+    else:
+        return len(getChannelsInGroup())
 
 
 def getChannelName(index: int) -> str:
@@ -60,7 +74,7 @@ def getChannelName(index: int) -> str:
     Included since API version 1
     """
     checkGroupIndex(index)
-    return ""
+    return getGroupedChannelReference(index).name
 
 
 def setChannelName(index: int, name: str) -> None:
@@ -77,6 +91,7 @@ def setChannelName(index: int, name: str) -> None:
     Included since API version 1
     """
     checkGroupIndex(index)
+    getGroupedChannelReference(index).name = name
 
 
 def getChannelColor(index: int) -> int:
@@ -98,7 +113,7 @@ def getChannelColor(index: int) -> int:
     Included since API version 1
     """
     checkGroupIndex(index)
-    return 0
+    return getGroupedChannelReference(index).color
 
 
 def setChannelColor(index: int, color: int) -> None:
@@ -118,6 +133,7 @@ def setChannelColor(index: int, color: int) -> None:
     Included since API version 1
     """
     checkGroupIndex(index)
+    getGroupedChannelReference(index).color = color
 
 
 def isChannelMuted(index: int) -> bool:
@@ -132,7 +148,7 @@ def isChannelMuted(index: int) -> bool:
     Included since API version 1
     """
     checkGroupIndex(index)
-    return False
+    return getGroupedChannelReference(index).muted
 
 
 def muteChannel(index: int) -> None:
@@ -142,6 +158,7 @@ def muteChannel(index: int) -> None:
      * `index` (`int`): index of channel
     """
     checkGroupIndex(index)
+    getGroupedChannelReference(index).muted = True
 
 
 def isChannelSolo(index: int) -> bool:
