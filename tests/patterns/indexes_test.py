@@ -16,11 +16,48 @@ def test_add_pattern():
     assert patterns.patternCount() == 1
 
 
-def test_invalid_indexes():
-    """Only index 1 exists by default, but no errors are raised"""
-    patterns.selectPattern(0)
-    # This will select the first one
-    assert patterns.isPatternSelected(1)
+@pytest.mark.parametrize(
+    ('func', 'params'),
+    [
+        (patterns.burnLoop, tuple()),
+        (patterns.ensureValidNoteRecord, tuple()),
+        (patterns.getPatternColor, tuple()),
+        (patterns.getPatternLength, tuple()),
+        (patterns.getPatternName, tuple()),
+        (patterns.selectPattern, tuple()),
+        (patterns.setPatternColor, (0,)),
+        (patterns.setPatternName, ('Pat',)),
+        (patterns.isPatternSelected, tuple()),
+        (patterns.jumpToPattern, tuple()),
+    ]
+)
+def test_invalid_indexes(func, params):
+    """Anything outside the range 0 <= i <= 999 is invalid"""
+    with pytest.raises(FlIndexError):
+        func(-1, *params)
+    with pytest.raises(FlIndexError):
+        func(1000, *params)
+
+
+@pytest.mark.parametrize(
+    ('func', 'params'),
+    [
+        (patterns.burnLoop, tuple()),
+        (patterns.ensureValidNoteRecord, tuple()),
+        (patterns.getPatternColor, tuple()),
+        (patterns.getPatternLength, tuple()),
+        (patterns.getPatternName, tuple()),
+        (patterns.selectPattern, tuple()),
+        (patterns.setPatternColor, (0,)),
+        (patterns.setPatternName, ('Pat',)),
+        (patterns.isPatternSelected, tuple()),
+        (patterns.jumpToPattern, tuple()),
+    ]
+)
+def test_valid_indexes(func, params):
+    """Anything inside the range 0 <= i <= 999 is valid"""
+    func(0, *params)
+    func(999, *params)
 
 
 def test_selection_default():
@@ -132,3 +169,11 @@ def test_jump_to_pattern_not_select_selected():
     assert patterns.patternNumber() == 2
     assert patterns.isPatternSelected(1)
     assert patterns.isPatternSelected(2)
+
+
+def test_jump_to_zeroth_index():
+    """Jumping to pattern 0 actually selects pattern 1"""
+    patterns.selectPattern(0)
+    # This will select the first one
+    assert patterns.isPatternSelected(1)
+    assert patterns.patternNumber() == 1
