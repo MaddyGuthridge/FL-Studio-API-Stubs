@@ -11,6 +11,7 @@ Allows you to control and interact with FL Studio Patterns.
 """
 
 from .__properties import (
+    patternNumber,
     patternCount,
     patternMax,
     getPatternName,
@@ -33,6 +34,7 @@ from .__performance import (
 
 
 __all__ = (
+    'patternNumber',
     'patternCount',
     'patternMax',
     'getPatternName',

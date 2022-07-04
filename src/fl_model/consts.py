@@ -1,6 +1,8 @@
 
 DEFAULT_FL_COLOR = 0x5C656A
 
+PATTERN_COUNT = 1000
+
 # Generate using
 # for i in range(4096,4240): print(f'    {i}: "{plugins.getParamName(i, 0)}",')
 VST_FINAL_PARAM_NAMES = {

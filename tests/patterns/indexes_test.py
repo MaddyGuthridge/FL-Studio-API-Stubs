@@ -1,6 +1,8 @@
 
 import pytest
 import channels
+from fl_model import getState
+from fl_model.consts import PATTERN_COUNT
 from fl_model.exceptions import FlIndexError
 from fl_model.patterns import removePattern, isPatternVisible
 import patterns
@@ -37,7 +39,7 @@ def test_invalid_indexes(func, params):
     with pytest.raises(FlIndexError):
         func(-1, *params)
     with pytest.raises(FlIndexError):
-        func(1000, *params)
+        func(PATTERN_COUNT, *params)
 
 
 @pytest.mark.parametrize(
@@ -58,7 +60,7 @@ def test_invalid_indexes(func, params):
 def test_valid_indexes(func, params):
     """Are indexes inside the range 0 <= i <= 999 valid?"""
     func(0, *params)
-    func(999, *params)
+    func(PATTERN_COUNT - 1, *params)
 
 
 def test_selection_default():
@@ -252,7 +254,7 @@ def test_remove_pattern_wrap_around():
     """
     patterns.setPatternName(0, "How is this allowed?")
     removePattern(1)
-    assert patterns.getPatternName(999) == "How is this allowed?"
+    assert patterns.getPatternName(PATTERN_COUNT - 1) == "How is this allowed?"
 
 
 def test_pattern_visible_jump_to():
@@ -274,3 +276,36 @@ def test_pattern_zero_invisible():
     """
     patterns.setPatternName(0, "Now you don't")
     assert not isPatternVisible(0)
+
+
+def select_all_patterns(initialise5Patterns):
+    """Can we select all patterns?
+    """
+    patterns.selectAll()
+    for i in range(1, 6):
+        assert patterns.isPatternSelected(i)
+    # Are invisible patterns ignored
+    assert not patterns.isPatternSelected(0)
+    for i in range(6, PATTERN_COUNT):
+        assert not patterns.isPatternSelected(i)
+
+
+def deselect_all_patterns(initialise5Patterns):
+    """Can we deselect all patterns?
+    """
+    for i in range(1, 6):
+        patterns.selectPattern(i)
+    patterns.deselectAll()
+    for i in range(1, 6):
+        assert not patterns.isPatternSelected(i)
+
+
+def select_all_patterns_view_empty():
+    """Are empty patterns selected when shown if we select all?
+    """
+    getState().patterns.all_patterns_shown = True
+    patterns.selectAll()
+    for i in range(1, PATTERN_COUNT):
+        assert patterns.isPatternSelected(i)
+    # Is pattern 0 ignored?
+    assert not patterns.isPatternSelected(0)

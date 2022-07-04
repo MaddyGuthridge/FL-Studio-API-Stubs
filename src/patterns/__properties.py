@@ -6,6 +6,7 @@ Managing properties of patterns
 
 from fl_model import getState
 from fl_model.patterns import getPatternReference
+from fl_model.consts import PATTERN_COUNT
 
 
 def patternNumber() -> int:
@@ -51,7 +52,7 @@ def patternMax() -> int:
 
     Included since API version 1
     """
-    return 999
+    return PATTERN_COUNT
 
 
 def getPatternName(index: int) -> str:
@@ -65,7 +66,7 @@ def getPatternName(index: int) -> str:
 
     Included since API version 1
     """
-    return ""
+    return getPatternReference(index).name
 
 
 def setPatternName(index: int, name: str) -> None:
@@ -81,6 +82,7 @@ def setPatternName(index: int, name: str) -> None:
 
     Included since API version 1
     """
+    getPatternReference(index).name = name
 
 
 def getPatternColor(index: int) -> int:
@@ -94,7 +96,7 @@ def getPatternColor(index: int) -> int:
 
     Included since API version 1
     """
-    return 0
+    return getPatternReference(index).color
 
 
 def setPatternColor(index: int, color: int) -> None:
@@ -107,6 +109,7 @@ def setPatternColor(index: int, color: int) -> None:
 
     Included since API version 1
     """
+    getPatternReference(index).color = color
 
 
 def getPatternLength(index: int) -> int:
@@ -124,7 +127,8 @@ def getPatternLength(index: int) -> int:
 
 
 def jumpToPattern(index: int) -> None:
-    """Scroll the patterns list to the pattern at `index`, and select it.
+    """Scroll the patterns list to the pattern at `index`, then select and
+    activate it.
 
     ## NOTE:
     * It is possible to jump to non-existent patterns. They will be created at
@@ -213,8 +217,12 @@ def selectPattern(index: int, value: int = -1, preview: bool = False) -> None:
 def selectAll() -> None:
     """Selects all patterns
 
+    Invisible patterns will not be selected
+
     Included since API version 2
     """
+    for i in range(1, PATTERN_COUNT + 1):
+        selectPattern(i, True)
 
 
 def deselectAll() -> None:
@@ -222,6 +230,8 @@ def deselectAll() -> None:
 
     Included since API version 2
     """
+    for i in range(1, PATTERN_COUNT + 1):
+        selectPattern(i, False)
 
 
 def burnLoop(index: int, storeUndo: int = 1, updateUi: int = 1) -> None:

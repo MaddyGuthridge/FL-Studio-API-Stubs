@@ -86,6 +86,7 @@ class PatternModel:
 class PatternListModel:
     p: list[PatternModel]
     active_pattern: int = 1
+    all_patterns_shown: bool = True
 
 
 default_pattern_list = PatternListModel(
