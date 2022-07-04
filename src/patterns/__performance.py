@@ -3,6 +3,7 @@ patterns > performance
 
 Contains functions for working with performance mode
 """
+from .__helpers import checkIndex
 
 
 def getBlockSetStatus(left: int, top: int, right: int, bottom: int) -> int:
@@ -49,4 +50,5 @@ def ensureValidNoteRecord(index: int, playNow: int = 0) -> int:
 
     Included since API version 1
     """
+    checkIndex(index)
     return 0

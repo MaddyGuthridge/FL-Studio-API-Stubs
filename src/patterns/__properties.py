@@ -7,6 +7,7 @@ Managing properties of patterns
 from fl_model import getState
 from fl_model.patterns import getPatternReference, isPatternVisible
 from fl_model.consts import PATTERN_COUNT
+from .__helpers import checkIndex
 
 
 def patternNumber() -> int:
@@ -42,7 +43,7 @@ def patternCount() -> int:
     """
     return sum(map(
         lambda p: p.hasChanged(),
-        getState().patterns.p
+        getState().patterns.p[1:]
     ))
 
 
@@ -69,6 +70,7 @@ def getPatternName(index: int) -> str:
 
     Included since API version 1
     """
+    checkIndex(index)
     return getPatternReference(index).name
 
 
@@ -85,6 +87,7 @@ def setPatternName(index: int, name: str) -> None:
 
     Included since API version 1
     """
+    checkIndex(index)
     getPatternReference(index).name = name
 
 
@@ -99,6 +102,7 @@ def getPatternColor(index: int) -> int:
 
     Included since API version 1
     """
+    checkIndex(index)
     return getPatternReference(index).color
 
 
@@ -112,6 +116,7 @@ def setPatternColor(index: int, color: int) -> None:
 
     Included since API version 1
     """
+    checkIndex(index)
     getPatternReference(index).color = color
 
 
@@ -126,12 +131,13 @@ def getPatternLength(index: int) -> int:
 
     Included since API version 1
     """
+    checkIndex(index)
     return 0
 
 
 def jumpToPattern(index: int) -> None:
-    """Scroll the patterns list to the pattern at `index`, then select and
-    activate it.
+    """Scroll the patterns list to the pattern at `index`, then activate it and
+    select it if it isn't already selected.
 
     ## NOTE:
     * It is possible to jump to non-existent patterns. They will be created at
@@ -144,6 +150,14 @@ def jumpToPattern(index: int) -> None:
 
     Included since API version 1
     """
+    checkIndex(index)
+    # Can't jump to zeroth pattern
+    if index == 0:
+        index = 1
+    if not getState().patterns.p[index].selected:
+        deselectAll()
+        getState().patterns.p[index].selected = True
+    getState().patterns.active_pattern = index
 
 
 def findFirstNextEmptyPat(flags: int, x: int = -1, y: int = -1) -> None:
@@ -175,6 +189,7 @@ def isPatternSelected(index: int) -> bool:
 
     Included since API version 2
     """
+    checkIndex(index)
     return getState().patterns.p[index].selected
 
 
@@ -196,6 +211,7 @@ def selectPattern(index: int, value: int = -1, preview: bool = False) -> None:
 
     Included since API version 2
     """
+    checkIndex(index)
     # Can't select invisible tracks
     if not isPatternVisible(index):
         return
@@ -227,7 +243,7 @@ def selectAll() -> None:
 
     Included since API version 2
     """
-    for i in range(1, PATTERN_COUNT + 1):
+    for i in range(1, PATTERN_COUNT):
         selectPattern(i, True)
 
 
@@ -236,7 +252,7 @@ def deselectAll() -> None:
 
     Included since API version 2
     """
-    for i in range(1, PATTERN_COUNT + 1):
+    for i in range(1, PATTERN_COUNT):
         selectPattern(i, False)
 
 
@@ -255,3 +271,4 @@ def burnLoop(index: int, storeUndo: int = 1, updateUi: int = 1) -> None:
 
     Included since API version 9
     """
+    checkIndex(index)

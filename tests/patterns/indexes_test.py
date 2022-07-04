@@ -20,11 +20,6 @@ def test_pattern_max():
     assert patterns.patternMax() == 999
 
 
-def test_access_hidden_index():
-    """Can we access pattern index 0?"""
-    assert patterns.getPatternName(0) == 'Pattern 0'
-
-
 @pytest.mark.parametrize(
     ('func', 'params'),
     [
@@ -67,6 +62,11 @@ def test_valid_indexes(func, params):
     """Are indexes inside the range 0 <= i <= 999 valid?"""
     func(0, *params)
     func(PATTERN_COUNT - 1, *params)
+
+
+def test_access_hidden_index():
+    """Can we access pattern index 0?"""
+    assert patterns.getPatternName(0) == 'Pattern 0'
 
 
 def test_selection_default():
@@ -159,10 +159,11 @@ def test_jump_to_pattern_select_begin():
     assert patterns.isPatternSelected(1)
 
 
-def test_jump_to_pattern_not_select_selected():
+def test_jump_to_pattern_not_select_selected(initialise5Patterns):
     """Calling jumpToPattern() leaves selection if the pattern is already
     selected
     """
+    patterns.selectPattern(1)
     patterns.selectPattern(2)
     patterns.jumpToPattern(2)
     assert patterns.patternNumber() == 2

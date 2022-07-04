@@ -1,5 +1,7 @@
 
+from copy import deepcopy
 from typing import Optional
+from .consts import PATTERN_COUNT
 from .state import getState
 from .models import PatternModel
 
@@ -11,12 +13,10 @@ def removePattern(index: int) -> None:
     if s.patterns.active_pattern >= index:
         s.patterns.active_pattern -= 1
     # Add the final pattern back
-    s.patterns.p.append(PatternModel(
-        len(getState().channels.channel_list),
-        999
-    ))
+    new_pat = deepcopy(s.patterns.p[0])
+    s.patterns.p.append(new_pat)
     # Notify remaining patterns that their index has changed
-    for i in range(index, 1000):
+    for i in range(index, PATTERN_COUNT):
         s.patterns.p[i].notifyIndexChanged(i)
 
 
