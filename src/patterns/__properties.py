@@ -5,7 +5,7 @@ Managing properties of patterns
 """
 
 from fl_model import getState
-from fl_model.patterns import getPatternReference
+from fl_model.patterns import getPatternReference, isPatternVisible
 from fl_model.consts import PATTERN_COUNT
 
 
@@ -193,6 +193,9 @@ def selectPattern(index: int, value: int = -1, preview: bool = False) -> None:
 
     Included since API version 2
     """
+    # Can't select invisible tracks
+    if not isPatternVisible(index):
+        return
     if value == -1:
         select = not getState().patterns.p[index].selected
     elif value == 0:
@@ -201,14 +204,14 @@ def selectPattern(index: int, value: int = -1, preview: bool = False) -> None:
         select = True
     else:
         raise ValueError(f"Invalid 'value' parameter: {value}")
-    getState().patterns.p[index - 1].selected = select
+    # Select it
+    getState().patterns.p[index].selected = select
     if select:
         # Set active pattern to this one
         getState().patterns.active_pattern = index
     else:
         # Set active pattern to first active pattern
         for i, p in enumerate(getState().patterns.p):
-            i += 1
             if p.selected:
                 getState().patterns.active_pattern = i
                 break

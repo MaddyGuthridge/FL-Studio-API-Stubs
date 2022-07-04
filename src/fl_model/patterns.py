@@ -6,7 +6,6 @@ from .models import PatternModel
 
 def removePattern(index: int) -> None:
     """Remove the pattern at index"""
-    index -= 1
     s = getState()
     s.patterns.p.pop(index)
     if s.patterns.active_pattern >= index:
@@ -29,7 +28,8 @@ def isPatternVisible(index: int) -> bool:
     pat = getPatternReference(index)
     s = getState()
     return (
-        s.patterns.active_pattern == index
+        s.patterns.all_patterns_shown
+        or s.patterns.active_pattern == index
         or pat.hasChanged()
     )
 
@@ -47,4 +47,4 @@ def getPatternReference(index: Optional[int] = None) -> PatternModel:
     """
     if index is None:
         index = getState().patterns.active_pattern
-    return getState().patterns.p[index - 1]
+    return getState().patterns.p[index]
