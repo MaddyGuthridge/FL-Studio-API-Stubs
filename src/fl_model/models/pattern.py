@@ -12,6 +12,12 @@ class GridBits:
     def __init__(self) -> None:
         self.__bits: set[int] = set()
 
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, GridBits):
+            return self.__bits == other.__bits
+        else:
+            return NotImplemented
+
     def __setitem__(self, index: int, value: bool):
         if index < 0:
             raise FlIndexError()
@@ -28,18 +34,28 @@ class GridBits:
 
 
 class PatternModel:
-    name: str
-    color: int
-    selected: bool
-    track_contents: list[GridBits]
-
     def __init__(self, num_tracks: int, pattern_num: int) -> None:
         self.track_contents = []
         self.color = DEFAULT_FL_COLOR
-        self.name = f'Pattern {pattern_num}'
+        self.pattern_num = pattern_num
+        self.__name = ''
         self.selected = False
         for _ in range(num_tracks):
             self.track_contents.append(GridBits())
+
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, PatternModel):
+            return (
+                self.track_contents == other.track_contents
+                and self.color == other.color
+                and self.name == other.name
+            )
+        else:
+            return NotImplemented
+
+    def hasChanged(self) -> bool:
+        """Returns whether this pattern has been modified from the default"""
+        return self == PatternModel(len(self.track_contents), self.pattern_num)
 
     def notifyChannelCreate(self, position: int) -> None:
         self.track_contents.insert(position, GridBits())
@@ -51,11 +67,22 @@ class PatternModel:
         t = self.track_contents
         t[first], t[second] = t[second], t[first]
 
+    @property
+    def name(self) -> str:
+        if self.__name != '':
+            return self.__name
+        else:
+            return f'Pattern {self.pattern_num}'
+
+    @name.setter
+    def name(self, new_name: str) -> None:
+        self.__name = new_name
+
 
 @dataclass
 class PatternListModel:
-    p: list[PatternModel]
+    p: list[PatternModel] = [PatternModel(1, i) for i in range(1000)]
     active_pattern: int = 1
 
 
-default_pattern_list = PatternListModel([PatternModel(1, 1)])
+default_pattern_list = PatternListModel()

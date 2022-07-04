@@ -29,10 +29,17 @@ def patternNumber() -> int:
 
 
 def patternCount() -> int:
-    """Returns the number of patterns in the project
+    """Returns the number of patterns in the project which have been modified
+    from their default state.
+
+    ### WARNING:
+    There is no guarantee that these patterns are all adjacent, as the API
+    allows for the modification of patterns at any index at any time. You
+    should only rely on this pattern for indexes if your script manages
+    patterns in a responsible manner.
 
     ## Returns:
-     * `int`: the number of patterns
+    * `int`: the number of patterns
 
     Included since API version 1
     """
@@ -40,14 +47,15 @@ def patternCount() -> int:
 
 
 def patternMax() -> int:
-    """Returns the maximum number of patterns that can be created.
+    """Returns the maximum number of patterns that can be created. In FL Studio
+    20, this is 999
 
     ## Returns:
      * `int`: max number of patterns
 
     Included since API version 1
     """
-    return 0
+    return 999
 
 
 def getPatternName(index: int) -> str:
