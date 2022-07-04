@@ -40,7 +40,10 @@ def patternCount() -> int:
 
     Included since API version 1
     """
-    return len(getState().patterns.p)
+    return sum(map(
+        lambda p: p.hasChanged(),
+        getState().patterns.p
+    ))
 
 
 def patternMax() -> int:
@@ -52,7 +55,7 @@ def patternMax() -> int:
 
     Included since API version 1
     """
-    return PATTERN_COUNT
+    return PATTERN_COUNT - 1
 
 
 def getPatternName(index: int) -> str:

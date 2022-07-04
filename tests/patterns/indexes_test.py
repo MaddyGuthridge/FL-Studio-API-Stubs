@@ -14,6 +14,12 @@ def initialise5Patterns():
         patterns.setPatternName(i, f'My pattern {i}')
 
 
+def test_pattern_max():
+    """There are 999 available patterns in FL Studio 20
+    """
+    assert patterns.patternMax() == 999
+
+
 def test_access_hidden_index():
     """Can we access pattern index 0?"""
     assert patterns.getPatternName(0) == 'Pattern 0'

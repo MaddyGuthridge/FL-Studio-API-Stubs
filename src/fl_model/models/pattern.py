@@ -55,7 +55,7 @@ class PatternModel:
 
     def hasChanged(self) -> bool:
         """Returns whether this pattern has been modified from the default"""
-        return self == PatternModel(len(self.track_contents), self.pattern_num)
+        return self != PatternModel(len(self.track_contents), self.pattern_num)
 
     def notifyChannelCreate(self, position: int) -> None:
         self.track_contents.insert(position, GridBits())
