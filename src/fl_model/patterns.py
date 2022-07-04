@@ -1,4 +1,5 @@
 
+from typing import Optional
 from .state import getState
 from .models import PatternModel
 
@@ -19,3 +20,9 @@ def removePattern(index: int):
     s.patterns.p.pop(index)
     if s.patterns.active_pattern >= index:
         s.patterns.active_pattern -= 1
+
+
+def getActivePattern(index: Optional[int] = None) -> PatternModel:
+    if index is None:
+        index = getState().patterns.active_pattern
+    return getState().patterns.p[index - 1]

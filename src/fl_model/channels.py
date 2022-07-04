@@ -60,6 +60,9 @@ def addChannel(
         volume,
         pan,
     ))
+    # Update every pattern
+    for pattern in getState().patterns.p:
+        pattern.notifyChannelCreate(index)
 
 
 def removeChannel(index: int) -> None:
@@ -71,6 +74,9 @@ def removeChannel(index: int) -> None:
     """
     fl = getState()
     fl.channels.channel_list.pop(index)
+    # Update every pattern
+    for pattern in getState().patterns.p:
+        pattern.notifyChannelDestroy(index)
 
 
 def resetChannels() -> None:

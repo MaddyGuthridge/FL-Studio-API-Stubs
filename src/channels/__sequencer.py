@@ -3,6 +3,7 @@ channels > sequencer
 
 Function definitions for interacting with the step sequencer
 """
+from fl_model.patterns import getActivePattern
 from .__helpers import checkGroupIndex
 
 
@@ -20,7 +21,7 @@ def getGridBit(index: int, position: int) -> bool:
     Included since API version 1
     """
     checkGroupIndex(index)
-    return False
+    return getActivePattern().track_contents[index][position]
 
 
 def getGridBitWithLoop(index: int, position: int) -> bool:
@@ -58,6 +59,7 @@ def setGridBit(index: int, position: int, value: bool) -> None:
     Included since API version 1
     """
     checkGroupIndex(index)
+    getActivePattern().track_contents[index][position] = value
 
 
 def isGridBitAssigned(*args) -> bool:

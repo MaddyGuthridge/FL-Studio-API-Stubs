@@ -16,31 +16,15 @@ def test_add_pattern():
     assert patterns.patternCount() == 1
 
 
-@pytest.mark.parametrize(
-    ('func', 'params'),
-    [
-        (patterns.burnLoop, tuple()),
-        (patterns.ensureValidNoteRecord, tuple()),
-        (patterns.getPatternColor, tuple()),
-        (patterns.getPatternLength, tuple()),
-        (patterns.getPatternName, tuple()),
-        (patterns.selectPattern, tuple()),
-        (patterns.setPatternColor, (0,)),
-        (patterns.setPatternName, ('Pat',)),
-        (patterns.isPatternSelected, tuple()),
-        (patterns.jumpToPattern, tuple()),
-    ]
-)
-def test_invalid_indexes(func, params):
-    # Only index 1 exists
-    with pytest.raises(FlIndexError):
-        func(0, *params)
-    with pytest.raises(FlIndexError):
-        func(2, *params)
+def test_invalid_indexes():
+    """Only index 1 exists by default, but no errors are raised"""
+    patterns.selectPattern(0)
+    # This will select the first one
+    assert patterns.isPatternSelected(1)
 
 
 def test_selection_default():
-    # By default no pattern is selected
+    """By default no pattern is selected"""
     assert not patterns.isPatternSelected(1)
 
 
@@ -114,3 +98,37 @@ def test_last_deselection_leaves_active():
     patterns.selectPattern(2, 0)
     # Pattern number remains unchanged
     assert patterns.patternNumber() == 2
+
+
+def test_jump_to_pattern_selects_unselected():
+    """Calling jumpToPattern() selects that pattern alone, if it is deselected
+    """
+    addPattern()
+    addPattern()
+    addPattern()
+    patterns.jumpToPattern(2)
+    assert patterns.patternNumber() == 2
+    assert not patterns.isPatternSelected(1)
+    assert patterns.isPatternSelected(2)
+
+
+def test_jump_to_pattern_select_begin():
+    """Calling jumpToPattern() leaves selection if the pattern is already
+    selected
+    """
+    patterns.jumpToPattern(1)
+    assert patterns.isPatternSelected(1)
+
+
+def test_jump_to_pattern_not_select_selected():
+    """Calling jumpToPattern() leaves selection if the pattern is already
+    selected
+    """
+    addPattern()
+    addPattern()
+    addPattern()
+    patterns.selectPattern(2)
+    patterns.jumpToPattern(2)
+    assert patterns.patternNumber() == 2
+    assert patterns.isPatternSelected(1)
+    assert patterns.isPatternSelected(2)
