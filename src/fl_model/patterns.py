@@ -16,6 +16,9 @@ def removePattern(index: int) -> None:
         len(getState().channels.channel_list),
         999
     ))
+    # Notify remaining patterns that their index has changed
+    for i in range(index, 1000):
+        s.patterns.p[i].notifyIndexChanged(i)
 
 
 def isPatternVisible(index: int) -> bool:

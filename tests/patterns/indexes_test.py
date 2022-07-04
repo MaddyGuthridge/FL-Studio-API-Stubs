@@ -243,7 +243,7 @@ def test_remove_pattern_shift_later():
     """
     patterns.setPatternName(2, "My pattern 2")
     removePattern(1)
-    patterns.getPatternName(1)
+    assert patterns.getPatternName(1) == "My pattern 2"
 
 
 def test_remove_pattern_wrap_around():

@@ -67,6 +67,9 @@ class PatternModel:
         t = self.track_contents
         t[first], t[second] = t[second], t[first]
 
+    def notifyIndexChanged(self, new_index) -> None:
+        self.pattern_num = new_index
+
     @property
     def name(self) -> str:
         if self.__name != '':
@@ -81,8 +84,10 @@ class PatternModel:
 
 @dataclass
 class PatternListModel:
-    p: list[PatternModel] = [PatternModel(1, i) for i in range(1000)]
+    p: list[PatternModel]
     active_pattern: int = 1
 
 
-default_pattern_list = PatternListModel()
+default_pattern_list = PatternListModel(
+    [PatternModel(1, i) for i in range(1000)]
+)
