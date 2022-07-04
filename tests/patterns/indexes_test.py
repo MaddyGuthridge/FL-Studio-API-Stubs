@@ -2,7 +2,7 @@
 import pytest
 import channels
 from fl_model.exceptions import FlIndexError
-from fl_model.patterns import removePattern
+from fl_model.patterns import removePattern, isPatternVisible
 import patterns
 
 
@@ -10,6 +10,11 @@ import patterns
 def initialise5Patterns():
     for i in range(1, 6):
         patterns.setPatternName(i, f'My pattern {i}')
+
+
+def test_access_hidden_index():
+    """Can we access pattern index 0?"""
+    assert patterns.getPatternName(0) == 'Pattern 0'
 
 
 @pytest.mark.parametrize(
@@ -51,7 +56,7 @@ def test_invalid_indexes(func, params):
     ]
 )
 def test_valid_indexes(func, params):
-    """Anything inside the range 0 <= i <= 999 is valid"""
+    """Are indexes inside the range 0 <= i <= 999 valid?"""
     func(0, *params)
     func(999, *params)
 
@@ -121,8 +126,16 @@ def test_last_deselection_leaves_active(initialise5Patterns):
     assert patterns.patternNumber() == 2
 
 
+def test_jump_to_pattern():
+    """When we jump to a pattern, does it become the active pattern?
+    """
+    patterns.jumpToPattern(5)
+    assert patterns.patternNumber() == 5
+
+
 def test_jump_to_pattern_selects_unselected(initialise5Patterns):
-    """Calling jumpToPattern() selects that pattern alone, if it is deselected
+    """Does calling jumpToPattern() selects that pattern alone if it is
+    deselected?
     """
     patterns.jumpToPattern(2)
     assert patterns.patternNumber() == 2
@@ -131,8 +144,8 @@ def test_jump_to_pattern_selects_unselected(initialise5Patterns):
 
 
 def test_jump_to_pattern_select_begin():
-    """Calling jumpToPattern() leaves selection if the pattern is already
-    selected
+    """Does calling jumpToPattern() leave the selection if the pattern is
+    already selected
     """
     patterns.jumpToPattern(1)
     assert patterns.isPatternSelected(1)
@@ -184,13 +197,15 @@ def test_modify_pattern_increases_count(callback):
 
 
 def test_modify_pattern_zero_ignored_count():
-    """Modifying pattern zero does nothing"""
+    """Does modifying pattern zero do nothing?
+    """
     patterns.setPatternName(0, 'Ignored pattern')
     assert patterns.patternCount() == 0
 
 
 def test_select_pattern_ignored_count():
-    """Selecting a pattern doesn't stop it from being ignored"""
+    """Does a pattern keep being ignored when it is selected?
+    """
     patterns.selectPattern(1)
     assert patterns.patternCount() == 0
     patterns.selectPattern(2)
@@ -209,3 +224,53 @@ def test_modify_out_of_order():
     assert patterns.patternCount() == 5
     for i in range(1, 6):
         assert patterns.getPatternName(i) == f'My pattern {i}'
+
+
+def test_remove_pattern_reset():
+    """Does removing a pattern reset its properties?
+    """
+    patterns.setPatternColor(1, 0xFFFFFF)
+    patterns.setPatternName(1, 'Custom name')
+    channels.setGridBit(0, 0, True)
+    removePattern(1)
+    assert patterns.getPatternColor(1) != 0xFFFFFF
+    assert patterns.getPatternName(1) == 'Pattern 1'
+    assert not channels.getGridBit(0, 0)
+
+
+def test_remove_pattern_shift_later():
+    """Does removing a pattern reduce the indexes of previous patterns?
+    """
+    patterns.setPatternName(2, "My pattern 2")
+    removePattern(1)
+    patterns.getPatternName(1)
+
+
+def test_remove_pattern_wrap_around():
+    """Do properties set to pattern 0 get copied to pattern 999 when a pattern
+    is removed?
+    """
+    patterns.setPatternName(0, "How is this allowed?")
+    removePattern(1)
+    assert patterns.getPatternName(999) == "How is this allowed?"
+
+
+def test_pattern_visible_jump_to():
+    """Does a pattern become visible when we jump to it?
+    """
+    patterns.jumpToPattern(10)
+    assert isPatternVisible(10)
+
+
+def test_pattern_visible_modify():
+    """Does a pattern become visible when we modify it?
+    """
+    patterns.setPatternName(10, "Now you see me")
+    assert isPatternVisible(10)
+
+
+def test_pattern_zero_invisible():
+    """Is it impossible to make pattern zero visible?
+    """
+    patterns.setPatternName(0, "Now you don't")
+    assert not isPatternVisible(0)

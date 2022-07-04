@@ -4,7 +4,7 @@ from .state import getState
 from .models import PatternModel
 
 
-def removePattern(index: int):
+def removePattern(index: int) -> None:
     """Remove the pattern at index"""
     index -= 1
     s = getState()
@@ -16,6 +16,19 @@ def removePattern(index: int):
         len(getState().channels.channel_list),
         999
     ))
+
+
+def isPatternVisible(index: int) -> bool:
+    """Returns whether the pattern is visible within FL Studio's UI"""
+    # Pattern zero is never visible
+    if index == 0:
+        return False
+    pat = getPatternReference(index)
+    s = getState()
+    return (
+        s.patterns.active_pattern == index
+        or pat.hasChanged()
+    )
 
 
 def getPatternReference(index: Optional[int] = None) -> PatternModel:
