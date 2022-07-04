@@ -70,7 +70,6 @@ def ten_grouped_channels(no_channels):
         (channels.getGridBit, (0,)),
         (channels.getGridBitWithLoop, (0,)),
         (channels.getRecEventId, tuple()),
-        (channels.getStepParam, (0, 0, 0, 0)),
         (channels.isChannelMuted, tuple()),
         (channels.isChannelSolo, tuple()),
         (channels.isChannelSelected, tuple()),

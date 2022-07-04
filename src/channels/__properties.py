@@ -4,6 +4,7 @@ channels > properties
 Function definitions for managing channel properties.
 """
 import midi
+from .__helpers import checkGroupIndex
 
 
 def channelNumber(canBeNone: bool = False, offset: int = 0) -> int:
@@ -58,6 +59,7 @@ def getChannelName(index: int) -> str:
 
     Included since API version 1
     """
+    checkGroupIndex(index)
     return ""
 
 
@@ -74,6 +76,7 @@ def setChannelName(index: int, name: str) -> None:
 
     Included since API version 1
     """
+    checkGroupIndex(index)
 
 
 def getChannelColor(index: int) -> int:
@@ -94,6 +97,7 @@ def getChannelColor(index: int) -> int:
 
     Included since API version 1
     """
+    checkGroupIndex(index)
     return 0
 
 
@@ -113,6 +117,7 @@ def setChannelColor(index: int, color: int) -> None:
 
     Included since API version 1
     """
+    checkGroupIndex(index)
 
 
 def isChannelMuted(index: int) -> bool:
@@ -126,6 +131,7 @@ def isChannelMuted(index: int) -> bool:
 
     Included since API version 1
     """
+    checkGroupIndex(index)
     return False
 
 
@@ -135,6 +141,7 @@ def muteChannel(index: int) -> None:
     ## Args:
      * `index` (`int`): index of channel
     """
+    checkGroupIndex(index)
 
 
 def isChannelSolo(index: int) -> bool:
@@ -148,6 +155,7 @@ def isChannelSolo(index: int) -> bool:
 
     Included since API version 1
     """
+    checkGroupIndex(index)
     return False
 
 
@@ -159,6 +167,7 @@ def soloChannel(index: int) -> None:
 
     Included since API version 1
     """
+    checkGroupIndex(index)
 
 
 def getChannelVolume(index: int, mode: bool = False) -> float:
@@ -178,6 +187,7 @@ def getChannelVolume(index: int, mode: bool = False) -> float:
 
     Included since API version 1
     """
+    checkGroupIndex(index)
     return 0.0
 
 
@@ -201,6 +211,7 @@ def setChannelVolume(
 
     Included since API version 1
     """
+    checkGroupIndex(index)
 
 
 def getChannelPan(index: int) -> float:
@@ -216,6 +227,7 @@ def getChannelPan(index: int) -> float:
 
     Included since API version 1
     """
+    checkGroupIndex(index)
     return 0.0
 
 
@@ -235,6 +247,7 @@ def setChannelPan(index: int, pan: float, pickupMode: int = midi.PIM_None) -> No
 
     Included since API version 1
     """
+    checkGroupIndex(index)
 
 
 def getChannelPitch(index: int, mode: int = 0) -> 'float | int':
@@ -264,6 +277,7 @@ def getChannelPitch(index: int, mode: int = 0) -> 'float | int':
 
     Included since API version 8
     """
+    checkGroupIndex(index)
     return 0
 
 
@@ -292,6 +306,7 @@ def setChannelPitch(index: int, value: float, mode: int = 0, pickupMode: int = m
 
     Included since API version 8
     """
+    checkGroupIndex(index)
     return 0
 
 
@@ -317,6 +332,7 @@ def getChannelType(index: int) -> int:
 
     Included since API Version 19
     """
+    checkGroupIndex(index)
     return 0
 
 
@@ -332,6 +348,7 @@ def isChannelSelected(index: int) -> bool:
 
     Included since API version 1
     """
+    checkGroupIndex(index)
     return False
 
 
@@ -350,6 +367,7 @@ def selectChannel(index: int, value: int = -1) -> None:
 
     Included since API version 1
     """
+    checkGroupIndex(index)
 
 
 def selectOneChannel(index: int) -> None:
@@ -361,6 +379,7 @@ def selectOneChannel(index: int) -> None:
 
     Included since API version 8
     """
+    checkGroupIndex(index)
 
 
 def selectedChannel(canBeNone: int = 0, offset: int = 0, indexGlobal: int = 0) -> int:
@@ -428,6 +447,7 @@ def getChannelMidiInPort(index: int) -> int:
 
     Included since API version 1
     """
+    checkGroupIndex(index)
     return 0
 
 
@@ -442,6 +462,7 @@ def getChannelIndex(index: int) -> int:
 
     Included since API version 1
     """
+    checkGroupIndex(index)
     return 0
 
 
@@ -456,6 +477,7 @@ def getTargetFxTrack(index: int) -> int:
 
     Included since API version 1
     """
+    checkGroupIndex(index)
     return 0
 
 
@@ -525,4 +547,5 @@ def getRecEventId(index: int) -> int:
 
     Included since API version 1
     """
+    checkGroupIndex(index)
     return 0

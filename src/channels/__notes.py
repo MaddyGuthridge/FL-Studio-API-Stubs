@@ -3,6 +3,7 @@ channels > notes
 
 Function definitions for managing notes on channels
 """
+from .__helpers import checkGlobalIndex, checkGroupIndex
 
 
 def midiNoteOn(indexGlobal: int, note: int, velocity: int, channel: int = -1
@@ -25,6 +26,7 @@ def midiNoteOn(indexGlobal: int, note: int, velocity: int, channel: int = -1
 
     Included since API version 1
     """
+    checkGlobalIndex(indexGlobal)
     # TODO: Maintain list of note ons for each channel
 
 
@@ -43,3 +45,4 @@ def quickQuantize(index: int, startOnly: int = 1) -> None:
 
     Included since API Version 9
     """
+    checkGroupIndex(index)

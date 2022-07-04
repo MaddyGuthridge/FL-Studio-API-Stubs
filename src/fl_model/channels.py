@@ -205,16 +205,29 @@ def removeChannelFromAnyGroup(idx: int):
     channels[idx].group = ''
 
 
-def getChannelsInGroup(group: str) -> list[int]:
+def getChannelsInGroup(
+    group: 'str | ellipsis | None' = None  # noqa: F821
+) -> list[int]:
     """
     Return a list of the indexes of channels in a group
 
     ## Args:
-    * `group` (`str`): name of group ('' for unsorted)
+    * `group` (`str | ellipsis | None`)
+          * `str`: name of group
+
+          * `''`: unsorted group
+
+          * `...`: all group
+
+          * `None`: current group
 
     ## Returns:
     * `list[int]`: list of global channel indexes
     """
+    if group is None:
+        group = getState().channels.selected_group
+    if group is ...:
+        return list(range(len(getState().channels.channel_list)))
     group_indexes: list[int] = []
     for i, c in enumerate(getState().channels.channel_list):
         if c.group == group:

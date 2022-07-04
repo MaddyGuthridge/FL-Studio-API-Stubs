@@ -3,6 +3,7 @@ channels > sequencer
 
 Function definitions for interacting with the step sequencer
 """
+from .__helpers import checkGroupIndex
 
 
 def getGridBit(index: int, position: int) -> bool:
@@ -18,6 +19,7 @@ def getGridBit(index: int, position: int) -> bool:
 
     Included since API version 1
     """
+    checkGroupIndex(index)
     return False
 
 
@@ -39,6 +41,7 @@ def getGridBitWithLoop(index: int, position: int) -> bool:
 
     Included since API version 1
     """
+    checkGroupIndex(index)
     return False
 
 
@@ -54,6 +57,7 @@ def setGridBit(index: int, position: int, value: bool) -> None:
 
     Included since API version 1
     """
+    checkGroupIndex(index)
 
 
 def isGridBitAssigned(*args) -> bool:
@@ -111,6 +115,7 @@ def getCurrentStepParam(index: int, step: int, param: int) -> int:
 
     Included since API version 1
     """
+    checkGroupIndex(index)
     return 0
 
 

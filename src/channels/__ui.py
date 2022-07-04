@@ -3,6 +3,7 @@ channels > ui
 
 Function definitions for managing channel rack UI
 """
+from .__helpers import checkGroupIndex, checkGlobalIndex
 
 
 def isHighlighted() -> bool:
@@ -26,7 +27,7 @@ def showGraphEditor(
     param: int,
     step: int,
     index: int,
-    globalIndex: int = 1
+    globalIndex: bool = True
 ) -> None:
     """
     Show the graph editor for a step parameter on the channel at `index`
@@ -40,14 +41,18 @@ def showGraphEditor(
 
     * `index` (`int`): index of channel
 
-    * `globalIndex` (`int`, optional): whether index should be global (`1`) or
-        not (`0`). Defaults to `1`.
+    * `globalIndex` (`int`, optional): whether index should be global (`True`)
+      or not (`False`). Defaults to `True`.
 
     Included since API Version 1
 
     ## API Changes:
     * v20: Add global index
     """
+    if globalIndex:
+        checkGlobalIndex(index)
+    else:
+        checkGroupIndex(index)
 
 
 def isGraphEditorVisible() -> None:
@@ -72,6 +77,7 @@ def showEditor(index: int, value: int = -1) -> None:
     ## API Changes:
     * v3: Add `value` parameter
     """
+    checkGroupIndex(index)
 
 
 def focusEditor(index: int) -> None:
@@ -82,6 +88,7 @@ def focusEditor(index: int) -> None:
 
     Included since API version 1
     """
+    checkGroupIndex(index)
 
 
 def showCSForm(index: int, state: int = 1) -> None:
@@ -101,6 +108,7 @@ def showCSForm(index: int, state: int = 1) -> None:
     ## API Changes:
     * v9: Add `state` parameter
     """
+    checkGroupIndex(index)
 
 
 def getActivityLevel(index: int) -> float:
@@ -116,4 +124,5 @@ def getActivityLevel(index: int) -> float:
 
     Included since API version 9
     """
+    checkGroupIndex(index)
     return 0.0
