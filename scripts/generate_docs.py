@@ -1,6 +1,6 @@
 from pathlib import Path
 import shutil
-from pdoc import pdoc, render
+from pdoc import pdoc, render  # type: ignore
 
 MODULES = [
     'arrangement',
