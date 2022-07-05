@@ -8,7 +8,7 @@ name: Generate Documentation and Push to FL-Midi-Docs
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   Generate:
