@@ -1,4 +1,5 @@
 
+from fl_model.consts import oo
 import channels
 
 
@@ -58,3 +59,20 @@ def test_panning_out_of_range():
     assert channels.getChannelPan(0) == 1.0
     channels.setChannelPan(0, -1.5)
     assert channels.getChannelPan(0) == -1.0
+
+
+def test_volume_db_default():
+    """The default volume for channels is -5.2 dB"""
+    assert channels.getChannelVolume(0, True) == -5.2
+
+
+def test_volume_db_mute():
+    """When muted, the volume of a channel is -oo"""
+    channels.setChannelVolume(0, 0.0)
+    assert channels.getChannelVolume(0, True) == -oo
+
+
+def test_volume_db_max():
+    """When maxed, the volume of a channel is 0 db"""
+    channels.setChannelVolume(0, 1.0)
+    assert channels.getChannelVolume(0, True) == 0

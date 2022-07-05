@@ -1,4 +1,7 @@
 
+# infinity
+oo = float('inf')
+
 DEFAULT_FL_COLOR = 0x5C656A
 
 PATTERN_COUNT = 1000

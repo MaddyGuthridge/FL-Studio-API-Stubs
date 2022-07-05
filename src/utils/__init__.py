@@ -524,6 +524,9 @@ def LightenColor(Color: int, Value: float) -> int:
 def VolTodB(Value: float) -> float:
     """Convert volume as a decimal (0.0 - 1.0) to a decibel value
 
+    ### WARNING:
+    * For zero volume, this returns 0 instead of -oo dB
+
     ## Args:
      * Value (float): volume
 

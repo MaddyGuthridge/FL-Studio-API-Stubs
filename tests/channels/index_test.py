@@ -1,6 +1,7 @@
 
 import pytest
 import channels
+from fl_model import getState
 from fl_model.channels import (
     addSampler,
     groupIndexToGlobalIndex,
@@ -277,5 +278,15 @@ def test_selected_channel_group_offset(ten_grouped_channels):
         channels.selectChannel(i, True)
     for i in range(5):
         assert channels.selectedChannel(False, i) == i
+
+
+def test_channel_count_global(ten_grouped_channels):
+    assert channels.channelCount(True) == 10
+
+
+def test_channel_count_grouped(ten_grouped_channels):
+    # Only view the unsorted channels
+    getState().channels.selected_group = ''
+    assert channels.channelCount() == 5
 
 # TODO: Index errors for group conversion, all group, selected group,

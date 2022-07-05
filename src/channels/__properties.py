@@ -6,6 +6,7 @@ Function definitions for managing channel properties.
 import midi
 import utils
 from fl_model import getState
+from fl_model.consts import oo
 from fl_model.channels import getChannelsInGroup, groupIndexToGlobalIndex
 from .__helpers import (
     checkGroupIndex,
@@ -222,6 +223,8 @@ def getChannelVolume(index: int, mode: bool = False) -> float:
     index_global = getChannelIndex(index)
     volume = getState().channels.channel_list[index_global].volume
     if mode:
+        if volume == 0.0:
+            return -oo
         return utils.VolTodB(volume)
     else:
         return volume
