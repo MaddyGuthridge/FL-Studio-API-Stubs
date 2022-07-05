@@ -7,7 +7,6 @@ NOTES:
  * Mixer tracks are zero-indexed
 """
 
-from typing import Any
 import midi
 
 
@@ -825,6 +824,7 @@ def isTrackSlotsEnabled(index: int) -> bool:
     """
     return False
 
+
 def enableTrackSlots(index: int, value: bool = False) -> None:
     """
     Toggle whether all effects are enabled on a track.
@@ -844,6 +844,7 @@ def enableTrackSlots(index: int, value: bool = False) -> None:
 
     Included since API Version 19
     """
+
 
 def isTrackRevPolarity(index: int) -> bool:
     """

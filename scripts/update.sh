@@ -1,4 +1,4 @@
-# Push an update to the script
+# Push an update to Pypi
 
 rm -rf ./dist
 

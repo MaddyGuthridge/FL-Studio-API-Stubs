@@ -9,9 +9,9 @@ def jumpToMarker(index: int, select: int) -> None:
     """Jumps to the marker at index.
 
     ## Args:
-     * index (`int`): marker index
+    * index (`int`): marker index
 
-     * select (`int`): whether to select the marker
+    * select (`int`): whether to select the marker
 
     Included since API version 1
     """
@@ -21,10 +21,10 @@ def getMarkerName(index: int) -> str:
     """Returns the name of the marker at `index`
 
     ## Args:
-     * index (`int`): marker index
+    * index (`int`): marker index
 
     ## Returns:
-     * `str`: name of the marker
+    * `str`: name of the marker
 
     Included since API version 1
     """
@@ -35,9 +35,9 @@ def addAutoTimeMarker(time: int, name: str) -> None:
     """Add an automatic time marker at `time`.
 
     ## Args:
-     * `time` (`int`): time (TODO: What are the units?)
+    * `time` (`int`): time (TODO: What are the units?)
 
-     * `name` (`str`): name of new marker
+    * `name` (`str`): name of new marker
 
     Included since API version 1
     """
@@ -52,9 +52,9 @@ def liveSelection(time: int, stop: int) -> None:
     * A better explanation would be good
 
     ## Args:
-     * `time` (`int`): ???
+    * `time` (`int`): ???
 
-     * `stop` (`int`): ???
+    * `stop` (`int`): ???
 
     Included since API version 1
     """
@@ -64,7 +64,7 @@ def liveSelectionStart() -> int:
     """Returns the start time of the current live selection
 
     ## Returns:
-     * `int`: start of selection time
+    * `int`: start of selection time
 
     Included since API version 1
     """
@@ -77,10 +77,10 @@ def currentTime(snap: int) -> int:
     to get the PPQ of the project.
 
     ## Args:
-     * `snap` (`int`): whether to get time snapped to grid
+    * `snap` (`int`): whether to get time snapped to grid
 
     ## Returns:
-     * `int`: current time
+    * `int`: current time
 
     Included since API version 1
     """
@@ -96,16 +96,16 @@ def currentTimeHint(
     """Returns a hint string for the given time, formatted as: Bar:Beat?:Tick
 
     ## Args:
-     * `mode` (`int`): pattern mode (`0`) or song mode (`1`)
+    * `mode` (`int`): pattern mode (`0`) or song mode (`1`)
 
-     * `time` (`int`): time in ticks
+    * `time` (`int`): time in ticks
 
-     * `setRecPPB` (`int`, optional): ???. Defaults to ?
+    * `setRecPPB` (`int`, optional): ???. Defaults to ?
 
-     * `isLength` (`int`, optional): ???. Defaults to 0
+    * `isLength` (`int`, optional): ???. Defaults to 0
 
     ## Returns:
-     * `str`: current time as string hint
+    * `str`: current time as string hint
 
     Included since API version 1
     """
@@ -116,7 +116,7 @@ def selectionStart() -> int:
     """Returns the returns the start time of the current selection.
 
     ## Returns:
-     * `int`: start time
+    * `int`: start time
 
     Included since API version 1
     """
@@ -127,7 +127,7 @@ def selectionEnd() -> int:
     """Returns the returns the end time of the current selection.
 
     ## Returns:
-     * `int`: end time
+    * `int`: end time
 
     Included since API version 1
     """

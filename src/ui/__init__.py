@@ -626,7 +626,7 @@ def getFocused(index: int) -> bool:
 
           * `widPluginEffect` (`6`): Effect Plugin Window.
 
-          * `widPluginGenerator` (`6`): Generator Plugin Window.
+          * `widPluginGenerator` (`7`): Generator Plugin Window.
 
     ## Returns:
      * `bool`: whether it is visible
@@ -1118,6 +1118,7 @@ def setBrowserAutoHide(value: int):
     Included since API Version 20
     """
 
+
 def miDisplayDockRect(
     start: int,
     length: int,
@@ -1195,7 +1196,7 @@ def showNotification(val: int):
     """
     Show a notification to the user, which is chosen from a set of notification
     strings. This notification appears in the hint panel, much like with
-    `ui.setHintMsg()`, except with less customisation. Currently there is no
+    `ui.setHintMsg()`, except with less customization. Currently there is no
     apparent way to link these to the Script output window.
 
     ## WARNING:

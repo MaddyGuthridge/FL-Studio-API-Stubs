@@ -63,7 +63,7 @@ def getParamCount(index: int, slotIndex: int = -1) -> int:
     * VST plugins are listed as having `4240` parameters, but not all of
       these are necessarily used by the plugin. The first `4096` are for
       parameters, then the next `128` are used for MIDI CC sends `0` to `127`.
-      The final `16` are used for aftertouch for each MIDI channel.
+      The final `16` are used for after-touch on each MIDI channel.
 
     ## Args:
     * `index` (`int`): index on channel rack or mixer
@@ -105,19 +105,22 @@ def getParamValue(paramIndex: int, index: int, slotIndex: int = -1) -> float:
     """Returns the value of the parameter at `paramIndex` for the plugin at
     `index`/`slotIndex`.
 
-    ## WARNING:
+    ## Warnings:
     * In API versions < v20, the return values of this function for VST plugins
       seem to be very broken, often being incorrect by orders of magnitude.
 
+    * This appears to have poor performance, being 40x slower than many other
+      functions that interact with plugins.
+
     ## Args:
-     * `paramIndex` (`int`): index of parameter
+    * `paramIndex` (`int`): index of parameter
 
-     * `index` (`int`): index of plugin on channel rack or mixer
+    * `index` (`int`): index of plugin on channel rack or mixer
 
-     * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
+    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
 
     ## Returns:
-     * `float`: parameter value, between `0.0` and `1.0`
+    * `float`: parameter value, between `0.0` and `1.0`
 
     Included since API version 8
     """
@@ -133,14 +136,18 @@ def setParamValue(
     """Sets the value of the parameter at `paramIndex` for the plugin at
     `index`/`slotIndex`.
 
+    ## Warnings:
+    * This appears to have poor performance, being 40x slower than many other
+      functions that interact with plugins.
+
     ## Args:
-     * `value` (`float`): new value of parameter (between `0.0` and `1.0`)
+    * `value` (`float`): new value of parameter (between `0.0` and `1.0`)
 
-     * `paramIndex` (`int`): index of parameter
+    * `paramIndex` (`int`): index of parameter
 
-     * `index` (`int`): index of plugin on channel rack or mixer
+    * `index` (`int`): index of plugin on channel rack or mixer
 
-     * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
+    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
 
     Included since API version 8
     """
@@ -152,20 +159,23 @@ def getParamValueString(
     slotIndex: int = -1,
     pickupMode: int = midi.PIM_None,
 ) -> str:
-    """Returns a string value of the parameter at `paramIndex` for the plugin at
+    """
+    Returns a string value of the parameter at `paramIndex` for the plugin at
     `index`/`slotIndex`. This function is only supported by some FL Studio
     plugins.
+
+    TODO: Find plugins
 
     ## WARNING:
     * In API versions < v20, FL Studio's Python environment will crash if an
       invalid paramIndex is provided to this function.
 
     ## Args:
-     * `paramIndex` (`int`): index of parameter
+    * `paramIndex` (`int`): index of parameter
 
-     * `index` (`int`): index of plugin on channel rack or mixer
+    * `index` (`int`): index of plugin on channel rack or mixer
 
-     * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
+    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
 
     ## Returns:
      * `str`: string parameter value
@@ -180,7 +190,7 @@ def getColor(
     slotIndex: int = -1,
     flag: int = midi.GC_BackgroundColor
 ) -> int:
-    """Returns various plugin colour parameter values for the plugin at
+    """Returns various plugin color parameter values for the plugin at
     `index`/`slotIndex`.
 
     ## Args:
@@ -188,15 +198,15 @@ def getColor(
 
      * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
 
-     * `flag` (`int`, optional): colour type to return:
-          * `GC_BackgroundColor` (`0`, default): The darkest background colour
+     * `flag` (`int`, optional): color type to return:
+          * `GC_BackgroundColor` (`0`, default): The darkest background color
           of the plugin.
 
-          * `GC_Semitone` (`1`): Retrieves semitone colour (in FPC, returns
-            colour of drum pads).
+          * `GC_Semitone` (`1`): Retrieves semitone color (in FPC, returns
+            color of drum pads).
 
     ## Returns:
-     * `int`: colour (`0x--BBGGRR`)
+     * `int`: color (`0x--BBGGRR`)
 
     Included since API version 12
     """
@@ -247,7 +257,7 @@ def getName(
 
           * `FPN_OutCtrl` (`7`): For plugins that output controllers, the name of the output controller?
 
-          * `FPN_VoiceColor` (`8`): Name of per-voice colour
+          * `FPN_VoiceColor` (`8`): Name of per-voice color
               * `paramIndex` as MIDI channel?
 
           * `FPN_VoiceColor` (`9`): For plugins that output voices, the name of output voice
@@ -275,9 +285,7 @@ def getPadInfo(
 
     Currently only supported by FPC
 
-    ## WARNING:
-    * None of the parameters can be given as keyword arguments
-
+    ## Notes:
     * The official documentation lists this as returning a string, but it
       actually returns an int.
 

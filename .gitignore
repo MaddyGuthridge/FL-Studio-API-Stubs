@@ -112,7 +112,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-temp.py
 
 # Pdoc documentation
 pdoc/
+
+# Temporary files
+temp.*
+temp/

@@ -24,9 +24,11 @@ any functions here with caution.
 
 import math
 
+
 class TRect:
     """Represents a rectangle object
     """
+
     def __init__(self, left: int, top: int, right: int, bottom: int):
         """Create a `TRect` object representing a rectangle
 
@@ -60,11 +62,13 @@ class TRect:
         """
         return self.Bottom - self.Top
 
+
 class TClipLauncherLastClip:
     def __init__(self, trackNum, subNum, flags):
         self.TrackNum = trackNum
         self.SubNum = subNum
         self.Flags = flags
+
 
 def RectOverlapEqual(R1: TRect, R2: TRect) -> bool:
     """Returns whether two rectangles are overlapping or touching
@@ -79,6 +83,7 @@ def RectOverlapEqual(R1: TRect, R2: TRect) -> bool:
     """
     return (R1.Left <= R2.Right) & (R1.Right >= R2.Left) & (R1.Top <= R2.Bottom) & (R1.Bottom >= R2.Top)
 
+
 def RectOverlap(R1: TRect, R2: TRect) -> bool:
     """Returns whether two rectangles are overlapping
 
@@ -90,7 +95,8 @@ def RectOverlap(R1: TRect, R2: TRect) -> bool:
     ## Returns:
      * bool: whether rectangles overlap
     """
-    return  (R1.Left < R2.Right) & (R1.Right > R2.Left) & (R1.Top < R2.Bottom) & (R1.Bottom > R2.Top)
+    return (R1.Left < R2.Right) & (R1.Right > R2.Left) & (R1.Top < R2.Bottom) & (R1.Bottom > R2.Top)
+
 
 def Limited(Value: float, Min: float, Max: float) -> float:
     """Limit a value to within the range `Min` - `Max`
@@ -113,6 +119,7 @@ def Limited(Value: float, Min: float, Max: float) -> float:
         res = Max
     return res
 
+
 def InterNoSwap(X, A, B) -> bool:
     """Returns whether A <= X <= B, ie. whether X lies between A and B
 
@@ -127,6 +134,7 @@ def InterNoSwap(X, A, B) -> bool:
      * bool
     """
     return (X >= A) & (X <= B)
+
 
 def DivModU(A: int, B: int) -> 'tuple[int, int]':
     """Return integer division and modulus
@@ -143,6 +151,7 @@ def DivModU(A: int, B: int) -> 'tuple[int, int]':
     """
     C = A % B
     return (A // B), C
+
 
 def SwapInt(A, B):
     """Given A and B, return B and A
@@ -163,7 +172,8 @@ def SwapInt(A, B):
     """
     return B, A
 
-def Zeros(value, nChars, c = '0'):
+
+def Zeros(value, nChars, c='0'):
     """TODO
 
     ## Args:
@@ -184,7 +194,8 @@ def Zeros(value, nChars, c = '0'):
         Result = c * (nChars - len(Result)) + Result
     return Result
 
-def Zeros_Strict(value, nChars, c ='0'):
+
+def Zeros_Strict(value, nChars, c='0'):
     """TODO
 
     ## Args:
@@ -202,13 +213,14 @@ def Zeros_Strict(value, nChars, c ='0'):
     """
     if value < 0:
         Result = str(-value)
-        Result = '-' +  c * (nChars - len(Result) - 1) + Result
+        Result = '-' + c * (nChars - len(Result) - 1) + Result
     else:
         Result = str(value)
         Result = c * (nChars - len(Result)) + Result
     if len(Result) > nChars:
         Result = Result[len(Result) - nChars]
     return Result
+
 
 def Sign(value: 'float | int') -> int:
     """Equivalent to `SignOf()`
@@ -226,9 +238,11 @@ def Sign(value: 'float | int') -> int:
     else:
         return 1
 
+
 SignBitPos_64 = 63
 SignBit_64 = 1 << SignBitPos_64
 SignBitPos_Nat = SignBitPos_64
+
 
 def SignOf(value: 'float | int') -> int:
     """Return the sign of a numerical value
@@ -251,6 +265,7 @@ def SignOf(value: 'float | int') -> int:
     else:
         return 1
 
+
 def KnobAccelToRes2(Value):
     """TODO
 
@@ -266,6 +281,7 @@ def KnobAccelToRes2(Value):
     else:
         res = 1
     return res
+
 
 def OffsetRect(R: TRect, dx: int, dy: int) -> None:
     """Offset a rectangle by `dx` and `dy`
@@ -283,6 +299,7 @@ def OffsetRect(R: TRect, dx: int, dy: int) -> None:
     R.Top = R.Top + dy
     R.Right = R.Right + dx
     R.Bottom = R.Bottom + dy
+
 
 def RGBToHSV(R: float, G: float, B: float) -> 'tuple[float, float, float]':
     """Convert an RGB colour to a HSV colour
@@ -311,7 +328,7 @@ def RGBToHSV(R: float, G: float, B: float) -> 'tuple[float, float, float]':
     if V == 0:
         S = 0
     else:
-        S = Delta / V # type: ignore
+        S = Delta / V  # type: ignore
 
     if S == 0.0:
         H = 0.0
@@ -323,10 +340,11 @@ def RGBToHSV(R: float, G: float, B: float) -> 'tuple[float, float, float]':
         elif B == V:
             H = 240.0 + 60.0 * (R - G) / Delta
 
-        if H < 0.0: # type: ignore
-            H = H + 360.0 # type: ignore
+        if H < 0.0:  # type: ignore
+            H = H + 360.0  # type: ignore
 
-    return H, S, V # type: ignore
+    return H, S, V  # type: ignore
+
 
 def RGBToHSVColor(Color: int) -> 'tuple[float, float, float]':
     """Convert an RGB colour to a HSV colour
@@ -346,6 +364,7 @@ def RGBToHSVColor(Color: int) -> 'tuple[float, float, float]':
     b = ((Color & 0x0000FF) >> 0) / 255
     H, S, V = RGBToHSV(r, g, b)
     return H, S, V
+
 
 def HSVtoRGB(H: float, S: float, V: float) -> 'tuple[float, float, float]':
     """Convert an HSV colour to an RGB colour
@@ -374,11 +393,11 @@ def HSVtoRGB(H: float, S: float, V: float) -> 'tuple[float, float, float]':
         B = V
     else:
         if H == 360.0:
-            hTemp = 0.0 # type: ignore
+            hTemp = 0.0  # type: ignore
         else:
-            hTemp = H # type: ignore
+            hTemp = H  # type: ignore
 
-        hTemp = hTemp / 60 # type: ignore
+        hTemp = hTemp / 60  # type: ignore
         i = math.trunc(hTemp)
         f = hTemp - i
 
@@ -410,9 +429,11 @@ def HSVtoRGB(H: float, S: float, V: float) -> 'tuple[float, float, float]':
             R = V
             G = p
             B = q
-    return R, G, B # type: ignore
+    return R, G, B  # type: ignore
+
 
 NoteNameT = ('C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B')
+
 
 def GetNoteName(NoteNum: int) -> str:
     """Return the note name given a note number
@@ -425,6 +446,7 @@ def GetNoteName(NoteNum: int) -> str:
     """
     NoteNum += 1200
     return NoteNameT[NoteNum % 12] + str((NoteNum // 12) - 100)
+
 
 def ColorToRGB(Color: int) -> 'tuple[int, int, int]':
     """Convert an integer colour to an RGB tuple that uses range 0-255.
@@ -441,6 +463,7 @@ def ColorToRGB(Color: int) -> 'tuple[int, int, int]':
     """
     return (Color >> 16) & 0xFF, (Color >> 8) & 0xFF, Color & 0xFF
 
+
 def RGBToColor(R: int, G: int, B: int) -> int:
     """convert an RGB set to an integer colour. values must be 0-255
 
@@ -455,6 +478,7 @@ def RGBToColor(R: int, G: int, B: int) -> int:
      * int: colour
     """
     return (R << 16) | (G << 8) | B
+
 
 def FadeColor(StartColor: int, EndColor: int, Value: float) -> int:
     """Fade between two colour values
@@ -480,6 +504,7 @@ def FadeColor(StartColor: int, EndColor: int, Value: float) -> int:
     bEnd = round(gStart * (1 - ratio) + (bEnd * ratio))
     return RGBToColor(rEnd, gEnd, bEnd)
 
+
 def LightenColor(Color: int, Value: float) -> int:
     """Lighten a colour by a certain amount
 
@@ -493,10 +518,14 @@ def LightenColor(Color: int, Value: float) -> int:
     """
     r, g, b = ColorToRGB(Color)
     ratio = Value / 255
-    return RGBToColor(round(r + (1.0 - r) * ratio), round(g + (1.0 - g) * ratio) , round(b + (1.0 - b) * ratio))
+    return RGBToColor(round(r + (1.0 - r) * ratio), round(g + (1.0 - g) * ratio), round(b + (1.0 - b) * ratio))
+
 
 def VolTodB(Value: float) -> float:
     """Convert volume as a decimal (0.0 - 1.0) to a decibel value
+
+    ### WARNING:
+    * For zero volume, this returns 0 instead of -oo dB
 
     ## Args:
      * Value (float): volume

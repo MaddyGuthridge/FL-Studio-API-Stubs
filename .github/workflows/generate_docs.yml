@@ -5,7 +5,10 @@
 
 name: Generate Documentation and Push to FL-Midi-Docs
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   Generate:
@@ -24,20 +27,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: Build Documentation
-        run: |
-          cd src && pdoc --html . -o ../pdoc --force
-      - name: Move Documentation
-        run: |
-          mkdir docs
-          mv pdoc/src/* docs
-          rm -r pdoc
+        run: python ./scripts/generate_docs.py
       - name: Commit and push docs
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.PUSH_TOKEN_GITHUB }}
         with:
           source_file: docs
-          destination_repo: MiguelGuthridge/FL-Midi-Docs
+          destination_repo: MiguelGuthridge/FL-Studio-API-Docs
           destination_folder: .
           user_email: '103484332+MiguelGBot@users.noreply.github.com'
           user_name: 'MiguelGBot'

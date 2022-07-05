@@ -3,11 +3,30 @@
     "autoDocstring.customTemplatePath": "resources/docstring_template.mustache",
     "cSpell.language": "en",
     "cSpell.words": [
-        "Rect",
+        "automatable",
+        "autouse",
         "BBGGRR",
-        "Sysex"
+        "desynchronize",
+        "falsiness",
+        "indexedness",
+        "MIDICC",
+        "mypy",
+        "pdoc",
+        "ppqn",
+        "Precount",
+        "Rect",
+        "Sysex",
+        "timebase"
     ],
     "editor.tabSize": 4,
     "python.linting.mypyEnabled": true,
     "python.linting.enabled": true,
+    "python.linting.flake8CategorySeverity.E": "Warning",
+    "python.linting.flake8CategorySeverity.F": "Warning",
+    "python.linting.flake8Enabled": true,
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
 }
