@@ -1,5 +1,5 @@
 from pathlib import Path
-import os
+import shutil
 from pdoc import pdoc, render
 
 MODULES = [
@@ -21,7 +21,7 @@ MODULES = [
 ]
 
 # Remove the old code
-os.remove('./pdoc')
+shutil.rmtree('./pdoc')
 
 render.configure(
     docformat='markdown',
@@ -29,7 +29,9 @@ render.configure(
     show_source=False,
 )
 
+print("Generating...")
 pdoc(
     *['src/' + m for m in MODULES],
     output_directory=Path('./pdoc')
 )
+print("Done!")

@@ -27,13 +27,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: Build Documentation
-        run: |
-          cd src && pdoc --html . -o ../pdoc --force
-      - name: Move Documentation
-        run: |
-          mkdir docs
-          mv pdoc/src/* docs
-          rm -r pdoc
+        run: python ./scripts/generate_docs.py
       - name: Commit and push docs
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
