@@ -257,17 +257,21 @@ def deselectAll() -> None:
 
 
 def burnLoop(index: int, storeUndo: int = 1, updateUi: int = 1) -> None:
-    """???
+    """For a pattern where looping of step sequenced channels is enabled,
+    disable looping for the channel at index `i`.
 
-    ## HELP WANTED:
-    * The documentation for this doesn't make sense.
+    # KNOWN ISSUES:
+    * Once this is disabled, it cannot be reenabled, except by disabling step
+      sequenced looping and reenabling it.
 
     ## Args:
-     * `index` (`int`): ???
+    * `index` (`int`): Index of channel to disable step sequencer looping for
 
-     * `storeUndo` (`int`, optional): ???. Defaults to 1.
+    * `storeUndo` (`bool`, optional): whether to store a point in the undo
+      history. Defaults to `True`.
 
-     * `updateUi` (`int`, optional): ???. Defaults to 1.
+    * `updateUi` (`bool`, optional): whether the function should do anything.
+      Setting this to `False` will make nothing happen. Defaults to `True`.
 
     Included since API version 9
     """
