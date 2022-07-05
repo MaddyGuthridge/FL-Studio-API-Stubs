@@ -21,7 +21,10 @@ MODULES = [
 ]
 
 # Remove the old code
-shutil.rmtree('./pdoc')
+try:
+    shutil.rmtree('./pdoc')
+except FileNotFoundError:
+    pass
 
 render.configure(
     docformat='markdown',
