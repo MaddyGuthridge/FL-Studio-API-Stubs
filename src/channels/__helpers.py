@@ -44,6 +44,9 @@ def getGroupedChannelReference(index: int) -> ChannelPlug:
 
 
 def clamp(value: float, min: float = 0, max: float = 1) -> float:
+    """
+    Clamps the given value to be within the range required
+    """
     if value < min:
         return min
     elif value > max:

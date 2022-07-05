@@ -13,7 +13,7 @@ def isAssigned() -> bool:
     that the script can send MIDI messages to that device.
 
     ## Returns:
-     * `bool`: whether the device is assigned
+    * `bool`: whether the device is assigned
 
     Included since API version 1
     """
@@ -27,7 +27,7 @@ def getPortNumber() -> int:
     value of the input port, which is returned by this function.
 
     ## Returns:
-     * `int`: port number of the input device
+    * `int`: port number of the input device
 
     Included since API version 1
     """
@@ -38,7 +38,7 @@ def getName() -> str:
     """Returns the name of the device.
 
     ## Returns:
-     * `str`: device name
+    * `str`: device name
 
     Included since API version 7
     """
@@ -91,9 +91,9 @@ def midiOutNewMsg(slotIndex: int, message: int) -> None:
     same `slotIndex`.
 
     ## Args:
-     * `slotIndex` (`int`): index for MIDI message comparison
+    * `slotIndex` (`int`): index for MIDI message comparison
 
-     * `message` (`int`): message to potentially send
+    * `message` (`int`): message to potentially send
 
     Included since API version 1
     """
@@ -103,7 +103,7 @@ def midiOutSysex(message: bytes) -> None:
     """Send a SysEx message to the (linked) output device.
 
     ## Args:
-     * `message` (`str`): SysEx message to send
+    * `message` (`str`): SysEx message to send
 
     Included since API version 1
     """
@@ -121,18 +121,18 @@ def sendMsgGeneric(
     * This function is deprecated
 
     ## Args:
-     * `id` (`int`): the first 6 bytes of the message (the end value `0xF7` is
-       added automatically)
+    * `id` (`int`): the first 6 bytes of the message (the end value `0xF7` is
+      added automatically)
 
-     * `message` (`str`): the text to send
+    * `message` (`str`): the text to send
 
-     * `lastMsg` (`str`): the string returned by the previous call to this
-       function.
+    * `lastMsg` (`str`): the string returned by the previous call to this
+      function.
 
-     * `offset` (`int`, optional): ???. Defaults to 0.
+    * `offset` (`int`, optional): ???. Defaults to 0.
 
     ## Returns:
-     * `str`: value to use in the next call of this function
+    * `str`: value to use in the next call of this function
 
     Included since API version 1
     """
@@ -143,7 +143,7 @@ def processMIDICC(eventData) -> None:
     """Lets FL Studio process a MIDI CC message.
 
     ## Args:
-     * `eventData` (`eventData`): FL MIDI Event to process.
+    * `eventData` (`eventData`): FL MIDI Event to process.
 
     Included since API version 1
     """
@@ -153,9 +153,9 @@ def forwardMIDICC(message: int, mode: int = 1) -> None:
     """Forwards a MIDI CC message to the currently focused plugin.
 
     ## Args:
-     * `message` (`int`): MIDI message to forward
+    * `message` (`int`): MIDI message to forward
 
-     * `mode` (`int`, optional): Where to send the message:
+    * `mode` (`int`, optional): Where to send the message:
           * `0`: Send the message to all plugins
 
           * `1` (default): ???
