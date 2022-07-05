@@ -9,7 +9,6 @@ instrument channels.
 
  * Channels are zero-indexed.
 """
-
 from .__properties import (
     channelNumber,
     channelCount,

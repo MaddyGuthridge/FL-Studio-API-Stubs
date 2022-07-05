@@ -9,7 +9,6 @@ Allows you to control and interact with FL Studio Patterns.
 
     * HELP WANTED: What happens when you create that many patterns
 """
-
 from .__properties import (
     patternNumber,
     patternCount,
