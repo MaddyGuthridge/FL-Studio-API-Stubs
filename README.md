@@ -7,7 +7,7 @@ model of FL Studio, which allows for scripts to be tested outside of FL Studio.
 # Online Reference
 
 The documentation is also available as an
-[online reference](https://miguelguthridge.github.io/FL-Midi-Docs) if
+[online reference](https://miguelguthridge.github.io/FL-Studio-API-Docs) if
 Image-Line's own documentation isn't up to scratch.
 
 # Installation
@@ -39,7 +39,7 @@ fully understand how they work. These functions have a `HELP WANTED:` label in
 their documentation. If you happen to know how to use one, I'd love it if you
 helped out by improving the documentation! I may also have incorrect
 definitions for some functions. Please
-[create an issue](https://github.com/MiguelGuthridge/FL-Studio-Api-Stubs/issues/new)
+[create an issue](https://github.com/MiguelGuthridge/FL-Studio-API-Stubs/issues/new)
 if you find anything incorrect.
 
 ## Differences to the Official Implementation

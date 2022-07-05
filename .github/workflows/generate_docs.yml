@@ -34,7 +34,7 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.PUSH_TOKEN_GITHUB }}
         with:
           source_file: docs
-          destination_repo: MiguelGuthridge/FL-Midi-Docs
+          destination_repo: MiguelGuthridge/FL-Studio-API-Docs
           destination_folder: .
           user_email: '103484332+MiguelGBot@users.noreply.github.com'
           user_name: 'MiguelGBot'
