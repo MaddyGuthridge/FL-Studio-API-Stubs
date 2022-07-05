@@ -1,3 +1,4 @@
+# Generate documentation
 
 rm -r pdoc
 cd src
