@@ -4,9 +4,14 @@ channels > properties
 Function definitions for managing channel properties.
 """
 import midi
+import utils
 from fl_model import getState
-from fl_model.channels import getChannelsInGroup
-from .__helpers import checkGroupIndex, getGroupedChannelReference
+from fl_model.channels import getChannelsInGroup, groupIndexToGlobalIndex
+from .__helpers import (
+    checkGroupIndex,
+    getGroupedChannelReference,
+    clamp,
+)
 
 
 def channelNumber(canBeNone: bool = False, offset: int = 0) -> int:
@@ -158,7 +163,7 @@ def muteChannel(index: int) -> None:
      * `index` (`int`): index of channel
     """
     checkGroupIndex(index)
-    getGroupedChannelReference(index).muted = True
+    getGroupedChannelReference(index).muted = not isChannelMuted(index)
 
 
 def isChannelSolo(index: int) -> bool:
@@ -173,7 +178,10 @@ def isChannelSolo(index: int) -> bool:
     Included since API version 1
     """
     checkGroupIndex(index)
-    return False
+    # Calculate number of enabled channels
+    enabled = sum(map(lambda c: not c.muted, getState().channels.channel_list))
+    # Channel is the only one enabled
+    return enabled == 1 and not isChannelMuted(index)
 
 
 def soloChannel(index: int) -> None:
@@ -185,6 +193,12 @@ def soloChannel(index: int) -> None:
     Included since API version 1
     """
     checkGroupIndex(index)
+    index_global = getChannelIndex(index)
+    for i, c in enumerate(getState().channels.channel_list):
+        if index_global == i:
+            c.muted = False
+        else:
+            c.muted = True
 
 
 def getChannelVolume(index: int, mode: bool = False) -> float:
@@ -197,7 +211,7 @@ def getChannelVolume(index: int, mode: bool = False) -> float:
     * `index` (`int`): index of channel
 
     * `mode` (`int`, optional): whether to return as a float between 0 and 1
-      (`False`) or a value in dB (`True`)
+      (`False`) or a value in dB (`True`). Defaults to `False`.
 
     ## Returns:
     * `float`: channel volume
@@ -205,7 +219,12 @@ def getChannelVolume(index: int, mode: bool = False) -> float:
     Included since API version 1
     """
     checkGroupIndex(index)
-    return 0.0
+    index_global = getChannelIndex(index)
+    volume = getState().channels.channel_list[index_global].volume
+    if mode:
+        return utils.VolTodB(volume)
+    else:
+        return volume
 
 
 def setChannelVolume(
@@ -229,6 +248,8 @@ def setChannelVolume(
     Included since API version 1
     """
     checkGroupIndex(index)
+    index_global = getChannelIndex(index)
+    getState().channels.channel_list[index_global].volume = clamp(volume)
 
 
 def getChannelPan(index: int) -> float:
@@ -245,7 +266,8 @@ def getChannelPan(index: int) -> float:
     Included since API version 1
     """
     checkGroupIndex(index)
-    return 0.0
+    index_global = getChannelIndex(index)
+    return getState().channels.channel_list[index_global].pan
 
 
 def setChannelPan(index: int, pan: float, pickupMode: int = midi.PIM_None) -> None:
@@ -265,6 +287,8 @@ def setChannelPan(index: int, pan: float, pickupMode: int = midi.PIM_None) -> No
     Included since API version 1
     """
     checkGroupIndex(index)
+    index_global = getChannelIndex(index)
+    getState().channels.channel_list[index_global].pan = clamp(pan, min=-1)
 
 
 def getChannelPitch(index: int, mode: int = 0) -> 'float | int':
@@ -295,7 +319,7 @@ def getChannelPitch(index: int, mode: int = 0) -> 'float | int':
     Included since API version 8
     """
     checkGroupIndex(index)
-    return 0
+    return 0.0
 
 
 def setChannelPitch(index: int, value: float, mode: int = 0, pickupMode: int = midi.PIM_None) -> 'float | int':
@@ -350,7 +374,8 @@ def getChannelType(index: int) -> int:
     Included since API Version 19
     """
     checkGroupIndex(index)
-    return 0
+    index_global = getChannelIndex(index)
+    return getState().channels.channel_list[index_global].ch_type.value
 
 
 def isChannelSelected(index: int) -> bool:
@@ -366,7 +391,8 @@ def isChannelSelected(index: int) -> bool:
     Included since API version 1
     """
     checkGroupIndex(index)
-    return False
+    index_global = getChannelIndex(index)
+    return getState().channels.channel_list[index_global].selected
 
 
 def selectChannel(index: int, value: int = -1) -> None:
@@ -385,6 +411,12 @@ def selectChannel(index: int, value: int = -1) -> None:
     Included since API version 1
     """
     checkGroupIndex(index)
+    if value == -1:
+        bool_val = not isChannelSelected(index)
+    else:
+        bool_val = bool(value)
+    index_global = getChannelIndex(index)
+    getState().channels.channel_list[index_global].selected = bool_val
 
 
 def selectOneChannel(index: int) -> None:
@@ -397,12 +429,19 @@ def selectOneChannel(index: int) -> None:
     Included since API version 8
     """
     checkGroupIndex(index)
+    deselectAll()
+    index_global = getChannelIndex(index)
+    getState().channels.channel_list[index_global].selected = True
 
 
-def selectedChannel(canBeNone: int = 0, offset: int = 0, indexGlobal: int = 0) -> int:
+def selectedChannel(
+    canBeNone: bool = False,
+    offset: int = 0,
+    indexGlobal: int = 0
+) -> int:
     """Returns the index of the first selected channel, otherwise the nth
-    selected channel where n is `offset` + 1. If n is greater than the number of
-    selected channels, the global index of the last selected channel will be
+    selected channel where n is `offset` + 1. If n is greater than the number
+    of selected channels, the global index of the last selected channel will be
     returned. If `indexGlobal` is set to `1`, this will replicate the behavior
     of `channelNumber()` by returning global indexes.
 
@@ -411,12 +450,9 @@ def selectedChannel(canBeNone: int = 0, offset: int = 0, indexGlobal: int = 0) -
       entirely, with the added functionality of providing indexes respecting
       groups (when `indexGlobal` is not set).
 
-    If `canBeNone` is `1`, no selection will return `-1`. Otherwise, no selection
-    will return `0` (representing the first channel).
-
     ## Args:
-     * `canBeNone` (`int`, optional): Whether the function will return `-1` or
-       `0` when there is no selection. Defaults to `0` (returning `0`).
+     * `canBeNone` (`bool`, optional): Whether the function will return `-1` or
+       `0` when there is no selection. Defaults to `False` (returning `0`).
 
      * `offset` (`int`, optional): return other selected channels after offset.
        Defaults to 0.
@@ -429,7 +465,20 @@ def selectedChannel(canBeNone: int = 0, offset: int = 0, indexGlobal: int = 0) -
 
     Included since API version 5
     """
-    return 0
+    if indexGlobal:
+        return channelNumber(canBeNone, offset)
+    found = 0
+    for i, i_global in enumerate(getChannelsInGroup()):
+        ch = getState().channels.channel_list[i_global]
+        if ch.selected:
+            if found == offset:
+                return i
+            found += 1
+
+    if canBeNone:
+        return -1
+    else:
+        return 0
 
 
 def selectAll() -> None:
@@ -480,7 +529,7 @@ def getChannelIndex(index: int) -> int:
     Included since API version 1
     """
     checkGroupIndex(index)
-    return 0
+    return groupIndexToGlobalIndex(index)
 
 
 def getTargetFxTrack(index: int) -> int:

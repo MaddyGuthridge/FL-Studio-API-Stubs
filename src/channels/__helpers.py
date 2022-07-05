@@ -41,3 +41,12 @@ def getGroupedChannelReference(index: int) -> ChannelPlug:
     * `ChannelPlug`: channel
     """
     return getState().channels.channel_list[getChannelsInGroup()[index]]
+
+
+def clamp(value: float, min: float = 0, max: float = 1) -> float:
+    if value < min:
+        return min
+    elif value > max:
+        return max
+    else:
+        return value

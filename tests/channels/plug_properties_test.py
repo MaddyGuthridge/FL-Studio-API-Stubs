@@ -54,7 +54,7 @@ def test_panning():
 
 def test_panning_out_of_range():
     """Out of range pans are clamped"""
-    channels.setChannelVolume(0, 1.5)
-    assert channels.getChannelVolume(0) == 1.0
-    channels.setChannelVolume(0, -1.5)
-    assert channels.getChannelVolume(0) == -1.0
+    channels.setChannelPan(0, 1.5)
+    assert channels.getChannelPan(0) == 1.0
+    channels.setChannelPan(0, -1.5)
+    assert channels.getChannelPan(0) == -1.0

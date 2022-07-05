@@ -24,5 +24,5 @@ def test_solo_mutes_others():
         addSampler('Sampler')
     channels.soloChannel(0)
     assert channels.isChannelSolo(0)
-    for _ in range(1, 10):
-        assert channels.isChannelMuted(0)
+    for i in range(1, 10):
+        assert channels.isChannelMuted(i)
