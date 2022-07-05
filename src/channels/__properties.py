@@ -437,7 +437,7 @@ def selectOneChannel(index: int) -> None:
 def selectedChannel(
     canBeNone: bool = False,
     offset: int = 0,
-    indexGlobal: int = 0
+    indexGlobal: bool = False
 ) -> int:
     """Returns the index of the first selected channel, otherwise the nth
     selected channel where n is `offset` + 1. If n is greater than the number
@@ -457,8 +457,8 @@ def selectedChannel(
      * `offset` (`int`, optional): return other selected channels after offset.
        Defaults to 0.
 
-     * `indexGlobal` (`int`, optional): Whether to return the group index (`0`)
-       or the global index (`1`).
+     * `indexGlobal` (`bool`, optional): Whether to return the group index
+       (`False`) or the global index (`True`).
 
     ## Returns:
      * `int`: index of first selected channel

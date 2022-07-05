@@ -102,9 +102,14 @@ def test_access_invalid_index(func, args):
         func(2, *args)
 
 
-def test_get_channel_groups_all(ten_channels):
+def test_get_channel_groups_unsorted(ten_channels):
     """Are all channels included in the list of unsorted channels"""
     assert getChannelsInGroup('') == [i for i in range(10)]
+
+
+def test_get_channel_groups_all(ten_grouped_channels):
+    """Are all channels included in the list of all channels"""
+    assert getChannelsInGroup(...) == [i for i in range(10)]
 
 
 def test_split_groups(ten_grouped_channels):
@@ -204,5 +209,73 @@ def test_index_to_global_index_no_groups(ten_channels):
     for i in range(10):
         assert groupIndexToGlobalIndex(i) == i
 
+
+def test_channel_number_allow_no_select():
+    """Do we get -1 for the channel number if there is no selection?
+    """
+    channels.selectChannel(0, False)
+    assert channels.channelNumber(True) == -1
+
+
+def test_channel_number_disallow_no_select():
+    """Do we get 0 for channel number if there is no selection and we didn't
+    allow none?
+    """
+    channels.selectChannel(0, False)
+    assert channels.channelNumber() == 0
+
+
+def test_channel_number_offset(ten_channels):
+    """Can we get the correct offset indexes for channelNumber?"""
+    for i in range(10):
+        channels.selectChannel(i, True)
+    for i in range(10):
+        assert channels.channelNumber(False, i) == i
+
+
+def test_selected_channel_global_allow_no_select():
+    """Do we get -1 for the channel number if there is no selection?
+    """
+    channels.selectChannel(0, False)
+    assert channels.selectedChannel(True, 0, True) == -1
+
+
+def test_selected_channel_global_disallow_no_select():
+    """Do we get 0 for channel number if there is no selection and we didn't
+    allow none?
+    """
+    channels.selectChannel(0, False)
+    assert channels.selectedChannel(False, 0, True) == 0
+
+
+def test_selected_channel_global_offset(ten_channels):
+    """Can we get the correct offset indexes for channelNumber?"""
+    for i in range(10):
+        channels.selectChannel(i, True)
+    for i in range(10):
+        assert channels.selectedChannel(False, i, True) == i
+
+
+def test_selected_channel_group_allow_no_select():
+    """Do we get -1 for the channel number if there is no selection?
+    """
+    channels.selectChannel(0, False)
+    assert channels.selectedChannel(True) == -1
+
+
+def test_selected_channel_group_disallow_no_select():
+    """Do we get 0 for channel number if there is no selection and we didn't
+    allow none?
+    """
+    channels.selectChannel(0, False)
+    assert channels.selectedChannel() == 0
+
+
+def test_selected_channel_group_offset(ten_grouped_channels):
+    """Can we get the correct offset indexes for channelNumber?"""
+    for i in range(5):
+        channels.selectChannel(i, True)
+    for i in range(5):
+        assert channels.selectedChannel(False, i) == i
 
 # TODO: Index errors for group conversion, all group, selected group,
