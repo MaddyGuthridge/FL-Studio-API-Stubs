@@ -4,6 +4,7 @@ transport > position
 Dynamic state of transport
 """
 import midi
+from fl_model import getState
 
 
 def start() -> None:
@@ -11,6 +12,7 @@ def start() -> None:
 
     Included since API version 1
     """
+    getState().transport.playing = not getState().transport.playing
 
 
 def stop() -> None:
@@ -18,6 +20,8 @@ def stop() -> None:
 
     Included since API version 1
     """
+    # TODO: Reset playback position
+    getState().transport.playing = False
 
 
 def isPlaying() -> bool:
@@ -28,7 +32,7 @@ def isPlaying() -> bool:
 
     Included since API version 1
     """
-    return False
+    return getState().transport.playing
 
 
 def record() -> None:
@@ -36,6 +40,7 @@ def record() -> None:
 
     Included since API version 1
     """
+    getState().transport.recording = not getState().transport.recording
 
 
 def isRecording() -> bool:
@@ -46,7 +51,7 @@ def isRecording() -> bool:
 
     Included since API version 1
     """
-    return False
+    return getState().transport.recording
 
 
 def getLoopMode() -> int:
