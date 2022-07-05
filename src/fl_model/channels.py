@@ -2,7 +2,7 @@
 from copy import deepcopy
 from typing import Optional, Union
 
-from .consts import VST_FINAL_PARAM_NAMES
+from . import consts
 from .exceptions import FlIndexError
 from .state import getState
 from .models import PlugInfo, PluginParam
@@ -20,8 +20,8 @@ def addChannel(
     index: int = -1,
     target: int = 0,
     group: str = '',
-    color: int = 0x5C656A,
-    volume: float = 0.78125,
+    color: int = consts.DEFAULT_FL_COLOR,
+    volume: float = consts.DEFAULT_CHANNEL_VOLUME,
     pan: float = 0.0,
 ) -> None:
     """
@@ -145,11 +145,11 @@ def addVstPlugin(
     """
     # Generate parameter list
     param_list: list[PluginParam] = []
-    for i in range(4240):
+    for i in range(consts.VST_PARAM_COUNT):
         if i < len(params):
             param_list.append(PluginParam(params[i]))
-        elif 4096 <= i:
-            param_list.append(PluginParam(VST_FINAL_PARAM_NAMES[i]))
+        elif i in consts.VST_FINAL_PARAM_NAMES:
+            param_list.append(PluginParam(consts.VST_FINAL_PARAM_NAMES[i]))
         else:
             param_list.append(PluginParam(''))
     plug = PlugInfo(plug_name, param_list)
@@ -299,4 +299,4 @@ def groupIndexToGlobalIndex(
     if group is Ellipsis:
         return idx
     # Now group is guaranteed to be a str, regardless of what mypy thinks
-    return getChannelsInGroup(group)[idx]  # type: ignore
+    return getChannelsInGroup(group)[idx]
