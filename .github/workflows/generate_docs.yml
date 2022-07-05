@@ -28,6 +28,8 @@ jobs:
           pip install -r requirements.txt
       - name: Build Documentation
         run: python ./scripts/generate_docs.py
+      - name: Copy to docs folder
+        run: mv pdoc docs
       - name: Commit and push docs
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
