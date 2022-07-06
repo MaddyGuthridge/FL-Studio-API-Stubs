@@ -1,0 +1,24 @@
+{% extends "default/index.html.jinja2" %}
+
+{% block title %}FL Studio API Stubs{% endblock %}
+
+{% block nav %}
+  <img src="https://pdoc.dev/logo.svg" class="logo" alt="project logo"/>
+  <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
+    pattern=".+" required>
+  {{ super() }}
+{% endblock %}
+
+{% block content %}
+  <main class="pdoc">
+
+  {% filter to_html %}
+# FL Studio API Stubs
+
+This project contains function definitions to provide intellisense while
+working on scripts for FL Studio's Python API, as well as a partially-complete
+model of FL Studio, which allows for scripts to be tested outside of FL Studio.
+  {% endfilter %}
+  </main>
+  {% include "search.html.jinja2" %}
+{% endblock %}
