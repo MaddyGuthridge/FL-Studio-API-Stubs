@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "title": "FL Studio API Stubs Model Config",
+  "description": "Configuration file schema for the FL Studio API Stubs project",
+  "type": "object",
+  "properties": {
+    "disallowDeprecated": {
+      "description": "Should calling a deprecated function raise an error",
+      "type": "boolean",
+      "default": false
+    },
+    "disallowKeyEchoes": {
+      "description": "Should calling a function that echoes a keyboard shortcut raise an error?",
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
