@@ -4,7 +4,7 @@ channels > sequencer
 Function definitions for interacting with the step sequencer
 """
 from fl_model.patterns import getPatternReference
-from .__helpers import checkGroupIndex
+from fl_model.channels import checkGroupIndex
 
 
 def getGridBit(index: int, position: int) -> bool:

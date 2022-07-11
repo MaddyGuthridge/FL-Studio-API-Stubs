@@ -3,7 +3,7 @@ channels > notes
 
 Function definitions for managing notes on channels
 """
-from .__helpers import checkGlobalIndex, checkGroupIndex
+from fl_model.channels import checkGlobalIndex, checkGroupIndex
 
 
 def midiNoteOn(indexGlobal: int, note: int, velocity: int, channel: int = -1

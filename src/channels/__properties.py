@@ -7,12 +7,13 @@ import midi
 import utils
 from fl_model import getState
 from fl_model.consts import oo
-from fl_model.channels import getChannelsInGroup, groupIndexToGlobalIndex
-from .__helpers import (
+from fl_model.channels import (
+    getChannelsInGroup,
+    groupIndexToGlobalIndex,
     checkGroupIndex,
     getGroupedChannelReference,
-    clamp,
 )
+from fl_model.util import clamp
 
 
 def channelNumber(canBeNone: bool = False, offset: int = 0) -> int:

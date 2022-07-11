@@ -3,7 +3,7 @@ channels > ui
 
 Function definitions for managing channel rack UI
 """
-from .__helpers import checkGroupIndex, checkGlobalIndex
+from fl_model.channels import checkGroupIndex, checkGlobalIndex
 
 
 def isHighlighted() -> bool:
