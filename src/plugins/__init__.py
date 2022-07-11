@@ -4,14 +4,35 @@ Handles the way that scripts communicate with and control FL Studio plugins,
 including 3rd-party VST/AU plugins. The module allows scripts to get and set
 parameter values for plugins on the mixer and the channel rack.
 
-Module added in API version 8.
+## Working with indexes
 
-## NOTES:
+Almost all of the functions in this module accept an `index` and a `slotIndex`
+parameter, which are used to determine which plugin to interact with.
+
 * `index` either refers to the index of the plugin on the channel rack, or the
-  index of the mixer track containing the plugin on the mixer.
+  index of the mixer track containing the plugin on the mixer. Note that the
+  grouped index is used, rather than a global index on the channel rack.
 
 * `slotIndex` refers the the mixer slot of the plugin if it is on the mixer.
-  Leave this parameter empty if the plugin is on the channel rack.
+  Leave this parameter unset, or set it to `-1` if the plugin is on the channel
+  rack.
+
+Tuple packing and unpacking can be used to simplify this process if your
+script uses these variables a lot.
+
+```py
+# A plugin on channel 42
+index1 = (42,)
+# A plugin on mixer track 12, in slot 5
+index2 = (12, 5)
+
+# If you use the unary `*` operator, the tuple is unpacked to take up multiple
+# arguments. Both of these function calls work correctly.
+plugins.isValid(*index1)
+plugins.isValid(*index2)
+```
+
+Module added in API version 8.
 """
 
 import midi
@@ -20,7 +41,7 @@ import midi
 def isValid(index: int, slotIndex: int = -1) -> bool:
     """Returns whether there is a valid plugin at `index`/`slotIndex`.
 
-    ## NOTE:
+    ## Notes
     * Audio samples are not considered to be plugins in FL Studio.
 
     ## Args:
@@ -194,19 +215,19 @@ def getColor(
     `index`/`slotIndex`.
 
     ## Args:
-     * `index` (`int`): index of plugin on channel rack or mixer
+    * `index` (`int`): index of plugin on channel rack or mixer
 
-     * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
+    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
 
-     * `flag` (`int`, optional): color type to return:
-          * `GC_BackgroundColor` (`0`, default): The darkest background color
-          of the plugin.
+    * `flag` (`int`, optional): color type to return:
+         * `GC_BackgroundColor` (`0`, default): The darkest background color
+         of the plugin.
 
-          * `GC_Semitone` (`1`): Retrieves semitone color (in FPC, returns
-            color of drum pads).
+         * `GC_Semitone` (`1`): Retrieves semitone color (in FPC, returns
+           color of drum pads).
 
     ## Returns:
-     * `int`: color (`0x--BBGGRR`)
+    * `int`: color (`0x--BBGGRR`)
 
     Included since API version 12
     """
@@ -227,12 +248,12 @@ def getName(
     * Fixing the markdown formatting here: I can't get it to behave in VS Code.
 
     ## Args:
-     * `index` (`int`): index of plugin on channel rack or mixer
+    * `index` (`int`): index of plugin on channel rack or mixer
 
-     * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
+    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
 
-     * `flag` (`int`, optional): name type to return. Names marked with a *
-       require the `paramIndex` parameter in order to work correctly.
+    * `flag` (`int`, optional): name type to return. Names marked with a *
+      require the `paramIndex` parameter in order to work correctly.
           * `FPN_Param` (`0`, default) * : Name of plugin parameter.
               * Eg: `"Expression"`
 
@@ -263,8 +284,8 @@ def getName(
           * `FPN_VoiceColor` (`9`): For plugins that output voices, the name of output voice
               * `paramIndex` as voice number?
 
-     * `paramIndex` (`int`, optional): index required by requested flag (if
-       necessary)
+    * `paramIndex` (`int`, optional): index required by requested flag (if
+      necessary)
 
     ## Returns:
      * `str`: name of requested parameter
