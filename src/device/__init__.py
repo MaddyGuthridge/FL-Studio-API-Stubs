@@ -400,14 +400,22 @@ def dispatch(
     message: int,
     sysex: Optional[bytes] = None
 ) -> None:
-    """Dispatch a MIDI message (either via a standard MIDI Message or through a
+    """
+    Dispatch a MIDI message (either via a standard MIDI Message or through a
     system exclusive (SysEx) message) that is sent to another controller
     script. This allows communication between different devices provided that
     they have a standardized communication method.
 
     MIDI messages sent through this method are received in the same way as all
     other messages, so it should be ensured that they can be differentiated
-    by the receiving controller.
+    by the receiving controller. This can be done by encoding events, for
+    example by implementing the Universal Event Forwarder specification
+    [found here](https://github.com/MiguelGuthridge/Universal-Controller-Script/blob/main/docs/contributing/devices/event_forward.md#forwarded-event-specification).
+    If you choose not to encode messages, you run the risk of having it be
+    impossible to differentiate between events from different ports, as sadly
+    FL Studio has no built-in mechanism for this.
+
+    ## Making your device support event forwarding
 
     In order to allow a device to receive MIDI messages via a dispatch command,
     it must have a `receiveFrom` pre-processor comment for FL Studio to detect
@@ -420,6 +428,20 @@ def dispatch(
     ```
     After this declaration, the script named "My Other Controller" will be able
     to dispatch MIDI messages to the script named "My Controller".
+
+    Note that communication can be bi-directional by listing "My Other
+    Controller" as receiving from "My Controller" as well. If multiple devices
+    can receive from one device, or if there are multiple instances of the one
+    device, each device can be forwarded to from a different ctrlIndex,
+    specified in the function arguments.
+
+    ## Warning:
+    Running this function in the REPL is a very buggy experience. Often, calls
+    to this function will result in an FL Studio crash unless it is run from
+    within one of the callbacks, such as `OnMidiIn()`. As such, it can be best
+    to test it by performing the calls from `OnMidiIn()`, then handling the
+    original event, meaning you can trigger the event forwarding process by
+    repeatedly pressing keys or buttons on your controller.
 
     ## Args:
      * `ctrlIndex` (`int`): index of the controller to dispatch to
@@ -448,7 +470,8 @@ def dispatch(
 
 
 def dispatchReceiverCount() -> int:
-    """Returns the number of device scripts that this script can dispatch to.
+    """
+    Returns the number of device scripts that this script can dispatch to.
 
     ## Returns:
      * `int`: number of available receiver devices.
