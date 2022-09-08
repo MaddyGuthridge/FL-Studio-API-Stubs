@@ -6,7 +6,7 @@ Tests that we get errors when we try to call deprecated functions
 import channels
 import device
 import pytest
-from fl_model.configuration import updateConfig
+from fl_model import resetState
 from fl_model.helpers import file_from_here
 from fl_model.exceptions import FlCallDeprecatedError
 from tests.helpers.temp_file import TemporaryFile
@@ -30,7 +30,7 @@ def test_disallow_deprecated_raises(func, params):
         fileFromHere("disallow_deprecated.json"),
         "fl_config.json"
     ):
-        updateConfig()
+        resetState()
         with pytest.raises(FlCallDeprecatedError):
             func(*params)
 
@@ -44,7 +44,7 @@ def test_old_target_does_not_raise():
         fileFromHere("disallow_deprecated_old_target.json"),
         "fl_config.json"
     ):
-        updateConfig()
+        resetState()
         device.sendMsgGeneric(0, "msg", "last_msg")
 
 
@@ -57,6 +57,6 @@ def test_old_target_raises_for_even_older_deprecations():
         fileFromHere("disallow_deprecated_old_target.json"),
         "fl_config.json"
     ):
-        updateConfig()
+        resetState()
         with pytest.raises(FlCallDeprecatedError):
             channels.processRECEvent(0, 0, 0)

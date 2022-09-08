@@ -2,6 +2,7 @@
 from copy import deepcopy
 from typing import Optional
 from .models import Model, default_model
+from .configuration import updateConfig
 
 
 state: Model = default_model()
@@ -40,6 +41,7 @@ def resetState() -> None:
     """
     Resets the state of the FL Studio model to the default
     """
+    updateConfig()
     setState(default_model())
 
 
