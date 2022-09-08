@@ -80,12 +80,13 @@ class ChannelsModel:
     selected_group: Union[str, 'ellipsis']  # noqa: F821
 
 
-default_channels = ChannelsModel(
-    channel_list=[ChannelPlug(
-        plug=None,
-        name='Sampler',
-        group='',
-        ch_type=ChannelType.SAMPLER,
-    )],
-    selected_group=...,
-)
+def default_channels():
+    return ChannelsModel(
+        channel_list=[ChannelPlug(
+            plug=None,
+            name='Sampler',
+            group='',
+            ch_type=ChannelType.SAMPLER,
+        )],
+        selected_group=...,
+    )

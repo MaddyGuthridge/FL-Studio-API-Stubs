@@ -22,9 +22,10 @@ class DeviceModel:
     dispatch_targets: list[int]
 
 
-default_device = DeviceModel(
-    assigned=True,
-    port=0,
-    name="Device",
-    dispatch_targets=[]
-)
+def default_device():
+    return DeviceModel(
+        assigned=True,
+        port=0,
+        name="Device",
+        dispatch_targets=[]
+    )

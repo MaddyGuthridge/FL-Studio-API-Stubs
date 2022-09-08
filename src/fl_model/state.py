@@ -4,7 +4,7 @@ from typing import Optional
 from .models import Model, default_model
 
 
-state: Model = deepcopy(default_model)
+state: Model = default_model()
 
 
 def getState() -> Model:
@@ -40,7 +40,7 @@ def resetState() -> None:
     """
     Resets the state of the FL Studio model to the default
     """
-    setState(default_model)
+    setState(default_model())
 
 
 class FlContext:

@@ -84,12 +84,13 @@ class GeneralModel:
     tick_num: int = 0
 
 
-default_general = GeneralModel(
-    api_version=processVersion(config['targetApiVersion']),
-    undo=UndoModel(items=[], position=0),
-    ppqn=96,
-    beats=4,
-    metronome=False,
-    pre_count=False,
-    changed=False
-)
+def default_general():
+    return GeneralModel(
+        api_version=processVersion(config['targetApiVersion']),
+        undo=UndoModel(items=[], position=0),
+        ppqn=96,
+        beats=4,
+        metronome=False,
+        pre_count=False,
+        changed=False
+    )

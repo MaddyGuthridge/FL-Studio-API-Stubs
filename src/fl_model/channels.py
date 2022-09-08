@@ -1,5 +1,4 @@
 
-from copy import deepcopy
 from typing import Optional, Union
 
 from . import consts
@@ -84,7 +83,7 @@ def resetChannels() -> None:
     Reset channels to their default state
     """
     fl = getState()
-    fl.channels = deepcopy(default_channels)
+    fl.channels = default_channels()
 
 
 def addSampler(

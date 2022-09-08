@@ -66,24 +66,25 @@ class MixerModel:
     tracks: list[MixerTrack]
 
 
-default_mixer = MixerModel(
-    tracks=[
-        MixerTrack(  # Master
-            selected=True,
-            plugins=[],
-            volume=1.0,
-            pan=0.0,
-            sends=[],
-            muted=False,
-        )
-    ] + [
-        MixerTrack(  # Main tracks
-            selected=False,
-            plugins=[],
-            volume=1.0,
-            pan=0.0,
-            sends=[SendInfo(to=0, amount=1.0)],
-            muted=False,
-        )
-    ] * 125
-)
+def default_mixer():
+    return MixerModel(
+        tracks=[
+            MixerTrack(  # Master
+                selected=True,
+                plugins=[],
+                volume=1.0,
+                pan=0.0,
+                sends=[],
+                muted=False,
+            )
+        ] + [
+            MixerTrack(  # Main tracks
+                selected=False,
+                plugins=[],
+                volume=1.0,
+                pan=0.0,
+                sends=[SendInfo(to=0, amount=1.0)],
+                muted=False,
+            )
+        ] * 125
+    )

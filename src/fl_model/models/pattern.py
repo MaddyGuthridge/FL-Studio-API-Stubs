@@ -89,6 +89,5 @@ class PatternListModel:
     all_patterns_shown: bool = True
 
 
-default_pattern_list = PatternListModel(
-    [PatternModel(1, i) for i in range(1000)]
-)
+def default_pattern_list():
+    return PatternListModel([PatternModel(1, i) for i in range(1000)])

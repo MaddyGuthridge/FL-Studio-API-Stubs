@@ -62,9 +62,10 @@ class UiModel:
     selection: ActivitySelection
 
 
-default_ui = UiModel(
-    active_window=WindowIndex.MIXER,
-    active_generator=0,
-    active_effect=(0, 0),
-    selection=ActivitySelection.WINDOW
-)
+def default_ui():
+    return UiModel(
+        active_window=WindowIndex.MIXER,
+        active_generator=0,
+        active_effect=(0, 0),
+        selection=ActivitySelection.WINDOW
+    )

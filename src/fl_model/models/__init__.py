@@ -40,13 +40,22 @@ class Model:
 
     * `ui`
     """
-    channels: ChannelsModel = default_channels
-    device: DeviceModel = default_device
-    general: GeneralModel = default_general
-    mixer: MixerModel = default_mixer
-    transport: TransportModel = default_transport
-    ui: UiModel = default_ui
-    patterns: PatternListModel = default_pattern_list
+    channels: ChannelsModel
+    device: DeviceModel
+    general: GeneralModel
+    mixer: MixerModel
+    transport: TransportModel
+    ui: UiModel
+    patterns: PatternListModel
 
 
-default_model = Model()
+def default_model():
+    return Model(
+        channels=default_channels(),
+        device=default_device(),
+        general=default_general(),
+        mixer=default_mixer(),
+        transport=default_transport(),
+        ui=default_ui(),
+        patterns=default_pattern_list(),
+    )
