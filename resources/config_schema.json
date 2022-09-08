@@ -5,7 +5,7 @@
   "type": "object",
   "properties": {
     "disallowDeprecated": {
-      "description": "Should calling a deprecated function raise an error",
+      "description": "Should calling a deprecated function raise an error?",
       "type": "boolean",
       "default": false
     },
@@ -13,6 +13,17 @@
       "description": "Should calling a function that echoes a keyboard shortcut raise an error?",
       "type": "boolean",
       "default": false
+    },
+    "targetFlVersion": {
+      "description": "The version of the FL Studio Python API that you are targeting.",
+      "type": "integer",
+      "default": -1
+    },
+    "unsupportedFunctionBehavior": {
+      "description": "The behavior that the API will take when trying to call a function that isn't supported in the targeted API version.",
+      "type": "string",
+      "enum": ["nothing", "warning", "error"],
+      "default": "warning"
     }
   }
 }
