@@ -15,6 +15,7 @@ Allows you to control and interact with the FL Studio Playlist.
  * Explanations for live performance related functions
 """
 
+from fl_model import since
 import midi
 
 
@@ -147,6 +148,7 @@ def muteTrack(index: int) -> None:
     """
 
 
+@since(2)
 def isTrackMuteLock(index: int) -> bool:
     """Returns whether the mute status of the track at `index` is locked (meaning
     that solo/unsolo commands won't affect its mute status).
@@ -165,6 +167,7 @@ def isTrackMuteLock(index: int) -> bool:
     return False
 
 
+@since(2)
 def muteTrackLock(index: int) -> None:
     """Toggle whether the track at `index`'s mute status is locked (meaning that
     solo/unsolo commands won't affect its mute status).
@@ -213,6 +216,7 @@ def soloTrack(index: int, value: int = -1) -> None:
     """
 
 
+@since(12)
 def isTrackSelected(index: int) -> bool:
     """Returns whether the track at `index` is selected
 
@@ -230,6 +234,7 @@ def isTrackSelected(index: int) -> bool:
     return False
 
 
+@since(12)
 def selectTrack(index: int) -> None:
     """Toggle whether the track at `index` is selected. A deselected track will
     become selected and a selected track will become deselected.
@@ -244,6 +249,7 @@ def selectTrack(index: int) -> None:
     """
 
 
+@since(12)
 def selectAll() -> None:
     """Select all tracks on the playlist
 
@@ -251,6 +257,7 @@ def selectAll() -> None:
     """
 
 
+@since(12)
 def deselectAll() -> None:
     """Deselect all tracks on the playlist
 

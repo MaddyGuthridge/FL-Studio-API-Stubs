@@ -34,10 +34,11 @@ plugins.isValid(*index2)
 
 Module added in API version 8.
 """
-
+from fl_model import since
 import midi
 
 
+@since(8)
 def isValid(index: int, slotIndex: int = -1) -> bool:
     """Returns whether there is a valid plugin at `index`/`slotIndex`.
 
@@ -57,6 +58,7 @@ def isValid(index: int, slotIndex: int = -1) -> bool:
     return False
 
 
+@since(12)
 def getPluginName(index: int, slotIndex: int = -1, userName: int = 0) -> str:
     """Returns the name of the plugin at `index`/slotIndex`. This returns the
     original plugin name if `userName` is `False`, otherwise the name of the
@@ -76,6 +78,7 @@ def getPluginName(index: int, slotIndex: int = -1, userName: int = 0) -> str:
     return ""
 
 
+@since(8)
 def getParamCount(index: int, slotIndex: int = -1) -> int:
     """Returns the number of parameters that the plugin at `index`/`slotIndex`
     has.
@@ -99,6 +102,7 @@ def getParamCount(index: int, slotIndex: int = -1) -> int:
     return 0
 
 
+@since(8)
 def getParamName(paramIndex: int, index: int, slotIndex: int = -1) -> str:
     """Returns the name of the parameter at `paramIndex` for the plugin at
     `index`/`slotIndex`.
@@ -122,6 +126,7 @@ def getParamName(paramIndex: int, index: int, slotIndex: int = -1) -> str:
     return ""
 
 
+@since(8)
 def getParamValue(paramIndex: int, index: int, slotIndex: int = -1) -> float:
     """Returns the value of the parameter at `paramIndex` for the plugin at
     `index`/`slotIndex`.
@@ -148,6 +153,7 @@ def getParamValue(paramIndex: int, index: int, slotIndex: int = -1) -> float:
     return 0.0
 
 
+@since(8)
 def setParamValue(
     value: float,
     paramIndex: int,
@@ -174,6 +180,7 @@ def setParamValue(
     """
 
 
+@since(8)
 def getParamValueString(
     paramIndex: int,
     index: int,
@@ -206,6 +213,7 @@ def getParamValueString(
     return ""
 
 
+@since(12)
 def getColor(
     index: int,
     slotIndex: int = -1,
@@ -234,6 +242,7 @@ def getColor(
     return 0
 
 
+@since(13)
 def getName(
     index: int,
     slotIndex: int = -1,
@@ -295,6 +304,7 @@ def getName(
     return ""
 
 
+@since(19)
 def getPadInfo(
     chanIndex: int,
     slotIndex: int = -1,
@@ -337,6 +347,7 @@ def getPadInfo(
     return 0
 
 
+@since(15)
 def getPresetCount(index: int, slotIndex: int = -1) -> int:
     """Returns the number of presets available for the selected plugin.
 
@@ -350,6 +361,7 @@ def getPresetCount(index: int, slotIndex: int = -1) -> int:
     return 0
 
 
+@since(10)
 def nextPreset(index: int, slotIndex: int = -1) -> None:
     """Navigate to the next preset for plugin at `index`/`slotIndex`.
 
@@ -361,6 +373,7 @@ def nextPreset(index: int, slotIndex: int = -1) -> None:
     """
 
 
+@since(10)
 def prevPreset(index: int, slotIndex: int = -1) -> None:
     """Navigate to the previous preset for plugin at `index`/`slotIndex`.
 

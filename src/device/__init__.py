@@ -5,7 +5,7 @@ scripts communicate with each other.
 """
 
 from typing import Optional
-from fl_model import getState as __getState, deprecate
+from fl_model import getState as __getState, deprecate, since
 
 
 def isAssigned() -> bool:
@@ -34,6 +34,7 @@ def getPortNumber() -> int:
     return __getState().device.port
 
 
+@since(7)
 def getName() -> str:
     """Returns the name of the device.
 
@@ -45,6 +46,7 @@ def getName() -> str:
     return __getState().device.name
 
 
+@since(2)
 def midiOutMsg(
     message: int,
     channel: int = -1,
@@ -152,6 +154,7 @@ def processMIDICC(eventData) -> None:
     """
 
 
+@since(7)
 def forwardMIDICC(message: int, mode: int = 1) -> None:
     """Forwards a MIDI CC message to the currently focused plugin.
 
@@ -246,6 +249,7 @@ def getLinkedValue(eventID: int) -> float:
     return 0.0
 
 
+@since(10)
 def getLinkedValueString(eventID: int) -> str:
     """Returns text value of the REC event at `eventID`
 
@@ -271,6 +275,7 @@ def getLinkedValueString(eventID: int) -> str:
     return ""
 
 
+@since(10)
 def getLinkedParamName(eventID: int) -> str:
     """Returns the parameter name of the REC event at `eventID`.
 
@@ -461,6 +466,7 @@ def dispatchReceiverCount() -> int:
     return len(__getState().device.dispatch_targets)
 
 
+@since(5)
 def dispatchGetReceiverPortNumber(ctrlIndex: int) -> int:
     """Returns the port of the receiver device specified by `ctrlIndex`.
 
@@ -479,6 +485,7 @@ def dispatchGetReceiverPortNumber(ctrlIndex: int) -> int:
     return t[ctrlIndex]
 
 
+@since(18)
 def setMasterSync(value: int) -> None:
     """
     Control the value of the "send master sync" option in FL Studio's MIDI
@@ -496,6 +503,7 @@ def setMasterSync(value: int) -> None:
     """
 
 
+@since(19)
 def getMasterSync() -> bool:
     """
     Returns the value of the "send master sync" option in FL Studio's MIDI

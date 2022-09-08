@@ -29,7 +29,7 @@ def deprecate(version: int):
                     f"{target} >= deprecated in {version}"
                 )
             else:
-                func(*args, **kwargs)
+                return func(*args, **kwargs)
         return inner
     return decorator
 
@@ -55,6 +55,6 @@ def since(version: int):
                     f"{target} < added in {version}"
                 )
             else:
-                func(*args, **kwargs)
+                return func(*args, **kwargs)
         return inner
     return decorator

@@ -124,11 +124,12 @@ def getCurrentStepParam(index: int, step: int, param: int) -> int:
 def setStepParameterByIndex(*args) -> None:
     """
     ???
+    TODO
 
     ## WARNING:
     * This function has no official documentation
 
-    Included since API Version 20?
+    Included since API Version 1
     """
 
 

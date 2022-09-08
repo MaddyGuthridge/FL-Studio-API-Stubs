@@ -4,7 +4,7 @@ patterns > properties
 Managing properties of patterns
 """
 
-from fl_model import getState
+from fl_model import getState, since
 from fl_model.patterns import getPatternReference, isPatternVisible
 from fl_model.consts import PATTERN_COUNT
 from .__helpers import checkIndex
@@ -178,6 +178,7 @@ def findFirstNextEmptyPat(flags: int, x: int = -1, y: int = -1) -> None:
     """
 
 
+@since(2)
 def isPatternSelected(index: int) -> bool:
     """Returns whether the pattern at `index` is selected.
 
@@ -193,6 +194,7 @@ def isPatternSelected(index: int) -> bool:
     return getState().patterns.p[index].selected
 
 
+@since(2)
 def selectPattern(index: int, value: int = -1, preview: bool = False) -> None:
     """Selects the pattern at `index`.
 
@@ -236,6 +238,7 @@ def selectPattern(index: int, value: int = -1, preview: bool = False) -> None:
                 break
 
 
+@since(2)
 def selectAll() -> None:
     """Selects all patterns
 
@@ -247,6 +250,7 @@ def selectAll() -> None:
         selectPattern(i, True)
 
 
+@since(2)
 def deselectAll() -> None:
     """Deselects all patterns
 
@@ -256,6 +260,7 @@ def deselectAll() -> None:
         selectPattern(i, False)
 
 
+@since(9)
 def burnLoop(index: int, storeUndo: int = 1, updateUi: int = 1) -> None:
     """For a pattern where looping of step sequenced channels is enabled,
     disable looping for the channel at index `i`.

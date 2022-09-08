@@ -5,7 +5,7 @@ Function definitions for managing channel properties.
 """
 import midi
 import utils
-from fl_model import getState, deprecate
+from fl_model import getState, deprecate, since
 from fl_model.consts import oo
 from fl_model.channels import (
     getChannelsInGroup,
@@ -163,6 +163,8 @@ def muteChannel(index: int) -> None:
 
     ## Args:
      * `index` (`int`): index of channel
+
+    Included since API version 1
     """
     checkGroupIndex(index)
     getGroupedChannelReference(index).muted = not isChannelMuted(index)
@@ -295,6 +297,7 @@ def setChannelPan(index: int, pan: float, pickupMode: int = midi.PIM_None) -> No
     getState().channels.channel_list[index_global].pan = clamp(pan, min=-1)
 
 
+@since(8)
 def getChannelPitch(index: int, mode: int = 0) -> 'float | int':
     """Returns the current pitch bend (or range) of the channel at `index`.
     The `mode` parameter is used to determine the type of pitch returned.
@@ -326,6 +329,7 @@ def getChannelPitch(index: int, mode: int = 0) -> 'float | int':
     return 0.0
 
 
+@since(8)
 def setChannelPitch(index: int, value: float, mode: int = 0, pickupMode: int = midi.PIM_None) -> 'float | int':
     """Sets the pitch of the channel at `index` to value. The `mode` parameter is used
     to determine the type of pitch set. Use the pickup mode flag to set pickup
@@ -355,6 +359,7 @@ def setChannelPitch(index: int, value: float, mode: int = 0, pickupMode: int = m
     return 0
 
 
+@since(19)
 def getChannelType(index: int) -> int:
     """
     Returns the type of instrument loaded into the channel rack at `index`
@@ -423,6 +428,7 @@ def selectChannel(index: int, value: int = -1) -> None:
     getState().channels.channel_list[index_global].selected = bool_val
 
 
+@since(8)
 def selectOneChannel(index: int) -> None:
     """Exclusively select the channel at `index` (deselecting any other selected
     channels).
@@ -438,6 +444,7 @@ def selectOneChannel(index: int) -> None:
     getState().channels.channel_list[index_global].selected = True
 
 
+@since(5)
 def selectedChannel(
     canBeNone: bool = False,
     offset: int = 0,

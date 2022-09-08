@@ -3,7 +3,7 @@
 Handles general interactions with FL Studio
 """
 
-from fl_model import getState as __getState
+from fl_model import getState as __getState, since
 
 
 def saveUndo(undoName: str, flags: int, update: int = 1) -> None:
@@ -229,6 +229,7 @@ def getRecPPB() -> int:
     return 0
 
 
+@since(8)
 def getRecPPQ() -> int:
     """Returns the current timebase (PPQN)
 
@@ -290,6 +291,7 @@ def getVersion() -> int:
     return __getState().general.api_version
 
 
+@since(7)
 def processRECEvent(eventId: int, value: int, flags: int) -> int:
     """Processes a REC event, usually changing an automatable value.
 
@@ -331,6 +333,7 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
     return 0
 
 
+@since(15)
 def dumpScoreLog(time: int, silent: int = 0) -> None:
     """
     Write recently played MIDI to the selected pattern.
@@ -346,6 +349,7 @@ def dumpScoreLog(time: int, silent: int = 0) -> None:
     """
 
 
+@since(15)
 def clearLog() -> None:
     """Clear the score log
 

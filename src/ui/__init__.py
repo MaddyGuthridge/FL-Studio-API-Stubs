@@ -11,6 +11,7 @@ Allows you to control and interact with FL Studio's UI.
 ## HELP WANTED:
 * What do the return values mean?
 """
+from fl_model import since
 
 
 def jog(value: int) -> int:
@@ -425,6 +426,8 @@ def getHintMsg() -> str:
 
     ## Returns:
      * `str`: hint
+
+    Included since API version 1
     """
     return ""
 
@@ -581,6 +584,7 @@ def showWindow(index: int) -> None:
     """
 
 
+@since(5)
 def hideWindow(index: int) -> None:
     """Hides an FL Studio window specified by `index`.
 
@@ -636,6 +640,7 @@ def getFocused(index: int) -> bool:
     return False
 
 
+@since(2)
 def setFocused(index: int) -> None:
     """Sets which FL Studio window should be focused (meaning it is the
     currently selected Window in FL Studio).
@@ -674,6 +679,7 @@ def getFocusedFormCaption() -> str:
     return ""
 
 
+@since(13)
 def getFocusedFormID() -> int:
     """Returns ID of the focused window.
 
@@ -703,6 +709,7 @@ def getFocusedFormID() -> int:
     return 0
 
 
+@since(5)
 def getFocusedPluginName() -> str:
     """Returns the plugin name for the active window if it is a plugin,
     otherwise an empty string.
@@ -715,6 +722,7 @@ def getFocusedPluginName() -> str:
     return ""
 
 
+@since(13)
 def scrollWindow(index: int, value: int, directionFlag: int = 0) -> None:
     """Scrolls on the window specified by `index`. Value is index for whatever
     is contained on that window (eg channels for the Channel Rack or tracks for
@@ -803,6 +811,7 @@ def launchAudioEditor(reuse: int, filename: str, index: int, preset: str,
     return 0
 
 
+@since(9)
 def openEventEditor(eventId: int, mode: int, newWindow: int = 0) -> int:
     """Launches an event editor for `eventId`.
 
@@ -1037,6 +1046,7 @@ def crDisplayRect(left: int, top: int, right: int, bottom: int, duration: int, f
     """
 
 
+@since(13)
 def miDisplayRect(start: int, end: int, duration: int, flags: int = 0) -> None:
     """Displays a selection rectangle on the mixer
 
@@ -1059,6 +1069,7 @@ def miDisplayRect(start: int, end: int, duration: int, flags: int = 0) -> None:
     """
 
 
+@since(20)
 def getFocusedNodeCaption() -> str:
     """
     Returns the filename associated with the currently selected item in the
@@ -1075,6 +1086,7 @@ def getFocusedNodeCaption() -> str:
     return ""
 
 
+@since(20)
 def getFocusedNodeFileType() -> int:
     """
     Returns a value based on the type of the selected file in the browser
@@ -1090,6 +1102,7 @@ def getFocusedNodeFileType() -> int:
     return 0
 
 
+@since(20)
 def isBrowserAutoHide() -> bool:
     """
     Returns whether the browser is set to auto-hide
@@ -1105,6 +1118,7 @@ def isBrowserAutoHide() -> bool:
     return False
 
 
+@since(20)
 def setBrowserAutoHide(value: int):
     """
     Toggle whether the browser is set to auto-hide
@@ -1119,6 +1133,7 @@ def setBrowserAutoHide(value: int):
     """
 
 
+@since(20)
 def miDisplayDockRect(
     start: int,
     length: int,
@@ -1156,6 +1171,7 @@ def miDisplayDockRect(
     """
 
 
+@since(20)
 def navigateBrowserMenu(*args):
     """
     Navigate within the browser window???
@@ -1170,6 +1186,7 @@ def navigateBrowserMenu(*args):
     """
 
 
+@since(20)
 def previewBrowserMenuItem():
     """
     Preview the currently selected item in the browser
@@ -1181,6 +1198,7 @@ def previewBrowserMenuItem():
     """
 
 
+@since(20)
 def selectBrowserMenuItem():
     """
     ???
@@ -1192,6 +1210,7 @@ def selectBrowserMenuItem():
     """
 
 
+@since(20)
 def showNotification(val: int):
     """
     Show a notification to the user, which is chosen from a set of notification

@@ -3,6 +3,7 @@ channels > ui
 
 Function definitions for managing channel rack UI
 """
+from fl_model import since
 from fl_model.channels import checkGroupIndex, checkGlobalIndex
 
 
@@ -111,6 +112,7 @@ def showCSForm(index: int, state: int = 1) -> None:
     checkGroupIndex(index)
 
 
+@since(9)
 def getActivityLevel(index: int) -> float:
     """Return the note activity level for channel at `index`. Activity level
     refers to how recently a note was played, as well as whether any notes are
