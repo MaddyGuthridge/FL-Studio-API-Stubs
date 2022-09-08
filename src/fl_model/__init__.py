@@ -12,6 +12,7 @@ __all__ = [
     'setState',
     'resetState',
     'FlContext',
+    'config',
 ]
 
 from .state import (
@@ -20,3 +21,5 @@ from .state import (
     resetState,
     FlContext,
 )
+
+from .config import config

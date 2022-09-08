@@ -9,6 +9,7 @@
         "desynchronize",
         "falsiness",
         "indexedness",
+        "jsonschema",
         "MIDICC",
         "mypy",
         "pdoc",

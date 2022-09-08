@@ -1,0 +1,7 @@
+{
+  "$schema": "./config_schema.json",
+  "disallowDeprecated": true,
+  "disallowKeyEchoes": false,
+  "targetApiVersion": "latest",
+  "unsupportedFunctionBehavior": "warning"
+}

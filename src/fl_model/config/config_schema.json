@@ -1,7 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "title": "FL Studio API Stubs Model Config",
-  "description": "Configuration file schema for the FL Studio API Stubs project",
+  "description": "Configuration file schema for the FL Studio API Stubs project. You should place this schema in an `fl_config.json` file in your project.",
+
+  "$comment": "If updating this schema, also update the default configuration and config_typings.py",
+
   "type": "object",
   "properties": {
     "disallowDeprecated": {
@@ -14,10 +17,14 @@
       "type": "boolean",
       "default": false
     },
-    "targetFlVersion": {
-      "description": "The version of the FL Studio Python API that you are targeting.",
-      "type": "integer",
-      "default": -1
+    "targetApiVersion": {
+      "description": "The version of the FL Studio Python API that you are targeting, either as an FL Studio version or an API version.",
+      "type": ["integer", "string"],
+      "anyOf": [
+        {"type": "number", "minimum": 1, "maximum": 20},
+        {"enum": ["latest", "20.9.2", "20.8.4"]}
+      ],
+      "default": "latest"
     },
     "unsupportedFunctionBehavior": {
       "description": "The behavior that the API will take when trying to call a function that isn't supported in the targeted API version.",
