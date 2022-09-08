@@ -41,7 +41,8 @@ def getConfig() -> FlModelConfig:
     try:
         config = loadConfig()
     except OSError:
-        config = loadDefaultConfig()
+        config = {}
+    default_config = loadDefaultConfig()
     schema = loadSchema()
     # Validate the config
     try:
@@ -50,4 +51,4 @@ def getConfig() -> FlModelConfig:
         raise ConfigurationError(
             "Failed to validate FL Studio API Stubs configuration"
         ) from e
-    return config
+    return default_config | config

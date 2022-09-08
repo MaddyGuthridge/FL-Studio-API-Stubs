@@ -1,0 +1,5 @@
+{
+  "$schema": "../../src/fl_model/config/schema.json",
+  "$comment": "A configuration that overrides one property",
+  "disallowDeprecated": true
+}

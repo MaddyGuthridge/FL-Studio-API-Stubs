@@ -1,6 +1,6 @@
 {
   "$schema": "./schema.json",
-  "disallowDeprecated": true,
+  "disallowDeprecated": false,
   "disallowKeyEchoes": false,
   "targetApiVersion": "latest",
   "unsupportedFunctionBehavior": "warning"
