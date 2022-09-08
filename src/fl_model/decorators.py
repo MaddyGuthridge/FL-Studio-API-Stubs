@@ -4,16 +4,8 @@ fl_model > decorators
 Contains decorators used throughout the project
 """
 from functools import wraps
-from fl_model import config
-from fl_model.configuration.target_version import processVersion
+from fl_model import getState, config
 from fl_model.exceptions import FlCallDeprecatedError, FlCallFutureError
-
-
-def prettyVersion(version) -> str:
-    if isinstance(config["targetApiVersion"], str):
-        return f"{version} ({config['targetApiVersion']})"
-    else:
-        return str(version)
 
 
 def deprecate(version: int):
@@ -27,15 +19,14 @@ def deprecate(version: int):
     def decorator(func):
         @wraps(func)
         def inner(*args, **kwargs):
-            target = processVersion(config["targetApiVersion"])
-            target_s = config["targetApiVersion"]
+            target = getState().general.api_version
             if (
                 target >= version
                 and config["disallowDeprecatedFunctions"]
             ):
                 raise FlCallDeprecatedError(
                     f"Attempt to call deprecated function {func} (target "
-                    f"{prettyVersion(target_s)} >= deprecated in {version}"
+                    f"{target} >= deprecated in {version}"
                 )
             else:
                 func(*args, **kwargs)
@@ -54,15 +45,14 @@ def since(version: int):
     def decorator(func):
         @wraps(func)
         def inner(*args, **kwargs):
-            target = processVersion(config["targetApiVersion"])
-            target_s = config["targetApiVersion"]
+            target = getState().general.api_version
             if (
                 target < version
                 and config["disallowFutureFunctions"]
             ):
                 raise FlCallFutureError(
                     f"Attempt to call function from the future {func} (target "
-                    f"{prettyVersion(target_s)} < added in {version}"
+                    f"{target} < added in {version}"
                 )
             else:
                 func(*args, **kwargs)
