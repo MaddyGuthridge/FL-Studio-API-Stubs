@@ -135,6 +135,8 @@ def sendMsgGeneric(
     * `str`: value to use in the next call of this function
 
     Included since API version 1
+
+    Deprecated since API version 9
     """
     return ""
 

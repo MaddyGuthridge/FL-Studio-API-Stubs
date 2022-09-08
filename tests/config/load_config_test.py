@@ -4,7 +4,7 @@ tests > config > load_config_test.py
 Tests to ensure that the configuration system is working correctly
 """
 import pytest
-from fl_model.exceptions import ConfigurationError
+from fl_model.exceptions import FlConfigurationError
 from fl_model.config.load_data import getConfig
 from fl_model.helpers import file_from_here
 from tests.helpers.temp_file import TemporaryFile
@@ -34,7 +34,7 @@ def test_load_invalid_bad_property():
     properties?
     """
     with TemporaryFile(fileFromHere('invalid_bad_property.json'), "fl_config.json"):
-        with pytest.raises(ConfigurationError):
+        with pytest.raises(FlConfigurationError):
             getConfig()
 
 
@@ -44,5 +44,5 @@ def test_load_invalid_bad_type():
     types?
     """
     with TemporaryFile(fileFromHere('invalid_bad_type.json'), "fl_config.json"):
-        with pytest.raises(ConfigurationError):
+        with pytest.raises(FlConfigurationError):
             getConfig()

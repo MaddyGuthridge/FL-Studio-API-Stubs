@@ -7,13 +7,15 @@ for unit tests for the API stubs. They should not be used within runtime code.
 """
 
 
-class FlError(TypeError):
+class FlStudioError(TypeError):
     """
-    Errors raised by the mock API, useful for unit tests
+    Errors raised by the mock API which would have been raised by FL Studio.
+    Unlike in FL Studio, the errors are distinguished using subclasses in order
+    to help improve the testing experience.
     """
 
 
-class FlIndexError(FlError):
+class FlIndexError(FlStudioError):
     """
     Raised in places where an IndexError would ordinarily be raised in the API
     (eg when attempting to access a track that does not exist).
@@ -22,7 +24,7 @@ class FlIndexError(FlError):
         super().__init__("Index out of range")
 
 
-class FlInvalidPluginError(FlError):
+class FlInvalidPluginError(FlStudioError):
     """
     Raised when a plugin is invalid (eg sampler plugin, or no plugin on mixer
     slot).
@@ -31,7 +33,7 @@ class FlInvalidPluginError(FlError):
         super().__init__("Plugin is not valid")
 
 
-class OperationUnsafeError(FlError):
+class OperationUnsafeError(FlStudioError):
     """
     Raised when attempting to perform an operation that is currently disabled
     in FL Studio. There are various times where most functionality is disabled.
@@ -43,7 +45,7 @@ class OperationUnsafeError(FlError):
         super().__init__("Operation unsafe at current time")
 
 
-class DeviceUnassignedError(FlError):
+class DeviceUnassignedError(FlStudioError):
     """
     Raised when attempting to interact with a device (eg sending a MIDI
     message) if the device isn't currently available to dispatch to (eg if
@@ -52,10 +54,24 @@ class DeviceUnassignedError(FlError):
     """
 
 
-class ConfigurationError(RuntimeError):
+class FlStubsError(Exception):
+    """
+    Errors raised by the mock API which would not have been raised by FL
+    Studio. These are often raised in order to prevent bad practices such as
+    calling deprecated functions.
+    """
+
+
+class FlConfigurationError(FlStubsError):
     """
     Failed to load configuration file for the `fl_model`.
 
     This exception is raised due to poor configuration of the testing system,
     and will never be raised by FL Studio.
+    """
+
+
+class FlCallDeprecatedError(FlStubsError):
+    """
+    Raised when attempting to call a deprecated function
     """

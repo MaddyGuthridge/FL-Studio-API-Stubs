@@ -5,7 +5,7 @@ Responsible for loading and validating data in the FL Studio configuration.
 """
 import json
 import jsonschema
-from fl_model.exceptions import ConfigurationError
+from fl_model.exceptions import FlConfigurationError
 from fl_model.helpers import file_from_here
 from .config_typings import FlModelConfig
 
@@ -48,7 +48,7 @@ def getConfig() -> FlModelConfig:
     try:
         jsonschema.validate(config, schema)
     except jsonschema.ValidationError as e:
-        raise ConfigurationError(
+        raise FlConfigurationError(
             "Failed to validate FL Studio API Stubs configuration"
         ) from e
     return default_config | config

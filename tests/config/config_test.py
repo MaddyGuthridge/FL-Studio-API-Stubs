@@ -31,6 +31,9 @@ def test_override_properties():
     """
     When we load a configuration, does it override the correct properties
     """
-    with TemporaryFile(fileFromHere("override_config.json"), "fl_config.json"):
+    with TemporaryFile(
+        fileFromHere("disallow_deprecated.json"),
+        "fl_config.json"
+    ):
         config = getConfig()
         assert config['disallowDeprecated']

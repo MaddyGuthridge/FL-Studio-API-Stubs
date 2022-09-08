@@ -1,0 +1,6 @@
+{
+  "$schema": "../../src/fl_model/config/schema.json",
+  "$comment": "A configuration that disallows calling deprecated functions, but is targeting an old version of the API",
+  "disallowDeprecated": true,
+  "targetApiVersion": 8
+}

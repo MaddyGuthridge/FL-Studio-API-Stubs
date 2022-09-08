@@ -555,13 +555,13 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
     """Processes a recording event.
 
     ## WARNING:
-    * This function is depreciated here, and moved to the `general` module as
+    * This function is deprecated here, and moved to the `general` module as
       of API version 7.
 
     ## Args:
      * `eventId` (`int`): Refer to the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#RecEventParams)
 
-     * `value` (`int`): value of even within range (0 - midi.FromMIDI_Max)
+     * `value` (`int`): value of even within range (`0` - `midi.FromMIDI_Max`)
 
      * `flags` (`int`): Refer to the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#RecEventFlags)
 
@@ -569,7 +569,8 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
      * `int`: Unknown
 
     Included since API version 1
-    Depreciated since API version 7
+
+    Deprecated since API version 7
     """
     return 0
 
