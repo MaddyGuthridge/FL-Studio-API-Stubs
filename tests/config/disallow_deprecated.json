@@ -1,5 +1,5 @@
 {
-  "$schema": "../../src/fl_model/config/schema.json",
+  "$schema": "../../src/fl_model/configuration/schema.json",
   "$comment": "A configuration that disallows calling deprecated functions",
-  "disallowDeprecated": true
+  "disallowDeprecatedFunctions": true
 }

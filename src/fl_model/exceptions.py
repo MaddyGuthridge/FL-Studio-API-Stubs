@@ -73,5 +73,13 @@ class FlConfigurationError(FlStubsError):
 
 class FlCallDeprecatedError(FlStubsError):
     """
-    Raised when attempting to call a deprecated function
+    Raised when attempting to call a deprecated function if disallowDeprecated
+    is enabled in the configuration.
+    """
+
+
+class FlCallFutureError(FlStubsError, NameError):
+    """
+    Raised when attempting to call a function that does not exist for the
+    currently targeted API version.
     """

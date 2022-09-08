@@ -10,18 +10,23 @@
   "properties": {
     "$schema": {},
     "$comment": {},
-    "disallowDeprecated": {
-      "description": "Should calling a deprecated function raise an error?",
+    "disallowDeprecatedFunctions": {
+      "description": "Should calling a deprecated function raise an error? (boolean)",
       "type": "boolean",
       "default": false
     },
+    "disallowFutureFunctions": {
+      "description": "Should calling a function added in an API version greater than the target version raise an error? (boolean)",
+      "type": "boolean",
+      "default": true
+    },
     "disallowKeyEchoes": {
-      "description": "Should calling a function that echoes a keyboard shortcut raise an error?",
+      "description": "Should calling a function that echoes a keyboard shortcut raise an error? (boolean)",
       "type": "boolean",
       "default": false
     },
     "targetApiVersion": {
-      "description": "The version of the FL Studio Python API that you are targeting, either as an FL Studio version or an API version.",
+      "description": "The version of the FL Studio Python API that you are targeting, either as an FL Studio version or an API version. (number or string)",
       "type": ["integer", "string"],
       "anyOf": [
         {"type": "number", "minimum": 1, "maximum": 20},
@@ -30,7 +35,7 @@
       "default": "latest"
     },
     "unsupportedFunctionBehavior": {
-      "description": "The behavior that the API will take when trying to call a function that isn't supported in the targeted API version.",
+      "description": "The behavior that the API will take when trying to call a function that isn't supported in the targeted API version. (string)",
       "type": "string",
       "enum": ["nothing", "warning", "error"],
       "default": "warning"

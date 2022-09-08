@@ -15,7 +15,7 @@ def test_defaults():
     Can we access the default settings?
     """
     config = getConfig()
-    assert not config['disallowDeprecated']
+    assert not config['disallowDeprecatedFunctions']
 
 
 def test_empty_config_leaves_defaults():
@@ -24,7 +24,7 @@ def test_empty_config_leaves_defaults():
     """
     with TemporaryFile(fileFromHere("empty_config.json"), "fl_config.json"):
         config = getConfig()
-        assert not config['disallowDeprecated']
+        assert not config['disallowDeprecatedFunctions']
 
 
 def test_override_properties():
@@ -36,4 +36,4 @@ def test_override_properties():
         "fl_config.json"
     ):
         config = getConfig()
-        assert config['disallowDeprecated']
+        assert config['disallowDeprecatedFunctions']

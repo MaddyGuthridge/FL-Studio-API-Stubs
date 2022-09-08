@@ -22,7 +22,8 @@ class FlModelConfig(TypedDict):
     """
     A type definition for the configuration file
     """
-    disallowDeprecated: bool
+    disallowDeprecatedFunctions: bool
+    disallowFutureFunctions: bool
     disallowKeyEchoes: bool
     targetApiVersion: ApiVersion
     unsupportedFunctionBehavior: Union[
