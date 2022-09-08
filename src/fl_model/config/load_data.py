@@ -3,11 +3,13 @@ fl_model > config > load_data
 
 Responsible for loading and validating data in the FL Studio configuration.
 """
-
 import json
 import jsonschema
-import pathlib
+from fl_model.exceptions import ConfigurationError
+from fl_model.helpers import file_from_here
 from .config_typings import FlModelConfig
+
+fileFromHere = file_from_here.generate(__file__)
 
 
 def loadConfig():
@@ -21,20 +23,14 @@ def loadSchema():
     """
     Load the JSON schema used to validate the configuration
     """
-    schema_file = str(pathlib.Path(__file__)
-                             .parent
-                             .joinpath("config_schema.json"))
-    return json.load(open(schema_file))
+    return json.load(open(fileFromHere("schema.json")))
 
 
 def loadDefaultConfig():
     """
     Load the default configuration file
     """
-    config_file = str(pathlib.Path(__file__)
-                             .parent
-                             .joinpath("config_default.json"))
-    return json.load(open(config_file))
+    return json.load(open(fileFromHere("default.json")))
 
 
 def getConfig() -> FlModelConfig:
@@ -51,7 +47,7 @@ def getConfig() -> FlModelConfig:
     try:
         jsonschema.validate(config, schema)
     except jsonschema.ValidationError as e:
-        raise RuntimeError(
+        raise ConfigurationError(
             "Failed to validate FL Studio API Stubs configuration"
         ) from e
     return config

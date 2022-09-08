@@ -1,5 +1,5 @@
 {
-  "$schema": "./config_schema.json",
+  "$schema": "./schema.json",
   "disallowDeprecated": true,
   "disallowKeyEchoes": false,
   "targetApiVersion": "latest",

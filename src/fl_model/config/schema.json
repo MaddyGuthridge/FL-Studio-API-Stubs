@@ -6,7 +6,10 @@
   "$comment": "If updating this schema, also update the default configuration and config_typings.py",
 
   "type": "object",
+  "additionalProperties": false,
   "properties": {
+    "$schema": {},
+    "$comment": {},
     "disallowDeprecated": {
       "description": "Should calling a deprecated function raise an error?",
       "type": "boolean",

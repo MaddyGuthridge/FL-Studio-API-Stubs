@@ -1,0 +1,4 @@
+{
+  "$schema": "../../src/fl_model/config/schema.json",
+  "$comment": "An empty configuration should be valid"
+}
