@@ -8,20 +8,23 @@ safety when working with it.
 from typing import TypedDict, Union, Literal
 
 
+ApiVersion = Union[
+    int,
+    Union[
+        Literal["latest"],
+        Literal["20.9.2"],
+        Literal["20.8.4"],
+    ]
+]
+
+
 class FlModelConfig(TypedDict):
     """
     A type definition for the configuration file
     """
     disallowDeprecated: bool
     disallowKeyEchoes: bool
-    targetApiVersion: Union[
-        int,
-        Union[
-            Literal["latest"],
-            Literal["20.9.2"],
-            Literal["20.8.4"],
-        ]
-    ]
+    targetApiVersion: ApiVersion
     unsupportedFunctionBehavior: Union[
         Literal["nothing"],
         Literal["warning"],

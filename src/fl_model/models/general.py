@@ -1,5 +1,7 @@
 
 from dataclasses import dataclass
+from fl_model.configuration.target_version import processVersion
+from fl_model import config
 
 
 @dataclass
@@ -83,7 +85,7 @@ class GeneralModel:
 
 
 default_general = GeneralModel(
-    api_version=20,
+    api_version=processVersion(config['targetApiVersion']),
     undo=UndoModel(items=[], position=0),
     ppqn=96,
     beats=4,

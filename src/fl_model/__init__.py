@@ -13,7 +13,11 @@ __all__ = [
     'resetState',
     'FlContext',
     'config',
+    'deprecate',
 ]
+
+from .configuration import config
+from .decorators import deprecate
 
 from .state import (
     getState,
@@ -21,5 +25,3 @@ from .state import (
     resetState,
     FlContext,
 )
-
-from .config import config

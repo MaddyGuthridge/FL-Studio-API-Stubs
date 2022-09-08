@@ -6,7 +6,7 @@ Tests that we get errors when we try to call deprecated functions
 import channels
 import device
 import pytest
-from fl_model.config import updateConfig
+from fl_model.configuration import updateConfig
 from fl_model.helpers import file_from_here
 from fl_model.exceptions import FlCallDeprecatedError
 from tests.helpers.temp_file import TemporaryFile

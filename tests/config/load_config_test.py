@@ -5,7 +5,7 @@ Tests to ensure that the configuration system is working correctly
 """
 import pytest
 from fl_model.exceptions import FlConfigurationError
-from fl_model.config.load_data import getConfig
+from fl_model.configuration.load_data import getConfig
 from fl_model.helpers import file_from_here
 from tests.helpers.temp_file import TemporaryFile
 

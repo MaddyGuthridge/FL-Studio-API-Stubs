@@ -1,4 +1,6 @@
 
+LATEST_API_VERSION = 20
+
 # infinity
 oo = float('inf')
 

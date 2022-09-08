@@ -5,7 +5,7 @@ scripts communicate with each other.
 """
 
 from typing import Optional
-from fl_model import getState as __getState
+from fl_model import getState as __getState, deprecate
 
 
 def isAssigned() -> bool:
@@ -109,6 +109,7 @@ def midiOutSysex(message: bytes) -> None:
     """
 
 
+@deprecate(9)
 def sendMsgGeneric(
     id: int,
     message: str,

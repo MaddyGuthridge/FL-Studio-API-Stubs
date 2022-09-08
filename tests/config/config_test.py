@@ -3,7 +3,7 @@ tests > config > config_test.py
 
 Tests for the configuration
 """
-from fl_model.config import getConfig
+from fl_model.configuration import getConfig
 from fl_model.helpers import file_from_here
 from tests.helpers.temp_file import TemporaryFile
 

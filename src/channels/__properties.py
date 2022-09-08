@@ -5,7 +5,7 @@ Function definitions for managing channel properties.
 """
 import midi
 import utils
-from fl_model import getState
+from fl_model import getState, deprecate
 from fl_model.consts import oo
 from fl_model.channels import (
     getChannelsInGroup,
@@ -551,6 +551,7 @@ def getTargetFxTrack(index: int) -> int:
     return 0
 
 
+@deprecate(7)
 def processRECEvent(eventId: int, value: int, flags: int) -> int:
     """Processes a recording event.
 
