@@ -83,3 +83,9 @@ class FlCallFutureError(FlStubsError, NameError):
     Raised when attempting to call a function that does not exist for the
     currently targeted API version.
     """
+
+
+class FlCallKeyEchoError(FlStubsError):
+    """
+    Raised when attempting to call a function that echoes a keypress.
+    """
