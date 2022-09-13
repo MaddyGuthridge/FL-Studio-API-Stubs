@@ -20,6 +20,7 @@ class DeviceModel:
     port: int
     name: str
     dispatch_targets: list[int]
+    master_sync: bool
 
 
 def default_device():
@@ -27,5 +28,6 @@ def default_device():
         assigned=True,
         port=0,
         name="Device",
-        dispatch_targets=[]
+        dispatch_targets=[],
+        master_sync=False
     )

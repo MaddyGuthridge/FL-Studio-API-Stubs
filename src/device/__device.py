@@ -179,7 +179,7 @@ def stopRepeatMidiEvent() -> None:
 
 
 @since(18)
-def setMasterSync(value: int) -> None:
+def setMasterSync(value: bool) -> None:
     """
     Control the value of the "send master sync" option in FL Studio's MIDI
     settings for this device.
@@ -190,10 +190,11 @@ def setMasterSync(value: int) -> None:
     broken behavior.
 
     ## Args:
-    * `value` (`int`): Whether to enable (`1`) or disable (`0`)
+    * `value` (`bool`): Whether to enable (or disable
 
     Included since API Version 18
     """
+    getState().device.master_sync = value
 
 
 @since(19)
@@ -208,8 +209,8 @@ def getMasterSync() -> bool:
     broken behavior.
 
     ## Returns:
-    * `bool`: Whether master sync is enabled (`1`) or disabled (`0`)
+    * `bool`: Whether master sync is enabled
 
     Included since API Version 19
     """
-    return False
+    return getState().device.master_sync
