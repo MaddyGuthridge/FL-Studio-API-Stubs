@@ -3,6 +3,5 @@
   "disallowDeprecatedFunctions": false,
   "disallowFutureFunctions": true,
   "disallowKeyEchoes": false,
-  "targetApiVersion": "latest",
-  "unsupportedFunctionBehavior": "warning"
+  "targetApiVersion": "latest"
 }

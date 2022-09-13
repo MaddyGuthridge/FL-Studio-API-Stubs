@@ -26,8 +26,3 @@ class FlModelConfig(TypedDict):
     disallowFutureFunctions: bool
     disallowKeyEchoes: bool
     targetApiVersion: ApiVersion
-    unsupportedFunctionBehavior: Union[
-        Literal["nothing"],
-        Literal["warning"],
-        Literal["error"],
-    ]

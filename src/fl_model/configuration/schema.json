@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "title": "FL Studio API Stubs Model Config",
   "description": "Configuration file schema for the FL Studio API Stubs project. You should place this schema in an `fl_config.json` file in your project.",
 
@@ -33,12 +33,6 @@
         {"enum": ["latest", "20.9.2", "20.8.4"]}
       ],
       "default": "latest"
-    },
-    "unsupportedFunctionBehavior": {
-      "description": "The behavior that the API will take when trying to call a function that isn't supported in the targeted API version. (string)",
-      "type": "string",
-      "enum": ["nothing", "warning", "error"],
-      "default": "warning"
     }
   }
 }
