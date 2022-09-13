@@ -34,14 +34,18 @@ NO_ARGS: Sequence[Callable] = [
 ]
 
 
-ARGS: Sequence[tuple[Callable, tuple]] = [
-    (transport.globalTransport, (param, 1)) for param in [
-        *range(40, 44),
-        *range(50, 55),
-        *range(60, 72),
-        *range(80, 84),
+ARGS: Sequence[tuple[Callable, tuple]] = (
+    [
+        (transport.globalTransport, (param, 1)) for param in [
+            *range(40, 44),
+            *range(50, 55),
+            *range(60, 72),
+            *range(80, 84),
+        ]
     ]
-] + [(func, tuple()) for func in NO_ARGS]  # type: ignore
+    + [(ui.selectWindow, (0,))]  # type: ignore
+    + [(func, tuple()) for func in NO_ARGS]  # type: ignore
+)
 
 
 @pytest.mark.parametrize(
@@ -50,7 +54,7 @@ ARGS: Sequence[tuple[Callable, tuple]] = [
 )
 def test_raises(func, params):
     with TemporaryFile(
-        fileFromHere("disallow_deprecated.json"),
+        fileFromHere("disallow_key_echo.json"),
         "fl_config.json"
     ):
         resetState()

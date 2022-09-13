@@ -14,7 +14,8 @@ __all__ = [
     'FlContext',
     'config',
     'deprecate',
-    'since'
+    'since',
+    'keyEchoes',
 ]
 
 from .configuration import config
@@ -26,4 +27,4 @@ from .state import (
     FlContext,
 )
 
-from .decorators import deprecate, since
+from .decorators import deprecate, since, keyEchoes

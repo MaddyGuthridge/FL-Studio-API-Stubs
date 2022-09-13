@@ -5,7 +5,11 @@ Contains decorators used throughout the project
 """
 from functools import wraps
 from fl_model import getState, config
-from fl_model.exceptions import FlCallDeprecatedError, FlCallFutureError
+from fl_model.exceptions import (
+    FlCallDeprecatedError,
+    FlCallFutureError,
+    FlCallKeyEchoError,
+)
 
 
 def deprecate(version: int):
@@ -53,6 +57,26 @@ def since(version: int):
                 raise FlCallFutureError(
                     f"Attempt to call function from the future {func} (target "
                     f"{target} < added in {version}"
+                )
+            else:
+                return func(*args, **kwargs)
+        return inner
+    return decorator
+
+
+def keyEchoes():
+    """
+    Mark an API function to indicate that it echoes a hotkey
+
+    ## Args:
+    * `version` (`int`): API version where the function was added
+    """
+    def decorator(func):
+        @wraps(func)
+        def inner(*args, **kwargs):
+            if config["disallowKeyEchoes"]:
+                raise FlCallKeyEchoError(
+                    f"Attempt to call function that echoes key-presses {func}"
                 )
             else:
                 return func(*args, **kwargs)

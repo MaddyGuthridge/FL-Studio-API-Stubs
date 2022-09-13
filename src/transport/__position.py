@@ -5,6 +5,7 @@ Dynamic state of transport
 """
 import midi
 from fl_model import getState
+from fl_model.exceptions import FlCallKeyEchoError
 
 
 def start() -> None:
@@ -75,6 +76,15 @@ def setLoopMode() -> None:
     """
 
 
+# Set of commands that echo key-presses for globalTransport
+GT_KEY_ECHOES = {
+    *range(40, 44),
+    *range(50, 55),
+    *range(60, 72),
+    *range(80, 84),
+}
+
+
 def globalTransport(
     command: int,
     value: int,
@@ -111,4 +121,9 @@ def globalTransport(
 
     Included since API version 1
     """
+    if command in GT_KEY_ECHOES:
+        raise FlCallKeyEchoError(
+            "Attempted to call function globalTransport with parameters that "
+            "would lead to a keypress being echoed"
+        )
     return 0
