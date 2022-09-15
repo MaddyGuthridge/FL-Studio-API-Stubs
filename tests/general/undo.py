@@ -92,7 +92,7 @@ def test_undo_multi():
 def test_undo_toggle_multi():
     """
     If we undo multiple things, does the undo toggle keep redoing until we
-    reach the most recent item?
+    reach the most recent item, at which point it undoes again?
     """
     makeUndoHistory(3)
     general.undoUp()
