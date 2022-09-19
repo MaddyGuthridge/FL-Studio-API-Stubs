@@ -6,6 +6,7 @@
         "automatable",
         "autouse",
         "BBGGRR",
+        "deinitialize",
         "desynchronize",
         "falsiness",
         "indexedness",
