@@ -6,7 +6,7 @@ Functions for managing undo and redo
 from fl_model.decorators import deprecate
 
 
-def saveUndo(undoName: str, flags: int, update: int = 1) -> None:
+def saveUndo(undoName: str, flags: int, update: bool = True) -> None:
     """Save an undo point into FL Studio's history.
 
     ## Args:
@@ -163,7 +163,10 @@ def getUndoHistoryPos() -> int:
 
 
 def getUndoHistoryCount() -> int:
-    """Returns the length of the undo history
+    """
+    Returns the total number of items that have ever been added to the undo
+    history including items that have been trimmed by `setUndoHistoryPos()`,
+    but not items that have been trimmed by `setUndoHistoryCount()`.
 
     ## Returns:
      * `int`: number of elements in undo history
@@ -186,10 +189,18 @@ def getUndoHistoryLast() -> int:
 
 
 def setUndoHistoryPos(index: int) -> None:
-    """Removes recent elements from the undo history, leaving only the first
-    `index` elements.
+    """
+    Removes recent elements from the undo history, leaving only the earliest
+    `n = index` elements in the history.
 
-    Essentially an undo
+    This will affect the length of the undo history as per
+    `getUndoHistoryPos()`, but not affect it as per `getUndoHistoryCount()`
+
+    This will not actually undo the actions, just remove them from the undo
+    history. It could be useful for grouping multiple undo items into one.
+
+    ## Known issues:
+    * The browser will not refresh when this action
 
     ## Args:
      * `index` (`int`): number of elements to leave at the start of the history
@@ -199,8 +210,15 @@ def setUndoHistoryPos(index: int) -> None:
 
 
 def setUndoHistoryCount(value: int) -> None:
-    """Removes old elements from the undo history, leaving only the last
-    `index` elements
+    """
+    Removes old elements from the undo history, leaving only the latest
+    `n = index` elements.
+
+    This will affect the length of the undo history as per
+    `getUndoHistoryCount()`, but not affect it as per `getUndoHistoryPos()`
+
+    ## Known issues:
+    * The browser will not refresh when this action
 
     ## Args:
      * `value` (`int`): number of elements to leave at the end of the history
