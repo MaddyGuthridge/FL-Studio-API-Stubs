@@ -119,3 +119,6 @@ pdoc/
 # Temporary files
 temp.*
 temp/
+
+# FL configuration files (used when testing)
+fl_config.json

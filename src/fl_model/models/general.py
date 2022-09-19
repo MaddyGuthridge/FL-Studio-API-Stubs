@@ -1,5 +1,7 @@
 
 from dataclasses import dataclass
+from fl_model.configuration.target_version import processVersion
+from fl_model import config
 
 
 @dataclass
@@ -45,9 +47,15 @@ class UndoModel:
     * `items`: list of items
 
     * `position`: position in undo history
+
+    * `count_len`: length of undo history as per count functions
+
+    * `pos_len` length of undo history as per pos functions
     """
     items: list[UndoItem]
     position: int
+    count_len: int
+    pos_len: int
 
 
 @dataclass
@@ -82,12 +90,18 @@ class GeneralModel:
     tick_num: int = 0
 
 
-default_general = GeneralModel(
-    api_version=20,
-    undo=UndoModel(items=[], position=0),
-    ppqn=96,
-    beats=4,
-    metronome=False,
-    pre_count=False,
-    changed=False
-)
+def default_general():
+    return GeneralModel(
+        api_version=processVersion(config['targetApiVersion']),
+        undo=UndoModel(
+            items=[UndoItem("Last reset", 0)],
+            position=0,
+            count_len=1,
+            pos_len=1,
+        ),
+        ppqn=96,
+        beats=4,
+        metronome=False,
+        pre_count=False,
+        changed=False
+    )

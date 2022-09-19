@@ -3,7 +3,8 @@ channels > notes
 
 Function definitions for managing notes on channels
 """
-from .__helpers import checkGlobalIndex, checkGroupIndex
+from fl_model import since
+from fl_model.channels import checkGlobalIndex, checkGroupIndex
 
 
 def midiNoteOn(indexGlobal: int, note: int, velocity: int, channel: int = -1
@@ -30,6 +31,7 @@ def midiNoteOn(indexGlobal: int, note: int, velocity: int, channel: int = -1
     # TODO: Maintain list of note ons for each channel
 
 
+@since(9)
 def quickQuantize(index: int, startOnly: int = 1) -> None:
     """
     Perform a quick quantize operation on the channel at index

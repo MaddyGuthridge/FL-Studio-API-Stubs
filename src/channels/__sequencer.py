@@ -4,7 +4,7 @@ channels > sequencer
 Function definitions for interacting with the step sequencer
 """
 from fl_model.patterns import getPatternReference
-from .__helpers import checkGroupIndex
+from fl_model.channels import checkGroupIndex
 
 
 def getGridBit(index: int, position: int) -> bool:
@@ -124,11 +124,12 @@ def getCurrentStepParam(index: int, step: int, param: int) -> int:
 def setStepParameterByIndex(*args) -> None:
     """
     ???
+    TODO
 
     ## WARNING:
     * This function has no official documentation
 
-    Included since API Version 20?
+    Included since API Version 1
     """
 
 

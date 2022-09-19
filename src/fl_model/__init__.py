@@ -12,7 +12,13 @@ __all__ = [
     'setState',
     'resetState',
     'FlContext',
+    'config',
+    'deprecate',
+    'since',
+    'keyEchoes',
 ]
+
+from .configuration import config
 
 from .state import (
     getState,
@@ -20,3 +26,5 @@ from .state import (
     resetState,
     FlContext,
 )
+
+from .decorators import deprecate, since, keyEchoes

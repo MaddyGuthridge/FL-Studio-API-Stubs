@@ -28,10 +28,11 @@ class TransportModel:
     markers: list[MarkerModel]
 
 
-default_transport = TransportModel(
-    playing=False,
-    recording=False,
-    position=PositionModel(),
-    length=PositionModel(),
-    markers=[]
-)
+def default_transport():
+    return TransportModel(
+        playing=False,
+        recording=False,
+        position=PositionModel(),
+        length=PositionModel(),
+        markers=[]
+    )

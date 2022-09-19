@@ -3,6 +3,7 @@ transport > state
 
 Constant states of transport
 """
+from fl_model import since
 import midi
 
 
@@ -90,6 +91,7 @@ def setSongPos(position: 'float | int', mode: int = -1) -> None:
     """
 
 
+@since(3)
 def getSongLength(mode: int) -> int:
     """Returns the total length of the song
 
@@ -249,6 +251,7 @@ def continuousMove(speed: int, startStop: int) -> None:
     """
 
 
+@since(2)
 def continuousMovePos(speed: int, startStop: int) -> None:
     """Sets playback speed, allowing a scrub-like functionality
 

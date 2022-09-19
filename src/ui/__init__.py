@@ -11,6 +11,7 @@ Allows you to control and interact with FL Studio's UI.
 ## HELP WANTED:
 * What do the return values mean?
 """
+from fl_model import since, keyEchoes
 
 
 def jog(value: int) -> int:
@@ -154,6 +155,7 @@ def moveJog(value: int) -> int:
     return 0
 
 
+@keyEchoes()
 def up(value: int = 1) -> int:
     """Generic up control.
 
@@ -175,6 +177,7 @@ def up(value: int = 1) -> int:
     return 0
 
 
+@keyEchoes()
 def down(value: int = 1) -> int:
     """Generic down control.
 
@@ -196,6 +199,7 @@ def down(value: int = 1) -> int:
     return 0
 
 
+@keyEchoes()
 def left(value: int = 1) -> int:
     """Generic left control.
 
@@ -217,6 +221,7 @@ def left(value: int = 1) -> int:
     return 0
 
 
+@keyEchoes()
 def right(value: int = 1) -> int:
     """Generic right control.
 
@@ -279,6 +284,7 @@ def snapOnOff() -> int:
     return 0
 
 
+@keyEchoes()
 def cut() -> int:
     """Cut the selection.
 
@@ -294,6 +300,7 @@ def cut() -> int:
     return 0
 
 
+@keyEchoes()
 def copy() -> int:
     """Copy the selection.
 
@@ -309,6 +316,7 @@ def copy() -> int:
     return 0
 
 
+@keyEchoes()
 def paste() -> int:
     """Paste the selection.
 
@@ -324,6 +332,7 @@ def paste() -> int:
     return 0
 
 
+@keyEchoes()
 def insert() -> int:
     """Press the insert key.
 
@@ -339,6 +348,7 @@ def insert() -> int:
     return 0
 
 
+@keyEchoes()
 def delete() -> int:
     """Press the delete key.
 
@@ -354,6 +364,7 @@ def delete() -> int:
     return 0
 
 
+@keyEchoes()
 def enter() -> int:
     """Press the enter key.
 
@@ -369,6 +380,7 @@ def enter() -> int:
     return 0
 
 
+@keyEchoes()
 def escape() -> int:
     """Press the escape key.
 
@@ -384,6 +396,7 @@ def escape() -> int:
     return 0
 
 
+@keyEchoes()
 def yes() -> int:
     """Press the y key.
 
@@ -399,6 +412,7 @@ def yes() -> int:
     return 0
 
 
+@keyEchoes()
 def no() -> int:
     """Press the n key.
 
@@ -425,6 +439,8 @@ def getHintMsg() -> str:
 
     ## Returns:
      * `str`: hint
+
+    Included since API version 1
     """
     return ""
 
@@ -581,6 +597,7 @@ def showWindow(index: int) -> None:
     """
 
 
+@since(5)
 def hideWindow(index: int) -> None:
     """Hides an FL Studio window specified by `index`.
 
@@ -636,6 +653,7 @@ def getFocused(index: int) -> bool:
     return False
 
 
+@since(2)
 def setFocused(index: int) -> None:
     """Sets which FL Studio window should be focused (meaning it is the
     currently selected Window in FL Studio).
@@ -674,6 +692,7 @@ def getFocusedFormCaption() -> str:
     return ""
 
 
+@since(13)
 def getFocusedFormID() -> int:
     """Returns ID of the focused window.
 
@@ -681,7 +700,7 @@ def getFocusedFormID() -> int:
 
     ## WARNING:
     * This can crash FL Studio's API if a plugin window is in the process of
-      closing.
+      closing (until API v21).
 
     ## NOTE:
     * The official documentation says that this function returns a string,
@@ -703,6 +722,7 @@ def getFocusedFormID() -> int:
     return 0
 
 
+@since(5)
 def getFocusedPluginName() -> str:
     """Returns the plugin name for the active window if it is a plugin,
     otherwise an empty string.
@@ -715,6 +735,7 @@ def getFocusedPluginName() -> str:
     return ""
 
 
+@since(13)
 def scrollWindow(index: int, value: int, directionFlag: int = 0) -> None:
     """Scrolls on the window specified by `index`. Value is index for whatever
     is contained on that window (eg channels for the Channel Rack or tracks for
@@ -756,16 +777,17 @@ def nextWindow() -> int:
     return 0
 
 
-def selectWindow(shift: int) -> int:
-    """Switch to the next window by pressing the `Tab` key. If `shift` is true
-    (`1`), switch to the previous window by pressing `Shift` and `Tab`.
+@keyEchoes()
+def selectWindow(shift: bool) -> int:
+    """Switch to the next window by pressing the `Tab` key. If `shift` is
+    `True`, switch to the previous window by pressing `Shift` and `Tab`.
 
     ## WARNING:
     * This function echoes the tab key, and thus will affect
       programs outside of FL Studio. Use with caution.
 
     ## Args:
-     * `shift` (`int`): whether the shift key is pressed.
+     * `shift` (`bool`): whether the shift key is pressed.
 
     ## Returns:
      * `int`: ???
@@ -803,6 +825,7 @@ def launchAudioEditor(reuse: int, filename: str, index: int, preset: str,
     return 0
 
 
+@since(9)
 def openEventEditor(eventId: int, mode: int, newWindow: int = 0) -> int:
     """Launches an event editor for `eventId`.
 
@@ -1037,6 +1060,7 @@ def crDisplayRect(left: int, top: int, right: int, bottom: int, duration: int, f
     """
 
 
+@since(13)
 def miDisplayRect(start: int, end: int, duration: int, flags: int = 0) -> None:
     """Displays a selection rectangle on the mixer
 
@@ -1059,6 +1083,7 @@ def miDisplayRect(start: int, end: int, duration: int, flags: int = 0) -> None:
     """
 
 
+@since(20)
 def getFocusedNodeCaption() -> str:
     """
     Returns the filename associated with the currently selected item in the
@@ -1075,6 +1100,7 @@ def getFocusedNodeCaption() -> str:
     return ""
 
 
+@since(20)
 def getFocusedNodeFileType() -> int:
     """
     Returns a value based on the type of the selected file in the browser
@@ -1090,6 +1116,7 @@ def getFocusedNodeFileType() -> int:
     return 0
 
 
+@since(20)
 def isBrowserAutoHide() -> bool:
     """
     Returns whether the browser is set to auto-hide
@@ -1105,6 +1132,7 @@ def isBrowserAutoHide() -> bool:
     return False
 
 
+@since(20)
 def setBrowserAutoHide(value: int):
     """
     Toggle whether the browser is set to auto-hide
@@ -1119,6 +1147,7 @@ def setBrowserAutoHide(value: int):
     """
 
 
+@since(20)
 def miDisplayDockRect(
     start: int,
     length: int,
@@ -1156,6 +1185,7 @@ def miDisplayDockRect(
     """
 
 
+@since(20)
 def navigateBrowserMenu(*args):
     """
     Navigate within the browser window???
@@ -1170,6 +1200,7 @@ def navigateBrowserMenu(*args):
     """
 
 
+@since(20)
 def previewBrowserMenuItem():
     """
     Preview the currently selected item in the browser
@@ -1181,6 +1212,7 @@ def previewBrowserMenuItem():
     """
 
 
+@since(20)
 def selectBrowserMenuItem():
     """
     ???
@@ -1192,6 +1224,7 @@ def selectBrowserMenuItem():
     """
 
 
+@since(20)
 def showNotification(val: int):
     """
     Show a notification to the user, which is chosen from a set of notification

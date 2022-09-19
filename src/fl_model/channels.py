@@ -1,5 +1,4 @@
 
-from copy import deepcopy
 from typing import Optional, Union
 
 from . import consts
@@ -84,7 +83,7 @@ def resetChannels() -> None:
     Reset channels to their default state
     """
     fl = getState()
-    fl.channels = deepcopy(default_channels)
+    fl.channels = default_channels()
 
 
 def addSampler(
@@ -300,3 +299,38 @@ def groupIndexToGlobalIndex(
         return idx
     # Now group is guaranteed to be a str, regardless of what mypy thinks
     return getChannelsInGroup(group)[idx]
+
+
+def checkGroupIndex(index: int) -> None:
+    """
+    Ensures that the index lies within the allowed range for group indexes
+
+    ## Args:
+    * `index` (`int`): index to check
+    """
+    if not 0 <= index < len(getChannelsInGroup()):
+        raise FlIndexError()
+
+
+def checkGlobalIndex(index: int) -> None:
+    """
+    Ensures that the index lies within the allowed range for global indexes
+
+    ## Args:
+    * `index` (`int`): index to check
+    """
+    if not 0 <= index < len(getState().channels.channel_list):
+        raise FlIndexError
+
+
+def getGroupedChannelReference(index: int) -> ChannelPlug:
+    """
+    Returns a reference to a channel given its group index
+
+    ## Args:
+    * `index` (`int`): group index
+
+    ## Returns:
+    * `ChannelPlug`: channel
+    """
+    return getState().channels.channel_list[getChannelsInGroup()[index]]
