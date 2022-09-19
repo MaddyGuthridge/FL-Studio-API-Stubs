@@ -267,3 +267,41 @@ def test_set_undo_history_pos_doesnt_affect_count():
     setUndoHistoryPos should not affect the length of the history from
     getUndoHistoryCount
     """
+    makeUndoHistory(2)
+    general.setUndoHistoryPos(2)
+    assert general.getUndoHistoryCount() == 3
+
+
+def test_set_undo_history_count():
+    """
+    Can we use setUndoHistoryCount() to remove old elements from the undo
+    history?
+
+    1 2 3  => 1 2
+      ^         ^
+    """
+    makeUndoHistory(2)
+    general.undo()
+    general.setUndoHistoryCount(2)
+    assert general.getUndoHistoryCount() == 2
+    # We're still second in the queue
+    assert general.getUndoHistoryLast() == 1
+
+
+def test_set_undo_history_count_can_delete_last_reset():
+    """
+    Make sure that setUndoHistoryPos() can delete the final element in the
+    undo history
+    """
+    general.setUndoHistoryCount(0)
+    assert general.getUndoHistoryCount() == 0
+
+
+def test_set_undo_history_count_doesnt_affect_pos():
+    """
+    setUndoHistoryPos should not affect the length of the history from
+    getUndoHistoryCount
+    """
+    makeUndoHistory(2)
+    general.setUndoHistoryCount(2)
+    assert general.getUndoHistoryPos() == 3
