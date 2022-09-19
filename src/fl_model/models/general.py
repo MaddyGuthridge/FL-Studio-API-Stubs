@@ -47,9 +47,15 @@ class UndoModel:
     * `items`: list of items
 
     * `position`: position in undo history
+
+    * `count_len`: length of undo history as per count functions
+
+    * `pos_len` length of undo history as per pos functions
     """
     items: list[UndoItem]
     position: int
+    count_len: int
+    pos_len: int
 
 
 @dataclass
@@ -87,7 +93,12 @@ class GeneralModel:
 def default_general():
     return GeneralModel(
         api_version=processVersion(config['targetApiVersion']),
-        undo=UndoModel(items=[], position=0),
+        undo=UndoModel(
+            items=[UndoItem("Last reset", 0)],
+            position=0,
+            count_len=1,
+            pos_len=1,
+        ),
         ppqn=96,
         beats=4,
         metronome=False,
