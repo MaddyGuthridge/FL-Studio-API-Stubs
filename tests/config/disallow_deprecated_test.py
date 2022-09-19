@@ -3,6 +3,7 @@ tests > config > disallow_deprecated_test
 
 Tests that we get errors when we try to call deprecated functions
 """
+import general
 import channels
 import device
 import pytest
@@ -19,6 +20,8 @@ fileFromHere = file_from_here.generate(__file__)
     [
         (channels.processRECEvent, (0, 0, 0)),
         (device.sendMsgGeneric, (0, "msg", "last_msg")),
+        (general.restoreUndo, tuple()),
+        (general.restoreUndoLevel, (0,)),
     ]
 )
 def test_disallow_deprecated_raises(func, params):

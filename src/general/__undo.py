@@ -3,6 +3,7 @@ general > __undo
 
 Functions for managing undo and redo
 """
+from fl_model.decorators import deprecate
 
 
 def saveUndo(undoName: str, flags: int, update: int = 1) -> None:
@@ -56,7 +57,11 @@ def undo() -> int:
 
 
 def undoUp() -> int:
-    """Move up in the undo history. This is much like undo in most programs
+    """
+    Move up in the undo history. This is much like undo in most programs.
+
+    Note that in FL Studio 21, the ordering of the undo history was changed,
+    so visually this actually moves down.
 
     ## Returns:
      * `int`: ?
@@ -67,7 +72,11 @@ def undoUp() -> int:
 
 
 def undoDown() -> int:
-    """Move down in the undo history. This is much like redo in most programs
+    """
+    Move down in the undo history. This is much like redo in most programs.
+
+    Note that in FL Studio 21, the ordering of the undo history was changed,
+    so visually this actually moves up.
 
     ## Returns:
      * `int`: ?
@@ -92,39 +101,35 @@ def undoUpDown(value: int) -> int:
     return 0
 
 
+@deprecate(1)
 def restoreUndo() -> int:
-    """???
-
-    This seems to behave in the same way as `undo()`.
-
-    ## HELP WANTED:
-    * What does this do?
+    """
+    Undo-redo toggle. This behaves in the same way as `undo()`.
 
     ## Returns:
      * `int`: ?
 
     Included since API version 1
+
+    Deprecated since API version 1
     """
-    return 0
+    return undo()
 
 
+@deprecate(1)
 def restoreUndoLevel(level: int) -> int:
-    """???
-
-    This seems to behave in the same way as `undo()`.
-
-    ## HELP WANTED:
-    * What does this do? What is the parameter for?
+    """
+    Undo-redo toggle. This behaves in the same way as `undo()`.
 
     ## Args:
-     * `level` (`int`): ???
+     * `level` (`int`): this parameter is ignored.
 
     ## Returns:
      * `int`: ?
 
     Included since API version 1
     """
-    return 0
+    return undo()
 
 
 def getUndoLevelHint() -> str:
@@ -182,7 +187,9 @@ def getUndoHistoryLast() -> int:
 
 def setUndoHistoryPos(index: int) -> None:
     """Removes recent elements from the undo history, leaving only the first
-    `index` elements
+    `index` elements.
+
+    Essentially an undo
 
     ## Args:
      * `index` (`int`): number of elements to leave at the start of the history
