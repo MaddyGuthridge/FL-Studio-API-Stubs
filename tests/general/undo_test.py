@@ -39,7 +39,8 @@ def test_add_undo_item():
 
 def test_add_undo_item_keeps_undo_position():
     """
-    Can we undo things?
+    When we add an undo history item, do we stay pointed at the most recent
+    one?
     """
     makeUndoHistory(1)
     assert general.getUndoHistoryLast() == 0
