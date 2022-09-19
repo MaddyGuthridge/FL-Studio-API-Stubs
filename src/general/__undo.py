@@ -46,11 +46,9 @@ def saveUndo(undoName: str, flags: int, update: bool = True) -> None:
     """
     undo = getState().general.undo
     # Slice out any later elements
-    undo.items = (
-        undo.items[:-undo.position]
-        if undo.position != 0
-        else undo.items
-    )
+    if undo.position != 0:
+        undo.items = undo.items[undo.position:]
+        undo.pos_len = undo.count_len = len(undo.items)
     undo.items.insert(0, UndoItem(undoName, flags))
     undo.count_len += 1
     undo.pos_len += 1
@@ -117,7 +115,7 @@ def undoUpDown(value: int) -> int:
     Included since API version 1
     """
     undo = getState().general.undo
-    undo.position = max(0, min(len(undo.items), undo.position - value))
+    undo.position = max(0, min(len(undo.items) - 1, undo.position - value))
     return 0
 
 
@@ -164,7 +162,7 @@ def getUndoLevelHint() -> str:
 
     Included since API version 1
     """
-    return f"{getUndoHistoryLast()}/{getUndoHistoryCount()}"
+    return f"{getUndoHistoryLast() + 1}/{getUndoHistoryCount()}"
 
 
 def getUndoHistoryPos() -> int:

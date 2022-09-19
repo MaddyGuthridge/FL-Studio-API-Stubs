@@ -120,7 +120,7 @@ def test_add_undo_removes_future_history():
     general.undoUp()
     general.undoUp()
     general.saveUndo('another item', 1)
-    assert general.getUndoHistoryLast() == 3
+    assert general.getUndoHistoryCount() == 3
 
 
 def test_undo_nothing_there():
@@ -212,9 +212,9 @@ def test_undo_level_hint_has_undone():
     Are we given a correct string for getUndoLevelHint when we undo something?
     """
     makeUndoHistory(2)
-    general.undo()
+    general.undoUp()
     assert general.getUndoLevelHint() == "2/3"
-    general.undo()
+    general.undoUp()
     assert general.getUndoLevelHint() == "3/3"
 
 
