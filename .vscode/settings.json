@@ -8,6 +8,7 @@
         "BBGGRR",
         "deinitialize",
         "desynchronize",
+        "Enveditor",
         "falsiness",
         "indexedness",
         "jsonschema",
@@ -16,6 +17,7 @@
         "pdoc",
         "ppqn",
         "Precount",
+        "pyscript",
         "Rect",
         "Sysex",
         "timebase"
