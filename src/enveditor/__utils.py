@@ -1,9 +1,17 @@
+"""
+# Env Editor / Utils
+
+Contains utility functions used within Edison scripts
+"""
 
 
-class __Utils:
+class TUtils:
     """
     Utility class containing useful functions to allow audio processing scripts
-    to interact with FL Studio
+    to interact with FL Studio.
+
+    This is instantiated in the `Utils` object, and the fact that this class is
+    public is probably unintentional. Just use `Utils` directly.
     """
     def ProgressMsg(self, message: str, position: int, total: int) -> None:
         """
@@ -29,7 +37,7 @@ class __Utils:
         """
 
 
-Utils = __Utils()
+Utils = TUtils()
 """
 A utility object containing useful functions to allow audio processing scripts
 to interact with FL Studio

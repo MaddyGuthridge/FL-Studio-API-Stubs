@@ -29,9 +29,11 @@ class Region:
         return 0
 
 
-class __Editor:
+class MEEditor:
     """
-    Private editor class - as there is only one instance that we can use
+    The class used to represent the editor. This is instantiated in the
+    `Editor` object, and the fact that it is public is probably an accident.
+    You should just use `Editor`.
     """
     @property
     def SelectionStartS(self) -> int:
@@ -311,7 +313,7 @@ The sample which is currently loaded within the Edison editor.
 Included since API Version 21
 """
 
-Editor = __Editor()
+Editor = MEEditor()
 """
 An object representing the state of the Edison editor.
 
