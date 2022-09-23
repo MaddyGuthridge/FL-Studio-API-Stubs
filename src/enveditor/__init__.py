@@ -12,7 +12,9 @@ __all__ = [
     'Sample',
     'EditorSample',
     'Editor',
+    'Utils',
 ]
 
 from .__script_dialog import ScriptDialog
 from .__sample import Sample, EditorSample, Editor
+from .__utils import Utils

@@ -3,6 +3,7 @@
 
 Contains the definition for the Sample class
 """
+from typing import Literal
 
 
 class Region:
@@ -53,6 +54,8 @@ class Sample:
 
     Note that this is different from a sample point, which is a location within
     a sample's waveform at a single instance in time.
+
+    Included since API Version 21
     """
     def __init__(self) -> None:
         """
@@ -176,6 +179,32 @@ class Sample:
         This will replace any existing sample
         """
 
+    def PasteFromTo(
+        self,
+        old: 'Sample',
+        start: int,
+        end: int,
+        mode: Literal[0, 1, 2],
+    ) -> None:
+        """
+        Copy the contents of `old` into this sample.
+
+        ## Args:
+        * `old` (`Sample`): The sample to copy from
+
+        * `start` (`int`): the starting point
+
+        * `end` (`int`): the ending point
+
+        * `mode` (`Literal[0, 1, 2]`):
+
+              * `0`: Insert
+
+              * `1`: Replace
+
+              * `2`: Mix
+        """
+
     def MsToSamples(self, time: float) -> int:
         """
         Returns a position within a sample given a time in ms
@@ -278,6 +307,8 @@ class Sample:
 EditorSample = Sample()
 """
 The sample which is currently loaded within the Edison editor.
+
+Included since API Version 21
 """
 
 Editor = __Editor()
@@ -286,4 +317,6 @@ An object representing the state of the Edison editor.
 
 For selections, if the start point is `0` and the end point is
 `EditorSample.Length - 1`, then the full clip is selected.
+
+Included since API Version 21
 """
