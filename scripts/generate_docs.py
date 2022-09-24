@@ -12,6 +12,7 @@ modules = [
     'arrangement',
     'channels',
     'device',
+    'enveditor',
     'fl_classes',
     'fl_model',
     'general',
