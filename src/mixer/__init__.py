@@ -663,15 +663,26 @@ def getTrackPeaks(index: int, mode: int) -> float:
     """Returns the current audio peak value for the track at `index`.
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
 
-     * `mode` (`int`): track peaks mode (see the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#TrackPeakMode))
+    * `mode` (`int`): track peaks mode
+          * `0`: left channel
+
+          * `1`: right channel
+
+          * `2`: maximum from left and right channels
+
+          * Values for inverted peaks are present, but appear to be
+            incorrect.
 
     ## Returns:
-     * `float`: track peak values:
-            * `0.0`: silence
-            * `1.0`: 0 dB
-            * `>1.0`: clipping
+    * `float`: track peak values:
+
+          * `0.0`: silence
+
+          * `1.0`: 0 dB
+
+          * `>1.0`: clipping
 
     Included since API version 1
     """
