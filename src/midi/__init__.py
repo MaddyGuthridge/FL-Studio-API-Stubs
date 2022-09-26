@@ -1,4 +1,5 @@
-"""Midi Module (included in FL Studio Python lib folder)
+"""
+Included in FL Studio Python lib folder
 
 Contains useful constants for working with MIDI events, and with FL Studio API
 flags.
@@ -8,6 +9,7 @@ this package in the hope that it will be useful for script developers. It is
 not the creation of the repository authors, and no credit is claimed.
 """
 # flake8: noqa
+from .__encode import EncodeRemoteControlID
 
 MaxInt = 2147483647
 
@@ -697,6 +699,3 @@ CT_AutoClip = 5
 EventNameT = ['Note Off', 'Note On ', 'Key Aftertouch', 'Control Change','Program Change',  'Channel Aftertouch', 'Pitch Bend', 'System Message' ]
 ChannelDefaultVolume = 1000 / 1280
 TackDefaultVolume = 800 / 1000
-
-def EncodeRemoteControlID(PortNum, ChanNum, CCNum):
-  return CCNum + (ChanNum << 16) + ((PortNum + 1) << 22)

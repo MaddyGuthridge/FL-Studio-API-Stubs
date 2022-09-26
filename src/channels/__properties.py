@@ -587,26 +587,35 @@ def incEventValue(eventId: int, step: int, res: float = 1 / 24) -> int:
     """Get event value increased by step. Use (optional) res parameter to
     specify increment resolution.
 
-    Use result as new value in processRECEvent
+    This can be used to map encoder-style controls to events, by allowing them
+    to adjust a parameter using a delta value
+
+    Use result as new value in `general.processRECEvent`.
 
     ## Example usage:
     ```py
-    # Increase volume of first channel
-    step = 1
-    eventId = midi.REC_Chan_Vol + channels.getRecEventId(0)
-    newValue = channels.incEventValue(eventId, step)
-    general.processRECEvent(eventId, newValue, midi.REC_UpdateValue | midi.REC_UpdateControl)
+    '''
+    Increases the volume of the first channel
+    '''
+    delta = 1
+    # Calculate the event ID for the volume of channel 0
+    event_id = midi.REC_Chan_Vol + channels.getRecEventId(0)
+    # Get the value adjusted by the delta
+    new_value = channels.incEventValue(event_id, delta)
+    # Process the new value
+    general.processRECEvent(event_id, new_value, midi.REC_UpdateValue | midi.REC_UpdateControl)
     ```
 
     ## Args:
-     * `eventId` (`int`): event ID, see the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#RecEventParams)
+    * `eventId` (`int`): event ID (see `device` module)
 
-     * `step` (`int`): event value increased by step
+    * `step` (`int`): delta value for the event
 
-     * `res` (`float`, optional): increment resolution. Defaults to 1/24.
+    * `res` (`float`, optional): increment resolution, used as a multiplier to
+      ensure that encoders are responsive. Defaults to `1/24`.
 
     ## Returns:
-     * `int`: incremented event value, for use in `general.processRECEvent()`
+    * `int`: incremented event value, for use in `general.processRECEvent()`
 
     Included since API version 1
     """
@@ -614,9 +623,10 @@ def incEventValue(eventId: int, step: int, res: float = 1 / 24) -> int:
 
 
 def getRecEventId(index: int) -> int:
-    """Return the starting point of REC event IDs for the channel at `index`.
+    """
+    Return the starting point of REC event IDs for the channel at `index`.
 
-    See `general.processRECEvent` for more information.
+    See documentation of the `device` module for more information.
 
     ## Args:
      * `index` (`int`): channel index

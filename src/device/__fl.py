@@ -36,13 +36,12 @@ def forwardMIDICC(message: int, mode: int = 1) -> None:
 
 
 def findEventID(controlId: int, flags: int = 0) -> int:
-    """Returns eventID for controlId.
-
-    ## HELP WANTED:
-    * What does this do?
+    """
+    Given a hardware control ID, returns the eventId of the software control
+    that it is linked to or `midi.REC_InvalidID` if it is not linked.
 
     ## Args:
-     * `controlId` (`int`): ???
+     * `controlId` (`int`):
 
      * `flags` (`int`, optional): ???. Defaults to 0.
 
@@ -55,22 +54,28 @@ def findEventID(controlId: int, flags: int = 0) -> int:
 
 
 def getLinkedValue(eventID: int) -> float:
-    """Returns normalized value of the REC event at `eventID`. Returns `-1`
-    if "there is no linked control".
+    """
+    Returns value of the software control associated with `eventID` between
+    `0.0` and `1.0`, or `-1` if there is no linked control.
+
+    ## Args:
+     * `eventID` (`int`): eventID (see `device` module documentation)
+
+    ## Returns:
+     * `float`: Current value of the controller parameter
+
+    ## Example usage
 
     ```
+    '''
+    Gets the volume and panning of channel 0
+    '''
     >>> channel_rec_id = channels.getRecEventId(0)
     >>> device.getLinkedValue(channel_rec_id + midi.REC_Chan_Vol)
     0.78125
     >>> device.getLinkedValue(channel_rec_id + midi.REC_Chan_Pan)
     0.5
     ```
-
-    ## Args:
-     * `eventID` (`int`): eventID
-
-    ## Returns:
-     * `float`: Current value of the controller parameter between [0.0, 1.0]
 
     Included since API version 1
     """
@@ -84,6 +89,14 @@ def getLinkedValueString(eventID: int) -> str:
     The text representation is formatted appropriately based on the
     REC parameter.
 
+    ## Args:
+     * `eventID` (`int`): eventID (see `device` module documentation)
+
+    ## Returns:
+     * `str`: Parameter value string
+
+    ## Example usage
+
     ```
     >>> channel_rec_id = channels.getRecEventId(0)
     >>> device.getLinkedValueString(channel_rec_id + midi.REC_Chan_Vol)
@@ -91,12 +104,6 @@ def getLinkedValueString(eventID: int) -> str:
     >>> device.getLinkedValueString(channel_rec_id + midi.REC_Chan_Pan)
     'Centered'
     ```
-
-    ## Args:
-     * `eventID` (`int`): eventID
-
-    ## Returns:
-     * `str`: Parameter value string
 
     Included since API version 10
     """
@@ -107,6 +114,14 @@ def getLinkedValueString(eventID: int) -> str:
 def getLinkedParamName(eventID: int) -> str:
     """Returns the parameter name of the REC event at `eventID`.
 
+    ## Args:
+     * `eventID` (`int`): eventID (see `device` module documentation)
+
+    ## Returns:
+     * `str`: Parameter name
+
+    ## Example usage
+
     ```
     >>> channel_rec_id = channels.getRecEventId(0)
     >>> device.getLinkedParamName(channel_rec_id + midi.REC_Chan_Vol)
@@ -114,12 +129,6 @@ def getLinkedParamName(eventID: int) -> str:
     >>> device.getLinkedParamName(channel_rec_id + midi.REC_Chan_Pan)
     'Channel panning'
     ```
-
-    ## Args:
-     * `eventID` (`int`): eventID
-
-    ## Returns:
-     * `str`: Parameter name
 
     Included since API version 10
     """
@@ -130,7 +139,7 @@ def getLinkedInfo(eventID: int) -> int:
     """Returns information about a linked control via `eventID`.
 
     ## Args:
-     * `eventID` (`int`): eventID
+     * `eventID` (`int`): eventID (see `device` module documentation)
 
     ## Returns:
      * `int`: linked control info:
