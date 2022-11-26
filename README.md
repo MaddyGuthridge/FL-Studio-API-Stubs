@@ -26,7 +26,7 @@ modules by running the command `pip install FL-Studio-API-Stubs` on Windows or
 ## Testing using the FL Studio API Stubs
 
 This code provides a model of FL Studio which can be used to test basic
-functionality of projects using the API. The `fl_model` module can be used for
+functionality of projects using the API. The [fl_model](./src/fl_model/) module can be used for
 controlling the state of the model. Refer to its documentation for usage
 instructions.
 
