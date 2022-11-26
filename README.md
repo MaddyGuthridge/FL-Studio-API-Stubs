@@ -30,7 +30,9 @@ functionality of projects using the API. The [fl_model](./src/fl_model/) module 
 controlling the state of the model. Refer to its documentation for usage
 instructions.
 
-## The Small Text
+## The Small Print
+
+A couple of notes regarding this repo.
 
 ### This Documentation isn't Complete
 
