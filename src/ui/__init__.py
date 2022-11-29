@@ -5,7 +5,7 @@ Allows you to control and interact with FL Studio's UI.
 ## WARNING:
 * Many of the functions in this module will simply echo a hotkey into whatever
   application is active, meaning that actions can potentially be sent to the
-  wrong application. Functions that have this behaviour are listed with a short
+  wrong application. Functions that have this behavior are listed with a short
   warning saying so.
 
 ## HELP WANTED:
@@ -927,7 +927,7 @@ def getSnapMode() -> int:
     """Returns the current snap mode.
 
     Although the official documentation states that this takes an argument
-    `value`, it does not. This stub reflects the actual behaviour.
+    `value`, it does not. This stub reflects the actual behavior.
 
     ## Returns:
      * `int`: index in the snap mode list:
@@ -1089,9 +1089,6 @@ def getFocusedNodeCaption() -> str:
     Returns the filename associated with the currently selected item in the
     browser
 
-    ## WARNING:
-    * This function has no official documentation
-
     ## Returns:
     * `str`: node caption
 
@@ -1105,11 +1102,9 @@ def getFocusedNodeFileType() -> int:
     """
     Returns a value based on the type of the selected file in the browser
 
-    ## WARNING:
-    * This function has no official documentation
-
     ## Returns:
-    * `int`: ???
+    * `int`: One of the file type constants represented in the FL Studio
+      constants.
 
     Included since API Version 20
     """
@@ -1185,28 +1180,40 @@ def miDisplayDockRect(
     """
 
 
-@since(20)
-def navigateBrowserMenu(*args):
+@since(21)
+def navigateBrowserMenu(direction: int, shiftHeld: bool):
     """
-    Navigate within the browser window???
+    Navigates through the browser. `direction` can be 0 for previous
+    or > 0 for next.
 
-    ## WARNING:
-    * This function has no official documentation
+    Shift held will cause the browser item to expand/open  if it's a
+    folder/collection ie Node Type <= -100. # similar to keyboard nav
 
     ## Args:
-    * Unknown
+    * `direction` (`int`):
+            * `40`: previous item
+            * `41`: next item
 
-    Included since API Version 20
+    * `shiftHeld` (`bool`): whether to expand the selected item if it is a
+      folder.
+
+    ## WARNING:
+    * This function's behavior changed between API version 20 and 21
+    * This doesn't seem to work very reliably, at least on my machine
+
+    ## Returns:
+    * `str`: the name of the newly selected item in the browser
+
+    Included since API Version 21
     """
 
 
 @since(20)
 def previewBrowserMenuItem():
     """
-    Preview the currently selected item in the browser
+    Preview the highlighted item in the browser
 
-    ## WARNING:
-    * This function has no official documentation
+    This will play a selected audio clip
 
     Included since API Version 20
     """
@@ -1215,10 +1222,12 @@ def previewBrowserMenuItem():
 @since(20)
 def selectBrowserMenuItem():
     """
-    ???
+    Selects the currently highlighted browser menu item, which is the
+    equivalent of clicking it.
 
     ## WARNING:
-    * This function has no official documentation
+    * This function appears to open the File menu, rather than navigating the
+      browser.
 
     Included since API Version 20
     """
@@ -1233,8 +1242,6 @@ def showNotification(val: int):
     apparent way to link these to the Script output window.
 
     ## WARNING:
-    * This function has no official documentation
-
     * This function appears to cause FL Studio's scripting environment to crash
       when used under Wine on Linux
 
