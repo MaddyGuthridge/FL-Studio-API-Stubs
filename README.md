@@ -4,13 +4,13 @@ This project contains function definitions to provide intellisense while
 working on scripts for FL Studio's Python API, as well as a partially-complete
 model of FL Studio, which allows for scripts to be tested outside of FL Studio.
 
-# Online Reference
+## Online Reference
 
 The documentation is also available as an
 [online reference](https://miguelguthridge.github.io/FL-Studio-API-Docs) if
 Image-Line's own documentation isn't up to scratch.
 
-# Installation
+## Installation
 
 To avoid module conflicts with other Python projects, it is recommended that
 you install this script in a virtual environment by following
@@ -23,16 +23,18 @@ modules by running the command `pip install FL-Studio-API-Stubs` on Windows or
 
 [Video reference for installation instructions](https://youtu.be/6_KdXJIfeoI)
 
-# Testing using the FL Studio API Stubs
+## Testing using the FL Studio API Stubs
 
 This code provides a model of FL Studio which can be used to test basic
-functionality of projects using the API. The `fl_model` module can be used for
+functionality of projects using the API. The [fl_model](./src/fl_model/) module can be used for
 controlling the state of the model. Refer to its documentation for usage
 instructions.
 
-# The Small Text
+## The Small Print
 
-## This Documentation isn't Complete
+A couple of notes regarding this repo.
+
+### This Documentation isn't Complete
 
 Although the stubs are mostly complete, there are a few functions where I don't
 fully understand how they work. These functions have a `HELP WANTED:` label in
@@ -42,7 +44,7 @@ definitions for some functions. Please
 [create an issue](https://github.com/MiguelGuthridge/FL-Studio-API-Stubs/issues/new)
 if you find anything incorrect.
 
-## Differences to the Official Implementation
+### Differences to the Official Implementation
 
 A small number of tweaks have been made to these stubs in order to ease code
 writing. These shouldn't have any functional impact on the behavior of the API
