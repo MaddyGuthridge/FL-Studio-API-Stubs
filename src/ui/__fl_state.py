@@ -105,16 +105,31 @@ def snapMode(value: int) -> int:
     """Changes the snap mode, by shifting it by `value` in the list of modes.
     Note that `2` (the unused value) is skipped.
 
-    Also note that the usage for this function is truly painful. I am sorry.
-
-    TODO: Add helper function to provide a better implementation to this
-    documentation, so people can copy it into their code.
-
     ## Args:
      * `value` (`int`): increment (`1` for next, `-1` for previous)
 
     ## Returns:
      * `int`: ???
+
+    Also note that the usage for this function is truly painful due to it being
+    a relative value rather than an absolute one. You can create a wrapper
+    function to resolve this using the following code:
+    ```py
+    def setSnapMode(new_mode: int):
+        '''
+        Set the snap mode using an absolute value
+
+        ## Args:
+        * `new_mode` (`int`): new mode - one of the values listed in
+          `getSnapMode()`.
+        '''
+        curr_mode = ui.getSnapMode()
+        if new_mode < 2 and curr_mode > 2:
+            new_mode += 1
+        if new_mode > 2 and curr_mode < 2:
+            new_mode -= 1
+        ui.snapMode(new_mode - curr_mode)
+    ```
 
     Included since API version 1
     """
