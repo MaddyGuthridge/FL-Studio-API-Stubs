@@ -3,7 +3,7 @@ device > __fl
 
 Communication with FL Studio
 """
-from typing import Optional
+import midi
 from fl_model.decorators import since
 from fl_classes import FlMidiMsg
 
@@ -157,14 +157,18 @@ def getLinkedInfo(eventID: int) -> int:
     return 0
 
 
+@since(21)
 def linkToLastTweaked(
     controlIndex: int,
     channel: int,
     global_link: bool = False,
-    eventId: Optional[int] = None,
+    eventId: int = midi.REC_None,
 ) -> int:
     """
     Links the control with the given index to the last tweaked parameter.
+
+    ## WARNING:
+    * This function is subject to change before the release of FL Studio 21
 
     ## Args:
     * `controlIndex` (`int`): the control ID to link
