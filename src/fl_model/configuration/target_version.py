@@ -24,6 +24,7 @@ def processVersion(version: ApiVersion) -> int:
 
     mappings = {
         "latest": consts.LATEST_API_VERSION,
+        "21.0.0": 22,
         "20.9.2": 20,
         "20.8.4": 15,
     }
