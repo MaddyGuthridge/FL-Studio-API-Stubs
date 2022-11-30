@@ -1180,8 +1180,8 @@ def miDisplayDockRect(
     """
 
 
-@since(21)
-def navigateBrowserMenu(direction: int, shiftHeld: bool):
+@since(22)
+def navigateBrowser(direction: int, shiftHeld: bool):
     """
     Navigates through the browser. `direction` can be 0 for previous
     or > 0 for next.
@@ -1204,7 +1204,7 @@ def navigateBrowserMenu(direction: int, shiftHeld: bool):
     ## Returns:
     * `str`: the name of the newly selected item in the browser
 
-    Included since API Version 21
+    Included since API Version 22
     """
 
 
