@@ -3,7 +3,8 @@ device > __device
 
 Communication with the connected device
 """
-from fl_model import getState, deprecate, since
+from fl_model import getState
+from fl_model.decorators import deprecate, since
 from fl_classes import FlMidiMsg
 
 

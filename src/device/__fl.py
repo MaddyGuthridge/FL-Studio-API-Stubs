@@ -3,7 +3,7 @@ device > __fl
 
 Communication with FL Studio
 """
-from fl_model import since
+from fl_model.decorators import since
 from fl_classes import FlMidiMsg
 
 

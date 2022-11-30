@@ -3,7 +3,8 @@ general > __fl_state
 
 Functions to do with the state of FL Studio
 """
-from fl_model import getState, since
+from fl_model import getState
+from fl_model.decorators import since
 
 
 def getRecPPB() -> int:

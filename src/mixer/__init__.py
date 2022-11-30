@@ -8,7 +8,7 @@ NOTES:
 """
 
 import midi
-from fl_model import since
+from fl_model.decorators import since
 
 
 def trackNumber() -> int:

@@ -5,7 +5,8 @@ Function definitions for managing channel properties.
 """
 import midi
 import utils
-from fl_model import getState, deprecate, since
+from fl_model import getState
+from fl_model.decorators import deprecate, since
 from fl_model.consts import oo
 from fl_model.channels import (
     getChannelsInGroup,

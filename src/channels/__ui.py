@@ -3,7 +3,7 @@ channels > ui
 
 Function definitions for managing channel rack UI
 """
-from fl_model import since
+from fl_model.decorators import since
 from fl_model.channels import checkGroupIndex, checkGlobalIndex
 
 

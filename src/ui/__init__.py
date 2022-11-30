@@ -11,7 +11,7 @@ Allows you to control and interact with FL Studio's UI.
 ## HELP WANTED:
 * What do the return values mean?
 """
-from fl_model import since, keyEchoes
+from fl_model.decorators import since, keyEchoes
 
 
 def jog(value: int) -> int:

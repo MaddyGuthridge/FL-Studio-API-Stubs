@@ -15,7 +15,7 @@ Allows you to control and interact with the FL Studio Playlist.
  * Explanations for live performance related functions
 """
 
-from fl_model import since
+from fl_model.decorators import since
 import midi
 
 

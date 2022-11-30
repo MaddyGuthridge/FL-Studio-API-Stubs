@@ -4,7 +4,8 @@ patterns > properties
 Managing properties of patterns
 """
 
-from fl_model import getState, since
+from fl_model import getState
+from fl_model.decorators import since
 from fl_model.patterns import getPatternReference, isPatternVisible
 from fl_model.consts import PATTERN_COUNT
 from .__helpers import checkIndex

@@ -3,7 +3,7 @@ channels > notes
 
 Function definitions for managing notes on channels
 """
-from fl_model import since
+from fl_model.decorators import since
 from fl_model.channels import checkGlobalIndex, checkGroupIndex
 
 

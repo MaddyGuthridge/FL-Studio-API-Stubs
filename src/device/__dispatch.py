@@ -1,5 +1,6 @@
 from typing import Optional
-from fl_model import getState, since
+from fl_model import getState
+from fl_model.decorators import since
 from fl_model.exceptions import FlIndexError
 
 

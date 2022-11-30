@@ -34,7 +34,7 @@ plugins.isValid(*index2)
 
 Module added in API version 8.
 """
-from fl_model import since
+from fl_model.decorators import since
 import midi
 
 
