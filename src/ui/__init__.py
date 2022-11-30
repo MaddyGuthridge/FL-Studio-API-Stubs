@@ -1181,7 +1181,7 @@ def miDisplayDockRect(
 
 
 @since(22)
-def navigateBrowser(direction: int, shiftHeld: bool):
+def navigateBrowser(direction: int, shiftHeld: bool) -> str:
     """
     Navigates through the browser. `direction` can be 0 for previous
     or > 0 for next.
@@ -1206,6 +1206,7 @@ def navigateBrowser(direction: int, shiftHeld: bool):
 
     Included since API Version 22
     """
+    return ""
 
 
 @since(20)
