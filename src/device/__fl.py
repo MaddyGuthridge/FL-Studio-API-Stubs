@@ -175,13 +175,13 @@ def linkToLastTweaked(
 
     * `channel` (`int`): ???
 
-    * `global_link` (`bool`, optional): Whether to make a global link, or a
-      standard link (TODO: What is the behavior of a standard link?). Defaults
-      to `False`?
+    * `global_link` (`bool`, optional): Whether to make a global link (applies
+      to all projects, `True`), or a standard link (only for this project,
+      `False`). Defaults to `False`.
 
     * `eventId` (`int`, optional): ID of the event to link to. If this is
       unset, the link will be created with the most recently tweaked parameter.
-      Defaults to None?
+      Defaults to `midi.REC_None`.
 
     ## Returns:
     * `0`: successfully created link
