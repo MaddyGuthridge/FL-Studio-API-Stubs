@@ -687,3 +687,19 @@ def getVisTimeStep() -> int:
     Included since API version 1
     """
     return 0
+
+
+@since(21)
+def getPerformanceModeState() -> bool:
+    """
+    Returns whether FL Studio's performance mode is enabled
+
+    ## Returns:
+    * `bool`: whether performance mode is enabled
+
+    Included since API Version 21
+
+    ## API Changes:
+    * v_: change
+    """
+    return False
