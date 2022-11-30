@@ -3,6 +3,7 @@ device > __fl
 
 Communication with FL Studio
 """
+from typing import Optional
 from fl_model.decorators import since
 from fl_classes import FlMidiMsg
 
@@ -152,5 +153,37 @@ def getLinkedInfo(eventID: int) -> int:
           * `Event_Centered` (`4`): ???
 
     Included since API version 1
+    """
+    return 0
+
+
+def linkToLastTweaked(
+    controlIndex: int,
+    channel: int,
+    global_link: bool = False,
+    eventId: Optional[int] = None,
+) -> int:
+    """
+    Links the control with the given index to the last tweaked parameter.
+
+    ## Args:
+    * `controlIndex` (`int`): the control ID to link
+
+    * `channel` (`int`): ???
+
+    * `global_link` (`bool`, optional): Whether to make a global link, or a
+      standard link (TODO: What is the behavior of a standard link?). Defaults
+      to `False`?
+
+    * `eventId` (`int`, optional): ID of the event to link to. If this is
+      unset, the link will be created with the most recently tweaked parameter.
+      Defaults to None?
+
+    ## Returns:
+    * `0`: successfully created link
+    * `1`: no parameters recently tweaked
+    * `2`: control with this controlId is already assigned
+
+    Included since API Version 21
     """
     return 0
