@@ -17,11 +17,10 @@ __all__ = [
 ]
 
 from .configuration import config
-from . import decorators
-
 from .state import (
     getState,
     setState,
     resetState,
     FlContext,
 )
+from . import decorators
