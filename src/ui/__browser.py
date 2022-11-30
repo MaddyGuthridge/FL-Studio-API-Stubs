@@ -78,7 +78,7 @@ def getFocusedNodeFileType() -> int:
     * `int`: One of the file type constants represented in the FL Studio
       constants.
 
-    TODO: Add info on available file types
+    Refer to Image-Line's [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-beta-online-manual/html/midi_scripting.htm#BrowserFileTypes)
 
     Included since API Version 20
     """
