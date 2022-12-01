@@ -114,7 +114,10 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
     ## Args:
      * `eventId` (`int`): Refer to the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#RecEventParams)
 
-     * `value` (`int`): value of even within range (0 - midi.FromMIDI_Max)
+     * `value` (`int`): value of even within a range. This range depends on the
+       plugin, but you can specify for it to be between `0 - 2^30` by using the
+       `midi.REC_MIDIController` flag. Note that providing an invalid value can
+       lead to very strange behavior and sometimes crashes.
 
      * `flags` (`int`): Refer to the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#RecEventFlags)
 
