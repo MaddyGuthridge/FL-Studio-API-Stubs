@@ -72,25 +72,38 @@ def isGridBitAssigned(*args) -> bool:
 
 def getStepParam(step: int, param: int, offset: int, startPos: int,
                  padsStride: int = 16) -> int:
-    """Get step parameter for `step`.
-
-    ## HELP WANTED:
-    * What does this do?
+    """
+    Get the values of properties associated with a step in the step sequencer.
+    This provides an interface to access the graph editor.
 
     ## Args:
-     * `step` (`int`): ?
+    * `step` (`int`): step (grid bit index) to get parameter for
 
-     * `param` (`int`): ?? at least there's the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#stepParams)
-       (actually, tbh the docs on this looks kinda dodgy for some values)
+    * `param` (`int`): one of the parameter types (see below)
 
-     * `offset` (`int`): ???
+    * `offset` (`int`): ???
 
-     * `startPos` (`int`): ????
+    * `startPos` (`int`): ????
 
-     * `padsStride` (`int`, optional): ?????. Defaults to 16.
+    * `padsStride` (`int`, optional): ?????. Defaults to 16.
 
     ## Returns:
-     * `int`: ??????
+    * `int`: value for step parameter
+
+    ## See also:
+    * `getCurrentStepParam()`
+    * `setStepParameterByIndex()`
+
+    ## Step parameter types:
+    * `0`: Note pitch (MIDI note number, default 60 for middle C)
+    * `1`: Velocity (0 - 127, default 100)
+    * `2`: Release velocity (0 - 127, default 64)
+    * `3`: Fine pitch (in cents: 0 - 240, with default 120 for no tuning)
+    * `4`: Panning (0 - 127, with default 64 for centred)
+    * `5`: Mod X (0-127, with default 64 for midpoint)
+    * `6`: Mod Y (0-127, with default 64 for midpoint)
+    * `7`: Number of ticks to offset the note by (0 - PPQN / 4; , with default
+      0 for no shifting)
 
     Included since API version 1
     """
@@ -108,12 +121,26 @@ def getCurrentStepParam(index: int, step: int, param: int) -> int:
       return an int.
 
     ## Args:
-     * `index` (`int`): channel index
+    * `index` (`int`): channel index
 
-     * `step` (`int`): ???
+    * `step` (`int`): step (grid bit index) to get parameter for
 
-     * `param` (`int`): step parameter (refer to [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#stepParams)
-       although it looks kinda dodgy for some values)
+    * `param` (`int`): step parameter (refer to [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#stepParams)
+      although it looks kinda dodgy for some values)
+
+    ## Returns:
+    * `int`: value for step parameter
+
+    ## Step parameter types:
+    * `0`: Note pitch (MIDI note number, default 60 for middle C)
+    * `1`: Velocity (0 - 127, default 100)
+    * `2`: Release velocity (0 - 127, default 64)
+    * `3`: Fine pitch (in cents: 0 - 240, with default 120 for no tuning)
+    * `4`: Panning (0 - 127, with default 64 for centred)
+    * `5`: Mod X (0-127, with default 64 for midpoint)
+    * `6`: Mod Y (0-127, with default 64 for midpoint)
+    * `7`: Number of ticks to offset the note by (0 - PPQN / 4; , with default
+      0 for no shifting)
 
     Included since API version 1
     """
@@ -121,13 +148,30 @@ def getCurrentStepParam(index: int, step: int, param: int) -> int:
     return 0
 
 
-def setStepParameterByIndex(*args) -> None:
+def setStepParameterByIndex(
+    index: int,
+    patNum: int,
+    step: int,
+    param: int,
+    value: int,
+    globalIndex: bool = True,
+) -> None:
     """
-    ???
-    TODO
+    Set the value of a step parameter at the given location.
 
-    ## WARNING:
-    * This function has no official documentation
+    ## Args:
+    * `index` (`int`): channel index
+
+    * `patNum` (`int`): pattern number to set step parameter on (1-indexed)
+
+    * `step` (`int`): step index
+
+    * `param` (`int`): step parameter to set (see below)
+
+    * `value` (`int`): value to set parameter to
+
+    * `globalIndex` (`bool`, optional): whether to use a global index for the
+      channel. Defaults to `True`.
 
     Included since API Version 1
     """
