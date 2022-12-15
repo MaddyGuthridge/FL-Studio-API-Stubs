@@ -50,6 +50,7 @@ from .__tracks import (
     revTrackPolarity,
     isTrackSwapChannels,
     swapTrackChannels,
+    linkChannelToTrack,
 )
 from .__properties import (
     getTrackInfo,
@@ -127,4 +128,5 @@ __all__ = [
     'getEventIDValueString',
     'getAutoSmoothEventValue',
     'automateEvent',
+    'linkChannelToTrack',
 ]

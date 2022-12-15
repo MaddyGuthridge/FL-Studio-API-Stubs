@@ -549,3 +549,20 @@ def swapTrackChannels(index: int, value: bool = False) -> None:
 
     Included since API Version 19
     """
+
+
+@since(23)
+def linkChannelToTrack(channel: int, track: int, select: bool = False) -> None:
+    """
+    Link the given channel to the given mixer track.
+
+    ## Args:
+    * `channel` (`int`): channel index on channel rack (respecting groups)
+
+    * `track` (`int`): mixer track index
+
+    * `select` (`bool`, optional): whether to select the mixer track. Defaults
+      to `False`.
+
+    Included since API Version 23
+    """
