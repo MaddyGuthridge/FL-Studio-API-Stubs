@@ -19,6 +19,7 @@ from .__browser import (
     getFocusedNodeFileType,
     isBrowserAutoHide,
     setBrowserAutoHide,
+    navigateBrowserTabs,
 )
 from .__editors import (
     launchAudioEditor,
@@ -92,6 +93,7 @@ from .__windows import (
 
 __all__ = [
     'navigateBrowser',
+    'navigateBrowserTabs',
     'previewBrowserMenuItem',
     'selectBrowserMenuItem',
     'getFocusedNodeCaption',

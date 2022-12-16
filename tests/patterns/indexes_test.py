@@ -30,9 +30,10 @@ def test_pattern_max():
         (patterns.getPatternName, tuple()),
         (patterns.selectPattern, tuple()),
         (patterns.setPatternColor, (0,)),
-        (patterns.setPatternName, ('Pat',)),
+        (patterns.setPatternName, ('Pattern',)),
         (patterns.isPatternSelected, tuple()),
         (patterns.jumpToPattern, tuple()),
+        (patterns.isPatternDefault, tuple()),
     ]
 )
 def test_invalid_indexes(func, params):
@@ -53,9 +54,10 @@ def test_invalid_indexes(func, params):
         (patterns.getPatternName, tuple()),
         (patterns.selectPattern, tuple()),
         (patterns.setPatternColor, (0,)),
-        (patterns.setPatternName, ('Pat',)),
+        (patterns.setPatternName, ('Pattern',)),
         (patterns.isPatternSelected, tuple()),
         (patterns.jumpToPattern, tuple()),
+        (patterns.isPatternDefault, tuple()),
     ]
 )
 def test_valid_indexes(func, params):

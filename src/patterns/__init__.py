@@ -25,6 +25,7 @@ from .__properties import (
     selectAll,
     deselectAll,
     burnLoop,
+    isPatternDefault,
 )
 from .__performance import (
     getBlockSetStatus,
@@ -48,6 +49,7 @@ __all__ = (
     'selectAll',
     'deselectAll',
     'burnLoop',
+    'isPatternDefault',
     'getBlockSetStatus',
     'ensureValidNoteRecord',
 )
