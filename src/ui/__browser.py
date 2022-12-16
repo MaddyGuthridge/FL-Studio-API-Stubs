@@ -30,6 +30,28 @@ def navigateBrowser(direction: int, shiftHeld: bool) -> str:
     return ""
 
 
+@since(22)
+def navigateBrowserTabs(direction: int) -> str:
+    """
+    Navigates between browser tabs, returning the name of the newly selected
+    tab.
+
+    The direction should be one of the MIDI FPT direction constants.
+
+    ## Args:
+    * `direction` (`int`): one of:
+            * `midi.FPT_Left` (`42`): change tabs left
+            * `midi.FPT_Right` (`43`): change tabs right
+            * any other value: navigate to first tab
+
+    ## Returns:
+    * `str`: name of the newly selected tab
+
+    Included since API Version 22
+    """
+    return ""
+
+
 @since(20)
 def previewBrowserMenuItem():
     """
