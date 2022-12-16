@@ -282,3 +282,21 @@ def burnLoop(index: int, storeUndo: int = 1, updateUi: int = 1) -> None:
     Included since API version 9
     """
     checkIndex(index)
+
+
+@since(23)
+def isPatternDefault(index: int) -> bool:
+    """
+    Returns whether the pattern at the given index has changed from the default
+    empty state.
+
+    ## Args:
+    * `index` (`int`): pattern index
+
+    ## Returns:
+    * `bool`: whether the pattern has changed
+
+    Included since API Version 23
+    """
+    checkIndex(index)
+    return not getState().patterns.p[index].hasChanged()
