@@ -3,7 +3,8 @@ fl_model > decorators
 
 Contains decorators used throughout the project
 """
-from typing import Callable, ParamSpec, TypeVar
+from typing import Callable, TypeVar
+from typing_extensions import ParamSpec
 from functools import wraps
 from fl_model import getState, config
 from fl_model.exceptions import (
