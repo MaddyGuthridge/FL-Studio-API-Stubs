@@ -3,6 +3,7 @@ fl_model > decorators
 
 Contains decorators used throughout the project
 """
+from typing import Callable, ParamSpec, TypeVar
 from functools import wraps
 from fl_model import getState, config
 from fl_model.exceptions import (
@@ -11,8 +12,14 @@ from fl_model.exceptions import (
     FlCallKeyEchoError,
 )
 
+P = ParamSpec('P')
+T = TypeVar('T')
 
-def deprecate(version: int):
+
+def deprecate(version: int) -> Callable[
+    [Callable[P, T]],
+    Callable[P, T],
+]:
     """
     Mark an API function as deprecated, meaning that it shouldn't be used in
     modern versions of the API
@@ -20,9 +27,9 @@ def deprecate(version: int):
     ## Args:
     * `version` (`int`): the version that the function was deprecated in
     """
-    def decorator(func):
+    def decorator(func: Callable[P, T]) -> Callable[P, T]:
         @wraps(func)
-        def inner(*args, **kwargs):
+        def inner(*args: P.args, **kwargs: P.kwargs) -> T:
             target = getState().general.api_version
             if (
                 target >= version
@@ -38,7 +45,10 @@ def deprecate(version: int):
     return decorator
 
 
-def since(version: int):
+def since(version: int) -> Callable[
+    [Callable[P, T]],
+    Callable[P, T],
+]:
     """
     Mark an API function as existing since the given version, meaning that it
     shouldn't be used in earlier versions
@@ -46,9 +56,9 @@ def since(version: int):
     ## Args:
     * `version` (`int`): API version where the function was added
     """
-    def decorator(func):
+    def decorator(func: Callable[P, T]) -> Callable[P, T]:
         @wraps(func)
-        def inner(*args, **kwargs):
+        def inner(*args: P.args, **kwargs: P.kwargs):
             target = getState().general.api_version
             if (
                 target < version
@@ -64,16 +74,19 @@ def since(version: int):
     return decorator
 
 
-def keyEchoes():
+def keyEchoes() -> Callable[
+    [Callable[P, T]],
+    Callable[P, T],
+]:
     """
     Mark an API function to indicate that it echoes a hotkey
 
     ## Args:
     * `version` (`int`): API version where the function was added
     """
-    def decorator(func):
+    def decorator(func: Callable[P, T]) -> Callable[P, T]:
         @wraps(func)
-        def inner(*args, **kwargs):
+        def inner(*args: P.args, **kwargs: P.kwargs):
             if config["disallowKeyEchoes"]:
                 raise FlCallKeyEchoError(
                     f"Attempt to call function that echoes key-presses {func}"
