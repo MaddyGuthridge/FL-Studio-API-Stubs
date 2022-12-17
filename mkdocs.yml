@@ -6,11 +6,21 @@ theme:
       scheme: slate
       toggle:
         icon: material/toggle-switch-off-outline
+        name: Switch to light mode
     - media: '(prefers-color-scheme: light)'
       scheme: default
       toggle:
         icon: material/toggle-switch
+        name: Switch to dark mode
   logo: assets/logo-monochrome.png
   favicon: assets/logo.png
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/MiguelGuthridge/FL-Studio-API-Stubs
+      name: Original Repository
+    - icon: fontawesome/solid/code-fork
+      link: https://github.com/abbydiode/fl-studio-api-docs
+      name: Forked Repository
 extra_css:
   - stylesheets/extra.css
