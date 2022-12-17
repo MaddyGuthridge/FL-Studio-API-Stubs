@@ -87,7 +87,10 @@ def keyEchoes() -> Callable[
     def decorator(func: Callable[P, T]) -> Callable[P, T]:
         @wraps(func)
         def inner(*args: P.args, **kwargs: P.kwargs):
-            if config["disallowKeyEchoes"]:
+            if (
+                config["disallowKeyEchoes"]
+                and getState().general.api_version < 22
+            ):
                 raise FlCallKeyEchoError(
                     f"Attempt to call function that echoes key-presses {func}"
                 )
