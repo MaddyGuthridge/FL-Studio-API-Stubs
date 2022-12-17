@@ -1,0 +1,16 @@
+site_name: FL Studio API Documentation
+theme:
+  name: material
+  palette:
+    - media: '(prefers-color-scheme: dark)'
+      scheme: slate
+      toggle:
+        icon: material/toggle-switch-off-outline
+    - media: '(prefers-color-scheme: light)'
+      scheme: default
+      toggle:
+        icon: material/toggle-switch
+  logo: assets/logo-monochrome.png
+  favicon: assets/logo.png
+extra_css:
+  - stylesheets/extra.css
