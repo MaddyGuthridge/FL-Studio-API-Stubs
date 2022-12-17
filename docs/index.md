@@ -1,4 +1,6 @@
-# FL Studio API Documentation
+# Home
+
+## Fl Studio API Documentation
 
 This is user-written documentation for FL Studio's Python API. It contains information on how to use the API to interact with FL Studio. As well as this, it is also available as an installable package, which allows you to write code for FL Studio with the help of smart suggestions and inline documentation. Both the online documentation and the installable package use the same definitions, meaning that they share the same detailed and helpful information.
 
@@ -8,28 +10,28 @@ This fork of the FL Studio API Documentation is maintained separately and provid
 
 ## List of modules
 
-* [`arrangement`](./arrangement.md): functions for interacting with individual arrangements,
+* [`arrangement`]: functions for interacting with individual arrangements,
   including markers and playlist selections.
-* [`channels`](./channels.md): functions for interacting with the channel rack and its channels.
-* [`device`](./device.md): functions for interacting with the device hardware, as well as
+* [`channels`]: functions for interacting with the channel rack and its channels.
+* [`device`]: functions for interacting with the device hardware, as well as
   tools for managing rec events.
-* [`enveditor`](./enveditor.md): a module for interacting with edison, only available through its
+* [`enveditor`]: a module for interacting with edison, only available through its
   scripting interface.
-* [`fl_classes`](./fl_classes.md): a non-built-in module that provides definitions for classes
+* [`fl_classes`]: a non-built-in module that provides definitions for classes
   used by FL Studio. It cannot be imported during runtime.
-* [`fl_model`](./fl_model.md): a non-built-in module that provides an emulation of FL Studio
+* [`fl_model`]: a non-built-in module that provides an emulation of FL Studio
   which useful for testing scripts without needing to open FL Studio.
-* [`general`](./general.md): miscellaneous functions for interacting with FL Studio.
-* [`launchMapPages`](./launchMapPages.md): functions for implementing page displays on some MIDI
+* [`general`]: miscellaneous functions for interacting with FL Studio.
+* [`launchMapPages`]: functions for implementing page displays on some MIDI
   controllers.
-* [`midi`](./midi.md): a module containing constants used by the rest of the API.
-* [`mixer`](./mixer.md): functions for interacting with the mixer and its tracks.
-* [`patterns`](./patterns.md): functions for interacting with patterns.
-* [`playlist`](./playlist.md): functions for interacting with the playlist.
-* [`plugins`](./plugins.md): functions for interacting with plugins on the channel rack and
+* [`midi`]: a module containing constants used by the rest of the API.
+* [`mixer`]: functions for interacting with the mixer and its tracks.
+* [`patterns`]: functions for interacting with patterns.
+* [`playlist`]: functions for interacting with the playlist.
+* [`plugins`]: functions for interacting with plugins on the channel rack and
   mixer.
-* [`transport`](./transport.md): functions for interacting with FL Studio's playback and
+* [`transport`]: functions for interacting with FL Studio's playback and
   recording systems.
-* [`ui`](./ui.md): functions for interacting with FL Studio's user interface.
-* [`utils`](./utils.md): utility functions and classes. Note that a lot of code in this
+* [`ui`]: functions for interacting with FL Studio's user interface.
+* [`utils`]: utility functions and classes. Note that a lot of code in this
   module is buggy and should be avoided.

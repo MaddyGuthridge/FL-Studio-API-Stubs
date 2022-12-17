@@ -1,19 +1,21 @@
 site_name: FL Studio API Documentation
+
 theme:
   name: material
   palette:
     - media: '(prefers-color-scheme: dark)'
       scheme: slate
       toggle:
-        icon: material/toggle-switch-off-outline
+        icon: material/lightbulb-outline
         name: Switch to light mode
     - media: '(prefers-color-scheme: light)'
       scheme: default
       toggle:
-        icon: material/toggle-switch
+        icon: material/lightbulb
         name: Switch to dark mode
   logo: assets/logo-monochrome.png
   favicon: assets/logo.png
+
 extra:
   social:
     - icon: fontawesome/brands/github
@@ -22,5 +24,17 @@ extra:
     - icon: fontawesome/solid/code-fork
       link: https://github.com/abbydiode/fl-studio-api-docs
       name: Forked Repository
+
+plugins:
+  - mkdocstrings
+  - autorefs
+  - gen-files:
+      scripts:
+        - docs/scripts/gen-files.py
+
+markdown_extensions:
+  - toc:
+      toc_depth: 2
+
 extra_css:
   - stylesheets/extra.css
