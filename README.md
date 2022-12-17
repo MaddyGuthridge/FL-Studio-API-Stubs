@@ -1,4 +1,4 @@
-# FL Studio Python API Stubs
+# FL Studio Python API Documentation
 
 This project contains function definitions to provide intellisense while
 working on scripts for FL Studio's Python API, as well as a partially-complete
