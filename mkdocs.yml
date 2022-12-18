@@ -26,8 +26,8 @@ extra:
       name: Forked Repository
 
 plugins:
+  - search
   - mkdocstrings
-  - autorefs
   - gen-files:
       scripts:
         - docs/scripts/gen-files.py

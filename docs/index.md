@@ -10,28 +10,28 @@ This fork of the FL Studio API Documentation is maintained separately and provid
 
 ## List of modules
 
-* [`arrangement`]: functions for interacting with individual arrangements,
+* `arrangement`: functions for interacting with individual arrangements,
   including markers and playlist selections.
-* [`channels`]: functions for interacting with the channel rack and its channels.
-* [`device`]: functions for interacting with the device hardware, as well as
+* `channels`: functions for interacting with the channel rack and its channels.
+* `device`: functions for interacting with the device hardware, as well as
   tools for managing rec events.
-* [`enveditor`]: a module for interacting with edison, only available through its
+* `enveditor`: a module for interacting with edison, only available through its
   scripting interface.
-* [`fl_classes`]: a non-built-in module that provides definitions for classes
+* `fl_classes`: a non-built-in module that provides definitions for classes
   used by FL Studio. It cannot be imported during runtime.
-* [`fl_model`]: a non-built-in module that provides an emulation of FL Studio
+* `fl_model`: a non-built-in module that provides an emulation of FL Studio
   which useful for testing scripts without needing to open FL Studio.
-* [`general`]: miscellaneous functions for interacting with FL Studio.
-* [`launchMapPages`]: functions for implementing page displays on some MIDI
+* `general`: miscellaneous functions for interacting with FL Studio.
+* `launchMapPages`: functions for implementing page displays on some MIDI
   controllers.
-* [`midi`]: a module containing constants used by the rest of the API.
-* [`mixer`]: functions for interacting with the mixer and its tracks.
-* [`patterns`]: functions for interacting with patterns.
-* [`playlist`]: functions for interacting with the playlist.
-* [`plugins`]: functions for interacting with plugins on the channel rack and
+* `midi`: a module containing constants used by the rest of the API.
+* `mixer`: functions for interacting with the mixer and its tracks.
+* `patterns`: functions for interacting with patterns.
+* `playlist`: functions for interacting with the playlist.
+* `plugins`: functions for interacting with plugins on the channel rack and
   mixer.
-* [`transport`]: functions for interacting with FL Studio's playback and
+* `transport`: functions for interacting with FL Studio's playback and
   recording systems.
-* [`ui`]: functions for interacting with FL Studio's user interface.
-* [`utils`]: utility functions and classes. Note that a lot of code in this
+* `ui`: functions for interacting with FL Studio's user interface.
+* `utils`: utility functions and classes. Note that a lot of code in this
   module is buggy and should be avoided.
