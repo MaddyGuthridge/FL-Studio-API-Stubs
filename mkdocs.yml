@@ -31,6 +31,8 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
+          paths: 
+            - api/src
           options:
             show_source: false
   - gen-files:

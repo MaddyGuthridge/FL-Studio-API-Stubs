@@ -1,9 +1,13 @@
 from pathlib import Path
 import mkdocs_gen_files
 
-for path in sorted(Path("src").rglob("*.py")):
-    doc_path = Path(str(path.relative_to("src").with_suffix(".md")).replace("__", ""))
-    parts = list(Path("src", path.relative_to("src").with_suffix("")).parts)
+src = Path("api/src")
+
+for path in sorted(src.rglob("*.py")):
+    doc_path = Path(str(path.relative_to(src).with_suffix(".md")).replace("__", ""))
+    parts = list(Path(path.relative_to(src).with_suffix("")).parts)
+
+    print(parts)
 
     if parts[-1] == "__init__":
         parts = parts[:-1]
