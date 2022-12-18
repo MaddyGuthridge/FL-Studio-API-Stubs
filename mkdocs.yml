@@ -27,7 +27,11 @@ extra:
 
 plugins:
   - search
-  - mkdocstrings
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: false
   - gen-files:
       scripts:
         - docs/scripts/gen-files.py

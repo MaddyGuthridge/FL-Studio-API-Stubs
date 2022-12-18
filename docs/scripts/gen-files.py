@@ -7,4 +7,4 @@ for path in src.glob("**/*.py"):
     with mkdocs_gen_files.open(doc_path, "w") as f:
         ident = ".".join(path.with_suffix("").parts)
         ident = ident.replace(".__init__", "") if ident.endswith(".__init__") else ident
-        print(f"::: {ident}\n   options: ", file=f)
+        print(f"::: {ident}", file=f)
