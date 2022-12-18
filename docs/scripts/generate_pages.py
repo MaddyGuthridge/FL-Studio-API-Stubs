@@ -11,7 +11,6 @@ for path in src.rglob("*.py"):
 
 for module in modules:
     module_path = (Path(module, "index") if any(m.parent == module for m in modules) else module).with_suffix(".md")
-    print(module_path)
     with mkdocs_gen_files.open(module_path, "w") as f:
         identifier = ".".join(module.parts)
         print(f"::: {identifier}", file=f)

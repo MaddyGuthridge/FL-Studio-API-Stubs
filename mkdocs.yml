@@ -53,3 +53,5 @@ extra_css:
 
 repo_name: FL-Studio-API-Stubs
 repo_url: https://github.com/MiguelGuthridge/FL-Studio-API-Stubs
+
+copyright: API Stub by <a href="https://github.com/MiguelGuthridge">Miguel Guthridge</a>. Online documentation by <a href="https://github.com/abbydiode">Abigail de Joode</a>. Not officially with Image-Line.
