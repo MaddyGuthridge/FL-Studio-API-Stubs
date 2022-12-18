@@ -27,6 +27,7 @@ extra:
 
 plugins:
   - search
+  - autorefs
   - mkdocstrings:
       handlers:
         python:
@@ -34,7 +35,7 @@ plugins:
             show_source: false
   - gen-files:
       scripts:
-        - docs/scripts/gen-files.py
+        - docs/scripts/gen_pages.py
 
 markdown_extensions:
   - toc:
