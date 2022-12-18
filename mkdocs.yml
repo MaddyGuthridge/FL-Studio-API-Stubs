@@ -17,6 +17,8 @@ theme:
   favicon: assets/logo.png
   icon:
     repo: fontawesome/brands/github
+  features:
+    - navigation.tracking
 
 extra:
   social:
@@ -39,7 +41,7 @@ plugins:
             show_source: false
   - gen-files:
       scripts:
-        - docs/scripts/gen_pages.py
+        - docs/scripts/generate_pages.py
 
 markdown_extensions:
   - toc:
