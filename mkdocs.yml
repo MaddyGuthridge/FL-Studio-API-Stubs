@@ -17,6 +17,8 @@ theme:
   favicon: assets/logo.png
   icon:
     repo: fontawesome/brands/github
+  features:
+    - navigation.tracking
 
 extra:
   social:
