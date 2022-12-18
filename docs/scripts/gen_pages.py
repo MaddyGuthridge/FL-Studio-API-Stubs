@@ -2,17 +2,16 @@ from pathlib import Path
 import mkdocs_gen_files
 
 src = Path("api/src")
+modules = []
 
-for path in sorted(src.rglob("*.py")):
-    doc_path = Path(str(path.relative_to(src).with_suffix(".md")).replace("__", ""))
-    parts = list(Path(path.relative_to(src).with_suffix("")).parts)
+for path in src.rglob("*.py"):
+    module = Path(str(path.relative_to(src)).replace("__", "")).parent
+    if module not in modules:
+        modules.append(module)
 
-    print(parts)
-
-    if parts[-1] == "__init__":
-        parts = parts[:-1]
-
-    with mkdocs_gen_files.open(doc_path, "w") as f:
-        identifier = ".".join(parts)
+for module in modules:
+    print(module)
+    with mkdocs_gen_files.open(module.with_suffix(".md"), "w") as f:
+        identifier = ".".join(module.parts)
         print(f"::: {identifier}", file=f)
     

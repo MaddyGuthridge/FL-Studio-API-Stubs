@@ -43,6 +43,7 @@ plugins:
 
 markdown_extensions:
   - toc:
+      title: Contents
       toc_depth: 2
 
 extra_css:
