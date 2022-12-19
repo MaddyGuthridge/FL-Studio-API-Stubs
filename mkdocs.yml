@@ -1,4 +1,8 @@
 site_name: FL Studio API Documentation
+site_description: Documentation for the FL Studio API
+repo_name: FL-Studio-API-Stubs
+repo_url: https://github.com/MiguelGuthridge/FL-Studio-API-Stubs
+copyright: API Stub by <a href="https://github.com/MiguelGuthridge">Miguel Guthridge</a>. Online documentation by <a href="https://github.com/abbydiode">Abigail de Joode</a>. Not affiliated with Image-Line.
 
 theme:
   name: material
@@ -20,15 +24,6 @@ theme:
   features:
     - navigation.tracking
 
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/MiguelGuthridge/FL-Studio-API-Stubs
-      name: Original Repository
-    - icon: fontawesome/solid/code-fork
-      link: https://github.com/abbydiode/fl-studio-api-docs
-      name: Forked Repository
-
 plugins:
   - search
   - autorefs
@@ -36,7 +31,7 @@ plugins:
       handlers:
         python:
           paths: 
-            - api/src
+            - src
           options:
             show_source: false
   - gen-files:
@@ -50,8 +45,3 @@ markdown_extensions:
 
 extra_css:
   - stylesheets/extra.css
-
-repo_name: FL-Studio-API-Stubs
-repo_url: https://github.com/MiguelGuthridge/FL-Studio-API-Stubs
-
-copyright: API Stub by <a href="https://github.com/MiguelGuthridge">Miguel Guthridge</a>. Online documentation by <a href="https://github.com/abbydiode">Abigail de Joode</a>. Not officially with Image-Line.

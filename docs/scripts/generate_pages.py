@@ -1,7 +1,7 @@
 from pathlib import Path
 import mkdocs_gen_files
 
-src = Path("api/src")
+src = Path("src")
 modules = []
 
 for path in src.rglob("*.py"):
@@ -14,4 +14,3 @@ for module in modules:
     with mkdocs_gen_files.open(module_path, "w") as f:
         identifier = ".".join(module.parts)
         print(f"::: {identifier}", file=f)
-    

@@ -1,0 +1,7 @@
+{
+  "$schema": "./schema.json",
+  "disallowDeprecatedFunctions": false,
+  "disallowFutureFunctions": true,
+  "disallowKeyEchoes": false,
+  "targetApiVersion": "latest"
+}

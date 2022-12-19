@@ -1,0 +1,6 @@
+{
+  "$schema": "../../src/fl_model/configuration/schema.json",
+  "$comment": "Configuration with invalid type",
+
+  "disallowDeprecatedFunctions": "not a bool"
+}

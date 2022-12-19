@@ -4,9 +4,7 @@
 
 This is user-written documentation for FL Studio's Python API. It contains information on how to use the API to interact with FL Studio. As well as this, it is also available as an [installable package](https://github.com/MiguelGuthridge/FL-Studio-API-Stubs#installation), which allows you to write code for FL Studio with the help of smart suggestions and inline documentation. Both the online documentation and the installable package use the same definitions, meaning that they share the same detailed and helpful information.
 
-If you wish to help contribute to this documentation, you can do so by creating a pull request to [the original repository](https://github.com/MiguelGuthridge/FL-Studio-API-Stubs).
-
-This fork of the FL Studio API Documentation is maintained separately and provides the same information as the original, but using MkDocs instead of pdoc, you can contribute to this fork specifically by creating a pull request to [this repository](https://github.com/abbydiode/fl-studio-api-docs).
+If you wish to help contribute to this documentation, you can do so by creating a pull request to [the repository](https://github.com/MiguelGuthridge/FL-Studio-API-Stubs). If you find any errors or omissions, please create an issue on the repository.
 
 ## List of modules
 
