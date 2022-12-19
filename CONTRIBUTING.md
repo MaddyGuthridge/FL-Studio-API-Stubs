@@ -8,4 +8,4 @@ help! Feel free to fork, make improvements, then create a pull request.
 
 Please try to stick to the documentation style used by the project so far.
 Write docstrings such that they render correctly as Markdown, both in VS Code's
-tooltips, and within [`MkDocs`](https://www.mkdocs.org/).
+tooltips, and within [MkDocs](https://www.mkdocs.org/).
