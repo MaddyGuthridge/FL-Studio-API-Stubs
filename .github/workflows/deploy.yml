@@ -50,7 +50,7 @@ jobs:
         id: build
         run: mkdocs build
     
-      # Upload artifact from the ./site/ directory the expected format for GitHub Pages
+      # Upload artifact from the ./site/ directory using the expected format for GitHub Pages
       - name: Upload Artifact
         id: upload
         uses: actions/upload-pages-artifact@v1
