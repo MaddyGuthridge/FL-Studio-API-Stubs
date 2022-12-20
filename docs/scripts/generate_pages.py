@@ -6,8 +6,8 @@ modules = []
 
 # Get all modules in the src directory
 for path in src.rglob("*.py"):
-    # Remove '__' from file names to get clean module name for the documentation URLs
-    module = Path(str(path.relative_to(src)).replace("__", "")).parent
+    # Get the parent directory of the Python files, which returns the module itself rather than specific files
+    module = Path(path.relative_to(src)).parent
     # Make sure no duplicate modules are added
     if module not in modules:
         modules.append(module)
