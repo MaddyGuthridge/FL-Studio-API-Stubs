@@ -6,7 +6,7 @@ on:
     branches:
       - main
 
-# Make sure deploy-pages has necessary permissions to 
+# Make sure deploy-pages has necessary permissions to deploy to GitHub Pages
 permissions:
   pages: write
   id-token: write
