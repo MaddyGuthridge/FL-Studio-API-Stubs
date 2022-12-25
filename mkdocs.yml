@@ -30,13 +30,13 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
-          paths: 
+          paths:
             - src
           options:
             show_source: false
   - gen-files:
       scripts:
-        - docs/scripts/generate_pages.py
+        - scripts/generate_pages.py
 
 markdown_extensions:
   - toc:
