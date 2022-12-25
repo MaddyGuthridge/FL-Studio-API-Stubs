@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   deploy:
-    name: Build and Deploy 
+    name: Build and Deploy
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -37,7 +37,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
-      
+
       # Install pip dependencies from requirements.txt
       - name: Install Dependencies
         id: dependencies
@@ -45,18 +45,23 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      # Prepare to build docs
+      - name: Prepare to Build Documentation
+        id: build_prep
+        run: python scripts/generate_pages.py
+
       # Build documentation to ./site/ directory
       - name: Build Documentation
         id: build
         run: mkdocs build
-    
+
       # Upload artifact from the ./site/ directory using the expected format for GitHub Pages
       - name: Upload Artifact
         id: upload
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./site/
-      
+
       # Use previously uploaded artifact to deploy to GitHub Pages
       - name: Deploy
         id: deploy
