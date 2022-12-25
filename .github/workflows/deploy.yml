@@ -45,15 +45,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Prepare to build docs
-      - name: Prepare to Build Documentation
-        id: build_prep
-        run: python scripts/generate_pages.py
-
       # Build documentation to ./site/ directory
       - name: Build Documentation
         id: build
-        run: mkdocs build
+        run: python -m scripts.build_docs
 
       # Upload artifact from the ./site/ directory using the expected format for GitHub Pages
       - name: Upload Artifact
