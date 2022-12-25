@@ -34,9 +34,9 @@ plugins:
             - src
           options:
             show_source: false
-  - gen-files:
-      scripts:
-        - scripts/generate_pages.py
+  # - gen-files:
+  #     scripts:
+  #       - scripts/generate_pages.py
 
 markdown_extensions:
   - toc:
@@ -45,3 +45,5 @@ markdown_extensions:
 
 extra_css:
   - stylesheets/extra.css
+
+docs_dir: docs_build
