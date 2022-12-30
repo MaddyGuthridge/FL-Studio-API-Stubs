@@ -1,6 +1,16 @@
 {
-    // "autoDocstring.docstringFormat": "numpy",
-    "autoDocstring.customTemplatePath": "resources/docstring_template.mustache",
+    "autoDocstring.customTemplatePath": "docstring_template.mustache",
+    "editor.tabSize": 4,
+    "python.linting.mypyEnabled": true,
+    "python.linting.enabled": true,
+    "python.linting.flake8CategorySeverity.E": "Warning",
+    "python.linting.flake8CategorySeverity.F": "Warning",
+    "python.linting.flake8Enabled": true,
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
     "cSpell.language": "en",
     "cSpell.words": [
         "automatable",
@@ -23,15 +33,4 @@
         "Sysex",
         "timebase"
     ],
-    "editor.tabSize": 4,
-    "python.linting.mypyEnabled": true,
-    "python.linting.enabled": true,
-    "python.linting.flake8CategorySeverity.E": "Warning",
-    "python.linting.flake8CategorySeverity.F": "Warning",
-    "python.linting.flake8Enabled": true,
-    "python.testing.pytestArgs": [
-        "."
-    ],
-    "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true,
 }

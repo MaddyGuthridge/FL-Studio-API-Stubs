@@ -1,0 +1,49 @@
+site_name: FL Studio API Documentation
+site_description: Documentation for the FL Studio API
+repo_name: FL-Studio-API-Stubs
+repo_url: https://github.com/MiguelGuthridge/FL-Studio-API-Stubs
+copyright: API Stub by <a href="https://github.com/MiguelGuthridge">Miguel Guthridge</a>. Online documentation by <a href="https://github.com/abbydiode">Abigail de Joode</a>. Not affiliated with Image-Line.
+
+theme:
+  name: material
+  palette:
+    - media: '(prefers-color-scheme: dark)'
+      scheme: slate
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to light mode
+    - media: '(prefers-color-scheme: light)'
+      scheme: default
+      toggle:
+        icon: material/lightbulb
+        name: Switch to dark mode
+  logo: assets/logo-monochrome.png
+  favicon: assets/logo.png
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.tracking
+
+plugins:
+  - search
+  - autorefs
+  - mkdocstrings:
+      handlers:
+        python:
+          paths:
+            - src
+          options:
+            show_source: false
+  # - gen-files:
+  #     scripts:
+  #       - scripts/generate_pages.py
+
+markdown_extensions:
+  - toc:
+      title: Contents
+      toc_depth: 2
+
+extra_css:
+  - stylesheets/extra.css
+
+docs_dir: docs_build

@@ -1,0 +1,13 @@
+:root {
+    --md-primary-fg-color: #ff7629;
+    --md-accent-fg-color: #ff7629;
+}
+
+div.md-header__topic:first-child {
+    font-weight: normal;
+}
+
+div.doc-contents:not(.first) {
+    padding-left: 2rem;
+    border-left: 0.1rem solid var(--md-typeset-table-color);
+}
