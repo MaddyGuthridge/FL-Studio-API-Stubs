@@ -5,13 +5,16 @@ markers, selections and timestamps.
 """
 
 
-def jumpToMarker(index: int, select: int) -> None:
-    """Jumps to the marker at index.
+def jumpToMarker(index: int, select: bool) -> None:
+    """
+    Jumps to the marker at the given delta index.
+
+    For example, to jump to the previous marker, use an index of `-1`.
 
     ## Args:
-    * index (`int`): marker index
+    * index (`int`): relative marker index
 
-    * select (`int`): whether to select the marker
+    * select (`bool`): whether to select the marker
 
     Included since API version 1
     """
@@ -19,6 +22,8 @@ def jumpToMarker(index: int, select: int) -> None:
 
 def getMarkerName(index: int) -> str:
     """Returns the name of the marker at `index`
+
+    Note that this uses an absolute index, not a relative index.
 
     ## Args:
     * index (`int`): marker index
