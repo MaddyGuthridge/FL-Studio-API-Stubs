@@ -130,7 +130,7 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
 
 
 @since(15)
-def dumpScoreLog(time: int, silent: int = 0) -> None:
+def dumpScoreLog(time: int, silent: bool = False) -> None:
     """
     Write recently played MIDI to the selected pattern.
 
@@ -138,8 +138,8 @@ def dumpScoreLog(time: int, silent: int = 0) -> None:
      * `time` (`int`): The duration of time to write, from `time` seconds
        before the last note played, to the last note.
 
-     * `silent` (`int`): Whether the empty score message is suppressed (`1`) or
-       not (`0`)
+     * `silent` (`int`): Whether the empty score message is suppressed (`True`)
+       or not (`False`)
 
     Included since API version 15
     """
