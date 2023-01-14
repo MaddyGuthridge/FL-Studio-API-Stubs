@@ -32,6 +32,16 @@ plugins.isValid(*index1)
 plugins.isValid(*index2)
 ```
 
+## Interacting with VST plugins
+
+VST plugins can behave somewhat unintuitively as a result of the system that FL
+Studio uses for parameter mapping. In the VST specification, all VSTs have 4096
+parameters available to use, but aren't required to use all of them. Unused
+parameters are hidden in FL Studio's UI, but they are accessible through the
+API - their returned names will be an empty string. However, there are actually
+144 more parameters available. These are the 128 CC parameters from indexes
+4096-4223 and the 16 channel after-touch parameters from indexes 4224-4239.
+
 Module added in API version 8.
 """
 from fl_model.decorators import since
