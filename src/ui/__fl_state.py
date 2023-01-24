@@ -102,8 +102,11 @@ def getSnapMode() -> int:
 
 
 def snapMode(value: int) -> int:
-    """Changes the snap mode, by shifting it by `value` in the list of modes.
-    Note that `2` (the unused value) is skipped.
+    """
+    Changes the snap mode, by shifting it by `value` in the list of modes.
+
+    This can be used by controls such as jog wheels or arrow buttons to select
+    a snapping mode. To select a value directly, use `setSnapMode`.
 
     ## Args:
      * `value` (`int`): increment (`1` for next, `-1` for previous)
@@ -111,29 +114,28 @@ def snapMode(value: int) -> int:
     ## Returns:
      * `int`: ???
 
-    Also note that the usage for this function is truly painful due to it being
-    a relative value rather than an absolute one. You can create a wrapper
-    function to resolve this using the following code:
-    ```py
-    def setSnapMode(new_mode: int):
-        '''
-        Set the snap mode using an absolute value
-
-        ## Args:
-        * `new_mode` (`int`): new mode - one of the values listed in
-          `getSnapMode()`.
-        '''
-        curr_mode = ui.getSnapMode()
-        if new_mode < 2 and curr_mode > 2:
-            new_mode += 1
-        if new_mode > 2 and curr_mode < 2:
-            new_mode -= 1
-        ui.snapMode(new_mode - curr_mode)
-    ```
-
     Included since API version 1
     """
     return 0
+
+
+@since(24)
+def setSnapMode(value: int):
+    """
+    Set the snap mode using an absolute value.
+
+    This can be used on a controller to have different buttons map to different
+    modes. To increment or decrement the value, use `snapMode`.
+
+    ## Args:
+    * `value` (`int`): new mode - one of the values listed in `getSnapMode()`.
+    """
+    curr_mode = getSnapMode()
+    if value < 2 and curr_mode > 2:
+        value += 1
+    if value > 2 and curr_mode < 2:
+        value -= 1
+    snapMode(value - curr_mode)
 
 
 def snapOnOff() -> int:
