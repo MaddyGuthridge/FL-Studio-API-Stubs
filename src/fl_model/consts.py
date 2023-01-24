@@ -1,5 +1,5 @@
 
-LATEST_API_VERSION = 23
+LATEST_API_VERSION = 24
 
 # infinity
 oo = float('inf')
