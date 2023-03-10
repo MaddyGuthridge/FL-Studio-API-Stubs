@@ -215,3 +215,38 @@ def getMasterSync() -> bool:
     Included since API Version 19
     """
     return getState().device.master_sync
+
+
+@since(25)
+def getDeviceId() -> bytes:
+    """
+    Returns the unique device identifier of the connected device, as determined
+    by FL Studio when connecting the device.
+
+    NOTE: This may change depending
+
+    Note that this does not include the Sysex header, or ending byte.
+
+    For example, if the device responded to a universal device enquiry with
+
+    ```py
+    bytes([
+        0xF0, 0x7E, 0x01, 0x06, 0x02,
+        0x00, 0x20, 0x29, 0x02, 0x01,
+        0x00, 0x00, 0x00, 0x04, 0x02,
+        0x05, 0xF7,
+    ])
+    ```
+
+    This function would only return
+
+    ```py
+    bytes([0x00, 0x20, 0x29, 0x02, 0x01, 0x00, 0x00, 0x00, 0x04, 0x02, 0x05])
+    ```
+
+    ## Returns:
+    * `bytes`: device ID
+
+    Included since API Version 25
+    """
+    return bytes()

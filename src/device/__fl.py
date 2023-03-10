@@ -191,3 +191,21 @@ def linkToLastTweaked(
     Included since API Version 21
     """
     return 0
+
+
+@since(27)
+def getLinkedChannel(eventId: int) -> int:
+    """
+    Returns the MIDI channel associated with a linked control.
+
+    This is the MIDI channel of the event that is mapped to the linked control.
+
+    ## Args:
+    * `eventId` (`int`): event ID to get channel for
+
+    ## Returns:
+    * `int`: MIDI channel
+
+    Included since API Version 27
+    """
+    return 0
