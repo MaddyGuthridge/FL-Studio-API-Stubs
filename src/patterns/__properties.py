@@ -4,6 +4,7 @@ patterns > properties
 Managing properties of patterns
 """
 
+from typing import Optional
 from fl_model import getState
 from fl_model.decorators import since
 from fl_model.patterns import getPatternReference, isPatternVisible
@@ -303,7 +304,7 @@ def isPatternDefault(index: int) -> bool:
 
 
 @since(25)
-def clonePattern(index: int):
+def clonePattern(index: Optional[int] = None):
     """
     Clones the pattern at the given index
 
@@ -311,7 +312,8 @@ def clonePattern(index: int):
     from making unintentional edits to the wrong pattern.
 
     ## Args:
-    * `index` (`int`): index of pattern
+    * `index` (`int | None`): index of pattern. If not provided, defaults to
+      the currently selected pattern.
 
     Included since API Version 25
     """
