@@ -32,6 +32,9 @@ __all__ = [
     'destroyRefreshThread',
     'fullRefresh',
     'isDoubleClick',
+    'getDeviceId',
+    'getLinkedChannel',
+    'linkToLastTweaked',
 ]
 
 from .__device import (
@@ -47,6 +50,7 @@ from .__device import (
     stopRepeatMidiEvent,
     setMasterSync,
     getMasterSync,
+    getDeviceId,
 )
 from .__fl import (
     processMIDICC,
@@ -56,6 +60,8 @@ from .__fl import (
     getLinkedValueString,
     getLinkedParamName,
     getLinkedInfo,
+    getLinkedChannel,
+    linkToLastTweaked,
 )
 from .__dispatch import (
     dispatch,
