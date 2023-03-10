@@ -26,6 +26,7 @@ from .__properties import (
     deselectAll,
     burnLoop,
     isPatternDefault,
+    clonePattern,
 )
 from .__performance import (
     getBlockSetStatus,
@@ -52,4 +53,5 @@ __all__ = (
     'isPatternDefault',
     'getBlockSetStatus',
     'ensureValidNoteRecord',
+    'clonePattern',
 )

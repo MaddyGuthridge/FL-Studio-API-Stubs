@@ -300,3 +300,18 @@ def isPatternDefault(index: int) -> bool:
     """
     checkIndex(index)
     return not getState().patterns.p[index].hasChanged()
+
+
+@since(25)
+def clonePattern(index: int):
+    """
+    Clones the pattern at the given index
+
+    Note that doing so will close the piano roll, in order to prevent the user
+    from making unintentional edits to the wrong pattern.
+
+    ## Args:
+    * `index` (`int`): index of pattern
+
+    Included since API Version 25
+    """
