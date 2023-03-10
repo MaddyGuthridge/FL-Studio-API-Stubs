@@ -199,6 +199,7 @@ def getLinkedChannel(eventId: int) -> int:
     Returns the MIDI channel associated with a linked control.
 
     This is the MIDI channel of the event that is mapped to the linked control.
+    Result is -1 if there is no linked control.
 
     ## Args:
     * `eventId` (`int`): event ID to get channel for
