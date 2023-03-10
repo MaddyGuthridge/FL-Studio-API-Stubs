@@ -32,6 +32,12 @@ from .__performance import (
     getBlockSetStatus,
     ensureValidNoteRecord,
 )
+from .__groups import (
+    getActivePatternGroup,
+    getPatternGroupCount,
+    getPatternGroupName,
+    getPatternsInGroup,
+)
 
 
 __all__ = (
@@ -54,4 +60,8 @@ __all__ = (
     'getBlockSetStatus',
     'ensureValidNoteRecord',
     'clonePattern',
+    'getActivePatternGroup',
+    'getPatternGroupCount',
+    'getPatternGroupName',
+    'getPatternsInGroup',
 )
