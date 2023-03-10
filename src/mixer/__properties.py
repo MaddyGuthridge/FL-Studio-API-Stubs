@@ -3,6 +3,7 @@ Mixer > Properties
 
 Properties of the mixer and other aspects of FL Studio as a whole
 """
+from typing import Optional
 import midi
 from fl_model.decorators import since
 
@@ -114,3 +115,30 @@ def getLastPeakVol(section: int) -> float:
     Included since API version 9
     """
     return 0.0
+
+
+@since(25)
+def focusEditor(index: int, plugIndex: int):
+    """
+    Focus the editor the effect plugin at the given location
+
+    ## Args:
+    * `index` (`int`): track index of plugin
+
+    * `plugIndex` (`int`): mixer slot index of plugin
+
+    Included since API Version 25
+    """
+
+
+@since(25)
+def getActiveEffectIndex() -> Optional[tuple[int, int]]:
+    """
+    Returns the index of the active effects plugin, or None if there isn't one.
+
+    ## Returns:
+    * `tuple[int, int]`: (index, plugIndex), or None
+
+    Included since API Version 25
+    """
+    return None

@@ -15,6 +15,7 @@ from .__selection import (
     selectTrack,
     selectAll,
     deselectAll,
+    setActiveTrack,
 )
 from .__tracks import (
     getTrackName,
@@ -60,6 +61,8 @@ from .__properties import (
     getRecPPS,
     getSongTickPos,
     getLastPeakVol,
+    focusEditor,
+    getActiveEffectIndex,
 )
 from .__events import (
     getTrackPluginId,
@@ -129,4 +132,7 @@ __all__ = [
     'getAutoSmoothEventValue',
     'automateEvent',
     'linkChannelToTrack',
+    'setActiveTrack',
+    'focusEditor',
+    'getActiveEffectIndex',
 ]
