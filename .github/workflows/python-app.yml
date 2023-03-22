@@ -24,10 +24,10 @@ jobs:
     - run: poetry --version
     - name: Test with pytest
       run: |
-        coverage run -m pytest
+        poetry run coverage run -m pytest
     - name: Generate code coverage report
       run: |
-        coverage report
+        poetry run coverage report
 
   Flake8:
     runs-on: ubuntu-latest
@@ -47,7 +47,7 @@ jobs:
     - run: poetry --version
     - name: Lint with flake8
       run: |
-        flake8
+        poetry run flake8
 
   Mypy:
     runs-on: ubuntu-latest
@@ -67,4 +67,4 @@ jobs:
     - run: poetry --version
     - name: Lint with mypy
       run: |
-        mypy .
+        poetry run mypy .
