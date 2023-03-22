@@ -1,9 +1,60 @@
 [tool.poetry]
 name = "fl-studio-api-stubs"
 version = "28.0.0"
-description = "Stub definitions for FL Studio's Python API"
+
+description = "Module and function definitions and documentation for the FL Studio Python API"
+readme = "README.md"
+
 authors = ["Miguel Guthridge <hdsq@outlook.com.au>"]
-license = "LGPLv3"
+license = "LGPL-3.0-only"
+
+repository = "https://github.com/MiguelGuthridge/FL-Studio-Api-Stubs"
+documentation = "https://miguelguthridge.github.io/FL-Studio-API-Stubs/"
+
+keywords = [
+    "fl-studio",
+    "midi",
+    "api",
+    "documentation",
+    "stubs",
+    "fl",
+    "studio",
+    "daw",
+    "controller",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)",
+    "Operating System :: OS Independent",
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Other Environment",
+]
+include = ["py.typed"]
+
+packages = [
+    { include = "arrangement", from = "src" },
+    { include = "channels", from = "src" },
+    { include = "device", from = "src" },
+    { include = "enveditor", from = "src" },
+    { include = "fl_classes", from = "src" },
+    { include = "fl_model", from = "src" },
+    { include = "general", from = "src" },
+    { include = "launchMapPages", from = "src" },
+    { include = "midi", from = "src" },
+    { include = "mixer", from = "src" },
+    { include = "patterns", from = "src" },
+    { include = "playlist", from = "src" },
+    { include = "plugins", from = "src" },
+    { include = "transport", from = "src" },
+    { include = "ui", from = "src" },
+    { include = "utils", from = "src" },
+]
+
+[tool.poetry.urls]
+"Online Documentation" = "https://miguelguthridge.github.io/FL-Studio-API-Stubs/"
+"Bug Tracker" = "https://github.com/MiguelGuthridge/FL-Studio-Api-Stubs/issues"
+
 
 [tool.poetry.dependencies]
 python = "^3.9.1"
@@ -21,7 +72,6 @@ mkdocs-gen-files = "^0.4.0"
 mkdocs-autorefs = "^0.4.1"
 mkdocs-material = "^8.5.11"
 mkdocs-material-extensions = "^1.1.1"
-mkdocstrings = "^0.20.0"
 mkdocstrings-python = "^0.8.3"
 
 [build-system]
