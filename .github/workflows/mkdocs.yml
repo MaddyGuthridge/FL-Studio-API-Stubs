@@ -31,7 +31,7 @@ jobs:
         with:
           submodules: true
 
-      # Setup Python 3.10
+      # Setup Python 3.9
       - name: Setup Python
         id: python
         uses: actions/setup-python@v4
