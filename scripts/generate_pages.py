@@ -11,7 +11,7 @@ def generate():
     docs_build_dir.mkdir()
 
     # We need to import this here, otherwise it kinda dies a little
-    import mkdocs_gen_files  # noqa: E402 type: ignore
+    import mkdocs_gen_files  # type: ignore
 
     src = Path("src")
     modules = []
