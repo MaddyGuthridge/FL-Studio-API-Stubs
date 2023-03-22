@@ -7,7 +7,7 @@ model of FL Studio, which allows for scripts to be tested outside of FL Studio.
 ## Online Reference
 
 The documentation is also available as an
-[online reference](https://miguelguthridge.github.io/FL-Studio-API-Docs) if
+[online reference](https://miguelguthridge.github.io/FL-Studio-API-Stubs) if
 Image-Line's own documentation isn't up to scratch.
 
 ## Installation
@@ -56,3 +56,11 @@ properties of certain functions.
   `1`. This change should help to describe the context in which the functions
   should be called when writing scripts, which in a language like Python is far
   more important than the actual implementation of the functions.
+
+## Development
+
+Dependencies for this project are managed using
+[Poetry](https://python-poetry.org/). You'll need to
+[install Poetry](https://python-poetry.org/docs/#installation) to develop it.
+
+To install the required dependencies, run `poetry install`.
