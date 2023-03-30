@@ -332,3 +332,30 @@ def getVersion(mode: int = 4) -> 'str | int':
     Included since API version 1, with mode parameter since API version 7
     """
     return 0
+
+
+@since(28)
+def getStepEditMode() -> bool:
+    """
+    Returns the value of the "step edit mode" within FL Studio.
+
+    ## Returns:
+    * `bool`: `True` if step editing is enabled, else `False`
+
+    Included since API Version 28
+    """
+    return False
+
+
+@since(28)
+def setStepEditMode(newValue: bool):
+    """
+    Sets the value of the "step edit mode" within FL Studio.
+
+    ## Args:
+    * `newValue` (`bool`): `True` if step editing should be enabled, else
+      `False`
+
+    Included since API Version 28
+    """
+    return False

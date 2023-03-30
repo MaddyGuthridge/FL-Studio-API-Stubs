@@ -43,6 +43,8 @@ from .__fl_state import (
     getHintValue,
     getProgTitle,
     getVersion,
+    getStepEditMode,
+    setStepEditMode,
 )
 from .__keyboard import (
     cut,
@@ -120,6 +122,8 @@ __all__ = [
     'getHintValue',
     'getProgTitle',
     'getVersion',
+    'getStepEditMode',
+    'setStepEditMode',
     'cut',
     'copy',
     'paste',
