@@ -3,7 +3,7 @@
 
 * [ ] Check that CI passed
 
-* [ ] Update version number
+* [ ] Update version number in `pyproject.toml`
 
 * [ ] Update `fl_model/configuration/schema.json` for major versions
 
