@@ -559,6 +559,21 @@ def getTargetFxTrack(index: int) -> int:
     return 0
 
 
+def setTargetFxTrack(channelIndex: int, mixerIndex: int) -> None:
+    """Sets the mixer track that the channel at `index` is linked to.
+
+    ## Args:
+     * `channelIndex` (`int`): index of channel to link from
+     * `mixerIndex` (`int`): index of mixer track to link to
+
+    ## Returns:
+     * `int`: index of targeted mixer track
+
+    Included since API version 1
+    """
+    checkGroupIndex(channelIndex)
+
+
 @deprecate(7)
 def processRECEvent(eventId: int, value: int, flags: int) -> int:
     """Processes a recording event.
