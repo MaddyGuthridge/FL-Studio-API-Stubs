@@ -29,6 +29,10 @@ classifiers = [
     "Operating System :: OS Independent",
     "Development Status :: 5 - Production/Stable",
     "Environment :: Other Environment",
+    "Topic :: Software Development :: Documentation",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "Typing :: Typed",
+    "Typing :: Stubs Only",
 ]
 include = ["py.typed"]
 
