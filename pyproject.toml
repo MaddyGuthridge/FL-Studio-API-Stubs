@@ -50,6 +50,7 @@ packages = [
     { include = "patterns", from = "src" },
     { include = "playlist", from = "src" },
     { include = "plugins", from = "src" },
+    { include = "screen", from = "src" },
     { include = "transport", from = "src" },
     { include = "ui", from = "src" },
     { include = "utils", from = "src" },
