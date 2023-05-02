@@ -32,6 +32,8 @@ plugins.isValid(*index1)
 plugins.isValid(*index2)
 ```
 
+Note that this may be unreliable if you are also specifying `useGlobalIndex`
+
 ## Interacting with VST plugins
 
 VST plugins can behave somewhat unintuitively as a result of the system that FL
@@ -49,16 +51,23 @@ import midi
 
 
 @since(8)
-def isValid(index: int, slotIndex: int = -1) -> bool:
+def isValid(
+    index: int,
+    slotIndex: int = -1,
+    useGlobalIndex: bool = False,
+) -> bool:
     """Returns whether there is a valid plugin at `index`/`slotIndex`.
 
     ## Notes
     * Audio samples are not considered to be plugins in FL Studio.
 
     ## Args:
-     * `index` (`int`): index on channel rack or mixer
+    * `index` (`int`): index on channel rack or mixer
 
-     * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
+    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to `-1`.
+
+    * `useGlobalIndex` (`bool`, optional): whether to use global channel
+      indexes when modifying plugins on the channel rack. Defaults to `False`.
 
     ## Returns:
      * `bool`: whether there is a valid plugin at `index`.
@@ -69,15 +78,27 @@ def isValid(index: int, slotIndex: int = -1) -> bool:
 
 
 @since(12)
-def getPluginName(index: int, slotIndex: int = -1, userName: int = 0) -> str:
+def getPluginName(
+    index: int,
+    slotIndex: int = -1,
+    userName: bool = False,
+    useGlobalIndex: bool = False,
+) -> str:
     """Returns the name of the plugin at `index`/slotIndex`. This returns the
     original plugin name if `userName` is `False`, otherwise the name of the
     plugin as set by the user.
 
     ## Args:
-     * `index` (`int`): index on channel rack or mixer
+    * `index` (`int`): index on channel rack or mixer
 
-     * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
+    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to `-1`.
+
+    * `userName` (`bool`, optional): whether to return the user's name for the
+      plugin (`True`), or the default name for the plugin (`False`). Defaults
+      to `False`.
+
+    * `useGlobalIndex` (`bool`, optional): whether to use global channel
+      indexes when modifying plugins on the channel rack. Defaults to `False`.
 
     ## Returns:
      * `str`: plugin name
@@ -89,7 +110,11 @@ def getPluginName(index: int, slotIndex: int = -1, userName: int = 0) -> str:
 
 
 @since(8)
-def getParamCount(index: int, slotIndex: int = -1) -> int:
+def getParamCount(
+    index: int,
+    slotIndex: int = -1,
+    useGlobalIndex: bool = False,
+) -> int:
     """Returns the number of parameters that the plugin at `index`/`slotIndex`
     has.
 
@@ -102,7 +127,10 @@ def getParamCount(index: int, slotIndex: int = -1) -> int:
     ## Args:
     * `index` (`int`): index on channel rack or mixer
 
-    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
+    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to `-1`.
+
+    * `useGlobalIndex` (`bool`, optional): whether to use global channel
+      indexes when modifying plugins on the channel rack. Defaults to `False`.
 
     ## Returns:
     * `int`: number of parameters
@@ -113,7 +141,12 @@ def getParamCount(index: int, slotIndex: int = -1) -> int:
 
 
 @since(8)
-def getParamName(paramIndex: int, index: int, slotIndex: int = -1) -> str:
+def getParamName(
+    paramIndex: int,
+    index: int,
+    slotIndex: int = -1,
+    useGlobalIndex: bool = False,
+) -> str:
     """Returns the name of the parameter at `paramIndex` for the plugin at
     `index`/`slotIndex`.
 
@@ -126,7 +159,10 @@ def getParamName(paramIndex: int, index: int, slotIndex: int = -1) -> str:
 
     * `index` (`int`): index of plugin on channel rack or mixer
 
-    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
+    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to `-1`.
+
+    * `useGlobalIndex` (`bool`, optional): whether to use global channel
+      indexes when modifying plugins on the channel rack. Defaults to `False`.
 
     ## Returns:
     * `str`: name of parameter
@@ -137,7 +173,12 @@ def getParamName(paramIndex: int, index: int, slotIndex: int = -1) -> str:
 
 
 @since(8)
-def getParamValue(paramIndex: int, index: int, slotIndex: int = -1) -> float:
+def getParamValue(
+    paramIndex: int,
+    index: int,
+    slotIndex: int = -1,
+    useGlobalIndex: bool = False,
+) -> float:
     """Returns the value of the parameter at `paramIndex` for the plugin at
     `index`/`slotIndex`.
 
@@ -153,7 +194,10 @@ def getParamValue(paramIndex: int, index: int, slotIndex: int = -1) -> float:
 
     * `index` (`int`): index of plugin on channel rack or mixer
 
-    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
+    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to `-1`.
+
+    * `useGlobalIndex` (`bool`, optional): whether to use global channel
+      indexes when modifying plugins on the channel rack. Defaults to `False`.
 
     ## Returns:
     * `float`: parameter value, between `0.0` and `1.0`
@@ -168,14 +212,15 @@ def setParamValue(
     value: float,
     paramIndex: int,
     index: int,
-    slotIndex: int = -1
+    slotIndex: int = -1,
+    useGlobalIndex: bool = False,
 ) -> None:
     """Sets the value of the parameter at `paramIndex` for the plugin at
     `index`/`slotIndex`.
 
     ## Warnings:
-    * This appears to have poor performance, being 40x slower than many other
-      functions that interact with plugins.
+    * This appears to have poor performance before FL Studio 21, being 40x
+      slower than many other functions that interact with plugins.
 
     ## Args:
     * `value` (`float`): new value of parameter (between `0.0` and `1.0`)
@@ -184,7 +229,10 @@ def setParamValue(
 
     * `index` (`int`): index of plugin on channel rack or mixer
 
-    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
+    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to `-1`.
+
+    * `useGlobalIndex` (`bool`, optional): whether to use global channel
+      indexes when modifying plugins on the channel rack. Defaults to `False`.
 
     Included since API version 8
     """
@@ -196,6 +244,7 @@ def getParamValueString(
     index: int,
     slotIndex: int = -1,
     pickupMode: int = midi.PIM_None,
+    useGlobalIndex: bool = False,
 ) -> str:
     """
     Returns a string value of the parameter at `paramIndex` for the plugin at
@@ -213,7 +262,10 @@ def getParamValueString(
 
     * `index` (`int`): index of plugin on channel rack or mixer
 
-    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
+    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to `-1`.
+
+    * `useGlobalIndex` (`bool`, optional): whether to use global channel
+      indexes when modifying plugins on the channel rack. Defaults to `False`.
 
     ## Returns:
      * `str`: string parameter value
@@ -227,7 +279,8 @@ def getParamValueString(
 def getColor(
     index: int,
     slotIndex: int = -1,
-    flag: int = midi.GC_BackgroundColor
+    flag: int = midi.GC_BackgroundColor,
+    useGlobalIndex: bool = False,
 ) -> int:
     """Returns various plugin color parameter values for the plugin at
     `index`/`slotIndex`.
@@ -235,14 +288,17 @@ def getColor(
     ## Args:
     * `index` (`int`): index of plugin on channel rack or mixer
 
-    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
+    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to `-1`.
 
     * `flag` (`int`, optional): color type to return:
-         * `GC_BackgroundColor` (`0`, default): The darkest background color
-         of the plugin.
+          * `GC_BackgroundColor` (`0`, default): The darkest background color
+          of the plugin.
 
-         * `GC_Semitone` (`1`): Retrieves semitone color (in FPC, returns
-           color of drum pads).
+          * `GC_Semitone` (`1`): Retrieves semitone color (in FPC, returns
+            color of drum pads).
+
+    * `useGlobalIndex` (`bool`, optional): whether to use global channel
+      indexes when modifying plugins on the channel rack. Defaults to `False`.
 
     ## Returns:
     * `int`: color (`0x--BBGGRR`)
@@ -257,7 +313,8 @@ def getName(
     index: int,
     slotIndex: int = -1,
     flag: int = midi.FPN_Param,
-    paramIndex: int = 0
+    paramIndex: int = 0,
+    useGlobalIndex: bool = False,
 ) -> str:
     """Returns various names for parts of plugins for the plugin at
     `index`/`slotIndex`.
@@ -269,7 +326,7 @@ def getName(
     ## Args:
     * `index` (`int`): index of plugin on channel rack or mixer
 
-    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
+    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to `-1`.
 
     * `flag` (`int`, optional): name type to return. Names marked with a *
       require the `paramIndex` parameter in order to work correctly.
@@ -306,6 +363,9 @@ def getName(
     * `paramIndex` (`int`, optional): index required by requested flag (if
       necessary)
 
+    * `useGlobalIndex` (`bool`, optional): whether to use global channel
+      indexes when modifying plugins on the channel rack. Defaults to `False`.
+
     ## Returns:
      * `str`: name of requested parameter
 
@@ -319,7 +379,8 @@ def getPadInfo(
     chanIndex: int,
     slotIndex: int = -1,
     paramOption: int = 0,
-    paramIndex: int = -1
+    paramIndex: int = -1,
+    useGlobalIndex: bool = False,
 ) -> int:
     """
     Returns info about drum pads
@@ -333,7 +394,7 @@ def getPadInfo(
     ## Args:
     * `chanIndex` (`int`): channel of plugin to check
 
-    * `slotIndex` (`int`, optional): slot of mixer track plugin. Defaults to -1.
+    * `slotIndex` (`int`, optional): slot of mixer track plugin. Defaults to `-1`.
 
     * `paramOption` (`int`, optional): type of query:
           * `0`: number of pads (note: given number is one greater than there
@@ -344,6 +405,9 @@ def getPadInfo(
           * `2`: color of pad as 0xBBGGRR (use `paramIndex`)
 
     * `paramIndex` (`int`, optional): drum pad number (0-indexed)
+
+    * `useGlobalIndex` (`bool`, optional): whether to use global channel
+      indexes when modifying plugins on the channel rack. Defaults to `False`.
 
     ## Returns:
     * `int`: number of parameters, or
@@ -358,13 +422,20 @@ def getPadInfo(
 
 
 @since(15)
-def getPresetCount(index: int, slotIndex: int = -1) -> int:
+def getPresetCount(
+    index: int,
+    slotIndex: int = -1,
+    useGlobalIndex: bool = False,
+) -> int:
     """Returns the number of presets available for the selected plugin.
 
     ## Args:
-     * `index` (`int`): index of plugin on channel rack or mixer.
+    * `index` (`int`): index of plugin on channel rack or mixer.
 
-     * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
+    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to `-1`.
+
+    * `useGlobalIndex` (`bool`, optional): whether to use global channel
+      indexes when modifying plugins on the channel rack. Defaults to `False`.
 
     Included since API version 15
     """
@@ -372,25 +443,40 @@ def getPresetCount(index: int, slotIndex: int = -1) -> int:
 
 
 @since(10)
-def nextPreset(index: int, slotIndex: int = -1) -> None:
+def nextPreset(
+    index: int,
+    slotIndex: int = -1,
+    useGlobalIndex: bool = False,
+) -> None:
     """Navigate to the next preset for plugin at `index`/`slotIndex`.
 
     ## Args:
-     * `index` (`int`): index of plugin on channel rack or mixer
-     * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
+    * `index` (`int`): index of plugin on channel rack or mixer
+
+    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to `-1`.
+
+    * `useGlobalIndex` (`bool`, optional): whether to use global channel
+      indexes when modifying plugins on the channel rack. Defaults to `False`.
 
     Included since API version 10
     """
 
 
 @since(10)
-def prevPreset(index: int, slotIndex: int = -1) -> None:
+def prevPreset(
+    index: int,
+    slotIndex: int = -1,
+    useGlobalIndex: bool = False,
+) -> None:
     """Navigate to the previous preset for plugin at `index`/`slotIndex`.
 
     ## Args:
-     * `index` (`int`): index of plugin on channel rack or mixer
+    * `index` (`int`): index of plugin on channel rack or mixer
 
-     * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to -1.
+    * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to `-1`.
+
+    * `useGlobalIndex` (`bool`, optional): whether to use global channel
+      indexes when modifying plugins on the channel rack. Defaults to `False`.
 
     Included since API version 10
     """
