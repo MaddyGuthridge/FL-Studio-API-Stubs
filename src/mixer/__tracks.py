@@ -51,12 +51,12 @@ def getTrackColor(index: int) -> int:
 
 
 def setTrackColor(index: int, color: int) -> None:
-    """Sets the colour of the track at `index`.
+    """Sets the color of the track at `index`.
 
     ## Args:
      * `index` (`int`): track index
 
-     * `color` (`int`): colour of track (0x--BBGGRR)
+     * `color` (`int`): color of track (0x--BBGGRR)
 
     Included since API version 1
     """
@@ -234,7 +234,7 @@ def setTrackVolume(
 
      * `volume` (`float`): volume of track
 
-     * `pickupMode` (`int`, optional): define the pickup behaviour. Refer to
+     * `pickupMode` (`int`, optional): define the pickup behavior. Refer to
        the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
 
 
@@ -272,7 +272,7 @@ def setTrackPan(
 
      * `pan` (`float`): pan of track
 
-     * `pickupMode` (`int`, optional): define the pickup behaviour. Refer to
+     * `pickupMode` (`int`, optional): define the pickup behavior. Refer to
        the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
 
 
@@ -313,7 +313,7 @@ def setTrackStereoSep(
 
      * `sep` (`float`): stereo separation of track
 
-     * `pickupMode` (`int`, optional): define the pickup behaviour. Refer to
+     * `pickupMode` (`int`, optional): define the pickup behavior. Refer to
        the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
 
     Included since API version 12

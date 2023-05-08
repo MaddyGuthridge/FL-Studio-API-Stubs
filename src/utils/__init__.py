@@ -12,7 +12,7 @@ authors of this repository.
 
 ## WARNING:
 Many of the provided functions in the FL Studio installation have bugs
-that may result in unexpected behaviour. These bugs have been left as-is in this
+that may result in unexpected behavior. These bugs have been left as-is in this
 file for your inspection and warnings have been added to the docstrings. Use
 any functions here with caution.
 """
@@ -302,7 +302,7 @@ def OffsetRect(R: TRect, dx: int, dy: int) -> None:
 
 
 def RGBToHSV(R: float, G: float, B: float) -> 'tuple[float, float, float]':
-    """Convert an RGB colour to a HSV colour
+    """Convert an RGB color to a HSV color
 
     WARNING: Make sure to convert
 
@@ -347,10 +347,10 @@ def RGBToHSV(R: float, G: float, B: float) -> 'tuple[float, float, float]':
 
 
 def RGBToHSVColor(Color: int) -> 'tuple[float, float, float]':
-    """Convert an RGB colour to a HSV colour
+    """Convert an RGB color to a HSV color
 
     ## Args:
-     * Color (int): colour as integer (`0x--BBGGRR`)
+     * Color (int): color as integer (`0x--BBGGRR`)
 
     ## Returns:
      * H: hue
@@ -367,7 +367,7 @@ def RGBToHSVColor(Color: int) -> 'tuple[float, float, float]':
 
 
 def HSVtoRGB(H: float, S: float, V: float) -> 'tuple[float, float, float]':
-    """Convert an HSV colour to an RGB colour
+    """Convert an HSV color to an RGB color
 
     WARNING: This function returns data in an unexpected format! Be sure to
     convert as required before usage.
@@ -449,10 +449,10 @@ def GetNoteName(NoteNum: int) -> str:
 
 
 def ColorToRGB(Color: int) -> 'tuple[int, int, int]':
-    """Convert an integer colour to an RGB tuple that uses range 0-255.
+    """Convert an integer color to an RGB tuple that uses range 0-255.
 
     ## Args:
-     * Color (int): colour as integer
+     * Color (int): color as integer
 
     ## Returns:
      * int: red
@@ -465,7 +465,7 @@ def ColorToRGB(Color: int) -> 'tuple[int, int, int]':
 
 
 def RGBToColor(R: int, G: int, B: int) -> int:
-    """convert an RGB set to an integer colour. values must be 0-255
+    """convert an RGB set to an integer color. values must be 0-255
 
     ## Args:
      * R (int): red
@@ -475,23 +475,23 @@ def RGBToColor(R: int, G: int, B: int) -> int:
      * B (int): blue
 
     ## Returns:
-     * int: colour
+     * int: color
     """
     return (R << 16) | (G << 8) | B
 
 
 def FadeColor(StartColor: int, EndColor: int, Value: float) -> int:
-    """Fade between two colour values
+    """Fade between two colorlues
 
     ## Args:
-     * StartColor (int): colour integer
+     * StartColor (int): colornteger
 
-     * EndColor (int): colour integer
+     * EndColor (int): color integer
 
      * Value (float): fade position (0-255)
 
     ## Returns:
-     * int: faded colour
+     * int: faded color
 
     WARNING:
      * Blue value is incorrect, using green start value
@@ -506,15 +506,15 @@ def FadeColor(StartColor: int, EndColor: int, Value: float) -> int:
 
 
 def LightenColor(Color: int, Value: float) -> int:
-    """Lighten a colour by a certain amount
+    """Lighten a color by a certain amount
 
     ## Args:
-     * Color (int): colour integer
+     * Color (int): color integer
 
      * Value (float): amount to lighten by (0-255)
 
     ## Returns:
-     * int: lightened colour
+     * int: lightened color
     """
     r, g, b = ColorToRGB(Color)
     ratio = Value / 255

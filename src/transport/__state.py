@@ -115,7 +115,7 @@ def getSongLength(mode: int) -> int:
 
     ## NOTE:
     * The official documentation states that this function has no return,
-      but in practice, it returns an `int`. The actual behaviour is used by this
+      but in practice, it returns an `int`. The actual behavior is used by this
       documentation.
 
     ## Returns:

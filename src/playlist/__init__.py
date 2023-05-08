@@ -68,9 +68,9 @@ def setTrackName(index: int, name: str) -> None:
 
 
 def getTrackColor(index: int) -> int:
-    """Returns the colour of the track at `index`
+    """Returns the color of the track at `index`
 
-    Note that colours can be split into or built from components using the
+    Note that colors can be split into or built from components using the
     functions provided in the module `utils`
 
     * `ColorToRGB()`
@@ -83,7 +83,7 @@ def getTrackColor(index: int) -> int:
      * `index` (`int`): track index
 
     ## Returns:
-     * `int`: track colour (0x--BBGGRR)
+     * `int`: track color (0x--BBGGRR)
 
     ## Raises:
      * `TypeError`: Index out of range
@@ -94,9 +94,9 @@ def getTrackColor(index: int) -> int:
 
 
 def setTrackColor(index: int, color: int) -> None:
-    """Sets the colour of the track at `index`
+    """Sets the color of the track at `index`
 
-    Note that colours can be split into or built from components using the
+    Note that colors can be split into or built from components using the
     functions provided in the module `utils`
 
     * `ColorToRGB()`
@@ -108,7 +108,7 @@ def setTrackColor(index: int, color: int) -> None:
     ## Args:
      * `index` (`int`): track index
 
-     * `color` (`int`): track colour (0x--BBGGRR)
+     * `color` (`int`): track color (0x--BBGGRR)
 
     ## Raises:
      * `TypeError`: Index out of range
@@ -527,12 +527,12 @@ def getLiveBlockStatus(index: int, blockNum: int, mode: int = midi.LB_Status_Def
 
 
 def getLiveBlockColor(index: int, blockNum: int) -> int:
-    """Returns the colour of block on track `index` at position `blockNum`
+    """Returns the color of block on track `index` at position `blockNum`
 
     ## HELP WANTED:
     * What does this do?
 
-    Note that colours can be split into or built from components using the
+    Note that colors can be split into or built from components using the
     functions provided in the module `utils`
 
     * `ColorToRGB()`
@@ -545,7 +545,7 @@ def getLiveBlockColor(index: int, blockNum: int) -> int:
      * `blockNum` (`int`): block number
 
     ## Returns:
-     * `int`: block colour (`0x--BBGGRR`)
+     * `int`: block color (`0x--BBGGRR`)
 
     Included since API version 1
     """

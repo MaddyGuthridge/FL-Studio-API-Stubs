@@ -70,7 +70,7 @@ def getMapItemColor(index: int, itemIndex: int) -> int:
      * `itemIndex` (`int`): item index
 
     ## Returns:
-     * `int`: colour
+     * `int`: color
 
     Included since API version 1
     """
