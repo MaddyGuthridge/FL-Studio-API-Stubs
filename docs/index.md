@@ -8,28 +8,30 @@ If you wish to help contribute to this documentation, you can do so by creating 
 
 ## List of modules
 
-* `arrangement`: functions for interacting with individual arrangements,
+* [`arrangement`][arrangement]: functions for interacting with individual arrangements,
   including markers and playlist selections.
-* `channels`: functions for interacting with the channel rack and its channels.
-* `device`: functions for interacting with the device hardware, as well as
+* [`channels`][channels]: functions for interacting with the channel rack and its channels.
+* [`device`][device]: functions for interacting with the device hardware, as well as
   tools for managing rec events.
-* `enveditor`: a module for interacting with edison, only available through its
+* [`enveditor`][enveditor]: a module for interacting with edison, only available through its
   scripting interface.
-* `fl_classes`: a non-built-in module that provides definitions for classes
+* [`fl_classes`][fl_classes]: a non-built-in module that provides definitions for classes
   used by FL Studio. It cannot be imported during runtime.
-* `fl_model`: a non-built-in module that provides an emulation of FL Studio
+* [`fl_model`][fl_model]: a non-built-in module that provides an emulation of FL Studio
   which useful for testing scripts without needing to open FL Studio.
-* `general`: miscellaneous functions for interacting with FL Studio.
-* `launchMapPages`: functions for implementing page displays on some MIDI
+* [`general`][general]: miscellaneous functions for interacting with FL Studio.
+* [`launchMapPages`][launchMapPages]: functions for implementing page displays on some MIDI
   controllers.
-* `midi`: a module containing constants used by the rest of the API.
-* `mixer`: functions for interacting with the mixer and its tracks.
-* `patterns`: functions for interacting with patterns.
-* `playlist`: functions for interacting with the playlist.
-* `plugins`: functions for interacting with plugins on the channel rack and
+* [`midi`][midi]: a module containing constants used by the rest of the API.
+* [`mixer`][mixer]: functions for interacting with the mixer and its tracks.
+* [`patterns`][patterns]: functions for interacting with patterns.
+* [`playlist`][playlist]: functions for interacting with the playlist.
+* [`plugins`][plugins]: functions for interacting with plugins on the channel rack and
   mixer.
-* `transport`: functions for interacting with FL Studio's playback and
+* [`screen`][screen]: functions for controlling the screen of the AKAI Fire MIDI
+  controller.
+* [`transport`][transport]: functions for interacting with FL Studio's playback and
   recording systems.
-* `ui`: functions for interacting with FL Studio's user interface.
-* `utils`: utility functions and classes. Note that a lot of code in this
+* [`ui`][ui]: functions for interacting with FL Studio's user interface.
+* [`utils`][utils]: utility functions and classes. Note that a lot of code in this
   module is buggy and should be avoided.

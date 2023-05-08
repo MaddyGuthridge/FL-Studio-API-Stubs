@@ -7,7 +7,8 @@ Edison editor, using its integrated scripts functionality.
 Main script files should use the `.pyscript` file extension, with additional
 modules using standard `.py` files.
 
-Note that this module is not accessible
+Note that this module is not accessible in MIDI Controller Scripts, it can only
+be used in scripts that run in Edison's editor.
 """
 __all__ = [
     'ScriptDialog',

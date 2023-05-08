@@ -78,8 +78,8 @@ def liveSelectionStart() -> int:
 
 def currentTime(snap: int) -> int:
     """Returns the current time in the current arrangement, in terms of ticks.
-    Note that by default, most projects have a PPQ of 96. Use `general.getRecPPQ()`
-    to get the PPQ of the project.
+    Note that by default, most projects have a PPQ of 96. Use
+    [`general.getRecPPQ()`][general.getRecPPQ] to get the PPQ of the project.
 
     ## Args:
     * `snap` (`int`): whether to get time snapped to grid

@@ -22,9 +22,12 @@ def isAssigned() -> bool:
 
 def getPortNumber() -> int:
     """Returns the port number for the input device that the script is attached
-    to. If the device requires two-way communication, the output port (where
-    functions like `midiOutMsg()` send their data to) should be set to the
-    value of the input port, which is returned by this function.
+    to.
+
+    If the device requires two-way communication, the output port (where
+    functions like [`midiOutMsg()`][device.midiOutMsg] send their data to)
+    should be set to the value of the input port, which is returned by this
+    function.
 
     ## Returns:
     * `int`: port number of the input device
@@ -59,7 +62,7 @@ def midiOutMsg(
     distinct components.
 
     ## WARNING:
-    * Sending an invalid message will cause FL Studio to crash (API v20)
+    * Sending an invalid message will cause FL Studio to crash (FL Studio <= 20.9.2)
 
     ## Args:
     * `message` (`int`):
@@ -173,7 +176,7 @@ def repeatMidiEvent(eventData: FlMidiMsg, delay: int = 300, rate: int = 300) -> 
 def stopRepeatMidiEvent() -> None:
     """Stop sending a currently repeating MIDI event.
 
-    Refer to `repeatMidiEvent()`.
+    Refer to [`repeatMidiEvent()`][device.repeatMidiEvent].
 
     Included since API version 1
     """
@@ -222,8 +225,6 @@ def getDeviceId() -> bytes:
     """
     Returns the unique device identifier of the connected device, as determined
     by FL Studio when connecting the device.
-
-    NOTE: This may change depending
 
     Note that this does not include the Sysex header, or ending byte.
 

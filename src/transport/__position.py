@@ -100,9 +100,9 @@ def globalTransport(
       comprehend. Almost all functionality provided by this function can be done
       more easily and cleanly by using the dedicated functions.
 
-    * Some commands will echo keypresses (such as `FPT_F1`), meaning they
-      can affect windows outside FL Studio. Make sure you test your code
-      thoroughly if you decide to use this function.
+    * Some commands will echo key-presses (such as `FPT_F1`), meaning they
+      can affect windows outside FL Studio in versions before FL Studio 21.0.0.
+      Make sure you test your code thoroughly if you decide to use this function.
 
     ## Args:
     * `command` (`int`): command to execute, refer to

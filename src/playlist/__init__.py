@@ -698,8 +698,5 @@ def getPerformanceModeState() -> bool:
     * `bool`: whether performance mode is enabled
 
     Included since API Version 21
-
-    ## API Changes:
-    * v_: change
     """
     return False

@@ -74,7 +74,10 @@ def getChangedFlag() -> int:
 
 def getVersion() -> int:
     """Returns MIDI Scripting API version number. Note that this is the API
-    version, rather than the FL Studio version
+    version, rather than the FL Studio version.
+
+    To get the version of FL Studio, use [`ui.getVersion()`][ui.getVersion]
+    instead.
 
     ## Returns:
      * `int`: version number
@@ -101,12 +104,12 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
 
     REC events have some other properties available:
 
-    * Descriptive name: `device.getLinkedParamName()`
+    * Descriptive name: [`device.getLinkedParamName()`][device.getLinkedParamName]
 
-    * Current value: `device.getLinkedValue()`
+    * Current value: [`device.getLinkedValue()`][device.getLinkedValue]
 
     * Current value as an appropriately formatted string:
-      `device.getLinkedValueString()`
+      [`device.getLinkedValueString()`][device.getLinkedValueString]
 
     ## HELP WANTED:
     * More information from Image-Line? More details on what `flags` can do?

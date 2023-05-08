@@ -106,11 +106,11 @@ def getChannelColor(index: int) -> int:
     """Returns the color of the channel at `index` (respecting groups)
 
     Note that colors can be split into or built from components using the
-    functions provided in the module `utils`
+    functions provided in the module [`utils`][utils]
 
-    * `ColorToRGB()`
+    * [`ColorToRGB()`][utils.ColorToRBG]
 
-    * `RGBToColor()`
+    * [`RGBToColor()`][utils.RGBToColor]
 
     ## Args:
      * `index` (`int`): index of channel
@@ -128,11 +128,11 @@ def setChannelColor(index: int, color: int) -> None:
     """Sets the color of the channel at `index` (respecting groups)
 
     Note that colors can be split into or built from components using the
-    functions provided in the module `utils`
+    functions provided in the module [`utils`][utils]
 
-    * `ColorToRGB()`
+    * [`ColorToRGB()`][utils.ColorToRBG]
 
-    * `RGBToColor()`
+    * [`RGBToColor()`][utils.RGBToColor]
 
     ## Args:
      * `index` (`int`): index of channel
@@ -280,7 +280,7 @@ def getChannelPan(index: int) -> float:
 def setChannelPan(index: int, pan: float, pickupMode: int = midi.PIM_None) -> None:
     """Sets the normalized pan of the channel at `index`, where `-1.0` is
     100% left, and `1.0` is 100% right. Note that the default
-    pan for channels is `0.0` (centre). Use the pickup mode flag to set pickup
+    pan for channels is `0.0` (centered). Use the pickup mode flag to set pickup
     options.
 
     ## Args:
@@ -455,7 +455,7 @@ def selectedChannel(
     selected channel where n is `offset` + 1. If n is greater than the number
     of selected channels, the global index of the last selected channel will be
     returned. If `indexGlobal` is set to `1`, this will replicate the behavior
-    of `channelNumber()` by returning global indexes.
+    of [`channelNumber()`][channels.channelNumber] by returning global indexes.
 
     ## NOTE:
     * This function replaces the functionality of `channelNumber()`
@@ -606,7 +606,7 @@ def incEventValue(eventId: int, step: int, res: float = 1 / 24) -> int:
     This can be used to map encoder-style controls to events, by allowing them
     to adjust a parameter using a delta value
 
-    Use result as new value in `general.processRECEvent`.
+    Use result as new value in [`general.processRECEvent()`][general.processRECEvent].
 
     ## Example usage:
     ```py

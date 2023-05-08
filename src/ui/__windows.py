@@ -70,7 +70,8 @@ def getFocused(index: int) -> bool:
     ## NOTE:
     * this doesn't necessarily mean that it is the currently selected window
       in the host operating system, so functions that rely on keypress emulation
-      (such as `ui.copy()`) may not work as intended, even if this returns `True`.
+      (such as [`ui.copy()`][ui.copy]) may not work as intended, even if this
+      returns `True`.
 
     ## Args:
      * `index` (`int`): window index:

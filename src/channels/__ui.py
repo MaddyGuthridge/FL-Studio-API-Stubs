@@ -96,7 +96,7 @@ def showCSForm(index: int, state: int = 1) -> None:
     """Show the channel settings window (or plugin window for plugins) for
     channel at `index`.
 
-    This appears to perform the same action as `focusEditor()`.
+    This appears to perform the same action as [`focusEditor()`][channels.focusEditor].
 
     ## Args:
      * `index` (int): channel index

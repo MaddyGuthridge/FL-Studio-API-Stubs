@@ -328,15 +328,15 @@ def getName(
 
     * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to `-1`.
 
-    * `flag` (`int`, optional): name type to return. Names marked with a *
+    * `flag` (`int`, optional): name type to return. Names marked with a `!`
       require the `paramIndex` parameter in order to work correctly.
-          * `FPN_Param` (`0`, default) * : Name of plugin parameter.
+          * `FPN_Param` (`0`, default) `*` : Name of plugin parameter.
               * Eg: `"Expression"`
 
-          * `FPN_ParamValue` (`1`) * : Text value of plugin parameter.
+          * `FPN_ParamValue` (`1`) `*` : Text value of plugin parameter.
               * Eg: `"62%"`
 
-          * `FPN_Semitone` (`2`) * : Name of note as defined by plugin.
+          * `FPN_Semitone` (`2`) `*` : Name of note as defined by plugin.
               * `paramIndex` should be the note number (eg `60` for middle C)
 
               * If note names aren't defined by the plugin, an empty string is given.
@@ -345,11 +345,11 @@ def getName(
 
           * `FPN_Patch` (`3`): Name of the patch defined by plugin?
 
-          * `FPN_VoiceLevel` (`4`) * : Name of per-voice parameter defined by plugin
+          * `FPN_VoiceLevel` (`4`) `*` : Name of per-voice parameter defined by plugin
 
-          * `FPN_VoiceLevelHint` (`5`) * : Hint for per-voice parameter defined by plugin
+          * `FPN_VoiceLevelHint` (`5`) `*` : Hint for per-voice parameter defined by plugin
 
-          * `FPN_Preset` (`6`) * : For plugins that support internal presets, the name of the preset at `paramIndex`.
+          * `FPN_Preset` (`6`) `*` : For plugins that support internal presets, the name of the preset at `paramIndex`.
               * Eg: `"Dystopian lead"`
 
           * `FPN_OutCtrl` (`7`): For plugins that output controllers, the name of the output controller?
@@ -387,7 +387,7 @@ def getPadInfo(
 
     Currently only supported by FPC
 
-    ## Notes:
+    ## Note:
     * The official documentation lists this as returning a string, but it
       actually returns an int.
 

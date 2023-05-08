@@ -62,7 +62,7 @@ def updateMap(index: int) -> None:
 
 
 def getMapItemColor(index: int, itemIndex: int) -> int:
-    """Returns item colour of `itemIndex` in map `index`
+    """Returns item color of `itemIndex` in map `index`
 
     ## Args:
      * `index` (`int`): map index

@@ -37,13 +37,13 @@ def setTrackName(index: int, name: str) -> None:
 
 
 def getTrackColor(index: int) -> int:
-    """Returns the colour of the track at `index`.
+    """Returns the color of the track at `index`.
 
     ## Args:
      * `index` (`int`): track index
 
     ## Returns:
-     * `int`: colour of track (0x--BBGGRR)
+     * `int`: color of track (0x--BBGGRR)
 
     Included since API version 1
     """

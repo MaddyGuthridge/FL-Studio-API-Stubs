@@ -91,8 +91,8 @@ def getStepParam(step: int, param: int, offset: int, startPos: int,
     * `int`: value for step parameter
 
     ## See also:
-    * `getCurrentStepParam()`
-    * `setStepParameterByIndex()`
+    * [`getCurrentStepParam()`][channels.getCurrentStepParam]
+    * [`setStepParameterByIndex()`][channels.setStepParameterByIndex]
 
     ## Step parameter types:
     * `0`: Note pitch (MIDI note number, default 60 for middle C)
