@@ -3,26 +3,11 @@ on:
   # Documentation can be either manually updated or is automatically updated when pushed to main branch
   workflow_dispatch:
   push:
-    branches:
-      - main
-
-# Make sure deploy-pages has necessary permissions to deploy to GitHub Pages
-permissions:
-  pages: write
-  id-token: write
-
-# Cancel older deploy workflow when more than one is running
-concurrency:
-  group: pages
-  cancel-in-progress: true
 
 jobs:
   deploy:
-    name: Build and deploy documentation site
+    name: Build documentation site
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }} # Output URL after the workflow has finished
     steps:
       # Checkout repository including submodules
       - name: Checkout
@@ -52,14 +37,17 @@ jobs:
         id: build
         run: poetry run python -m scripts.build_docs
 
-      # Upload artifact from the ./site/ directory using the expected format for GitHub Pages
-      - name: Upload Artifact
-        id: upload
-        uses: actions/upload-pages-artifact@v1
+      # Upload build outputs
+      - name: Upload build artifacts markdown
+        uses: actions/upload-artifact@v3
+        if: always()
         with:
-          path: ./site/
+          name: markdown output
+          path: docs_build/*
 
-      # Use previously uploaded artifact to deploy to GitHub Pages
-      - name: Deploy
-        id: deploy
-        uses: actions/deploy-pages@v1
+      - name: Upload build artifacts HTML
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: HTML output
+          path: site/*
