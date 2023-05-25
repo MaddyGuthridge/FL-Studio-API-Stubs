@@ -1,4 +1,4 @@
-name: Generate Documentation and deploy to GitHub pages
+name: Generate documentation dryrun
 on:
   # Documentation can be either manually updated or is automatically updated when pushed to main branch
   workflow_dispatch:
