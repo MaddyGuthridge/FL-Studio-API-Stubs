@@ -213,6 +213,7 @@ def setParamValue(
     paramIndex: int,
     index: int,
     slotIndex: int = -1,
+    pickupMode: int = 0,
     useGlobalIndex: bool = False,
 ) -> None:
     """Sets the value of the parameter at `paramIndex` for the plugin at
@@ -230,6 +231,12 @@ def setParamValue(
     * `index` (`int`): index of plugin on channel rack or mixer
 
     * `slotIndex` (`int`, optional): mixer slot if on mixer. Defaults to `-1`.
+
+    * `pickupMode` (`int`, optional): pickup mode to use:
+
+          * `0`: do not use pickup
+          * `1`: always use pickup
+          * `2`: use pickup if FL Studio is configured to do so
 
     * `useGlobalIndex` (`bool`, optional): whether to use global channel
       indexes when modifying plugins on the channel rack. Defaults to `False`.
