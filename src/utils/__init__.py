@@ -481,10 +481,10 @@ def RGBToColor(R: int, G: int, B: int) -> int:
 
 
 def FadeColor(StartColor: int, EndColor: int, Value: float) -> int:
-    """Fade between two colorlues
+    """Fade between two colors
 
     ## Args:
-     * StartColor (int): colornteger
+     * StartColor (int): color integer
 
      * EndColor (int): color integer
 
