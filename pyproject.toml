@@ -62,7 +62,7 @@ packages = [
 
 
 [tool.poetry.dependencies]
-python = "^3.9.1"
+python = "^3.9"
 jsonschema = "^4.17.3"
 
 [tool.poetry.dev-dependencies]
