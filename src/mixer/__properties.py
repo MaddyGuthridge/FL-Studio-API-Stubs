@@ -8,7 +8,7 @@ import midi
 from fl_model.decorators import since
 
 
-def getTrackInfo(mode: int) -> int:
+def getTrackInfo(mode: int, /) -> int:
     """Returns the index of a special mixer track depending on `mode`.
 
     This function can serve to help potentially future-proof scripts by
@@ -57,7 +57,7 @@ def getSongStepPos() -> int:
     return 0
 
 
-def getCurrentTempo(asInt: int = 0) -> 'int | float':
+def getCurrentTempo(asInt: int = 0, /) -> 'int | float':
     """Returns the current tempo of the song
 
     ## Args:
@@ -87,7 +87,7 @@ def getRecPPS() -> int:
     return 0
 
 
-def getSongTickPos(mode: int = midi.ST_Int) -> 'int | float':
+def getSongTickPos(mode: int = midi.ST_Int, /) -> 'int | float':
     """Returns the current position in the song, measured in ticks.
 
     ## Returns:
@@ -99,7 +99,7 @@ def getSongTickPos(mode: int = midi.ST_Int) -> 'int | float':
 
 
 @since(9)
-def getLastPeakVol(section: int) -> float:
+def getLastPeakVol(section: int, /) -> float:
     """Returns last peak volume.
 
     ## Args:
@@ -118,7 +118,7 @@ def getLastPeakVol(section: int) -> float:
 
 
 @since(25)
-def focusEditor(index: int, plugIndex: int):
+def focusEditor(index: int, plugIndex: int, /):
     """
     Focus the editor the effect plugin at the given location
 

@@ -17,7 +17,7 @@ from fl_model.channels import (
 from fl_model.util import clamp
 
 
-def channelNumber(canBeNone: bool = False, offset: int = 0) -> int:
+def channelNumber(canBeNone: bool = False, offset: int = 0, /) -> int:
     """Returns the global index of the first selected channel, otherwise the
     nth selected channel where n is `offset` + 1. If n is greater than the
     number of selected channels, the global index of the last selected channel
@@ -50,7 +50,7 @@ def channelNumber(canBeNone: bool = False, offset: int = 0) -> int:
         return 0
 
 
-def channelCount(mode: bool = False) -> int:
+def channelCount(mode: bool = False, /) -> int:
     """Returns the number of channels on the channel rack. Respect for groups
     is controlled by the `mode` flag.
 
@@ -70,7 +70,7 @@ def channelCount(mode: bool = False) -> int:
         return len(getChannelsInGroup())
 
 
-def getChannelName(index: int) -> str:
+def getChannelName(index: int, /) -> str:
     """Returns the name of the channel at `index` (respecting groups)
 
     ## Args:
@@ -85,7 +85,7 @@ def getChannelName(index: int) -> str:
     return getGroupedChannelReference(index).name
 
 
-def setChannelName(index: int, name: str) -> None:
+def setChannelName(index: int, name: str, /) -> None:
     """Sets the name of the channel at `index` (respecting groups)
 
     If a channel's name is set to "", its name will be set to the default name
@@ -102,7 +102,7 @@ def setChannelName(index: int, name: str) -> None:
     getGroupedChannelReference(index).name = name
 
 
-def getChannelColor(index: int) -> int:
+def getChannelColor(index: int, /) -> int:
     """Returns the color of the channel at `index` (respecting groups)
 
     Note that colors can be split into or built from components using the
@@ -124,7 +124,7 @@ def getChannelColor(index: int) -> int:
     return getGroupedChannelReference(index).color
 
 
-def setChannelColor(index: int, color: int) -> None:
+def setChannelColor(index: int, color: int, /) -> None:
     """Sets the color of the channel at `index` (respecting groups)
 
     Note that colors can be split into or built from components using the
@@ -144,7 +144,7 @@ def setChannelColor(index: int, color: int) -> None:
     getGroupedChannelReference(index).color = color
 
 
-def isChannelMuted(index: int) -> bool:
+def isChannelMuted(index: int, /) -> bool:
     """Returns whether channel is muted (`1`) or not (`0`)
 
     ## Args:
@@ -159,7 +159,7 @@ def isChannelMuted(index: int) -> bool:
     return getGroupedChannelReference(index).muted
 
 
-def muteChannel(index: int) -> None:
+def muteChannel(index: int, /) -> None:
     """Toggles the mute state of the channel at `index`
 
     ## Args:
@@ -171,7 +171,7 @@ def muteChannel(index: int) -> None:
     getGroupedChannelReference(index).muted = not isChannelMuted(index)
 
 
-def isChannelSolo(index: int) -> bool:
+def isChannelSolo(index: int, /) -> bool:
     """Returns whether channel is solo (`1`) or not (`0`)
 
     ## Args:
@@ -189,7 +189,7 @@ def isChannelSolo(index: int) -> bool:
     return enabled == 1 and not isChannelMuted(index)
 
 
-def soloChannel(index: int) -> None:
+def soloChannel(index: int, /) -> None:
     """Toggles the solo state of the channel at `index`
 
     ## Args:
@@ -206,7 +206,7 @@ def soloChannel(index: int) -> None:
             c.muted = True
 
 
-def getChannelVolume(index: int, mode: bool = False) -> float:
+def getChannelVolume(index: int, mode: bool = False, /) -> float:
     """Returns the normalized volume of the channel at `index`, where `0.0` is
     the minimum value, and `1.0` is the maximum value. Note that the default
     volume for channels is `0.78125`. By setting the `mode` flag to `True`, the
@@ -237,7 +237,8 @@ def getChannelVolume(index: int, mode: bool = False) -> float:
 def setChannelVolume(
     index: int,
     volume: float,
-    pickupMode: int = midi.PIM_None
+    pickupMode: int = midi.PIM_None,
+    /,
 ) -> None:
     """Sets the normalized volume of the channel at `index`, where `0.0` is
     the minimum value, and `1.0` is the maximum value. Note that the default
@@ -277,7 +278,12 @@ def getChannelPan(index: int) -> float:
     return getState().channels.channel_list[index_global].pan
 
 
-def setChannelPan(index: int, pan: float, pickupMode: int = midi.PIM_None) -> None:
+def setChannelPan(
+    index: int,
+    pan: float,
+    pickupMode: int = midi.PIM_None,
+    /,
+) -> None:
     """Sets the normalized pan of the channel at `index`, where `-1.0` is
     100% left, and `1.0` is 100% right. Note that the default
     pan for channels is `0.0` (centered). Use the pickup mode flag to set pickup
@@ -299,7 +305,11 @@ def setChannelPan(index: int, pan: float, pickupMode: int = midi.PIM_None) -> No
 
 
 @since(8)
-def getChannelPitch(index: int, mode: int = 0) -> 'float | int':
+def getChannelPitch(
+    index: int,
+    mode: int = 0,
+    /,
+) -> 'float | int':
     """Returns the current pitch bend (or range) of the channel at `index`.
     The `mode` parameter is used to determine the type of pitch returned.
 
@@ -331,7 +341,13 @@ def getChannelPitch(index: int, mode: int = 0) -> 'float | int':
 
 
 @since(8)
-def setChannelPitch(index: int, value: float, mode: int = 0, pickupMode: int = midi.PIM_None) -> 'float | int':
+def setChannelPitch(
+    index: int,
+    value: float,
+    mode: int = 0,
+    pickupMode: int = midi.PIM_None,
+    /,
+) -> 'float | int':
     """Sets the pitch of the channel at `index` to value. The `mode` parameter is used
     to determine the type of pitch set. Use the pickup mode flag to set pickup
     options. The final pitch will be clamped to the current pitch range.
@@ -361,7 +377,7 @@ def setChannelPitch(index: int, value: float, mode: int = 0, pickupMode: int = m
 
 
 @since(19)
-def getChannelType(index: int) -> int:
+def getChannelType(index: int, /) -> int:
     """
     Returns the type of instrument loaded into the channel rack at `index`
 
@@ -388,7 +404,7 @@ def getChannelType(index: int) -> int:
     return getState().channels.channel_list[index_global].ch_type.value
 
 
-def isChannelSelected(index: int) -> bool:
+def isChannelSelected(index: int, /) -> bool:
     """Returns whether the channel at `index` is selected (not respecting
     channel groups).
 
@@ -405,7 +421,7 @@ def isChannelSelected(index: int) -> bool:
     return getState().channels.channel_list[index_global].selected
 
 
-def selectChannel(index: int, value: int = -1) -> None:
+def selectChannel(index: int, value: int = -1, /) -> None:
     """Select the channel at `index` (respecting groups).
 
     ## Args:
@@ -430,7 +446,7 @@ def selectChannel(index: int, value: int = -1) -> None:
 
 
 @since(8)
-def selectOneChannel(index: int) -> None:
+def selectOneChannel(index: int, /) -> None:
     """Exclusively select the channel at `index` (deselecting any other selected
     channels).
 
@@ -449,7 +465,8 @@ def selectOneChannel(index: int) -> None:
 def selectedChannel(
     canBeNone: bool = False,
     offset: int = 0,
-    indexGlobal: bool = False
+    indexGlobal: bool = False,
+    /,
 ) -> int:
     """Returns the index of the first selected channel, otherwise the nth
     selected channel where n is `offset` + 1. If n is greater than the number
@@ -507,7 +524,7 @@ def deselectAll() -> None:
     """
 
 
-def getChannelMidiInPort(index: int) -> int:
+def getChannelMidiInPort(index: int, /) -> int:
     """Returns the MIDI port associated with the channel at `index`.
 
     This can be used to send data directly to channels that are associated with
@@ -529,7 +546,7 @@ def getChannelMidiInPort(index: int) -> int:
     return 0
 
 
-def getChannelIndex(index: int) -> int:
+def getChannelIndex(index: int, /) -> int:
     """Returns the global index of a channel given the group `index`.
 
     ## Args:
@@ -544,7 +561,7 @@ def getChannelIndex(index: int) -> int:
     return groupIndexToGlobalIndex(index)
 
 
-def getTargetFxTrack(index: int) -> int:
+def getTargetFxTrack(index: int, /) -> int:
     """Returns the mixer track that the channel at `index` is linked to.
 
     ## Args:
@@ -559,7 +576,7 @@ def getTargetFxTrack(index: int) -> int:
     return 0
 
 
-def setTargetFxTrack(channelIndex: int, mixerIndex: int) -> None:
+def setTargetFxTrack(channelIndex: int, mixerIndex: int, /) -> None:
     """Sets the mixer track that the channel at `index` is linked to.
 
     ## Args:
@@ -575,7 +592,7 @@ def setTargetFxTrack(channelIndex: int, mixerIndex: int) -> None:
 
 
 @deprecate(7)
-def processRECEvent(eventId: int, value: int, flags: int) -> int:
+def processRECEvent(eventId: int, value: int, flags: int, /) -> int:
     """Processes a recording event.
 
     ## WARNING:
@@ -599,7 +616,7 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
     return 0
 
 
-def incEventValue(eventId: int, step: int, res: float = 1 / 24) -> int:
+def incEventValue(eventId: int, step: int, res: float = 1 / 24, /) -> int:
     """Get event value increased by step. Use (optional) res parameter to
     specify increment resolution.
 
@@ -638,7 +655,7 @@ def incEventValue(eventId: int, step: int, res: float = 1 / 24) -> int:
     return 0
 
 
-def getRecEventId(index: int) -> int:
+def getRecEventId(index: int, /) -> int:
     """
     Return the starting point of REC event IDs for the channel at `index`.
 

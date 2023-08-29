@@ -38,7 +38,7 @@ def getPatternGroupCount() -> int:
 
 
 @since(28)
-def getPatternGroupName(index: int) -> str:
+def getPatternGroupName(index: int, /) -> str:
     """
     Returns the name of the pattern group at index.
 
@@ -53,7 +53,7 @@ def getPatternGroupName(index: int) -> str:
 
 
 @since(28)
-def getPatternsInGroup(index: int) -> tuple[int, ...]:
+def getPatternsInGroup(index: int, /) -> tuple[int, ...]:
     """
     Returns a tuple containing all the patterns in the group at index.
 

@@ -21,6 +21,7 @@ def init(
     font_size: int,
     value_a: int,
     value_b: int,
+    /,
 ) -> None:
     """
     Initialize the screen of the AKAI Fire
@@ -63,6 +64,7 @@ def setup(
     text_scroll_pause: int,
     text_scroll_speed: int,
     text_display_time: int,
+    /,
 ) -> None:
     """
     Set up the AKAI Fire screen.
@@ -100,7 +102,7 @@ def addMeter(*args) -> None:
     ...
 
 
-def addTextLine(text: str, line: int) -> None:
+def addTextLine(text: str, line: int, /) -> None:
     """
     Add text to a line on the screen?
 
@@ -151,6 +153,7 @@ def fillRect(
     end_x: int,
     end_y: int,
     value: int,
+    /,
 ) -> None:
     """
     Draw a filled rectangle to the given position on the screen.

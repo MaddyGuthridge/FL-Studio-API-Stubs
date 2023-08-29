@@ -6,7 +6,7 @@ Contains functions for working with performance mode
 from .__helpers import checkIndex
 
 
-def getBlockSetStatus(left: int, top: int, right: int, bottom: int) -> int:
+def getBlockSetStatus(left: int, top: int, right: int, bottom: int, /) -> int:
     """Returns the status of the live block.
 
     HELP WANTED: What does this do?
@@ -33,7 +33,7 @@ def getBlockSetStatus(left: int, top: int, right: int, bottom: int) -> int:
     return 0
 
 
-def ensureValidNoteRecord(index: int, playNow: int = 0) -> int:
+def ensureValidNoteRecord(index: int, playNow: int = 0, /) -> int:
     """Ensures valid note on the pattern at `index`.
 
     ## HELP WANTED:

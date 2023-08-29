@@ -61,7 +61,7 @@ def patternMax() -> int:
     return PATTERN_COUNT - 1
 
 
-def getPatternName(index: int) -> str:
+def getPatternName(index: int, /) -> str:
     """Returns the name of the pattern at `index`.
 
     ## Args:
@@ -76,7 +76,7 @@ def getPatternName(index: int) -> str:
     return getPatternReference(index).name
 
 
-def setPatternName(index: int, name: str) -> None:
+def setPatternName(index: int, name: str, /) -> None:
     """Sets the name of pattern at `index`
 
     Setting the name to an empty string will reset the name of the pattern to
@@ -93,7 +93,7 @@ def setPatternName(index: int, name: str) -> None:
     getPatternReference(index).name = name
 
 
-def getPatternColor(index: int) -> int:
+def getPatternColor(index: int, /) -> int:
     """Returns the color of the pattern at `index`.
 
     ## Args:
@@ -108,7 +108,7 @@ def getPatternColor(index: int) -> int:
     return getPatternReference(index).color
 
 
-def setPatternColor(index: int, color: int) -> None:
+def setPatternColor(index: int, color: int, /) -> None:
     """Sets the color of the pattern at `index`.
 
     ## Args:
@@ -122,7 +122,7 @@ def setPatternColor(index: int, color: int) -> None:
     getPatternReference(index).color = color
 
 
-def getPatternLength(index: int) -> int:
+def getPatternLength(index: int, /) -> int:
     """Returns the length of the pattern at `index` in beats.
 
     ## Args:
@@ -137,7 +137,7 @@ def getPatternLength(index: int) -> int:
     return 0
 
 
-def jumpToPattern(index: int) -> None:
+def jumpToPattern(index: int, /) -> None:
     """Scroll the patterns list to the pattern at `index`, then activate it and
     select it if it isn't already selected.
 
@@ -162,7 +162,7 @@ def jumpToPattern(index: int) -> None:
     getState().patterns.active_pattern = index
 
 
-def findFirstNextEmptyPat(flags: int, x: int = -1, y: int = -1) -> None:
+def findFirstNextEmptyPat(flags: int, x: int = -1, y: int = -1, /) -> None:
     """Selects the first or next empty pattern.
 
     ## Args:
@@ -181,7 +181,7 @@ def findFirstNextEmptyPat(flags: int, x: int = -1, y: int = -1) -> None:
 
 
 @since(2)
-def isPatternSelected(index: int) -> bool:
+def isPatternSelected(index: int, /) -> bool:
     """Returns whether the pattern at `index` is selected.
 
     ## Args:
@@ -197,7 +197,12 @@ def isPatternSelected(index: int) -> bool:
 
 
 @since(2)
-def selectPattern(index: int, value: int = -1, preview: bool = False) -> None:
+def selectPattern(
+    index: int,
+    value: int = -1,
+    preview: bool = False,
+    /,
+) -> None:
     """Selects the pattern at `index`.
 
     ## Args:
@@ -263,7 +268,7 @@ def deselectAll() -> None:
 
 
 @since(9)
-def burnLoop(index: int, storeUndo: int = 1, updateUi: int = 1) -> None:
+def burnLoop(index: int, storeUndo: int = 1, updateUi: int = 1, /) -> None:
     """For a pattern where looping of step sequenced channels is enabled,
     disable looping for the channel at index `i`.
 
@@ -286,7 +291,7 @@ def burnLoop(index: int, storeUndo: int = 1, updateUi: int = 1) -> None:
 
 
 @since(23)
-def isPatternDefault(index: int) -> bool:
+def isPatternDefault(index: int, /) -> bool:
     """
     Returns whether the pattern at the given index has changed from the default
     empty state.
@@ -304,7 +309,7 @@ def isPatternDefault(index: int) -> bool:
 
 
 @since(25)
-def clonePattern(index: Optional[int] = None):
+def clonePattern(index: Optional[int] = None, /):
     """
     Clones the pattern at the given index
 

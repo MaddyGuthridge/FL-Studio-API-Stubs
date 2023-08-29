@@ -7,8 +7,13 @@ from fl_model.decorators import since
 from fl_model.channels import checkGlobalIndex, checkGroupIndex
 
 
-def midiNoteOn(indexGlobal: int, note: int, velocity: int, channel: int = -1
-               ) -> None:
+def midiNoteOn(
+    indexGlobal: int,
+    note: int,
+    velocity: int,
+    channel: int = -1,
+    /,
+) -> None:
     """Set a MIDI Note for the channel at `indexGlobal` (not respecting groups)
 
     This can be used to create extra notes (eg mapping one note to a chord).
@@ -32,7 +37,7 @@ def midiNoteOn(indexGlobal: int, note: int, velocity: int, channel: int = -1
 
 
 @since(9)
-def quickQuantize(index: int, startOnly: int = 1) -> None:
+def quickQuantize(index: int, startOnly: int = 1, /) -> None:
     """
     Perform a quick quantize operation on the channel at index
 

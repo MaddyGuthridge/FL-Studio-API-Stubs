@@ -31,7 +31,7 @@ def fullRefresh() -> None:
     """
 
 
-def isDoubleClick(index: int) -> bool:
+def isDoubleClick(index: int, /) -> bool:
     """Returns whether the function was called with the same index shortly
     before, indicating a double click.
 
@@ -55,7 +55,7 @@ def setHasMeters() -> None:
     """
 
 
-def baseTrackSelect(index: int, step: int) -> None:
+def baseTrackSelect(index: int, step: int, /) -> None:
     """Base track selection (for control surfaces). Set `step` to `MaxInt` to
     reset.
 
@@ -71,7 +71,7 @@ def baseTrackSelect(index: int, step: int) -> None:
     """
 
 
-def hardwareRefreshMixerTrack(index: int) -> None:
+def hardwareRefreshMixerTrack(index: int, /) -> None:
     """Hardware refresh mixer track at `index`.
 
     ## HELP WANTED:

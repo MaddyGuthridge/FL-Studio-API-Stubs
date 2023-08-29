@@ -55,6 +55,7 @@ def isValid(
     index: int,
     slotIndex: int = -1,
     useGlobalIndex: bool = False,
+    /,
 ) -> bool:
     """Returns whether there is a valid plugin at `index`/`slotIndex`.
 
@@ -83,6 +84,7 @@ def getPluginName(
     slotIndex: int = -1,
     userName: bool = False,
     useGlobalIndex: bool = False,
+    /,
 ) -> str:
     """Returns the name of the plugin at `index`/slotIndex`. This returns the
     original plugin name if `userName` is `False`, otherwise the name of the
@@ -114,6 +116,7 @@ def getParamCount(
     index: int,
     slotIndex: int = -1,
     useGlobalIndex: bool = False,
+    /,
 ) -> int:
     """Returns the number of parameters that the plugin at `index`/`slotIndex`
     has.
@@ -146,6 +149,7 @@ def getParamName(
     index: int,
     slotIndex: int = -1,
     useGlobalIndex: bool = False,
+    /,
 ) -> str:
     """Returns the name of the parameter at `paramIndex` for the plugin at
     `index`/`slotIndex`.
@@ -178,6 +182,7 @@ def getParamValue(
     index: int,
     slotIndex: int = -1,
     useGlobalIndex: bool = False,
+    /,
 ) -> float:
     """Returns the value of the parameter at `paramIndex` for the plugin at
     `index`/`slotIndex`.
@@ -215,6 +220,7 @@ def setParamValue(
     slotIndex: int = -1,
     pickupMode: int = 0,
     useGlobalIndex: bool = False,
+    /,
 ) -> None:
     """Sets the value of the parameter at `paramIndex` for the plugin at
     `index`/`slotIndex`.
@@ -252,6 +258,7 @@ def getParamValueString(
     slotIndex: int = -1,
     pickupMode: int = midi.PIM_None,
     useGlobalIndex: bool = False,
+    /,
 ) -> str:
     """
     Returns a string value of the parameter at `paramIndex` for the plugin at
@@ -288,6 +295,7 @@ def getColor(
     slotIndex: int = -1,
     flag: int = midi.GC_BackgroundColor,
     useGlobalIndex: bool = False,
+    /,
 ) -> int:
     """Returns various plugin color parameter values for the plugin at
     `index`/`slotIndex`.
@@ -322,6 +330,7 @@ def getName(
     flag: int = midi.FPN_Param,
     paramIndex: int = 0,
     useGlobalIndex: bool = False,
+    /,
 ) -> str:
     """Returns various names for parts of plugins for the plugin at
     `index`/`slotIndex`.
@@ -388,6 +397,7 @@ def getPadInfo(
     paramOption: int = 0,
     paramIndex: int = -1,
     useGlobalIndex: bool = False,
+    /,
 ) -> int:
     """
     Returns info about drum pads
@@ -433,6 +443,7 @@ def getPresetCount(
     index: int,
     slotIndex: int = -1,
     useGlobalIndex: bool = False,
+    /,
 ) -> int:
     """Returns the number of presets available for the selected plugin.
 
@@ -454,6 +465,7 @@ def nextPreset(
     index: int,
     slotIndex: int = -1,
     useGlobalIndex: bool = False,
+    /,
 ) -> None:
     """Navigate to the next preset for plugin at `index`/`slotIndex`.
 
@@ -474,6 +486,7 @@ def prevPreset(
     index: int,
     slotIndex: int = -1,
     useGlobalIndex: bool = False,
+    /,
 ) -> None:
     """Navigate to the previous preset for plugin at `index`/`slotIndex`.
 

@@ -8,7 +8,7 @@ from fl_model.models.general import UndoItem
 from fl_model import getState
 
 
-def saveUndo(undoName: str, flags: int, update: bool = True) -> None:
+def saveUndo(undoName: str, flags: int, update: bool = True, /) -> None:
     """Save an undo point into FL Studio's history.
 
     ## Args:
@@ -102,7 +102,7 @@ def undoDown() -> int:
     return 0
 
 
-def undoUpDown(value: int) -> int:
+def undoUpDown(value: int, /) -> int:
     """Move in the undo history by delta `value`
 
     ## Args:
@@ -135,7 +135,7 @@ def restoreUndo() -> int:
 
 
 @deprecate(1)
-def restoreUndoLevel(level: int) -> int:
+def restoreUndoLevel(level: int, /) -> int:
     """
     Undo-redo toggle. This behaves in the same way as `undo()`.
 
@@ -206,7 +206,7 @@ def getUndoHistoryLast() -> int:
     return getState().general.undo.position
 
 
-def setUndoHistoryPos(index: int) -> None:
+def setUndoHistoryPos(index: int, /) -> None:
     """
     Removes recent elements from the undo history, leaving only the earliest
     `n = index` elements in the history.
@@ -231,7 +231,7 @@ def setUndoHistoryPos(index: int) -> None:
     undo.items = undo.items[-index:]
 
 
-def setUndoHistoryCount(value: int) -> None:
+def setUndoHistoryCount(value: int, /) -> None:
     """
     Removes old elements from the undo history, leaving only the latest
     `n = index` elements.
@@ -253,7 +253,7 @@ def setUndoHistoryCount(value: int) -> None:
     undo.items = undo.items[:value]
 
 
-def setUndoHistoryLast(index: int) -> None:
+def setUndoHistoryLast(index: int, /) -> None:
     """Sets the position in the undo history, where `index = 0` is the most
     recent element and earlier points have higher indexes.
 
