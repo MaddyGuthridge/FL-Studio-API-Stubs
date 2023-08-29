@@ -7,7 +7,7 @@ from fl_model.patterns import getPatternReference
 from fl_model.channels import checkGroupIndex
 
 
-def getGridBit(index: int, position: int) -> bool:
+def getGridBit(index: int, position: int, /) -> bool:
     """Returns whether the grid bit on channel at `index` in `position` is set.
 
     ## Args:
@@ -24,7 +24,7 @@ def getGridBit(index: int, position: int) -> bool:
     return getPatternReference().track_contents[index][position]
 
 
-def getGridBitWithLoop(index: int, position: int) -> bool:
+def getGridBitWithLoop(index: int, position: int, /) -> bool:
     """Get value of grid bit on channel `index` in `position` accounting for
     loops.
 
@@ -46,7 +46,7 @@ def getGridBitWithLoop(index: int, position: int) -> bool:
     return False
 
 
-def setGridBit(index: int, position: int, value: bool) -> None:
+def setGridBit(index: int, position: int, value: bool, /) -> None:
     """Sets the value of the grid bit on channel at `index` in `position`.
 
     ## Args:
@@ -70,8 +70,14 @@ def isGridBitAssigned(*args) -> bool:
     return False
 
 
-def getStepParam(step: int, param: int, offset: int, startPos: int,
-                 padsStride: int = 16) -> int:
+def getStepParam(
+    step: int,
+    param: int,
+    offset: int,
+    startPos: int,
+    padsStride: int = 16,
+    /,
+) -> int:
     """
     Get the values of properties associated with a step in the step sequencer.
     This provides an interface to access the graph editor.
@@ -110,7 +116,7 @@ def getStepParam(step: int, param: int, offset: int, startPos: int,
     return 0
 
 
-def getCurrentStepParam(index: int, step: int, param: int) -> int:
+def getCurrentStepParam(index: int, step: int, param: int, /) -> int:
     """Get current step parameter for channel at `index` and for step at `step`.
 
     ## HELP WANTED:
@@ -155,6 +161,7 @@ def setStepParameterByIndex(
     param: int,
     value: int,
     globalIndex: bool = True,
+    /,
 ) -> None:
     """
     Set the value of a step parameter at the given location.
