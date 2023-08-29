@@ -1,5 +1,5 @@
 
-def jog(value: int) -> int:
+def jog(value: int, /) -> int:
     """Jog control. Used to map a jog wheel to selections.
 
     ## Args:
@@ -16,7 +16,7 @@ def jog(value: int) -> int:
     return 0
 
 
-def jog2(value: int) -> int:
+def jog2(value: int, /) -> int:
     """Alternate jog control. Used to map a jog wheel to relocate.
 
     ## Args:
@@ -33,7 +33,7 @@ def jog2(value: int) -> int:
     return 0
 
 
-def strip(value: int) -> int:
+def strip(value: int, /) -> int:
     """Used by touch-sensitive strip controls.
 
     ## HELP WANTED:
@@ -50,7 +50,7 @@ def strip(value: int) -> int:
     return 0
 
 
-def stripJog(value: int) -> int:
+def stripJog(value: int, /) -> int:
     """Touch-sensitive strip in jog mode.
 
     ## Args:
@@ -64,7 +64,7 @@ def stripJog(value: int) -> int:
     return 0
 
 
-def stripHold(value: int) -> int:
+def stripHold(value: int, /) -> int:
     """Touch-sensitive strip in hold mode
 
     ## Args:
@@ -123,7 +123,7 @@ def next() -> int:
     return 0
 
 
-def moveJog(value: int) -> int:
+def moveJog(value: int, /) -> int:
     """Used to relocate items with a jog control.
 
     ## HELP WANTED:
@@ -140,7 +140,7 @@ def moveJog(value: int) -> int:
     return 0
 
 
-def horZoom(value: int) -> int:
+def horZoom(value: int, /) -> int:
     """Zoom horizontally by `value`.
 
     ## Args:
@@ -155,7 +155,7 @@ def horZoom(value: int) -> int:
     return 0
 
 
-def verZoom(value: int) -> int:
+def verZoom(value: int, /) -> int:
     """Zoom vertically by `value`.
 
     ## Args:
