@@ -29,8 +29,8 @@
       "description": "The version of the FL Studio Python API that you are targeting, either as an FL Studio version or an API version. (number or string)",
       "type": ["integer", "string"],
       "anyOf": [
-        {"type": "number", "minimum": 1, "maximum": 28},
-        {"enum": ["latest", "20.9.2", "20.8.4"]}
+        {"type": "number", "minimum": 1, "maximum": 29},
+        {"enum": ["latest", "21.0.3", "20.9.2", "20.8.4"]}
       ],
       "default": "latest"
     }

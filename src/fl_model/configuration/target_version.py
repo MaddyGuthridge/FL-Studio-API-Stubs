@@ -22,9 +22,10 @@ def processVersion(version: ApiVersion) -> int:
     if isinstance(version, int):
         return version
 
+    # Only need to add more here for major and minor updates (not bug fixes)
     mappings = {
         "latest": consts.LATEST_API_VERSION,
-        "21.0.0": 22,
+        "21.0.3": 28,
         "20.9.2": 20,
         "20.8.4": 15,
     }

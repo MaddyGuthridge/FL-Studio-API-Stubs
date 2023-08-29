@@ -10,8 +10,10 @@ from typing import TypedDict, Union, Literal
 
 ApiVersion = Union[
     int,
+    # Only need to add more here for major and minor updates (not bug fixes)
     Union[
         Literal["latest"],
+        Literal["21.0.3"],
         Literal["20.9.2"],
         Literal["20.8.4"],
     ]
