@@ -31,7 +31,7 @@ def trackCount() -> int:
     return 0
 
 
-def getTrackName(index: int) -> str:
+def getTrackName(index: int, /) -> str:
     """Returns the name of the track at `index`
     For unnamed tracks, returns "Track `n`" where `n` is `index` + 1
 
@@ -51,7 +51,7 @@ def getTrackName(index: int) -> str:
     return ""
 
 
-def setTrackName(index: int, name: str) -> None:
+def setTrackName(index: int, name: str, /) -> None:
     """Sets the name of the track at `index`
     Setting the name to an empty string ("") will reset the name to "Track n"
 
@@ -67,7 +67,7 @@ def setTrackName(index: int, name: str) -> None:
     """
 
 
-def getTrackColor(index: int) -> int:
+def getTrackColor(index: int, /) -> int:
     """Returns the color of the track at `index`
 
     Note that colors can be split into or built from components using the
@@ -93,7 +93,7 @@ def getTrackColor(index: int) -> int:
     return 0
 
 
-def setTrackColor(index: int, color: int) -> None:
+def setTrackColor(index: int, color: int, /) -> None:
     """Sets the color of the track at `index`
 
     Note that colors can be split into or built from components using the
@@ -117,7 +117,7 @@ def setTrackColor(index: int, color: int) -> None:
     """
 
 
-def isTrackMuted(index: int) -> bool:
+def isTrackMuted(index: int, /) -> bool:
     """Returns whether the track at `index` is muted
 
     ## Args:
@@ -134,7 +134,7 @@ def isTrackMuted(index: int) -> bool:
     return False
 
 
-def muteTrack(index: int, value: int = -1) -> None:
+def muteTrack(index: int, value: int = -1, /) -> None:
     """Toggle whether the track at `index` is muted. An unmuted track will
     become muted and a muted track will become unmuted.
 
@@ -151,7 +151,7 @@ def muteTrack(index: int, value: int = -1) -> None:
 
 
 @since(2)
-def isTrackMuteLock(index: int) -> bool:
+def isTrackMuteLock(index: int, /) -> bool:
     """Returns whether the mute status of the track at `index` is locked (meaning
     that solo/unsolo commands won't affect its mute status).
 
@@ -170,7 +170,7 @@ def isTrackMuteLock(index: int) -> bool:
 
 
 @since(2)
-def muteTrackLock(index: int) -> None:
+def muteTrackLock(index: int, /) -> None:
     """Toggle whether the track at `index`'s mute status is locked (meaning that
     solo/unsolo commands won't affect its mute status).
 
@@ -184,7 +184,7 @@ def muteTrackLock(index: int) -> None:
     """
 
 
-def isTrackSolo(index: int) -> bool:
+def isTrackSolo(index: int, /) -> bool:
     """Returns whether the track at `index` is solo
 
     ## Args:
@@ -201,7 +201,7 @@ def isTrackSolo(index: int) -> bool:
     return False
 
 
-def soloTrack(index: int, value: int = -1) -> None:
+def soloTrack(index: int, value: int = -1, /) -> None:
     """Toggle whether the track at `index` is solo. An unsolo track will become
     solo and a solo track will become unsolo. If `value` is provided, it will
     control what the new value will be (`1`: solo, `0`: unsolo).
@@ -219,7 +219,7 @@ def soloTrack(index: int, value: int = -1) -> None:
 
 
 @since(12)
-def isTrackSelected(index: int) -> bool:
+def isTrackSelected(index: int, /) -> bool:
     """Returns whether the track at `index` is selected
 
     ## Args:
@@ -237,7 +237,7 @@ def isTrackSelected(index: int) -> bool:
 
 
 @since(12)
-def selectTrack(index: int) -> None:
+def selectTrack(index: int, /) -> None:
     """Toggle whether the track at `index` is selected. A deselected track will
     become selected and a selected track will become deselected.
 
@@ -267,7 +267,7 @@ def deselectAll() -> None:
     """
 
 
-def getTrackActivityLevel(index: int) -> float:
+def getTrackActivityLevel(index: int, /) -> float:
     """Returns the activity level of the track at `index`. This value is a float
     in the range of 0.0 - 0.5 representing whether an unmuted playlist clip is
     active at the playhead. Compare to `playlist.getTrackActivityLevelVis()`.
@@ -293,7 +293,7 @@ def getTrackActivityLevel(index: int) -> float:
     return 0.0
 
 
-def getTrackActivityLevelVis(index: int) -> float:
+def getTrackActivityLevelVis(index: int, /) -> float:
     """Returns the visual activity level of the track at `index`. This value is a
     float in the range of 0.0 - 1.0 representing whether an unmuted playlist
     clip is active at the playhead and how recently a note-on event was played
@@ -331,7 +331,7 @@ def getDisplayZone() -> int:
     return 0
 
 
-def lockDisplayZone(index: int, value: int) -> None:
+def lockDisplayZone(index: int, value: int, /) -> None:
     """Lock display zone at `index`.
 
     ## HELP WANTED:
@@ -347,8 +347,14 @@ def lockDisplayZone(index: int, value: int) -> None:
     """
 
 
-def liveDisplayZone(left: int, top: int, right: int, bottom: int,
-                    duration: int = 0) -> None:
+def liveDisplayZone(
+    left: int,
+    top: int,
+    right: int,
+    bottom: int,
+    duration: int = 0,
+    /,
+) -> None:
     """Set the display zone in the playlist to the specified co-ordinates. Use
     optional `duration` parameter to make display zone temporary
 
@@ -371,7 +377,7 @@ def liveDisplayZone(left: int, top: int, right: int, bottom: int,
     """
 
 
-def getLiveLoopMode(index: int) -> int:
+def getLiveLoopMode(index: int, /) -> int:
     """Get live loop mode
 
     ## HELP WANTED:
@@ -401,7 +407,7 @@ def getLiveLoopMode(index: int) -> int:
     return 0
 
 
-def getLiveTriggerMode(index: int) -> int:
+def getLiveTriggerMode(index: int, /) -> int:
     """Get live trigger mode
 
     ## HELP WANTED:
@@ -425,7 +431,7 @@ def getLiveTriggerMode(index: int) -> int:
     return 0
 
 
-def getLivePosSnap(index: int) -> int:
+def getLivePosSnap(index: int, /) -> int:
     """Get live position snap
 
     ## HELP WANTED:
@@ -455,7 +461,7 @@ def getLivePosSnap(index: int) -> int:
     return 0
 
 
-def getLiveTrigSnap(index: int) -> int:
+def getLiveTrigSnap(index: int, /) -> int:
     """Get live trigger snap
 
     ## HELP WANTED:
@@ -485,7 +491,7 @@ def getLiveTrigSnap(index: int) -> int:
     return 0
 
 
-def getLiveStatus(index: int, mode: int = midi.LB_Status_Default) -> int:
+def getLiveStatus(index: int, mode: int = midi.LB_Status_Default, /) -> int:
     """Returns the live status for track at `index`
 
     ## HELP WANTED:
@@ -505,7 +511,12 @@ def getLiveStatus(index: int, mode: int = midi.LB_Status_Default) -> int:
     return 0
 
 
-def getLiveBlockStatus(index: int, blockNum: int, mode: int = midi.LB_Status_Default) -> int:
+def getLiveBlockStatus(
+    index: int,
+    blockNum: int,
+    mode: int = midi.LB_Status_Default,
+    /,
+) -> int:
     """Returns the live block status for track at `index` and for block
     `blockNum`
 
@@ -528,7 +539,7 @@ def getLiveBlockStatus(index: int, blockNum: int, mode: int = midi.LB_Status_Def
     return 0
 
 
-def getLiveBlockColor(index: int, blockNum: int) -> int:
+def getLiveBlockColor(index: int, blockNum: int, /) -> int:
     """Returns the color of block on track `index` at position `blockNum`
 
     ## HELP WANTED:
@@ -554,7 +565,13 @@ def getLiveBlockColor(index: int, blockNum: int) -> int:
     return 0
 
 
-def triggerLiveClip(index: int, subNum: int, flags: int, velocity: int = -1) -> None:
+def triggerLiveClip(
+    index: int,
+    subNum: int,
+    flags: int,
+    velocity: int = -1,
+    /,
+) -> None:
     """Triggers live clip for track at `index` and for block `subNum`
 
     ## HELP WANTED:
@@ -574,7 +591,7 @@ def triggerLiveClip(index: int, subNum: int, flags: int, velocity: int = -1) -> 
     """
 
 
-def refreshLiveClip(index: int, value: int) -> None:
+def refreshLiveClip(index: int, value: int, /) -> None:
     """Triggers live clip for track at `index` and for block `subNum`
 
     ## HELP WANTED:
@@ -589,7 +606,7 @@ def refreshLiveClip(index: int, value: int) -> None:
     """
 
 
-def incLivePosSnap(index: int, value: int) -> None:
+def incLivePosSnap(index: int, value: int, /) -> None:
     """Increase live position snap for track at `index`
 
     ## HELP WANTED:
@@ -604,7 +621,7 @@ def incLivePosSnap(index: int, value: int) -> None:
     """
 
 
-def incLiveTrigSnap(index: int, value: int) -> None:
+def incLiveTrigSnap(index: int, value: int, /) -> None:
     """Increase live trigger snap for track at `index`
 
     ## HELP WANTED:
@@ -619,7 +636,7 @@ def incLiveTrigSnap(index: int, value: int) -> None:
     """
 
 
-def incLiveLoopMode(index: int, value: int) -> None:
+def incLiveLoopMode(index: int, value: int, /) -> None:
     """Increase live loop mode for track at `index`
 
     ## HELP WANTED:
@@ -634,7 +651,7 @@ def incLiveLoopMode(index: int, value: int) -> None:
     """
 
 
-def incLiveTrigMode(index: int, value: int) -> None:
+def incLiveTrigMode(index: int, value: int, /) -> None:
     """Increase live trigger mode for track at `index`
 
     ## HELP WANTED:

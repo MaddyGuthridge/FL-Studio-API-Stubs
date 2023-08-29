@@ -7,7 +7,7 @@ from fl_model.decorators import since
 import midi
 
 
-def getTrackName(index: int) -> str:
+def getTrackName(index: int, /) -> str:
     """Returns the name of the track at `index`.
 
     ## Args:
@@ -21,7 +21,7 @@ def getTrackName(index: int) -> str:
     return ""
 
 
-def setTrackName(index: int, name: str) -> None:
+def setTrackName(index: int, name: str, /) -> None:
     """Sets the name of track at `index`
 
     Setting the name to an empty string will reset the name of the track to
@@ -36,7 +36,7 @@ def setTrackName(index: int, name: str) -> None:
     """
 
 
-def getTrackColor(index: int) -> int:
+def getTrackColor(index: int, /) -> int:
     """Returns the color of the track at `index`.
 
     ## Args:
@@ -50,7 +50,7 @@ def getTrackColor(index: int) -> int:
     return 0
 
 
-def setTrackColor(index: int, color: int) -> None:
+def setTrackColor(index: int, color: int, /) -> None:
     """Sets the color of the track at `index`.
 
     ## Args:
@@ -62,7 +62,7 @@ def setTrackColor(index: int, color: int) -> None:
     """
 
 
-def isTrackArmed(index: int) -> bool:
+def isTrackArmed(index: int, /) -> bool:
     """Returns whether the track at `index` is armed for recording
 
     ## Args:
@@ -76,7 +76,7 @@ def isTrackArmed(index: int) -> bool:
     return False
 
 
-def armTrack(index: int) -> None:
+def armTrack(index: int, /) -> None:
     """Toggles whether the track at index is armed for recording
 
     ## Args:
@@ -86,7 +86,7 @@ def armTrack(index: int) -> None:
     """
 
 
-def isTrackSolo(index: int) -> bool:
+def isTrackSolo(index: int, /) -> bool:
     """Returns whether the track at `index` is solo
 
     ## Args:
@@ -100,7 +100,7 @@ def isTrackSolo(index: int) -> bool:
     return False
 
 
-def soloTrack(index: int, value: int = -1, mode: int = -1) -> None:
+def soloTrack(index: int, value: int = -1, mode: int = -1, /) -> None:
     """Toggles whether the track at index is solo
 
     ## Args:
@@ -121,7 +121,7 @@ def soloTrack(index: int, value: int = -1, mode: int = -1) -> None:
     """
 
 
-def isTrackEnabled(index: int) -> bool:
+def isTrackEnabled(index: int, /) -> bool:
     """Returns whether the track at `index` is enabled
 
     ## NOTE:
@@ -138,7 +138,7 @@ def isTrackEnabled(index: int) -> bool:
     return False
 
 
-def isTrackAutomationEnabled(index: int, plugIndex: int) -> bool:
+def isTrackAutomationEnabled(index: int, plugIndex: int, /) -> bool:
     """Returns whether the plugin at `plugIndex` on track at `index` has
     automation enabled.
 
@@ -155,7 +155,7 @@ def isTrackAutomationEnabled(index: int, plugIndex: int) -> bool:
     return False
 
 
-def enableTrack(index: int) -> None:
+def enableTrack(index: int, /) -> None:
     """Toggles whether the track at `index` is enabled.
 
     ## NOTE:
@@ -169,7 +169,7 @@ def enableTrack(index: int) -> None:
 
 
 @since(2)
-def isTrackMuted(index: int) -> bool:
+def isTrackMuted(index: int, /) -> bool:
     """Returns whether the track at `index` is muted
 
     ## Args:
@@ -184,7 +184,7 @@ def isTrackMuted(index: int) -> bool:
 
 
 @since(2)
-def muteTrack(index: int, value: int = -1) -> None:
+def muteTrack(index: int, value: int = -1, /) -> None:
     """Toggles whether the track at index is muted
 
     ## Args:
@@ -198,7 +198,7 @@ def muteTrack(index: int, value: int = -1) -> None:
 
 
 @since(13)
-def isTrackMuteLock(index: int) -> bool:
+def isTrackMuteLock(index: int, /) -> bool:
     """Returns whether the mute state of the track at `index` is locked.
 
     If this is true, the mute status of this track won't change when other
@@ -215,7 +215,7 @@ def isTrackMuteLock(index: int) -> bool:
     return False
 
 
-def getTrackVolume(index: int, mode: int = 0) -> float:
+def getTrackVolume(index: int, mode: int = 0, /) -> float:
     """Returns the volume of the track at `index`. Volume lies within the range
     `0.0` - `1.0`. Note that the default value is `0.8`. Use the `mode` flag to
     get the volume in decibels.
@@ -237,7 +237,8 @@ def getTrackVolume(index: int, mode: int = 0) -> float:
 def setTrackVolume(
     index: int,
     volume: float,
-    pickupMode: int = midi.PIM_None
+    pickupMode: int = midi.PIM_None,
+    /,
 ) -> None:
     """Sets the volume of the track at `index`. Volume lies within the range
     `0.0` - `1.0`. Note that the default value is `0.8`. Use the pickup mode
@@ -256,7 +257,7 @@ def setTrackVolume(
     """
 
 
-def getTrackPan(index: int) -> float:
+def getTrackPan(index: int, /) -> float:
     """Returns the pan of the track at `index`. Pan lies within the range
     100% left (`-1.0`) - 100% right (`1.0`). Note that the default value is
     `0.0`.
@@ -275,7 +276,8 @@ def getTrackPan(index: int) -> float:
 def setTrackPan(
     index: int,
     pan: float,
-    pickupMode: int = midi.PIM_None
+    pickupMode: int = midi.PIM_None,
+    /,
 ) -> None:
     """Sets the pan of the track at `index`. Pan lies within the range
     100% left (`-1.0`) - 100% right (`1.0`). Note that the default value is
@@ -295,7 +297,7 @@ def setTrackPan(
 
 
 @since(12)
-def getTrackStereoSep(index: int) -> float:
+def getTrackStereoSep(index: int, /) -> float:
     """Returns the stereo separation of the track at `index`. Stereo separation
     lies within the range 100% centred (`-1.0`) - 100% separated (`1.0`). Note
     that the default value is `0.0`.
@@ -315,7 +317,8 @@ def getTrackStereoSep(index: int) -> float:
 def setTrackStereoSep(
     index: int,
     pan: float,
-    pickupMode: int = midi.PIM_None
+    pickupMode: int = midi.PIM_None,
+    /,
 ) -> None:
     """Sets the stereo separation of the track at `index`. Stereo separation
     lies within the range 100% centred (`-1.0`) - 100% separated (`1.0`). Note
@@ -334,7 +337,7 @@ def setTrackStereoSep(
     """
 
 
-def setRouteTo(index: int, destIndex: int, value: int) -> None:
+def setRouteTo(index: int, destIndex: int, value: int, /) -> None:
     """Route the track at `index` to the track at `destIndex`.
 
     Ensure that after all routing changes are made, the `afterRoutingChanged()`
@@ -351,7 +354,7 @@ def setRouteTo(index: int, destIndex: int, value: int) -> None:
     """
 
 
-def getRouteSendActive(index: int, destIndex: int) -> bool:
+def getRouteSendActive(index: int, destIndex: int, /) -> bool:
     """Return whether the track at `index` is routed to the track at `destIndex`
 
     ## Args:
@@ -374,7 +377,7 @@ def afterRoutingChanged() -> None:
     """
 
 
-def getTrackPeaks(index: int, mode: int) -> float:
+def getTrackPeaks(index: int, mode: int, /) -> float:
     """Returns the current audio peak value for the track at `index`.
 
     ## Args:
@@ -404,7 +407,7 @@ def getTrackPeaks(index: int, mode: int) -> float:
     return 0.0
 
 
-def getTrackRecordingFileName(index: int) -> str:
+def getTrackRecordingFileName(index: int, /) -> str:
     """Returns the file name for audio being recorded on the track at `index`.
 
     ## NOTE:
@@ -422,7 +425,7 @@ def getTrackRecordingFileName(index: int) -> str:
     return ""
 
 
-def linkTrackToChannel(mode: int) -> None:
+def linkTrackToChannel(mode: int, /) -> None:
     """Link a mixer track to a channel.
 
     ## HELP WANTED:
@@ -439,7 +442,7 @@ def linkTrackToChannel(mode: int) -> None:
 
 
 @since(13)
-def getTrackDockSide(index: int) -> int:
+def getTrackDockSide(index: int, /) -> int:
     """
     Returns the dock side of the mixer for track at `index`
 
@@ -460,7 +463,7 @@ def getTrackDockSide(index: int) -> int:
 
 
 @since(19)
-def isTrackSlotsEnabled(index: int) -> bool:
+def isTrackSlotsEnabled(index: int, /) -> bool:
     """
     Returns whether effects are enabled for a particular track, using the
     "enable effects slots" button.
@@ -477,7 +480,7 @@ def isTrackSlotsEnabled(index: int) -> bool:
 
 
 @since(19)
-def enableTrackSlots(index: int, value: bool = False) -> None:
+def enableTrackSlots(index: int, value: bool = False, /) -> None:
     """
     Toggle whether all effects are enabled on a track.
 
@@ -499,7 +502,7 @@ def enableTrackSlots(index: int, value: bool = False) -> None:
 
 
 @since(19)
-def isTrackRevPolarity(index: int) -> bool:
+def isTrackRevPolarity(index: int, /) -> bool:
     """
     Returns whether the polarity is reversed for the track at `index`
 
@@ -515,7 +518,7 @@ def isTrackRevPolarity(index: int) -> bool:
 
 
 @since(19)
-def revTrackPolarity(index: int, value: bool = False) -> None:
+def revTrackPolarity(index: int, value: bool = False, /) -> None:
     """
     Inverts the polarity for a particular track.
 
@@ -532,7 +535,7 @@ def revTrackPolarity(index: int, value: bool = False) -> None:
 
 
 @since(19)
-def isTrackSwapChannels(index: int) -> bool:
+def isTrackSwapChannels(index: int, /) -> bool:
     """
     Returns whether left and right channels are inverted for a particular track
 
@@ -548,7 +551,7 @@ def isTrackSwapChannels(index: int) -> bool:
 
 
 @since(19)
-def swapTrackChannels(index: int, value: bool = False) -> None:
+def swapTrackChannels(index: int, value: bool = False, /) -> None:
     """
     Toggle whether left and right channels are swapped for the mixer track at
     `index`.
@@ -566,7 +569,12 @@ def swapTrackChannels(index: int, value: bool = False) -> None:
 
 
 @since(23)
-def linkChannelToTrack(channel: int, track: int, select: bool = False) -> None:
+def linkChannelToTrack(
+    channel: int,
+    track: int,
+    select: bool = False,
+    /,
+) -> None:
     """
     Link the given channel to the given mixer track.
 

@@ -6,7 +6,7 @@ Functions for managing events on effects plugins
 import midi
 
 
-def getTrackPluginId(index: int, plugIndex: int) -> int:
+def getTrackPluginId(index: int, plugIndex: int, /) -> int:
     """Returns the plugin ID of the plugin on track `index` in slot `plugIndex`
 
     A plugin ID is used internally by FL Studio to represent effects present
@@ -32,7 +32,7 @@ def getTrackPluginId(index: int, plugIndex: int) -> int:
     return ((index << 6) + plugIndex) << 16
 
 
-def isTrackPluginValid(index: int, plugIndex: int) -> bool:
+def isTrackPluginValid(index: int, plugIndex: int, /) -> bool:
     """Returns whether a plugin on track `index` in slot `plugIndex` is valid
     (has been loaded, so the slot isn't empty)
 
@@ -52,7 +52,8 @@ def isTrackPluginValid(index: int, plugIndex: int) -> bool:
 def getEventValue(
     index: int,
     value: int = midi.MaxInt,
-    smoothTarget: int = 1
+    smoothTarget: int = 1,
+    /,
 ) -> int:
     """Returns event value from MIDI
 
@@ -74,7 +75,7 @@ def getEventValue(
     return 0
 
 
-def remoteFindEventValue(index: int, flags: int = 0) -> float:
+def remoteFindEventValue(index: int, flags: int = 0, /) -> float:
     """Returns event value
 
     ## HELP WANTED:
@@ -93,7 +94,7 @@ def remoteFindEventValue(index: int, flags: int = 0) -> float:
     return 0.0
 
 
-def getEventIDName(index: int, shortname: int = 0) -> str:
+def getEventIDName(index: int, shortname: int = 0, /) -> str:
     """Returns event name for event at `index`
 
     ## HELP WANTED:
@@ -116,7 +117,7 @@ def getEventIDName(index: int, shortname: int = 0) -> str:
     return ""
 
 
-def getEventIDValueString(index: int, value: int) -> str:
+def getEventIDValueString(index: int, value: int, /) -> str:
     """Returns event value as a string
 
     ## HELP WANTED:
@@ -135,7 +136,7 @@ def getEventIDValueString(index: int, value: int) -> str:
     return ""
 
 
-def getAutoSmoothEventValue(index: int, locked: int = 1) -> int:
+def getAutoSmoothEventValue(index: int, locked: int = 1, /) -> int:
     """Returns auto smooth event value
 
     ## HELP WANTED:
@@ -160,7 +161,8 @@ def automateEvent(
     flags: int,
     speed: int = 0,
     isIncrement: int = 0,
-    res: float = midi.EKRes
+    res: float = midi.EKRes,
+    /,
 ) -> int:
     """Automate event
 

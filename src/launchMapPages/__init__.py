@@ -10,7 +10,10 @@ Refer to [reference](https://forum.image-line.com/viewtopic.php?f=1914&t=92193)
 """
 
 
-def init(deviceName: str, width: int, height: int) -> None:
+from fl_classes import FlMidiMsg
+
+
+def init(deviceName: str, width: int, height: int, /) -> None:
     """Initialise launchmap pages
 
     ## Args:
@@ -24,7 +27,13 @@ def init(deviceName: str, width: int, height: int) -> None:
     """
 
 
-def createOverlayMap(offColor: int, onColor: int, width: int, height: int) -> None:
+def createOverlayMap(
+    offColor: int,
+    onColor: int,
+    width: int,
+    height: int,
+    /,
+) -> None:
     """Creates an overlay map
 
     ## Args:
@@ -51,7 +60,7 @@ def length() -> int:
     return 0
 
 
-def updateMap(index: int) -> None:
+def updateMap(index: int, /) -> None:
     """Updates launchmap page at `index`
 
     ## Args:
@@ -61,7 +70,7 @@ def updateMap(index: int) -> None:
     """
 
 
-def getMapItemColor(index: int, itemIndex: int) -> int:
+def getMapItemColor(index: int, itemIndex: int, /) -> int:
     """Returns item color of `itemIndex` in map `index`
 
     ## Args:
@@ -77,7 +86,7 @@ def getMapItemColor(index: int, itemIndex: int) -> int:
     return 0
 
 
-def getMapCount(index: int) -> int:
+def getMapCount(index: int, /) -> int:
     """Returns the number of items in page at `index`
 
     ## Args:
@@ -91,7 +100,7 @@ def getMapCount(index: int) -> int:
     return 0
 
 
-def getMapItemChannel(index: int, itemIndex: int) -> int:
+def getMapItemChannel(index: int, itemIndex: int, /) -> int:
     """Returns the channel for item at `itemIndex` on page at `index`
 
     ## Args:
@@ -107,7 +116,7 @@ def getMapItemChannel(index: int, itemIndex: int) -> int:
     return 0
 
 
-def getMapItemAftertouch(index: int, itemIndex: int) -> int:
+def getMapItemAftertouch(index: int, itemIndex: int, /) -> int:
     """Returns the aftertouch for item at `itemIndex` on page at `index`
 
     ## Args:
@@ -123,7 +132,13 @@ def getMapItemAftertouch(index: int, itemIndex: int) -> int:
     return 0
 
 
-def processMapItem(eventData, index: int, itemIndex: int, velocity: int) -> None:
+def processMapItem(
+    eventData: FlMidiMsg,
+    index: int,
+    itemIndex: int,
+    velocity: int,
+    /,
+) -> None:
     """Process map item at `itemIndex` of page at `index`
 
     ## Args:
@@ -139,7 +154,7 @@ def processMapItem(eventData, index: int, itemIndex: int, velocity: int) -> None
     """
 
 
-def releaseMapItem(eventData, index: int) -> None:
+def releaseMapItem(eventData: FlMidiMsg, index: int, /) -> None:
     """Release map item at `itemIndex` of page at `index`
 
     HELP WANTED: This doesn't seem quite right, there is no `itemIndex` argument
@@ -160,7 +175,7 @@ def checkMapForHiddenItem() -> None:
     """
 
 
-def setMapItemTarget(index: int, itemIndex: int, target: int) -> int:
+def setMapItemTarget(index: int, itemIndex: int, target: int, /) -> int:
     """Set target for item at `itemIndex` of page at `index`.
 
     ## Args:

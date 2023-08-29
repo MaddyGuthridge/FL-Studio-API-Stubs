@@ -101,7 +101,7 @@ def getSnapMode() -> int:
     return 0
 
 
-def snapMode(value: int) -> int:
+def snapMode(value: int, /) -> int:
     """
     Changes the snap mode, by shifting it by `value` in the list of modes.
 
@@ -120,7 +120,7 @@ def snapMode(value: int) -> int:
 
 
 @since(24)
-def setSnapMode(value: int):
+def setSnapMode(value: int, /):
     """
     Set the snap mode using an absolute value.
 
@@ -180,7 +180,7 @@ def getHintMsg() -> str:
     return ""
 
 
-def setHintMsg(msg: str) -> None:
+def setHintMsg(msg: str, /) -> None:
     """Sets the current hint message in FL Studio's hint panel to `msg`.
 
     ## Args:
@@ -250,7 +250,7 @@ def setHintMsg(msg: str) -> None:
 
 
 @since(20)
-def showNotification(val: int):
+def showNotification(val: int, /):
     """
     Show a notification to the user, which is chosen from a set of notification
     strings. This notification appears in the hint panel, much like with
@@ -272,7 +272,7 @@ def showNotification(val: int):
     """
 
 
-def getHintValue(value: int, max: int) -> str:
+def getHintValue(value: int, max: int, /) -> str:
     """Returns `value/max` as a percentage.
 
     Equivalent to:
@@ -304,7 +304,7 @@ def getProgTitle() -> str:
     return ""
 
 
-def getVersion(mode: int = 4) -> 'str | int':
+def getVersion(mode: int = 4, /) -> 'str | int':
     """Returns the version number of FL Studio
 
     ## Args:
@@ -348,7 +348,7 @@ def getStepEditMode() -> bool:
 
 
 @since(28)
-def setStepEditMode(newValue: bool):
+def setStepEditMode(newValue: bool, /):
     """
     Sets the value of the "step edit mode" within FL Studio.
 

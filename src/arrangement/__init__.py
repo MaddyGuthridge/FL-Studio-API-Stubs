@@ -5,7 +5,7 @@ markers, selections and timestamps.
 """
 
 
-def jumpToMarker(index: int, select: bool) -> None:
+def jumpToMarker(index: int, select: bool, /) -> None:
     """
     Jumps to the marker at the given delta index.
 
@@ -20,7 +20,7 @@ def jumpToMarker(index: int, select: bool) -> None:
     """
 
 
-def getMarkerName(index: int) -> str:
+def getMarkerName(index: int, /) -> str:
     """Returns the name of the marker at `index`
 
     Note that this uses an absolute index, not a relative index.
@@ -36,7 +36,7 @@ def getMarkerName(index: int) -> str:
     return ""
 
 
-def addAutoTimeMarker(time: int, name: str) -> None:
+def addAutoTimeMarker(time: int, name: str, /) -> None:
     """Add an automatic time marker at `time`.
 
     ## Args:
@@ -48,7 +48,7 @@ def addAutoTimeMarker(time: int, name: str) -> None:
     """
 
 
-def liveSelection(time: int, stop: int) -> None:
+def liveSelection(time: int, stop: int, /) -> None:
     """Set a live selection point at `time`.
 
     Set `stop` to True, to use end point of the selection (instead of start).
@@ -76,7 +76,7 @@ def liveSelectionStart() -> int:
     return 0
 
 
-def currentTime(snap: int) -> int:
+def currentTime(snap: int, /) -> int:
     """Returns the current time in the current arrangement, in terms of ticks.
     Note that by default, most projects have a PPQ of 96. Use
     [`general.getRecPPQ()`][general.getRecPPQ] to get the PPQ of the project.
@@ -96,7 +96,8 @@ def currentTimeHint(
     mode: int,
     time: int,
     setRecPPB: int = 0,
-    isLength: int = 0
+    isLength: int = 0,
+    /,
 ) -> str:
     """Returns a hint string for the given time, formatted as: Bar:Beat?:Tick
 

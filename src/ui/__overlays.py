@@ -2,7 +2,15 @@
 from fl_model.decorators import since
 
 
-def crDisplayRect(left: int, top: int, right: int, bottom: int, duration: int, flags: int = 0) -> None:
+def crDisplayRect(
+    left: int,
+    top: int,
+    right: int,
+    bottom: int,
+    duration: int,
+    flags: int = 0,
+    /,
+) -> None:
     """Displays a selection rectangle on the channel rack.
 
     This rectangle is anchored using the top left corner, and a width and
@@ -36,7 +44,13 @@ def crDisplayRect(left: int, top: int, right: int, bottom: int, duration: int, f
 
 
 @since(13)
-def miDisplayRect(start: int, end: int, duration: int, flags: int = 0) -> None:
+def miDisplayRect(
+    start: int,
+    end: int,
+    duration: int,
+    flags: int = 0,
+    /,
+) -> None:
     """Displays a selection rectangle on the mixer
 
     Subsequent calls to this function will remove previously displaying
@@ -64,7 +78,8 @@ def miDisplayDockRect(
     length: int,
     dock_side: int,
     time: int,
-):
+    /,
+) -> None:
     """
     Display a red guide rectangle on the mixer, but contained to one side of
     the dock.

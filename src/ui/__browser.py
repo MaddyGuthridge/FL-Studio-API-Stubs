@@ -2,7 +2,7 @@ from fl_model.decorators import since
 
 
 @since(22)
-def navigateBrowser(direction: int, shiftHeld: bool) -> str:
+def navigateBrowser(direction: int, shiftHeld: bool, /) -> str:
     """
     Navigates through the browser. `direction` can be 0 for previous
     or > 0 for next.
@@ -31,7 +31,7 @@ def navigateBrowser(direction: int, shiftHeld: bool) -> str:
 
 
 @since(22)
-def navigateBrowserTabs(direction: int) -> str:
+def navigateBrowserTabs(direction: int, /) -> str:
     """
     Navigates between browser tabs, returning the name of the newly selected
     tab.
@@ -124,7 +124,7 @@ def isBrowserAutoHide() -> bool:
 
 
 @since(20)
-def setBrowserAutoHide(value: int):
+def setBrowserAutoHide(value: int, /):
     """
     Toggle whether the browser is set to auto-hide
 

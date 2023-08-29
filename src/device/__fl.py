@@ -8,7 +8,7 @@ from fl_model.decorators import since
 from fl_classes import FlMidiMsg
 
 
-def processMIDICC(eventData: FlMidiMsg) -> None:
+def processMIDICC(eventData: FlMidiMsg, /) -> None:
     """Lets FL Studio process a MIDI CC message.
 
     ## Args:
@@ -19,7 +19,7 @@ def processMIDICC(eventData: FlMidiMsg) -> None:
 
 
 @since(7)
-def forwardMIDICC(message: int, mode: int = 1) -> None:
+def forwardMIDICC(message: int, mode: int = 1, /) -> None:
     """Forwards a MIDI CC message to the currently focused plugin.
 
     ## Args:
@@ -36,7 +36,7 @@ def forwardMIDICC(message: int, mode: int = 1) -> None:
     """
 
 
-def findEventID(controlId: int, flags: int = 0) -> int:
+def findEventID(controlId: int, flags: int = 0, /) -> int:
     """
     Given a hardware control ID, returns the eventId of the software control
     that it is linked to or `midi.REC_InvalidID` if it is not linked.
@@ -54,7 +54,7 @@ def findEventID(controlId: int, flags: int = 0) -> int:
     return 0
 
 
-def getLinkedValue(eventID: int) -> float:
+def getLinkedValue(eventID: int, /) -> float:
     """
     Returns value of the software control associated with `eventID` between
     `0.0` and `1.0`, or `-1` if there is no linked control.
@@ -84,7 +84,7 @@ def getLinkedValue(eventID: int) -> float:
 
 
 @since(10)
-def getLinkedValueString(eventID: int) -> str:
+def getLinkedValueString(eventID: int, /) -> str:
     """Returns text value of the REC event at `eventID`
 
     The text representation is formatted appropriately based on the
@@ -112,7 +112,7 @@ def getLinkedValueString(eventID: int) -> str:
 
 
 @since(10)
-def getLinkedParamName(eventID: int) -> str:
+def getLinkedParamName(eventID: int, /) -> str:
     """Returns the parameter name of the REC event at `eventID`.
 
     ## Args:
@@ -136,7 +136,7 @@ def getLinkedParamName(eventID: int) -> str:
     return ""
 
 
-def getLinkedInfo(eventID: int) -> int:
+def getLinkedInfo(eventID: int, /) -> int:
     """Returns information about a linked control via `eventID`.
 
     ## Args:
@@ -163,6 +163,7 @@ def linkToLastTweaked(
     channel: int,
     global_link: bool = False,
     eventId: int = midi.REC_None,
+    /,
 ) -> int:
     """
     Links the control with the given index to the last tweaked parameter.
@@ -194,7 +195,7 @@ def linkToLastTweaked(
 
 
 @since(27)
-def getLinkedChannel(eventId: int) -> int:
+def getLinkedChannel(eventId: int, /) -> int:
     """
     Returns the MIDI channel associated with a linked control.
 

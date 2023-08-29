@@ -88,7 +88,7 @@ def getVersion() -> int:
 
 
 @since(7)
-def processRECEvent(eventId: int, value: int, flags: int) -> int:
+def processRECEvent(eventId: int, value: int, flags: int, /) -> int:
     """Processes a REC event, usually changing an automatable value.
 
     ## Try to achieve your task with other API functions first!
@@ -133,7 +133,7 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
 
 
 @since(15)
-def dumpScoreLog(time: int, silent: bool = False) -> None:
+def dumpScoreLog(time: int, silent: bool = False, /) -> None:
     """
     Write recently played MIDI to the selected pattern.
 

@@ -7,7 +7,8 @@ from fl_model.exceptions import FlIndexError
 def dispatch(
     ctrlIndex: int,
     message: int,
-    sysex: Optional[bytes] = None
+    sysex: Optional[bytes] = None,
+    /,
 ) -> None:
     """Dispatch a MIDI message (either via a standard MIDI Message or through a
     system exclusive (SysEx) message) that is sent to another controller
@@ -68,7 +69,7 @@ def dispatchReceiverCount() -> int:
 
 
 @since(5)
-def dispatchGetReceiverPortNumber(ctrlIndex: int) -> int:
+def dispatchGetReceiverPortNumber(ctrlIndex: int, /) -> int:
     """Returns the port of the receiver device specified by `ctrlIndex`.
 
     ## Args:

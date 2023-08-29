@@ -3,6 +3,7 @@ transport > position
 
 Dynamic state of transport
 """
+from fl_model import config
 import midi
 from fl_model import getState
 from fl_model.exceptions import FlCallKeyEchoError
@@ -89,7 +90,8 @@ def globalTransport(
     command: int,
     value: int,
     pmeflags: int = midi.PME_System,
-    flags=midi.GT_All
+    flags=midi.GT_All,
+    /,
 ) -> int:
     """Used as a generic way to run transport commands if a specific function
     doesn't exist for it.
@@ -121,7 +123,7 @@ def globalTransport(
 
     Included since API version 1
     """
-    if command in GT_KEY_ECHOES:
+    if config["disallowKeyEchoes"] and command in GT_KEY_ECHOES:
         raise FlCallKeyEchoError(
             "Attempted to call function globalTransport with parameters that "
             "would lead to a keypress being echoed"

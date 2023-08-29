@@ -1,7 +1,7 @@
 from fl_model.decorators import keyEchoes, since
 
 
-def getVisible(index: int) -> bool:
+def getVisible(index: int, /) -> bool:
     """Returns whether an FL Studio window is visible.
 
     ## Args:
@@ -24,7 +24,7 @@ def getVisible(index: int) -> bool:
     return False
 
 
-def showWindow(index: int) -> None:
+def showWindow(index: int, /) -> None:
     """Shows an FL Studio window specified by `index`.
 
     ## Args:
@@ -44,7 +44,7 @@ def showWindow(index: int) -> None:
 
 
 @since(5)
-def hideWindow(index: int) -> None:
+def hideWindow(index: int, /) -> None:
     """Hides an FL Studio window specified by `index`.
 
     ## Args:
@@ -63,7 +63,7 @@ def hideWindow(index: int) -> None:
     """
 
 
-def getFocused(index: int) -> bool:
+def getFocused(index: int, /) -> bool:
     """Returns whether an FL Studio window is focused (meaning it is the
     currently selected Window in FL Studio).
 
@@ -101,7 +101,7 @@ def getFocused(index: int) -> bool:
 
 
 @since(2)
-def setFocused(index: int) -> None:
+def setFocused(index: int, /) -> None:
     """Sets which FL Studio window should be focused (meaning it is the
     currently selected Window in FL Studio).
 
@@ -183,7 +183,7 @@ def getFocusedPluginName() -> str:
 
 
 @since(13)
-def scrollWindow(index: int, value: int, directionFlag: int = 0) -> None:
+def scrollWindow(index: int, value: int, directionFlag: int = 0, /) -> None:
     """Scrolls on the window specified by `index`. Value is index for whatever
     is contained on that window (eg channels for the Channel Rack or tracks for
     the Mixer).
@@ -225,7 +225,7 @@ def nextWindow() -> int:
 
 
 @keyEchoes()
-def selectWindow(shift: bool) -> int:
+def selectWindow(shift: bool, /) -> int:
     """Switch to the next window by pressing the `Tab` key. If `shift` is
     `True`, switch to the previous window by pressing `Shift` and `Tab`.
 

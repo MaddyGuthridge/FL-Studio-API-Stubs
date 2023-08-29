@@ -1,6 +1,9 @@
 {
+    "[python]": {
+        "editor.tabSize": 4,
+        "editor.detectIndentation": false,
+    },
     "autoDocstring.customTemplatePath": "docstring_template.mustache",
-    "editor.tabSize": 4,
     "python.linting.mypyEnabled": true,
     "python.linting.enabled": true,
     "python.linting.flake8CategorySeverity.E": "Warning",
@@ -32,6 +35,7 @@
         "pyscript",
         "Rect",
         "Sysex",
-        "timebase"
+        "timebase",
+        "unsolo"
     ],
 }

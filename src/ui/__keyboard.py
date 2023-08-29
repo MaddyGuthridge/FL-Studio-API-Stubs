@@ -152,7 +152,7 @@ def no() -> int:
 
 
 @keyEchoes()
-def up(value: int = 1) -> int:
+def up(value: int = 1, /) -> int:
     """Generic up control.
 
     ## WARNING:
@@ -174,7 +174,7 @@ def up(value: int = 1) -> int:
 
 
 @keyEchoes()
-def down(value: int = 1) -> int:
+def down(value: int = 1, /) -> int:
     """Generic down control.
 
     ## WARNING:
@@ -196,7 +196,7 @@ def down(value: int = 1) -> int:
 
 
 @keyEchoes()
-def left(value: int = 1) -> int:
+def left(value: int = 1, /) -> int:
     """Generic left control.
 
     ## WARNING:
@@ -218,7 +218,7 @@ def left(value: int = 1) -> int:
 
 
 @keyEchoes()
-def right(value: int = 1) -> int:
+def right(value: int = 1, /) -> int:
     """Generic right control.
 
     ## WARNING:
