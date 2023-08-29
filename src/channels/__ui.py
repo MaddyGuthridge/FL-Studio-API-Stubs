@@ -28,7 +28,8 @@ def showGraphEditor(
     param: int,
     step: int,
     index: int,
-    globalIndex: bool = True
+    globalIndex: bool = True,
+    /,
 ) -> None:
     """
     Show the graph editor for a step parameter on the channel at `index`
@@ -56,14 +57,14 @@ def showGraphEditor(
         checkGroupIndex(index)
 
 
-def isGraphEditorVisible() -> None:
+def isGraphEditorVisible() -> bool:
     """
-    TODO
-    ???
+    Returns whether the graph editor is currently visible.
     """
+    return False
 
 
-def showEditor(index: int, value: int = -1) -> None:
+def showEditor(index: int, value: int = -1, /) -> None:
     """Toggle whether the plugin window for the channel at `index` is shown.
     The value parameter chan be used to set to a specific value.
 
