@@ -54,7 +54,8 @@ def midiOutMsg(
     message: int,
     channel: int = -1,
     data1: int = -1,
-    data2: int = -1
+    data2: int = -1,
+    /,
 ) -> None:
     """Sends a MIDI message to the linked output device.
 
@@ -90,7 +91,7 @@ def midiOutMsg(
     """
 
 
-def midiOutNewMsg(slotIndex: int, message: int) -> None:
+def midiOutNewMsg(slotIndex: int, message: int, /) -> None:
     """Sends a MIDI message to the linked output device, but only if the
     message being sent has changed compared to the last message sent with the
     same `slotIndex`.
@@ -104,7 +105,7 @@ def midiOutNewMsg(slotIndex: int, message: int) -> None:
     """
 
 
-def midiOutSysex(message: bytes) -> None:
+def midiOutSysex(message: bytes, /) -> None:
     """Send a SysEx message to the (linked) output device.
 
     ## Args:
@@ -119,7 +120,8 @@ def sendMsgGeneric(
     id: int,
     message: str,
     lastMsg: str,
-    offset: int = 0
+    offset: int = 0,
+    /,
 ) -> str:
     """Send a text string as a SysEx message to the linked output device.
 
@@ -147,7 +149,7 @@ def sendMsgGeneric(
     return ""
 
 
-def directFeedback(eventData: FlMidiMsg) -> None:
+def directFeedback(eventData: FlMidiMsg, /) -> None:
     """Send a received message to the linked output device
 
     ## Args:
@@ -157,7 +159,12 @@ def directFeedback(eventData: FlMidiMsg) -> None:
     """
 
 
-def repeatMidiEvent(eventData: FlMidiMsg, delay: int = 300, rate: int = 300) -> None:
+def repeatMidiEvent(
+    eventData: FlMidiMsg,
+    delay: int = 300,
+    rate: int = 300,
+    /,
+) -> None:
     """Start repeatedly sending out the message in `eventData` every `rate`
     ms after `delay` ms.
 
@@ -183,7 +190,7 @@ def stopRepeatMidiEvent() -> None:
 
 
 @since(18)
-def setMasterSync(value: bool) -> None:
+def setMasterSync(value: bool, /) -> None:
     """
     Control the value of the "send master sync" option in FL Studio's MIDI
     settings for this device.
