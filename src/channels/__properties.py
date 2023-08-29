@@ -348,7 +348,7 @@ def setChannelPitch(
     mode: int = 0,
     pickupMode: int = midi.PIM_None,
     /,
-) -> 'float | int':
+) -> None:
     """Sets the pitch of the channel at `index` to value. The `mode` parameter is used
     to determine the type of pitch set. Use the pickup mode flag to set pickup
     options. The final pitch will be clamped to the current pitch range.
@@ -374,7 +374,6 @@ def setChannelPitch(
     Included since API version 8
     """
     checkGroupIndex(index)
-    return 0
 
 
 @since(19)
