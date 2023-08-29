@@ -89,7 +89,8 @@ def globalTransport(
     command: int,
     value: int,
     pmeflags: int = midi.PME_System,
-    flags=midi.GT_All
+    flags=midi.GT_All,
+    /,
 ) -> int:
     """Used as a generic way to run transport commands if a specific function
     doesn't exist for it.

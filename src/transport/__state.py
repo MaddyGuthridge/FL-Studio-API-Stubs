@@ -7,7 +7,7 @@ from fl_model.decorators import since
 import midi
 
 
-def getSongPos(mode: int = -1) -> 'float | int':
+def getSongPos(mode: int = -1, /) -> 'float | int':
     """Returns the playback position
 
     ## NOTE:
@@ -54,7 +54,7 @@ def getSongPos(mode: int = -1) -> 'float | int':
     return 0
 
 
-def setSongPos(position: 'float | int', mode: int = -1) -> None:
+def setSongPos(position: 'float | int', mode: int = -1, /) -> None:
     """Sets the playback position
 
     This will set the position in the song in song mode, or the position
@@ -92,7 +92,7 @@ def setSongPos(position: 'float | int', mode: int = -1) -> None:
 
 
 @since(3)
-def getSongLength(mode: int) -> int:
+def getSongLength(mode: int, /) -> int:
     """Returns the total length of the song
 
     This only applies to the full song, not to the currently selected pattern
@@ -139,7 +139,7 @@ def getSongPosHint() -> str:
     return ""
 
 
-def markerJumpJog(value: int, flags: int = midi.GT_All) -> None:
+def markerJumpJog(value: int, flags: int = midi.GT_All, /) -> None:
     """Jump to a marker position, where `value` is an delta (increment) value.
 
     ## Args:
@@ -152,7 +152,7 @@ def markerJumpJog(value: int, flags: int = midi.GT_All) -> None:
     """
 
 
-def markerSelJog(value: int, flags: int = midi.GT_All) -> None:
+def markerSelJog(value: int, flags: int = midi.GT_All, /) -> None:
     """Select a marker, where `value` is an delta (increment) value.
 
     ## Args:
@@ -179,7 +179,7 @@ def getHWBeatLEDState() -> int:
     return 0
 
 
-def rewind(startStop: int, flags: int = midi.GT_All) -> None:
+def rewind(startStop: int, flags: int = midi.GT_All, /) -> None:
     """Rewinds the playback position.
 
     Rewinding should be considered as a toggle. All calls to this function
@@ -203,7 +203,7 @@ def rewind(startStop: int, flags: int = midi.GT_All) -> None:
     """
 
 
-def fastForward(startStop: int, flags: int = midi.GT_All) -> None:
+def fastForward(startStop: int, flags: int = midi.GT_All, /) -> None:
     """Fast-forwards the playback position.
 
     Fast-forwarding should be considered as a toggle. All calls to this
@@ -227,7 +227,7 @@ def fastForward(startStop: int, flags: int = midi.GT_All) -> None:
     """
 
 
-def continuousMove(speed: int, startStop: int) -> None:
+def continuousMove(speed: int, startStop: int, /) -> None:
     """Sets playback speed, allowing a scrub-like functionality
 
     Scrubbing should be considered as a toggle. All calls to this
@@ -252,7 +252,7 @@ def continuousMove(speed: int, startStop: int) -> None:
 
 
 @since(2)
-def continuousMovePos(speed: int, startStop: int) -> None:
+def continuousMovePos(speed: int, startStop: int, /) -> None:
     """Sets playback speed, allowing a scrub-like functionality
 
     ## HELP WANTED:
@@ -279,7 +279,7 @@ def continuousMovePos(speed: int, startStop: int) -> None:
     """
 
 
-def setPlaybackSpeed(speedMultiplier: float) -> None:
+def setPlaybackSpeed(speedMultiplier: float, /) -> None:
     """Sets a playback speed multiplier.
 
     This differs from the `continuousMove` function as it only controls
