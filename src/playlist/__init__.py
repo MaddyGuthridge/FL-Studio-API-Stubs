@@ -134,15 +134,17 @@ def isTrackMuted(index: int) -> bool:
     return False
 
 
-def muteTrack(index: int) -> None:
+def muteTrack(index: int, value: int = -1) -> None:
     """Toggle whether the track at `index` is muted. An unmuted track will
     become muted and a muted track will become unmuted.
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
+
+    * `value` (`int`, optional): new mute value (1 = mute, 0 = unmute)
 
     ## Raises:
-     * `TypeError`: Index out of range
+    * `TypeError`: Index out of range
 
     Included since API version 1
     """
