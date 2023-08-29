@@ -17,7 +17,7 @@ def trackNumber() -> int:
     return 0
 
 
-def setTrackNumber(trackNumber: int, flags: int = 0) -> None:
+def setTrackNumber(trackNumber: int, flags: int = 0, /) -> None:
     """Selects the mixer track at `trackNumber`.
 
     ## NOTE:
@@ -44,7 +44,7 @@ def setTrackNumber(trackNumber: int, flags: int = 0) -> None:
     """
 
 
-def isTrackSelected(index: int) -> bool:
+def isTrackSelected(index: int, /) -> bool:
     """Returns whether the track at `index` is selected
 
     ## Args:
@@ -58,7 +58,7 @@ def isTrackSelected(index: int) -> bool:
     return False
 
 
-def selectTrack(index: int) -> None:
+def selectTrack(index: int, /) -> None:
     """Toggles whether the track at `index` is selected.
 
     ## Args:
@@ -83,7 +83,7 @@ def deselectAll() -> None:
 
 
 @since(27)
-def setActiveTrack(index: int):
+def setActiveTrack(index: int, /):
     """
     Exclusively selects the mixer track at index.
 
