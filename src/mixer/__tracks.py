@@ -100,11 +100,22 @@ def isTrackSolo(index: int, /) -> bool:
     return False
 
 
-def soloTrack(index: int, /) -> None:
+def soloTrack(index: int, value: int = -1, mode: int = -1, /) -> None:
     """Toggles whether the track at index is solo
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
+
+    * `value` (`int`, optional): the new value for the solo state (`1` for
+      solo, `0` for unsolo). Defaults to `-1` (toggle).
+
+    * `mode` (`int`, optional): solo mode to use. One of
+
+            * `1`: solo mixer track including source tracks
+            * `2`: solo mixer track including send tracks
+            * `3`: solo mixer track including source and sends
+            * `4`: solo only this mixer track
+
 
     Included since API version 1
     """
@@ -173,11 +184,14 @@ def isTrackMuted(index: int, /) -> bool:
 
 
 @since(2)
-def muteTrack(index: int, /) -> None:
+def muteTrack(index: int, value: int = -1, /) -> None:
     """Toggles whether the track at index is muted
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
+
+    * `value` (`int`, optional): the new value for the mute state (`1` for
+      mute, `0` for unmute). Defaults to `-1` (toggle).
 
     Included since API version 2
     """

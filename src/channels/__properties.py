@@ -159,11 +159,12 @@ def isChannelMuted(index: int, /) -> bool:
     return getGroupedChannelReference(index).muted
 
 
-def muteChannel(index: int, /) -> None:
+def muteChannel(index: int, value: int = -1, /) -> None:
     """Toggles the mute state of the channel at `index`
 
     ## Args:
-     * `index` (`int`): index of channel
+    * `index` (`int`): index of channel
+    * `value` (`int`, optional): new value for mute state.
 
     Included since API version 1
     """
