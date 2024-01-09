@@ -4,11 +4,6 @@
         "editor.detectIndentation": false,
     },
     "autoDocstring.customTemplatePath": "docstring_template.mustache",
-    "python.linting.mypyEnabled": true,
-    "python.linting.enabled": true,
-    "python.linting.flake8CategorySeverity.E": "Warning",
-    "python.linting.flake8CategorySeverity.F": "Warning",
-    "python.linting.flake8Enabled": true,
     "python.testing.pytestArgs": [
         "."
     ],

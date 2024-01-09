@@ -1,10 +1,11 @@
 {
 	"recommendations": [
-		"ms-python.vscode-pylance",
 		"ms-python.python",
 		"DavidAnson.vscode-markdownlint",
 		"njpwerner.autodocstring",
 		"streetsidesoftware.code-spell-checker",
-		"kevinrose.vsc-python-indent"
+		"kevinrose.vsc-python-indent",
+		"ms-python.flake8",
+		"ms-python.mypy-type-checker",
 	]
 }
