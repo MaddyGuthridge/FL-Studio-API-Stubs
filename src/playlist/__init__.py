@@ -267,10 +267,11 @@ def getTrackActivityLevel(index: int) -> float:
     * `index` (`int`): track index
 
     ## Returns:
-    * `float`: activity level
-            * `0.0`: No clip is active
 
-            * `0.5`: A clip is active at the play head
+    * `float`: activity level
+          * `0.0`: No clip is active
+
+          * `0.5`: A clip is active at the play head
 
     ## Notes
     * This function will only return 0.0 or 0.5, and nothing in between. There
@@ -296,9 +297,9 @@ def getTrackActivityLevelVis(index: int) -> float:
 
     ## Returns:
     * float: activity level
-            * `0.0`: No clip is active
+          * `0.0`: No clip is active
 
-            * `0.5 - 1.0`: A clip is active at the play head. Higher values represent more recent note-on events.
+          * `0.5 - 1.0`: A clip is active at the play head. Higher values represent more recent note-on events.
 
     Included since API version 1
     """

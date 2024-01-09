@@ -108,7 +108,7 @@ def getChannelColor(index: int, /) -> int:
     Note that colors can be split into or built from components using the
     functions provided in the module [`utils`][utils]
 
-    * [`ColorToRGB()`][utils.ColorToRBG]
+    * [`ColorToRGB()`][utils.ColorToRGB]
 
     * [`RGBToColor()`][utils.RGBToColor]
 
@@ -130,7 +130,7 @@ def setChannelColor(index: int, color: int, /) -> None:
     Note that colors can be split into or built from components using the
     functions provided in the module [`utils`][utils]
 
-    * [`ColorToRGB()`][utils.ColorToRBG]
+    * [`ColorToRGB()`][utils.ColorToRGB]
 
     * [`RGBToColor()`][utils.RGBToColor]
 
