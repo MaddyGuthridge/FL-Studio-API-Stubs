@@ -163,14 +163,17 @@ def jumpToPattern(index: int, /) -> None:
 
 
 def findFirstNextEmptyPat(flags: int, x: int = -1, y: int = -1, /) -> None:
-    """Selects the first or next empty pattern.
+    """
+    Selects the first or next empty pattern.
+
+    ## HELP WANTED
+    What do the `x` and `y` values do?
 
     ## Args:
      * `flags` (`int`):
           * `FFNEP_FindFirst` (`0`): Find first pattern
 
-          * `FFNEP_DontPromptName` (`1`): Don't prompt pattern name (this
-            doesn't seem to work)
+          * `FFNEP_DontPromptName` (`2`): Don't prompt pattern name
 
      * `x` (`int`, optional): ???. Defaults to -1.
 
