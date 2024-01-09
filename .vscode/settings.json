@@ -25,12 +25,15 @@
         "MIDICC",
         "mypy",
         "pdoc",
+        "playhead",
         "ppqn",
         "Precount",
         "pyscript",
         "Rect",
         "Sysex",
         "timebase",
+        "unmute",
+        "unmuted",
         "unsolo"
     ],
 }

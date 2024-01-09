@@ -3,16 +3,16 @@
 Allows you to control and interact with the FL Studio Playlist.
 
 ## NOTES:
- * Playlist tracks are 1-indexed.
+* Playlist tracks are 1-indexed.
 
 ## KNOWN ISSUES:
- * For all API versions below 20, the accessible range is 0-499 rather than
-   1-500.
+* For all API versions below 20, the accessible range is 0-499 rather than
+  1-500.
 
 ## HELP WANTED:
- * Explanations for display zone functions
+* Explanations for display zone functions
 
- * Explanations for live performance related functions
+* Explanations for live performance related functions
 """
 
 from fl_model.decorators import since
@@ -20,58 +20,59 @@ import midi
 
 
 def trackCount() -> int:
-    """Returns the number of tracks on the playlist.
+    """
+    Returns the number of tracks on the playlist.
+
     Includes empty tracks.
 
     ## Returns:
-     * `int`: track count on playlist
+    * `int`: track count on playlist
 
     Included since API version 1
     """
     return 0
 
 
-def getTrackName(index: int, /) -> str:
-    """Returns the name of the track at `index`
+def getTrackName(index: int) -> str:
+    """
+    Returns the name of the track at `index`
+
     For unnamed tracks, returns "Track `n`" where `n` is `index` + 1
 
     Note that playlist track indexes start at 1
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
 
     ## Returns:
-     * `str`: track name
-
-    ## Raises:
-     * `TypeError`: Index out of range
+    * `str`: track name
 
     Included since API version 1
     """
     return ""
 
 
-def setTrackName(index: int, name: str, /) -> None:
-    """Sets the name of the track at `index`
+def setTrackName(index: int, name: str) -> None:
+    """
+    Sets the name of the track at `index`
+
     Setting the name to an empty string ("") will reset the name to "Track n"
 
     Note that playlist track indexes start at 1
 
     ## Args:
-     * `index` (`int`): track index
-
-    ## Raises:
-     * `TypeError`: Index out of range
+    * `index` (`int`): track index
 
     Included since API version 1
     """
 
 
-def getTrackColor(index: int, /) -> int:
-    """Returns the color of the track at `index`
+def getTrackColor(index: int) -> int:
+    """
+    Returns the color of the track at `index`
 
     Note that colors can be split into or built from components using the
-    functions provided in the module `utils`
+    functions provided in the `utils` module
 
     * `ColorToRGB()`
 
@@ -80,24 +81,22 @@ def getTrackColor(index: int, /) -> int:
     Note that playlist track indexes start at 1
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
 
     ## Returns:
-     * `int`: track color (0x--BBGGRR)
-
-    ## Raises:
-     * `TypeError`: Index out of range
+    * `int`: track color (`0x--BBGGRR`)
 
     Included since API version 1
     """
     return 0
 
 
-def setTrackColor(index: int, color: int, /) -> None:
-    """Sets the color of the track at `index`
+def setTrackColor(index: int, color: int) -> None:
+    """
+    Sets the color of the track at `index`
 
     Note that colors can be split into or built from components using the
-    functions provided in the module `utils`
+    functions provided in the `utils` utils
 
     * `ColorToRGB()`
 
@@ -106,63 +105,54 @@ def setTrackColor(index: int, color: int, /) -> None:
     Note that playlist track indexes start at 1
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
 
-     * `color` (`int`): track color (0x--BBGGRR)
-
-    ## Raises:
-     * `TypeError`: Index out of range
+    * `color` (`int`): track color (`0x--BBGGRR`)
 
     Included since API version 1
     """
 
 
-def isTrackMuted(index: int, /) -> bool:
-    """Returns whether the track at `index` is muted
+def isTrackMuted(index: int,) -> bool:
+    """
+    Returns whether the track at `index` is muted
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
 
     ## Returns:
-     * `bool`: whether track is muted
-
-    ## Raises:
-     * `TypeError`: Index out of range
+    * `bool`: whether track is muted
 
     Included since API version 1
     """
     return False
 
 
-def muteTrack(index: int, value: int = -1, /) -> None:
-    """Toggle whether the track at `index` is muted. An unmuted track will
-    become muted and a muted track will become unmuted.
+def muteTrack(index: int, value: int = -1) -> None:
+    """
+    Toggle whether the track at `index` is muted. An unmuted track will become
+    muted and a muted track will become unmuted.
 
     ## Args:
     * `index` (`int`): track index
 
     * `value` (`int`, optional): new mute value (1 = mute, 0 = unmute)
 
-    ## Raises:
-    * `TypeError`: Index out of range
-
     Included since API version 1
     """
 
 
 @since(2)
-def isTrackMuteLock(index: int, /) -> bool:
-    """Returns whether the mute status of the track at `index` is locked (meaning
+def isTrackMuteLock(index: int) -> bool:
+    """
+    Returns whether the mute status of the track at `index` is locked (meaning
     that solo/unsolo commands won't affect its mute status).
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
 
     ## Returns:
-     * `bool`: whether track's mute status is locked
-
-    ## Raises:
-     * `TypeError`: Index out of range
+    * `bool`: whether track's mute status is locked
 
     Included since API version 2
     """
@@ -170,66 +160,62 @@ def isTrackMuteLock(index: int, /) -> bool:
 
 
 @since(2)
-def muteTrackLock(index: int, /) -> None:
-    """Toggle whether the track at `index`'s mute status is locked (meaning that
+def muteTrackLock(index: int) -> None:
+    """
+    Toggle whether the track at `index`'s mute status is locked (meaning that
     solo/unsolo commands won't affect its mute status).
 
     ## Args:
-     * `index` (`int`): track index
-
-    ## Raises:
-     * `TypeError`: Index out of range
+    * `index` (`int`): track index
 
     Included since API version 2
     """
 
 
-def isTrackSolo(index: int, /) -> bool:
-    """Returns whether the track at `index` is solo
+def isTrackSolo(index: int) -> bool:
+    """
+    Returns whether the track at `index` is solo
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
 
     ## Returns:
-     * `bool`: whether track is muted
-
-    ## Raises:
-     * `TypeError`: Index out of range
+    * `bool`: whether track is muted
 
     Included since API version 1
     """
     return False
 
 
-def soloTrack(index: int, value: int = -1, /) -> None:
-    """Toggle whether the track at `index` is solo. An unsolo track will become
+def soloTrack(index: int, value: int = -1, inGroup: bool = False) -> None:
+    """
+    Toggle whether the track at `index` is solo. An unsolo track will become
     solo and a solo track will become unsolo. If `value` is provided, it will
     control what the new value will be (`1`: solo, `0`: unsolo).
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
 
-     * `value` (`int`, optional): new solo value
+    * `value` (`int`, optional): new solo value
 
-    ## Raises:
-     * `TypeError`: Index out of range
+    * `inGroup` (`bool`, optional): solo track within track group
 
     Included since API version 1
+
+    `inGroup` parameter introduced in API version 30
     """
 
 
 @since(12)
-def isTrackSelected(index: int, /) -> bool:
-    """Returns whether the track at `index` is selected
+def isTrackSelected(index: int) -> bool:
+    """
+    Returns whether the track at `index` is selected
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
 
     ## Returns:
-     * `bool`: whether track is selected
-
-    ## Raises:
-     * `TypeError`: Index out of range
+    * `bool`: whether track is selected
 
     Included since API version 12
     """
@@ -237,15 +223,13 @@ def isTrackSelected(index: int, /) -> bool:
 
 
 @since(12)
-def selectTrack(index: int, /) -> None:
-    """Toggle whether the track at `index` is selected. A deselected track will
+def selectTrack(index: int) -> None:
+    """
+    Toggle whether the track at `index` is selected. A deselected track will
     become selected and a selected track will become deselected.
 
     ## Args:
-     * `index` (`int`): track index
-
-    ## Raises:
-     * `TypeError`: Index out of range
+    * `index` (`int`): track index
 
     Included since API version 12
     """
@@ -253,7 +237,8 @@ def selectTrack(index: int, /) -> None:
 
 @since(12)
 def selectAll() -> None:
-    """Select all tracks on the playlist
+    """
+    Select all tracks on the playlist
 
     Included since API version 12
     """
@@ -261,30 +246,33 @@ def selectAll() -> None:
 
 @since(12)
 def deselectAll() -> None:
-    """Deselect all tracks on the playlist
+    """
+    Deselect all tracks on the playlist
 
     Included since API version 12
     """
 
 
-def getTrackActivityLevel(index: int, /) -> float:
-    """Returns the activity level of the track at `index`. This value is a float
-    in the range of 0.0 - 0.5 representing whether an unmuted playlist clip is
-    active at the playhead. Compare to `playlist.getTrackActivityLevelVis()`.
+def getTrackActivityLevel(index: int) -> float:
+    """
+    Returns the activity level of the track at `index`. This value is either
+    `0.0` or `0.5`, representing whether an unmuted playlist clip is active at
+    the playhead.
+
+    Compare to `playlist.getTrackActivityLevelVis()`, which returns a "visual
+    activity level" that takes the time since the most recent note-on event
+    into account.
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
 
     ## Returns:
     * `float`: activity level
-         * `0.0`: No clip is active
+            * `0.0`: No clip is active
 
-         * `0.5`: A clip is active at the play head
+            * `0.5`: A clip is active at the play head
 
-    ## Raises:
-     * `TypeError`: Index out of range
-
-    ## Known Issues:
+    ## Notes
     * This function will only return 0.0 or 0.5, and nothing in between. There
       is no documentation for whether this is by design.
 
@@ -293,24 +281,24 @@ def getTrackActivityLevel(index: int, /) -> float:
     return 0.0
 
 
-def getTrackActivityLevelVis(index: int, /) -> float:
-    """Returns the visual activity level of the track at `index`. This value is a
+def getTrackActivityLevelVis(index: int) -> float:
+    """
+    Returns the visual activity level of the track at `index`. This value is a
     float in the range of 0.0 - 1.0 representing whether an unmuted playlist
     clip is active at the playhead and how recently a note-on event was played
     on this track.
 
+    Compare to `playlist.getTrackActivityLevel()`, which just returns whether
+    there is an active clip at that playhead.
+
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
 
     ## Returns:
-     * float: activity level
-          * `0.0`: No clip is active
+    * float: activity level
+            * `0.0`: No clip is active
 
-          * `0.5 - 1.0`: A clip is active at the play head. Higher values
-            represent more recent note-on events.
-
-    ## Raises:
-     * `TypeError`: Index out of range
+            * `0.5 - 1.0`: A clip is active at the play head. Higher values represent more recent note-on events.
 
     Included since API version 1
     """
@@ -318,30 +306,32 @@ def getTrackActivityLevelVis(index: int, /) -> float:
 
 
 def getDisplayZone() -> int:
-    """Returns the current display zone in the playlist or zero if none.
+    """
+    Returns the current display zone in the playlist or zero if none.
 
     ## HELP WANTED:
     * Explanation for what a display zone is.
 
     ## Returns:
-     * `int`: current display zone
+    * `int`: current display zone
 
     Included since API version 1
     """
     return 0
 
 
-def lockDisplayZone(index: int, value: int, /) -> None:
-    """Lock display zone at `index`.
+def lockDisplayZone(index: int, value: int) -> None:
+    """
+    Lock display zone at `index`.
 
     ## HELP WANTED:
     * Explanation for what a display zone is.
     * Explanation for parameters.
 
     ## Args:
-     * `index` (`int`): ???
+    * `index` (`int`): ???
 
-     * `value` (`int`): ???
+    * `value` (`int`): ???
 
     Included since API version 1
     """
@@ -353,10 +343,10 @@ def liveDisplayZone(
     right: int,
     bottom: int,
     duration: int = 0,
-    /,
 ) -> None:
-    """Set the display zone in the playlist to the specified co-ordinates. Use
-    optional `duration` parameter to make display zone temporary
+    """
+    Set the display zone in the playlist to the specified co-ordinates. Use the
+    optional `duration` parameter to make display zone temporary.
 
     ## HELP WANTED:
     * Explanation for what a display zone is.
@@ -377,17 +367,18 @@ def liveDisplayZone(
     """
 
 
-def getLiveLoopMode(index: int, /) -> int:
-    """Get live loop mode
+def getLiveLoopMode(index: int) -> int:
+    """
+    Get live loop mode
 
     ## HELP WANTED:
     * Explanation for parameters.
 
     ## Args:
-     * `index` (`int`): track index???
+    * `index` (`int`): track index???
 
     ## Returns:
-     * `int`: live loop mode:
+    * `int`: live loop mode:
           * `0` (`LiveLoop_Stay`): Stay
 
           * `1` (`LiveLoop_OneShot`): One shot
@@ -407,17 +398,18 @@ def getLiveLoopMode(index: int, /) -> int:
     return 0
 
 
-def getLiveTriggerMode(index: int, /) -> int:
-    """Get live trigger mode
+def getLiveTriggerMode(index: int) -> int:
+    """
+    Get live trigger mode
 
     ## HELP WANTED:
     * What does this do?
 
     ## Args:
-     * `index` (`int`): track index???
+    * `index` (`int`): track index???
 
     ## Returns:
-     * `int`: live trigger mode:
+    * `int`: live trigger mode:
           * `0` (`LiveTrig_Retrigger`): Retrigger
 
           * `1` (`LiveTrig_Hold`): Hold and stop
@@ -431,17 +423,18 @@ def getLiveTriggerMode(index: int, /) -> int:
     return 0
 
 
-def getLivePosSnap(index: int, /) -> int:
-    """Get live position snap
+def getLivePosSnap(index: int) -> int:
+    """
+    Get live position snap
 
     ## HELP WANTED:
     * What does this do?
 
     ## Args:
-     * `index` (`int`): track index???
+    * `index` (`int`): track index???
 
     ## Returns:
-     * `int`: live position snap:
+    * `int`: live position snap:
           * `0` (`LiveSnap_Off`): No snap
 
           * `1` (`LiveSnap_Fourth`): 1/4 beat
@@ -461,17 +454,18 @@ def getLivePosSnap(index: int, /) -> int:
     return 0
 
 
-def getLiveTrigSnap(index: int, /) -> int:
-    """Get live trigger snap
+def getLiveTrigSnap(index: int) -> int:
+    """
+    Get live trigger snap
 
     ## HELP WANTED:
     * What does this do?
 
     ## Args:
-     * `index` (`int`): track index???
+    * `index` (`int`): track index???
 
     ## Returns:
-     * `int`: live position snap:
+    * `int`: live position snap:
           * `0` (`LiveSnap_Off`): No snap
 
           * `1` (`LiveSnap_Fourth`): 1/4 beat
@@ -491,8 +485,9 @@ def getLiveTrigSnap(index: int, /) -> int:
     return 0
 
 
-def getLiveStatus(index: int, mode: int = midi.LB_Status_Default, /) -> int:
-    """Returns the live status for track at `index`
+def getLiveStatus(index: int, mode: int = midi.LB_Status_Default) -> int:
+    """
+    Returns the live status for track at `index`
 
     ## HELP WANTED:
     * What does this do?
@@ -515,23 +510,22 @@ def getLiveBlockStatus(
     index: int,
     blockNum: int,
     mode: int = midi.LB_Status_Default,
-    /,
 ) -> int:
-    """Returns the live block status for track at `index` and for block
-    `blockNum`
+    """
+    Returns the live block status for track at `index` and for block `blockNum`
 
     ## HELP WANTED:
     * What does this do?
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
 
-     * `blockNum` (`int`): block number
+    * `blockNum` (`int`): block number
 
-     * `mode` (`int`, optional): live status mode. Defaults to 'LB_Status_Default'.
+    * `mode` (`int`, optional): live status mode. Defaults to 'LB_Status_Default'.
 
     ## Returns:
-     * `int`: live status of track:
+    * `int`: live status of track:
        Refer to [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#getLiveStatusMode).
 
     Included since API version 1
@@ -539,26 +533,27 @@ def getLiveBlockStatus(
     return 0
 
 
-def getLiveBlockColor(index: int, blockNum: int, /) -> int:
-    """Returns the color of block on track `index` at position `blockNum`
+def getLiveBlockColor(index: int, blockNum: int) -> int:
+    """
+    Returns the color of block on track `index` at position `blockNum`
 
     ## HELP WANTED:
     * What does this do?
 
     Note that colors can be split into or built from components using the
-    functions provided in the module `utils`
+    functions provided in the `utils` module
 
     * `ColorToRGB()`
 
     * `RGBToColor()`
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
 
-     * `blockNum` (`int`): block number
+    * `blockNum` (`int`): block number
 
     ## Returns:
-     * `int`: block color (`0x--BBGGRR`)
+    * `int`: block color (`0x--BBGGRR`)
 
     Included since API version 1
     """
@@ -570,110 +565,116 @@ def triggerLiveClip(
     subNum: int,
     flags: int,
     velocity: int = -1,
-    /,
 ) -> None:
-    """Triggers live clip for track at `index` and for block `subNum`
+    """
+    Triggers live clip for track at `index` and for block `subNum`
 
     ## HELP WANTED:
     * What does this do?
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
 
-     * `subNum` (`int`): block number (usually `blockNum`)
+    * `subNum` (`int`): block number (usually `blockNum`)
 
-     * `flags` (`int`): live clip trigger flags. Refer to
-       [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#triggerLiveClipFlags).
+    * `flags` (`int`): live clip trigger flags. Refer to
+      [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#triggerLiveClipFlags).
 
-     * `velocity` (`int`, optional): velocity for triggering clip. Defaults to `-1`.
+    * `velocity` (`int`, optional): velocity for triggering clip. Defaults to `-1`.
 
     Included since API version 1
     """
 
 
-def refreshLiveClip(index: int, value: int, /) -> None:
-    """Triggers live clip for track at `index` and for block `subNum`
+def refreshLiveClip(index: int, value: int) -> None:
+    """
+    Triggers live clip for track at `index` and for block `subNum`
 
     ## HELP WANTED:
     * What does this do?
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
 
-     * `value` (`int`): ???
+    * `value` (`int`): ???
 
     Included since API version 1
     """
 
 
-def incLivePosSnap(index: int, value: int, /) -> None:
-    """Increase live position snap for track at `index`
+def incLivePosSnap(index: int, value: int) -> None:
+    """
+    Increase live position snap for track at `index`
 
     ## HELP WANTED:
     * What does this do?
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
 
-     * `value` (`int`): ???
+    * `value` (`int`): ???
 
     Included since API version 1
     """
 
 
-def incLiveTrigSnap(index: int, value: int, /) -> None:
-    """Increase live trigger snap for track at `index`
+def incLiveTrigSnap(index: int, value: int) -> None:
+    """
+    Increase live trigger snap for track at `index`
 
     ## HELP WANTED:
     * What does this do?
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
 
-     * `value` (`int`): ???
+    * `value` (`int`): ???
 
     Included since API version 1
     """
 
 
-def incLiveLoopMode(index: int, value: int, /) -> None:
-    """Increase live loop mode for track at `index`
+def incLiveLoopMode(index: int, value: int) -> None:
+    """
+    Increase live loop mode for track at `index`
 
     ## HELP WANTED:
     * What does this do?
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
 
-     * `value` (`int`): ???
+    * `value` (`int`): ???
 
     Included since API version 1
     """
 
 
-def incLiveTrigMode(index: int, value: int, /) -> None:
-    """Increase live trigger mode for track at `index`
+def incLiveTrigMode(index: int, value: int) -> None:
+    """
+    Increase live trigger mode for track at `index`
 
     ## HELP WANTED:
     * What does this do?
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
 
-     * `value` (`int`): ???
+    * `value` (`int`): ???
 
     Included since API version 1
     """
 
 
 def getVisTimeBar() -> int:
-    """Returns the time bar
+    """
+    Returns the time bar
 
     ## HELP WANTED:
     * Explanation. I could only get this function to return `0`.
 
     ## Returns:
-     * `int`: time bar
+    * `int`: time bar
 
     Included since API version 1
     """
@@ -681,13 +682,14 @@ def getVisTimeBar() -> int:
 
 
 def getVisTimeTick() -> int:
-    """Returns the time tick
+    """
+    Returns the time tick
 
     ## HELP WANTED:
     * Explanation. I could only get this function to return `0`.
 
     ## Returns:
-     * `int`: time tick
+    * `int`: time tick
 
     Included since API version 1
     """
@@ -695,13 +697,14 @@ def getVisTimeTick() -> int:
 
 
 def getVisTimeStep() -> int:
-    """Returns the time bar
+    """
+    Returns the time bar
 
     ## HELP WANTED:
     * Explanation. I could only get this function to return `0`.
 
     ## Returns:
-     * `int`: time step
+    * `int`: time step
 
     Included since API version 1
     """
