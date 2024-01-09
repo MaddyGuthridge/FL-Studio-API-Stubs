@@ -56,6 +56,9 @@ packages = [
     { include = "utils", from = "src" },
 ]
 
+[tool.poetry.scripts]
+build = "scripts.build_docs:main"
+
 [tool.poetry.urls]
 "Online Documentation" = "https://miguelguthridge.github.io/FL-Studio-API-Stubs/"
 "Bug Tracker" = "https://github.com/MiguelGuthridge/FL-Studio-Api-Stubs/issues"
