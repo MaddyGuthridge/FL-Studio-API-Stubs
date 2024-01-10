@@ -106,10 +106,13 @@ def midiOutNewMsg(slotIndex: int, message: int, /) -> None:
 
 
 def midiOutSysex(message: bytes, /) -> None:
-    """Send a SysEx message to the (linked) output device.
+    """Send a sysex message to the (linked) output device.
+
+    The sysex data must include the sysex start `0xF0` and sysex end `0xF7`
+    bytes, or FL Studio will ignore the function call entirely.
 
     ## Args:
-    * `message` (`str`): SysEx message to send
+    * `message` (`str`): Sysex message to send
 
     Included since API version 1
     """
@@ -123,7 +126,7 @@ def sendMsgGeneric(
     offset: int = 0,
     /,
 ) -> str:
-    """Send a text string as a SysEx message to the linked output device.
+    """Send a text string as a sysex message to the linked output device.
 
     ## WARNING:
     * This function is deprecated
