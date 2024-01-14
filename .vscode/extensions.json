@@ -7,5 +7,6 @@
 		"kevinrose.vsc-python-indent",
 		"ms-python.flake8",
 		"ms-python.mypy-type-checker",
+		"ritwickdey.LiveServer",
 	]
 }

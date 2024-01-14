@@ -36,4 +36,5 @@
         "unmuted",
         "unsolo"
     ],
+    "liveServer.settings.root": "/site",
 }
