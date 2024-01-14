@@ -57,7 +57,7 @@ packages = [
 ]
 
 [tool.poetry.scripts]
-build = "scripts.build_docs:main"
+docs = "scripts.build_docs:main"
 
 [tool.poetry.urls]
 "Online Documentation" = "https://miguelguthridge.github.io/FL-Studio-API-Stubs/"
