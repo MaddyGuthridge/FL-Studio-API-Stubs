@@ -4,15 +4,8 @@ Allows you to control and interact with the FL Studio Playlist.
 
 ## NOTES:
 * Playlist tracks are 1-indexed.
-
-## KNOWN ISSUES:
-* For all API versions below 20, the accessible range is 0-499 rather than
-  1-500.
-
-## HELP WANTED:
-* Explanations for display zone functions
-
-* Explanations for live performance related functions
+* For information on performance mode, see the
+[performance mode tutorial](/tutorials/performance_mode).
 """
 
 from .__tracks import (
@@ -47,7 +40,7 @@ from .__performance import (
     getLiveBlockStatus,
     getLiveBlockColor,
     triggerLiveClip,
-    refreshLiveClip,
+    refreshLiveClips,
     incLivePosSnap,
     incLiveTrigSnap,
     incLiveLoopMode,
@@ -88,7 +81,7 @@ __all__ = [
     "getLiveBlockStatus",
     "getLiveBlockColor",
     "triggerLiveClip",
-    "refreshLiveClip",
+    "refreshLiveClips",
     "incLivePosSnap",
     "incLiveTrigSnap",
     "incLiveLoopMode",

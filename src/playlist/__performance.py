@@ -12,8 +12,11 @@ def getDisplayZone() -> int:
     """
     Returns the current display zone in the playlist or zero if none.
 
-    ## HELP WANTED:
-    * Explanation for what a display zone is.
+    The display zone is the rectangular region for which a controller is active
+    in performance mode, indicated by a red rectangle on the playlist.
+
+    This value can be set using the
+    [`liveDisplayZone`](/playlist#playlist.liveDisplayZone) function.
 
     ## Returns:
     * `int`: current display zone
@@ -27,8 +30,8 @@ def lockDisplayZone(index: int, value: int) -> None:
     """
     Lock display zone at `index`.
 
-    ## HELP WANTED:
-    * Explanation for what a display zone is.
+    ## HELP WANTED
+
     * Explanation for parameters.
 
     ## Args:
@@ -51,20 +54,23 @@ def liveDisplayZone(
     Set the display zone in the playlist to the specified co-ordinates. Use the
     optional `duration` parameter to make display zone temporary.
 
-    ## HELP WANTED:
-    * Explanation for what a display zone is.
-    * Explanation for parameters.
-
     ## Args:
-     * `left` (`int`): ???
+     * `left` (`int`): the zero-indexed position of the time marker from which
+       to begin the display zone highlight
 
-     * `top` (`int`): ???
+     * `top` (`int`): the one-indexed track number from which to begin the
+       display zone highlight
 
-     * `right` (`int`): ???
+     * `right` (`int`): the zero-indexed position of the time marker from which
+       to end the display zone highlight. The highlight will go up to this
+       marker, but will not include it.
 
-     * `bottom` (`int`): ???
+     * `bottom` (`int`): the one-indexed track number from which to end the
+        display zone highlight. The highlight will go up to, and will include
+        this track.
 
-     * `duration` (`int`, optional): ???. Defaults to `0`.
+     * `duration` (`int`, optional): duration for which to show the display
+       zone highlight in ms. Defaults to `0`, for infinite duration.
 
     Included since API version 1
     """
@@ -72,13 +78,13 @@ def liveDisplayZone(
 
 def getLiveLoopMode(index: int) -> int:
     """
-    Get live loop mode
+    Get the loop mode of the given track.
 
-    ## HELP WANTED:
-    * Explanation for parameters.
+    This value reflects the value in the "motion" section in the performance
+    menu of the track.
 
     ## Args:
-    * `index` (`int`): track index???
+    * `index` (`int`): track index
 
     ## Returns:
     * `int`: live loop mode:
@@ -94,7 +100,7 @@ def getLiveLoopMode(index: int) -> int:
 
           * `5` (`LiveLoop_Random`): Random
 
-          * `6` (`LiveLoop_ExRandom`): Random, avoiding previous clip?
+          * `6` (`LiveLoop_ExRandom`): Exclusive random (play all clips on the track before playing anything again).
 
     Included since API version 1
     """
@@ -103,13 +109,13 @@ def getLiveLoopMode(index: int) -> int:
 
 def getLiveTriggerMode(index: int) -> int:
     """
-    Get live trigger mode
+    Get the trigger mode of the given track.
 
-    ## HELP WANTED:
-    * What does this do?
+    This value reflects the value in the "press" section in the performance
+    menu of the track.
 
     ## Args:
-    * `index` (`int`): track index???
+    * `index` (`int`): track index
 
     ## Returns:
     * `int`: live trigger mode:
@@ -128,13 +134,13 @@ def getLiveTriggerMode(index: int) -> int:
 
 def getLivePosSnap(index: int) -> int:
     """
-    Get live position snap
+    Get the position sync mode of the given track.
 
-    ## HELP WANTED:
-    * What does this do?
+    This value reflects the value in the "position sync" section in the
+    performance menu of the track.
 
     ## Args:
-    * `index` (`int`): track index???
+    * `index` (`int`): track index
 
     ## Returns:
     * `int`: live position snap:
@@ -159,13 +165,13 @@ def getLivePosSnap(index: int) -> int:
 
 def getLiveTrigSnap(index: int) -> int:
     """
-    Get live trigger snap
+    Get the trigger sync mode of the given track.
 
-    ## HELP WANTED:
-    * What does this do?
+    This value reflects the value in the "trigger sync" section in the
+    performance menu of the track.
 
     ## Args:
-    * `index` (`int`): track index???
+    * `index` (`int`): track index
 
     ## Returns:
     * `int`: live position snap:
@@ -192,8 +198,7 @@ def getLiveStatus(index: int, mode: int = midi.LB_Status_Default) -> int:
     """
     Returns the live status for track at `index`
 
-    ## HELP WANTED:
-    * What does this do?
+    This can be used to determine if there are any blocks playing or scheduled.
 
     ## Args:
      * `index` (`int`): track index
@@ -215,10 +220,10 @@ def getLiveBlockStatus(
     mode: int = midi.LB_Status_Default,
 ) -> int:
     """
-    Returns the live block status for track at `index` and for block `blockNum`
+    Returns the live block status for block `blockNum` within the track at
+    `index`.
 
-    ## HELP WANTED:
-    * What does this do?
+    This can be used to determine if this block is playing or scheduled.
 
     ## Args:
     * `index` (`int`): track index
@@ -238,13 +243,10 @@ def getLiveBlockStatus(
 
 def getLiveBlockColor(index: int, blockNum: int) -> int:
     """
-    Returns the color of block on track `index` at position `blockNum`
-
-    ## HELP WANTED:
-    * What does this do?
+    Returns the color for block `blockNum` within the track at `index`.
 
     Note that colors can be split into or built from components using the
-    functions provided in the `utils` module
+    functions provided in the `utils` module.
 
     * `ColorToRGB()`
 
@@ -270,15 +272,13 @@ def triggerLiveClip(
     velocity: int = -1,
 ) -> None:
     """
-    Triggers live clip for track at `index` and for block `subNum`
-
-    ## HELP WANTED:
-    * What does this do?
+    Triggers live clip for track at `index` and for block `subNum`.
 
     ## Args:
     * `index` (`int`): track index
 
-    * `subNum` (`int`): block number (usually `blockNum`)
+    * `subNum` (`int`): block number (usually `blockNum`), or `-1` to stop live
+      clips on this track.
 
     * `flags` (`int`): live clip trigger flags. Refer to
       [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#triggerLiveClipFlags).
@@ -289,14 +289,17 @@ def triggerLiveClip(
     """
 
 
-def refreshLiveClip(index: int, value: int) -> None:
+def refreshLiveClips(*args) -> None:
     """
-    Triggers live clip for track at `index` and for block `subNum`
+    Refresh live clips for track at `index`.
 
     ## HELP WANTED:
     * What does this do?
 
     ## Args:
+
+    This function appears to work, even when given no arguments.
+
     * `index` (`int`): track index
 
     * `value` (`int`): ???
@@ -307,15 +310,15 @@ def refreshLiveClip(index: int, value: int) -> None:
 
 def incLivePosSnap(index: int, value: int) -> None:
     """
-    Increase live position snap for track at `index`
+    Increase live position snap for track at `index`.
 
-    ## HELP WANTED:
-    * What does this do?
+    This is used to cycle through modes in the "position sync" section of the
+    track's performance menu.
 
     ## Args:
     * `index` (`int`): track index
 
-    * `value` (`int`): ???
+    * `value` (`int`): delta amount to change position snap mode by
 
     Included since API version 1
     """
@@ -323,15 +326,15 @@ def incLivePosSnap(index: int, value: int) -> None:
 
 def incLiveTrigSnap(index: int, value: int) -> None:
     """
-    Increase live trigger snap for track at `index`
+    Increase live trigger snap for track at `index`.
 
-    ## HELP WANTED:
-    * What does this do?
+    This is used to cycle through modes in the "trigger sync" section of the
+    track's performance menu.
 
     ## Args:
     * `index` (`int`): track index
 
-    * `value` (`int`): ???
+    * `value` (`int`): delta amount to change trigger snap mode by
 
     Included since API version 1
     """
@@ -339,15 +342,15 @@ def incLiveTrigSnap(index: int, value: int) -> None:
 
 def incLiveLoopMode(index: int, value: int) -> None:
     """
-    Increase live loop mode for track at `index`
+    Increase live loop mode for track at `index`.
 
-    ## HELP WANTED:
-    * What does this do?
+    This is used to cycle through modes in the "motion" section of the
+    track's performance menu.
 
     ## Args:
     * `index` (`int`): track index
 
-    * `value` (`int`): ???
+    * `value` (`int`): delta amount to change loop mode by
 
     Included since API version 1
     """
@@ -355,15 +358,15 @@ def incLiveLoopMode(index: int, value: int) -> None:
 
 def incLiveTrigMode(index: int, value: int) -> None:
     """
-    Increase live trigger mode for track at `index`
+    Increase live trigger mode for track at `index`.
 
-    ## HELP WANTED:
-    * What does this do?
+    This is used to cycle through modes in the "press" section of the
+    track's performance menu.
 
     ## Args:
     * `index` (`int`): track index
 
-    * `value` (`int`): ???
+    * `value` (`int`): delta amount to change trigger mode by
 
     Included since API version 1
     """
@@ -371,10 +374,7 @@ def incLiveTrigMode(index: int, value: int) -> None:
 
 def getVisTimeBar() -> int:
     """
-    Returns the time bar
-
-    ## HELP WANTED:
-    * Explanation. I could only get this function to return `0`.
+    Returns the current bar number, as shown in the song position panel.
 
     ## Returns:
     * `int`: time bar
@@ -386,10 +386,8 @@ def getVisTimeBar() -> int:
 
 def getVisTimeTick() -> int:
     """
-    Returns the time tick
-
-    ## HELP WANTED:
-    * Explanation. I could only get this function to return `0`.
+    Returns the tick number within the song, as shown in the song position
+    panel.
 
     ## Returns:
     * `int`: time tick
@@ -401,10 +399,8 @@ def getVisTimeTick() -> int:
 
 def getVisTimeStep() -> int:
     """
-    Returns the time bar
-
-    ## HELP WANTED:
-    * Explanation. I could only get this function to return `0`.
+    Returns the step number within the song, as shown in the song position
+    panel.
 
     ## Returns:
     * `int`: time step
