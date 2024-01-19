@@ -1,29 +1,33 @@
-"""Launchmap Pages Module (FL Studio built-in)
+"""
+# Launchmap Pages
 
-Handles custom controller layouts for certain controllers
+FL Studio built-in module.
 
-Refer to [reference](https://forum.image-line.com/viewtopic.php?f=1914&t=92193)
+Handles custom controller layouts for certain controllers.
 
-## HELP WANTED:
+Refer to [reference](https://forum.image-line.com/viewtopic.php?f=1914&t=92193).
+
+## HELP WANTED
+
 * More detailed explanations would be good, since it's not very well
   explained by the manual.
 """
-
-
 from fl_classes import FlMidiMsg
 
 
-def init(deviceName: str, width: int, height: int, /) -> None:
-    """Initialise launchmap pages
+def init(deviceName: str, width: int, height: int) -> None:
+    """
+    Initialise launchmap pages.
 
-    ## Args:
-     * `deviceName` (`str`): ???
+    ## Args
 
-     * `width` (`int`): ???
+    * `deviceName` (`str`): ???
 
-     * `height` (`int`): ???
+    * `width` (`int`): ???
 
-    Included since API version 1
+    * `height` (`int`): ???
+
+    Included since API version 1.
     """
 
 
@@ -32,102 +36,119 @@ def createOverlayMap(
     onColor: int,
     width: int,
     height: int,
-    /,
 ) -> None:
-    """Creates an overlay map
+    """
+    Creates an overlay map.
 
-    ## Args:
-     * `offColor` (`int`): ?
+    ## Args
 
-     * `onColor` (`int`): ?
+    * `offColor` (`int`): ?
 
-     * `width` (`int`): ?
+    * `onColor` (`int`): ?
 
-     * `height` (`int`): ?
+    * `width` (`int`): ?
 
-    Included since API version 1
+    * `height` (`int`): ?
+
+    Included since API version 1.
     """
 
 
 def length() -> int:
-    """Returns launchmap pages length
+    """
+    Returns launchmap pages length.
 
-    ## Returns:
-     * `int`: length
+    ## Returns
 
-    Included since API version 1
+    * `int`: length.
+
+    Included since API version 1.
     """
     return 0
 
 
-def updateMap(index: int, /) -> None:
-    """Updates launchmap page at `index`
+def updateMap(index: int) -> None:
+    """
+    Updates launchmap page at `index`.
 
-    ## Args:
-     * `index` (`int`): index of page to update
+    ## Args
 
-    Included since API version 1
+    * `index` (`int`): index of page to update.
+
+    Included since API version 1.
     """
 
 
-def getMapItemColor(index: int, itemIndex: int, /) -> int:
-    """Returns item color of `itemIndex` in map `index`
-
-    ## Args:
-     * `index` (`int`): map index
-
-     * `itemIndex` (`int`): item index
-
-    ## Returns:
-     * `int`: color
-
-    Included since API version 1
+def getMapItemColor(index: int, itemIndex: int) -> int:
     """
-    return 0
+    Returns item color of `itemIndex` in map `index`.
 
+    ## Args
 
-def getMapCount(index: int, /) -> int:
-    """Returns the number of items in page at `index`
+    * `index` (`int`): map index.
 
-    ## Args:
-     * `index` (`int`): page index
+    * `itemIndex` (`int`): item index.
 
-    ## Returns:
-     * `int`: number of items
+    ## Returns
 
-    Included since API version 1
+    * `int`: color.
+
+    Included since API version 1.
     """
     return 0
 
 
-def getMapItemChannel(index: int, itemIndex: int, /) -> int:
-    """Returns the channel for item at `itemIndex` on page at `index`
+def getMapCount(index: int) -> int:
+    """
+    Returns the number of items in page at `index`.
 
-    ## Args:
-     * `index` (`int`): page index
+    ## Args
 
-     * `itemIndex` (`int`): item index
+    * `index` (`int`): page index.
 
-    ## Returns:
-     * `int`: channel number
+    ## Returns
 
-    Included since API version 1
+    * `int`: number of items.
+
+    Included since API version 1.
     """
     return 0
 
 
-def getMapItemAftertouch(index: int, itemIndex: int, /) -> int:
-    """Returns the aftertouch for item at `itemIndex` on page at `index`
+def getMapItemChannel(index: int, itemIndex: int) -> int:
+    """
+    Returns the channel for item at `itemIndex` on page at `index`.
 
-    ## Args:
-     * `index` (`int`): page index
+    ## Args
 
-     * `itemIndex` (`int`): item index
+    * `index` (`int`): page index.
 
-    ## Returns:
-     * `int`: aftertouch value
+    * `itemIndex` (`int`): item index.
 
-    Included since API version 1
+    ## Returns
+
+    * `int`: channel number.
+
+    Included since API version 1.
+    """
+    return 0
+
+
+def getMapItemAftertouch(index: int, itemIndex: int) -> int:
+    """
+    Returns the aftertouch for item at `itemIndex` on page at `index`.
+
+    ## Args
+
+    * `index` (`int`): page index.
+
+    * `itemIndex` (`int`): item index.
+
+    ## Returns
+
+    * `int`: aftertouch value.
+
+    Included since API version 1.
     """
     return 0
 
@@ -137,57 +158,68 @@ def processMapItem(
     index: int,
     itemIndex: int,
     velocity: int,
-    /,
 ) -> None:
-    """Process map item at `itemIndex` of page at `index`
+    """
+    Process map item at `itemIndex` of page at `index`
 
-    ## Args:
-     * eventData (`eventData`): event data
+    ## Args
 
-     * index (`int`): page index
+    * eventData (`eventData`): event data.
 
-     * itemIndex (`int`): item index
+    * index (`int`): page index.
 
-     * velocity (`int`): velocity
+    * itemIndex (`int`): item index.
 
-    Included since API version 1
+    * velocity (`int`): velocity.
+
+    Included since API version 1.
     """
 
 
-def releaseMapItem(eventData: FlMidiMsg, index: int, /) -> None:
-    """Release map item at `itemIndex` of page at `index`
+def releaseMapItem(eventData: FlMidiMsg, index: int) -> None:
+    """
+    Release map item at `itemIndex` of page at `index`.
 
-    HELP WANTED: This doesn't seem quite right, there is no `itemIndex` argument
+    ## HELP WANTED
+    This doesn't seem quite right, there is no `itemIndex` argument.
 
-    ## Args:
-     * `eventData` (`eventData`): event data
+    ## Args
 
-     * `index` (`int`): page index
+    * `eventData` (`eventData`): event data.
 
-    Included since API version 1
+    * `index` (`int`): page index.
+
+    Included since API version 1.
     """
 
 
 def checkMapForHiddenItem() -> None:
-    """Checks for launchpad hidden item???
+    """
+    Checks for launchpad hidden item???
 
-    Included since API version 1
+    ## HELP WANTED
+    What does this do?
+
+    Included since API version 1.
     """
 
 
-def setMapItemTarget(index: int, itemIndex: int, target: int, /) -> int:
-    """Set target for item at `itemIndex` of page at `index`.
+def setMapItemTarget(index: int, itemIndex: int, target: int) -> int:
+    """
+    Set target for item at `itemIndex` of page at `index`.
 
-    ## Args:
-     * `index` (`int`): page index
+    ## Args
 
-     * `itemIndex` (`int`): item index
+    * `index` (`int`): page index.
 
-     * `target` (`int`): ????
+    * `itemIndex` (`int`): item index.
 
-    ## Returns:
-     * `int`: ????
+    * `target` (`int`): ????
 
-    Included since API version 1
+    ## Returns
+
+    * `int`: ????
+
+    Included since API version 1.
     """
     return 0

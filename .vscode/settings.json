@@ -11,6 +11,7 @@
     "python.testing.pytestEnabled": true,
     "cSpell.language": "en",
     "cSpell.words": [
+        "aftertouch",
         "AKAI",
         "automatable",
         "autouse",
@@ -22,6 +23,7 @@
         "falsiness",
         "indexedness",
         "jsonschema",
+        "launchmap",
         "MIDICC",
         "mypy",
         "pdoc",
