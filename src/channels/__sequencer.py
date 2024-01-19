@@ -7,65 +7,119 @@ from fl_model.patterns import getPatternReference
 from fl_model.channels import checkGroupIndex
 
 
-def getGridBit(index: int, position: int, /) -> bool:
-    """Returns whether the grid bit on channel at `index` in `position` is set.
+def getGridBit(
+    index: int,
+    position: int,
+    useGlobalIndex: bool = False,
+) -> bool:
+    """
+    Returns whether the grid bit on channel at `index` in `position` is set.
 
-    ## Args:
-     * `index` (`int`): channel index
+    ## Args
 
-     * `position` (`int`): index of grid bit (horizontal axis)
+    * `index` (`int`): channel index.
 
-    ## Returns:
-     * `bool`: whether grid bit is set
+    * `position` (`int`): index of grid bit (horizontal axis).
 
-    Included since API version 1
+    * `useGlobalIndex` (`bool`, optional): whether to use the global channel
+      index.
+
+    ## Returns
+
+    * `bool`: whether grid bit is set.
+
+    Included since API version 1.
+
+    ## API Changes
+
+    * v33: add `useGlobalIndex` flag.
     """
     checkGroupIndex(index)
     return getPatternReference().track_contents[index][position]
 
 
-def getGridBitWithLoop(index: int, position: int, /) -> bool:
-    """Get value of grid bit on channel `index` in `position` accounting for
+def getGridBitWithLoop(
+    index: int,
+    position: int,
+    useGlobalIndex: bool = False,
+) -> bool:
+    """
+    Get value of grid bit on channel `index` in `position` accounting for
     loops.
 
-    ## NOTE:
-    * Official documentations say this returns None, but it doesn't. This
-      documentation reflects the actual behavior.
+    ## Args
 
-    ## Args:
-     * `index` (`int`): channel index`
+    * `index` (`int`): channel index.
 
-     * `position` (`int`): position on grid (x axis)
+    * `position` (`int`): position on grid (horizontal axis).
 
-    ## Returns:
-     * `bool`: whether grid bit is set
+    * `useGlobalIndex` (`bool`, optional): whether to use the global channel
+      index.
 
-    Included since API version 1
+    ## Returns
+
+    * `bool`: whether grid bit is set.
+
+    Included since API version 1.
+
+    ## API Changes
+
+    * v33: add `useGlobalIndex` flag.
     """
     checkGroupIndex(index)
     return False
 
 
-def setGridBit(index: int, position: int, value: bool, /) -> None:
-    """Sets the value of the grid bit on channel at `index` in `position`.
+def setGridBit(
+    index: int,
+    position: int,
+    value: bool,
+    useGlobalIndex: bool = False,
+) -> None:
+    """
+    Sets the value of the grid bit on channel at `index` in `position`.
 
-    ## Args:
-     * `index` (`int`): channel index
+    ## Args
 
-     * `position` (`int`): index of grid bit (horizontal axis)
+    * `index` (`int`): channel index.
 
-     * `value` (`bool`): whether grid bit is set (`True`) or not (`False`)
+    * `position` (`int`): index of grid bit (horizontal axis).
+
+    * `value` (`bool`): whether grid bit is set (`True`) or not (`False`).
+
+    * `useGlobalIndex` (`bool`, optional): whether to use the global channel
+      index.
 
     Included since API version 1
+
+    ## API Changes
+
+    * v33: add `useGlobalIndex` flag.
     """
     checkGroupIndex(index)
     getPatternReference().track_contents[index][position] = value
 
 
-def isGridBitAssigned(*args) -> bool:
+def isGridBitAssigned(index: int, useGlobalIndex: bool = False) -> bool:
     """
-    TODO
-    ???
+    Returns `True` when the grid bit at `index` is assigned.
+
+    ## HELP WANTED
+
+    What does it mean for a grid bit to be assigned?
+
+    ## Args
+
+    * `index` (`int`): channel index.
+
+    * `useGlobalIndex` (`bool`, optional): whether to use the global channel
+      index.
+
+    ## Returns
+
+    * `bool`: whether the grid bit is assigned.
+
+    Included since API Version 1
     """
     return False
 
@@ -76,16 +130,17 @@ def getStepParam(
     offset: int,
     startPos: int,
     padsStride: int = 16,
-    /,
+    useGlobalIndex: bool = False,
 ) -> int:
     """
     Get the values of properties associated with a step in the step sequencer.
     This provides an interface to access the graph editor.
 
-    ## Args:
-    * `step` (`int`): step (grid bit index) to get parameter for
+    ## Args
 
-    * `param` (`int`): one of the parameter types (see below)
+    * `step` (`int`): step (grid bit index) to get parameter for.
+
+    * `param` (`int`): one of the parameter types (see below).
 
     * `offset` (`int`): ???
 
@@ -93,14 +148,21 @@ def getStepParam(
 
     * `padsStride` (`int`, optional): ?????. Defaults to 16.
 
-    ## Returns:
-    * `int`: value for step parameter
+    * `useGlobalIndex` (`bool`, optional): whether to use the global channel
+      index.
 
-    ## See also:
+    ## Returns
+
+    * `int`: value for step parameter.
+
+    ## See also
+
     * [`getCurrentStepParam()`][channels.getCurrentStepParam]
+
     * [`setStepParameterByIndex()`][channels.setStepParameterByIndex]
 
-    ## Step parameter types:
+    ## Step parameter types
+
     * `0`: Note pitch (MIDI note number, default 60 for middle C)
     * `1`: Velocity (0 - 127, default 100)
     * `2`: Release velocity (0 - 127, default 64)
@@ -111,33 +173,41 @@ def getStepParam(
     * `7`: Number of ticks to offset the note by (0 - PPQN / 4; , with default
       0 for no shifting)
 
-    Included since API version 1
+    Included since API version 1.
     """
     return 0
 
 
-def getCurrentStepParam(index: int, step: int, param: int, /) -> int:
-    """Get current step parameter for channel at `index` and for step at `step`.
+def getCurrentStepParam(
+    index: int,
+    step: int,
+    param: int,
+    useGlobalIndex: bool = False,
+) -> int:
+    """
+    Get current step parameter for channel at `index` and for step at `step`.
 
-    ## HELP WANTED:
-    * What does this do?
+    ## HELP WANTED
 
-    ## NOTE:
-    * Official documentation says this returns None, but it actually seems to
-      return an int.
+    * How is it different from `getStepParam()`?
 
-    ## Args:
-    * `index` (`int`): channel index
+    ## Args
 
-    * `step` (`int`): step (grid bit index) to get parameter for
+    * `index` (`int`): channel index.
 
-    * `param` (`int`): step parameter (refer to [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#stepParams)
-      although it looks kinda dodgy for some values)
+    * `step` (`int`): step (grid bit index) to get parameter for.
 
-    ## Returns:
-    * `int`: value for step parameter
+    * `param` (`int`): one of the parameter types (see below).
 
-    ## Step parameter types:
+    * `useGlobalIndex` (`bool`, optional): whether to use the global channel
+      index.
+
+    ## Returns
+
+    * `int`: value for step parameter.
+
+    ## Step parameter types
+
     * `0`: Note pitch (MIDI note number, default 60 for middle C)
     * `1`: Velocity (0 - 127, default 100)
     * `2`: Release velocity (0 - 127, default 64)
@@ -149,6 +219,10 @@ def getCurrentStepParam(index: int, step: int, param: int, /) -> int:
       0 for no shifting)
 
     Included since API version 1
+
+    ## API Changes
+
+    * v33: add `useGlobalIndex` flag.
     """
     checkGroupIndex(index)
     return 0
@@ -160,27 +234,39 @@ def setStepParameterByIndex(
     step: int,
     param: int,
     value: int,
-    globalIndex: bool = True,
-    /,
+    useGlobalIndex: bool = False,
 ) -> None:
     """
     Set the value of a step parameter at the given location.
 
-    ## Args:
-    * `index` (`int`): channel index
+    ## Args
 
-    * `patNum` (`int`): pattern number to set step parameter on (1-indexed)
+    * `index` (`int`): channel index.
 
-    * `step` (`int`): step index
+    * `patNum` (`int`): pattern number to set step parameter on (1-indexed).
 
-    * `param` (`int`): step parameter to set (see below)
+    * `step` (`int`): step index.
 
-    * `value` (`int`): value to set parameter to
+    * `param` (`int`): step parameter to set (see below).
 
-    * `globalIndex` (`bool`, optional): whether to use a global index for the
-      channel. Defaults to `True`.
+    * `value` (`int`): value to set parameter to.
 
-    Included since API Version 1
+    * `useGlobalIndex` (`bool`, optional): whether to use a global index for the
+      channel. Defaults to `False`.
+
+    ## Step parameter types
+
+    * `0`: Note pitch (MIDI note number, default 60 for middle C)
+    * `1`: Velocity (0 - 127, default 100)
+    * `2`: Release velocity (0 - 127, default 64)
+    * `3`: Fine pitch (in cents: 0 - 240, with default 120 for no tuning)
+    * `4`: Panning (0 - 127, with default 64 for centred)
+    * `5`: Mod X (0-127, with default 64 for midpoint)
+    * `6`: Mod Y (0-127, with default 64 for midpoint)
+    * `7`: Number of ticks to offset the note by (0 - PPQN / 4; , with default
+      0 for no shifting)
+
+    Included since API Version 1.
     """
 
 
