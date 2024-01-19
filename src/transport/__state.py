@@ -3,39 +3,48 @@ transport > state
 
 Constant states of transport
 """
+from typing import overload, Literal
 from fl_model.decorators import since
 import midi
 
 
-def getSongPos(mode: int = -1, /) -> 'float | int':
-    """Returns the playback position
+@overload
+def getSongPos(mode: Literal[-1] = -1) -> float:
+    ...
 
-    ## NOTE:
-    * This will set the position in the song in song mode, or the position
-      in the pattern
 
-    ## Args:
-     * `mode` (`int`, optional): mode for return:
-          * [default] (`-1`): as a fraction of the total length between `0`
-            and `1` (eg `0.5` would indicate we were half-way through the
-            song). Returns as `float`.
+@overload
+def getSongPos(mode: Literal[0, 1, 2, 3, 4, 5]) -> int:
+    ...
 
-          * `SONGLENGTH_MS` (`0`): milliseconds (as `int`)
 
-          * `SONGLENGTH_S` (`1`): seconds (as `int`)
+def getSongPos(mode: int = -1) -> 'float | int':
+    """
+    Returns the playback position.
 
-          * `SONGLENGTH_ABSTICKS` (`2`): ticks (as `int`)
+    ## Note
 
-          * `SONGLENGTH_BARS` (`3`): bars-steps-ticks format, bars component
-            (as `int`)
+    * This will get the position in the song in song mode, or the position
+      in the pattern, depending on the state of `transport.getLoopMode()`.
 
-          * `SONGLENGTH_STEPS` (`4`): bars-steps-ticks format, steps component
-            (as `int`)
+    ## Args
 
-          * `SONGLENGTH_TICKS` (`5`): bars-steps-ticks format, ticks component
-            (as `int`)
+    * `mode` (`int`, optional): mode for return:
+          * [default] (`-1`): as a fraction of the total length between `0` and `1` (eg `0.5` would indicate we were half-way through the song). Returns as `float`.
 
-    ## Example Usage:
+          * `SONGLENGTH_MS` (`0`): milliseconds (as `int`).
+
+          * `SONGLENGTH_S` (`1`): seconds (as `int`).
+
+          * `SONGLENGTH_ABSTICKS` (`2`): ticks (as `int`).
+
+          * `SONGLENGTH_BARS` (`3`): bars-steps-ticks format, bars component (as `int`).
+
+          * `SONGLENGTH_STEPS` (`4`): bars-steps-ticks format, steps component (as `int`).
+
+          * `SONGLENGTH_TICKS` (`5`): bars-steps-ticks format, ticks component (as `int`).
+
+    ## Example Usage
 
     An overall bars-steps-ticks position can be gathered through making
     three calls to the function as follows:
@@ -46,216 +55,242 @@ def getSongPos(mode: int = -1, /) -> 'float | int':
     overall_str = f"{bars}:{steps}:{ticks}"
     ```
 
-    ## Returns:
-     * `float` or `int`: song position
+    ## Returns
 
-    Included since API version 1, with optional parameter added in API version 3
+    * `float` or `int`: song position.
+
+    Included since API version 1, with optional parameter added in API version
+    3.
     """
     return 0
 
 
-def setSongPos(position: 'float | int', mode: int = -1, /) -> None:
-    """Sets the playback position
+@overload
+def setSongPos(position: float, mode: Literal[-1] = -1) -> None:
+    ...
+
+
+@overload
+def setSongPos(position: int, mode: Literal[0, 1, 2, 3, 4, 5]) -> None:
+    ...
+
+
+def setSongPos(position: 'float | int', mode: int = -1) -> None:
+    """
+    Sets the playback position.
 
     This will set the position in the song in song mode, or the position
     in the pattern.
 
-    ## Args:
-     * `position` (`float` or `int`): new song position (type depends on `mode`).
+    ## Args
+
+     * `position` (`float` or `int`): new song position (type depends on
+       `mode`).
 
      * `mode` (`int`, optional): mode for `position`:
           * [default] (`-1`): as a fraction of the total length between `0`
             and `1` (eg `0.5` would indicate we were half-way through the
-            song). Returns as `float`.
+            song). Requires position to be passed as type `float`.
 
           * `SONGLENGTH_MS` (`0`): milliseconds (as `int`)
 
-          * `SONGLENGTH_S` (`1`): seconds (as `int`)
+          * `SONGLENGTH_S` (`1`): seconds (as `int`).
 
-          * `SONGLENGTH_ABSTICKS` (`2`): ticks (as `int`)
+          * `SONGLENGTH_ABSTICKS` (`2`): absolute number of ticks (as `int`).
 
-          * `SONGLENGTH_BARS` (`3`): bars-steps-ticks format, bars component
-            (as `int`)
+          * `SONGLENGTH_BARS` (`3`): bars-steps-ticks format, bars component (as `int`).
 
-          * `SONGLENGTH_STEPS` (`4`): bars-steps-ticks format, steps component
-            (as `int`)
+          * `SONGLENGTH_STEPS` (`4`): bars-steps-ticks format, steps component (as `int`).
 
-          * `SONGLENGTH_TICKS` (`5`): bars-steps-ticks format, ticks component
-            (as `int`)
+          * `SONGLENGTH_TICKS` (`5`): bars-steps-ticks format, ticks component (as `int`).
 
-    ## WARNING:
+    ## WARNING
+
     * Positions currently won't work when using bars (`mode = 3`),
       steps (`mode = 4`) or ticks (`mode = 5`).
 
-    Included since API version 1, with optional parameter added in API version 4
+    Included since API version 1, with optional parameter added in API version
+    4.
     """
 
 
 @since(3)
-def getSongLength(mode: int, /) -> int:
-    """Returns the total length of the song
+def getSongLength(mode: int) -> int:
+    """
+    Returns the total length of the song.
 
     This only applies to the full song, not to the currently selected pattern
     when in pattern mode. To get the length of the current pattern, use
     `patterns.getPatternLength()` with the index of the current pattern.
 
-    ## Args:
-     * `mode` (`int`): mode for length:
-          * `SONGLENGTH_MS` (`0`): milliseconds
+    ## Args
 
-          * `SONGLENGTH_S` (`1`): seconds
+    * `mode` (`int`): mode for length:
+          * `SONGLENGTH_MS` (`0`): milliseconds.
 
-          * `SONGLENGTH_ABSTICKS` (`2`): ticks
+          * `SONGLENGTH_S` (`1`): seconds.
 
-          * `SONGLENGTH_BARS` (`3`): bars-steps-ticks format, bars component
+          * `SONGLENGTH_ABSTICKS` (`2`): ticks.
 
-          * `SONGLENGTH_STEPS` (`4`): bars-steps-ticks format, steps component
+          * `SONGLENGTH_BARS` (`3`): bars-steps-ticks format, bars component.
 
-          * `SONGLENGTH_TICKS` (`5`): bars-steps-ticks format, ticks component
+          * `SONGLENGTH_STEPS` (`4`): bars-steps-ticks format, steps component.
 
-    ## NOTE:
-    * The official documentation states that this function has no return,
-      but in practice, it returns an `int`. The actual behavior is used by this
-      documentation.
+          * `SONGLENGTH_TICKS` (`5`): bars-steps-ticks format, ticks component.
 
-    ## Returns:
-     * `int`: song length
+    ## Returns
 
-    Included since API version 3
+    * `int`: song length.
+
+    Included since API version 3.
     """
     return 0
 
 
 def getSongPosHint() -> str:
-    """Returns a hint for the current playback position as `"bars:steps:ticks"`.
+    """
+    Returns a hint for the current playback position as `"bars:steps:ticks"`.
 
-    This applies to both pattern mode and song mode
+    This applies to both pattern mode and song mode.
 
-    ## Returns:
-     * `str`: song position
+    ## Returns
 
-    Included since API version 1
+    * `str`: song position.
+
+    Included since API version 1.
     """
     return ""
 
 
-def markerJumpJog(value: int, flags: int = midi.GT_All, /) -> None:
-    """Jump to a marker position, where `value` is an delta (increment) value.
+def markerJumpJog(value: int, flags: int = midi.GT_All) -> None:
+    """
+    Jump to a marker position, where `value` is an delta (increment) value.
 
-    ## Args:
-     * `value` (`int`): delta
+    ## Args
 
-     * `flags` (`int`, optional): ??? Refer to
-       [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags)
+    * `value` (`int`): delta.
 
-    Included since API version 1
+    * `flags` (`int`, optional): ??? Refer to
+      [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags).
+
+    Included since API version 1.
     """
 
 
-def markerSelJog(value: int, flags: int = midi.GT_All, /) -> None:
-    """Select a marker, where `value` is an delta (increment) value.
+def markerSelJog(value: int, flags: int = midi.GT_All) -> None:
+    """
+    Select a marker, where `value` is an delta (increment) value.
 
-    ## Args:
-     * `value` (`int`): delta
+    ## Args
 
-     * `flags` (`int`, optional): ??? Refer to
-       [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags)
+    * `value` (`int`): delta.
 
-    Included since API version 1
+    * `flags` (`int`, optional): ??? Refer to
+      [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags).
+
+    Included since API version 1.
     """
 
 
 def getHWBeatLEDState() -> int:
-    """Returns the state of the beat indicator.
+    """
+    Returns the state of the beat indicator.
 
-    ## HELP WANTED:
-    * I couldn't get this to return anything other than zero
+    ## HELP WANTED
 
-    ## Returns:
-     * `int`: beat indicator state
+    * I couldn't get this to return anything other than zero.
 
-    Included since API version 1
+    ## Returns
+
+    * `int`: beat indicator state.
+
+    Included since API version 1.
     """
     return 0
 
 
-def rewind(startStop: int, flags: int = midi.GT_All, /) -> None:
-    """Rewinds the playback position.
+def rewind(startStop: int, flags: int = midi.GT_All) -> None:
+    """
+    Rewinds the playback position.
 
     Rewinding should be considered as a toggle. All calls to this function
     beginning rewinding with the `SS_Start` or `SS_StartStep` should have a pair
     call where rewinding is stopped using the `SS_Stop` option, otherwise FL
     Studio will rewind forever.
 
-    ## Args:
-     * `startStop` (`int`): start-stop option
-          * `SS_Stop` (`0`): Stop movement
+    ## Args
 
-          * `SS_StartStep` (`1`): Start movement, but only if FL Studio is in
-            step editing mode
+    * `startStop` (`int`): start-stop option:
+          * `SS_Stop` (`0`): Stop movement.
 
-          * `SS_Start` (`2`); Start movement
+          * `SS_StartStep` (`1`): Start movement, but only if FL Studio is in step editing mode.
 
-     * `flags` (`int`, optional): ??? Refer to
-       [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags)
+          * `SS_Start` (`2`); Start movement.
 
-    Included since API version 1
+    * `flags` (`int`, optional): ??? Refer to
+      [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags).
+
+    Included since API version 1.
     """
 
 
-def fastForward(startStop: int, flags: int = midi.GT_All, /) -> None:
-    """Fast-forwards the playback position.
+def fastForward(startStop: int, flags: int = midi.GT_All) -> None:
+    """
+    Fast-forwards the playback position.
 
     Fast-forwarding should be considered as a toggle. All calls to this
     function beginning fast-forwarding with the `SS_Start` or `SS_StartStep`
-    should have a pair call where fast-forwarding is stopped using the `SS_Stop`
-    option, otherwise FL Studio will fast-forward forever.
+    should have a pair call where fast-forwarding is stopped using the
+    `SS_Stop` option, otherwise FL Studio will fast-forward forever.
 
-    ## Args:
-     * `startStop` (`int`): start-stop option
-          * `SS_Stop` (`0`): Stop movement
+    ## Args
 
-          * `SS_StartStep` (`1`): Start movement, but only if FL Studio is in
-            step editing mode
+    * `startStop` (`int`): start-stop option:
+          * `SS_Stop` (`0`): Stop movement.
 
-          * `SS_Start` (`2`); Start movement
+          * `SS_StartStep` (`1`): Start movement, but only if FL Studio is in step editing mode.
 
-     * `flags` (`int`, optional): ??? Refer to
-       [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags)
+          * `SS_Start` (`2`); Start movement.
 
-    Included since API version 1
+    * `flags` (`int`, optional): ??? Refer to
+      [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags).
+
+    Included since API version 1.
     """
 
 
-def continuousMove(speed: int, startStop: int, /) -> None:
-    """Sets playback speed, allowing a scrub-like functionality
+def continuousMove(speed: int, startStop: int) -> None:
+    """
+    Sets playback speed, allowing a scrub-like functionality.
 
     Scrubbing should be considered as a toggle. All calls to this
     function beginning scrubbing with the `SS_Start` or `SS_StartStep`
     should have a pair call where scrubbing is stopped using the `SS_Stop`
     option, otherwise FL Studio will scrub forever.
 
-    ## Args:
-     * `speed` (`int`): speed multiplier. Negative means reverse, `0` is
+    ## Args
+
+    * `speed` (`int`): speed multiplier. Negative means reverse, `0` is
        stopped, and `1` is normal playback speed.
 
-     * `startStop` (`int`): start-stop option
-          * `SS_Stop` (`0`): Stop movement
+    * `startStop` (`int`): start-stop option:
+          * `SS_Stop` (`0`): Stop movement.
 
-          * `SS_StartStep` (`1`): Start movement, but only if FL Studio is in
-            step editing mode
+          * `SS_StartStep` (`1`): Start movement, but only if FL Studio is in step editing mode.
 
-          * `SS_Start` (`2`); Start movement
+          * `SS_Start` (`2`); Start movement.
 
-    Included since API version 1
+    Included since API version 1.
     """
 
 
 @since(2)
-def continuousMovePos(speed: int, startStop: int, /) -> None:
-    """Sets playback speed, allowing a scrub-like functionality
+def continuousMovePos(speed: int, startStop: int) -> None:
+    """
+    Sets playback speed, allowing a scrub-like functionality.
 
-    ## HELP WANTED:
+    ## HELP WANTED
+
     * How is this different to `continuousMove()`?
 
     Scrubbing should be considered as a toggle. All calls to this
@@ -263,36 +298,38 @@ def continuousMovePos(speed: int, startStop: int, /) -> None:
     should have a pair call where scrubbing is stopped using the `SS_Stop`
     option, otherwise FL Studio will scrub forever.
 
-    ## Args:
-     * `speed` (`int`): speed multiplier. Negative means reverse, `0` is
-       stopped, and `1` is normal playback speed.
+    ## Args
 
-     * `startStop` (`int`): start-stop option
-          * `SS_Stop` (`0`): Stop movement
+    * `speed` (`int`): speed multiplier. Negative means reverse, `0` is
+      stopped, and `1` is normal playback speed.
 
-          * `SS_StartStep` (`1`): Start movement, but only if FL Studio is in
-            step editing mode
+    * `startStop` (`int`): start-stop option:
+          * `SS_Stop` (`0`): Stop movement.
 
-          * `SS_Start` (`2`); Start movement
+          * `SS_StartStep` (`1`): Start movement, but only if FL Studio is in step editing mode.
 
-    Included since API version 2
+          * `SS_Start` (`2`); Start movement.
+
+    Included since API version 2.
     """
 
 
-def setPlaybackSpeed(speedMultiplier: float, /) -> None:
-    """Sets a playback speed multiplier.
+def setPlaybackSpeed(speedMultiplier: float) -> None:
+    """
+    Sets a playback speed multiplier.
 
     This differs from the `continuousMove` function as it only controls
     speed when playback is active, rather than scrubbing through song or
     pattern regardless of whether playback is active.
 
-    ## Args:
-     * `speedMultiplier` (`float`): speed:
-          * `1.0`: Normal speed
+    ## Args
 
-          * `0.25`: Minimum speed
+    * `speedMultiplier` (`float`): speed:
+          * `1.0`: Normal speed.
 
-          * `4.0`: Maximum speed
+          * `0.25`: Minimum speed.
 
-    Included since API version 1
+          * `4.0`: Maximum speed.
+
+    Included since API version 1.
     """

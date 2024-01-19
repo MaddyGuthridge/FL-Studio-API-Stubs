@@ -1,4 +1,7 @@
-"""Transport Module (FL Studio built-in)
+"""
+# Transport
+
+FL Studio built-in module.
 
 Handles transport in FL Studio, including example playback and recording.
 """
