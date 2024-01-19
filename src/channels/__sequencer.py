@@ -167,7 +167,7 @@ def getStepParam(
     * `1`: Velocity (0 - 127, default 100)
     * `2`: Release velocity (0 - 127, default 64)
     * `3`: Fine pitch (in cents: 0 - 240, with default 120 for no tuning)
-    * `4`: Panning (0 - 127, with default 64 for centred)
+    * `4`: Panning (0 - 127, with default 64 for centered)
     * `5`: Mod X (0-127, with default 64 for midpoint)
     * `6`: Mod Y (0-127, with default 64 for midpoint)
     * `7`: Number of ticks to offset the note by (0 - PPQN / 4; , with default
@@ -212,7 +212,7 @@ def getCurrentStepParam(
     * `1`: Velocity (0 - 127, default 100)
     * `2`: Release velocity (0 - 127, default 64)
     * `3`: Fine pitch (in cents: 0 - 240, with default 120 for no tuning)
-    * `4`: Panning (0 - 127, with default 64 for centred)
+    * `4`: Panning (0 - 127, with default 64 for centered)
     * `5`: Mod X (0-127, with default 64 for midpoint)
     * `6`: Mod Y (0-127, with default 64 for midpoint)
     * `7`: Number of ticks to offset the note by (0 - PPQN / 4; , with default
@@ -260,7 +260,7 @@ def setStepParameterByIndex(
     * `1`: Velocity (0 - 127, default 100)
     * `2`: Release velocity (0 - 127, default 64)
     * `3`: Fine pitch (in cents: 0 - 240, with default 120 for no tuning)
-    * `4`: Panning (0 - 127, with default 64 for centred)
+    * `4`: Panning (0 - 127, with default 64 for centered)
     * `5`: Mod X (0-127, with default 64 for midpoint)
     * `6`: Mod Y (0-127, with default 64 for midpoint)
     * `7`: Number of ticks to offset the note by (0 - PPQN / 4; , with default

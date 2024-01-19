@@ -435,7 +435,7 @@ def getChannelPan(index: int, useGlobalIndex: bool = False) -> float:
     """
     Returns the normalized pan of the channel at `index`, where `-1.0` is 100%
     left, and `1.0` is 100% right. Note that the default pan for channels is
-    `0.0` (centred).
+    `0.0` (centered).
 
     ## Args
 
@@ -637,7 +637,7 @@ def getChannelType(index: int, useGlobalIndex: bool = False) -> int:
     return getState().channels.channel_list[index_global].ch_type.value
 
 
-def isChannelSelected(index: int) -> bool:
+def isChannelSelected(index: int, useGlobalIndex: bool = False) -> bool:
     """
     Returns whether the channel at `index` is selected.
 
@@ -645,11 +645,18 @@ def isChannelSelected(index: int) -> bool:
 
     * `index` (`int`): channel index.
 
+    * `useGlobalIndex` (`bool`, optional): whether to use the global channel
+      index.
+
     ## Returns
 
     * `bool`: whether the channel is selected.
 
     Included since API version 1.
+
+    ## API Changes
+
+    * v33: add `useGlobalIndex` flag.
     """
     checkGroupIndex(index)
     index_global = getChannelIndex(index)

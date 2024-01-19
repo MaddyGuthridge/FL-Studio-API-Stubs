@@ -8,9 +8,6 @@ instrument channels.
 
 ## Note
 
-* In this documentation, an index respects channel groups, whereas a
-  global index does not.
-
 * Channels are zero-indexed.
 """
 from .__properties import (

@@ -71,9 +71,9 @@ def stripHold(value: int, /) -> int:
      * `value` (`int`):
           * `0`: release
 
-          * `1`: 1-finger centred mode
+          * `1`: 1-finger centered mode
 
-          * `2`: 2-fingers centred mode
+          * `2`: 2-fingers centered mode
 
           * `-1`: 1-finger jog mode
 
