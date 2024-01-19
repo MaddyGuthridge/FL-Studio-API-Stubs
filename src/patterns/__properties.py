@@ -13,35 +13,40 @@ from .__helpers import checkIndex
 
 
 def patternNumber() -> int:
-    """Returns the index for the currently active pattern.
+    """
+    Returns the index for the currently active pattern.
 
     This is the pattern where notes and step sequencing will be modified. It is
     usually equal to the most recently selected pattern. If that pattern is
     deselected, it the pattern number will return to the first selected
     pattern, or if there are no selections, it will remain the same.
 
-    ## Returns:
-     * `int`: index of the currently active pattern
+    ## Returns
 
-    Included since API version 1
+    * `int`: index of the currently active pattern.
+
+    Included since API version 1.
     """
     return getState().patterns.active_pattern
 
 
 def patternCount() -> int:
-    """Returns the number of patterns in the project which have been modified
-    from their default state.
+    """
+    Returns the number of patterns in the project which have been modified from
+    their default state.
 
-    ### WARNING:
+    ## Warning
+
     There is no guarantee that these patterns are all adjacent, as the API
     allows for the modification of patterns at any index at any time. You
     should only rely on this pattern for indexes if your script manages
     patterns in a responsible manner.
 
-    ## Returns:
-    * `int`: the number of patterns
+    ## Returns
 
-    Included since API version 1
+    * `int`: the number of patterns.
+
+    Included since API version 1.
     """
     return sum(map(
         lambda p: p.hasChanged(),
@@ -50,51 +55,59 @@ def patternCount() -> int:
 
 
 def patternMax() -> int:
-    """Returns the maximum number of patterns that can be created. In FL Studio
-    20, this is 999
+    """
+    Returns the maximum number of patterns that can be created. In FL Studio
+    20, this is 999.
 
-    ## Returns:
-     * `int`: max number of patterns
+    ## Returns
 
-    Included since API version 1
+    * `int`: max number of patterns.
+
+    Included since API version 1.
     """
     return PATTERN_COUNT - 1
 
 
-def getPatternName(index: int, /) -> str:
-    """Returns the name of the pattern at `index`.
+def getPatternName(index: int) -> str:
+    """
+    Returns the name of the pattern at `index`.
 
-    ## Args:
-     * `index` (`int`): pattern index
+    ## Args
 
-    ## Returns:
-     * `str`: name of pattern.
+    * `index` (`int`): pattern index.
 
-    Included since API version 1
+    ## Returns
+
+    * `str`: name of pattern.
+
+    Included since API version 1.
     """
     checkIndex(index)
     return getPatternReference(index).name
 
 
-def setPatternName(index: int, name: str, /) -> None:
-    """Sets the name of pattern at `index`
+def setPatternName(index: int, name: str) -> None:
+    """
+    Sets the name of pattern at `index`.
 
     Setting the name to an empty string will reset the name of the pattern to
     its default.
 
-    ## Args:
-     * index (`int`): index of pattern
+    ## Args
 
-     * name (`str`): new name
+    * index (`int`): index of pattern.
 
-    Included since API version 1
+    * name (`str`): new name.
+
+    Included since API version 1.
     """
     checkIndex(index)
     getPatternReference(index).name = name
 
 
-def getPatternColor(index: int, /) -> int:
-    """Returns the color of the pattern at `index`.
+def getPatternColor(index: int) -> int:
+    """
+    Returns the color of the pattern at `index`.
 
     Note that colors can be split into or built from components using the
     functions provided in the module [utils](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/).
@@ -103,20 +116,23 @@ def getPatternColor(index: int, /) -> int:
 
     * [RGBToColor()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.RGBToColor)
 
-    ## Args:
-     * `index` (`int`): pattern index
+    ## Args
 
-    ## Returns:
-     * `int`: color of pattern (0x--BBGGRR)
+    * `index` (`int`): pattern index.
 
-    Included since API version 1
+    ## Returns
+
+    * `int`: color of pattern (0x--BBGGRR).
+
+    Included since API version 1.
     """
     checkIndex(index)
     return getPatternReference(index).color
 
 
-def setPatternColor(index: int, color: int, /) -> None:
-    """Sets the color of the pattern at `index`.
+def setPatternColor(index: int, color: int) -> None:
+    """
+    Sets the color of the pattern at `index`.
 
     Note that colors can be split into or built from components using the
     functions provided in the module [utils](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/).
@@ -125,46 +141,53 @@ def setPatternColor(index: int, color: int, /) -> None:
 
     * [RGBToColor()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.RGBToColor)
 
-    ## Args:
-     * `index` (`int`): pattern index
+    ## Args
 
-     * `color` (`int`): color of pattern (0x--BBGGRR)
+    * `index` (`int`): pattern index.
 
-    Included since API version 1
+    * `color` (`int`): color of pattern (0x--BBGGRR).
+
+    Included since API version 1.
     """
     checkIndex(index)
     getPatternReference(index).color = color
 
 
-def getPatternLength(index: int, /) -> int:
-    """Returns the length of the pattern at `index` in beats.
+def getPatternLength(index: int) -> int:
+    """
+    Returns the length of the pattern at `index` in beats.
 
-    ## Args:
-     * `index` (`int`): pattern index
+    ## Args
 
-    ## Returns:
-     * `int`: length of pattern in beats
+    * `index` (`int`): pattern index.
 
-    Included since API version 1
+    ## Returns
+
+    * `int`: length of pattern in beats.
+
+    Included since API version 1.
     """
     checkIndex(index)
     return 0
 
 
-def jumpToPattern(index: int, /) -> None:
-    """Scroll the patterns list to the pattern at `index`, then activate it and
+def jumpToPattern(index: int) -> None:
+    """
+    Scroll the patterns list to the pattern at `index`, then activate it and
     select it if it isn't already selected.
 
-    ## NOTE:
+    ## Note
+
     * It is possible to jump to non-existent patterns. They will be created at
       the requested index. Script writers should be careful not to create
       patterns at unusual indexes. For example, creating a "Pattern 999" as the
       second pattern in a project would be somewhat confusing for user.
 
-    ## Args:
-     * index (`int`): pattern index
+    ## Args
 
-    Included since API version 1
+    * index (`int`): pattern index.
+
+    Included since API version 1.
     """
     checkIndex(index)
     # Can't jump to zeroth pattern
@@ -176,38 +199,43 @@ def jumpToPattern(index: int, /) -> None:
     getState().patterns.active_pattern = index
 
 
-def findFirstNextEmptyPat(flags: int, x: int = -1, y: int = -1, /) -> None:
+def findFirstNextEmptyPat(flags: int, x: int = -1, y: int = -1) -> None:
     """
     Selects the first or next empty pattern.
 
     ## HELP WANTED
-    What do the `x` and `y` values do?
 
-    ## Args:
-     * `flags` (`int`):
-          * `FFNEP_FindFirst` (`0`): Find first pattern
+    * What do the `x` and `y` values do?
 
-          * `FFNEP_DontPromptName` (`2`): Don't prompt pattern name
+    ## Args
 
-     * `x` (`int`, optional): ???. Defaults to -1.
+    * `flags` (`int`):
+          * `FFNEP_FindFirst` (`0`): Find first pattern.
 
-     * `y` (`int`, optional): ???. Defaults to -1.
+          * `FFNEP_DontPromptName` (`2`): Don't prompt pattern name.
 
-    Included since API version 1
+    * `x` (`int`, optional): ???. Defaults to -1.
+
+    * `y` (`int`, optional): ???. Defaults to -1.
+
+    Included since API version 1.
     """
 
 
 @since(2)
-def isPatternSelected(index: int, /) -> bool:
-    """Returns whether the pattern at `index` is selected.
+def isPatternSelected(index: int) -> bool:
+    """
+    Returns whether the pattern at `index` is selected.
 
-    ## Args:
-     * `index` (`int`): pattern index
+    ## Args
 
-    ## Returns:
-     * `bool`: whether pattern is selected
+    * `index` (`int`): pattern index.
 
-    Included since API version 2
+    ## Returns
+
+    * `bool`: whether pattern is selected.
+
+    Included since API version 2.
     """
     checkIndex(index)
     return getState().patterns.p[index].selected
@@ -218,24 +246,24 @@ def selectPattern(
     index: int,
     value: int = -1,
     preview: bool = False,
-    /,
 ) -> None:
     """Selects the pattern at `index`.
 
-    ## Args:
-     * `index` (`int`): pattern index
+    ## Args
 
-     * `value` (`int`, optional): selection mode:
-          * `-1`: Toggle (default)
+    * `index` (`int`): pattern index.
 
-          * `0`: Deselect
+    * `value` (`int`, optional): selection mode:
+          * `-1`: Toggle (default).
 
-          * `1`: Select
+          * `0`: Deselect.
 
-     * `preview` (`bool`, optional): whether set FL Studio to pattern mode and
-       start playback if the pattern gets selected. Defaults to `False`.
+          * `1`: Select.
 
-    Included since API version 2
+    * `preview` (`bool`, optional): whether set FL Studio to pattern mode and
+      start playback if the pattern gets selected. Defaults to `False`.
+
+    Included since API version 2.
     """
     checkIndex(index)
     # Can't select invisible tracks
@@ -264,11 +292,12 @@ def selectPattern(
 
 @since(2)
 def selectAll() -> None:
-    """Selects all patterns
+    """
+    Selects all patterns.
 
-    Invisible patterns will not be selected
+    Hidden patterns will not be selected.
 
-    Included since API version 2
+    Included since API version 2.
     """
     for i in range(1, PATTERN_COUNT):
         selectPattern(i, True)
@@ -276,24 +305,28 @@ def selectAll() -> None:
 
 @since(2)
 def deselectAll() -> None:
-    """Deselects all patterns
+    """
+    Deselects all patterns.
 
-    Included since API version 2
+    Included since API version 2.
     """
     for i in range(1, PATTERN_COUNT):
         selectPattern(i, False)
 
 
 @since(9)
-def burnLoop(index: int, storeUndo: int = 1, updateUi: int = 1, /) -> None:
-    """For a pattern where looping of step sequenced channels is enabled,
-    disable looping for the channel at index `i`.
+def burnLoop(index: int, storeUndo: int = 1, updateUi: int = 1) -> None:
+    """
+    For a pattern where looping of step sequenced channels is enabled, disable
+    looping for the channel at index `i`.
 
-    # KNOWN ISSUES:
+    # KNOWN ISSUES
+
     * Once this is disabled, it cannot be reenabled, except by disabling step
       sequenced looping and reenabling it.
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): Index of channel to disable step sequencer looping for
 
     * `storeUndo` (`bool`, optional): whether to store a point in the undo
@@ -308,15 +341,17 @@ def burnLoop(index: int, storeUndo: int = 1, updateUi: int = 1, /) -> None:
 
 
 @since(23)
-def isPatternDefault(index: int, /) -> bool:
+def isPatternDefault(index: int) -> bool:
     """
     Returns whether the pattern at the given index has changed from the default
     empty state.
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): pattern index
 
-    ## Returns:
+    ## Returns
+
     * `bool`: whether the pattern has changed
 
     Included since API Version 23
@@ -326,14 +361,15 @@ def isPatternDefault(index: int, /) -> bool:
 
 
 @since(25)
-def clonePattern(index: Optional[int] = None, /):
+def clonePattern(index: Optional[int] = None):
     """
     Clones the pattern at the given index
 
     Note that doing so will close the piano roll, in order to prevent the user
     from making unintentional edits to the wrong pattern.
 
-    ## Args:
+    ## Args
+
     * `index` (`int | None`): index of pattern. If not provided, defaults to
       the currently selected pattern.
 

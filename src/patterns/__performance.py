@@ -6,49 +6,56 @@ Contains functions for working with performance mode
 from .__helpers import checkIndex
 
 
-def getBlockSetStatus(left: int, top: int, right: int, bottom: int, /) -> int:
-    """Returns the status of the live block.
+def getBlockSetStatus(left: int, top: int, right: int, bottom: int) -> int:
+    """
+    Returns the status of the live block.
 
     HELP WANTED: What does this do?
 
-    ## Args:
-     * left (`int`): ?
+    ## Args
 
-     * top (`int`): ?
+    * left (`int`): ?
 
-     * right (`int`): ?
+    * top (`int`): ?
 
-     * bottom (`int`): ?
+    * right (`int`): ?
 
-    ## Returns:
-     * `int`: live block status
-          * `LB_Status_Filled` (`1`): Filled
+    * bottom (`int`): ?
 
-          * `LB_Status_Scheduled` (`2`): Scheduled
+    ## Returns
 
-          * `LB_Status_Playing` (`4`): Playing
+    * `int`: live block status
+          * `LB_Status_Filled` (`1`): Filled.
 
-    Included since API version 1
+          * `LB_Status_Scheduled` (`2`): Scheduled.
+
+          * `LB_Status_Playing` (`4`): Playing.
+
+    Included since API version 1.
     """
     return 0
 
 
 def ensureValidNoteRecord(index: int, playNow: int = 0, /) -> int:
-    """Ensures valid note on the pattern at `index`.
+    """
+    Ensures valid note on the pattern at `index`.
 
-    ## HELP WANTED:
+    ## HELP WANTED
+
     * What does this do? I haven't managed to get it to return
       anything other than zero.
 
-    ## Args:
-     * `index` (`int`): pattern index
+    ## Args
 
-     * `playNow` (`int`, optional): ???. Defaults to 0.
+    * `index` (`int`): pattern index.
 
-    ## Returns:
+    * `playNow` (`int`, optional): ???. Defaults to 0.
+
+    ## Returns
+
      * `int`: ???
 
-    Included since API version 1
+    Included since API version 1.
     """
     checkIndex(index)
     return 0

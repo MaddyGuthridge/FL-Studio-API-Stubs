@@ -14,10 +14,11 @@ def getActivePatternGroup() -> int:
     The default "All patterns" grouping has index `-1`. User-defined pattern
     groups have indexes starting from `0`.
 
-    ## Returns:
+    ## Returns
+
     * `int`: index of the current pattern group.
 
-    Included since API Version 28
+    Included since API Version 28.
     """
     return -1
 
@@ -29,10 +30,11 @@ def getPatternGroupCount() -> int:
 
     The default "All patterns" grouping is not included.
 
-    ## Returns:
-    * `int`: number of pattern groups
+    ## Returns
 
-    Included since API Version 28
+    * `int`: number of pattern groups.
+
+    Included since API Version 28.
     """
     return 0
 
@@ -44,10 +46,11 @@ def getPatternGroupName(index: int, /) -> str:
 
     The default "All patterns" group's name cannot be accessed.
 
-    ## Returns:
-    * `str`: name of pattern group
+    ## Returns
 
-    Included since API Version 28
+    * `str`: name of pattern group.
+
+    Included since API Version 28.
     """
     return ""
 
@@ -60,9 +63,10 @@ def getPatternsInGroup(index: int, /) -> tuple[int, ...]:
     The default "All patterns" group returns a tuple containing all the
     patterns that haven't been added to any other groups.
 
-    ## Returns:
-    * `tuple[int, ...]`: tuple of patterns in group
+    ## Returns
 
-    Included since API Version 28
+    * `tuple[int, ...]`: tuple of patterns in group.
+
+    Included since API Version 28.
     """
     return tuple()

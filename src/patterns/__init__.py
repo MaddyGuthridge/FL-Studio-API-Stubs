@@ -1,8 +1,11 @@
-"""Patterns Module (FL Studio built-in)
+"""
+# Patterns
+
+FL Studio built-in module.
 
 Allows you to control and interact with FL Studio Patterns.
 
-## NOTES:
+## Note
 
 * Patterns are 1-indexed, with a range from `1` - `999`, meaning that the
   1000th pattern cannot be created
