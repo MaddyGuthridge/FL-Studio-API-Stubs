@@ -1,4 +1,7 @@
-"""Screen Module (FL Studio built-in)
+"""
+# Screen
+
+FL Studio built-in module.
 
 Helper functions for controlling the screen of the AKAI FL Studio Fire MIDI
 controller.
