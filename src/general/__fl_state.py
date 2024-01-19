@@ -174,3 +174,18 @@ def clearLog() -> None:
 
     Included since API version 15.
     """
+
+
+@since(29)
+def safeToEdit() -> bool:
+    """
+    Returns whether it is currently safe to perform edit operations in FL
+    Studio.
+
+    ## Returns
+
+    * `bool`: whether it is safe to edit.
+
+    Included since API Version 29.
+    """
+    return True
