@@ -261,11 +261,11 @@ def getLiveBlockColor(index: int, blockNum: int) -> int:
     Returns the color for block `blockNum` within the track at `index`.
 
     Note that colors can be split into or built from components using the
-    functions provided in the `utils` module.
+    functions provided in the module [utils](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/).
 
-    * `ColorToRGB()`
+    * [ColorToRGB()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.ColorToRGB)
 
-    * `RGBToColor()`
+    * [RGBToColor()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.RGBToColor)
 
     ## Args
 

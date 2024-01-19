@@ -96,6 +96,13 @@ def setPatternName(index: int, name: str, /) -> None:
 def getPatternColor(index: int, /) -> int:
     """Returns the color of the pattern at `index`.
 
+    Note that colors can be split into or built from components using the
+    functions provided in the module [utils](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/).
+
+    * [ColorToRGB()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.ColorToRGB)
+
+    * [RGBToColor()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.RGBToColor)
+
     ## Args:
      * `index` (`int`): pattern index
 
@@ -110,6 +117,13 @@ def getPatternColor(index: int, /) -> int:
 
 def setPatternColor(index: int, color: int, /) -> None:
     """Sets the color of the pattern at `index`.
+
+    Note that colors can be split into or built from components using the
+    functions provided in the module [utils](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/).
+
+    * [ColorToRGB()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.ColorToRGB)
+
+    * [RGBToColor()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.RGBToColor)
 
     ## Args:
      * `index` (`int`): pattern index

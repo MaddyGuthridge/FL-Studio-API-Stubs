@@ -17,23 +17,78 @@ from fl_model.channels import (
 from fl_model.util import clamp
 
 
-def channelNumber(canBeNone: bool = False, offset: int = 0, /) -> int:
-    """Returns the global index of the first selected channel, otherwise the
-    nth selected channel where n is `offset` + 1. If n is greater than the
-    number of selected channels, the global index of the last selected channel
-    will be returned.
+@since(5)
+def selectedChannel(
+    canBeNone: bool = False,
+    offset: int = 0,
+    indexGlobal: bool = False,
+) -> int:
+    """
+    Returns the index of the first selected channel, otherwise the nth selected
+    channel where n is `offset` + 1. If n is greater than the number of
+    selected channels, the global index of the last selected channel will be
+    returned. If `indexGlobal` is set to `1`, this will replicate the behavior
+    of [`channelNumber()`][channels.channelNumber] by returning global indexes.
 
-    If `canBeNone` is `1`, no selection will return `-1`. Otherwise, no
-    selection will return `0` (representing the first channel).
+    ## Note
 
-    ## Args:
+    * This function replaces the functionality of `channelNumber()`
+      entirely, with the added functionality of providing indexes respecting
+      groups (when `indexGlobal` is not set).
+
+    ## Args
+
     * `canBeNone` (`bool`, optional): Whether the function will return `-1` or
       `0` when there is no selection. Defaults to `False` (returning `0`).
 
     * `offset` (`int`, optional): return other selected channels after offset.
       Defaults to 0.
 
-    ## Returns:
+    * `indexGlobal` (`bool`, optional): Whether to return the group index
+      (`False`) or the global index (`True`).
+
+    ## Returns
+
+    * `int`: index of first selected channel
+
+    Included since API version 5
+    """
+    if indexGlobal:
+        return channelNumber(canBeNone, offset)
+    found = 0
+    for i, i_global in enumerate(getChannelsInGroup()):
+        ch = getState().channels.channel_list[i_global]
+        if ch.selected:
+            if found == offset:
+                return i
+            found += 1
+
+    if canBeNone:
+        return -1
+    else:
+        return 0
+
+
+def channelNumber(canBeNone: bool = False, offset: int = 0) -> int:
+    """
+    Returns the global index of the first selected channel, otherwise the nth
+    selected channel where n is `offset` + 1. If n is greater than the number
+    of selected channels, the global index of the last selected channel will be
+    returned.
+
+    If `canBeNone` is `1`, no selection will return `-1`. Otherwise, no
+    selection will return `0` (representing the first channel).
+
+    ## Args
+
+    * `canBeNone` (`bool`, optional): Whether the function will return `-1` or
+      `0` when there is no selection. Defaults to `False` (returning `0`).
+
+    * `offset` (`int`, optional): return other selected channels after offset.
+      Defaults to 0.
+
+    ## Returns
+
     * `int`: global index of first selected channel
 
     Included since API version 1
@@ -50,15 +105,18 @@ def channelNumber(canBeNone: bool = False, offset: int = 0, /) -> int:
         return 0
 
 
-def channelCount(mode: bool = False, /) -> int:
-    """Returns the number of channels on the channel rack. Respect for groups
-    is controlled by the `mode` flag.
+def channelCount(mode: bool = False) -> int:
+    """
+    Returns the number of channels on the channel rack. Respect for groups is
+    controlled by the `mode` flag.
 
-    ## Args:
+    ## Args
+
     * `mode` (`bool`, optional): Whether the number of channels should be
       global. Defaults to `False` (groups respected).
 
-    ## Returns:
+    ## Returns
+
     * `int`: number of channels
 
     Included since API version 1. (updated with optional parameter in API
@@ -70,11 +128,16 @@ def channelCount(mode: bool = False, /) -> int:
         return len(getChannelsInGroup())
 
 
-def getChannelName(index: int, /) -> str:
-    """Returns the name of the channel at `index` (respecting groups)
+def getChannelName(index: int, useGlobalIndex: bool = False) -> str:
+    """
+    Returns the name of the channel at `index`
 
-    ## Args:
-     * `index` (`int`): index of channel
+    ## Args
+
+    * `index` (`int`): index of channel
+
+    * `useGlobalIndex` (`bool`, optional): whether to use the global channel
+      index when getting the channel name
 
     ## Returns:
      * `str`: channel name
@@ -85,16 +148,25 @@ def getChannelName(index: int, /) -> str:
     return getGroupedChannelReference(index).name
 
 
-def setChannelName(index: int, name: str, /) -> None:
-    """Sets the name of the channel at `index` (respecting groups)
+def setChannelName(
+    index: int,
+    name: str,
+    useGlobalIndex: bool = False,
+) -> None:
+    """
+    Sets the name of the channel at `index`
 
     If a channel's name is set to "", its name will be set to the default name
     of the plugin or sample.
 
-    ## Args:
-     * `index` (`int`): index of channel
+    ## Args
 
-     * `name` (`str`): new name for channel
+    * `index` (`int`): index of channel
+
+    * `name` (`str`): new name for channel
+
+    * `useGlobalIndex` (`bool`, optional): whether to use the global channel
+      index when getting the channel name
 
     Included since API version 1
     """
@@ -102,18 +174,23 @@ def setChannelName(index: int, name: str, /) -> None:
     getGroupedChannelReference(index).name = name
 
 
-def getChannelColor(index: int, /) -> int:
-    """Returns the color of the channel at `index` (respecting groups)
+def getChannelColor(index: int, useGlobalIndex: bool = False) -> int:
+    """
+    Returns the color of the channel at `index`.
 
     Note that colors can be split into or built from components using the
-    functions provided in the module [`utils`][utils]
+    functions provided in the module [utils](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/).
 
-    * [`ColorToRGB()`][utils.ColorToRGB]
+    * [ColorToRGB()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.ColorToRGB)
 
-    * [`RGBToColor()`][utils.RGBToColor]
+    * [RGBToColor()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.RGBToColor)
 
-    ## Args:
-     * `index` (`int`): index of channel
+    ## Args
+
+    * `index` (`int`): index of channel
+
+    * `useGlobalIndex` (`bool`, optional): whether to use the global channel
+      index when getting the channel name
 
     ## Returns:
      * `int`: channel color (0x--BBGGRR)
@@ -124,19 +201,29 @@ def getChannelColor(index: int, /) -> int:
     return getGroupedChannelReference(index).color
 
 
-def setChannelColor(index: int, color: int, /) -> None:
-    """Sets the color of the channel at `index` (respecting groups)
+def setChannelColor(
+    index: int,
+    color: int,
+    useGlobalIndex: bool = False,
+) -> None:
+    """
+    Sets the color of the channel at `index`.
 
     Note that colors can be split into or built from components using the
-    functions provided in the module [`utils`][utils]
+    functions provided in the module [utils](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/).
 
-    * [`ColorToRGB()`][utils.ColorToRGB]
+    * [ColorToRGB()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.ColorToRGB)
 
-    * [`RGBToColor()`][utils.RGBToColor]
+    * [RGBToColor()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.RGBToColor)
 
-    ## Args:
-     * `index` (`int`): index of channel
-     * `color` (`int`): new color for channel (0x--BBGGRR)
+    ## Args
+
+    * `index` (`int`): index of channel
+
+    * `color` (`int`): new color for channel (0x--BBGGRR)
+
+    * `useGlobalIndex` (`bool`, optional): whether to use the global channel
+      index when getting the channel name
 
     Included since API version 1
     """
@@ -144,14 +231,20 @@ def setChannelColor(index: int, color: int, /) -> None:
     getGroupedChannelReference(index).color = color
 
 
-def isChannelMuted(index: int, /) -> bool:
-    """Returns whether channel is muted (`1`) or not (`0`)
+def isChannelMuted(index: int, useGlobalIndex: bool = False) -> bool:
+    """
+    Returns whether channel is muted (`True`) or not (`False`).
 
-    ## Args:
-     * `index` (`int`): index of channel
+    ## Args
 
-    ## Returns:
-     * `bool`: mute status
+    * `index` (`int`): index of channel
+
+    * `useGlobalIndex` (`bool`, optional): whether to use the global channel
+      index when getting the channel name
+
+    ## Returns
+
+    * `bool`: mute status
 
     Included since API version 1
     """
@@ -160,7 +253,8 @@ def isChannelMuted(index: int, /) -> bool:
 
 
 def muteChannel(index: int, value: int = -1, /) -> None:
-    """Toggles the mute state of the channel at `index`
+    """
+    Toggles the mute state of the channel at `index`.
 
     ## Args:
     * `index` (`int`): index of channel
@@ -173,13 +267,14 @@ def muteChannel(index: int, value: int = -1, /) -> None:
 
 
 def isChannelSolo(index: int, /) -> bool:
-    """Returns whether channel is solo (`1`) or not (`0`)
+    """
+    Returns whether channel is solo (`True`) or not (`False`).
 
     ## Args:
-     * `index` (`int`): index of channel
+    * `index` (`int`): index of channel
 
     ## Returns:
-     * `bool`: solo status
+    * `bool`: solo status
 
     Included since API version 1
     """
@@ -191,10 +286,11 @@ def isChannelSolo(index: int, /) -> bool:
 
 
 def soloChannel(index: int, /) -> None:
-    """Toggles the solo state of the channel at `index`
+    """
+    Toggles the solo state of the channel at `index`.
 
     ## Args:
-     * `index` (`int`): index of channel
+    * `index` (`int`): index of channel
 
     Included since API version 1
     """
@@ -208,10 +304,11 @@ def soloChannel(index: int, /) -> None:
 
 
 def getChannelVolume(index: int, mode: bool = False, /) -> float:
-    """Returns the normalized volume of the channel at `index`, where `0.0` is
-    the minimum value, and `1.0` is the maximum value. Note that the default
-    volume for channels is `0.78125`. By setting the `mode` flag to `True`, the
-    volume is returned in decibels.
+    """
+    Returns the normalized volume of the channel at `index`, where `0.0` is the
+    minimum value, and `1.0` is the maximum value. Note that the default volume
+    for channels is `0.78125`. By setting the `mode` flag to `True`, the volume
+    is returned in decibels.
 
     ## Args:
     * `index` (`int`): index of channel
@@ -241,18 +338,18 @@ def setChannelVolume(
     pickupMode: int = midi.PIM_None,
     /,
 ) -> None:
-    """Sets the normalized volume of the channel at `index`, where `0.0` is
-    the minimum value, and `1.0` is the maximum value. Note that the default
-    volume for channels is `0.78125`. Use the pickup mode flag to set pickup
-    options.
+    """
+    Sets the normalized volume of the channel at `index`, where `0.0` is the
+    minimum value, and `1.0` is the maximum value. Note that the default volume
+    for channels is `0.78125`. Use the pickup mode flag to set pickup options.
 
     ## Args:
-     * `index` (`int`): index of channel
+    * `index` (`int`): index of channel
 
-     * `volume` (`float`): channel volume
+    * `volume` (`float`): channel volume
 
-     * `pickupMode` (`int`, optional): define the pickup behavior. Refer to
-       the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
+    * `pickupMode` (`int`, optional): define the pickup behavior. Refer to
+      the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
 
     Included since API version 1
     """
@@ -262,15 +359,16 @@ def setChannelVolume(
 
 
 def getChannelPan(index: int) -> float:
-    """Returns the normalized pan of the channel at `index`, where `-1.0` is
-    100% left, and `1.0` is 100% right. Note that the default pan for channels
-    is `0.0` (centre).
+    """
+    Returns the normalized pan of the channel at `index`, where `-1.0` is 100%
+    left, and `1.0` is 100% right. Note that the default pan for channels is
+    `0.0` (centred).
 
     ## Args:
-     * `index` (`int`): index of channel
+    * `index` (`int`): index of channel
 
     ## Returns:
-     * `float`: channel pan
+    * `float`: channel pan
 
     Included since API version 1
     """
@@ -285,18 +383,18 @@ def setChannelPan(
     pickupMode: int = midi.PIM_None,
     /,
 ) -> None:
-    """Sets the normalized pan of the channel at `index`, where `-1.0` is
-    100% left, and `1.0` is 100% right. Note that the default
-    pan for channels is `0.0` (centered). Use the pickup mode flag to set pickup
-    options.
+    """
+    Sets the normalized pan of the channel at `index`, where `-1.0` is 100%
+    left, and `1.0` is 100% right. Note that the default pan for channels is
+    `0.0` (centered). Use the pickup mode flag to set pickup options.
 
     ## Args:
-     * `index` (`int`): index of channel
+    * `index` (`int`): index of channel
 
-     * `pan` (`float`): channel pan
+    * `pan` (`float`): channel pan
 
-     * `pickupMode` (`int`, optional): define the pickup behavior. Refer to
-       the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
+    * `pickupMode` (`int`, optional): define the pickup behavior. Refer to
+      the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
 
     Included since API version 1
     """
@@ -311,8 +409,9 @@ def getChannelPitch(
     mode: int = 0,
     /,
 ) -> 'float | int':
-    """Returns the current pitch bend (or range) of the channel at `index`.
-    The `mode` parameter is used to determine the type of pitch returned.
+    """
+    Returns the current pitch bend (or range) of the channel at `index`. The
+    `mode` parameter is used to determine the type of pitch returned.
 
     ## Args:
     * `index` (`int`): index of channel
@@ -331,9 +430,9 @@ def getChannelPitch(
                 modifying the pitch range of a channel.
 
     ## Returns:
-     * `float`: channel pitch (when `mode` is `0`)
+    * `float`: channel pitch (when `mode` is `0`)
 
-     * `int`: channel pitch range (when `mode` is `1` or 2)
+    * `int`: channel pitch range (when `mode` is `1` or 2)
 
     Included since API version 8
     """
@@ -349,16 +448,17 @@ def setChannelPitch(
     pickupMode: int = midi.PIM_None,
     /,
 ) -> None:
-    """Sets the pitch of the channel at `index` to value. The `mode` parameter is used
-    to determine the type of pitch set. Use the pickup mode flag to set pickup
-    options. The final pitch will be clamped to the current pitch range.
+    """
+    Sets the pitch of the channel at `index` to value. The `mode` parameter is
+    used to determine the type of pitch set. Use the pickup mode flag to set
+    pickup options. The final pitch will be clamped to the current pitch range.
 
     ## Args:
-     * `index` (`int`): index of channel
+    * `index` (`int`): index of channel
 
-     * `value` (`float`): value to set
+    * `value` (`float`): value to set
 
-     * `mode` (`int`, optional):
+    * `mode` (`int`, optional):
           * `0` (default): set pitch as a factor of the current pitch bend range (between [-1.0, 1.0]).
 
           * `1`: set pitch in cents
@@ -368,8 +468,8 @@ def setChannelPitch(
             BUG: This only affects the range reported by `getChannelPitch`.
             This will desynchronize the reported range from what is visible in the UI.
 
-     * `pickupMode` (`int`, optional): define the pickup behavior. Refer to
-       the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
+    * `pickupMode` (`int`, optional): define the pickup behavior. Refer to
+      the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes)
 
     Included since API version 8
     """
@@ -379,7 +479,7 @@ def setChannelPitch(
 @since(19)
 def getChannelType(index: int, /) -> int:
     """
-    Returns the type of instrument loaded into the channel rack at `index`
+    Returns the type of instrument loaded into the channel rack at `index`.
 
     ## Args:
     * `index` (`int`): index of channel
@@ -405,8 +505,9 @@ def getChannelType(index: int, /) -> int:
 
 
 def isChannelSelected(index: int, /) -> bool:
-    """Returns whether the channel at `index` is selected (not respecting
-    channel groups).
+    """
+    Returns whether the channel at `index` is selected (not respecting channel
+    groups).
 
     ## Args:
      * `index` (`int`): channel index
@@ -422,7 +523,8 @@ def isChannelSelected(index: int, /) -> bool:
 
 
 def selectChannel(index: int, value: int = -1, /) -> None:
-    """Select the channel at `index` (respecting groups).
+    """
+    Select the channel at `index` (respecting groups).
 
     ## Args:
      * `index` (`int`): channel index
@@ -447,7 +549,8 @@ def selectChannel(index: int, value: int = -1, /) -> None:
 
 @since(8)
 def selectOneChannel(index: int, /) -> None:
-    """Exclusively select the channel at `index` (deselecting any other selected
+    """
+    Exclusively select the channel at `index` (deselecting any other selected
     channels).
 
     ## Args:
@@ -461,64 +564,17 @@ def selectOneChannel(index: int, /) -> None:
     getState().channels.channel_list[index_global].selected = True
 
 
-@since(5)
-def selectedChannel(
-    canBeNone: bool = False,
-    offset: int = 0,
-    indexGlobal: bool = False,
-    /,
-) -> int:
-    """Returns the index of the first selected channel, otherwise the nth
-    selected channel where n is `offset` + 1. If n is greater than the number
-    of selected channels, the global index of the last selected channel will be
-    returned. If `indexGlobal` is set to `1`, this will replicate the behavior
-    of [`channelNumber()`][channels.channelNumber] by returning global indexes.
-
-    ## NOTE:
-    * This function replaces the functionality of `channelNumber()`
-      entirely, with the added functionality of providing indexes respecting
-      groups (when `indexGlobal` is not set).
-
-    ## Args:
-     * `canBeNone` (`bool`, optional): Whether the function will return `-1` or
-       `0` when there is no selection. Defaults to `False` (returning `0`).
-
-     * `offset` (`int`, optional): return other selected channels after offset.
-       Defaults to 0.
-
-     * `indexGlobal` (`bool`, optional): Whether to return the group index
-       (`False`) or the global index (`True`).
-
-    ## Returns:
-     * `int`: index of first selected channel
-
-    Included since API version 5
-    """
-    if indexGlobal:
-        return channelNumber(canBeNone, offset)
-    found = 0
-    for i, i_global in enumerate(getChannelsInGroup()):
-        ch = getState().channels.channel_list[i_global]
-        if ch.selected:
-            if found == offset:
-                return i
-            found += 1
-
-    if canBeNone:
-        return -1
-    else:
-        return 0
-
-
 def selectAll() -> None:
-    """Selects all channels in the current channel group
+    """
+    Selects all channels in the current channel group.
 
     Included since API version 1
     """
 
 
 def deselectAll() -> None:
-    """Deselects all channels in the current channel group
+    """
+    Deselects all channels in the current channel group.
 
     Included since API version 1
     """

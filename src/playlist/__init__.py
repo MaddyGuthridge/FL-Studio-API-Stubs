@@ -1,11 +1,16 @@
-"""Playlist Module (FL Studio built-in)
+"""
+# Playlist
+
+FL Studio built-in module.
 
 Allows you to control and interact with the FL Studio Playlist.
 
-## NOTES:
+## Note
+
 * Playlist tracks are 1-indexed.
+
 * For information on performance mode, see the
-[performance mode tutorial](/tutorials/performance_mode).
+[performance mode tutorial](https://miguelguthridge.github.io/FL-Studio-API-Stubs/tutorials/performance_mode/).
 """
 
 from .__tracks import (

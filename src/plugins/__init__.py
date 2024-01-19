@@ -300,6 +300,13 @@ def getColor(
     """Returns various plugin color parameter values for the plugin at
     `index`/`slotIndex`.
 
+    Note that colors can be split into or built from components using the
+    functions provided in the module [utils](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/).
+
+    * [ColorToRGB()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.ColorToRGB)
+
+    * [RGBToColor()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.RGBToColor)
+
     ## Args:
     * `index` (`int`): index of plugin on channel rack or mixer
 

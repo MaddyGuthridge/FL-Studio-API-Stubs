@@ -39,6 +39,13 @@ def setTrackName(index: int, name: str, /) -> None:
 def getTrackColor(index: int, /) -> int:
     """Returns the color of the track at `index`.
 
+    Note that colors can be split into or built from components using the
+    functions provided in the module [utils](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/).
+
+    * [ColorToRGB()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.ColorToRGB)
+
+    * [RGBToColor()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.RGBToColor)
+
     ## Args:
      * `index` (`int`): track index
 
@@ -52,6 +59,13 @@ def getTrackColor(index: int, /) -> int:
 
 def setTrackColor(index: int, color: int, /) -> None:
     """Sets the color of the track at `index`.
+
+    Note that colors can be split into or built from components using the
+    functions provided in the module [utils](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/).
+
+    * [ColorToRGB()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.ColorToRGB)
+
+    * [RGBToColor()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.RGBToColor)
 
     ## Args:
      * `index` (`int`): track index
@@ -128,10 +142,10 @@ def isTrackEnabled(index: int, /) -> bool:
     * This seems to be functionally identical to `not isTrackMuted()`.
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
 
     ## Returns:
-     * `bool`: whether track is enabled
+    * `bool`: whether track is enabled
 
     Included since API version 1
     """
@@ -143,9 +157,9 @@ def isTrackAutomationEnabled(index: int, plugIndex: int, /) -> bool:
     automation enabled.
 
     ## Args:
-     * `index` (`int`): track index
+    * `index` (`int`): track index
 
-     * `plugIndex` (`int`): index of plugin
+    * `plugIndex` (`int`): index of plugin
 
     ## Returns:
      * `bool`: whether automation is enabled for the track
