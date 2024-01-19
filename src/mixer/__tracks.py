@@ -86,6 +86,55 @@ def setTrackColor(index: int, color: int) -> None:
     """
 
 
+def getSlotColor(index: int, slot: int) -> int:
+    """
+    Returns the color of a mixer track FX slot.
+
+    Note that colors can be split into or built from components using the
+    functions provided in the module [utils](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/).
+
+    * [ColorToRGB()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.ColorToRGB)
+
+    * [RGBToColor()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.RGBToColor)
+
+    ## Args
+
+    * `index` (`int`): mixer track index.
+
+    * `slot` (`int`): mixer track FX slot index.
+
+    ## Returns
+
+    * `int`: color of mixer track FX slot.
+
+    Included since API Version 32.
+    """
+    return 0
+
+
+def setSlotColor(index: int, slot: int, color: int) -> None:
+    """
+    Sets the color of a mixer track FX slot.
+
+    Note that colors can be split into or built from components using the
+    functions provided in the module [utils](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/).
+
+    * [ColorToRGB()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.ColorToRGB)
+
+    * [RGBToColor()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.RGBToColor)
+
+    ## Args
+
+    * `index` (`int`): mixer track index.
+
+    * `slot` (`int`): mixer track FX slot index.
+
+    * color (`int`): color of mixer track FX slot.
+
+    Included since API Version 32.
+    """
+
+
 def isTrackArmed(index: int) -> bool:
     """
     Returns whether the track at `index` is armed for recording.

@@ -29,6 +29,7 @@ __all__ = [
     'processRECEvent',
     'dumpScoreLog',
     'clearLog',
+    'safeToEdit',
 ]
 
 
@@ -58,4 +59,5 @@ from .__fl_state import (
     processRECEvent,
     dumpScoreLog,
     clearLog,
+    safeToEdit,
 )
