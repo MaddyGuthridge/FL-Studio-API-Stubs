@@ -1,190 +1,230 @@
+"""
+ui > navigation
 
-def jog(value: int, /) -> int:
-    """Jog control. Used to map a jog wheel to selections.
+UI functions for navigating FL Studio
+"""
 
-    ## Args:
-     * `value` (`int`): delta value (increment), for example
-          * `1`: next
 
-          * `-1`: previous
+def jog(value: int) -> int:
+    """
+    Jog control. Used to map a jog wheel to selections.
 
-    ## Returns:
-     * `int`: ?
+    ## Args
 
-    Included since API version 1
+    * `value` (`int`): delta value (increment), for example:
+          * `1`: next.
+
+          * `-1`: previous.
+
+    ## Returns
+
+    * `int`: ?
+
+    Included since API version 1.
     """
     return 0
 
 
-def jog2(value: int, /) -> int:
-    """Alternate jog control. Used to map a jog wheel to relocate.
+def jog2(value: int) -> int:
+    """
+    Alternate jog control. Used to map a jog wheel to relocate.
 
-    ## Args:
-     * `value` (`int`): delta value (increment), for example
-          * `1`: next
+    ## Args
 
-          * `-1`: previous
+    * `value` (`int`): delta value (increment), for example:
+          * `1`: next.
 
-    ## Returns:
-     * `int`: ?
+          * `-1`: previous.
 
-    Included since API version 1
+    ## Returns
+
+    * `int`: ?
+
+    Included since API version 1.
     """
     return 0
 
 
-def strip(value: int, /) -> int:
-    """Used by touch-sensitive strip controls.
+def strip(value: int) -> int:
+    """
+    Used by touch-sensitive strip controls.
 
-    ## HELP WANTED:
+    ## HELP WANTED
     * What controls does this apply to?
 
-    ## Args:
-     * `value` (`int`): ???
+    ## Args
 
-    ## Returns:
-     * `int`: ?
+    * `value` (`int`): ???
 
-    Included since API version 1
+    ## Returns
+
+    * `int`: ?
+
+    Included since API version 1.
     """
     return 0
 
 
-def stripJog(value: int, /) -> int:
-    """Touch-sensitive strip in jog mode.
+def stripJog(value: int) -> int:
+    """
+    Touch-sensitive strip in jog mode.
 
-    ## Args:
-     * `value` (`int`): delta value (increment)
+    ## Args
 
-    ## Returns:
-     * `int`: ?
+    * `value` (`int`): delta value (increment).
 
-    Included since API version 1
+    ## Returns
+
+    * `int`: ?
+
+    Included since API version 1.
     """
     return 0
 
 
-def stripHold(value: int, /) -> int:
-    """Touch-sensitive strip in hold mode
+def stripHold(value: int) -> int:
+    """
+    Touch-sensitive strip in hold mode.
 
-    ## Args:
-     * `value` (`int`):
-          * `0`: release
+    ## Args
 
-          * `1`: 1-finger centered mode
+    * `value` (`int`):
+          * `0`: release.
 
-          * `2`: 2-fingers centered mode
+          * `1`: 1-finger centered mode.
 
-          * `-1`: 1-finger jog mode
+          * `2`: 2-fingers centered mode.
 
-          * `-2`: 2-finger jog mode
+          * `-1`: 1-finger jog mode.
 
-    ## Returns:
-     * `int`: ?
+          * `-2`: 2-finger jog mode.
 
-    Included since API version 1
+    ## Returns
+
+    * `int`: ?
+
+    Included since API version 1.
     """
     return 0
 
 
 def previous() -> int:
-    """Select to previous control:
-     * in mixer: select previous track
+    """
+    Move selection to previous element.
 
-     * in channel rack: select previous channel
+    * in mixer: select previous track.
 
-     * in browser: scroll to previous item
+    * in channel rack: select previous channel.
 
-     * in plugin: switch to previous preset (since API version 9)
+    * in browser: scroll to previous item.
 
-    ## Returns:
-     * `int`: ?
+    * in plugin: switch to previous preset (since API version 9).
 
-    Included since API version 1
+    ## Returns
+
+    * `int`: ?
+
+    Included since API version 1.
     """
     return 0
 
 
 def next() -> int:
-    """Select to next control:
-     * in mixer: select next track
+    """
+    Move selection to next element.
 
-     * in channel rack: select next channel
+    * in mixer: select next track.
 
-     * in browser: scroll to next item
+    * in channel rack: select next channel.
 
-     * in plugin: switch to next preset
+    * in browser: scroll to next item.
 
-    ## Returns:
-     * `int`: ?
+    * in plugin: switch to next preset (since API version 9).
 
-    Included since API version 1
+    ## Returns
+
+    * `int`: ?
+
+    Included since API version 1.
     """
     return 0
 
 
-def moveJog(value: int, /) -> int:
-    """Used to relocate items with a jog control.
+def moveJog(value: int) -> int:
+    """
+    Used to relocate items with a jog control.
 
-    ## HELP WANTED:
+    ## HELP WANTED
+
     * How does this differ from `jog2()`?
 
-    ## Args:
-     * `value` (`int`): delta value (increment)
+    ## Args
 
-    ## Returns:
-     * `int`: ?
+    * `value` (`int`): delta value (increment).
 
-    Included since API version 1
+    ## Returns
+
+    * `int`: ?
+
+    Included since API version 1.
     """
     return 0
 
 
-def horZoom(value: int, /) -> int:
-    """Zoom horizontally by `value`.
+def horZoom(value: int) -> int:
+    """
+    Zoom horizontally by `value`.
 
-    ## Args:
-     * `value` (`int`): amount to zoom by. Negative zooms out, positive zooms in.
-        Larger magnitudes zoom more, but the scale doesn't seem consistent.
+    ## Args
 
-    ## Returns:
-     * `int`: ?
+    * `value` (`int`): amount to zoom by. Negative zooms out, positive zooms in.
+      Larger magnitudes zoom more, but the scale doesn't seem consistent.
 
-    Included since API version 1
+    ## Returns
+
+    * `int`: ?
+
+    Included since API version 1.
     """
     return 0
 
 
-def verZoom(value: int, /) -> int:
-    """Zoom vertically by `value`.
+def verZoom(value: int) -> int:
+    """
+    Zoom vertically by `value`.
 
-    ## Args:
-     * `value` (`int`): amount to zoom by. Negative zooms out, positive zooms in.
-        Larger magnitudes zoom more, but the scale doesn't seem consistent.
+    ## Args
 
-    ## Returns:
-     * `int`: ?
+    * `value` (`int`): amount to zoom by. Negative zooms out, positive zooms
+      in. Larger magnitudes zoom more, but the scale doesn't seem consistent.
 
-    Included since API version 1
+    ## Returns
+
+    * `int`: ?
+
+    Included since API version 1.
     """
     return 0
 
 
 def isInPopupMenu() -> bool:
-    """Returns `True` when a popup menu is open (for example a rick-click or
+    """
+    Returns `True` when a popup menu is open (for example a right-click or
     drop-down menu).
 
-    ## Returns:
-      * `bool`: whether a popup menu is open
+    ## Returns
 
-    Included since API version 1
+    * `bool`: whether a popup menu is open
+
+    Included since API version 1.
     """
     return False
 
 
 def closeActivePopupMenu() -> None:
-    """Closes a currently-open popup menu (for example a rick-click or
-    drop-down menu).
+    """
+    Closes a currently-open popup menu (for example a rick-click or drop-down
+    menu).
 
-    Included since API version 1
+    Included since API version 1.
     """

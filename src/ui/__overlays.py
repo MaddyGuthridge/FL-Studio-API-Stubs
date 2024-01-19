@@ -1,4 +1,8 @@
+"""
+ui > overlays
 
+Functions for displaying overlays on the FL Studio UI.
+"""
 from fl_model.decorators import since
 
 
@@ -9,9 +13,9 @@ def crDisplayRect(
     bottom: int,
     duration: int,
     flags: int = 0,
-    /,
 ) -> None:
-    """Displays a selection rectangle on the channel rack.
+    """
+    Displays a selection rectangle on the channel rack.
 
     This rectangle is anchored using the top left corner, and a width and
     height.
@@ -19,27 +23,28 @@ def crDisplayRect(
     Subsequent calls to this function will remove previously displaying
     rectangles.
 
-    ## Args:
-     * `left` (`int`): left position
+    ## Args
 
-     * `top` (`int`): top position
+    * `left` (`int`): left position.
 
-     * `width` (`int`): horizontal width
+    * `top` (`int`): top position.
 
-     * `height` (`int`): vertical height
+    * `width` (`int`): horizontal width.
 
-     * `duration` (`int`): duration to display for (in ms). Or,
-          * use `midi.MaxInt` to show indefinitely
+    * `height` (`int`): vertical height.
 
-          * use `0` to hide
+    * `duration` (`int`): duration to display for (in ms). Or,
+          * use `midi.MaxInt` to show indefinitely.
 
-     * `flags` (`int`, optional): a bitwise combination of:
+          * use `0` to hide.
+
+    * `flags` (`int`, optional): a bitwise combination of:
           * `CR_HighlightChannels`: Display on channel list rather than on
-            grid
+            grid.
 
-          * `CR_ScrollToView`: Scroll channel rack to specified position
+          * `CR_ScrollToView`: Scroll channel rack to specified position.
 
-    Included since API version 1
+    Included since API version 1.
     """
 
 
@@ -49,26 +54,27 @@ def miDisplayRect(
     end: int,
     duration: int,
     flags: int = 0,
-    /,
 ) -> None:
-    """Displays a selection rectangle on the mixer
+    """
+    Displays a selection rectangle on the mixer.
 
     Subsequent calls to this function will remove previously displaying
     rectangles.
 
-    ## Args:
-     * `start` (`int`): start track index
+    ## Args
 
-     * `end` (`int`): end track index
+    * `start` (`int`): start track index.
 
-     * `duration` (`int`): duration to display for (in ms). Or,
-          * use `midi.MaxInt` to show indefinitely
+    * `end` (`int`): end track index.
 
-          * use `0` to hide
+    * `duration` (`int`): duration to display for (in ms). Or,
+          * use `midi.MaxInt` to show indefinitely.
 
-     * `flags` (`int`, optional): unknown
+          * use `0` to hide.
 
-    Included since API version 13
+    * `flags` (`int`, optional): unknown.
+
+    Included since API version 13.
     """
 
 
@@ -78,31 +84,31 @@ def miDisplayDockRect(
     length: int,
     dock_side: int,
     time: int,
-    /,
 ) -> None:
     """
     Display a red guide rectangle on the mixer, but contained to one side of
     the dock.
 
-    Compare to: `miDisplayRect()`
+    Compare to: `miDisplayRect()`.
 
-    ## Args:
+    ## Args
+
     * `start` (`int`): the index of the starting point, with `1` being the 1st
       track to be docked to that side, and `5` being the 5th track docked to
-      that side
+      that side.
 
     * `length` (`int`): the length of the rectangle to display, for example `1`
-      means the rectangle will be `1` track wide
+      means the rectangle will be `1` track wide.
 
     * `dock_side` (`int`): the dock side to show the rectangle on:
-          * `0`: left
+          * `0`: left.
 
-          * `1`: middle
+          * `1`: middle.
 
-          * `2`: right
+          * `2`: right.
 
     * `time` (`int`): the amount of time to display the rectangle for, or
       `midi.MAXINT` to display indefinitely and `0` to turn off.
 
-    Included since API Version 20
+    Included since API Version 20.
     """

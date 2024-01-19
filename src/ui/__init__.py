@@ -1,15 +1,13 @@
-"""User Interface Module (FL Studio built-in)
+"""
+# User Interface
+
+FL Studio built-in module.
 
 Allows you to control and interact with FL Studio's UI.
 
-## WARNING:
-* Many of the functions in this module will simply echo a hotkey into whatever
-  application is active, meaning that actions can potentially be sent to the
-  wrong application. Functions that have this behavior are listed with a short
-  warning saying so.
+## HELP WANTED
 
-## HELP WANTED:
-* What do the return values mean?
+* Many functions have undocumented return values. What do they mean?
 """
 from .__browser import (
     navigateBrowser,

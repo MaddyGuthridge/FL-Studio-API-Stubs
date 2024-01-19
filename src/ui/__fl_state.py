@@ -9,65 +9,65 @@ from fl_model.decorators import since
 
 def isClosing() -> bool:
     """
-    Returns `True` when FL Studio is closing
+    Returns `True` when FL Studio is closing.
 
     ## Returns
 
-    * `bool`: is closing
+    * `bool`: whether is closing.
 
-    Included since API version 1
+    Included since API version 1.
     """
     return False
 
 
 def isMetronomeEnabled() -> bool:
     """
-    Returns whether the metronome is enabled
+    Returns whether the metronome is enabled.
 
     ## Returns
 
-    * `bool`: whether metronome is enabled
+    * `bool`: whether metronome is enabled.
 
-    Included since API version 1
+    Included since API version 1.
     """
     return False
 
 
 def isStartOnInputEnabled() -> bool:
     """
-    Returns whether start on input is enabled
+    Returns whether start on input is enabled.
 
     ## Returns
 
-    * `bool`: whether start on input is enabled
+    * `bool`: whether start on input is enabled.
 
-    Included since API version 1
+    Included since API version 1.
     """
     return False
 
 
 def isPrecountEnabled() -> bool:
     """
-    Returns whether precount is enabled
+    Returns whether precount is enabled.
 
     ## Returns
 
-    * `bool`: whether precount is enabled
+    * `bool`: whether precount is enabled.
 
-    Included since API version 1
+    Included since API version 1.
     """
     return False
 
 
 def isLoopRecEnabled() -> bool:
     """
-    Returns whether loop recording is enabled
+    Returns whether loop recording is enabled.
 
     ## Returns
 
-    * `bool`: whether loop recording is enabled
+    * `bool`: whether loop recording is enabled.
 
-    Included since API version 1
+    Included since API version 1.
     """
     return False
 
@@ -112,7 +112,7 @@ def getSnapMode() -> int:
 
           * `14`: bar
 
-    Included since API version 1
+    Included since API version 1.
     """
     return 0
 
@@ -126,13 +126,13 @@ def snapMode(value: int) -> int:
 
     ## Args
 
-    * `value` (`int`): increment (`1` for next, `-1` for previous)
+    * `value` (`int`): increment (`1` for next, `-1` for previous).
 
     ## Returns
 
     * `int`: ???
 
-    Included since API version 1
+    Included since API version 1.
     """
     return 0
 
@@ -179,7 +179,7 @@ def getTimeDispMin() -> bool:
 
     * `bool`: whether song position is displaying time.
 
-    Included since API version 1
+    Included since API version 1.
     """
     return False
 
@@ -189,7 +189,7 @@ def setTimeDispMin() -> None:
     Toggles whether the song position panel is displaying time or bar and
     beat.
 
-    Included since API version 1
+    Included since API version 1.
     """
 
 
@@ -199,9 +199,9 @@ def getHintMsg() -> str:
 
     ## Returns
 
-    * `str`: hint
+    * `str`: hint.
 
-    Included since API version 1
+    Included since API version 1.
     """
     return ""
 
@@ -211,18 +211,18 @@ def setHintMsg(msg: str) -> None:
     Sets the current hint message in FL Studio's hint panel to `msg`.
 
     For information about using icons within hint messages, refer to the
-    [hint message icon tutorial]()
+    [hint message icon tutorial](https://miguelguthridge.github.io/FL-Studio-API-Stubs/tutorials/hint_message_icons/).
 
     ## Args
 
-    * `msg` (`str`): new message
+    * `msg` (`str`): new message.
 
-    Included since API version 1
+    Included since API version 1.
     """
 
 
 @since(20)
-def showNotification(val: int):
+def showNotification(notificationId: int):
     """
     Show a notification to the user, which is chosen from a set of notification
     strings. This notification appears in the hint panel, much like with
@@ -232,11 +232,15 @@ def showNotification(val: int):
     ## WARNING
 
     * This function appears to cause FL Studio's scripting environment to crash
-      when used under Wine on Linux
+      when used under Wine on Linux.
+
+    ## Note
+
+    * This function is not documented.
 
     ## Args
 
-    * `val` (`int`): Notification ID, the identifier of the notification string
+    * `notificationId` (`int`): Notification ID, the identifier of the notification string
       to send.
           * `0`: `"Now firmware is available for your MIDI device"`
 
@@ -251,31 +255,35 @@ def getHintValue(value: int, max: int) -> str:
     Returns `value/max` as a percentage.
 
     Equivalent to:
+
     ```
     f"{value/max:.0%}"
     ```
 
-    ## Args:
-     * `value` (`int`): ???
+    ## Args
 
-     * `max` (`int`): ???
+    * `value` (`int`): the value.
 
-    ## Returns:
-     * `str`: hint for `value`
+    * `max` (`int`): the maximum value.
 
-    Included since API version 1
+    ## Returns
+
+    * `str`: hint for `value`.
+
+    Included since API version 1.
     """
     return f"{value/max:.0%}"
 
 
 def getProgTitle() -> str:
     """
-    Returns the title of the FL Studio window
+    Returns the title of the FL Studio window.
 
-    ## Returns:
-     * `str`: program title
+    ## Returns
 
-    Included since API version 1
+    * `str`: program title.
+
+    Included since API version 1.
     """
     return ""
 
@@ -292,31 +300,37 @@ def getVersion(mode: Literal[4, 5, 6] = 4) -> str:
 
 def getVersion(mode: int = 4) -> 'str | int':
     """
-    Returns the version number of FL Studio
+    Returns the version number of FL Studio.
 
-    ## Args:
-     * `mode` (`int`, optional):
+    ## Args
+
+    * `mode` (`int`, optional):
           * `VER_Major` (`0`): Major version number (as `int`)
-            Eg: `20`
+            Eg: `20`.
 
           * `VER_Minor` (`1`): Minor version number (as `int`)
-            Eg: `8`
+            Eg: `8`.
 
           * `VER_Release` (`2`): Release version number (as `int`)
-            Eg: `4`
+            Eg: `4`.
 
           * `VER_Build` (`3`): Program build number (as `int`)
-            Eg: `2553`
+            Eg: `2553`.
 
           * `VER_VersionAndEdition` (`4`): Program version and edition (as `str`).
             Eg: `"Producer Edition v20.8.4 [build 2553]"`
 
           * `VER_FillVersionAndEdition` (`5`): Full version and edition (as `str`).
-            Eg: `"Producer Edition v20.8.4 [build 2553] - Signature Bundle - 64Bit"`
+            Eg: `"Producer Edition v20.8.4 [build 2553] - Signature Bundle - 64Bit"`.
 
-          * `VER_ArchAndBuild` (`6`): Architecture and build number?
+          * `VER_ArchAndBuild` (`6`): Operating system and system architecture.
+            Eg: `"Windows - 64Bit [BETA]"`
 
-    Included since API version 1, with mode parameter since API version 7
+    ## Returns
+
+    * `int` or `str`: FL Studio version information.
+
+    Included since API version 1, with mode parameter since API version 7.
     """
     return 0
 
@@ -326,23 +340,25 @@ def getStepEditMode() -> bool:
     """
     Returns the value of the "step edit mode" within FL Studio.
 
-    ## Returns:
-    * `bool`: `True` if step editing is enabled, else `False`
+    ## Returns
 
-    Included since API Version 28
+    * `bool`: `True` if step editing is enabled, else `False`.
+
+    Included since API Version 28.
     """
     return False
 
 
 @since(28)
-def setStepEditMode(newValue: bool, /):
+def setStepEditMode(newValue: bool):
     """
     Sets the value of the "step edit mode" within FL Studio.
 
-    ## Args:
-    * `newValue` (`bool`): `True` if step editing should be enabled, else
-      `False`
+    ## Args
 
-    Included since API Version 28
+    * `newValue` (`bool`): `True` if step editing should be enabled, else
+      `False`.
+
+    Included since API Version 28.
     """
     return False
