@@ -18,7 +18,8 @@ def getDisplayZone() -> int:
     This value can be set using the
     [`liveDisplayZone`](/playlist#playlist.liveDisplayZone) function.
 
-    ## Returns:
+    ## Returns
+
     * `int`: current display zone
 
     Included since API version 1
@@ -34,7 +35,8 @@ def lockDisplayZone(index: int, value: int) -> None:
 
     * Explanation for parameters.
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): ???
 
     * `value` (`int`): ???
@@ -54,7 +56,8 @@ def liveDisplayZone(
     Set the display zone in the playlist to the specified co-ordinates. Use the
     optional `duration` parameter to make display zone temporary.
 
-    ## Args:
+    ## Args
+
      * `left` (`int`): the zero-indexed position of the time marker from which
        to begin the display zone highlight
 
@@ -83,10 +86,12 @@ def getLiveLoopMode(index: int) -> int:
     This value reflects the value in the "motion" section in the performance
     menu of the track.
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
-    ## Returns:
+    ## Returns
+
     * `int`: live loop mode:
           * `0` (`LiveLoop_Stay`): Stay
 
@@ -114,10 +119,12 @@ def getLiveTriggerMode(index: int) -> int:
     This value reflects the value in the "press" section in the performance
     menu of the track.
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
-    ## Returns:
+    ## Returns
+
     * `int`: live trigger mode:
           * `0` (`LiveTrig_Retrigger`): Retrigger
 
@@ -139,10 +146,12 @@ def getLivePosSnap(index: int) -> int:
     This value reflects the value in the "position sync" section in the
     performance menu of the track.
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
-    ## Returns:
+    ## Returns
+
     * `int`: live position snap:
           * `0` (`LiveSnap_Off`): No snap
 
@@ -170,10 +179,12 @@ def getLiveTrigSnap(index: int) -> int:
     This value reflects the value in the "trigger sync" section in the
     performance menu of the track.
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
-    ## Returns:
+    ## Returns
+
     * `int`: live position snap:
           * `0` (`LiveSnap_Off`): No snap
 
@@ -200,12 +211,14 @@ def getLiveStatus(index: int, mode: int = midi.LB_Status_Default) -> int:
 
     This can be used to determine if there are any blocks playing or scheduled.
 
-    ## Args:
+    ## Args
+
      * `index` (`int`): track index
 
      * `mode` (`int`, optional): live status mode. Defaults to 'LB_Status_Default'.
 
-    ## Returns:
+    ## Returns
+
      * `int`: live status of track:
             Refer to [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#getLiveStatusMode)
 
@@ -225,14 +238,16 @@ def getLiveBlockStatus(
 
     This can be used to determine if this block is playing or scheduled.
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
     * `blockNum` (`int`): block number
 
     * `mode` (`int`, optional): live status mode. Defaults to 'LB_Status_Default'.
 
-    ## Returns:
+    ## Returns
+
     * `int`: live status of track:
        Refer to [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#getLiveStatusMode).
 
@@ -252,12 +267,14 @@ def getLiveBlockColor(index: int, blockNum: int) -> int:
 
     * `RGBToColor()`
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
     * `blockNum` (`int`): block number
 
-    ## Returns:
+    ## Returns
+
     * `int`: block color (`0x--BBGGRR`)
 
     Included since API version 1
@@ -274,7 +291,8 @@ def triggerLiveClip(
     """
     Triggers live clip for track at `index` and for block `subNum`.
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
     * `subNum` (`int`): block number (usually `blockNum`), or `-1` to stop live
@@ -296,9 +314,9 @@ def refreshLiveClips(*args) -> None:
     ## HELP WANTED:
     * What does this do?
 
-    ## Args:
-
     This function appears to work, even when given no arguments.
+
+    ## Args
 
     * `index` (`int`): track index
 
@@ -315,7 +333,8 @@ def incLivePosSnap(index: int, value: int) -> None:
     This is used to cycle through modes in the "position sync" section of the
     track's performance menu.
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
     * `value` (`int`): delta amount to change position snap mode by
@@ -331,7 +350,8 @@ def incLiveTrigSnap(index: int, value: int) -> None:
     This is used to cycle through modes in the "trigger sync" section of the
     track's performance menu.
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
     * `value` (`int`): delta amount to change trigger snap mode by
@@ -347,7 +367,8 @@ def incLiveLoopMode(index: int, value: int) -> None:
     This is used to cycle through modes in the "motion" section of the
     track's performance menu.
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
     * `value` (`int`): delta amount to change loop mode by
@@ -363,7 +384,8 @@ def incLiveTrigMode(index: int, value: int) -> None:
     This is used to cycle through modes in the "press" section of the
     track's performance menu.
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
     * `value` (`int`): delta amount to change trigger mode by
@@ -376,7 +398,8 @@ def getVisTimeBar() -> int:
     """
     Returns the current bar number, as shown in the song position panel.
 
-    ## Returns:
+    ## Returns
+
     * `int`: time bar
 
     Included since API version 1
@@ -389,7 +412,8 @@ def getVisTimeTick() -> int:
     Returns the tick number within the song, as shown in the song position
     panel.
 
-    ## Returns:
+    ## Returns
+
     * `int`: time tick
 
     Included since API version 1
@@ -402,7 +426,8 @@ def getVisTimeStep() -> int:
     Returns the step number within the song, as shown in the song position
     panel.
 
-    ## Returns:
+    ## Returns
+
     * `int`: time step
 
     Included since API version 1
@@ -415,7 +440,8 @@ def getPerformanceModeState() -> bool:
     """
     Returns whether FL Studio's performance mode is enabled
 
-    ## Returns:
+    ## Returns
+
     * `bool`: whether performance mode is enabled
 
     Included since API Version 21

@@ -12,7 +12,8 @@ def trackCount() -> int:
 
     Includes empty tracks.
 
-    ## Returns:
+    ## Returns
+
     * `int`: track count on playlist
 
     Included since API version 1
@@ -28,10 +29,12 @@ def getTrackName(index: int) -> str:
 
     Note that playlist track indexes start at 1
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
-    ## Returns:
+    ## Returns
+
     * `str`: track name
 
     Included since API version 1
@@ -47,7 +50,8 @@ def setTrackName(index: int, name: str) -> None:
 
     Note that playlist track indexes start at 1
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
     Included since API version 1
@@ -67,10 +71,12 @@ def getTrackColor(index: int) -> int:
 
     Note that playlist track indexes start at 1
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
-    ## Returns:
+    ## Returns
+
     * `int`: track color (`0x--BBGGRR`)
 
     Included since API version 1
@@ -91,7 +97,8 @@ def setTrackColor(index: int, color: int) -> None:
 
     Note that playlist track indexes start at 1
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
     * `color` (`int`): track color (`0x--BBGGRR`)
@@ -104,10 +111,12 @@ def isTrackMuted(index: int,) -> bool:
     """
     Returns whether the track at `index` is muted
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
-    ## Returns:
+    ## Returns
+
     * `bool`: whether track is muted
 
     Included since API version 1
@@ -120,12 +129,17 @@ def muteTrack(index: int, value: int = -1) -> None:
     Toggle whether the track at `index` is muted. An unmuted track will become
     muted and a muted track will become unmuted.
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
     * `value` (`int`, optional): new mute value (1 = mute, 0 = unmute)
 
     Included since API version 1
+
+    ## API changes
+
+    * `value` parameter added in API v30
     """
 
 
@@ -135,10 +149,12 @@ def isTrackMuteLock(index: int) -> bool:
     Returns whether the mute status of the track at `index` is locked (meaning
     that solo/unsolo commands won't affect its mute status).
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
-    ## Returns:
+    ## Returns
+
     * `bool`: whether track's mute status is locked
 
     Included since API version 2
@@ -152,7 +168,8 @@ def muteTrackLock(index: int) -> None:
     Toggle whether the track at `index`'s mute status is locked (meaning that
     solo/unsolo commands won't affect its mute status).
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
     Included since API version 2
@@ -163,10 +180,12 @@ def isTrackSolo(index: int) -> bool:
     """
     Returns whether the track at `index` is solo
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
-    ## Returns:
+    ## Returns
+
     * `bool`: whether track is muted
 
     Included since API version 1
@@ -180,7 +199,12 @@ def soloTrack(index: int, value: int = -1, inGroup: bool = False) -> None:
     solo and a solo track will become unsolo. If `value` is provided, it will
     control what the new value will be (`1`: solo, `0`: unsolo).
 
-    ## Args:
+    The `inGroup` parameter determines whether tracks in the same group are
+    also soloed. For example, if tracks `2` and `3` are grouped under track
+    `1`, soloing any of them with `inGroup=True` will solo all of them.
+
+    ## Args
+
     * `index` (`int`): track index
 
     * `value` (`int`, optional): new solo value
@@ -189,7 +213,9 @@ def soloTrack(index: int, value: int = -1, inGroup: bool = False) -> None:
 
     Included since API version 1
 
-    `inGroup` parameter introduced in API version 30
+    ## API changes
+
+    * `inGroup` parameter introduced in API version 30
     """
 
 
@@ -198,10 +224,12 @@ def isTrackSelected(index: int) -> bool:
     """
     Returns whether the track at `index` is selected
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
-    ## Returns:
+    ## Returns
+
     * `bool`: whether track is selected
 
     Included since API version 12
@@ -215,7 +243,8 @@ def selectTrack(index: int) -> None:
     Toggle whether the track at `index` is selected. A deselected track will
     become selected and a selected track will become deselected.
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
     Included since API version 12
@@ -250,10 +279,11 @@ def getTrackActivityLevel(index: int) -> float:
     activity level" that takes the time since the most recent note-on event
     into account.
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
-    ## Returns:
+    ## Returns
 
     * `float`: activity level
           * `0.0`: No clip is active
@@ -279,10 +309,12 @@ def getTrackActivityLevelVis(index: int) -> float:
     Compare to `playlist.getTrackActivityLevel()`, which just returns whether
     there is an active clip at that playhead.
 
-    ## Args:
+    ## Args
+
     * `index` (`int`): track index
 
-    ## Returns:
+    ## Returns
+
     * float: activity level
           * `0.0`: No clip is active
 
