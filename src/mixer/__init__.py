@@ -1,10 +1,14 @@
-"""Mixer Module (FL Studio built-in)
+"""
+# Mixer
+
+FL Studio built-in module.
 
 Allows you to control and interact with the FL Studio Mixer, and with
-effects tracks.
+FX tracks.
 
-NOTES:
- * Mixer tracks are zero-indexed
+## Note
+
+* Mixer tracks are zero-indexed
 """
 
 

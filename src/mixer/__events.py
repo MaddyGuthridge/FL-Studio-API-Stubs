@@ -6,8 +6,9 @@ Functions for managing events on effects plugins
 import midi
 
 
-def getTrackPluginId(index: int, plugIndex: int, /) -> int:
-    """Returns the plugin ID of the plugin on track `index` in slot `plugIndex`
+def getTrackPluginId(index: int, plugIndex: int) -> int:
+    """
+    Returns the plugin ID of the plugin on track `index` in slot `plugIndex`.
 
     A plugin ID is used internally by FL Studio to represent effects present
     on the mixer. A plugin ID can be used with REC events in order to automate
@@ -19,32 +20,37 @@ def getTrackPluginId(index: int, plugIndex: int, /) -> int:
     the official documentation lists them as `(track << 6 + index) << 16`,
     which uses the order of operations incorrectly.
 
-    ## Args:
-     * index (`int`): track index
+    ## Args
 
-     * plugIndex (`int`): plugin index
+    * index (`int`): track index.
 
-    ## Returns:
-     * `int`: plugin ID
+    * plugIndex (`int`): plugin index.
 
-    Included since API version 1
+    ## Returns
+
+    * `int`: plugin ID.
+
+    Included since API version 1.
     """
     return ((index << 6) + plugIndex) << 16
 
 
-def isTrackPluginValid(index: int, plugIndex: int, /) -> bool:
-    """Returns whether a plugin on track `index` in slot `plugIndex` is valid
-    (has been loaded, so the slot isn't empty)
+def isTrackPluginValid(index: int, plugIndex: int) -> bool:
+    """
+    Returns whether a plugin on track `index` in slot `plugIndex` is valid
+    (has been loaded, so the slot isn't empty).
 
-    ## Args:
-     * `index` (`int`): track index
+    ## Args
 
-     * `plugIndex` (`int`): plugin index
+    * `index` (`int`): track index.
 
-    ## Returns:
-     * `bool`: whether track is mute locked
+    * `plugIndex` (`int`): plugin index.
 
-    Included since API version 1
+    ## Returns
+
+    * `bool`: whether track is mute locked
+
+    Included since API version 1.
     """
     return False
 
@@ -53,104 +59,118 @@ def getEventValue(
     index: int,
     value: int = midi.MaxInt,
     smoothTarget: int = 1,
-    /,
 ) -> int:
-    """Returns event value from MIDI
+    """
+    Returns event value from MIDI.
 
-    ## HELP WANTED:
+    ## HELP WANTED
+
     * What does this do?
 
-    ## Args:
+    ## Args
+
      * `index` (`int`): ???
 
      * `value` (`int`, optional): ???. Defaults to 'MaxInt'.
 
      * `smoothTarget` (`int`, optional): ???. Defaults to 1.
 
-    ## Returns:
+    ## Returns
+
      * `int`: ???
 
-    Included since API version 1
+    Included since API version 1.
     """
     return 0
 
 
 def remoteFindEventValue(index: int, flags: int = 0, /) -> float:
-    """Returns event value
+    """
+    Returns event value.
 
-    ## HELP WANTED:
+    ## HELP WANTED
+
     * What does this do?
 
-    ## Args:
+    ## Args
+
      * `index` (`int`): ???
 
      * `flags` (`int`, optional): ???. Defaults to 0.
 
-    ## Returns:
+    ## Returns
+
      * `float`: ???
 
-    Included since API version 1
+    Included since API version 1.
     """
     return 0.0
 
 
-def getEventIDName(index: int, shortname: int = 0, /) -> str:
-    """Returns event name for event at `index`
+def getEventIDName(index: int, shortname: int = 0) -> str:
+    """
+    Returns event name for event at `index`.
 
-    ## HELP WANTED:
+    ## HELP WANTED
+
     * What does this do?
 
-    ## NOTE:
-    * The official documentation states that this function returns `None`,
-      but it actually returns a `str`. These stubs document the actual behavior.
+    ## Args
 
-    ## Args:
-     * `index` (`int`): ???
+    * `index` (`int`): ???
 
-     * `shortname` (`int`, optional): ???. Defaults to 0.
+    * `shortname` (`int`, optional): ???. Defaults to 0.
 
-    ## Returns:
-     * `str`: name of event?
+    ## Returns
 
-    Included since API version 1
+    * `str`: name of event?
+
+    Included since API version 1.
     """
     return ""
 
 
-def getEventIDValueString(index: int, value: int, /) -> str:
-    """Returns event value as a string
+def getEventIDValueString(index: int, value: int) -> str:
+    """
+    Returns event value as a string.
 
-    ## HELP WANTED:
+    ## HELP WANTED
+
     * What does this do?
 
     ## Args:
-     * `index` (`int`): ???
+    * `index` (`int`): ???
 
-     * `value` (`int`): ???
+    * `value` (`int`): ???
 
-    ## Returns:
-     * `str`: ???
+    ## Returns
 
-    Included since API version 1
+    * `str`: ???
+
+    Included since API version 1.
     """
     return ""
 
 
-def getAutoSmoothEventValue(index: int, locked: int = 1, /) -> int:
-    """Returns auto smooth event value
+def getAutoSmoothEventValue(index: int, locked: int = 1) -> int:
+    """
+    Returns auto smooth event value.
 
-    ## HELP WANTED:
+    ## HELP WANTED
+
     * What does this do?
 
-    ## Args:
-     * `index` (`int`): ???
+    ## Args
 
-     * `locked` (`int`, optional): ???. Defaults to 1.
+    * `index` (`int`): ???
 
-    ## Returns:
-     * `int`: ???
+    * `locked` (`int`, optional): ???. Defaults to 1.
 
-    Included since API version 1
+    ## Returns
+
+    * `int`: ???
+
+    Included since API version 1.
     """
     return 0
 
@@ -162,29 +182,32 @@ def automateEvent(
     speed: int = 0,
     isIncrement: int = 0,
     res: float = midi.EKRes,
-    /,
 ) -> int:
-    """Automate event
+    """
+    Automate event.
 
-    ## HELP WANTED:
+    ## HELP WANTED
+
     * What does this do?
 
-    ## Args:
-     * `index` (`int`): ???
+    ## Args
 
-     * `value` (`int`): ???
+    * `index` (`int`): ???
 
-     * `flags` (`int`): refer to the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#RecEventFlags).
+    * `value` (`int`): ???
 
-     * `speed` (`int`, optional): ???. Defaults to 0.
+    * `flags` (`int`): refer to the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#RecEventFlags).
 
-     * `isIncrement` (`int`, optional): ???. Defaults to 0.
+    * `speed` (`int`, optional): ???. Defaults to 0.
 
-     * `res` (`float`, optional): ???. Defaults to midi.EKRes.
+    * `isIncrement` (`int`, optional): ???. Defaults to 0.
 
-    ## Returns:
-     * `long`: ???
+    * `res` (`float`, optional): ???. Defaults to `midi.EKRes`.
 
-    Included since API version 1
+    ## Returns
+
+    * `long`: ???
+
+    Included since API version 1.
     """
     return 0
