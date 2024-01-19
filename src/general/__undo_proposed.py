@@ -42,7 +42,7 @@ def getUndoPosition() -> int:
     return 0
 
 
-def setUndoPosition(index: int, /) -> bool:
+def setUndoPosition(index: int) -> bool:
     """
     Jump to a particular index in the undo history. If that index is out of
     range, jump to the closest in-range value. Returns True if we jumped to
@@ -51,7 +51,7 @@ def setUndoPosition(index: int, /) -> bool:
     return False
 
 
-def setUndoPositionRelative(delta: int, /) -> bool:
+def setUndoPositionRelative(delta: int) -> bool:
     """
     Jump by a particular index relative to the current index. If that index is
     out of range, jump to the closest in-range value. Returns True if we jumped
@@ -69,7 +69,7 @@ def getUndoHistoryLength() -> int:
     return 0
 
 
-def trimUndoHistoryNew(amount: int, /) -> int:
+def trimUndoHistoryNew(amount: int) -> int:
     """
     Removes the newest `n = amount` elements from the undo history. Returns the
     new number of elements in the history.
@@ -77,7 +77,7 @@ def trimUndoHistoryNew(amount: int, /) -> int:
     return 0
 
 
-def trimUndoHistoryOld(amount: int, /) -> int:
+def trimUndoHistoryOld(amount: int) -> int:
     """
     Removes the oldest `n = amount` elements from the undo history. Returns the
     new number of elements in the history.
@@ -85,21 +85,21 @@ def trimUndoHistoryOld(amount: int, /) -> int:
     return 0
 
 
-def saveUndo(name: str, flags: int, update: bool = True, /) -> None:
+def saveUndo(name: str, flags: int, update: bool = True) -> None:
     """
     Add the current state of FL Studio to the undo history. Same as the current
     function of th same name
     """
 
 
-def getUndoElementName(index: int, /) -> str:
+def getUndoElementName(index: int) -> str:
     """
     Returns the name of the element at index in the undo history.
     """
     return ""
 
 
-def getUndoElementFlags(index: int, /) -> int:
+def getUndoElementFlags(index: int) -> int:
     """
     Returns the flags of the element at index in the undo history.
     """

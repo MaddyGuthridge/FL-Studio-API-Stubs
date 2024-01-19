@@ -8,13 +8,15 @@ from fl_model.models.general import UndoItem
 from fl_model import getState
 
 
-def saveUndo(undoName: str, flags: int, update: bool = True, /) -> None:
-    """Save an undo point into FL Studio's history.
+def saveUndo(undoName: str, flags: int, update: bool = True) -> None:
+    """
+    Save an undo point into FL Studio's history.
 
-    ## Args:
-     * `undoName` (`str`): a descriptive name for the undo point
+    ## Args
 
-     * `flags` (`int`): Any combination of the following flags, combined using
+    * `undoName` (`str`): a descriptive name for the undo point.
+
+    * `flags` (`int`): Any combination of the following flags, combined using
        the logical or (`|`) operator:
           * `UF_None` (`0`): No flags
 
@@ -40,9 +42,9 @@ def saveUndo(undoName: str, flags: int, update: bool = True, /) -> None:
 
           * `UF_Reset` (`65536`): Reset undo history
 
-     * `update` (`int`, optional): ???. Defaults to 1.
+    * `update` (`int`, optional): ???. Defaults to 1.
 
-    Included since API version 1
+    Included since API version 1.
     """
     undo = getState().general.undo
     # Slice out any later elements
@@ -55,13 +57,15 @@ def saveUndo(undoName: str, flags: int, update: bool = True, /) -> None:
 
 
 def undo() -> int:
-    """Perform an undo toggle, much like pressing Ctrl+Z. If the position in the
+    """
+    Perform an undo toggle, much like pressing Ctrl+Z. If the position in the
     undo history is at the most recent, it will undo, otherwise, it will redo.
 
-    ## Returns:
-     * `int`: ???
+    ## Returns
 
-    Included since API version 1
+    * `int`: ???
+
+    Included since API version 1.
     """
     if getState().general.undo.position == 0:
         undoUp()
@@ -96,23 +100,24 @@ def undoDown() -> int:
     ## Returns:
      * `int`: ?
 
-    Included since API version 1
+    Included since API version 1.
     """
     undoUpDown(1)
     return 0
 
 
-def undoUpDown(value: int, /) -> int:
-    """Move in the undo history by delta `value`
+def undoUpDown(value: int) -> int:
+    """
+    Move in the undo history by delta `value`.
 
     ## Args:
      * `value` (`int`): amount to undo or redo (positive is redo, negative is
-        undo)
+        undo).
 
     ## Returns:
      * `int`: ?
 
-    Included since API version 1
+    Included since API version 1.
     """
     undo = getState().general.undo
     undo.position = max(0, min(len(undo.items) - 1, undo.position - value))
@@ -127,15 +132,15 @@ def restoreUndo() -> int:
     ## Returns:
      * `int`: ?
 
-    Included since API version 1
+    Included since API version 1.
 
-    Deprecated since API version 1
+    Deprecated since API version 1.
     """
     return undo()
 
 
 @deprecate(1)
-def restoreUndoLevel(level: int, /) -> int:
+def restoreUndoLevel(level: int) -> int:
     """
     Undo-redo toggle. This behaves in the same way as `undo()`.
 
@@ -145,7 +150,7 @@ def restoreUndoLevel(level: int, /) -> int:
     ## Returns:
      * `int`: ?
 
-    Included since API version 1
+    Included since API version 1.
     """
     return undo()
 
@@ -154,28 +159,32 @@ def getUndoLevelHint() -> str:
     """Returns a fraction-like string that shows the position in the undo
     history as well as the total length of it.
 
-    ## Returns:
-     * `str`: fraction-like string:
-          * numerator: position in history (`1` is most recent)
+    ## Returns
 
-          * denominator: number of elements in history
+    * `str`: fraction-like string:
+          * numerator: position in history (`1` is most recent).
 
-    Included since API version 1
+          * denominator: number of elements in history.
+
+    Included since API version 1.
     """
     return f"{getUndoHistoryLast() + 1}/{getUndoHistoryCount()}"
 
 
 def getUndoHistoryPos() -> int:
-    """Returns the length of the undo history
+    """
+    Returns the length of the undo history.
 
-    ## HELP WANTED:
+    ## HELP WANTED
+
     * This seems to behave the same as `getUndoHistoryCount()`. What's the
       difference?
 
-    ## Returns:
-     * `int`: number of elements in undo history
+    ## Returns
 
-    Included since API version 1
+    * `int`: number of elements in undo history.
+
+    Included since API version 1.
     """
     return getState().general.undo.pos_len
 
@@ -186,44 +195,50 @@ def getUndoHistoryCount() -> int:
     history including items that have been trimmed by `setUndoHistoryPos()`,
     but not items that have been trimmed by `setUndoHistoryCount()`.
 
-    ## Returns:
-     * `int`: number of elements in undo history
+    ## Returns
 
-    Included since API version 1
+    * `int`: number of elements in undo history.
+
+    Included since API version 1.
     """
     return getState().general.undo.count_len
 
 
 def getUndoHistoryLast() -> int:
-    """Returns the current position in the undo history. The most recent
-    position is `0`, with earlier points in the history having higher indexes.
+    """
+    Returns the current position in the undo history. The most recent position
+    is `0`, with earlier points in the history having higher indexes.
 
-    ## Returns:
-     * `int`: position in undo history
+    ## Returns
 
-    Included since API version 1
+    * `int`: position in undo history.
+
+    Included since API version 1.
     """
     return getState().general.undo.position
 
 
-def setUndoHistoryPos(index: int, /) -> None:
+def setUndoHistoryPos(index: int) -> None:
     """
     Removes recent elements from the undo history, leaving only the earliest
     `n = index` elements in the history.
 
     This will affect the length of the undo history as per
-    `getUndoHistoryPos()`, but not affect it as per `getUndoHistoryCount()`
+    `getUndoHistoryPos()`, but not affect it as per `getUndoHistoryCount()`.
 
     This will not actually undo the actions, just remove them from the undo
     history. It could be useful for grouping multiple undo items into one.
 
-    ## Known issues:
-    * The browser will not refresh when this action
+    ## Known issues
 
-    ## Args:
-     * `index` (`int`): number of elements to leave at the start of the history
+    * The browser will not refresh when this action is performed, meaning the
+      UI may not be updated.
 
-    Included since API version 1
+    ## Args
+
+    * `index` (`int`): number of elements to leave at the start of the history.
+
+    Included since API version 1.
     """
     undo = getState().general.undo
     index = min(max(index, 0), len(undo.items))
@@ -231,21 +246,23 @@ def setUndoHistoryPos(index: int, /) -> None:
     undo.items = undo.items[-index:]
 
 
-def setUndoHistoryCount(value: int, /) -> None:
+def setUndoHistoryCount(value: int) -> None:
     """
     Removes old elements from the undo history, leaving only the latest
     `n = index` elements.
 
     This will affect the length of the undo history as per
-    `getUndoHistoryCount()`, but not affect it as per `getUndoHistoryPos()`
+    `getUndoHistoryCount()`, but not affect it as per `getUndoHistoryPos()`.
 
-    ## Known issues:
-    * The browser will not refresh when this action
+    ## Known issues
 
-    ## Args:
-     * `value` (`int`): number of elements to leave at the end of the history
+    * The browser will not refresh when this action.
 
-    Included since API version 1
+    ## Args
+
+    * `value` (`int`): number of elements to leave at the end of the history.
+
+    Included since API version 1.
     """
     undo = getState().general.undo
     value = min(max(value, 0), len(undo.items))
@@ -254,13 +271,15 @@ def setUndoHistoryCount(value: int, /) -> None:
 
 
 def setUndoHistoryLast(index: int, /) -> None:
-    """Sets the position in the undo history, where `index = 0` is the most
+    """
+    Sets the position in the undo history, where `index = 0` is the most
     recent element and earlier points have higher indexes.
 
-    ## Args:
-     * `index` (`int`): new position in undo history
+    ## Args
 
-    Included since API version 1
+    * `index` (`int`): new position in undo history.
+
+    Included since API version 1.
     """
     undo = getState().general.undo
     index = min(max(index, 0), len(undo.items))

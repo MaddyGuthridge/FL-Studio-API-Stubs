@@ -1,6 +1,9 @@
-"""General Module (FL Studio built-in)
+"""
+# General
 
-Handles general interactions with FL Studio
+FL Studio built-in module.
+
+Handles general interactions with FL Studio.
 """
 __all__ = [
     'saveUndo',
