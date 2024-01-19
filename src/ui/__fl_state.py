@@ -1,13 +1,19 @@
+"""
+ui > fl_state
 
-
+Code for controlling the state of FL Studio's UI.
+"""
+from typing import overload, Literal
 from fl_model.decorators import since
 
 
 def isClosing() -> bool:
-    """Returns `True` when FL Studio is closing
+    """
+    Returns `True` when FL Studio is closing
 
-    ## Returns:
-     * `bool`: is closing
+    ## Returns
+
+    * `bool`: is closing
 
     Included since API version 1
     """
@@ -15,10 +21,12 @@ def isClosing() -> bool:
 
 
 def isMetronomeEnabled() -> bool:
-    """Returns whether the metronome is enabled
+    """
+    Returns whether the metronome is enabled
 
-    ## Returns:
-     * `bool`: whether metronome is enabled
+    ## Returns
+
+    * `bool`: whether metronome is enabled
 
     Included since API version 1
     """
@@ -26,10 +34,12 @@ def isMetronomeEnabled() -> bool:
 
 
 def isStartOnInputEnabled() -> bool:
-    """Returns whether start on input is enabled
+    """
+    Returns whether start on input is enabled
 
-    ## Returns:
-     * `bool`: whether start on input is enabled
+    ## Returns
+
+    * `bool`: whether start on input is enabled
 
     Included since API version 1
     """
@@ -37,10 +47,12 @@ def isStartOnInputEnabled() -> bool:
 
 
 def isPrecountEnabled() -> bool:
-    """Returns whether precount is enabled
+    """
+    Returns whether precount is enabled
 
-    ## Returns:
-     * `bool`: whether precount is enabled
+    ## Returns
+
+    * `bool`: whether precount is enabled
 
     Included since API version 1
     """
@@ -48,10 +60,12 @@ def isPrecountEnabled() -> bool:
 
 
 def isLoopRecEnabled() -> bool:
-    """Returns whether loop recording is enabled
+    """
+    Returns whether loop recording is enabled
 
-    ## Returns:
-     * `bool`: whether loop recording is enabled
+    ## Returns
+
+    * `bool`: whether loop recording is enabled
 
     Included since API version 1
     """
@@ -59,13 +73,15 @@ def isLoopRecEnabled() -> bool:
 
 
 def getSnapMode() -> int:
-    """Returns the current snap mode.
+    """
+    Returns the current snap mode.
 
     Although the official documentation states that this takes an argument
     `value`, it does not. This stub reflects the actual behavior.
 
-    ## Returns:
-     * `int`: index in the snap mode list:
+    ## Returns
+
+    * `int`: index in the snap mode list:
           * `0`: Line
 
           * `1`: Cell
@@ -101,18 +117,20 @@ def getSnapMode() -> int:
     return 0
 
 
-def snapMode(value: int, /) -> int:
+def snapMode(value: int) -> int:
     """
     Changes the snap mode, by shifting it by `value` in the list of modes.
 
     This can be used by controls such as jog wheels or arrow buttons to select
     a snapping mode. To select a value directly, use `setSnapMode`.
 
-    ## Args:
-     * `value` (`int`): increment (`1` for next, `-1` for previous)
+    ## Args
 
-    ## Returns:
-     * `int`: ???
+    * `value` (`int`): increment (`1` for next, `-1` for previous)
+
+    ## Returns
+
+    * `int`: ???
 
     Included since API version 1
     """
@@ -120,14 +138,15 @@ def snapMode(value: int, /) -> int:
 
 
 @since(24)
-def setSnapMode(value: int, /):
+def setSnapMode(value: int) -> None:
     """
     Set the snap mode using an absolute value.
 
     This can be used on a controller to have different buttons map to different
     modes. To increment or decrement the value, use `snapMode`.
 
-    ## Args:
+    ## Args
+
     * `value` (`int`): new mode - one of the values listed in `getSnapMode()`.
     """
     curr_mode = getSnapMode()
@@ -139,10 +158,12 @@ def setSnapMode(value: int, /):
 
 
 def snapOnOff() -> int:
-    """Toggle whether snapping is enabled globally.
+    """
+    Toggle whether snapping is enabled globally.
 
-    ## Returns:
-     * `int`: ?
+    ## Returns
+
+    * `int`: ?
 
     Included since API version 1
     """
@@ -150,11 +171,13 @@ def snapOnOff() -> int:
 
 
 def getTimeDispMin() -> bool:
-    """Returns `True` when the song position panel is displaying time, rather
+    """
+    Returns `True` when the song position panel is displaying time, rather
     than bar and beat.
 
-    ## Returns:
-     * `bool`: whether song position is displaying time.
+    ## Returns
+
+    * `bool`: whether song position is displaying time.
 
     Included since API version 1
     """
@@ -162,7 +185,8 @@ def getTimeDispMin() -> bool:
 
 
 def setTimeDispMin() -> None:
-    """Toggles whether the song position panel is displaying time or bar and
+    """
+    Toggles whether the song position panel is displaying time or bar and
     beat.
 
     Included since API version 1
@@ -170,98 +194,48 @@ def setTimeDispMin() -> None:
 
 
 def getHintMsg() -> str:
-    """Returns the current message in FL Studio's hint panel.
+    """
+    Returns the current message in FL Studio's hint panel.
 
-    ## Returns:
-     * `str`: hint
+    ## Returns
+
+    * `str`: hint
 
     Included since API version 1
     """
     return ""
 
 
-def setHintMsg(msg: str, /) -> None:
-    """Sets the current hint message in FL Studio's hint panel to `msg`.
+def setHintMsg(msg: str) -> None:
+    """
+    Sets the current hint message in FL Studio's hint panel to `msg`.
 
-    ## Args:
-     * `msg` (`str`): new message
+    For information about using icons within hint messages, refer to the
+    [hint message icon tutorial]()
 
-    ## Usage:
+    ## Args
 
-    As well as setting basic info, scripts can use a variety of icons before
-    their hint messages, which can be accessed by embedding `^c` at the start
-    of the string, where `c` is a character from the list below:
-
-    * `b`: record
-
-    * `c`: yellow smiling face
-
-    * `d`: mouse right click
-
-    * `e`: red sad face
-
-    * `f`: orange left-facing triangle
-
-    * `g`: fast-forward icon
-
-    * `h`: exclamation point in a red circle
-
-    * `i`: clock
-
-    * `j`: rewind icon
-
-    * `k`: link icon
-
-    * `l`: midi keyboard
-
-    * `m`: F1 (help) key icon
-
-    * `n`: Image-Line icon
-
-    * `r`: plugin icon
-
-    * `s`: file icon
-
-    * `t`: eye
-
-    * `u`: tempo tap icon
-
-    * `v`: left-facing triangle
-
-    * `w`: right-facing triangle
-
-    * `x`: pencil
-
-    * `y`: slice tool
-
-    * `z`: brush tool icon
-
-    For example, to display a tempo tap message with a relevant icon, the
-    following code could be used:
-
-    ```py
-    ui.setHintMsg("^uTap tempo")
-    ```
-
-    Note that these icon codes are not returned by `getHintMsg()`.
+    * `msg` (`str`): new message
 
     Included since API version 1
     """
 
 
 @since(20)
-def showNotification(val: int, /):
+def showNotification(val: int):
     """
     Show a notification to the user, which is chosen from a set of notification
     strings. This notification appears in the hint panel, much like with
     `ui.setHintMsg()`, except with less customization. Currently there is no
     apparent way to link these to the Script output window.
 
-    ## WARNING:
+    ## WARNING
+
     * This function appears to cause FL Studio's scripting environment to crash
       when used under Wine on Linux
 
-    ## Args:
+    ## Args
+
     * `val` (`int`): Notification ID, the identifier of the notification string
       to send.
           * `0`: `"Now firmware is available for your MIDI device"`
@@ -272,8 +246,9 @@ def showNotification(val: int, /):
     """
 
 
-def getHintValue(value: int, max: int, /) -> str:
-    """Returns `value/max` as a percentage.
+def getHintValue(value: int, max: int) -> str:
+    """
+    Returns `value/max` as a percentage.
 
     Equivalent to:
     ```
@@ -294,7 +269,8 @@ def getHintValue(value: int, max: int, /) -> str:
 
 
 def getProgTitle() -> str:
-    """Returns the title of the FL Studio window
+    """
+    Returns the title of the FL Studio window
 
     ## Returns:
      * `str`: program title
@@ -304,8 +280,19 @@ def getProgTitle() -> str:
     return ""
 
 
-def getVersion(mode: int = 4, /) -> 'str | int':
-    """Returns the version number of FL Studio
+@overload
+def getVersion(mode: Literal[0, 1, 2, 3]) -> int:
+    ...
+
+
+@overload
+def getVersion(mode: Literal[4, 5, 6] = 4) -> str:
+    ...
+
+
+def getVersion(mode: int = 4) -> 'str | int':
+    """
+    Returns the version number of FL Studio
 
     ## Args:
      * `mode` (`int`, optional):
