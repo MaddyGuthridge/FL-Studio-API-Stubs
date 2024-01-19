@@ -1,27 +1,31 @@
 """
-device > __device
+device > device
 
 Communication with the connected device
 """
+from typing import overload
 from fl_model import getState
 from fl_model.decorators import deprecate, since
 from fl_classes import FlMidiMsg
 
 
 def isAssigned() -> bool:
-    """Returns `True` if an output interface is linked to the script, meaning
-    that the script can send MIDI messages to that device.
+    """
+    Returns `True` if an output interface is linked to the script, meaning that
+    the script can send MIDI messages to that device.
 
-    ## Returns:
-    * `bool`: whether the device is assigned
+    ## Returns
 
-    Included since API version 1
+    * `bool`: whether the device is assigned.
+
+    Included since API version 1.
     """
     return getState().device.assigned
 
 
 def getPortNumber() -> int:
-    """Returns the port number for the input device that the script is attached
+    """
+    Returns the port number for the input device that the script is attached
     to.
 
     If the device requires two-way communication, the output port (where
@@ -29,92 +33,106 @@ def getPortNumber() -> int:
     should be set to the value of the input port, which is returned by this
     function.
 
-    ## Returns:
-    * `int`: port number of the input device
+    ## Returns
 
-    Included since API version 1
+    * `int`: port number of the input device.
+
+    Included since API version 1.
     """
     return getState().device.port
 
 
 @since(7)
 def getName() -> str:
-    """Returns the name of the device.
+    """
+    Returns the name of the device.
 
-    ## Returns:
-    * `str`: device name
+    ## Returns
 
-    Included since API version 7
+    * `str`: device name.
+
+    Included since API version 7.
     """
     return getState().device.name
 
 
-@since(2)
+@overload
+def midiOutMsg(message: int) -> None:
+    ...
+
+
+@overload
+def midiOutMsg(message: int, channel: int, data1: int, data2: int) -> None:
+    ...
+
+
 def midiOutMsg(
     message: int,
     channel: int = -1,
     data1: int = -1,
     data2: int = -1,
-    /,
 ) -> None:
-    """Sends a MIDI message to the linked output device.
+    """
+    Sends a MIDI message to the linked output device.
 
     This can be done either through a single combined message, or in its
     distinct components.
 
-    ## WARNING:
-    * Sending an invalid message will cause FL Studio to crash (FL Studio <= 20.9.2)
+    ## Args
 
-    ## Args:
     * `message` (`int`):
           * the MIDI message to send (if sending a complete message):
-              * Lowest byte: `status`
+              * Lowest byte: `status`.
 
-              * Middle byte: `data 1`
+              * Middle byte: `data 1`.
 
-              * Upper byte: `data 2`
+              * Upper byte: `data 2`.
 
           * OR the message type (if sending a partial MIDI message,
-            eg `0xB` for a CC message)
+            eg `0xB` for a CC message).
 
     * `channel` (`int`, optional): the channel to send the message to (if
-      sending a partial MIDI message)
+      sending a partial MIDI message).
 
     * `data1` (`int`, optional): the note data value for the message (if
-      sending a partial MIDI message)
+      sending a partial MIDI message).
 
     * `data2` (`int`, optional): the velocity data value for the message (if
-      sending a partial MIDI message)
+      sending a partial MIDI message).
 
     Included since API version 1, with the component options added in API
-    version 2
+    version 2.
     """
 
 
-def midiOutNewMsg(slotIndex: int, message: int, /) -> None:
-    """Sends a MIDI message to the linked output device, but only if the
+def midiOutNewMsg(slotIndex: int, message: int) -> None:
+    """
+    Sends a MIDI message to the linked output device, but only if the
     message being sent has changed compared to the last message sent with the
     same `slotIndex`.
 
-    ## Args:
-    * `slotIndex` (`int`): index for MIDI message comparison
+    ## Args
 
-    * `message` (`int`): message to potentially send
+    * `slotIndex` (`int`): index for MIDI message comparison.
 
-    Included since API version 1
+    * `message` (`int`): message to potentially send.
+
+    Included since API version 1.
     """
 
 
-def midiOutSysex(message: bytes, /) -> None:
-    """Send a sysex message to the (linked) output device.
+def midiOutSysex(message: bytes) -> None:
+    """
+    Send a sysex message to the (linked) output device.
 
     The sysex data must include the sysex start `0xF0` and sysex end `0xF7`
     bytes, or FL Studio will ignore the function call entirely.
 
-    ## Args:
-    * `message` (`str`): Sysex message to send
+    ## Args
 
-    Included since API version 1
+    * `message` (`str`): Sysex message to send.
+
+    Included since API version 1.
     """
 
 
@@ -126,39 +144,45 @@ def sendMsgGeneric(
     offset: int = 0,
     /,
 ) -> str:
-    """Send a text string as a sysex message to the linked output device.
+    """
+    Send a text string as a sysex message to the linked output device.
 
     ## WARNING:
-    * This function is deprecated
 
-    ## Args:
+    * This function is deprecated.
+
+    ## Args
+
     * `id` (`int`): the first 6 bytes of the message (the end value `0xF7` is
-      added automatically)
+      added automatically).
 
-    * `message` (`str`): the text to send
+    * `message` (`str`): the text to send.
 
     * `lastMsg` (`str`): the string returned by the previous call to this
       function.
 
     * `offset` (`int`, optional): ???. Defaults to 0.
 
-    ## Returns:
-    * `str`: value to use in the next call of this function
+    ## Returns
 
-    Included since API version 1
+    * `str`: value to use in the next call of this function.
 
-    Deprecated since API version 9
+    Included since API version 1.
+
+    Deprecated since API version 9.
     """
     return ""
 
 
 def directFeedback(eventData: FlMidiMsg, /) -> None:
-    """Send a received message to the linked output device
+    """
+    Send a received message to the linked output device.
 
-    ## Args:
-     * `eventData` (`eventData`): event to send
+    ## Args
 
-    Included since API version 1
+    * `eventData` (`eventData`): event to send.
+
+    Included since API version 1.
     """
 
 
@@ -166,34 +190,36 @@ def repeatMidiEvent(
     eventData: FlMidiMsg,
     delay: int = 300,
     rate: int = 300,
-    /,
 ) -> None:
-    """Start repeatedly sending out the message in `eventData` every `rate`
-    ms after `delay` ms.
+    """
+    Start repeatedly sending out the message in `eventData` every `rate` ms
+    after `delay` ms.
 
-    ## Args:
-     * `eventData` (`eventData`): event to repeat
+    ## Args
 
-     * `delay` (`int`, optional): initial delay before sending in ms. Defaults
-       to 300.
+    * `eventData` (`eventData`): event to repeat.
 
-     * `rate` (`int`, optional): time between each send in ms. Defaults to 300.
+    * `delay` (`int`, optional): initial delay before sending in ms. Defaults
+    to 300.
 
-    Included since API version 1
+    * `rate` (`int`, optional): time between each send in ms. Defaults to 300.
+
+    Included since API version 1.
     """
 
 
 def stopRepeatMidiEvent() -> None:
-    """Stop sending a currently repeating MIDI event.
+    """
+    Stop sending a currently repeating MIDI event.
 
     Refer to [`repeatMidiEvent()`][device.repeatMidiEvent].
 
-    Included since API version 1
+    Included since API version 1.
     """
 
 
 @since(18)
-def setMasterSync(value: bool, /) -> None:
+def setMasterSync(value: bool) -> None:
     """
     Control the value of the "send master sync" option in FL Studio's MIDI
     settings for this device.
@@ -203,10 +229,12 @@ def setMasterSync(value: bool, /) -> None:
     explicitly requires it, as it can lead to unpredictable and sometimes
     broken behavior.
 
-    ## Args:
-    * `value` (`bool`): Whether to enable (or disable
+    ## Args
 
-    Included since API Version 18
+    * `value` (`bool`): Whether to enable (or disable) the "send master sync"
+      option.
+
+    Included since API Version 18.
     """
     getState().device.master_sync = value
 
@@ -222,10 +250,11 @@ def getMasterSync() -> bool:
     explicitly requires it, as it can lead to unpredictable and sometimes
     broken behavior.
 
-    ## Returns:
-    * `bool`: Whether master sync is enabled
+    ## Returns
 
-    Included since API Version 19
+    * `bool`: Whether master sync is enabled.
+
+    Included since API Version 19.
     """
     return getState().device.master_sync
 
@@ -238,7 +267,7 @@ def getDeviceId() -> bytes:
 
     Note that this does not include the Sysex header, or ending byte.
 
-    For example, if the device responded to a universal device enquiry with
+    For example, if the device responded to a universal device enquiry with:
 
     ```py
     bytes([
@@ -249,15 +278,16 @@ def getDeviceId() -> bytes:
     ])
     ```
 
-    This function would only return
+    This function would only return:
 
     ```py
     bytes([0x00, 0x20, 0x29, 0x02, 0x01, 0x00, 0x00, 0x00, 0x04, 0x02, 0x05])
     ```
 
-    ## Returns:
-    * `bytes`: device ID
+    ## Returns
 
-    Included since API Version 25
+    * `bytes`: device ID.
+
+    Included since API Version 25.
     """
     return bytes()

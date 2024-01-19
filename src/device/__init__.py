@@ -1,4 +1,6 @@
 """
+# Device
+
 FL Studio built-in module
 
 Handles the way that devices connect to FL Studio's MIDI interface, and how
