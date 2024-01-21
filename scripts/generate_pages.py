@@ -32,7 +32,7 @@ def generate():
 
     for module in modules:
         # For modules we're documenting manually
-        if module in SKIPPED_MODULES:
+        if str(module) in SKIPPED_MODULES:
             continue
         # If there are any modules with submodules, make sure we generate an index page for that module instead of a separate page, then append the markdown file extension
         module_path = (Path(module, "index")
