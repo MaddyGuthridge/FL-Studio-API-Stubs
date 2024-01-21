@@ -1,4 +1,9 @@
 """
+## Deprecated as of v33.0.0
+
+This module is deprecated, and intended to be removed in a future version of
+FL Studio API Stubs.
+
 Provides a model of FL Studio, which integrates with the other stub files in
 order to facilitate testing of MIDI scripts.
 

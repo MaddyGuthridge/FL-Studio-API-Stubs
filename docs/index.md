@@ -15,7 +15,7 @@ If you wish to help contribute to this documentation, you can do so by creating 
   scripting interface.
 * [`fl_classes`][fl_classes]: a non-built-in module that provides definitions for classes
   used by FL Studio. It cannot be imported during runtime.
-* [`fl_model`][fl_model]: a non-built-in module that provides an emulation of FL Studio
+* [`fl_model`][fl_model] (deprecated): a non-built-in module that provides an emulation of FL Studio
   which useful for testing scripts without needing to open FL Studio.
 * [`general`][general]: miscellaneous functions for interacting with FL Studio.
 * [`launchMapPages`][launchMapPages]: functions for implementing page displays on some MIDI
