@@ -27,9 +27,12 @@ def isMidiOutAssigned() -> bool:
     """
     ???
 
-    WARNING
+    ## WARNING
 
-    This function is not officially documented
+    * This function is not officially documented.
+
+    * Calling this function in an interpreter not associated with a device
+      causes FL Studio to crash.
 
     ## Returns
 

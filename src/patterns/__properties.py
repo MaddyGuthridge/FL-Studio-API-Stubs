@@ -375,3 +375,58 @@ def clonePattern(index: Optional[int] = None):
 
     Included since API Version 25
     """
+
+
+def getChannelLoopStyle(pattern: int, channel: int, /) -> int:
+    """
+    Return the loop point of the given channel for the pattern at the given
+    index.
+
+    ## WARNING
+
+    * This function is not officially documented.
+
+    * Giving invalid arguments to this function can cause FL Studio to crash.
+
+    * This function does not appear to support keyword arguments.
+
+    ## Args
+
+    * `pattern` (`int`): pattern index (1-indexed).
+
+    * `channel` (`int`): channel index (0-indexed).
+
+    ## Returns
+
+    * `int`: loop point for the channel within the pattern.
+
+    Included since API Version ???
+    """
+    return 0
+
+
+def setChannelLoop(channel: int, loopPoint: int, /) -> str:
+    """
+    Set the loop point of the given channel for the current pattern.
+
+    ## WARNING
+
+    * This function is not officially documented.
+
+    * Giving invalid arguments to this function can cause FL Studio to crash.
+
+    * This function does not appear to support keyword arguments.
+
+    ## Args
+
+    * `channel` (`int`): channel index.
+
+    * `loopPoint` (`int`): loop point (or `0` to disable looping).
+
+    ## Returns
+
+    * `int`: new loop point value as a string.
+
+    Included since API Version ???.
+    """
+    return "---"

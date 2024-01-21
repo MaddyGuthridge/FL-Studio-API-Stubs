@@ -30,6 +30,8 @@ from .__properties import (
     burnLoop,
     isPatternDefault,
     clonePattern,
+    getChannelLoopStyle,
+    setChannelLoop,
 )
 from .__performance import (
     getBlockSetStatus,
@@ -63,6 +65,8 @@ __all__ = (
     'getBlockSetStatus',
     'ensureValidNoteRecord',
     'clonePattern',
+    'getChannelLoopStyle',
+    'setChannelLoop',
     'getActivePatternGroup',
     'getPatternGroupCount',
     'getPatternGroupName',
