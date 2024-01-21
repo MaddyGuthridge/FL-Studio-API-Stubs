@@ -54,6 +54,10 @@ from .__performance import (
     getVisTimeTick,
     getVisTimeStep,
     getPerformanceModeState,
+    getSongStartTickPos,
+    liveBlockNumToTime,
+    liveTimeToBlockNum,
+    scrollTo,
 )
 
 
@@ -95,4 +99,8 @@ __all__ = [
     "getVisTimeTick",
     "getVisTimeStep",
     "getPerformanceModeState",
+    "getSongStartTickPos",
+    "liveBlockNumToTime",
+    "liveTimeToBlockNum",
+    "scrollTo",
 ]

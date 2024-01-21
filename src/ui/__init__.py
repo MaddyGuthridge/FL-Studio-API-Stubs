@@ -11,6 +11,7 @@ Allows you to control and interact with FL Studio's UI.
 """
 from .__browser import (
     navigateBrowser,
+    navigateBrowserMenu,
     previewBrowserMenuItem,
     selectBrowserMenuItem,
     getFocusedNodeCaption,
@@ -90,10 +91,12 @@ from .__windows import (
     scrollWindow,
     nextWindow,
     selectWindow,
+    closeAllMenu,
 )
 
 __all__ = [
     'navigateBrowser',
+    'navigateBrowserMenu',
     'navigateBrowserTabs',
     'previewBrowserMenuItem',
     'selectBrowserMenuItem',
@@ -161,4 +164,5 @@ __all__ = [
     'scrollWindow',
     'nextWindow',
     'selectWindow',
+    'closeAllMenu',
 ]

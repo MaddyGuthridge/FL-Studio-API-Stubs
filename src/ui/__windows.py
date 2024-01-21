@@ -255,3 +255,16 @@ def selectWindow(shift: bool) -> int:
     Included since API version 1.
     """
     return 0
+
+
+def closeAllMenu() -> None:
+    """
+    Close all visible windows, except for the most recently-used FL Studio
+    window.
+
+    ## WARNING
+
+    * This function is not officially documented
+
+    Included since API Version ???
+    """

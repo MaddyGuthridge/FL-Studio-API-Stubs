@@ -37,6 +37,39 @@ def navigateBrowser(direction: int, shiftHeld: bool) -> str:
     return ""
 
 
+def navigateBrowserMenu(direction: int, shiftHeld: bool) -> str:
+    """
+    Navigates through the browser. `direction` can be 0 for previous
+    or > 0 for next.
+
+    Shift held will cause the browser item to expand/open  if it's a
+    folder/collection ie Node Type <= -100, similar to keyboard navigation.
+
+    ## WARNING
+
+    * This function is undocumented.
+
+    * This appears to be a duplicate of `ui.navigateBrowser`. Consider using it
+      instead.
+
+    ## Args
+
+    * `direction` (`int`):
+            * `40`: previous item
+            * `41`: next item
+
+    * `shiftHeld` (`bool`): whether to expand the selected item if it is a
+      folder.
+
+    ## Returns
+
+    * `str`: the name of the newly selected item in the browser.
+
+    Included since API Version 22.
+    """
+    return ""
+
+
 @since(22)
 def navigateBrowserTabs(direction: int) -> str:
     """

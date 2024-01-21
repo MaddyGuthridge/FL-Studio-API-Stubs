@@ -1,7 +1,7 @@
 """
 Playlist > Performance
 
-Functions for interacting with performance mode
+Functions for interacting with performance mode.
 """
 
 from fl_model.decorators import since
@@ -20,9 +20,9 @@ def getDisplayZone() -> int:
 
     ## Returns
 
-    * `int`: current display zone
+    * `int`: current display zone.
 
-    Included since API version 1
+    Included since API version 1.
     """
     return 0
 
@@ -41,7 +41,7 @@ def lockDisplayZone(index: int, value: int) -> None:
 
     * `value` (`int`): ???
 
-    Included since API version 1
+    Included since API version 1.
     """
 
 
@@ -59,10 +59,10 @@ def liveDisplayZone(
     ## Args
 
      * `left` (`int`): the zero-indexed position of the time marker from which
-       to begin the display zone highlight
+       to begin the display zone highlight.
 
      * `top` (`int`): the one-indexed track number from which to begin the
-       display zone highlight
+       display zone highlight.
 
      * `right` (`int`): the zero-indexed position of the time marker from which
        to end the display zone highlight. The highlight will go up to this
@@ -75,7 +75,7 @@ def liveDisplayZone(
      * `duration` (`int`, optional): duration for which to show the display
        zone highlight in ms. Defaults to `0`, for infinite duration.
 
-    Included since API version 1
+    Included since API version 1.
     """
 
 
@@ -88,26 +88,26 @@ def getLiveLoopMode(index: int) -> int:
 
     ## Args
 
-    * `index` (`int`): track index
+    * `index` (`int`): track index.
 
     ## Returns
 
     * `int`: live loop mode:
-          * `0` (`LiveLoop_Stay`): Stay
+          * `0` (`LiveLoop_Stay`): Stay.
 
-          * `1` (`LiveLoop_OneShot`): One shot
+          * `1` (`LiveLoop_OneShot`): One shot.
 
-          * `2` (`LiveLoop_MarchWrap`): March and wrap
+          * `2` (`LiveLoop_MarchWrap`): March and wrap.
 
-          * `3` (`LiveLoop_MarchStay`): March and stay
+          * `3` (`LiveLoop_MarchStay`): March and stay.
 
-          * `4` (`LiveLoop_MarchStop`): March and stop
+          * `4` (`LiveLoop_MarchStop`): March and stop.
 
-          * `5` (`LiveLoop_Random`): Random
+          * `5` (`LiveLoop_Random`): Random.
 
           * `6` (`LiveLoop_ExRandom`): Exclusive random (play all clips on the track before playing anything again).
 
-    Included since API version 1
+    Included since API version 1.
     """
     return 0
 
@@ -121,20 +121,20 @@ def getLiveTriggerMode(index: int) -> int:
 
     ## Args
 
-    * `index` (`int`): track index
+    * `index` (`int`): track index.
 
     ## Returns
 
     * `int`: live trigger mode:
-          * `0` (`LiveTrig_Retrigger`): Retrigger
+          * `0` (`LiveTrig_Retrigger`): Retrigger.
 
-          * `1` (`LiveTrig_Hold`): Hold and stop
+          * `1` (`LiveTrig_Hold`): Hold and stop.
 
-          * `2` (`LiveTrig_HMotion`): Hold and motion
+          * `2` (`LiveTrig_HMotion`): Hold and motion.
 
-          * `3` (`LiveTrig_Latch`): Latch
+          * `3` (`LiveTrig_Latch`): Latch.
 
-    Included since API version 1
+    Included since API version 1.
     """
     return 0
 
@@ -148,26 +148,26 @@ def getLivePosSnap(index: int) -> int:
 
     ## Args
 
-    * `index` (`int`): track index
+    * `index` (`int`): track index.
 
     ## Returns
 
     * `int`: live position snap:
-          * `0` (`LiveSnap_Off`): No snap
+          * `0` (`LiveSnap_Off`): No snap.
 
-          * `1` (`LiveSnap_Fourth`): 1/4 beat
+          * `1` (`LiveSnap_Fourth`): 1/4 beat.
 
-          * `2` (`LiveSnap_Half`): 1/2 beat
+          * `2` (`LiveSnap_Half`): 1/2 beat.
 
-          * `3` (`LiveSnap_One`): 1 beat
+          * `3` (`LiveSnap_One`): 1 beat.
 
-          * `4` (`LiveSnap_Two`): 2 beats
+          * `4` (`LiveSnap_Two`): 2 beats.
 
-          * `5` (`LiveSnap_Four`): 4 beats
+          * `5` (`LiveSnap_Four`): 4 beats.
 
-          * `6` (`LiveSnap_Auto`): Auto
+          * `6` (`LiveSnap_Auto`): Auto.
 
-    Included since API version 1
+    Included since API version 1.
     """
     return 0
 
@@ -181,39 +181,39 @@ def getLiveTrigSnap(index: int) -> int:
 
     ## Args
 
-    * `index` (`int`): track index
+    * `index` (`int`): track index.
 
     ## Returns
 
     * `int`: live position snap:
-          * `0` (`LiveSnap_Off`): No snap
+          * `0` (`LiveSnap_Off`): No snap.
 
-          * `1` (`LiveSnap_Fourth`): 1/4 beat
+          * `1` (`LiveSnap_Fourth`): 1/4 beat.
 
-          * `2` (`LiveSnap_Half`): 1/2 beat
+          * `2` (`LiveSnap_Half`): 1/2 beat.
 
-          * `3` (`LiveSnap_One`): 1 beat
+          * `3` (`LiveSnap_One`): 1 beat.
 
-          * `4` (`LiveSnap_Two`): 2 beats
+          * `4` (`LiveSnap_Two`): 2 beats.
 
-          * `5` (`LiveSnap_Four`): 4 beats
+          * `5` (`LiveSnap_Four`): 4 beats.
 
-          * `6` (`LiveSnap_Auto`): Auto
+          * `6` (`LiveSnap_Auto`): Auto.
 
-    Included since API version 1
+    Included since API version 1.
     """
     return 0
 
 
 def getLiveStatus(index: int, mode: int = midi.LB_Status_Default) -> int:
     """
-    Returns the live status for track at `index`
+    Returns the live status for track at `index`.
 
     This can be used to determine if there are any blocks playing or scheduled.
 
     ## Args
 
-     * `index` (`int`): track index
+     * `index` (`int`): track index.
 
      * `mode` (`int`, optional): live status mode. Defaults to 'LB_Status_Default'.
 
@@ -222,7 +222,7 @@ def getLiveStatus(index: int, mode: int = midi.LB_Status_Default) -> int:
      * `int`: live status of track:
             Refer to [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#getLiveStatusMode)
 
-    Included since API version 1
+    Included since API version 1.
     """
     return 0
 
@@ -240,9 +240,9 @@ def getLiveBlockStatus(
 
     ## Args
 
-    * `index` (`int`): track index
+    * `index` (`int`): track index.
 
-    * `blockNum` (`int`): block number
+    * `blockNum` (`int`): block number.
 
     * `mode` (`int`, optional): live status mode. Defaults to 'LB_Status_Default'.
 
@@ -251,7 +251,7 @@ def getLiveBlockStatus(
     * `int`: live status of track:
        Refer to [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#getLiveStatusMode).
 
-    Included since API version 1
+    Included since API version 1.
     """
     return 0
 
@@ -269,15 +269,15 @@ def getLiveBlockColor(index: int, blockNum: int) -> int:
 
     ## Args
 
-    * `index` (`int`): track index
+    * `index` (`int`): track index.
 
-    * `blockNum` (`int`): block number
+    * `blockNum` (`int`): block number.
 
     ## Returns
 
-    * `int`: block color (`0x--BBGGRR`)
+    * `int`: block color (`0x--BBGGRR`).
 
-    Included since API version 1
+    Included since API version 1.
     """
     return 0
 
@@ -293,7 +293,7 @@ def triggerLiveClip(
 
     ## Args
 
-    * `index` (`int`): track index
+    * `index` (`int`): track index.
 
     * `subNum` (`int`): block number (usually `blockNum`), or `-1` to stop live
       clips on this track.
@@ -303,7 +303,7 @@ def triggerLiveClip(
 
     * `velocity` (`int`, optional): velocity for triggering clip. Defaults to `-1`.
 
-    Included since API version 1
+    Included since API version 1.
     """
 
 
@@ -318,11 +318,11 @@ def refreshLiveClips(*args) -> None:
 
     ## Args
 
-    * `index` (`int`): track index
+    * `index` (`int`): track index.
 
     * `value` (`int`): ???
 
-    Included since API version 1
+    Included since API version 1.
     """
 
 
@@ -335,11 +335,11 @@ def incLivePosSnap(index: int, value: int) -> None:
 
     ## Args
 
-    * `index` (`int`): track index
+    * `index` (`int`): track index.
 
-    * `value` (`int`): delta amount to change position snap mode by
+    * `value` (`int`): delta amount to change position snap mode by.
 
-    Included since API version 1
+    Included since API version 1.
     """
 
 
@@ -352,11 +352,11 @@ def incLiveTrigSnap(index: int, value: int) -> None:
 
     ## Args
 
-    * `index` (`int`): track index
+    * `index` (`int`): track index.
 
-    * `value` (`int`): delta amount to change trigger snap mode by
+    * `value` (`int`): delta amount to change trigger snap mode by.
 
-    Included since API version 1
+    Included since API version 1.
     """
 
 
@@ -369,11 +369,11 @@ def incLiveLoopMode(index: int, value: int) -> None:
 
     ## Args
 
-    * `index` (`int`): track index
+    * `index` (`int`): track index.
 
-    * `value` (`int`): delta amount to change loop mode by
+    * `value` (`int`): delta amount to change loop mode by.
 
-    Included since API version 1
+    Included since API version 1.
     """
 
 
@@ -386,11 +386,11 @@ def incLiveTrigMode(index: int, value: int) -> None:
 
     ## Args
 
-    * `index` (`int`): track index
+    * `index` (`int`): track index.
 
-    * `value` (`int`): delta amount to change trigger mode by
+    * `value` (`int`): delta amount to change trigger mode by.
 
-    Included since API version 1
+    Included since API version 1.
     """
 
 
@@ -400,9 +400,9 @@ def getVisTimeBar() -> int:
 
     ## Returns
 
-    * `int`: time bar
+    * `int`: time bar.
 
-    Included since API version 1
+    Included since API version 1.
     """
     return 0
 
@@ -414,9 +414,9 @@ def getVisTimeTick() -> int:
 
     ## Returns
 
-    * `int`: time tick
+    * `int`: time tick.
 
-    Included since API version 1
+    Included since API version 1.
     """
     return 0
 
@@ -428,9 +428,9 @@ def getVisTimeStep() -> int:
 
     ## Returns
 
-    * `int`: time step
+    * `int`: time step.
 
-    Included since API version 1
+    Included since API version 1.
     """
     return 0
 
@@ -438,12 +438,103 @@ def getVisTimeStep() -> int:
 @since(21)
 def getPerformanceModeState() -> bool:
     """
-    Returns whether FL Studio's performance mode is enabled
+    Returns whether FL Studio's performance mode is enabled.
 
     ## Returns
 
-    * `bool`: whether performance mode is enabled
+    * `bool`: whether performance mode is enabled.
 
-    Included since API Version 21
+    Included since API Version 21.
     """
     return False
+
+
+def getSongStartTickPos() -> int:
+    """
+    Returns the number of ticks before the "song start" marker (which marks the
+    end of the performance mode section).
+
+    ## WARNING
+
+    * This function is undocumented.
+
+    ## Returns
+
+    * `int`: number of ticks before the "song start" marker.
+
+    Included since API Version ???
+    """
+    return 0
+
+
+def liveBlockNumToTime(index: int) -> int:
+    """
+    Returns the number of ticks before the live block marker at `index`.
+
+    ## WARNING
+
+    * This function is undocumented.
+
+    ## Args
+
+    * `index` (`int`): index of live block marker.
+
+    ## Returns
+
+    * `int`: number of ticks.
+
+    Included since API Version ???
+    """
+    return 0
+
+
+def liveTimeToBlockNum(time: int) -> int:
+    """
+    Returns the block number that a time (in ticks) is associated with in live
+    performance mode.
+
+    ## Note
+
+    * The first tick of each block is counted as part of the previous block.
+      For example, if block `1` starts at tick `384`, `liveTimeToBlockNum(384)`
+      will return `0`, but `liveTimeToBlockNum(385)` will return `1`.
+
+    * This is likely a bug.
+
+    ## WARNING
+
+    * This function is undocumented.
+
+    ## Args
+
+    * `time` (`int`): time in ticks.
+
+    ## Returns
+
+    * `int`: block number (0-indexed).
+
+    Included since API Version ???
+    """
+    return 0
+
+
+def scrollTo(a: int, b: int, c: int, d: int) -> None:
+    """
+    Scroll to the given location?
+
+    ## WARNING
+
+    * This function is undocumented.
+
+    ## Args
+
+    * `a` (`int`): ???
+
+    * `b` (`int`): ???
+
+    * `c` (`int`): ???
+
+    * `d` (`int`): ???
+
+    Included since API Version ???
+    """
