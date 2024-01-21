@@ -1,3 +1,0 @@
-global-include py.typed
-
-include src/fl_model/configuration/*.json

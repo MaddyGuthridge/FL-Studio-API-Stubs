@@ -3,7 +3,7 @@
         "editor.tabSize": 4,
         "editor.detectIndentation": false,
     },
-    "autoDocstring.customTemplatePath": "docstring_template.mustache",
+    "autoDocstring.customTemplatePath": "data/docstring_template.mustache",
     "python.testing.pytestArgs": [
         "."
     ],
