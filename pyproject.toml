@@ -83,7 +83,6 @@ autopep8 = "^2.0.2"
 
 [tool.poetry.group.dev.dependencies]
 flapi = "^0.4.0"
-jestspectation = "^1.3.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

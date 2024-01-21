@@ -374,21 +374,6 @@ files = [
 ]
 
 [[package]]
-name = "jestspectation"
-version = "1.3.0"
-description = "Pattern matching tools to test complex data structures"
-category = "dev"
-optional = false
-python-versions = ">=3.9,<4.0"
-files = [
-    {file = "jestspectation-1.3.0-py3-none-any.whl", hash = "sha256:8245f4c0d76b9a3c5aa077003453ef40be33358cad17a1dde2707930b62d5083"},
-    {file = "jestspectation-1.3.0.tar.gz", hash = "sha256:0113a67ffc9c855bac87d447f858e83a957397043a2adda06871e105e4a2acd3"},
-]
-
-[package.dependencies]
-typing-extensions = ">=4.5.0,<5.0.0"
-
-[[package]]
 name = "jinja2"
 version = "3.1.3"
 description = "A very fast and expressive template engine."
@@ -1308,4 +1293,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "52aeaabdec1d072142619241feb1fc552102f728c521f525ac9ba25a188a9564"
+content-hash = "eca349741166b0b58875739f78a49c45b174f904e0645162f7842a7cf755eb92"
