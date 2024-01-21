@@ -31,9 +31,10 @@ class Region:
 
 class MEEditor:
     """
-    The class used to represent the editor. This is instantiated in the
-    `Editor` object, and the fact that it is public is probably an accident.
-    You should just use `Editor`.
+    An object representing the state of the Edison editor.
+
+    For selections, if the start point is `0` and the end point is
+    `EditorSample.Length - 1`, then the full clip is selected.
     """
     @property
     def SelectionStartS(self) -> int:
@@ -56,8 +57,6 @@ class Sample:
 
     Note that this is different from a sample point, which is a location within
     a sample's waveform at a single instance in time.
-
-    Included since API Version 21
     """
     def __init__(self) -> None:
         """
@@ -309,8 +308,6 @@ class Sample:
 EditorSample = Sample()
 """
 The sample which is currently loaded within the Edison editor.
-
-Included since API Version 21
 """
 
 Editor = MEEditor()
@@ -319,6 +316,4 @@ An object representing the state of the Edison editor.
 
 For selections, if the start point is `0` and the end point is
 `EditorSample.Length - 1`, then the full clip is selected.
-
-Included since API Version 21
 """

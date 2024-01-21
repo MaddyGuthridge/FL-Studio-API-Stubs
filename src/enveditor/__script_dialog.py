@@ -7,9 +7,7 @@ Code representing the Script dialog class.
 
 class ScriptDialog:
     """
-    Used to define a script that
-
-    Included since API Version 21
+    Used to create and read attributes from a script dialog
     """
     def __init__(self, title: str, description: str) -> None:
         """

@@ -6,21 +6,16 @@ If you wish to help contribute to this documentation, you can do so by creating 
 
 ## List of modules
 
+### MIDI controller scripting
+
 * [`arrangement`][arrangement]: functions for interacting with individual arrangements,
   including markers and playlist selections.
 * [`channels`][channels]: functions for interacting with the channel rack and its channels.
 * [`device`][device]: functions for interacting with the device hardware, as well as
   tools for managing rec events.
-* [`enveditor`][enveditor]: a module for interacting with edison, only available through its
-  scripting interface.
-* [`fl_classes`][fl_classes]: a non-built-in module that provides definitions for classes
-  used by FL Studio. It cannot be imported during runtime.
-* [`fl_model`][fl_model] (deprecated): a non-built-in module that provides an emulation of FL Studio
-  which useful for testing scripts without needing to open FL Studio.
 * [`general`][general]: miscellaneous functions for interacting with FL Studio.
 * [`launchMapPages`][launchMapPages]: functions for implementing page displays on some MIDI
   controllers.
-* [`midi`][midi]: a module containing constants used by the rest of the API.
 * [`mixer`][mixer]: functions for interacting with the mixer and its tracks.
 * [`patterns`][patterns]: functions for interacting with patterns.
 * [`playlist`][playlist]: functions for interacting with the playlist.
@@ -31,5 +26,26 @@ If you wish to help contribute to this documentation, you can do so by creating 
 * [`transport`][transport]: functions for interacting with FL Studio's playback and
   recording systems.
 * [`ui`][ui]: functions for interacting with FL Studio's user interface.
+
+### MIDI controller scripting (extra libraries)
+
+* [`midi`][midi]: a module containing constants used by the rest of the API.
 * [`utils`][utils]: utility functions and classes. Note that a lot of code in this
   module is buggy and should be avoided.
+
+### MIDI controller scripting (stub code utilities)
+
+* [`fl_classes`][fl_classes]: a non-built-in module that provides definitions for classes
+  used by FL Studio. It cannot be imported during runtime.
+* [`fl_model`][fl_model] (deprecated): a non-built-in module that provides an emulation of FL Studio
+  which useful for testing scripts without needing to open FL Studio.
+
+### Edison scripting
+
+* [`enveditor`](enveditor/index.md): a module for interacting with edison, only available through its
+  scripting interface.
+
+### Piano roll scripting
+
+* [`flpianoroll`](flpianoroll/index.md): a module for interacting with the
+  piano roll, only available through its scripting interface.

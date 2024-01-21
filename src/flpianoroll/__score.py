@@ -9,6 +9,8 @@ from .__marker import Marker
 
 class Score:
     """
+    Access via the module attribute `flpianoroll.score`.
+
     Represents the current selection of the FL Studio score, or, if there is no
     selection, the full contents of the current instrument on the piano roll.
     """
