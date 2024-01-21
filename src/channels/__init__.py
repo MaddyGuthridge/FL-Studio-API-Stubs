@@ -51,6 +51,7 @@ from .__sequencer import (
     getCurrentStepParam,
     setStepParameterByIndex,
     updateGraphEditor,
+    closeGraphEditor,
 )
 from .__ui import (
     isHighLighted,
@@ -106,6 +107,7 @@ __all__ = (
     'getCurrentStepParam',
     'setStepParameterByIndex',
     'updateGraphEditor',
+    'closeGraphEditor',
     'isHighLighted',
     'showGraphEditor',
     'isGraphEditorVisible',

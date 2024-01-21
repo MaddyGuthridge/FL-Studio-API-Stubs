@@ -23,6 +23,23 @@ def isAssigned() -> bool:
     return getState().device.assigned
 
 
+def isMidiOutAssigned() -> bool:
+    """
+    ???
+
+    WARNING
+
+    This function is not officially documented
+
+    ## Returns
+
+    * `bool`: ???
+
+    Included since API Version ???
+    """
+    return False
+
+
 def getPortNumber() -> int:
     """
     Returns the port number for the input device that the script is attached

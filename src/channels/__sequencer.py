@@ -274,8 +274,21 @@ def updateGraphEditor() -> None:
     """
     ???
 
-    ## WARNING:
+    ## WARNING
+
     * This function has no official documentation
 
     Included since API Version 20?
+    """
+
+
+def closeGraphEditor(index: int, /) -> None:
+    """
+    ???
+
+    ## WARNING
+
+    * This function has no official documentation
+
+    Included since API Version 33?
     """

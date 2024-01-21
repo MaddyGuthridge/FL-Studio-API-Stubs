@@ -232,3 +232,20 @@ def getLinkedChannel(eventId: int) -> int:
     Included since API Version 27.
     """
     return 0
+
+
+def getIdleElapsed() -> float:
+    """
+    ???
+
+    WARNING:
+
+    * This function is not officially documented
+
+    ## Returns
+
+    * `float`: ???
+
+    Included since API Version ???
+    """
+    return 0.0

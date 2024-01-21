@@ -9,6 +9,7 @@ scripts communicate with each other.
 
 __all__ = [
     'isAssigned',
+    'isMidiOutAssigned',
     'getPortNumber',
     'getName',
     'midiOutMsg',
@@ -37,10 +38,15 @@ __all__ = [
     'getDeviceID',
     'getLinkedChannel',
     'linkToLastTweaked',
+    'getIdleElapsed',
+    'setHasMeters',
+    'baseTrackSelect',
+    'hardwareRefreshMixerTrack',
 ]
 
 from .__device import (
     isAssigned,
+    isMidiOutAssigned,
     getPortNumber,
     getName,
     midiOutMsg,
@@ -64,6 +70,7 @@ from .__fl import (
     getLinkedInfo,
     getLinkedChannel,
     linkToLastTweaked,
+    getIdleElapsed,
 )
 from .__dispatch import (
     dispatch,
@@ -75,4 +82,7 @@ from .__util import (
     destroyRefreshThread,
     fullRefresh,
     isDoubleClick,
+    setHasMeters,
+    baseTrackSelect,
+    hardwareRefreshMixerTrack,
 )
