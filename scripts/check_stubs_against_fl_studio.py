@@ -6,6 +6,7 @@ Studio's library.
 """
 import importlib
 import inspect
+import json
 from typing import Optional
 import flapi
 from jestspectation import Equals
@@ -57,6 +58,9 @@ def generate_from_fl_studio(modules: list[str]) -> LibraryItems:
     """
     Generate collection of all items in FL Studio
     """
+    # For now, until FL Studio fixes their crashes, just load it from a JSON
+    # file
+    return json.load(open('data/modules.json'))
 
     # Connect to FL Studio
     if not flapi.enable():
@@ -78,20 +82,34 @@ def generate_from_fl_studio(modules: list[str]) -> LibraryItems:
     return items
 
 
-def diff(stubs: LibraryItems, fl: LibraryItems) -> Optional[str]:
-    eq = Equals(fl)
-    if eq == stubs:
-        return None
-    else:
-        return "\n".join(eq.get_diff(stubs, False))
+def diff(stubs: LibraryItems, fl: LibraryItems) -> bool:
+    """
+    Detect the difference between the API functions
+    """
+    found_diff = False
+
+    for mod in stubs:
+        stub_contents = stubs[mod]
+        fl_contents = fl[mod]
+
+        for item in stub_contents:
+            if item not in fl_contents:
+                print(f"++ {mod}.{item}")
+                found_diff = True
+
+        for item in fl_contents:
+            if item not in stub_contents:
+                print(f"-- {mod}.{item}")
+                found_diff = True
+
+    return found_diff
 
 
 def main():
     stubs = generate_from_stubs(MODULES)
     fl = generate_from_fl_studio(MODULES)
-    if (difference := diff(stubs, fl)) is not None:
+    if diff(stubs, fl):
         print("Stub code not same as FL Studio libraries")
-        print(difference)
         exit(1)
     else:
         print("Stub code matches FL Studio libraries")
