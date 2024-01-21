@@ -3,6 +3,12 @@ from pathlib import Path
 from shutil import copytree, rmtree
 
 
+SKIPPED_MODULES = [
+    "enveditor",
+    "flpianoroll"
+]
+
+
 def generate():
     # Remove the old docs_build directory
     docs_build_dir = Path("docs_build")
@@ -25,6 +31,9 @@ def generate():
             modules.append(module)
 
     for module in modules:
+        # For modules we're documenting manually
+        if module in SKIPPED_MODULES:
+            continue
         # If there are any modules with submodules, make sure we generate an index page for that module instead of a separate page, then append the markdown file extension
         module_path = (Path(module, "index")
                        if any(m.parent == module for m in modules)
@@ -41,13 +50,12 @@ def generate():
         """
         duplicates = []
         for root, dirs, files in os.walk(src):
-            for dir in dirs:
-                dir_path_src = src.joinpath(dir)
-                dir_path_dest = dest.joinpath(dir)
-                if dir_path_dest.exists():
-                    duplicates.extend(find_duplicates(dir_path_src, dir_path_dest))
+            root = Path(root)
+            dest_root = dest.joinpath(root.relative_to(src))
+            # print(f"Root: {root} -> {dest_root}")
             for file in files:
-                file_path = dest.joinpath(file)
+                # print(f"{root.joinpath(file)} -> {dest_root.joinpath(file)}")
+                file_path = dest_root.joinpath(file)
                 if file_path.exists():
                     duplicates.append(file_path)
 
