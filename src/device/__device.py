@@ -260,7 +260,7 @@ def getMasterSync() -> bool:
 
 
 @since(25)
-def getDeviceId() -> bytes:
+def getDeviceID() -> bytes:
     """
     Returns the unique device identifier of the connected device, as determined
     by FL Studio when connecting the device.
