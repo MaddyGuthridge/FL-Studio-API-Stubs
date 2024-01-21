@@ -37,15 +37,12 @@ classifiers = [
 include = ["py.typed"]
 
 packages = [
+    # MIDI controller scripting
     { include = "arrangement", from = "src" },
     { include = "channels", from = "src" },
     { include = "device", from = "src" },
-    { include = "enveditor", from = "src" },
-    { include = "fl_classes", from = "src" },
-    { include = "fl_model", from = "src" },
     { include = "general", from = "src" },
     { include = "launchMapPages", from = "src" },
-    { include = "midi", from = "src" },
     { include = "mixer", from = "src" },
     { include = "patterns", from = "src" },
     { include = "playlist", from = "src" },
@@ -53,7 +50,16 @@ packages = [
     { include = "screen", from = "src" },
     { include = "transport", from = "src" },
     { include = "ui", from = "src" },
+    # MIDI controller scripting extra libraries
+    { include = "midi", from = "src" },
     { include = "utils", from = "src" },
+    # API stubs extra modules
+    { include = "fl_classes", from = "src" },
+    { include = "fl_model", from = "src" },  # deprecated
+    # Edison scripting
+    { include = "enveditor", from = "src" },
+    # Piano roll scripting
+    { include = "flpianoroll", from = "src" },
 ]
 
 [tool.poetry.scripts]

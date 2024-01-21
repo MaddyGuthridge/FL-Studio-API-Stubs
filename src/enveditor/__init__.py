@@ -1,6 +1,8 @@
 """
 # Env Editor
 
+FL Studio built-in module.
+
 This module provides editing tools for interacting with audio clips in the
 Edison editor, using its integrated scripts functionality.
 
