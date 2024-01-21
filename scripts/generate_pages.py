@@ -50,8 +50,8 @@ def generate():
         """
         duplicates = []
         for root, dirs, files in os.walk(src):
-            root = Path(root)
-            dest_root = dest.joinpath(root.relative_to(src))
+            root_path = Path(root)
+            dest_root = dest.joinpath(root_path.relative_to(src))
             # print(f"Root: {root} -> {dest_root}")
             for file in files:
                 # print(f"{root.joinpath(file)} -> {dest_root.joinpath(file)}")
