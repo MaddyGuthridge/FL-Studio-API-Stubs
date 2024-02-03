@@ -73,6 +73,7 @@ docs = "scripts.build_docs:main"
 [tool.poetry.dependencies]
 python = "^3.9"
 jsonschema = "^4.17.3"
+transdoc = "^0.1.0"
 
 [tool.poetry.group.dev.dependencies]
 flapi = "^0.4.0"
