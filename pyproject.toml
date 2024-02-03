@@ -38,32 +38,33 @@ include = ["py.typed"]
 
 packages = [
     # MIDI controller scripting
-    { include = "arrangement", from = "src" },
-    { include = "channels", from = "src" },
-    { include = "device", from = "src" },
-    { include = "general", from = "src" },
-    { include = "launchMapPages", from = "src" },
-    { include = "mixer", from = "src" },
-    { include = "patterns", from = "src" },
-    { include = "playlist", from = "src" },
-    { include = "plugins", from = "src" },
-    { include = "screen", from = "src" },
-    { include = "transport", from = "src" },
-    { include = "ui", from = "src" },
+    { include = "arrangement", from = "transdoc_build" },
+    { include = "channels", from = "transdoc_build" },
+    { include = "device", from = "transdoc_build" },
+    { include = "general", from = "transdoc_build" },
+    { include = "launchMapPages", from = "transdoc_build" },
+    { include = "mixer", from = "transdoc_build" },
+    { include = "patterns", from = "transdoc_build" },
+    { include = "playlist", from = "transdoc_build" },
+    { include = "plugins", from = "transdoc_build" },
+    { include = "screen", from = "transdoc_build" },
+    { include = "transport", from = "transdoc_build" },
+    { include = "ui", from = "transdoc_build" },
     # MIDI controller scripting extra libraries
-    { include = "midi", from = "src" },
-    { include = "utils", from = "src" },
+    { include = "midi", from = "transdoc_build" },
+    { include = "utils", from = "transdoc_build" },
     # API stubs extra modules
-    { include = "fl_classes", from = "src" },
-    { include = "fl_model", from = "src" },  # deprecated
+    { include = "fl_classes", from = "transdoc_build" },
+    { include = "fl_model", from = "transdoc_build" },  # deprecated
     # Edison scripting
-    { include = "enveditor", from = "src" },
+    { include = "enveditor", from = "transdoc_build" },
     # Piano roll scripting
-    { include = "flpianoroll", from = "src" },
+    { include = "flpianoroll", from = "transdoc_build" },
 ]
 
 [tool.poetry.scripts]
 docs = "scripts.build_docs:main"
+build = "scripts.transform_docstrings:transform_modules"
 
 [tool.poetry.urls]
 "Online Documentation" = "https://miguelguthridge.github.io/FL-Studio-API-Stubs/"

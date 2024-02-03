@@ -30,5 +30,8 @@ jobs:
       - run: poetry --version
       - run: poetry install
 
+      - name: Use transdoc to build documentation
+        run: poetry run build
+
       - name: Build and publish package
         run: poetry publish --build -u __token__ -p ${{ secrets.PYPI_API_TOKEN }}
