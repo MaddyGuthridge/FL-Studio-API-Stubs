@@ -14,7 +14,7 @@ def processMIDICC(eventData: FlMidiMsg) -> None:
 
     ## Args
 
-    * `eventData` (`eventData`): FL MIDI Event to process.
+    * `eventData` (`FlMidiMsg`): FL MIDI Event to process.
 
     Included since API version 1.
     """
@@ -154,7 +154,7 @@ def getLinkedInfo(eventID: int) -> int:
 
     ## Args
 
-    * `eventID` (`int`): eventID (see `device` module documentation).
+    * `eventID` (`int`): eventID (see the {{docs_url_page("event mapping tutorial", "tutorials/event_mapping")}}).
 
     ## Returns
 

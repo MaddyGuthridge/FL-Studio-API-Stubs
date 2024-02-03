@@ -52,14 +52,14 @@ def openEventEditor(
     """
     Launches an event editor for `eventId`.
 
-    See the [event mapping tutorial](https://miguelguthridge.github.io/FL-Studio-API-Stubs/tutorials/event_mapping/)
+    See the {{docs_url_page("event mapping tutorial", "tutorials/event_mapping")}}
     for more information on REC events.
 
     ## Args
 
     * `eventId` (`int`): event ID.
 
-    * `mode` (`int`): Refer to [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#openEventEditorMode)
+    * `mode` (`int`): Refer to the {{fl_manual_anchor[openEventEditorMode]}}.
 
     * `newWindow` (`int`, optional): whether to open in a new window. Defaults
       to 0.

@@ -19,6 +19,7 @@
         "deinitialize",
         "desynchronize",
         "docformat",
+        "docstrings",
         "Enveditor",
         "falsiness",
         "indexedness",
@@ -34,6 +35,7 @@
         "Rect",
         "Sysex",
         "timebase",
+        "transdoc",
         "unmute",
         "unmuted",
         "unsolo"

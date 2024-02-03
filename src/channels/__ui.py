@@ -10,8 +10,8 @@ from fl_model.channels import checkGroupIndex, checkGlobalIndex
 def isHighLighted() -> bool:
     """
     Returns `True` when a red highlight rectangle is displayed on the channel
-    rack. This rectangle can be displayed using `ui.crDisplayRect()` in the UI
-    module.
+    rack. This rectangle can be displayed using
+    {{docs_url_fn[ui.crDisplayRect]}}.
 
     These hints can be used to visually indicate on the channel rack where your
     script is mapping to.
@@ -40,7 +40,7 @@ def showGraphEditor(
     * `temporary` (`bool`): whether the editor should be temporary or stay
       open.
 
-    * `param` (`int`): [step parameter](https://www.image-line.com/fl-studio-learning/fl-studio-beta-online-manual/html/midi_scripting.htm#stepParams)
+    * `param` (`int`): step parameter, see the {{fl_manual_anchor[stepParams]}}
 
     * `step` (`int`): step ???.
 
@@ -128,7 +128,7 @@ def showCSForm(
     Show the channel settings window (or plugin window for plugins) for channel
     at `index`.
 
-    This appears to perform the same action as [`focusEditor()`][channels.focusEditor].
+    This appears to perform the same action as {{docs_url_fn[channels.focusEditor]}}.
 
     ## Args
 

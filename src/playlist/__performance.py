@@ -15,8 +15,7 @@ def getDisplayZone() -> int:
     The display zone is the rectangular region for which a controller is active
     in performance mode, indicated by a red rectangle on the playlist.
 
-    This value can be set using the
-    [`liveDisplayZone`](/playlist#playlist.liveDisplayZone) function.
+    This value can be set using {{docs_url_fn[playlist.liveDisplayZone]}}.
 
     ## Returns
 
@@ -219,8 +218,7 @@ def getLiveStatus(index: int, mode: int = midi.LB_Status_Default) -> int:
 
     ## Returns
 
-     * `int`: live status of track:
-            Refer to [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#getLiveStatusMode)
+     * `int`: live status of track: refer to {{fl_manual_anchor[getLiveStatusMode]}}.
 
     Included since API version 1.
     """
@@ -248,8 +246,7 @@ def getLiveBlockStatus(
 
     ## Returns
 
-    * `int`: live status of track:
-       Refer to [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#getLiveStatusMode).
+    * `int`: live status of track: refer to {{fl_manual_anchor[getLiveStatusMode]}}.
 
     Included since API version 1.
     """
@@ -260,12 +257,7 @@ def getLiveBlockColor(index: int, blockNum: int) -> int:
     """
     Returns the color for block `blockNum` within the track at `index`.
 
-    Note that colors can be split into or built from components using the
-    functions provided in the module [utils](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/).
-
-    * [ColorToRGB()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.ColorToRGB)
-
-    * [RGBToColor()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.RGBToColor)
+    {{note[colors]}}
 
     ## Args
 
@@ -298,8 +290,7 @@ def triggerLiveClip(
     * `subNum` (`int`): block number (usually `blockNum`), or `-1` to stop live
       clips on this track.
 
-    * `flags` (`int`): live clip trigger flags. Refer to
-      [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#triggerLiveClipFlags).
+    * `flags` (`int`): live clip trigger flags. Refer to {{fl_manual_anchor[triggerLiveClipFlags]}}.
 
     * `velocity` (`int`, optional): velocity for triggering clip. Defaults to `-1`.
 

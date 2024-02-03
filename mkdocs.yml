@@ -34,7 +34,7 @@ plugins:
       handlers:
         python:
           paths:
-            - src
+            - transdoc_build
           options:
             show_source: false
   # - gen-files:

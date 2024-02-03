@@ -13,7 +13,7 @@ def navigateBrowser(direction: int, shiftHeld: bool) -> str:
     or > 0 for next.
 
     Shift held will cause the browser item to expand/open  if it's a
-    folder/collection ie Node Type <= -100, similar to keyboard navigation.
+    folder/collection ie `Node Type <= -100`, similar to keyboard navigation.
 
     ## Args
 
@@ -43,7 +43,7 @@ def navigateBrowserMenu(direction: int, shiftHeld: bool) -> str:
     or > 0 for next.
 
     Shift held will cause the browser item to expand/open  if it's a
-    folder/collection ie Node Type <= -100, similar to keyboard navigation.
+    folder/collection ie `Node Type <= -100`, similar to keyboard navigation.
 
     ## WARNING
 
@@ -144,7 +144,7 @@ def getFocusedNodeFileType() -> int:
     * `int`: One of the file type constants represented in the FL Studio
       constants.
 
-    Refer to Image-Line's [official documentation on file types](https://www.image-line.com/fl-studio-learning/fl-studio-beta-online-manual/html/midi_scripting.htm#BrowserFileTypes).
+    Refer to the {{fl_manual_anchor[BrowserFileTypes]}}.
 
     Included since API Version 20.
     """

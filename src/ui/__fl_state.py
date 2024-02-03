@@ -211,7 +211,7 @@ def setHintMsg(msg: str) -> None:
     Sets the current hint message in FL Studio's hint panel to `msg`.
 
     For information about using icons within hint messages, refer to the
-    [hint message icon tutorial](https://miguelguthridge.github.io/FL-Studio-API-Stubs/tutorials/hint_message_icons/).
+    {{docs_url_page("hint message icon tutorial", "tutorials/hint_message_icons")}}.
 
     ## Args
 
@@ -226,8 +226,8 @@ def showNotification(notificationId: int):
     """
     Show a notification to the user, which is chosen from a set of notification
     strings. This notification appears in the hint panel, much like with
-    `ui.setHintMsg()`, except with less customization. Currently there is no
-    apparent way to link these to the Script output window.
+    {{docs_url_fn[ui.setHintMsg]}}, except with less customization. Currently
+    there is no apparent way to link these to the Script output window.
 
     ## WARNING
 

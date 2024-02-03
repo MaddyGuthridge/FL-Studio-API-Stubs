@@ -26,7 +26,7 @@ def setTrackNumber(trackNumber: int, flags: int = 0) -> None:
     ## Note
 
     * All functionality except for scrolling flag can be replicated more
-      easily using `mixer.selectTrack()`.
+      easily using {{docs_url_fn[mixer.selectTrack]}}.
 
     ## Args
 

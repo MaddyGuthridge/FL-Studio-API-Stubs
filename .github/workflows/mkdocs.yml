@@ -47,6 +47,8 @@ jobs:
       - run: poetry --version
       - run: poetry install
 
+      # Build doc
+
       # Build documentation to ./site/ directory
       - name: Build Documentation
         id: build

@@ -27,7 +27,7 @@ def getTrackName(index: int) -> str:
 
     For unnamed tracks, returns "Track `n`" where `n` is `index` + 1
 
-    Note that playlist track indexes start at 1
+    {{note[playlist_indexes]}}
 
     ## Args
 
@@ -48,7 +48,7 @@ def setTrackName(index: int, name: str) -> None:
 
     Setting the name to an empty string ("") will reset the name to "Track n"
 
-    Note that playlist track indexes start at 1
+    {{note[playlist_indexes]}}
 
     ## Args
 
@@ -69,7 +69,7 @@ def getTrackColor(index: int) -> int:
 
     * [RGBToColor()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.RGBToColor)
 
-    Note that playlist track indexes start at 1
+    {{note[playlist_indexes]}}
 
     ## Args
 
@@ -95,7 +95,7 @@ def setTrackColor(index: int, color: int) -> None:
 
     * [RGBToColor()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.RGBToColor)
 
-    Note that playlist track indexes start at 1
+    {{note[playlist_indexes]}}
 
     ## Args
 

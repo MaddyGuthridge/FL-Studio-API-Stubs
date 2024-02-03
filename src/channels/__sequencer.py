@@ -157,9 +157,9 @@ def getStepParam(
 
     ## See also
 
-    * [`getCurrentStepParam()`][channels.getCurrentStepParam]
+    * {{docs_url_fn[channels.getCurrentStepParam]}}
 
-    * [`setStepParameterByIndex()`][channels.setStepParameterByIndex]
+    * {{docs_url_fn[channels.setStepParameterByIndex]}}
 
     ## Step parameter types
 
@@ -189,7 +189,7 @@ def getCurrentStepParam(
 
     ## HELP WANTED
 
-    * How is it different from `getStepParam()`?
+    * How is it different from {{docs_url_fn[channels.getStepParam]}}?
 
     ## Args
 

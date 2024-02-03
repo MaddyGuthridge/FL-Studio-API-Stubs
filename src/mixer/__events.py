@@ -13,8 +13,8 @@ def getTrackPluginId(index: int, plugIndex: int) -> int:
     A plugin ID is used internally by FL Studio to represent effects present
     on the mixer. A plugin ID can be used with REC events in order to automate
     plugins, and is also the return value of
-    [`ui.getFocusedFormID()`][ui.getFocusedFormID] if the focused window is an
-    effect plugin.
+    {{docs_url_fn[ui.getFocusedFormID]}} if the focused window is an effect
+    plugin.
 
     Plugin IDs are represented as `((track << 6) + index) << 16`, although
     the official documentation lists them as `(track << 6 + index) << 16`,
@@ -196,7 +196,7 @@ def automateEvent(
 
     * `value` (`int`): ???
 
-    * `flags` (`int`): refer to the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#RecEventFlags).
+    * `flags` (`int`): refer to the {{fl_manual_anchor[RecEventFlags]}}.
 
     * `speed` (`int`, optional): ???. Defaults to 0.
 

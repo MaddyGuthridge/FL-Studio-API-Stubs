@@ -1,4 +1,5 @@
 from .generate_pages import generate
+from .transform_docstrings import transform_modules
 from mkdocs.commands.build import build as mkdocs_build
 from mkdocs.config import load_config
 from pathlib import Path
@@ -6,6 +7,7 @@ from shutil import rmtree, move
 
 
 def main():
+    transform_modules()
     generate()
     config = load_config()
     mkdocs_build(config)

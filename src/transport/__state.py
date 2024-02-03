@@ -25,7 +25,7 @@ def getSongPos(mode: int = -1) -> 'float | int':
     ## Note
 
     * This will get the position in the song in song mode, or the position
-      in the pattern, depending on the state of `transport.getLoopMode()`.
+      in the pattern, depending on the state of {{docs_url_fn[transport.getLoopMode]}}.
 
     ## Args
 
@@ -170,8 +170,7 @@ def markerJumpJog(value: int, flags: int = midi.GT_All) -> None:
 
     * `value` (`int`): delta.
 
-    * `flags` (`int`, optional): ??? Refer to
-      [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags).
+    * `flags` (`int`, optional): ??? refer to the {{fl_manual_anchor[globalTransportFlags]}}.
 
     Included since API version 1.
     """
@@ -185,8 +184,7 @@ def markerSelJog(value: int, flags: int = midi.GT_All) -> None:
 
     * `value` (`int`): delta.
 
-    * `flags` (`int`, optional): ??? Refer to
-      [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags).
+    * `flags` (`int`, optional): ??? refer to the {{fl_manual_anchor[globalTransportFlags]}}.
 
     Included since API version 1.
     """
@@ -227,8 +225,7 @@ def rewind(startStop: int, flags: int = midi.GT_All) -> None:
 
           * `SS_Start` (`2`); Start movement.
 
-    * `flags` (`int`, optional): ??? Refer to
-      [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags).
+    * `flags` (`int`, optional): ??? refer to the {{fl_manual_anchor[globalTransportFlags]}}.
 
     Included since API version 1.
     """
@@ -252,8 +249,7 @@ def fastForward(startStop: int, flags: int = midi.GT_All) -> None:
 
           * `SS_Start` (`2`); Start movement.
 
-    * `flags` (`int`, optional): ??? Refer to
-      [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags).
+    * `flags` (`int`, optional): ??? refer to the {{fl_manual_anchor[globalTransportFlags]}}.
 
     Included since API version 1.
     """

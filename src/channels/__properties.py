@@ -29,8 +29,7 @@ def selectedChannel(
     channel where n is `offset` + 1. If n is greater than the number of
     selected channels, the global index of the last selected channel will be
     returned. If `indexGlobal` is set to `1`, this will replicate the behavior
-    of [channelNumber()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/channels/#channels.channelNumber)
-    by returning global indexes.
+    of {{docs_url_fn[channels.channelNumber]}} by returning global indexes.
 
     ## Note
 
@@ -107,15 +106,15 @@ def channelNumber(canBeNone: bool = False, offset: int = 0) -> int:
         return 0
 
 
-def channelCount(mode: bool = False) -> int:
+def channelCount(globalCount: bool = False) -> int:
     """
     Returns the number of channels on the channel rack. Respect for groups is
     controlled by the `mode` flag.
 
     ## Args
 
-    * `mode` (`bool`, optional): Whether the number of channels should be
-      global. Defaults to `False` (groups respected).
+    * `globalCount` (`bool`, optional): Whether the number of channels should
+      be global. Defaults to `False` (groups respected).
 
     ## Returns
 
@@ -124,7 +123,7 @@ def channelCount(mode: bool = False) -> int:
     Included since API version 1. (updated with optional parameter in API
     version 3).
     """
-    if mode:
+    if globalCount:
         return len(getState().channels.channel_list)
     else:
         return len(getChannelsInGroup())
@@ -188,12 +187,7 @@ def getChannelColor(index: int, useGlobalIndex: bool = False) -> int:
     """
     Returns the color of the channel at `index`.
 
-    Note that colors can be split into or built from components using the
-    functions provided in the module [utils](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/).
-
-    * [ColorToRGB()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.ColorToRGB)
-
-    * [RGBToColor()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.RGBToColor)
+    {{note[colors]}}
 
     ## Args
 
@@ -223,12 +217,7 @@ def setChannelColor(
     """
     Sets the color of the channel at `index`.
 
-    Note that colors can be split into or built from components using the
-    functions provided in the module [utils](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/).
-
-    * [ColorToRGB()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.ColorToRGB)
-
-    * [RGBToColor()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.RGBToColor)
+    {{note[colors]}}
 
     ## Args
 
@@ -415,7 +404,7 @@ def setChannelVolume(
     * `volume` (`float`): channel volume.
 
     * `pickupMode` (`int`, optional): define the pickup behavior. Refer to
-      the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes).
+      the {{fl_manual_anchor[pickupModes]}}.
 
     * `useGlobalIndex` (`bool`, optional): whether to use the global channel
       index when setting channel volume.
@@ -477,7 +466,7 @@ def setChannelPan(
     * `pan` (`float`): channel pan.
 
     * `pickupMode` (`int`, optional): define the pickup behavior. Refer to
-      the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes).
+      the {{fl_manual_anchor[pickupModes]}}.
 
     * `useGlobalIndex` (`bool`, optional): whether to use the global channel
       index when setting channel pan.
@@ -587,7 +576,7 @@ def setChannelPitch(
             This will desynchronize the reported range from what is visible in the UI.
 
     * `pickupMode` (`int`, optional): define the pickup behavior. Refer to
-      the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes).
+      the {{fl_manual_anchor[pickupModes]}}.
 
     * `useGlobalIndex` (`bool`, optional): whether to use the global channel
       index when setting channel pitch.
@@ -622,7 +611,7 @@ def getChannelType(index: int, useGlobalIndex: bool = False) -> int:
 
           * `GT_GenPlug` (`2`): generator plugin.
 
-          * `GT_Layer` (`3`): layer (refer to the [FL Studio Manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/chansettings_layer.htm)).
+          * `GT_Layer` (`3`): layer (refer to the {{fl_manual_page[chansettings_layer.htm]}}).
 
           * `GT_AutoClip` (`4`): automation clip.
 
@@ -861,7 +850,7 @@ def getRecEventId(index: int, useGlobalIndex: bool = False) -> int:
     """
     Return the starting point of REC event IDs for the channel at `index`.
 
-    See the [event mapping tutorial](https://miguelguthridge.github.io/FL-Studio-API-Stubs/tutorials/event_mapping/)
+    See the {{docs_url_page("event mapping tutorial", "tutorials/event_mapping")}}.
     for more information on REC events.
 
     ## Args
@@ -892,7 +881,7 @@ def incEventValue(eventId: int, step: int, res: float = 1 / 24) -> int:
     This can be used to map encoder-style controls to events, by allowing them
     to adjust a parameter using a delta value.
 
-    Use result as new value in [general.processRECEvent()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/general/#general.processRECEvent).
+    Use result as new value in {{docs_url_fn[general.processRECEvent]}}.
 
     ## Example usage
 
@@ -909,7 +898,7 @@ def incEventValue(eventId: int, step: int, res: float = 1 / 24) -> int:
 
     ## Args
 
-    * `eventId` (`int`): event ID (see the [event mapping tutorial](https://miguelguthridge.github.io/FL-Studio-API-Stubs/tutorials/event_mapping/)).
+    * `eventId` (`int`): event ID (see the {{docs_url_page("event mapping tutorial", "tutorials/event_mapping")}}).
 
     * `step` (`int`): delta value for the event.
 
@@ -918,7 +907,7 @@ def incEventValue(eventId: int, step: int, res: float = 1 / 24) -> int:
 
     ## Returns
 
-    * `int`: incremented event value, for use in `general.processRECEvent()`.
+    * `int`: incremented event value, for use in {{docs_url_fn[general.processRECEvent]}}.
 
     Included since API version 1.
 

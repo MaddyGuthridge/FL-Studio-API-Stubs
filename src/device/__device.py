@@ -49,7 +49,7 @@ def getPortNumber() -> int:
     to.
 
     If the device requires two-way communication, the output port (where
-    functions like [`midiOutMsg()`][device.midiOutMsg] send their data to)
+    functions like {{docs_url_fn[device.midiOutMsg]}} send their data to)
     should be set to the value of the input port, which is returned by this
     function.
 
@@ -232,7 +232,7 @@ def stopRepeatMidiEvent() -> None:
     """
     Stop sending a currently repeating MIDI event.
 
-    Refer to [`repeatMidiEvent()`][device.repeatMidiEvent].
+    Refer to {{docs_url_fn[device.repeatMidiEvent]}}.
 
     Included since API version 1.
     """

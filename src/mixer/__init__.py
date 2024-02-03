@@ -3,8 +3,7 @@
 
 FL Studio built-in module.
 
-Allows you to control and interact with the FL Studio Mixer, and with
-FX tracks.
+Allows you to control and interact with the FL Studio Mixer and effects tracks.
 
 ## Note
 

@@ -89,8 +89,7 @@ def getVersion() -> int:
     Returns MIDI Scripting API version number. Note that this is the API
     version, rather than the FL Studio version.
 
-    To get the version of FL Studio, use [`ui.getVersion()`][ui.getVersion]
-    instead.
+    To get the version of FL Studio, use {{docs_url_fn[ui.getVersion]}} instead.
 
     ## Returns
 
@@ -119,12 +118,12 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
 
     REC events have some other properties available:
 
-    * Descriptive name: [`device.getLinkedParamName()`][device.getLinkedParamName]
+    * Descriptive name: {{docs_url_fn[device.getLinkedParamName]}}
 
-    * Current value: [`device.getLinkedValue()`][device.getLinkedValue]
+    * Current value: {{docs_url_fn[device.getLinkedValue]}}
 
     * Current value as an appropriately formatted string:
-      [`device.getLinkedValueString()`][device.getLinkedValueString]
+      {{docs_url_fn[device.getLinkedValueString]}}
 
     ## HELP WANTED
 
@@ -132,14 +131,14 @@ def processRECEvent(eventId: int, value: int, flags: int) -> int:
 
     ## Args
 
-    * `eventId` (`int`): Refer to the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#RecEventParams).
+    * `eventId` (`int`): Refer to the {{fl_manual_anchor[RecEventParams]}}.
 
     * `value` (`int`): value of even within a range. This range depends on the
       plugin, but you can specify for it to be between `0 - 2^30` by using the
       `midi.REC_MIDIController` flag. Note that providing an invalid value can
       lead to very strange behavior and sometimes crashes.
 
-    * `flags` (`int`): Refer to the [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#RecEventFlags).
+    * `flags` (`int`): Refer to the {{fl_manual_anchor[RecEventFlags]}}.
 
     ## Returns
 

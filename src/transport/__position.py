@@ -115,16 +115,14 @@ def globalTransport(
 
     ## Args
 
-    * `command` (`int`): command to execute, refer to
-      [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportCommands).
+    * `command` (`int`): command to execute, refer to {{fl_manual_anchor[globalTransportCommands]}}.
 
     * `value` (`int`): ???
 
     * `pmeflags` (`int`, optional): current PME Flags. Defaults to
       `midi.PME_System`.
 
-    * `flags` (`int`, optional): ??? Refer to
-      [official documentation](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#globalTransportFlags).
+    * `flags` (`int`, optional): ??? refer to {{fl_manual_anchor[globalTransportFlags]}}.
 
     ## Returns
 

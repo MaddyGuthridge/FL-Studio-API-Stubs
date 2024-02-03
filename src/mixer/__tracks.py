@@ -45,12 +45,7 @@ def getTrackColor(index: int) -> int:
     """
     Returns the color of the track at `index`.
 
-    Note that colors can be split into or built from components using the
-    functions provided in the module [utils](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/).
-
-    * [ColorToRGB()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.ColorToRGB)
-
-    * [RGBToColor()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.RGBToColor)
+    {{note[colors]}}
 
     ## Args
 
@@ -69,12 +64,7 @@ def setTrackColor(index: int, color: int) -> None:
     """
     Sets the color of the track at `index`.
 
-    Note that colors can be split into or built from components using the
-    functions provided in the module [utils](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/).
-
-    * [ColorToRGB()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.ColorToRGB)
-
-    * [RGBToColor()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.RGBToColor)
+    {{note[colors]}}
 
     ## Args
 
@@ -90,12 +80,7 @@ def getSlotColor(index: int, slot: int) -> int:
     """
     Returns the color of a mixer track FX slot.
 
-    Note that colors can be split into or built from components using the
-    functions provided in the module [utils](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/).
-
-    * [ColorToRGB()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.ColorToRGB)
-
-    * [RGBToColor()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.RGBToColor)
+    {{note[colors]}}
 
     ## Args
 
@@ -116,12 +101,7 @@ def setSlotColor(index: int, slot: int, color: int) -> None:
     """
     Sets the color of a mixer track FX slot.
 
-    Note that colors can be split into or built from components using the
-    functions provided in the module [utils](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/).
-
-    * [ColorToRGB()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.ColorToRGB)
-
-    * [RGBToColor()](https://miguelguthridge.github.io/FL-Studio-API-Stubs/utils/#utils.RGBToColor)
+    {{note[colors]}}
 
     ## Args
 
@@ -355,7 +335,7 @@ def setTrackVolume(
     * `volume` (`float`): volume of track.
 
     * `pickupMode` (`int`, optional): define the pickup behavior. Refer to
-      the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes).
+      the {{fl_manual_anchor[pickupModes]}}.
 
     Included since API version 1.
     """
@@ -397,7 +377,7 @@ def setTrackPan(
     * `pan` (`float`): pan of track.
 
     * `pickupMode` (`int`, optional): define the pickup behavior. Refer to
-      the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes).
+      the {{fl_manual_anchor[pickupModes]}}.
 
 
     Included since API version 1.
@@ -443,7 +423,7 @@ def setTrackStereoSep(
     * `sep` (`float`): stereo separation of track.
 
     * `pickupMode` (`int`, optional): define the pickup behavior. Refer to
-      the [manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/midi_scripting.htm#pickupModes).
+      the {{fl_manual_anchor[pickupModes]}}.
 
     Included since API version 12.
     """
