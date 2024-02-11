@@ -12,20 +12,20 @@ jobs:
       # Checkout repository including submodules
       - name: Checkout
         id: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: true
 
       # Setup Python 3.9
       - name: Setup Python
         id: python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.9'
 
       # Install dependencies using Poetry
       - uses: Gr1N/setup-poetry@v8
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
             path: ~/.cache/pypoetry/virtualenvs
             key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
@@ -39,14 +39,14 @@ jobs:
 
       # Upload build outputs
       - name: Upload build artifacts markdown
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: markdown output
           path: docs_build/*
 
       - name: Upload build artifacts HTML
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: HTML output

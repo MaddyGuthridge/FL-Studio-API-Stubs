@@ -27,20 +27,20 @@ jobs:
       # Checkout repository including submodules
       - name: Checkout
         id: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: true
 
       # Setup Python 3.9
       - name: Setup Python
         id: python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.9'
 
       # Install dependencies using Poetry
       - uses: Gr1N/setup-poetry@v8
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
             path: ~/.cache/pypoetry/virtualenvs
             key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
@@ -55,11 +55,11 @@ jobs:
       # Upload artifact from the ./site/ directory using the expected format for GitHub Pages
       - name: Upload Artifact
         id: upload
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./site/
 
       # Use previously uploaded artifact to deploy to GitHub Pages
       - name: Deploy
         id: deploy
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4

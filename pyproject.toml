@@ -74,7 +74,6 @@ build = "scripts.transform_docstrings:transform_modules"
 [tool.poetry.dependencies]
 python = "^3.9"
 jsonschema = "^4.17.3"
-transdoc = "^0.1.0"
 
 [tool.poetry.group.dev.dependencies]
 flapi = "^0.4.0"
@@ -90,6 +89,7 @@ mkdocs-gen-files = "^0.4.0"
 mkdocs-material = "^8.5.11"
 mkdocstrings = {version = "^0.20.0", extras = ["python"]}
 autopep8 = "^2.0.2"
+transdoc = "^0.1.0"
 
 [tool.flake8]
 exclude = [
