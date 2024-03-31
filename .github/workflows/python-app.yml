@@ -22,7 +22,7 @@ jobs:
         path: ~/.cache/pypoetry/virtualenvs
         key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
     - run: poetry --version
-    - run: poetry install
+    - run: poetry install --no-root
     - name: Test with pytest
       run: |
         poetry run coverage run -m pytest
@@ -46,7 +46,7 @@ jobs:
         path: ~/.cache/pypoetry/virtualenvs
         key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
     - run: poetry --version
-    - run: poetry install
+    - run: poetry install --no-root
     - name: Lint with flake8
       run: |
         poetry run flake8
@@ -67,7 +67,7 @@ jobs:
         path: ~/.cache/pypoetry/virtualenvs
         key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
     - run: poetry --version
-    - run: poetry install
+    - run: poetry install --no-root
     - name: Lint with mypy
       run: |
         poetry run mypy .

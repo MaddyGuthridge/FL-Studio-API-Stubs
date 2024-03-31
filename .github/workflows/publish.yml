@@ -28,7 +28,7 @@ jobs:
           path: ~/.cache/pypoetry/virtualenvs
           key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
       - run: poetry --version
-      - run: poetry install
+      - run: poetry install --no-root
 
       - name: Use transdoc to build documentation
         run: poetry run build
