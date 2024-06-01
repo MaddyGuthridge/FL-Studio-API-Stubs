@@ -4,11 +4,21 @@ This project contains function definitions to provide intellisense while
 working on scripts for FL Studio's Python API, as well as a partially-complete
 model of FL Studio, which allows for scripts to be tested outside of FL Studio.
 
+## This repo is archived
+
+Image-Line has officially adopted my API stubs, and you can check out a
+(significantly-improved) version over on [their GitHub page](https://github.com/IL-Group/FL-Studio-API-Stubs).
+It's still open-source, and will be receiving far more maintenance than I had
+time to give for this when it was a hobby project.
+
+### Upgrading to Image-Line's stub library
+
+All you need to do is update your dependencies - it's published under the same
+name.
+
 ## Online Reference
 
-The documentation is also available as an
-[online reference](https://miguelguthridge.github.io/FL-Studio-API-Stubs) if
-Image-Line's own documentation isn't up to scratch.
+The documentation is also available as an [online reference](https://IL-Group.github.io/FL-Studio-API-Stubs).
 
 ## Installation
 
