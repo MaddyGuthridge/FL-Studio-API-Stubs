@@ -24,7 +24,6 @@ keywords = [
 classifiers = [
     "Programming Language :: Python :: 3",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)",
     "Operating System :: OS Independent",
     "Development Status :: 5 - Production/Stable",
     "Environment :: Other Environment",
@@ -37,69 +36,72 @@ classifiers = [
 requires-python = ">= 3.11, < 4.0"
 
 [project.urls]
-repository = "https://github.com/IL-Group/FL-Studio-Api-Stubs/issues"
-documentation = "https://il-group.github.io/FL-Studio-API-Stubs/"
+repository = "https://github.com/MaddyGuthridge/FL-Studio-Api-Stubs/issues"
+documentation = "https://maddyguthridge.github.io/FL-Studio-API-Stubs/"
 
-[tool.poetry]
-include = [
-    # Explicitly include all .py files in `build_lib`, otherwise, they will be
-    # skipped due to the `.gitignore`.
-    "build_lib/**/*.py",
-    # And the `py.typed` files
-    "build_lib/**/py.typed",
-    # NOTE: Any extra files won't be bundled unless explicitly included here.
-    # Am considering making transdoc skip files in the `.gitignore`, which
-    # would allow us to blindly include everything in `build_lib` without also
-    # including stuff like .pyc files.
+[dependency-groups]
+build = [
+    "griffe>=2.0.2",
+    "transdoc[python]>=1.2.1",
 ]
-
-packages = [
-    # MIDI controller scripting
-    { include = "arrangement", from = "build_lib/midi_controller_scripting" },
-    { include = "channels", from = "build_lib/midi_controller_scripting" },
-    { include = "device", from = "build_lib/midi_controller_scripting" },
-    { include = "general", from = "build_lib/midi_controller_scripting" },
-    { include = "launchMapPages", from = "build_lib/midi_controller_scripting" },
-    { include = "mixer", from = "build_lib/midi_controller_scripting" },
-    { include = "patterns", from = "build_lib/midi_controller_scripting" },
-    { include = "playlist", from = "build_lib/midi_controller_scripting" },
-    { include = "plugins", from = "build_lib/midi_controller_scripting" },
-    { include = "screen", from = "build_lib/midi_controller_scripting" },
-    { include = "transport", from = "build_lib/midi_controller_scripting" },
-    { include = "ui", from = "build_lib/midi_controller_scripting" },
-    # MIDI controller scripting extra libraries
-    { include = "midi", from = "build_lib/midi_controller_scripting" },
-    { include = "utils", from = "build_lib/midi_controller_scripting" },
-    # API stubs extra modules
-    { include = "fl_classes", from = "build_lib/midi_controller_scripting" },
-    # Edison scripting
-    { include = "enveditor", from = "build_lib/edison_scripting" },
-    # Piano roll scripting
-    { include = "flpianoroll", from = "build_lib/piano_roll_scripting" },
+ci = [
+    "mypy>=2.1.0",
+    "ruff>=0.15.14",
+    "typing-extensions>=4.15.0",
+    # "flapi>=1.0.1",
 ]
-
-[tool.poetry.group.build.dependencies]
-# Build dependencies -- required to build the library
-transdoc = { extras = ["python"], version = "^1.1.0" }
-griffe = "^1.0.0"
-
-[tool.poetry.group.docs.dependencies]
 # Docs depdnencies -- required to build documentation site
 # Note build dependencies are also required
-mkdocs = "^1.4.2"
-mkdocs-gen-files = "^0.5.0"
-mkdocs-material = "^9.5.0"
-mkdocstrings = { version = ">=0.24,<0.27", extras = ["python"] }
-mkdocs-awesome-pages-plugin = "^2.9.2"
-mkdocs-section-index = "^0.3.8"
+docs = [
+    "mkdocs>=1.6.1,<2",
+    "mkdocs-awesome-pages-plugin>=2.10.1",
+    "mkdocs-gen-files>=0.6.1",
+    "mkdocs-material>=9.7.6",
+    "mkdocs-section-index>=0.3.12",
+    "mkdocstrings[python]>=1.0.4",
+]
 
-[tool.poetry.group.ci.dependencies]
-# CI dependencies -- required to run continuous integration, including
-# linting, type checking, etc
-mypy = "^1.1.1"
-typing-extensions = "^4.13.2"
-flapi = "^1.0.1"
-ruff = "^0.11.7"
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+# [tool.poetry]
+# include = [
+#     # Explicitly include all .py files in `build_lib`, otherwise, they will be
+#     # skipped due to the `.gitignore`.
+#     "build_lib/**/*.py",
+#     # And the `py.typed` files
+#     "build_lib/**/py.typed",
+#     # NOTE: Any extra files won't be bundled unless explicitly included here.
+#     # Am considering making transdoc skip files in the `.gitignore`, which
+#     # would allow us to blindly include everything in `build_lib` without also
+#     # including stuff like .pyc files.
+# ]
+
+# packages = [
+#     # MIDI controller scripting.
+#     { include = "arrangement", from = "build_lib/midi_controller_scripting" },
+#     { include = "channels", from = "build_lib/midi_controller_scripting" },
+#     { include = "device", from = "build_lib/midi_controller_scripting" },
+#     { include = "general", from = "build_lib/midi_controller_scripting" },
+#     { include = "launchMapPages", from = "build_lib/midi_controller_scripting" },
+#     { include = "mixer", from = "build_lib/midi_controller_scripting" },
+#     { include = "patterns", from = "build_lib/midi_controller_scripting" },
+#     { include = "playlist", from = "build_lib/midi_controller_scripting" },
+#     { include = "plugins", from = "build_lib/midi_controller_scripting" },
+#     { include = "screen", from = "build_lib/midi_controller_scripting" },
+#     { include = "transport", from = "build_lib/midi_controller_scripting" },
+#     { include = "ui", from = "build_lib/midi_controller_scripting" },
+#     # MIDI controller scripting extra libraries.
+#     { include = "midi", from = "build_lib/midi_controller_scripting" },
+#     { include = "utils", from = "build_lib/midi_controller_scripting" },
+#     # API stubs extra modules.
+#     { include = "fl_classes", from = "build_lib/midi_controller_scripting" },
+#     # Edison scripting.
+#     { include = "enveditor", from = "build_lib/edison_scripting" },
+#     # Piano roll scripting.
+#     { include = "flpianoroll", from = "build_lib/piano_roll_scripting" },
+# ]
 
 [tool.mypy]
 check_untyped_defs = true
@@ -139,6 +141,6 @@ ignore = ['E501']
     "SIM108",
 ]
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+# [build-system]
+# requires = ["poetry-core>=1.0.0"]
+# build-backend = "poetry.core.masonry.api"
