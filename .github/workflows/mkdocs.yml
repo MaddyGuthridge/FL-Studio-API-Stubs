@@ -3,6 +3,12 @@ on:
   # Documentation can be either manually updated or is automatically updated when pushed to main branch
   workflow_dispatch:
   push:
+    paths:
+      - 'transdoc/**'
+      - 'docs/**'
+      - 'pyproject.toml'
+      - 'uv.lock'
+      - 'mkdocs.yml'
     branches:
       - main
 
@@ -17,7 +23,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  deploy-docs:
     name: Build and deploy documentation site
     runs-on: ubuntu-latest
     environment:
@@ -27,39 +33,37 @@ jobs:
       # Checkout repository including submodules
       - name: Checkout
         id: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           submodules: true
 
       # Setup Python
-      - name: Setup Python
-        id: python
-        uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v6
         with:
-          python-version: '3.10'
+          # Pinned Python version
+          python-version-file: ".python-version"
 
-      # Install dependencies using Poetry
-      - uses: Gr1N/setup-poetry@v9
-      - uses: actions/cache@v4
+      # Install dependencies using UV
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
         with:
-            path: ~/.cache/pypoetry/virtualenvs
-            key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
-      - run: poetry --version
-      - run: poetry install --no-root
+          enable-cache: true
+      - run: uv sync --locked --group docs
 
       # Build documentation to ./site/ directory
       - name: Build Documentation
         id: build
-        run: poetry run python -m scripts.build_docs
+        run: uv run --locked mkdocs build
 
       # Upload artifact from the ./site/ directory using the expected format for GitHub Pages
       - name: Upload Artifact
         id: upload
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./site/
 
       # Use previously uploaded artifact to deploy to GitHub Pages
       - name: Deploy
         id: deploy
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

@@ -1,8 +1,4 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
+# Publish a Python package to PyPi using uv
 name: Publish Package on PyPi
 
 on:
@@ -12,26 +8,23 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      contents: read
+      id-token: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
         with:
-          submodules: true
+          # Intentionally disabled to prevent poisoning
+          enable-cache: false
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
-          python-version: '3.10'
-
-      # Install dependencies using Poetry
-      - uses: Gr1N/setup-poetry@v9
-      - uses: actions/cache@v4
-        with:
-          path: ~/.cache/pypoetry/virtualenvs
-          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
-      - run: poetry --version
-      - run: poetry install --no-root
-
-      - name: Use transdoc to build documentation
-        run: poetry run python -m scripts.build_lib
-
-      - name: Build and publish package
-        run: poetry publish --build -u __token__ -p ${{ secrets.PYPI_API_TOKEN }}
+          # Pinned Python version
+          python-version-file: ".python-version"
+      - name: Build package
+        run: uv build
+      - name: Publish package
+        run: uv publish
