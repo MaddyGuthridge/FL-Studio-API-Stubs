@@ -1,54 +1,124 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+# Run testing, linting and type-checking for Python code
+# * uv as dependency manager
+# * pytest for testing
+# * ruff for linting
+# * mypy for type-checking
+#
+# Testing is run across many platforms and Python versions
+# All others are just run on Ubuntu with latest compatible Python
 
 name: Test and Lint
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+# Yoinked from https://github.com/MTES-MCT/apilos/pull/854/files
+# Explicitely set permissions to allow Dependabot workflow runs to write in the PR
+# for coverage's reporting.
+# By default, these are read-only when the actions are ran by Dependabot
+# https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#changing-github_token-permissions
+permissions:
+  contents: read
+  pull-requests: write
 
 jobs:
+  # Run test suite with coverage
+  Test:
+    strategy:
+      matrix:
+        python-version:
+          - "3.10"
+          - "3.11"
+          - "3.12"
+          - "3.13"
+          - "3.14"
+        os:
+          - "ubuntu-latest"
+          - "windows-latest"
+          - "macos-latest"
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+      - name: Test with pytest
+        run: |
+          uv run --locked pytest
 
+  # Only run coverage once
+  Coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          # Pinned Python version
+          python-version-file: ".python-version"
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+      - name: Pytest with coverage
+        run: |
+          uv run --locked coverage run -m pytest
+      - name: Print coverage output
+        run: |
+          uv run --locked coverage report
+      - name: Generate code coverage report
+        if: ${{ github.event_name == 'pull_request' }}
+        run: |
+          uv run --locked coverage xml
+      - name: Create code coverage comment
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: orgoro/coverage@v3
+        with:
+          coverageFile: coverage.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  # Run linting
   Lint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-      with:
-        submodules: 'recursive'
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
-    - uses: Gr1N/setup-poetry@v9
-    - uses: actions/cache@v4
-      with:
-        path: ~/.cache/pypoetry/virtualenvs
-        key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
-    - run: poetry --version
-    - run: poetry install --no-root
-    - name: Lint with Ruff
-      run: |
-        poetry run ruff check
+      - uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          # Pinned Python version
+          python-version-file: ".python-version"
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+      - name: Lint with ruff
+        run: |
+          uv run --locked ruff check
 
+  # Run type-checking with mypy
   Type-check:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-      with:
-        submodules: 'recursive'
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
-    - uses: Gr1N/setup-poetry@v9
-    - uses: actions/cache@v4
-      with:
-        path: ~/.cache/pypoetry/virtualenvs
-        key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
-    - run: poetry --version
-    - run: poetry install --no-root
-    - name: Type-check with mypy
-      run: |
-        poetry run mypy
+      - uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          # Pinned Python version
+          python-version-file: ".python-version"
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+      - name: Type-check with mypy
+        run: |
+          uv run --locked mypy

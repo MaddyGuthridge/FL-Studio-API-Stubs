@@ -3,53 +3,50 @@ on:
   # Documentation can be either manually updated or is automatically updated when pushed to main branch
   workflow_dispatch:
   push:
+    paths:
+      - 'transdoc/**'
+      - 'docs/**'
+      - 'pyproject.toml'
+      - 'uv.lock'
+      - 'mkdocs.yml'
     branches:
       - '*'
       - '!main'
 
 jobs:
-  deploy:
+  build-docs:
     name: Build documentation site
     runs-on: ubuntu-latest
     steps:
       # Checkout repository including submodules
       - name: Checkout
         id: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           submodules: true
 
       # Setup Python
-      - name: Setup Python
-        id: python
-        uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v6
         with:
-          python-version: '3.10'
+          # Pinned Python version
+          python-version-file: ".python-version"
 
-      # Install dependencies using Poetry
-      - uses: Gr1N/setup-poetry@v9
-      - uses: actions/cache@v4
+      # Install dependencies using UV
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
         with:
-            path: ~/.cache/pypoetry/virtualenvs
-            key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
-      - run: poetry --version
-      - run: poetry install --no-root
+          enable-cache: true
+      - run: uv sync --locked --group docs
 
       # Build documentation to ./site/ directory
       - name: Build Documentation
         id: build
-        run: poetry run python -m scripts.build_docs
+        run: uv run --locked mkdocs build
 
       # Upload build outputs
-      - name: Upload build artifacts markdown
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: markdown output
-          path: docs_build/*
-
-      - name: Upload build artifacts HTML
-        uses: actions/upload-artifact@v4
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: HTML output
